@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E7522DF418EC427E0087B95E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
-		E7522DF918EC427E0087B95E /* ESFramework.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7522DF818EC427E0087B95E /* ESFramework.h */; };
-		E7522DFB18EC427E0087B95E /* ESFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = E7522DFA18EC427E0087B95E /* ESFramework.m */; };
 		E7522E0218EC427E0087B95E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522E0118EC427E0087B95E /* XCTest.framework */; };
 		E7522E0318EC427E0087B95E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
-		E7522E0518EC427E0087B95E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522E0418EC427E0087B95E /* UIKit.framework */; };
 		E7522E0818EC427E0087B95E /* libESFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF018EC427E0087B95E /* libESFramework.a */; };
 		E7522E0E18EC427E0087B95E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7522E0C18EC427E0087B95E /* InfoPlist.strings */; };
 		E7522E1018EC427E0087B95E /* ESFrameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7522E0F18EC427E0087B95E /* ESFrameworkTests.m */; };
+		E7522E6218EC48370087B95E /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E7522E6118EC48370087B95E /* TestObject.m */; };
+		E7522E6818EC48910087B95E /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5A18EC47260087B95E /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7522E6918EC48910087B95E /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5B18EC47650087B95E /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5D18EC479A0087B95E /* ESFrameworkCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7522E6B18EC48910087B95E /* ESFrameworkFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7522E6F18EC4B070087B95E /* TestObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E6018EC48370087B95E /* TestObject.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +38,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				E7522DF918EC427E0087B95E /* ESFramework.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,15 +46,20 @@
 /* Begin PBXFileReference section */
 		E7522DF018EC427E0087B95E /* libESFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libESFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E7522DF718EC427E0087B95E /* ESFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESFramework-Prefix.pch"; sourceTree = "<group>"; };
-		E7522DF818EC427E0087B95E /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
-		E7522DFA18EC427E0087B95E /* ESFramework.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESFramework.m; sourceTree = "<group>"; };
 		E7522E0018EC427E0087B95E /* ESFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7522E0118EC427E0087B95E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E7522E0418EC427E0087B95E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		E7522E0B18EC427E0087B95E /* ESFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ESFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		E7522E0D18EC427E0087B95E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E7522E0F18EC427E0087B95E /* ESFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESFrameworkTests.m; sourceTree = "<group>"; };
+		E7522E5618EC43730087B95E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		E7522E5A18EC47260087B95E /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
+		E7522E5B18EC47650087B95E /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
+		E7522E5D18EC479A0087B95E /* ESFrameworkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkCore.h; sourceTree = "<group>"; };
+		E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkFoundation.h; sourceTree = "<group>"; };
+		E7522E6018EC48370087B95E /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
+		E7522E6118EC48370087B95E /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +77,6 @@
 			files = (
 				E7522E0818EC427E0087B95E /* libESFramework.a in Frameworks */,
 				E7522E0218EC427E0087B95E /* XCTest.framework in Frameworks */,
-				E7522E0518EC427E0087B95E /* UIKit.framework in Frameworks */,
 				E7522E0318EC427E0087B95E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,7 +87,9 @@
 		E7522DE718EC427E0087B95E = {
 			isa = PBXGroup;
 			children = (
-				E7522DF518EC427E0087B95E /* ESFramework */,
+				E7522E5918EC46EB0087B95E /* src */,
+				E7522E5518EC43620087B95E /* Vendor */,
+				E7522E5418EC43030087B95E /* Config */,
 				E7522E0918EC427E0087B95E /* ESFrameworkTests */,
 				E7522DF218EC427E0087B95E /* Frameworks */,
 				E7522DF118EC427E0087B95E /* Products */,
@@ -102,27 +110,8 @@
 			children = (
 				E7522DF318EC427E0087B95E /* Foundation.framework */,
 				E7522E0118EC427E0087B95E /* XCTest.framework */,
-				E7522E0418EC427E0087B95E /* UIKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E7522DF518EC427E0087B95E /* ESFramework */ = {
-			isa = PBXGroup;
-			children = (
-				E7522DF818EC427E0087B95E /* ESFramework.h */,
-				E7522DFA18EC427E0087B95E /* ESFramework.m */,
-				E7522DF618EC427E0087B95E /* Supporting Files */,
-			);
-			path = ESFramework;
-			sourceTree = "<group>";
-		};
-		E7522DF618EC427E0087B95E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E7522DF718EC427E0087B95E /* ESFramework-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		E7522E0918EC427E0087B95E /* ESFrameworkTests */ = {
@@ -143,7 +132,68 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E7522E5418EC43030087B95E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				E7522E5818EC438B0087B95E /* Shared.xcconfig */,
+				E7522E5718EC438B0087B95E /* Prefix.pch */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		E7522E5518EC43620087B95E /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E7522E5618EC43730087B95E /* README.md */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		E7522E5918EC46EB0087B95E /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E7522E5A18EC47260087B95E /* ESFramework.h */,
+				E7522E5B18EC47650087B95E /* ESDefines.h */,
+				E7522E5C18EC476F0087B95E /* Core */,
+				E7522E5E18EC47D90087B95E /* Foundation */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		E7522E5C18EC476F0087B95E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E7522E5D18EC479A0087B95E /* ESFrameworkCore.h */,
+				E7522E6018EC48370087B95E /* TestObject.h */,
+				E7522E6118EC48370087B95E /* TestObject.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E7522E5E18EC47D90087B95E /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E7522E6318EC48630087B95E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7522E6818EC48910087B95E /* ESFramework.h in Headers */,
+				E7522E6918EC48910087B95E /* ESDefines.h in Headers */,
+				E7522E6F18EC4B070087B95E /* TestObject.h in Headers */,
+				E7522E6B18EC48910087B95E /* ESFrameworkFoundation.h in Headers */,
+				E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		E7522DEF18EC427E0087B95E /* ESFramework */ = {
@@ -153,6 +203,7 @@
 				E7522DEC18EC427E0087B95E /* Sources */,
 				E7522DED18EC427E0087B95E /* Frameworks */,
 				E7522DEE18EC427E0087B95E /* CopyFiles */,
+				E7522E6318EC48630087B95E /* Headers */,
 			);
 			buildRules = (
 			);
@@ -224,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7522DFB18EC427E0087B95E /* ESFramework.m in Sources */,
+				E7522E6218EC48370087B95E /* TestObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +311,7 @@
 /* Begin XCBuildConfiguration section */
 		E7522E1118EC427E0087B95E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7522E5818EC438B0087B95E /* Shared.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -297,6 +349,7 @@
 		};
 		E7522E1218EC427E0087B95E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7522E5818EC438B0087B95E /* Shared.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -328,24 +381,18 @@
 		};
 		E7522E1418EC427E0087B95E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7522E5818EC438B0087B95E /* Shared.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/ESFramework.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ESFramework/ESFramework-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
 		E7522E1518EC427E0087B95E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7522E5818EC438B0087B95E /* Shared.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/ESFramework.dst;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ESFramework/ESFramework-Prefix.pch";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

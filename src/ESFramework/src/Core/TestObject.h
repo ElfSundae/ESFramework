@@ -1,5 +1,5 @@
 //
-//  ESFramework.h
+//  TestObject.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-2.
@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ESFramework : NSObject
-
+@interface TestObject : NSObject
++ (void)test;
++ (void)testTest;
 @end

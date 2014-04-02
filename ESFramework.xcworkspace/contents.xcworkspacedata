@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:doc"
+      name = "doc">
+      <FileRef
+         location = "group:TODO.md">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:example/Demo/Demo.xcodeproj">
    </FileRef>
