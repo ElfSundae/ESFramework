@@ -37,7 +37,7 @@ UIColor *UIColorFromRGBHexString(NSString *hexString)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
+#pragma mark - Dispatch
 void es_dispatchSyncOnMainThread(dispatch_block_t block)
 {
         if ([NSThread isMainThread]) {
@@ -63,7 +63,7 @@ void es_dispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
+#pragma mark - Selector
 void es_swizzleClassMethod(Class c, SEL orig, SEL new)
 {
         Method origMethod = class_getClassMethod(c, orig);
@@ -115,7 +115,7 @@ void es_invokeSelector(id target, SEL selector, NSArray *arguments)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark - Common values
 
 CGFloat ESStatusBarHeight(void)
 {
@@ -123,6 +123,57 @@ CGFloat ESStatusBarHeight(void)
         // Avoid having to check the status bar orientation.
         return MIN(frame.size.width, frame.size.height);
 }
+
+NSLocale *ESCurrentLocale(void)
+{
+        static NSLocale *_currentLocale;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                NSArray *languages = [NSLocale preferredLanguages];
+                NSString *currentLang = [languages firstObject];
+                if (currentLang) {
+                        _currentLocale = [[NSLocale alloc] initWithLocaleIdentifier:currentLang];
+                } else {
+                        _currentLocale = [NSLocale currentLocale];
+                }
+        });
+        return _currentLocale;
+}
+
+BOOL ESIsPadUI(void)
+{
+        static BOOL _isPad;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                _isPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+        });
+        return _isPad;
+}
+
+NSString *ESDeviceOSVersion(void)
+{
+        static NSString *_deviceOSVersion = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                _deviceOSVersion = [[UIDevice currentDevice] systemVersion];
+        });
+        return _deviceOSVersion;
+}
+
+BOOL ESDeviceOSVersionIsAtLeast(double versionNumber)
+{
+        return (floor(NSFoundationVersionNumber) >= versionNumber);
+}
+
+BOOL ESDeviceOSVersionIsAbove7(void)
+{
+        return (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1);
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Path
 
 NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 {

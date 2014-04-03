@@ -12,7 +12,7 @@ static NSNumberFormatter *__shared_numberFormatter = nil;
 
 @implementation ESValue
 
-+ (void)initialize
++ (void)load
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{

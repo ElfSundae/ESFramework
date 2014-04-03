@@ -29,7 +29,7 @@ FOUNDATION_EXTERN NSString *const ESFrameworkVersion;
 #ifdef DEBUG
 #define NSLog(fmt, ...)		NSLog((@"%@ (%d) %s " fmt),[[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
-#define NSLog(fmt, ...)
+#define NSLog(fmt, ...)         ((void)0)
 #endif
 
 #define ESLOGLEVEL_INFO     5
@@ -40,14 +40,18 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 #undef NSLogCondition
 #ifdef DEBUG
 #define NSLogCondition(condition, fmt, ...) do { if((condition)){ NSLog(fmt, ##__VA_ARGS__); } } while(0)
-#else
-#define NSLogCondition(condition, fmt, ...) ((void)0)
-#endif
-
-#define NSLogPrefix(prefixString, fmt, ...)     NSLog(@""prefixString@""fmt, ##__VA_ARGS__)
+#define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@""prefixString@""fmt, ##__VA_ARGS__); } while(0)
 #define NSLogInfo(fmt, ...)     do { if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"<Info> ", fmt, ##__VA_ARGS__); } } while(0)
 #define NSLogWarning(fmt, ...)  do { if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"<Warning>❗ ", fmt, ##__VA_ARGS__); } } while(0)
 #define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"<Error>❌ ", fmt, ##__VA_ARGS__); } } while(0)
+#else
+#define NSLogCondition(condition, fmt, ...)     ((void)0)
+#define NSLogPrefix(prefixString, fmt, ...)     ((void)0)
+#define NSLogInfo(fmt, ...)             ((void)0)
+#define NSLogWarning(fmt, ...)          ((void)0)
+#define NSLogError(fmt, ...)            ((void)0)
+#endif
+
 
 
 /**
@@ -111,17 +115,6 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 #define ES_STRONG_VAR(_weak_var, _strong_var)        __es_typeof(_weak_var) _strong_var = _weak_var
 #define ES_STRONG_VAR_CHECK_NULL(_weak_var, _strong_var)        ES_STRONG_VAR(_weak_var, _strong_var); if(!_strong_var) return;
 
-/**
- * Check bit (flag)
- */
-#define ES_IS_MASK_SET(value, flag)  (((value) & (flag)) == (flag))
-
-/**
- * LocalizedString
- */
-#define ESLocalizedString(s) NSLocalizedString(s,s)
-#define ESLocalizedStringWithFormat(s, ...) [NSString stringWithFormat:NSLocalizedString(s,s),##__VA_ARGS__]
-
 
 /**
  * SDK Compatibility
@@ -154,10 +147,30 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 #define __IPHONE_7_1     70100
 #endif
 
+#ifndef NSFoundationVersionNumber_iOS_5_0
+#define NSFoundationVersionNumber_iOS_5_0  881.00
+#endif
+#ifndef NSFoundationVersionNumber_iOS_5_1
+#define NSFoundationVersionNumber_iOS_5_1  890.10
+#endif
+#ifndef NSFoundationVersionNumber_iOS_6_0
+#define NSFoundationVersionNumber_iOS_6_0  993.00
+#endif
+#ifndef NSFoundationVersionNumber_iOS_6_1
+#define NSFoundationVersionNumber_iOS_6_1  993.00
+#endif
+#ifndef NSFoundationVersionNumber_iOS_7_0
+#define NSFoundationVersionNumber_iOS_7_0  1047.00
+#endif
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Helper
 /**
- * Color helper
+ * Helper
  */
+
 #define UIColorFromRGBA(r,g,b,a)        [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
 #define UIColorFromRGB(r,g,b)           UIColorFromRGBA(r,g,b,1.0f)
 /**
@@ -167,6 +180,22 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
  */
 #define UIColorFromRGBAHex(rgbValue,a)  UIColorFromRGBA( ((CGFloat)((rgbValue & 0xFF0000) >> 16)), ((CGFloat)((rgbValue & 0xFF00) >> 8)), ((CGFloat)(rgbValue & 0xFF)), a)
 #define UIColorFromRGBHex(rgbValue)     UIColorFromRGBAHex(rgbValue, 1.0f)
+
+/** Check bit (flag) */
+#define ES_IS_MASK_SET(value, flag)  (((value) & (flag)) == (flag))
+/** LocalizedString */
+#define ESLocalizedString(key) NSLocalizedString(key,nil)
+#define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
+#ifndef _
+/** Shortcut for ESLocalizedString(key) */
+#define _(key) ESLocalizedString(key)
+#endif
+/** Observer */
+#define ESPostNotification(_name, _obj, _userInfo)      do { [[NSNotificationCenter defaultCenter] postNotificationName:_name object:_obj userInfo:_userInfo]; } while(0)
+#define ESAddObserver(_name, _observer, _selector, _obj)        do { [[NSNotificationCenter defaultCenter] addObserver:_observer selector:_selector name:_name object:_obj]; } while(0)
+#define ESRemoveAllObserver(_observer)          do { [[NSNotificationCenter defaultCenter] removeObserver:_observer]; } while(0)
+#define ESRemoveObserver(_observer, _name, _obj)        do { [[NSNotificationCenter defaultCenter] removeObserver:_observer name:_name object:_obj]; } while(0)
+
 
 #if defined(__cplusplus)
 extern "C" {
@@ -200,11 +229,33 @@ extern "C" {
          * @warning: Only for instance method.
          */
         void es_invokeSelector(id target, SEL selector, NSArray *arguments);
+
         
-        /**
-         * Common values
-         */
         CGFloat ESStatusBarHeight(void);
+        
+        NSLocale *ESCurrentLocale(void);
+        /**
+         * Checks whetherUIUserInterfaceIdiomPad
+         */
+        BOOL ESIsPadUI(void);
+        /**
+         * Checks whether the device is a Pad.
+         */
+        BOOL ESIsPadDevice(void);
+        /**
+         * The device's OS version
+         */
+        NSString *ESDeviceOSVersion(void);
+        /**
+         * Checks whether the device's OS version is at least the given version number.
+         *
+         * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
+         */
+        BOOL ESDeviceOSVersionIsAtLeast(double versionNumber);
+        /**
+         * Checks whether the device's OS version is above iOS7.0
+         */
+        BOOL ESDeviceOSVersionIsAbove7(void);
         
         /**
          * Path
