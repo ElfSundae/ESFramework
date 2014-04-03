@@ -186,8 +186,8 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 /** LocalizedString */
 #define ESLocalizedString(key) NSLocalizedString(key,nil)
 #define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
-#ifndef _
 /** Shortcut for ESLocalizedString(key) */
+#ifndef _
 #define _(key) ESLocalizedString(key)
 #endif
 /** Observer */
@@ -203,6 +203,7 @@ extern "C" {
         /**
          @code
          UIColorFromHexString(@"#33AF00");
+         UIColorFromHexString(@"0x33AF00");
          UIColorFromHexString(@"33AF00");
          @endcode
          */

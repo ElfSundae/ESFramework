@@ -30,6 +30,9 @@ UIColor *UIColorFromRGBHexString(NSString *hexString)
                 } else if (7 == hexString.length) {
                         [scanner setScanLocation:1]; // bypass '#' character
                         [scanner scanHexInt:&rgbValue];
+                } else if (8 == hexString.length) {
+                        [scanner setScanLocation:2]; //bypass '0x'
+                        [scanner scanHexInt:&rgbValue];
                 }
         }
         return UIColorFromRGBHex(rgbValue);
