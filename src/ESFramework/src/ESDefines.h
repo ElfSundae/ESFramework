@@ -9,7 +9,7 @@
 #ifndef ESFramework_ESDefines_h
 #define ESFramework_ESDefines_h
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 @import UIKit;
 
 FOUNDATION_EXTERN NSString *const ESFrameworkVersion;
@@ -40,7 +40,7 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 #undef NSLogCondition
 #ifdef DEBUG
 #define NSLogCondition(condition, fmt, ...) do { if((condition)){ NSLog(fmt, ##__VA_ARGS__); } } while(0)
-#define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@""prefixString@""fmt, ##__VA_ARGS__); } while(0)
+#define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@""prefixString fmt, ##__VA_ARGS__); } while(0)
 #define NSLogInfo(fmt, ...)     do { if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"<Info> ", fmt, ##__VA_ARGS__); } } while(0)
 #define NSLogWarning(fmt, ...)  do { if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"<Warning>❗ ", fmt, ##__VA_ARGS__); } } while(0)
 #define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"<Error>❌ ", fmt, ##__VA_ARGS__); } } while(0)
@@ -160,6 +160,7 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 #define NSFoundationVersionNumber_iOS_6_1  993.00
 #endif
 #ifndef NSFoundationVersionNumber_iOS_7_0
+//TODO: Correct _iOS_7_0 value from Apple officer when the next SDK distributed.
 #define NSFoundationVersionNumber_iOS_7_0  1047.00
 #endif
 
@@ -195,6 +196,43 @@ FOUNDATION_EXTERN NSInteger ESMaxLogLevel;
 #define ESAddObserver(_name, _observer, _selector, _obj)        do { [[NSNotificationCenter defaultCenter] addObserver:_observer selector:_selector name:_name object:_obj]; } while(0)
 #define ESRemoveAllObserver(_observer)          do { [[NSNotificationCenter defaultCenter] removeObserver:_observer]; } while(0)
 #define ESRemoveObserver(_observer, _name, _obj)        do { [[NSNotificationCenter defaultCenter] removeObserver:_observer name:_name object:_obj]; } while(0)
+/**
+ * Declare singleton #sharedInstance# methods.
+ * #Option means this class also can be allocated to create a new instance.
+ *
+ * @param sharedInstance The shared instance's method name.
+ */
+#define ES_SINGLETON_DEC(sharedInstance) + (instancetype)sharedInstance;
+/**
+ * Mark the #alloc #new method as unavailable.
+ */
+#define ES_SINGLETON_UNAVAILABLE_ALLOCATION \
++ (id)alloc __attribute__((unavailable("alloc not available, call the shared instance instead."))); \
++ (id)new __attribute__((unavailable("new not available, call the shared instance instead.")));
+/**
+ * Implement singleton #sharedInstance# methods.
+ *
+ * @param sharedInstance The shared instance's method name.
+ * @param initMethod Your initiation method.
+ */
+#define ES_SINGLETON_IMP_AS(sharedInstance, initMethod) \
++ (instancetype)sharedInstance \
+{ \
+        static id __sharedInstance__ = nil; \
+        static dispatch_once_t onceToken; \
+        dispatch_once(&onceToken, ^{ __sharedInstance__ = [[super alloc] initMethod]; }); \
+        return __sharedInstance__; \
+}
+/**
+ * Implement singleton #sharedInstance# methods.
+ *
+ * @param sharedInstance The shared instance's method name.
+ */
+#define ES_SINGLETON_IMP(sharedInstance) ES_SINGLETON_IMP_AS(sharedInstance, init)
+
+
+
+
 
 
 #if defined(__cplusplus)

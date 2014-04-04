@@ -14,7 +14,4 @@
 #ifndef ESFramework_ESFramework_h
 #define ESFramework_ESFramework_h
 
-#import "ESFrameworkVersion.h"
-
-
 #endif

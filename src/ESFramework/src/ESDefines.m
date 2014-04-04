@@ -12,6 +12,9 @@
 #if !__es_arc_enabled
 #error "ESFramework requires ARC support."
 #endif
+#if !__has_feature(objc_instancetype)
+#error "ESFramework requires Xcode5 to build."
+#endif
 
 NSString *const ESFrameworkVersion = @"0.1.0";
 
