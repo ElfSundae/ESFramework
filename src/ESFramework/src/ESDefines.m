@@ -22,7 +22,7 @@ NSInteger ESMaxLogLevel = ESLOGLEVEL_INFO;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
+#pragma mark - UIColor
 UIColor *UIColorFromRGBHexString(NSString *hexString)
 {
         unsigned rgbValue = 0;
@@ -43,86 +43,37 @@ UIColor *UIColorFromRGBHexString(NSString *hexString)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Dispatch
-void es_dispatchSyncOnMainThread(dispatch_block_t block)
+#pragma mark - SDK Compatibility
+
+NSString *ESDeviceOSVersion(void)
 {
-        if ([NSThread isMainThread]) {
-                block();
-        } else {
-                dispatch_sync(dispatch_get_main_queue(), block);
-        }
+        static NSString *_deviceOSVersion = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                _deviceOSVersion = [[UIDevice currentDevice] systemVersion];
+        });
+        return _deviceOSVersion;
 }
 
-void es_dispatchAsyncOnMainThread(dispatch_block_t block)
+BOOL ESDeviceOSVersionIsAtLeast(double versionNumber)
 {
-        if ([NSThread isMainThread]) {
-                block();
-        } else {
-                dispatch_async(dispatch_get_main_queue(), block);
-        }
+        return (floor(NSFoundationVersionNumber) >= versionNumber);
 }
 
-void es_dispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
+BOOL ESDeviceOSVersionIsAbove(double versionNumber)
 {
-        dispatch_async(dispatch_get_global_queue(priority, 0), block);
+        return (floor(NSFoundationVersionNumber) > versionNumber);
 }
+
+BOOL ESDeviceOSVersionIsAbove7(void)
+{
+        return ESDeviceOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Selector
-void es_swizzleClassMethod(Class c, SEL orig, SEL new)
-{
-        Method origMethod = class_getClassMethod(c, orig);
-        Method newMethod = class_getClassMethod(c, new);
-        if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
-                class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-        } else {
-                method_exchangeImplementations(origMethod, newMethod);
-        }
-}
-
-void es_swizzleInstanceMethod(Class c, SEL orig, SEL new)
-{
-        Method origMethod = class_getInstanceMethod(c, orig);
-        Method newMethod = class_getInstanceMethod(c, new);
-        if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
-                class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-        } else {
-                method_exchangeImplementations(origMethod, newMethod);
-        }
-}
-
-void es_invokeSelector(id target, SEL selector, NSArray *arguments)
-{
-        //TODO: check if it's a instance method or not.
-        if (!arguments || !arguments.count) {
-                return;
-        }
-        
-        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-        [invocation setTarget:target];
-        [invocation setSelector:selector];
-        // The first two arguments are the hidden arguments self and _cmd
-        NSUInteger numberOfArgs = signature.numberOfArguments - 2;
-        if (numberOfArgs > arguments.count) {
-                // no enough arguments in the array
-                return;
-        }
-        
-        for (int i = 0; i < numberOfArgs; i++) {
-                id arg = [arguments objectAtIndex:i];
-                // The first two arguments are the hidden arguments self and _cmd
-                [invocation setArgument:&arg atIndex:i+2];
-        }
-        
-        [invocation invoke];
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Common values
-
+#pragma mark - 
 CGFloat ESStatusBarHeight(void)
 {
         CGRect frame = [UIApplication sharedApplication].statusBarFrame;
@@ -156,24 +107,36 @@ BOOL ESIsPadUI(void)
         return _isPad;
 }
 
-NSString *ESDeviceOSVersion(void)
+BOOL ESIsPadDevice(void)
 {
-        static NSString *_deviceOSVersion = nil;
+        static BOOL _isPadDevice;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                _deviceOSVersion = [[UIDevice currentDevice] systemVersion];
+                _isPadDevice = ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
         });
-        return _deviceOSVersion;
+        return _isPadDevice;
 }
 
-BOOL ESDeviceOSVersionIsAtLeast(double versionNumber)
+BOOL ESIsPhoneUI(void)
 {
-        return (floor(NSFoundationVersionNumber) >= versionNumber);
+        static BOOL _isPhone;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                _isPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+        });
+        return _isPhone;
 }
 
-BOOL ESDeviceOSVersionIsAbove7(void)
+BOOL ESIsPhoneDevice(void)
 {
-        return (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1);
+        static BOOL _isPhoneDevice;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                NSString *model = [UIDevice currentDevice].model;
+                _isPhoneDevice = ([model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
+                                  [model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
+        });
+        return _isPhoneDevice;
 }
 
 
@@ -245,4 +208,82 @@ NSString *ESPathForTemporary(void)
 NSString *ESPathForTemporaryResource(NSString *relativePath)
 {
         return [ESPathForTemporary() stringByAppendingPathComponent:relativePath];
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Dispatch
+void ESDispatchSyncOnMainThread(dispatch_block_t block)
+{
+        if ([NSThread isMainThread]) {
+                block();
+        } else {
+                dispatch_sync(dispatch_get_main_queue(), block);
+        }
+}
+
+void ESDispatchAsyncOnMainThread(dispatch_block_t block)
+{
+        if ([NSThread isMainThread]) {
+                block();
+        } else {
+                dispatch_async(dispatch_get_main_queue(), block);
+        }
+}
+
+void ESDispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
+{
+        dispatch_async(dispatch_get_global_queue(priority, 0), block);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Selector
+void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
+{
+        Method origMethod = class_getClassMethod(c, orig);
+        Method newMethod = class_getClassMethod(c, new);
+        if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
+                class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+        } else {
+                method_exchangeImplementations(origMethod, newMethod);
+        }
+}
+
+void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
+{
+        Method origMethod = class_getInstanceMethod(c, orig);
+        Method newMethod = class_getInstanceMethod(c, new);
+        if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
+                class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+        } else {
+                method_exchangeImplementations(origMethod, newMethod);
+        }
+}
+
+void ESInvokeSelector(id target, SEL selector, NSArray *arguments)
+{
+        //TODO: check if it's a instance method or not.
+        if (!arguments || !arguments.count) {
+                return;
+        }
+        
+        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        [invocation setTarget:target];
+        [invocation setSelector:selector];
+        // The first two arguments are the hidden arguments self and _cmd
+        NSUInteger numberOfArgs = signature.numberOfArguments - 2;
+        if (numberOfArgs > arguments.count) {
+                // no enough arguments in the array
+                return;
+        }
+        
+        for (int i = 0; i < numberOfArgs; i++) {
+                id arg = [arguments objectAtIndex:i];
+                // The first two arguments are the hidden arguments self and _cmd
+                [invocation setArgument:&arg atIndex:i+2];
+        }
+        
+        [invocation invoke];
 }
