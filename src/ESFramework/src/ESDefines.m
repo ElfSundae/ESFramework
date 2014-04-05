@@ -287,3 +287,32 @@ void ESInvokeSelector(id target, SEL selector, NSArray *arguments)
         
         [invocation invoke];
 }
+
+void ESInvokeSelector1(id target, SEL selector, NSArray *arguments)
+{
+        //TODO: check if it's a instance method or not.
+        if (!arguments || !arguments.count) {
+                return;
+        }
+        
+        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+        [invocation setTarget:target];
+        [invocation setSelector:selector];
+        // The first two arguments are the hidden arguments self and _cmd
+        NSUInteger numberOfArgs = signature.numberOfArguments - 2;
+        if (numberOfArgs > arguments.count) {
+                // no enough arguments in the array
+                return;
+        }
+        
+        for (int i = 0; i < numberOfArgs; i++) {
+                id arg = [arguments objectAtIndex:i];
+                // The first two arguments are the hidden arguments self and _cmd
+                [invocation setArgument:&arg atIndex:i+2];
+        }
+        
+        [invocation invoke];
+}
+
+

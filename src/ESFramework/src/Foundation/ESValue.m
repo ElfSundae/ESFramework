@@ -8,7 +8,7 @@
 
 #import "ESValue.h"
 
-static NSNumberFormatter *__shared_numberFormatter = nil;
+static NSNumberFormatter *__sharedNumberFormatter = nil;
 
 @implementation ESValue
 
@@ -16,7 +16,7 @@ static NSNumberFormatter *__shared_numberFormatter = nil;
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __shared_numberFormatter = [[NSNumberFormatter alloc] init];
+                __sharedNumberFormatter = [[NSNumberFormatter alloc] init];
         });
 }
 
@@ -43,7 +43,7 @@ BOOL esUIntVal(unsigned int *var, id obj)
                         *var = [obj unsignedIntValue];
                         return YES;
                 } else if ([obj isKindOfClass:[NSString class]]) {
-                        *var = [[__shared_numberFormatter numberFromString:obj] unsignedIntValue];
+                        *var = [[__sharedNumberFormatter numberFromString:obj] unsignedIntValue];
                         return YES;
                 }
         }
@@ -66,7 +66,7 @@ BOOL esUIntegerVal(NSUInteger *var, id obj)
                         *var = [obj unsignedIntegerValue];
                         return YES;
                 } else if ([obj isKindOfClass:[NSString class]]) {
-                        *var = [[__shared_numberFormatter numberFromString:obj] unsignedIntegerValue];
+                        *var = [[__sharedNumberFormatter numberFromString:obj] unsignedIntegerValue];
                         return YES;
                 }
         }
@@ -80,7 +80,7 @@ BOOL esLongVal(long *var, id obj)
                         *var = [obj longValue];
                         return YES;
                 } else if ([obj isKindOfClass:[NSString class]]) {
-                        *var = [[__shared_numberFormatter numberFromString:obj] longValue];
+                        *var = [[__sharedNumberFormatter numberFromString:obj] longValue];
                         return YES;
                 }
         }
@@ -94,7 +94,7 @@ BOOL esULongVal(unsigned long *var, id obj)
                         *var = [obj unsignedLongValue];
                         return YES;
                 } else if ([obj isKindOfClass:[NSString class]]) {
-                        *var = [[__shared_numberFormatter numberFromString:obj] unsignedLongValue];
+                        *var = [[__sharedNumberFormatter numberFromString:obj] unsignedLongValue];
                         return YES;
                 }
         }
@@ -117,7 +117,7 @@ BOOL esULongLongVal(unsigned long long *var, id obj)
                         *var = [obj unsignedLongLongValue];
                         return YES;
                 } else if ([obj isKindOfClass:[NSString class]]) {
-                        *var = [[__shared_numberFormatter numberFromString:obj] unsignedLongLongValue];
+                        *var = [[__sharedNumberFormatter numberFromString:obj] unsignedLongLongValue];
                         return YES;
                 }
         }
