@@ -418,10 +418,10 @@ ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new);
  */
 ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
 /**
- * Call a selector with unknown number of arguments.
+ * Call a selector with multiple arguments.
  *
  * @warning: Only for instance method.
  */
-ES_EXTERN void ESInvokeSelector(id target, SEL selector, NSArray *arguments);
+ES_EXTERN id ESInvokeSelector(id target, SEL selector, id arguments, ...);
 
 #endif // ESFramework_ESDefines_h

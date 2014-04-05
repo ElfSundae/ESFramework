@@ -261,58 +261,33 @@ void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
         }
 }
 
-void ESInvokeSelector(id target, SEL selector, NSArray *arguments)
+id ESInvokeSelector(id target, SEL selector, id arguments, ...)
 {
-        //TODO: check if it's a instance method or not.
-        if (!arguments || !arguments.count) {
-                return;
+        if (class_isMetaClass(object_getClass(target))) {
+                NSCAssert(0, @"This function can only be called for the instance method.");
+                return nil;
         }
-        
+
         NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+        
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setTarget:target];
         [invocation setSelector:selector];
-        // The first two arguments are the hidden arguments self and _cmd
-        NSUInteger numberOfArgs = signature.numberOfArguments - 2;
-        if (numberOfArgs > arguments.count) {
-                // no enough arguments in the array
-                return;
-        }
-        
-        for (int i = 0; i < numberOfArgs; i++) {
-                id arg = [arguments objectAtIndex:i];
-                // The first two arguments are the hidden arguments self and _cmd
-                [invocation setArgument:&arg atIndex:i+2];
-        }
-        
-        [invocation invoke];
-}
-
-void ESInvokeSelector1(id target, SEL selector, NSArray *arguments)
-{
-        //TODO: check if it's a instance method or not.
-        if (!arguments || !arguments.count) {
-                return;
-        }
-        
-        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-        [invocation setTarget:target];
-        [invocation setSelector:selector];
-        // The first two arguments are the hidden arguments self and _cmd
-        NSUInteger numberOfArgs = signature.numberOfArguments - 2;
-        if (numberOfArgs > arguments.count) {
-                // no enough arguments in the array
-                return;
-        }
-        
-        for (int i = 0; i < numberOfArgs; i++) {
-                id arg = [arguments objectAtIndex:i];
-                // The first two arguments are the hidden arguments self and _cmd
-                [invocation setArgument:&arg atIndex:i+2];
+        NSInteger argIndex = 2;
+        if (arguments) {
+                va_list argsList;
+                va_start(argsList, arguments);
+                id eachArg = arguments;
+                do {
+                        [invocation setArgument:&eachArg atIndex:argIndex++];
+                } while ((eachArg = va_arg(argsList, id)));
+                va_end(argsList);
         }
         
         [invocation invoke];
+        
+        id result = nil;
+        [invocation getReturnValue:&result];
+        return result;
 }
-
 
