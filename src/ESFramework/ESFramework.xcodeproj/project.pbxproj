@@ -86,12 +86,12 @@
 		E7B6E1F518F1B0C1005A360E /* UIView+ESShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESShortcut.m"; sourceTree = "<group>"; };
 		E7B6E1F818F1B170005A360E /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E1F918F1B170005A360E /* UIView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
-		E7B6E1FF18F1B4E2005A360E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E7B6E20018F1B541005A360E /* ESFrameworkUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUI.h; sourceTree = "<group>"; };
 		E7B6E20218F1B698005A360E /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E20318F1B698005A360E /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
 		E7B6E20B18F1BCA3005A360E /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
 		E7B6E20C18F1BCA3005A360E /* ESAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAnimations.m; sourceTree = "<group>"; };
+		E7B6E21018F1C334005A360E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +119,7 @@
 		E7522DE718EC427E0087B95E = {
 			isa = PBXGroup;
 			children = (
+				E7B6E20F18F1C334005A360E /* Vendor */,
 				E7522E5918EC46EB0087B95E /* src */,
 				E7522E5418EC43030087B95E /* Config */,
 				E7522E0918EC427E0087B95E /* ESFrameworkTests */,
@@ -175,7 +176,6 @@
 		E7522E5918EC46EB0087B95E /* src */ = {
 			isa = PBXGroup;
 			children = (
-				E7B6E1FE18F1B4CD005A360E /* Vendor */,
 				E7522E5A18EC47260087B95E /* ESFramework.h */,
 				E7522E5B18EC47650087B95E /* ESDefines.h */,
 				E7522ECE18ECACEF0087B95E /* ESDefines.m */,
@@ -233,14 +233,6 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		E7B6E1FE18F1B4CD005A360E /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				E7B6E1FF18F1B4E2005A360E /* README.md */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
 		E7B6E20618F1BB86005A360E /* Animation */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +241,14 @@
 			);
 			name = Animation;
 			sourceTree = "<group>";
+		};
+		E7B6E20F18F1C334005A360E /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E7B6E21018F1C334005A360E /* README.md */,
+			);
+			path = Vendor;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
