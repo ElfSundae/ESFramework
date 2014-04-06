@@ -362,7 +362,7 @@ ES_EXTERN UIColor *UIColorFromRGBHexString(NSString *hexString);
 #endif
 
 /**
- * Returns the statusBar's height, in any orietation.
+ * Returns the statusBar's height, in any orientation.
  */
 ES_EXTERN CGFloat ESStatusBarHeight(void);
 
@@ -417,11 +417,26 @@ ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new);
  * Swizzle instance method.
  */
 ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
+
+/**
+ * Constructs an NSInvocation for a class target or an instance target.
+ *
+ @code
+ NSInvocation *invocation = ESInvocation(self, @selector(foo:));
+ NSInvocation *invocation = ESInvocation([self class], @selector(classMethod:));
+ @endcode
+ */
+ES_EXTERN NSInvocation *ESInvocationFrom(id target, SEL selector);
+
 /**
  * Call a selector with multiple arguments.
+ * The arguments should be ended with a #nil or #NULL sentinel.
  *
- * @warning: Only for instance method.
+ @code
+ id ret = ESInvokeSelector(self, @selector(foo:bar:), @"arg1", @"arg2", nil);
+ NSString *ret = ESInvokeSelector([self class], @selector(foo), nil);
+ @endcode
  */
-ES_EXTERN id ESInvokeSelector(id target, SEL selector, id arguments, ...);
+ES_EXTERN id ESInvokeSelector(id target, SEL selector, id arguments, ...) NS_REQUIRES_NIL_TERMINATION;
 
 #endif // ESFramework_ESDefines_h

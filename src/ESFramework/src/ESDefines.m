@@ -261,18 +261,23 @@ void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
         }
 }
 
-id ESInvokeSelector(id target, SEL selector, id arguments, ...)
+NSInvocation *ESInvocationFrom(id target, SEL selector)
 {
-        if (class_isMetaClass(object_getClass(target))) {
-                NSCAssert(0, @"This function can only be called for the instance method.");
+        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+        if (!signature) {
                 return nil;
         }
-
-        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
-        
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setTarget:target];
         [invocation setSelector:selector];
+        return invocation;
+}
+
+id ESInvokeSelector(id target, SEL selector, id arguments, ...)
+{
+        NSInvocation *invocation = ESInvocationFrom(target, selector);
+        NSCAssert(invocation, @"Constructing NSInvocation error.");
+        
         NSInteger argIndex = 2;
         if (arguments) {
                 va_list argsList;
@@ -286,8 +291,12 @@ id ESInvokeSelector(id target, SEL selector, id arguments, ...)
         
         [invocation invoke];
         
-        id result = nil;
-        [invocation getReturnValue:&result];
-        return result;
+        const char *returnType = invocation.methodSignature.methodReturnType;
+        if (0 != strcmp(returnType, @encode(void))) {
+                __autoreleasing id result = nil;
+                [invocation getReturnValue:&result];
+                return result;
+        }
+        return nil;
 }
 
