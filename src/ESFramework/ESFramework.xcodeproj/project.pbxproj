@@ -26,6 +26,11 @@
 		E7B6E1EE18F1A78A005A360E /* NSString+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1EC18F1A78A005A360E /* NSString+ESAdditions.m */; };
 		E7B6E1F118F1A868005A360E /* NSURL+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1EF18F1A868005A360E /* NSURL+ESAdditions.h */; };
 		E7B6E1F218F1A868005A360E /* NSURL+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1F018F1A868005A360E /* NSURL+ESAdditions.m */; };
+		E7B6E1F618F1B0C1005A360E /* UIView+ESShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1F418F1B0C1005A360E /* UIView+ESShortcut.h */; };
+		E7B6E1F718F1B0C1005A360E /* UIView+ESShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1F518F1B0C1005A360E /* UIView+ESShortcut.m */; };
+		E7B6E1FA18F1B170005A360E /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1F818F1B170005A360E /* UIView+ESAdditions.h */; };
+		E7B6E1FB18F1B170005A360E /* UIView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1F918F1B170005A360E /* UIView+ESAdditions.m */; };
+		E7B6E20118F1B5C4005A360E /* ESFrameworkUI.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E20018F1B541005A360E /* ESFrameworkUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +63,6 @@
 		E7522E0B18EC427E0087B95E /* ESFrameworkTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ESFrameworkTests-Info.plist"; sourceTree = "<group>"; };
 		E7522E0D18EC427E0087B95E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E7522E0F18EC427E0087B95E /* ESFrameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESFrameworkTests.m; sourceTree = "<group>"; };
-		E7522E5618EC43730087B95E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		E7522E5A18EC47260087B95E /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
@@ -74,6 +78,12 @@
 		E7B6E1EC18F1A78A005A360E /* NSString+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESAdditions.m"; sourceTree = "<group>"; };
 		E7B6E1EF18F1A868005A360E /* NSURL+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E1F018F1A868005A360E /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
+		E7B6E1F418F1B0C1005A360E /* UIView+ESShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESShortcut.h"; sourceTree = "<group>"; };
+		E7B6E1F518F1B0C1005A360E /* UIView+ESShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESShortcut.m"; sourceTree = "<group>"; };
+		E7B6E1F818F1B170005A360E /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
+		E7B6E1F918F1B170005A360E /* UIView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
+		E7B6E1FF18F1B4E2005A360E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		E7B6E20018F1B541005A360E /* ESFrameworkUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUI.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				E7522E5918EC46EB0087B95E /* src */,
-				E7522E5518EC43620087B95E /* Vendor */,
 				E7522E5418EC43030087B95E /* Config */,
 				E7522E0918EC427E0087B95E /* ESFrameworkTests */,
 				E7522DF218EC427E0087B95E /* Frameworks */,
@@ -155,22 +164,16 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		E7522E5518EC43620087B95E /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				E7522E5618EC43730087B95E /* README.md */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
 		E7522E5918EC46EB0087B95E /* src */ = {
 			isa = PBXGroup;
 			children = (
+				E7B6E1FE18F1B4CD005A360E /* Vendor */,
 				E7522E5A18EC47260087B95E /* ESFramework.h */,
 				E7522E5B18EC47650087B95E /* ESDefines.h */,
 				E7522ECE18ECACEF0087B95E /* ESDefines.m */,
 				E7522E5C18EC476F0087B95E /* Core */,
 				E7522E5E18EC47D90087B95E /* Foundation */,
+				E7B6E1F318F1B097005A360E /* UI */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -199,6 +202,34 @@
 			path = Foundation;
 			sourceTree = "<group>";
 		};
+		E7B6E1F318F1B097005A360E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E7B6E20018F1B541005A360E /* ESFrameworkUI.h */,
+				E7B6E1FC18F1B1C1005A360E /* View */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E7B6E1FC18F1B1C1005A360E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E7B6E1F418F1B0C1005A360E /* UIView+ESShortcut.h */,
+				E7B6E1F518F1B0C1005A360E /* UIView+ESShortcut.m */,
+				E7B6E1F818F1B170005A360E /* UIView+ESAdditions.h */,
+				E7B6E1F918F1B170005A360E /* UIView+ESAdditions.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E7B6E1FE18F1B4CD005A360E /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E7B6E1FF18F1B4E2005A360E /* README.md */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -212,8 +243,11 @@
 				E7522E6918EC48910087B95E /* ESDefines.h in Headers */,
 				E7522ED218ECB7BA0087B95E /* ESValue.h in Headers */,
 				E7522E6B18EC48910087B95E /* ESFrameworkFoundation.h in Headers */,
+				E7B6E1F618F1B0C1005A360E /* UIView+ESShortcut.h in Headers */,
+				E7B6E20118F1B5C4005A360E /* ESFrameworkUI.h in Headers */,
 				E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */,
 				E7B6E1F118F1A868005A360E /* NSURL+ESAdditions.h in Headers */,
+				E7B6E1FA18F1B170005A360E /* UIView+ESAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,11 +333,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7B6E1F718F1B0C1005A360E /* UIView+ESShortcut.m in Sources */,
 				E7A93D0D18EDE0B6002F9855 /* ESCoreUtilities.m in Sources */,
 				E7522ECF18ECACEF0087B95E /* ESDefines.m in Sources */,
 				E7B6E1F218F1A868005A360E /* NSURL+ESAdditions.m in Sources */,
 				E7522ED318ECB7BA0087B95E /* ESValue.m in Sources */,
 				E7B6E1EE18F1A78A005A360E /* NSString+ESAdditions.m in Sources */,
+				E7B6E1FB18F1B170005A360E /* UIView+ESAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

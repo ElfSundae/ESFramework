@@ -9,6 +9,6 @@
 #ifndef ESFramework_ESFrameworkCore_h
 #define ESFramework_ESFrameworkCore_h
 
-
+#import "ESCoreUtilities.h"
 
 #endif

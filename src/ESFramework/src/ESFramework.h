@@ -7,11 +7,16 @@
 //
 
 /**
- *  Include ESFramework headers here.
+ * Include ESFramework headers here.
  */
 
 
 #ifndef ESFramework_ESFramework_h
 #define ESFramework_ESFramework_h
+
+#import "ESDefines.h"
+#import "ESFrameworkCore.h"
+#import "ESFrameworkFoundation.h"
+#import "ESFrameworkUI.h"
 
 #endif

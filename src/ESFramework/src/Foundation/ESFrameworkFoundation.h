@@ -9,6 +9,8 @@
 #ifndef ESFramework_ESFrameworkFoundation_h
 #define ESFramework_ESFrameworkFoundation_h
 
-
+#import "ESValue.h"
+#import "NSString+ESAdditions.h"
+#import "NSURL+ESAdditions.h"
 
 #endif
