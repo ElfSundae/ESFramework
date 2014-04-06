@@ -27,7 +27,7 @@ static NSNumberFormatter *__sharedNumberFormatter = nil;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 
 
-BOOL esIntVal(int *var, id obj)
+BOOL ESIntVal(int *var, id obj)
 {
         if (obj && ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]])) {
                 *var = [obj intValue];
@@ -36,7 +36,7 @@ BOOL esIntVal(int *var, id obj)
         return NO;
 }
 
-BOOL esUIntVal(unsigned int *var, id obj)
+BOOL ESUIntVal(unsigned int *var, id obj)
 {
         if (obj) {
                 if ([obj isKindOfClass:[NSNumber class]]) {
@@ -50,7 +50,7 @@ BOOL esUIntVal(unsigned int *var, id obj)
         return NO;
 }
 
-BOOL esIntegerVal(NSInteger *var, id obj)
+BOOL ESIntegerVal(NSInteger *var, id obj)
 {
         if (obj && ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]])) {
                 *var = [obj integerValue];
@@ -59,7 +59,7 @@ BOOL esIntegerVal(NSInteger *var, id obj)
         return NO;
 }
 
-BOOL esUIntegerVal(NSUInteger *var, id obj)
+BOOL ESUIntegerVal(NSUInteger *var, id obj)
 {
         if (obj) {
                 if ([obj isKindOfClass:[NSNumber class]]) {
@@ -73,7 +73,7 @@ BOOL esUIntegerVal(NSUInteger *var, id obj)
         return NO;
 }
 
-BOOL esLongVal(long *var, id obj)
+BOOL ESLongVal(long *var, id obj)
 {
         if (obj) {
                 if ([obj isKindOfClass:[NSNumber class]]) {
@@ -87,7 +87,7 @@ BOOL esLongVal(long *var, id obj)
         return NO;
 }
 
-BOOL esULongVal(unsigned long *var, id obj)
+BOOL ESULongVal(unsigned long *var, id obj)
 {
         if (obj) {
                 if ([obj isKindOfClass:[NSNumber class]]) {
@@ -101,7 +101,7 @@ BOOL esULongVal(unsigned long *var, id obj)
         return NO;
 }
 
-BOOL esLongLongVal(long long *var, id obj)
+BOOL ESLongLongVal(long long *var, id obj)
 {
         if (obj && ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]])) {
                 *var = [obj longLongValue];
@@ -110,7 +110,7 @@ BOOL esLongLongVal(long long *var, id obj)
         return NO;
 }
 
-BOOL esULongLongVal(unsigned long long *var, id obj)
+BOOL ESULongLongVal(unsigned long long *var, id obj)
 {
         if (obj) {
                 if ([obj isKindOfClass:[NSNumber class]]) {
@@ -124,7 +124,7 @@ BOOL esULongLongVal(unsigned long long *var, id obj)
         return NO;
 }
 
-BOOL esFloatVal(float *var, id obj)
+BOOL ESFloatVal(float *var, id obj)
 {
         if (obj && ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]])) {
                 *var = [obj floatValue];
@@ -133,7 +133,7 @@ BOOL esFloatVal(float *var, id obj)
         return NO;
 }
 
-BOOL esDoubleVal(double *var, id obj)
+BOOL ESDoubleVal(double *var, id obj)
 {
         if (obj && ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]])) {
                 *var = [obj doubleValue];
@@ -146,7 +146,7 @@ BOOL esDoubleVal(double *var, id obj)
  * If @obj is a NSString instance, returns YES on encountering one of "Y",
  * "y", "T", "t", or a digit 1-9. It ignores any trailing characters.
  */
-BOOL esBoolVal(BOOL *var, id obj)
+BOOL ESBoolVal(BOOL *var, id obj)
 {
         if (obj && ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]])) {
                 *var = [obj boolValue];
@@ -155,7 +155,7 @@ BOOL esBoolVal(BOOL *var, id obj)
         return NO;
 }
 
-BOOL esStringVal(NSString **var, id obj)
+BOOL ESStringVal(NSString **var, id obj)
 {
         if (obj) {
                 if ([obj isKindOfClass:[NSString class]]) {
