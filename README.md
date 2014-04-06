@@ -1,4 +1,4 @@
 ESFramework
 ===========
 
-A framework for iOS development.
+Just developing...

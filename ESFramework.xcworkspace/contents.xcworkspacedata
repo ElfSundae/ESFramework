@@ -7,6 +7,9 @@
       <FileRef
          location = "group:TODO.md">
       </FileRef>
+      <FileRef
+         location = "group:../README.md">
+      </FileRef>
    </Group>
    <FileRef
       location = "group:example/Demo/Demo.xcodeproj">
