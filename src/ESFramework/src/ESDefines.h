@@ -250,20 +250,33 @@ ES_EXTERN BOOL ESDeviceOSVersionIsAbove7(void);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UIColor Helper
-#define UIColorFromRGBA(r,g,b,a)        [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
-#define UIColorFromRGB(r,g,b)           UIColorFromRGBA(r,g,b,1.0f)
-/// UIColorFromRGBAHex(0xCECECE, 0.8);
-#define UIColorFromRGBAHex(rgbValue,a)  UIColorFromRGBA( ((CGFloat)((rgbValue & 0xFF0000) >> 16)), ((CGFloat)((rgbValue & 0xFF00) >> 8)), ((CGFloat)(rgbValue & 0xFF)), a)
-/// UIColorFromRGBAHex(0xCECECE);
-#define UIColorFromRGBHex(rgbValue)     UIColorFromRGBAHex(rgbValue, 1.0f)
 /**
  @code
- UIColorFromHexString(@"#33AF00");
- UIColorFromHexString(@"0x33AF00");
- UIColorFromHexString(@"33AF00");
+ UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
  @endcode
  */
-ES_EXTERN UIColor *UIColorFromRGBHexString(NSString *hexString);
+ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+/**
+ @code
+ UIColorWithRGBA(123.f, 255.f, 200.f);
+ @endcode
+ */
+ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
+/**
+ @code
+ UIColorWithRGBA(0x7bffc8, 1.f);
+ @endcode
+ */
+ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
+ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
+/**
+ @code
+ UIColorWithHexString(@"#33AF00", 1.f);
+ UIColorWithHexString(@"0x33AF00", 0.3f);
+ UIColorWithHexString(@"33AF00", 0.9);
+ @endcode
+ */
+ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -426,7 +439,7 @@ ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
  NSInvocation *invocation = ESInvocation([self class], @selector(classMethod:));
  @endcode
  */
-ES_EXTERN NSInvocation *ESInvocationFrom(id target, SEL selector);
+ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
 
 /**
  * Call a selector with multiple arguments.

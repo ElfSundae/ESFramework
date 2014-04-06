@@ -23,7 +23,28 @@ NSInteger ESMaxLogLevel = ESLOGLEVEL_INFO;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UIColor
-UIColor *UIColorFromRGBHexString(NSString *hexString)
+
+UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
+{
+        return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:alpha];
+}
+
+UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
+{
+        return UIColorWithRGBA(red, green, blue, 1.f);
+}
+
+UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha)
+{
+        return UIColorWithRGBA((CGFloat)((rgbValue & 0xFF0000) >> 16), (CGFloat)((rgbValue & 0xFF00) >> 8), (CGFloat)(rgbValue & 0xFF), alpha);
+}
+
+UIColor *UIColorWithRGBHex(NSInteger rgbValue)
+{
+        return UIColorWithRGBAHex(rgbValue, 1.f);
+}
+
+UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha)
 {
         unsigned rgbValue = 0;
         if ([hexString isKindOfClass:[NSString class]]) {
@@ -38,7 +59,7 @@ UIColor *UIColorFromRGBHexString(NSString *hexString)
                         [scanner scanHexInt:&rgbValue];
                 }
         }
-        return UIColorFromRGBHex(rgbValue);
+        return UIColorWithRGBAHex(rgbValue, alpha);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -261,7 +282,7 @@ void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
         }
 }
 
-NSInvocation *ESInvocationFrom(id target, SEL selector)
+NSInvocation *ESInvocationWith(id target, SEL selector)
 {
         NSMethodSignature *signature = [target methodSignatureForSelector:selector];
         if (!signature) {
@@ -275,7 +296,7 @@ NSInvocation *ESInvocationFrom(id target, SEL selector)
 
 id ESInvokeSelector(id target, SEL selector, id arguments, ...)
 {
-        NSInvocation *invocation = ESInvocationFrom(target, selector);
+        NSInvocation *invocation = ESInvocationWith(target, selector);
         NSCAssert(invocation, @"Constructing NSInvocation error.");
         
         NSInteger argIndex = 2;
