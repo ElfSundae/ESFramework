@@ -68,7 +68,7 @@ ES_EXTERN NSInteger ESMaxLogLevel;
 #define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@""prefixString fmt, ##__VA_ARGS__); } while(0)
 #define NSLogInfo(fmt, ...)     do { if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"<Info> ", fmt, ##__VA_ARGS__); } } while(0)
 #define NSLogWarning(fmt, ...)  do { if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"❗<Warning> ", fmt, ##__VA_ARGS__); } } while(0)
-#define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌<Error>", fmt, ##__VA_ARGS__); } } while(0)
+#define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌<Error> ", fmt, ##__VA_ARGS__); } } while(0)
 #else
 #define NSLogCondition(condition, fmt, ...)
 #define NSLogPrefix(prefixString, fmt, ...)
