@@ -11,5 +11,7 @@
 
 #import "UIView+ESShortcut.h"
 #import "UIView+ESAdditions.h"
+#import "UIBarButtonItem+ESAdditions.h"
 
+#import "ESAnimations.h"
 #endif
