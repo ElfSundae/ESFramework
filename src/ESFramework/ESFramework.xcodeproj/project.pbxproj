@@ -34,6 +34,8 @@
 		E7B6E21918F31492005A360E /* ESApp.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E21718F31492005A360E /* ESApp.m */; };
 		E7B6E21C18F3173E005A360E /* ESDevice.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E21A18F3173E005A360E /* ESDevice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B6E21D18F3173E005A360E /* ESDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E21B18F3173E005A360E /* ESDevice.m */; };
+		E7B6E22818F34A25005A360E /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E22518F34A25005A360E /* OpenUDID.h */; };
+		E7B6E22918F34A25005A360E /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E22618F34A25005A360E /* OpenUDID.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +82,9 @@
 		E7B6E21718F31492005A360E /* ESApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApp.m; sourceTree = "<group>"; };
 		E7B6E21A18F3173E005A360E /* ESDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDevice.h; sourceTree = "<group>"; };
 		E7B6E21B18F3173E005A360E /* ESDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDevice.m; sourceTree = "<group>"; };
+		E7B6E22518F34A25005A360E /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		E7B6E22618F34A25005A360E /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		E7B6E22718F34A25005A360E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +208,7 @@
 		E7B6E20F18F1C334005A360E /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				E7B6E22418F34A25005A360E /* OpenUDID */,
 				E7B6E21018F1C334005A360E /* README.md */,
 			);
 			path = Vendor;
@@ -217,6 +223,16 @@
 				E7B6E21B18F3173E005A360E /* ESDevice.m */,
 			);
 			name = Application;
+			sourceTree = "<group>";
+		};
+		E7B6E22418F34A25005A360E /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				E7B6E22518F34A25005A360E /* OpenUDID.h */,
+				E7B6E22618F34A25005A360E /* OpenUDID.m */,
+				E7B6E22718F34A25005A360E /* README.md */,
+			);
+			path = OpenUDID;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +250,7 @@
 				E7522ED218ECB7BA0087B95E /* ESValue.h in Headers */,
 				E7522E6B18EC48910087B95E /* ESFrameworkFoundation.h in Headers */,
 				E7B6E1F618F1B0C1005A360E /* UIView+ESShortcut.h in Headers */,
+				E7B6E22818F34A25005A360E /* OpenUDID.h in Headers */,
 				E7B6E21818F31492005A360E /* ESApp.h in Headers */,
 				E7B6E20118F1B5C4005A360E /* ESFrameworkUI.h in Headers */,
 				E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */,
@@ -305,6 +322,7 @@
 				E7B6E1F218F1A868005A360E /* NSURL+ESAdditions.m in Sources */,
 				E7522ED318ECB7BA0087B95E /* ESValue.m in Sources */,
 				E7B6E20E18F1BCA3005A360E /* ESAnimations.m in Sources */,
+				E7B6E22918F34A25005A360E /* OpenUDID.m in Sources */,
 				E7B6E1EE18F1A78A005A360E /* NSString+ESAdditions.m in Sources */,
 				E7B6E1FB18F1B170005A360E /* UIView+ESAdditions.m in Sources */,
 			);

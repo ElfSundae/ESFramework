@@ -1,0 +1,3 @@
+[submodule "src/ESFramework/Vendor/OpenUDID"]
+	path = src/ESFramework/Vendor/OpenUDID
+	url = git@github.com:ElfSundae/OpenUDID.git
