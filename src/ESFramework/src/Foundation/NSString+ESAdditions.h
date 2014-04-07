@@ -11,4 +11,14 @@
 @interface NSString (ESAdditions)
 - (BOOL)containsString:(NSString*)string;
 - (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options;
+
+/**
+ * Returns MD5 hash, Lower-case.
+ */
+- (NSString *)md5Hash;
+/**
+ * Returns MD5 hash, Upper-case.
+ */
+- (NSString *)md5HashWithUppercase;
+
 @end

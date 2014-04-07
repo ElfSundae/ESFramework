@@ -102,22 +102,6 @@ CGFloat ESStatusBarHeight(void)
         return MIN(frame.size.width, frame.size.height);
 }
 
-NSLocale *ESCurrentLocale(void)
-{
-        static NSLocale *_currentLocale;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                NSArray *languages = [NSLocale preferredLanguages];
-                NSString *currentLang = [languages firstObject];
-                if (currentLang) {
-                        _currentLocale = [[NSLocale alloc] initWithLocaleIdentifier:currentLang];
-                } else {
-                        _currentLocale = [NSLocale currentLocale];
-                }
-        });
-        return _currentLocale;
-}
-
 BOOL ESIsPadUI(void)
 {
         static BOOL _isPad;
@@ -173,7 +157,7 @@ NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 
 NSString *ESPathForMainBundleResource(NSString *relativePath)
 {
-        return ESPathForBundleResource(nil, relativePath);
+        return ESPathForBundleResource([NSBundle mainBundle], relativePath);
 }
 
 NSString *ESPathForDocuments(void)

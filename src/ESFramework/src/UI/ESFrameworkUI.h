@@ -9,6 +9,9 @@
 #ifndef ESFramework_ESFrameworkUI_h
 #define ESFramework_ESFrameworkUI_h
 
+#import "ESApp.h"
+#import "ESDevice.h"
+
 #import "UIView+ESShortcut.h"
 #import "UIView+ESAdditions.h"
 #import "UIBarButtonItem+ESAdditions.h"

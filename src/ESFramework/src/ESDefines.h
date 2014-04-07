@@ -375,21 +375,16 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 #endif
 
 /**
- * Returns the statusBar's height, in any orientation.
+ * Returns the current statusBar's height, in any orientation.
  */
 ES_EXTERN CGFloat ESStatusBarHeight(void);
-
-/**
- * Returns the current locale.
- */
-ES_EXTERN NSLocale *ESCurrentLocale(void);
 
 /** 
  * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad 
  */
 ES_EXTERN BOOL ESIsPadUI(void);
 /**
- * Checks whether the device is a iPad/iPad Mini.
+ * Checks whether the device is a iPad/iPad Mini/iPad Air.
  */
 ES_EXTERN BOOL ESIsPadDevice(void);
 
