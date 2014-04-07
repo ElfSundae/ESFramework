@@ -53,7 +53,7 @@
 #if !TARGET_IPHONE_SIMULATOR
         Class openUDIDClass = NSClassFromString(@"OpenUDID");
         if (openUDIDClass) {
-                return (NSString *)ESInvocationWith(openUDIDClass, @selector(value));
+                return (NSString *)ESInvokeSelector(openUDIDClass, @selector(value), nil);
         }
 #endif
         return @"0000000000000000000000000000000000000000";

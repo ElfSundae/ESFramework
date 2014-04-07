@@ -28,8 +28,7 @@
 + (NSString *)model;
 /**
  * e.g. @"iPhone3,1", @"x86_64"
- *
- * ref: http://theiphonewiki.com/wiki/Models
+ * @see: http://theiphonewiki.com/wiki/Models
  */
 + (NSString *)platform;
 /**
@@ -38,7 +37,7 @@
 + (NSString *)carrierString;
 
 /**
- * Returns the device's UDID, a 40 hexadecimal numbers, 
+ * Returns the device's UDID, a 40 hexadecimal numbers in lower-case,
  * using OpenUDID library.
  * If there's no OpenUDID class OR the
  * app runs in the Simulator, it will return
