@@ -48,4 +48,43 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return [decoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
+- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
+{
+        NSMutableString *result = [NSMutableString stringWithString:@""];
+        if (self) {
+                [result appendString:self];
+        }
+        
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        for (NSString *key in [queryDictionary keyEnumerator]) {
+                id value = queryDictionary[key];
+                if ([value isKindOfClass:[NSArray class]]) {
+                        [(NSArray *)value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                [array addObject:[NSString stringWithFormat:@"%@[]=%@", key, [(NSString *)obj URLEncode]]];
+                        }];
+                } else {
+                        NSString *valueString = nil;
+                        if ([value isKindOfClass:[NSString class]]) {
+                                valueString = (NSString *)value;
+                        } else if ([value isKindOfClass:[NSNumber class]]) {
+                                valueString = [(NSNumber *)value stringValue];
+                        }
+                        if (valueString) {
+                                [array addObject:[NSString stringWithFormat:@"%@=%@", key, [valueString URLEncode]]];
+                        }
+                }
+        }
+        
+        if (array.count) {
+                NSString *params = [array componentsJoinedByString:@"&"];
+                if ([result containsString:@"?"]) {
+                        [result appendFormat:@"&%@", params];
+                } else {
+                        [result appendFormat:@"?%@", params];
+                }
+        }
+
+        return result;
+}
+
 @end

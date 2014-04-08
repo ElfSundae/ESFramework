@@ -22,7 +22,9 @@
 - (NSString *)md5HashWithUppercase;
 
 - (NSString *)URLEncode;
-
 - (NSString *)URLDecode;
 
+- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
+
 @end
+
