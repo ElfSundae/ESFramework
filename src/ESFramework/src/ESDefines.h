@@ -379,7 +379,16 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
  */
 ES_EXTERN CGFloat ESStatusBarHeight(void);
 
-/** 
+/**
+ * Convert degrees to radians.
+ */
+ES_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
+/**
+ * Convert radians to degrees.
+ */
+ES_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
+
+/**
  * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad 
  */
 ES_EXTERN BOOL ESIsPadUI(void);

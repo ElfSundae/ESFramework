@@ -102,6 +102,16 @@ CGFloat ESStatusBarHeight(void)
         return MIN(frame.size.width, frame.size.height);
 }
 
+CGFloat ESDegreesToRadians(CGFloat degrees)
+{
+        return (degrees * M_PI / 180.0);
+}
+
+CGFloat ESRadiansToDegrees(CGFloat radians)
+{
+        return (radians * 180.0 / M_PI);
+}
+
 BOOL ESIsPadUI(void)
 {
         static BOOL _isPad;
