@@ -21,4 +21,8 @@
  */
 - (NSString *)md5HashWithUppercase;
 
+- (NSString *)URLEncode;
+
+- (NSString *)URLDecode;
+
 @end

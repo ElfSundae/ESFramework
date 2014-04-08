@@ -35,4 +35,17 @@
         return [[self md5Hash] uppercaseString];
 }
 
+static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
+- (NSString *)URLEncode
+{
+        CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)kESCharactersToBeEscaped, kCFStringEncodingUTF8);
+        return [NSString stringWithString:(__bridge_transfer NSString *)encoded];
+}
+
+- (NSString *)URLDecode
+{
+        NSString *decoded = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
+        return [decoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+}
+
 @end
