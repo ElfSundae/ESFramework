@@ -12,5 +12,8 @@
 #import "ESValue.h"
 #import "NSString+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
+#import "NSUserDefaults+ESAdditions.h"
+#import "NSDictionary+ESAdditions.h"
+#import "NSDate+ESAdditions.h"
 
 #endif

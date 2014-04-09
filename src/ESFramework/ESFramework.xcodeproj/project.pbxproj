@@ -42,6 +42,12 @@
 		E7B6E23218F35624005A360E /* UIActionSheet+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E23018F35624005A360E /* UIActionSheet+ESAdditions.m */; };
 		E7B6E23618F356EF005A360E /* UIImage+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E23418F356EF005A360E /* UIImage+ESAdditions.h */; };
 		E7B6E23718F356EF005A360E /* UIImage+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E23518F356EF005A360E /* UIImage+ESAdditions.m */; };
+		E7CACA6618F4351000DB9274 /* NSUserDefaults+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CACA6418F4351000DB9274 /* NSUserDefaults+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7CACA6718F4351000DB9274 /* NSUserDefaults+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CACA6518F4351000DB9274 /* NSUserDefaults+ESAdditions.m */; };
+		E7CACA6A18F4371000DB9274 /* NSDictionary+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CACA6818F4371000DB9274 /* NSDictionary+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7CACA6B18F4371000DB9274 /* NSDictionary+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CACA6918F4371000DB9274 /* NSDictionary+ESAdditions.m */; };
+		E7CACA6E18F4391800DB9274 /* NSDate+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CACA6C18F4391800DB9274 /* NSDate+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7CACA6F18F4391800DB9274 /* NSDate+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CACA6D18F4391800DB9274 /* NSDate+ESAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -97,6 +103,12 @@
 		E7B6E23018F35624005A360E /* UIActionSheet+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+ESAdditions.m"; sourceTree = "<group>"; };
 		E7B6E23418F356EF005A360E /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E23518F356EF005A360E /* UIImage+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ESAdditions.m"; sourceTree = "<group>"; };
+		E7CACA6418F4351000DB9274 /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
+		E7CACA6518F4351000DB9274 /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
+		E7CACA6818F4371000DB9274 /* NSDictionary+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ESAdditions.h"; sourceTree = "<group>"; };
+		E7CACA6918F4371000DB9274 /* NSDictionary+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ESAdditions.m"; sourceTree = "<group>"; };
+		E7CACA6C18F4391800DB9274 /* NSDate+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+ESAdditions.h"; sourceTree = "<group>"; };
+		E7CACA6D18F4391800DB9274 /* NSDate+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ESAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +185,7 @@
 		E7522E5E18EC47D90087B95E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E7CACA7018F5497E00DB9274 /* Network */,
 				E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */,
 				E7522ED018ECB7BA0087B95E /* ESValue.h */,
 				E7522ED118ECB7BA0087B95E /* ESValue.m */,
@@ -180,6 +193,12 @@
 				E7B6E1EC18F1A78A005A360E /* NSString+ESAdditions.m */,
 				E7B6E1EF18F1A868005A360E /* NSURL+ESAdditions.h */,
 				E7B6E1F018F1A868005A360E /* NSURL+ESAdditions.m */,
+				E7CACA6C18F4391800DB9274 /* NSDate+ESAdditions.h */,
+				E7CACA6D18F4391800DB9274 /* NSDate+ESAdditions.m */,
+				E7CACA6818F4371000DB9274 /* NSDictionary+ESAdditions.h */,
+				E7CACA6918F4371000DB9274 /* NSDictionary+ESAdditions.m */,
+				E7CACA6418F4351000DB9274 /* NSUserDefaults+ESAdditions.h */,
+				E7CACA6518F4351000DB9274 /* NSUserDefaults+ESAdditions.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -269,6 +288,13 @@
 			name = Image;
 			sourceTree = "<group>";
 		};
+		E7CACA7018F5497E00DB9274 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -277,8 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A93D0C18EDE0B6002F9855 /* ESCoreUtilities.h in Headers */,
+				E7CACA6E18F4391800DB9274 /* NSDate+ESAdditions.h in Headers */,
 				E7522E6818EC48910087B95E /* ESFramework.h in Headers */,
 				E7B6E20D18F1BCA3005A360E /* ESAnimations.h in Headers */,
+				E7CACA6A18F4371000DB9274 /* NSDictionary+ESAdditions.h in Headers */,
 				E7B6E22D18F35609005A360E /* UIAlertView+ESAdditions.h in Headers */,
 				E7B6E1ED18F1A78A005A360E /* NSString+ESAdditions.h in Headers */,
 				E7522E6918EC48910087B95E /* ESDefines.h in Headers */,
@@ -292,6 +320,7 @@
 				E7B6E20118F1B5C4005A360E /* ESFrameworkUI.h in Headers */,
 				E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */,
 				E7B6E1F118F1A868005A360E /* NSURL+ESAdditions.h in Headers */,
+				E7CACA6618F4351000DB9274 /* NSUserDefaults+ESAdditions.h in Headers */,
 				E7B6E1FA18F1B170005A360E /* UIView+ESAdditions.h in Headers */,
 				E7B6E21C18F3173E005A360E /* ESDevice.h in Headers */,
 				E7B6E20418F1B698005A360E /* UIBarButtonItem+ESAdditions.h in Headers */,
@@ -351,15 +380,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B6E20518F1B698005A360E /* UIBarButtonItem+ESAdditions.m in Sources */,
+				E7CACA6718F4351000DB9274 /* NSUserDefaults+ESAdditions.m in Sources */,
 				E7B6E22E18F35609005A360E /* UIAlertView+ESAdditions.m in Sources */,
 				E7B6E21D18F3173E005A360E /* ESDevice.m in Sources */,
 				E7B6E1F718F1B0C1005A360E /* UIView+ESShortcut.m in Sources */,
 				E7A93D0D18EDE0B6002F9855 /* ESCoreUtilities.m in Sources */,
 				E7B6E23218F35624005A360E /* UIActionSheet+ESAdditions.m in Sources */,
 				E7B6E21918F31492005A360E /* ESApp.m in Sources */,
+				E7CACA6B18F4371000DB9274 /* NSDictionary+ESAdditions.m in Sources */,
 				E7522ECF18ECACEF0087B95E /* ESDefines.m in Sources */,
 				E7B6E1F218F1A868005A360E /* NSURL+ESAdditions.m in Sources */,
 				E7522ED318ECB7BA0087B95E /* ESValue.m in Sources */,
+				E7CACA6F18F4391800DB9274 /* NSDate+ESAdditions.m in Sources */,
 				E7B6E20E18F1BCA3005A360E /* ESAnimations.m in Sources */,
 				E7B6E22918F34A25005A360E /* OpenUDID.m in Sources */,
 				E7B6E23718F356EF005A360E /* UIImage+ESAdditions.m in Sources */,

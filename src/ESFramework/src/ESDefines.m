@@ -251,6 +251,13 @@ void ESDispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_b
         dispatch_async(dispatch_get_global_queue(priority, 0), block);
 }
 
+void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
+{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)),
+                       dispatch_get_main_queue(),
+                       block);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Selector

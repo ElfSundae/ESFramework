@@ -9,115 +9,105 @@
 #import "UIAlertView+ESAdditions.h"
 #import <objc/runtime.h>
 
-static char dismissBlockKey;
-static char cancelBlockKey;
-static char customizationBlockKey;
+static char _didDismissBlockKey;
 
 @implementation UIAlertView (ESAdditions)
 
-- (ESAlertViewCancelBlock)cancelBlock
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (ESUIAlertViewDidDismissBlock)didDismissBlock
 {
-        return objc_getAssociatedObject(self, &cancelBlockKey);
+        return objc_getAssociatedObject(self, &_didDismissBlockKey);
 }
-- (void)setCancelBlock:(ESAlertViewCancelBlock)cancelBlock
+- (void)setDidDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
 {
-        objc_setAssociatedObject(self, &cancelBlockKey, cancelBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-- (ESAlertViewCustomizationBlock)customizationBlock
-{
-        return objc_getAssociatedObject(self, &customizationBlockKey);
-}
-- (void)setCustomizationBlock:(ESAlertViewCustomizationBlock)customizationBlock
-{
-        objc_setAssociatedObject(self, &customizationBlockKey, customizationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-- (ESAlertViewDismissBlock)dismissBlock
-{
-        return objc_getAssociatedObject(self, &dismissBlockKey);
-}
-- (void)setDismissBlock:(ESAlertViewDismissBlock)dismissBlock
-{
-        objc_setAssociatedObject(self, &dismissBlockKey, dismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        objc_setAssociatedObject(self, &_didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (id)initWithTitle:(NSString *)title
-            message:(NSString *)message
- customizationBlock:(ESAlertViewCustomizationBlock)customizationBlock
-       dismissBlock:(ESAlertViewDismissBlock)dismissBlock
-        cancelBlock:(ESAlertViewCancelBlock)cancelBlock
-{
-        self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-        self.customizationBlock = customizationBlock;
-        self.dismissBlock = dismissBlock;
-        self.cancelBlock = cancelBlock;
-        return self;
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-        if ([alertView cancelButtonIndex] == buttonIndex)
-        {
-                if (self.cancelBlock)
-                        self.cancelBlock();
-        }
-        else
-        {
-                if (self.dismissBlock)
-                        self.dismissBlock(self, buttonIndex);
-        }
-}
-
-+ (void)alertViewWithTitle:(NSString *)title
-                   message:(NSString *)message
-         cancelButtonTitle:(NSString *)cancelButtonTitle_
-        customizationBlock:(ESAlertViewCustomizationBlock)customizationBlock
-              dismissBlock:(ESAlertViewDismissBlock)dismissBlock
-               cancelBlock:(ESAlertViewCancelBlock)cancelBlock
-         otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
-{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message customizationBlock:customizationBlock dismissBlock:dismissBlock cancelBlock:cancelBlock];
-        
-        if (otherButtonTitles)
-        {
-                [alertView addButtonWithTitle:otherButtonTitles];
-                va_list argList;
-                va_start(argList, otherButtonTitles);
-                NSString *eachTitle = nil;
-                while ((eachTitle = va_arg(argList, NSString*)))
-                {
-                        [alertView addButtonWithTitle:eachTitle];
-                }
-                va_end(argList);
-        }
-        
-        if (cancelButtonTitle_)
-        {
-                [alertView addButtonWithTitle:cancelButtonTitle_];
-                [alertView setCancelButtonIndex:[alertView numberOfButtons] - 1];
-        }
-        
-        if (alertView.customizationBlock)
-        {
-                alertView.customizationBlock(alertView);
-        }
-        
-        [alertView show];
-}
-
-- (void)setContentLabelTextAlignment:(NSTextAlignment)textAlignment
+- (UILabel *)_esMessageLabel
 {
         int i = 0;
-        for (UIView *v in [self subviews]) {
-                if ([[v class] isSubclassOfClass:[UILabel class]]) {
+        for (UIView *v in self.subviews) {
+                if ([v isKindOfClass:[UILabel class]]) {
                         UILabel *label = (UILabel *)v;
-                        if (!self.title ||
-                            (self.title && i > 0)) {
-                                label.textAlignment = textAlignment;
+                        if (!self.title || (self.title && i > 0)) {
+                                return label;
                         }
                         i++;
                 }
         }
+        return nil;
 }
 
+- (NSTextAlignment)messageAlignment
+{
+        return [self _esMessageLabel].textAlignment;
+}
+
+- (void)setMessageAlignment:(NSTextAlignment)messageAlignment
+{
+        [self _esMessageLabel].textAlignment = messageAlignment;
+}
+
+- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message dismissBlock:(ESUIAlertViewDidDismissBlock)dismissBlock
+{
+        self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+        self.didDismissBlock = dismissBlock;
+        return self;
+}
+
+// Delegate
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+        if (self.didDismissBlock) {
+                self.didDismissBlock(self, buttonIndex);
+        }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Public
+
+- (void)dismissWithAnimated:(BOOL)animated
+{
+        self.delegate = nil;
+        [self dismissWithClickedButtonIndex:0 animated:animated];
+}
+
++ (instancetype)alertViewWithTitle:(NSString *)title
+                           message:(NSString *)message
+                 cancelButtonTitle:(NSString *)cancelButtonTitle
+                   didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
+                 otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
+{
+        UIAlertView *alertView = [[self alloc] initWithTitle:title message:message dismissBlock:didDismissBlock];
+        if (otherButtonTitles) {
+                va_list argsList;
+                va_start(argsList, otherButtonTitles);
+                NSString *eachTitle = otherButtonTitles;
+                do {
+                        [alertView addButtonWithTitle:eachTitle];
+                } while ((eachTitle = va_arg(argsList, NSString *)));
+                va_end(argsList);
+        }
+        
+        if (cancelButtonTitle) {
+                [alertView addButtonWithTitle:cancelButtonTitle];
+                [alertView setCancelButtonIndex:[alertView numberOfButtons] - 1];
+        }
+        return alertView;
+}
+
++ (void)showWithTitle:(NSString *)title message:(NSString *)message
+{
+        [self showWithTitle:title message:message cancelButtonTitle:_(@"OK")];
+}
+
++ (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
+{
+        UIAlertView *alertView = [self alertViewWithTitle:title message:message cancelButtonTitle:cancelButtonTitle didDismissBlock:nil otherButtonTitles:nil, nil];
+        [alertView show];
+}
 
 @end

@@ -7,23 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^ESActionSheetCancelBlock)();
-typedef void (^ESActionSheetDismissBlock)(UIActionSheet *actionSheet, NSInteger buttonIndex);
-typedef void (^ESActionSheetCustomizationBlock)(UIActionSheet *actionSheet);
 
+typedef void (^ESUIActionSheetDidDismissBlock)(UIActionSheet *actionSheet, NSInteger buttonIndex);
 
-@interface UIActionSheet (ESAdditions)
+@interface UIActionSheet (ESAdditions) <UIActionSheetDelegate>
 
-@property (nonatomic, copy) ESActionSheetCancelBlock cancelBlock;
-@property (nonatomic, copy) ESActionSheetCustomizationBlock customizationBlock;
-@property (nonatomic, copy) ESActionSheetDismissBlock dismissBlock;
+/**
+ * Invoked after dismissed.
+ */
+@property (nonatomic, copy) ESUIActionSheetDidDismissBlock didDismissBlock;
 
-+ (void)actionSheetWithTitle:(NSString *)title
-           cancelButtonTitle:(NSString *)cancelButtonTitle_
-          customizationBlock:(ESActionSheetCustomizationBlock)customizationBlock_
-                dismissBlock:(ESActionSheetDismissBlock)dismissBlock_
-                 cancelBlock:(ESActionSheetCancelBlock)cancelBlock_
-                  showInView:(UIView *)view
-           otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)actionSheetWithTitle:(NSString *)title
+                   cancelButtonTitle:(NSString *)cancelButtonTitle
+                     didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
+                   otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 
 @end

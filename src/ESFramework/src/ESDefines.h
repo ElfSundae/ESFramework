@@ -370,9 +370,8 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 /** 
  * Shortcut for ESLocalizedString(key) 
  */
-#ifndef _
+#undef _
 #define _(key) ESLocalizedString(key)
-#endif
 
 /**
  * Returns the current statusBar's height, in any orientation.
@@ -424,6 +423,10 @@ ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block);
 ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block);
 ES_EXTERN void ESDispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
+/**
+ * After #delayTime, dispatch #block on the main thread.
+ */
+ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
 #pragma mark - Selector
 /**

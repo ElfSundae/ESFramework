@@ -8,25 +8,34 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ESAlertViewCancelBlock)();
-typedef void (^ESAlertViewDismissBlock)(UIAlertView *alertView, NSInteger buttonIndex);
-typedef void (^ESAlertViewCustomizationBlock)(UIAlertView *alertView);
+typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger buttonIndex);
 
+@interface UIAlertView (ESAdditions) <UIAlertViewDelegate>
 
-@interface UIAlertView (ESAdditions)
+/**
+ * Dismiss without callback.
+ */
+- (void)dismissWithAnimated:(BOOL)animated;
+/**
+ * Set message alignment.
+ * @warning It's not work on iOS 7.0+
+ */
+@property (nonatomic) NSTextAlignment messageAlignment;
+/**
+ * Invoked after dismissed.
+ */
+@property (nonatomic, copy) ESUIAlertViewDidDismissBlock didDismissBlock;
 
-@property (nonatomic, copy) ESAlertViewCancelBlock cancelBlock;
-@property (nonatomic, copy) ESAlertViewCustomizationBlock customizationBlock;
-@property (nonatomic, copy) ESAlertViewDismissBlock dismissBlock;
++ (instancetype)alertViewWithTitle:(NSString *)title
+                           message:(NSString *)message
+                 cancelButtonTitle:(NSString *)cancelButtonTitle
+                      didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
+                 otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
+/**
+ * Show a alertView with a cancel button, the cacel button title is localized "OK" string.
+ */
++ (void)showWithTitle:(NSString *)title message:(NSString *)message;
 
-+ (void)alertViewWithTitle:(NSString *)title
-                   message:(NSString *)message
-         cancelButtonTitle:(NSString *)cancelButtonTitle_
-        customizationBlock:(ESAlertViewCustomizationBlock)customizationBlock
-              dismissBlock:(ESAlertViewDismissBlock)dismissBlock
-               cancelBlock:(ESAlertViewCancelBlock)cancelBlock
-         otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
-
-- (void)setContentLabelTextAlignment:(NSTextAlignment)textAlignment;
++ (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle;
 
 @end

@@ -21,6 +21,14 @@
         return (NSNotFound != [self rangeOfString:string options:options].location);
 }
 
+- (NSString *)newUUID
+{
+        CFUUIDRef theUUID = CFUUIDCreate(NULL);
+        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+        CFBridgingRelease(theUUID);
+        return CFBridgingRelease(string);
+}
+
 - (NSString *)md5Hash
 {
         const char *cStr = [self UTF8String];

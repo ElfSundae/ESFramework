@@ -9,125 +9,62 @@
 #import "UIActionSheet+ESAdditions.h"
 #import <objc/runtime.h>
 
-static char dismissBlockKey;
-static char cancelBlockKey;
-static char customizationBlockKey;
+static char _didDismissBlockKey;
 
 @implementation UIActionSheet (ESAdditions)
 
-- (ESActionSheetCancelBlock)cancelBlock
+- (ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        return objc_getAssociatedObject(self, &cancelBlockKey);
+        return objc_getAssociatedObject(self, &_didDismissBlockKey);
 }
 
-- (void)setCancelBlock:(ESActionSheetCancelBlock)cancelBlock
+- (void)setDidDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        objc_setAssociatedObject(self, &cancelBlockKey, cancelBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        objc_setAssociatedObject(self, &_didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-- (ESActionSheetCustomizationBlock)customizationBlock
+- (instancetype)initWithTitle:(NSString *)title didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        return objc_getAssociatedObject(self, &customizationBlockKey);
-}
-
-- (void)setCustomizationBlock:(ESActionSheetCustomizationBlock)customizationBlock
-{
-        objc_setAssociatedObject(self, &customizationBlockKey, customizationBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-- (ESActionSheetDismissBlock)dismissBlock
-{
-        return objc_getAssociatedObject(self, &dismissBlockKey);
-}
-
-- (void)setDismissBlock:(ESActionSheetDismissBlock)dismissBlock
-{
-        objc_setAssociatedObject(self, &dismissBlockKey, dismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-
--(id)initWithTitle:(NSString *)title
-customizationBlock:(ESActionSheetCustomizationBlock)customizationBlock
-      dismissBlock:(ESActionSheetDismissBlock)dismissBlock
-       cancelBlock:(ESActionSheetCancelBlock)cancelBlock
-{
-        self = [self initWithTitle:title
-                          delegate:self
-                 cancelButtonTitle:nil
-            destructiveButtonTitle:nil
-                 otherButtonTitles:nil, nil];
-        
-        self.cancelBlock = cancelBlock;
-        self.customizationBlock = customizationBlock;
-        self.dismissBlock = dismissBlock;
-        
+        self = [self initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+        self.didDismissBlock = didDismissBlock;
         return self;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-        if ([actionSheet cancelButtonIndex] == buttonIndex)
-        {
-                if (self.cancelBlock)
-                        self.cancelBlock();
-        }
-        else
-        {
-                if (self.dismissBlock)
-                        self.dismissBlock(self, buttonIndex);
+        if (self.didDismissBlock) {
+                self.didDismissBlock(self, buttonIndex);
         }
 }
 
-+ (void)actionSheetWithTitle:(NSString *)title
-           cancelButtonTitle:(NSString *)cancelButtonTitle_
-          customizationBlock:(ESActionSheetCustomizationBlock)customizationBlock_
-                dismissBlock:(ESActionSheetDismissBlock)dismissBlock_
-                 cancelBlock:(ESActionSheetCancelBlock)cancelBlock_
-                  showInView:(UIView *)view
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
++ (instancetype)actionSheetWithTitle:(NSString *)title
+           cancelButtonTitle:(NSString *)cancelButtonTitle
+             didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
            otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
 {
-        UIActionSheet *sheet = [[self alloc] initWithTitle:title customizationBlock:customizationBlock_ dismissBlock:dismissBlock_ cancelBlock:cancelBlock_];
-        
-        if (otherButtonTitles)
-        {
-                [sheet addButtonWithTitle:otherButtonTitles];
-                
-                va_list argList;
-                va_start(argList, otherButtonTitles);
-                NSString *eachTitle = nil;
-                while ((eachTitle = va_arg(argList, NSString*)))
-                {
-                        [sheet addButtonWithTitle:eachTitle];
-                }
-                va_end(argList);
+        UIActionSheet *actionSheet = [[self alloc] initWithTitle:title didDismissBlock:didDismissBlock];
+        if (otherButtonTitles) {
+                va_list argsList;
+                va_start(argsList, otherButtonTitles);
+                NSString *eachTitle = otherButtonTitles;
+                do {
+                        [actionSheet addButtonWithTitle:eachTitle];
+                } while ((eachTitle = va_arg(argsList, NSString *)));
+                va_end(argsList);
         }
         
-        if (cancelButtonTitle_)
-        {
-                [sheet addButtonWithTitle:cancelButtonTitle_];
-                [sheet setCancelButtonIndex:[sheet numberOfButtons] - 1];
+        if (cancelButtonTitle) {
+                [actionSheet addButtonWithTitle:cancelButtonTitle];
+                [actionSheet setCancelButtonIndex:actionSheet.numberOfButtons - 1];
         }
         
-        [sheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-        [sheet setDestructiveButtonIndex:-1];
+        actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        actionSheet.destructiveButtonIndex = -1;
         
-        if (sheet.customizationBlock)
-                sheet.customizationBlock(sheet);
-        
-        
-        if ([view isKindOfClass:[UITabBar class]])
-        {
-                [sheet showFromTabBar:(UITabBar *)view];
-        }
-        else if ([view isKindOfClass:[UIToolbar class]])
-        {
-                [sheet showFromToolbar:(UIToolbar *)view];
-        }
-        else
-        {
-                [sheet showInView:view];
-        }
+        return actionSheet;
 }
-
 
 @end

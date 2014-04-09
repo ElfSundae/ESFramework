@@ -12,6 +12,8 @@
 - (BOOL)containsString:(NSString*)string;
 - (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options;
 
+- (NSString *)newUUID;
+
 /**
  * Returns MD5 hash, Lower-case.
  */
@@ -21,9 +23,19 @@
  */
 - (NSString *)md5HashWithUppercase;
 
+/**
+ * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="
+ */
 - (NSString *)URLEncode;
+/**
+ * Calls <code>-stringByReplacingPercentEscapesUsingEncoding:</code>
+ */
 - (NSString *)URLDecode;
 
+/**
+ * Append URL query string from #queryDictionary.
+ * Supports 'array' params, like "?key[]=value1&key[]=value2".
+ */
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
 
 @end
