@@ -15,8 +15,9 @@
 #define ESFramework_ESFramework_h
 
 #import "ESDefines.h"
-#import "ESFrameworkCore.h"
-#import "ESFrameworkFoundation.h"
-#import "ESFrameworkUI.h"
+#import "ESCore.h"
+#import "ESFoundation.h"
+#import "ESUIKit.h"
+#import "ESStoreKit.h"
 
 #endif

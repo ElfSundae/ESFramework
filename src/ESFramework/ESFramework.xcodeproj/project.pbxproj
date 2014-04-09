@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E7134BB718F5A97A00BAA4B4 /* ESApp+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BB518F5A97A00BAA4B4 /* ESApp+UI.m */; };
+		E7134BBE18F5BD0500BAA4B4 /* ESStoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BBD18F5B4FB00BAA4B4 /* ESStoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7134BC118F5BEB500BAA4B4 /* ESStoreUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BBF18F5BEB500BAA4B4 /* ESStoreUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7134BC218F5BEB500BAA4B4 /* ESStoreUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BC018F5BEB500BAA4B4 /* ESStoreUtilities.m */; };
+		E7134BC518F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BC318F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7134BC618F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BC418F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m */; };
 		E7522DF418EC427E0087B95E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7522E6818EC48910087B95E /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5A18EC47260087B95E /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7522E6918EC48910087B95E /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5B18EC47650087B95E /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5D18EC479A0087B95E /* ESFrameworkCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7522E6B18EC48910087B95E /* ESFrameworkFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7522E6A18EC48910087B95E /* ESCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5D18EC479A0087B95E /* ESCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7522E6B18EC48910087B95E /* ESFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5F18EC481B0087B95E /* ESFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7522ECF18ECACEF0087B95E /* ESDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7522ECE18ECACEF0087B95E /* ESDefines.m */; };
 		E7522ED218ECB7BA0087B95E /* ESValue.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522ED018ECB7BA0087B95E /* ESValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7522ED318ECB7BA0087B95E /* ESValue.m in Sources */ = {isa = PBXBuildFile; fileRef = E7522ED118ECB7BA0087B95E /* ESValue.m */; };
@@ -19,13 +25,11 @@
 		E7A93D0D18EDE0B6002F9855 /* ESCoreUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A93D0B18EDE0B6002F9855 /* ESCoreUtilities.m */; };
 		E7B6E1ED18F1A78A005A360E /* NSString+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1EB18F1A78A005A360E /* NSString+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B6E1EE18F1A78A005A360E /* NSString+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1EC18F1A78A005A360E /* NSString+ESAdditions.m */; };
-		E7B6E1F118F1A868005A360E /* NSURL+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1EF18F1A868005A360E /* NSURL+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7B6E1F218F1A868005A360E /* NSURL+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1F018F1A868005A360E /* NSURL+ESAdditions.m */; };
 		E7B6E1F618F1B0C1005A360E /* UIView+ESShortcut.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1F418F1B0C1005A360E /* UIView+ESShortcut.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B6E1F718F1B0C1005A360E /* UIView+ESShortcut.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1F518F1B0C1005A360E /* UIView+ESShortcut.m */; };
 		E7B6E1FA18F1B170005A360E /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E1F818F1B170005A360E /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B6E1FB18F1B170005A360E /* UIView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E1F918F1B170005A360E /* UIView+ESAdditions.m */; };
-		E7B6E20118F1B5C4005A360E /* ESFrameworkUI.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E20018F1B541005A360E /* ESFrameworkUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7B6E20118F1B5C4005A360E /* ESUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E20018F1B541005A360E /* ESUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B6E20418F1B698005A360E /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E20218F1B698005A360E /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B6E20518F1B698005A360E /* UIBarButtonItem+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B6E20318F1B698005A360E /* UIBarButtonItem+ESAdditions.m */; };
 		E7B6E20D18F1BCA3005A360E /* ESAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B6E20B18F1BCA3005A360E /* ESAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,14 +67,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E7134BB518F5A97A00BAA4B4 /* ESApp+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UI.m"; sourceTree = "<group>"; };
+		E7134BBD18F5B4FB00BAA4B4 /* ESStoreKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStoreKit.h; sourceTree = "<group>"; };
+		E7134BBF18F5BEB500BAA4B4 /* ESStoreUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESStoreUtilities.h; sourceTree = "<group>"; };
+		E7134BC018F5BEB500BAA4B4 /* ESStoreUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStoreUtilities.m; sourceTree = "<group>"; };
+		E7134BC318F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESStoreProductViewControllerManager.h; sourceTree = "<group>"; };
+		E7134BC418F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
 		E7522DF018EC427E0087B95E /* libESFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libESFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		E7522E5A18EC47260087B95E /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
 		E7522E5B18EC47650087B95E /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
-		E7522E5D18EC479A0087B95E /* ESFrameworkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkCore.h; sourceTree = "<group>"; };
-		E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkFoundation.h; sourceTree = "<group>"; };
+		E7522E5D18EC479A0087B95E /* ESCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESCore.h; sourceTree = "<group>"; };
+		E7522E5F18EC481B0087B95E /* ESFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFoundation.h; sourceTree = "<group>"; };
 		E7522ECE18ECACEF0087B95E /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
 		E7522ED018ECB7BA0087B95E /* ESValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
 		E7522ED118ECB7BA0087B95E /* ESValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
@@ -78,13 +88,11 @@
 		E7A93D0B18EDE0B6002F9855 /* ESCoreUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCoreUtilities.m; sourceTree = "<group>"; };
 		E7B6E1EB18F1A78A005A360E /* NSString+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E1EC18F1A78A005A360E /* NSString+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESAdditions.m"; sourceTree = "<group>"; };
-		E7B6E1EF18F1A868005A360E /* NSURL+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ESAdditions.h"; sourceTree = "<group>"; };
-		E7B6E1F018F1A868005A360E /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
 		E7B6E1F418F1B0C1005A360E /* UIView+ESShortcut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESShortcut.h"; sourceTree = "<group>"; };
 		E7B6E1F518F1B0C1005A360E /* UIView+ESShortcut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESShortcut.m"; sourceTree = "<group>"; };
 		E7B6E1F818F1B170005A360E /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E1F918F1B170005A360E /* UIView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
-		E7B6E20018F1B541005A360E /* ESFrameworkUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUI.h; sourceTree = "<group>"; };
+		E7B6E20018F1B541005A360E /* ESUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESUIKit.h; sourceTree = "<group>"; };
 		E7B6E20218F1B698005A360E /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
 		E7B6E20318F1B698005A360E /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
 		E7B6E20B18F1BCA3005A360E /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
@@ -123,6 +131,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7134BB818F5B43200BAA4B4 /* StoreKit */ = {
+			isa = PBXGroup;
+			children = (
+				E7134BBD18F5B4FB00BAA4B4 /* ESStoreKit.h */,
+				E7134BBF18F5BEB500BAA4B4 /* ESStoreUtilities.h */,
+				E7134BC018F5BEB500BAA4B4 /* ESStoreUtilities.m */,
+				E7134BC318F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h */,
+				E7134BC418F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m */,
+			);
+			path = StoreKit;
+			sourceTree = "<group>";
+		};
 		E7522DE718EC427E0087B95E = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +188,7 @@
 				E7522E5C18EC476F0087B95E /* Core */,
 				E7522E5E18EC47D90087B95E /* Foundation */,
 				E7B6E1F318F1B097005A360E /* UI */,
+				E7134BB818F5B43200BAA4B4 /* StoreKit */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -175,7 +196,7 @@
 		E7522E5C18EC476F0087B95E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E7522E5D18EC479A0087B95E /* ESFrameworkCore.h */,
+				E7522E5D18EC479A0087B95E /* ESCore.h */,
 				E7A93D0A18EDE0B6002F9855 /* ESCoreUtilities.h */,
 				E7A93D0B18EDE0B6002F9855 /* ESCoreUtilities.m */,
 			);
@@ -185,14 +206,12 @@
 		E7522E5E18EC47D90087B95E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E7522E5F18EC481B0087B95E /* ESFoundation.h */,
 				E7CACA7018F5497E00DB9274 /* Network */,
-				E7522E5F18EC481B0087B95E /* ESFrameworkFoundation.h */,
 				E7522ED018ECB7BA0087B95E /* ESValue.h */,
 				E7522ED118ECB7BA0087B95E /* ESValue.m */,
 				E7B6E1EB18F1A78A005A360E /* NSString+ESAdditions.h */,
 				E7B6E1EC18F1A78A005A360E /* NSString+ESAdditions.m */,
-				E7B6E1EF18F1A868005A360E /* NSURL+ESAdditions.h */,
-				E7B6E1F018F1A868005A360E /* NSURL+ESAdditions.m */,
 				E7CACA6C18F4391800DB9274 /* NSDate+ESAdditions.h */,
 				E7CACA6D18F4391800DB9274 /* NSDate+ESAdditions.m */,
 				E7CACA6818F4371000DB9274 /* NSDictionary+ESAdditions.h */,
@@ -206,7 +225,7 @@
 		E7B6E1F318F1B097005A360E /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E7B6E20018F1B541005A360E /* ESFrameworkUI.h */,
+				E7B6E20018F1B541005A360E /* ESUIKit.h */,
 				E7B6E23318F356D9005A360E /* Image */,
 				E7B6E22A18F355E3005A360E /* Alert */,
 				E7B6E21518F3146B005A360E /* Application */,
@@ -252,6 +271,7 @@
 			children = (
 				E7B6E21618F31492005A360E /* ESApp.h */,
 				E7B6E21718F31492005A360E /* ESApp.m */,
+				E7134BB518F5A97A00BAA4B4 /* ESApp+UI.m */,
 				E7B6E21A18F3173E005A360E /* ESDevice.h */,
 				E7B6E21B18F3173E005A360E /* ESDevice.m */,
 			);
@@ -302,6 +322,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7134BC118F5BEB500BAA4B4 /* ESStoreUtilities.h in Headers */,
 				E7A93D0C18EDE0B6002F9855 /* ESCoreUtilities.h in Headers */,
 				E7CACA6E18F4391800DB9274 /* NSDate+ESAdditions.h in Headers */,
 				E7522E6818EC48910087B95E /* ESFramework.h in Headers */,
@@ -311,17 +332,18 @@
 				E7B6E1ED18F1A78A005A360E /* NSString+ESAdditions.h in Headers */,
 				E7522E6918EC48910087B95E /* ESDefines.h in Headers */,
 				E7522ED218ECB7BA0087B95E /* ESValue.h in Headers */,
-				E7522E6B18EC48910087B95E /* ESFrameworkFoundation.h in Headers */,
+				E7522E6B18EC48910087B95E /* ESFoundation.h in Headers */,
 				E7B6E23118F35624005A360E /* UIActionSheet+ESAdditions.h in Headers */,
 				E7B6E1F618F1B0C1005A360E /* UIView+ESShortcut.h in Headers */,
 				E7B6E22818F34A25005A360E /* OpenUDID.h in Headers */,
 				E7B6E23618F356EF005A360E /* UIImage+ESAdditions.h in Headers */,
 				E7B6E21818F31492005A360E /* ESApp.h in Headers */,
-				E7B6E20118F1B5C4005A360E /* ESFrameworkUI.h in Headers */,
-				E7522E6A18EC48910087B95E /* ESFrameworkCore.h in Headers */,
-				E7B6E1F118F1A868005A360E /* NSURL+ESAdditions.h in Headers */,
+				E7B6E20118F1B5C4005A360E /* ESUIKit.h in Headers */,
+				E7522E6A18EC48910087B95E /* ESCore.h in Headers */,
 				E7CACA6618F4351000DB9274 /* NSUserDefaults+ESAdditions.h in Headers */,
+				E7134BC518F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h in Headers */,
 				E7B6E1FA18F1B170005A360E /* UIView+ESAdditions.h in Headers */,
+				E7134BBE18F5BD0500BAA4B4 /* ESStoreKit.h in Headers */,
 				E7B6E21C18F3173E005A360E /* ESDevice.h in Headers */,
 				E7B6E20418F1B698005A360E /* UIBarButtonItem+ESAdditions.h in Headers */,
 			);
@@ -381,6 +403,7 @@
 			files = (
 				E7B6E20518F1B698005A360E /* UIBarButtonItem+ESAdditions.m in Sources */,
 				E7CACA6718F4351000DB9274 /* NSUserDefaults+ESAdditions.m in Sources */,
+				E7134BB718F5A97A00BAA4B4 /* ESApp+UI.m in Sources */,
 				E7B6E22E18F35609005A360E /* UIAlertView+ESAdditions.m in Sources */,
 				E7B6E21D18F3173E005A360E /* ESDevice.m in Sources */,
 				E7B6E1F718F1B0C1005A360E /* UIView+ESShortcut.m in Sources */,
@@ -389,9 +412,10 @@
 				E7B6E21918F31492005A360E /* ESApp.m in Sources */,
 				E7CACA6B18F4371000DB9274 /* NSDictionary+ESAdditions.m in Sources */,
 				E7522ECF18ECACEF0087B95E /* ESDefines.m in Sources */,
-				E7B6E1F218F1A868005A360E /* NSURL+ESAdditions.m in Sources */,
 				E7522ED318ECB7BA0087B95E /* ESValue.m in Sources */,
+				E7134BC618F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m in Sources */,
 				E7CACA6F18F4391800DB9274 /* NSDate+ESAdditions.m in Sources */,
+				E7134BC218F5BEB500BAA4B4 /* ESStoreUtilities.m in Sources */,
 				E7B6E20E18F1BCA3005A360E /* ESAnimations.m in Sources */,
 				E7B6E22918F34A25005A360E /* OpenUDID.m in Sources */,
 				E7B6E23718F356EF005A360E /* UIImage+ESAdditions.m in Sources */,

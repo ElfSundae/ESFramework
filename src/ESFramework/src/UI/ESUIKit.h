@@ -1,13 +1,13 @@
 //
-//  ESFrameworkUI.h
+//  ESUIKit.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-7.
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#ifndef ESFramework_ESFrameworkUI_h
-#define ESFramework_ESFrameworkUI_h
+#ifndef ESFramework_ESUIKit_h
+#define ESFramework_ESUIKit_h
 
 #import "ESApp.h"
 #import "ESDevice.h"

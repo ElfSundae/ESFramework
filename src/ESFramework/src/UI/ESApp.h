@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface ESApp : NSObject
 
@@ -52,4 +52,12 @@
  */
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
+@end
+
+
+@interface ESApp (UI)
+/**
+ * The real rootViewController for presenting modalViewController.
+ */
++ (UIViewController *)rootViewControllerForPresenting;
 @end
