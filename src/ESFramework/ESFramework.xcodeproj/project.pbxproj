@@ -15,6 +15,7 @@
 		E7134BC618F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BC418F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m */; };
 		E7134BC918F5D9F600BAA4B4 /* UIDevice+ESNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BC718F5D9F600BAA4B4 /* UIDevice+ESNetwork.h */; };
 		E7134BCA18F5D9F600BAA4B4 /* UIDevice+ESNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BC818F5D9F600BAA4B4 /* UIDevice+ESNetwork.m */; };
+		E7134BDA18F69E2400BAA4B4 /* ESApp+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BD818F69E2400BAA4B4 /* ESApp+Helper.m */; };
 		E7522DF418EC427E0087B95E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7522E6818EC48910087B95E /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5A18EC47260087B95E /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7522E6918EC48910087B95E /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7522E5B18EC47650087B95E /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -77,6 +78,7 @@
 		E7134BC418F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
 		E7134BC718F5D9F600BAA4B4 /* UIDevice+ESNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESNetwork.h"; sourceTree = "<group>"; };
 		E7134BC818F5D9F600BAA4B4 /* UIDevice+ESNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESNetwork.m"; sourceTree = "<group>"; };
+		E7134BD818F69E2400BAA4B4 /* ESApp+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
 		E7522DF018EC427E0087B95E /* libESFramework.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libESFramework.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				E7B6E21618F31492005A360E /* ESApp.h */,
 				E7B6E21718F31492005A360E /* ESApp.m */,
 				E7134BB518F5A97A00BAA4B4 /* ESApp+UI.m */,
+				E7134BD818F69E2400BAA4B4 /* ESApp+Helper.m */,
 				E7B6E21A18F3173E005A360E /* ESDevice.h */,
 				E7B6E21B18F3173E005A360E /* ESDevice.m */,
 			);
@@ -423,6 +426,7 @@
 				E7522ED318ECB7BA0087B95E /* ESValue.m in Sources */,
 				E7134BC618F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m in Sources */,
 				E7CACA6F18F4391800DB9274 /* NSDate+ESAdditions.m in Sources */,
+				E7134BDA18F69E2400BAA4B4 /* ESApp+Helper.m in Sources */,
 				E7134BC218F5BEB500BAA4B4 /* ESStoreUtilities.m in Sources */,
 				E7B6E20E18F1BCA3005A360E /* ESAnimations.m in Sources */,
 				E7B6E22918F34A25005A360E /* OpenUDID.m in Sources */,

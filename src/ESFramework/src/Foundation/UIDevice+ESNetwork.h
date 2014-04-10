@@ -16,6 +16,6 @@ typedef NS_ENUM(NSUInteger, ESNetworkStatus) {
 
 @interface UIDevice (ESNetwork)
 
-+ (ESNetworkStatus)currentNetworkStatus;
+//+ (ESNetworkStatus)currentNetworkStatus;
 
 @end
