@@ -7,15 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef NS_ENUM(NSUInteger, ESNetworkStatus) {
-        ESNetworkStatusNotReachable,
-        ESNetworkStatusViaWWAN,
-        ESNetworkStatusViaWiFi
-};
+#import "Reachability.h"
 
 @interface UIDevice (ESNetwork)
 
-//+ (ESNetworkStatus)currentNetworkStatus;
++ (NetworkStatus)currentNetworkStatus;
+
++ (NSString *)currentNetworkStatusString;
 
 @end

@@ -81,7 +81,6 @@
 		E7134BC718F5D9F600BAA4B4 /* UIDevice+ESNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESNetwork.h"; sourceTree = "<group>"; };
 		E7134BC818F5D9F600BAA4B4 /* UIDevice+ESNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESNetwork.m"; sourceTree = "<group>"; };
 		E7134BD818F69E2400BAA4B4 /* ESApp+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
-		E7134BE418F6C18000BAA4B4 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E7134BE618F6C18000BAA4B4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		E7134BE718F6C18000BAA4B4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E7134BE818F6C18000BAA4B4 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -158,7 +157,6 @@
 		E7134BE318F6C18000BAA4B4 /* Reachability */ = {
 			isa = PBXGroup;
 			children = (
-				E7134BE418F6C18000BAA4B4 /* .gitignore */,
 				E7134BE618F6C18000BAA4B4 /* Reachability.h */,
 				E7134BE718F6C18000BAA4B4 /* Reachability.m */,
 				E7134BE818F6C18000BAA4B4 /* README.md */,
