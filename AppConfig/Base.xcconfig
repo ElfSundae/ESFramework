@@ -1,0 +1,21 @@
+
+/**
+ * The base config file for App.
+ *
+ * #include "../Vendor/ESFramework/AppConfig/Config.xcconfig"
+ * You can edit this file then include it to your project's config file, like:
+ */
+
+IPHONEOS_DEPLOYMENT_TARGET = 5.0
+OTHER_LDFLAGS = -ObjC
+
+INFOPLIST_FILE = Resources/Info.plist
+GCC_PRECOMPILE_PREFIX_HEADER  = YES
+GCC_PREFIX_HEADER             = Prefix.pch
+
+
+ESFRAMEWORK_SRCROOT = $(SRCROOT)/../Vendor/ESFramework
+
+LIBRARY_SEARCH_PATHS = $(inherited) "$(ESFRAMEWORK_SRCROOT)/Vendor"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$(ESFRAMEWORK_SRCROOT)/Vendor"
+USER_HEADER_SEARCH_PATHS = "$(ESFRAMEWORK_SRCROOT)/src" "$(ESFRAMEWORK_SRCROOT)/src/Core" "$(ESFRAMEWORK_SRCROOT)/src/Foundation" "$(ESFRAMEWORK_SRCROOT)/src/UI" "$(ESFRAMEWORK_SRCROOT)/src/StoreKit" "$(ESFRAMEWORK_SRCROOT)/Vendor/Reachability"
