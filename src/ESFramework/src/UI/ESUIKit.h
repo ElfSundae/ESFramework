@@ -9,9 +9,6 @@
 #ifndef ESFramework_ESUIKit_h
 #define ESFramework_ESUIKit_h
 
-#import "ESApp.h"
-#import "ESDevice.h"
-
 #import "UIImage+ESAdditions.h"
 
 #import "UIAlertView+ESAdditions.h"
