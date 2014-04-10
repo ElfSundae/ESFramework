@@ -10,6 +10,7 @@
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 @import CoreTelephony;
+@import CoreGraphics;
 
 @implementation ESDevice
 
@@ -86,6 +87,70 @@
         return NO;
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Screen
+
++ (CGSize)screenSize
+{
+        return [[UIScreen mainScreen] currentMode].size;
+}
+
++ (NSString *)screenSizeString
+{
+        CGSize size = [self screenSize];
+        if (size.width > size.height) {
+                float t = size.width;
+                size.width = size.height;
+                size.height = t;
+        }
+        return [NSString stringWithFormat:@"%dx%d", (int)size.width, (int)size.height];
+}
+
++ (BOOL)isRetinaScreen
+{
+        return ([UIScreen mainScreen].scale == 2.0);
+}
+
++ (BOOL)isIPhoneRetina4InchScreen
+{
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 1136.f));
+}
+
++ (BOOL)isIPhoneRetina35InchScreen
+{
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 960.f));
+}
+//
+//+ (BOOL)isIPhoneRetina4Screen
+//{
+//        UIScreen *mainScreen = [UIScreen mainScreen];
+//        CGFloat scale = [mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f;
+//        CGFloat pixelHeight = CGRectGetHeight(mainScreen.bounds) * scale;
+//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
+//            scale == 2.0 &&
+//            pixelHeight == 1136.0)
+//        {
+//                return YES;
+//        }
+//        return NO;
+//}
+//
+//+ (ESDeviceScreenType)deviceScreenType
+//{
+//        if ([self isIPhoneRetina4Screen]) {
+//                return ESDeviceScreenTypeRetina4inch;
+//        } else if ([self isRetinaScreen]) {
+//                return ESDeviceScreenTypeRetina;
+//        } else {
+//                return ESDeviceScreenTypeNoRetina;
+//        }
+//}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Locale
 + (NSTimeZone *)localTimeZone
 {
         return [NSTimeZone localTimeZone];
@@ -116,96 +181,5 @@
         return [[self currentLocale] localeIdentifier];
 }
 
-
-//
-//+ (CGSize)screenSize
-//{
-//        CGSize size = [UIScreen mainScreen].bounds.size;
-//        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
-//        {
-//                CGFloat scale = [[UIScreen mainScreen] scale];
-//                size = CGSizeMake(size.width*scale, size.height*scale);
-//        }
-//        return size;
-//}
-//
-//+ (NSString *)screenSizeString
-//{
-//        CGSize screenSize = [self screenSize];
-//        if (screenSize.width > screenSize.height)
-//        {
-//                float tHeight = screenSize.width;
-//                screenSize.width = screenSize.height;
-//                screenSize.height = tHeight;
-//        }
-//        return [NSString stringWithFormat:@"%dx%d",
-//                (int)screenSize.width,
-//                (int)screenSize.height];
-//}
-//
-//+ (BOOL)isRetinaScreen
-//{
-//        if ([[[UIDevice currentDevice] systemVersion] intValue] >= 4 &&
-//            [[UIScreen mainScreen] scale] == 2.0)
-//        {
-//                return YES;
-//        }
-//        return NO;
-//}
-//
-//+ (BOOL)isIPhoneRetina4Screen
-//{
-//        UIScreen *mainScreen = [UIScreen mainScreen];
-//        CGFloat scale = [mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f;
-//        CGFloat pixelHeight = CGRectGetHeight(mainScreen.bounds) * scale;
-//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
-//            scale == 2.0 &&
-//            pixelHeight == 1136.0)
-//        {
-//                return YES;
-//        }
-//        return NO;
-//}
-//
-//+ (ESDeviceScreenType)deviceScreenType
-//{
-//        if ([self isIPhoneRetina4Screen]) {
-//                return ESDeviceScreenTypeRetina4inch;
-//        } else if ([self isRetinaScreen]) {
-//                return ESDeviceScreenTypeRetina;
-//        } else {
-//                return ESDeviceScreenTypeNoRetina;
-//        }
-//}
-//
-//
-
-//
-//
-//+ (ESNetworkStatus)currentNetworkStatus
-//{
-//        ESNetworkStatus result = ESNetworkStatusNotReachable;
-//        NetworkStatus status = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
-//        if (kReachableViaWiFi == status) {
-//                result = ESNetworkStatusViaWiFi;
-//        } else if (kReachableViaWWAN == status) {
-//                result = ESNetworkStatusViaWWAN;
-//        }
-//        return result;
-//}
-//
-//+ (NSString *)currentNetworkStatus_string;
-//{
-//        NSString *network = @"None";
-//        ESNetworkStatus status = [self currentNetworkStatus];
-//        if (ESNetworkStatusViaWiFi == status) {
-//                network = @"WiFi";
-//        } else if (kReachableViaWWAN == status) {
-//                network = @"WWAN";
-//        }
-//        return network;
-//}
-//
-//
 
 @end
