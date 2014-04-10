@@ -12,7 +12,14 @@
 @interface UIDevice (ESNetwork)
 
 + (NetworkStatus)currentNetworkStatus;
-
 + (NSString *)currentNetworkStatusString;
+
+/**
+ * Start network notifier.
+ * When the network reachability has changed, the notification "kReachabilityChangedNotification"
+ * will be posted. Then you can get the current network status from "+currentNetworkStatus" method.
+ */
++ (BOOL)startNetworkNotifier;
++ (void)stopNetworkNotifier;
 
 @end

@@ -17,6 +17,7 @@ static Reachability *__sharedReachability = nil;
         __sharedReachability = [Reachability reachabilityForInternetConnection];
 }
 
+
 + (NetworkStatus)currentNetworkStatus
 {
         return __sharedReachability.currentReachabilityStatus;
@@ -34,4 +35,24 @@ static Reachability *__sharedReachability = nil;
         return result;
 }
 
++ (BOOL)startNetworkNotifier
+{
+        BOOL ret = [__sharedReachability startNotifier];
+        if (ret) {
+                [[NSNotificationCenter defaultCenter] addObserver:[self currentDevice] selector:@selector(reachabilityChangedNotification:) name:kReachabilityChangedNotification object:nil];
+        }
+        return ret;
+}
+
++ (void)stopNetworkNotifier
+{
+        [__sharedReachability stopNotifier];
+        [[NSNotificationCenter defaultCenter] removeObserver:[self currentDevice] name:kReachabilityChangedNotification object:nil];
+}
+
+
+- (void)reachabilityChangedNotification:(NSNotification *)notification
+{
+        NSLogInfo(@"Network reachability changed to %@", [self.class currentNetworkStatusString]);
+}
 @end
