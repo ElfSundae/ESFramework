@@ -18,8 +18,6 @@
 
 /**
  * Returns all URL Schemes that specified in the Info.plist.
- *
- * @param identifier URL identifier
  */
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier;
 /**
@@ -28,8 +26,6 @@
 + (NSArray *)URLSchemes;
 /**
  * The first scheme for the identifier.
- *
- * @param identifier URL identifier specified in the Info.plist.
  */
 + (NSString *)URLSchemeForIdentifier:(NSString *)identifier;
 /**
@@ -76,4 +72,12 @@
  */
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion;
 
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Network
+
+@interface ESApp (Network)
++ (void)deleteAllHTTPCookies;
 @end
