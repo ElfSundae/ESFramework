@@ -23,7 +23,6 @@
 #import "NSUserDefaults+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 #import "NSDate+ESAdditions.h"
-
-#import "UIDevice+ESNetwork.h"
+#import "UIDevice+Reachability.h"
 
 #endif

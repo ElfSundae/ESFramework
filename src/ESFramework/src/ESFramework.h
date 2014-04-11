@@ -14,7 +14,6 @@
 #ifndef ESFramework_ESFramework_h
 #define ESFramework_ESFramework_h
 
-#import "ESDefines.h"
 #import "ESCore.h"
 #import "ESFoundation.h"
 #import "ESUIKit.h"

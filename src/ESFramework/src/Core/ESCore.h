@@ -17,6 +17,7 @@
 #ifndef ESFramework_ESCore_h
 #define ESFramework_ESCore_h
 
+#import "ESDefines.h"
 #import "ESApp.h"
 #import "ESDevice.h"
 

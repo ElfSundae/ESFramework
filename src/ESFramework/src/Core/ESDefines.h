@@ -65,10 +65,10 @@ ES_EXTERN NSInteger ESMaxLogLevel;
  NSLogPrefix(@"<Socket> ", @"Connected to host %@", host);
  @endcode
  */
-#define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@""prefixString fmt, ##__VA_ARGS__); } while(0)
-#define NSLogInfo(fmt, ...)     do { if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"<Info> ", fmt, ##__VA_ARGS__); } } while(0)
-#define NSLogWarning(fmt, ...)  do { if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"❗<Warning> ", fmt, ##__VA_ARGS__); } } while(0)
-#define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌<Error> ", fmt, ##__VA_ARGS__); } } while(0)
+#define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@"<"prefixString @"> " fmt, ##__VA_ARGS__); } while(0)
+#define NSLogInfo(fmt, ...)     do { if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"Info", fmt, ##__VA_ARGS__); } } while(0)
+#define NSLogWarning(fmt, ...)  do { if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"❗Warning", fmt, ##__VA_ARGS__); } } while(0)
+#define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌Error", fmt, ##__VA_ARGS__); } } while(0)
 #else
 #define NSLogCondition(condition, fmt, ...)
 #define NSLogPrefix(prefixString, fmt, ...)
@@ -404,6 +404,13 @@ ES_EXTERN BOOL ESIsPhoneUI(void);
  * Checks whether the device is a iPhone/iPod Touch.
  */
 ES_EXTERN BOOL ESIsPhoneDevice(void);
+
+/**
+ * Creates a mutable set which does not retain references to the objects it contains.
+ */
+ES_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
+ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
+ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 #pragma mark - Path
 
