@@ -12,7 +12,7 @@
 		E7134BC218F5BEB500BAA4B4 /* ESStoreUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BC018F5BEB500BAA4B4 /* ESStoreUtilities.m */; };
 		E7134BC518F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BC318F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7134BC618F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BC418F5C9FD00BAA4B4 /* ESStoreProductViewControllerManager.m */; };
-		E7134BE918F6C18000BAA4B4 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BE618F6C18000BAA4B4 /* Reachability.h */; };
+		E7134BE918F6C18000BAA4B4 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E7134BE618F6C18000BAA4B4 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7134BEA18F6C18000BAA4B4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7134BE718F6C18000BAA4B4 /* Reachability.m */; };
 		E71FA87C18F84A9400B378BA /* UIDevice+Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E71FA87A18F84A9400B378BA /* UIDevice+Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E71FA87D18F84A9400B378BA /* UIDevice+Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E71FA87B18F84A9400B378BA /* UIDevice+Reachability.m */; };

@@ -4,6 +4,3 @@
 [submodule "src/ESFramework/Vendor/Reachability"]
 	path = src/ESFramework/Vendor/Reachability
 	url = git@github.com:ElfSundae/Reachability.git
-[submodule "src/ESFramework/Vendor/UIImage-Categories"]
-	path = src/ESFramework/Vendor/UIImage-Categories
-	url = git@github.com:ElfSundae/UIImage-Categories.git
