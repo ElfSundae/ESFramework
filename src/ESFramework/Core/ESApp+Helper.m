@@ -36,5 +36,12 @@
         return __isFreshLaunch;
 }
 
++ (void)deleteAllHTTPCookies
+{
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        [cookieStorage.cookies enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [cookieStorage deleteCookie:obj];
+        }];
+}
 
 @end

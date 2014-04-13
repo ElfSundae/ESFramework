@@ -18,11 +18,10 @@
 #ifndef ESFramework_ESFoundation_h
 #define ESFramework_ESFoundation_h
 
-#import "ESValue.h"
+#import "ESHash.h"
 #import "NSString+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 #import "NSDate+ESAdditions.h"
-#import "UIDevice+Reachability.h"
 
 #endif

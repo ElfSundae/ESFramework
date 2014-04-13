@@ -1,18 +1,18 @@
 //
-//  ESDevice.m
+//  UIDevice+ESInfo.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-8.
+//  Created by Elf Sundae on 14-4-13.
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#import "ESDevice.h"
+#import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 @import CoreTelephony;
 @import CoreGraphics;
 
-@implementation ESDevice
+@implementation UIDevice (ESInfo)
 
 + (NSString *)name
 {
@@ -62,29 +62,29 @@
 
 + (BOOL)isJailBroken
 {
-        static NSArray *__jbAppPaths = nil;
+        static BOOL __isJailBroken = NO;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __jbAppPaths = @[@"/Application/Cydia.app",
-                             @"/Application/limera1n.app",
-                             @"/Application/greenpois0n.app",
-                             @"/Application/blackra1n.app",
-                             @"/Application/blacksn0w.app",
-                             @"/Application/redsn0w.app",
-                             @"/private/var/lib/apt/",
-                             ];
-
-        });
-        for (NSString *path in __jbAppPaths) {
-                if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                        return YES;
+                NSArray *jbApps = @[@"/Application/Cydia.app",
+                                    @"/Application/limera1n.app",
+                                    @"/Application/greenpois0n.app",
+                                    @"/Application/blackra1n.app",
+                                    @"/Application/blacksn0w.app",
+                                    @"/Application/redsn0w.app",
+                                    @"/private/var/lib/apt/",
+                                    ];
+                for (NSString *path in jbApps) {
+                        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                                __isJailBroken = YES;
+                                break;
+                        }
                 }
-        }
-        if (0 == system("ls")) {
-                return YES;
-        }
+                if (!__isJailBroken && 0 == system("ls")) {
+                        __isJailBroken = YES;
+                }
+        });
         
-        return NO;
+        return __isJailBroken;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,32 +121,6 @@
 {
         return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 960.f));
 }
-//
-//+ (BOOL)isIPhoneRetina4Screen
-//{
-//        UIScreen *mainScreen = [UIScreen mainScreen];
-//        CGFloat scale = [mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f;
-//        CGFloat pixelHeight = CGRectGetHeight(mainScreen.bounds) * scale;
-//        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone &&
-//            scale == 2.0 &&
-//            pixelHeight == 1136.0)
-//        {
-//                return YES;
-//        }
-//        return NO;
-//}
-//
-//+ (ESDeviceScreenType)deviceScreenType
-//{
-//        if ([self isIPhoneRetina4Screen]) {
-//                return ESDeviceScreenTypeRetina4inch;
-//        } else if ([self isRetinaScreen]) {
-//                return ESDeviceScreenTypeRetina;
-//        } else {
-//                return ESDeviceScreenTypeNoRetina;
-//        }
-//}
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

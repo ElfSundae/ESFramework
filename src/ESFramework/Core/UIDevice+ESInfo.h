@@ -1,15 +1,14 @@
 //
-//  ESDevice.h
+//  UIDevice+ESInfo.h
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-8.
+//  Created by Elf Sundae on 14-4-13.
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface ESDevice : NSObject
-
+@interface UIDevice (ESInfo)
 /**
  * e.g. @"My iPhone"
  */
@@ -51,7 +50,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+#pragma mark - Screen
 /**
  * The width and height in pixels.
  * e.g. 640x960
@@ -64,6 +63,7 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Locale
 
 + (NSTimeZone *)localTimeZone;
 + (NSInteger)localTimeZoneFromGMT;
@@ -78,8 +78,7 @@
  */
 + (NSString *)currentLocaleCountryCode;
 /**
- * languageCode_countryCode
- *
+ * languageCode_countryCode.
  * e.g. @"zh_CN", @"en_US"
  */
 + (NSString *)currentLocaleIdentifier;

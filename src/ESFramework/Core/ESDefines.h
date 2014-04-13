@@ -9,8 +9,8 @@
 #ifndef ESFramework_ESDefines_h
 #define ESFramework_ESDefines_h
 
-@import Foundation;
-@import UIKit;
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #if defined(__cplusplus)
         #define ES_EXTERN extern "C"

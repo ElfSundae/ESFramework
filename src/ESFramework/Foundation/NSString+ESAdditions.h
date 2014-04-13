@@ -15,15 +15,6 @@
 - (NSString *)newUUID;
 
 /**
- * Returns MD5 hash, Lower-case.
- */
-- (NSString *)md5Hash;
-/**
- * Returns MD5 hash, Upper-case.
- */
-- (NSString *)md5HashWithUppercase;
-
-/**
  * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="
  */
 - (NSString *)URLEncode;
