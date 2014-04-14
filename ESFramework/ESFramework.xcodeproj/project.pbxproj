@@ -455,12 +455,12 @@
 			isa = PBXGroup;
 			children = (
 				E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */,
-				E7BCF75018F98F51006D920E /* ESAnimations.h */,
-				E7BCF75118F98F51006D920E /* ESAnimations.m */,
 				E7BCF75318F98F51006D920E /* UIActionSheet+ESAdditions.h */,
 				E7BCF75418F98F51006D920E /* UIActionSheet+ESAdditions.m */,
 				E7BCF75518F98F51006D920E /* UIAlertView+ESAdditions.h */,
 				E7BCF75618F98F51006D920E /* UIAlertView+ESAdditions.m */,
+				E7BCF75018F98F51006D920E /* ESAnimations.h */,
+				E7BCF75118F98F51006D920E /* ESAnimations.m */,
 				E7BCF75718F98F51006D920E /* UIBarButtonItem+ESAdditions.h */,
 				E7BCF75818F98F51006D920E /* UIBarButtonItem+ESAdditions.m */,
 				E7BCF75918F98F51006D920E /* UIImage+ESAdditions.h */,
