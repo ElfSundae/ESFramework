@@ -1,0 +1,26 @@
+//
+//  Shared.xcconfig
+//  ESFramework
+//
+//  Created by Elf Sundae on 14-3-31.
+//  Copyright (c) 2014年 www.0x123.com. All rights reserved.
+//
+
+
+//ref: https://github.com/jverkoey/iOS-Framework
+
+TARGET_NAME = ESFramework
+PRODUCT_NAME = $(TARGET_NAME)
+EXECUTABLE_PREFIX =
+PUBLIC_HEADERS_FOLDER_PATH = $(PRODUCT_NAME)
+GCC_PRECOMPILE_PREFIX_HEADER  = YES
+GCC_PREFIX_HEADER             = Config/Prefix.pch
+IPHONEOS_DEPLOYMENT_TARGET = 5.1.1
+ARCHS = $(ARCHS_STANDARD)
+OTHER_LDFLAGS = -ObjC
+SKIP_INSTALL = YES
+USER_HEADER_SEARCH_PATHS = 
+
+DEAD_CODE_STRIPPING = NO
+COPY_PHASE_STRIP = NO
+STRIP_STYLE = non-global

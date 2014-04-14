@@ -1,5 +1,4 @@
 * ESAppLauncherViewController
-* UIImage+ESAddition
 * Download Cache
 * TableView ErrorView
 * Refresh Control
