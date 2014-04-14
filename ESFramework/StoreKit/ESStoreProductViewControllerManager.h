@@ -17,12 +17,11 @@ ES_SINGLETON_DEC(sharedManager);
 __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION;
 
 @property (nonatomic, readonly) BOOL hasPresentedProductViewController;
-@property (nonatomic, copy) ESStoreProductViewControllerManagerBlock willAppearBlock;
 @property (nonatomic, copy) ESStoreProductViewControllerManagerBlock didDismissBlock;
 
 
 /**
- * On iOS 6.0 or later, it will present SKStoreProductViewController, otherwise
+ * On iOS 6.0 or later, it will present SKStoreProductViewController if the iTunesStore reachability, otherwise
  * uses [ESApp openURL:] to open #iTunesLink.
  * The first time to present SKStoreProductViewController will be slowly, then you can
  * handler #willAppear block to show a activityView or a HUD.

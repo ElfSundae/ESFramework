@@ -51,18 +51,19 @@ ES_SINGLETON_IMP(sharedManager);
         if (self.hasPresentedProductViewController) {
                 return;
         }
-        self.willAppearBlock = willAppear;
         self.didDismissBlock = didDissmiss;
         self.hasPresentedProductViewController = YES;
         ES_WEAK_VAR(self, _self);
         SKStoreProductViewController *storeController = [[SKStoreProductViewController alloc] init];
         [storeController loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier: itemID}
                                    completionBlock:^(BOOL result, NSError *error) {
+                                           ES_STRONG_VAR_CHECK_NULL(_self, _strongSelf);
                                            if (!result) {
+                                                   _strongSelf.didDismissBlock = nil;
+                                                   _strongSelf.hasPresentedProductViewController = NO;
                                                    [ESApp openURL:iTunesLink];
                                                    return;
                                            }
-                                           ES_STRONG_VAR_CHECK_NULL(_self, _strongSelf);
                                            if (willAppear) {
                                                    willAppear();
                                            }
@@ -87,7 +88,6 @@ ES_SINGLETON_IMP(sharedManager);
         if (self.didDismissBlock) {
                 self.didDismissBlock();
         }
-        self.willAppearBlock = nil;
         self.didDismissBlock = nil;
 }
 

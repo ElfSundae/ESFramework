@@ -26,7 +26,6 @@ ES_SINGLETON_IMP(sharedApp);
         self = [super init];
         if (self) {
                 [[self class] isFreshLaunch:nil];
-                [self enableMultitasking];
         }
         return self;
 }
@@ -48,6 +47,15 @@ ES_SINGLETON_IMP(sharedApp);
         }
 }
 
+- (void)disableMultitasking
+{
+        ESDispatchSyncOnMainThread(^{
+                if (_backgroundTaskID) {
+                        [[UIApplication sharedApplication] endBackgroundTask:_backgroundTaskID];
+                        _backgroundTaskID = UIBackgroundTaskInvalid;
+                }
+        });
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

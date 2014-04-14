@@ -17,6 +17,10 @@
 
 ES_SINGLETON_DEC(sharedApp);
 
+- (void)enableMultitasking;
+- (void)disableMultitasking;
+
+
 + (NSBundle *)mainBundle;
 + (NSDictionary *)infoDictionary;
 + (NSString *)displayName;
