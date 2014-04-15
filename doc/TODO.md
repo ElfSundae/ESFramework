@@ -1,4 +1,3 @@
-* ESAppLauncherViewController
 * Download Cache
 * TableView ErrorView
 * Refresh Control

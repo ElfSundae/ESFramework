@@ -361,7 +361,7 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 /** 
  * Check bit (flag) 
  */
-#define ES_IS_MASK_SET(value, flag)     (((value) & (flag)) == (flag))
+#define ESIsMaskSet(value, flag)     (((value) & (flag)) == (flag))
 /** 
  * LocalizedString 
  */
@@ -377,6 +377,11 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
  * Returns the current statusBar's height, in any orientation.
  */
 ES_EXTERN CGFloat ESStatusBarHeight(void);
+
+/**
+ * Returns the application's current interface orientation.
+ */
+ES_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
 
 /**
  * Convert degrees to radians.
@@ -404,6 +409,14 @@ ES_EXTERN BOOL ESIsPhoneUI(void);
  * Checks whether the device is a iPhone/iPod Touch.
  */
 ES_EXTERN BOOL ESIsPhoneDevice(void);
+
+/**
+ * Tests whether a collection is of a certain type and is non-empty.
+ */
+ES_EXTERN BOOL ESIsEmptyString(id object);
+ES_EXTERN BOOL ESIsEmptyArray(id object);
+ES_EXTERN BOOL ESIsEmptyDictionary(id object);
+ES_EXTERN BOOL ESIsEmptySet(id object);
 
 /**
  * Creates a mutable set which does not retain references to the objects it contains.

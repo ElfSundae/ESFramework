@@ -6,9 +6,12 @@
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface NSString (ESAdditions)
+
++ (NSString *)newUUID;
+
 /**
  * NSCaseInsensitiveSearch
  */
@@ -18,8 +21,6 @@
  * Trims whitespaceAndNewline
  */
 - (NSString *)trim;
-
-- (NSString *)newUUID;
 
 /**
  * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="

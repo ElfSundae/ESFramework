@@ -10,6 +10,14 @@
 
 @implementation NSString (ESAdditions)
 
++ (NSString *)newUUID
+{
+        CFUUIDRef theUUID = CFUUIDCreate(NULL);
+        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+        CFBridgingRelease(theUUID);
+        return CFBridgingRelease(string);
+}
+
 - (BOOL)containsString:(NSString*)string
 {
 	return [self containsString:string options:NSCaseInsensitiveSearch];
@@ -24,14 +32,6 @@
 {
         return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
-- (NSString *)newUUID
-{
-        CFUUIDRef theUUID = CFUUIDCreate(NULL);
-        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-        CFBridgingRelease(theUUID);
-        return CFBridgingRelease(string);
-}
-
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode

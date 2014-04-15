@@ -117,6 +117,8 @@
 		E7C9472718FBD6940034B110 /* ESFrameworkUIKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7C9469918FBC9500034B110 /* ESFrameworkUIKitResources.bundle */; };
 		E7C9472F18FBE0530034B110 /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C9472D18FBE0530034B110 /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7C9473018FBE0530034B110 /* ESDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C9472E18FBE0530034B110 /* ESDefines.m */; };
+		E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C9474F18FC7E7C0034B110 /* ESBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7C9475218FC7E7C0034B110 /* ESBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C9475018FC7E7C0034B110 /* ESBadgeView.m */; };
 		E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7FEF4F918FA7114006E1682 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FEF4F618FA7114006E1682 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7FEF4FA18FA7114006E1682 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FEF4F718FA7114006E1682 /* OpenUDID.m */; };
@@ -288,6 +290,8 @@
 		E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Bundle.xcconfig; sourceTree = "<group>"; };
 		E7C9472D18FBE0530034B110 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E7C9472E18FBE0530034B110 /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
+		E7C9474F18FC7E7C0034B110 /* ESBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESBadgeView.h; sourceTree = "<group>"; };
+		E7C9475018FC7E7C0034B110 /* ESBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESBadgeView.m; sourceTree = "<group>"; };
 		E7EDF3F318FBA2ED0067E849 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		E7EDF3F418FBA2F50067E849 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		E7EDF3F518FBA5430067E849 /* CoreRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoreRelease.xcconfig; sourceTree = "<group>"; };
@@ -455,6 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */,
+				E7C9474E18FC7E650034B110 /* BadgeView */,
 				E7BCF75318F98F51006D920E /* UIActionSheet+ESAdditions.h */,
 				E7BCF75418F98F51006D920E /* UIActionSheet+ESAdditions.m */,
 				E7BCF75518F98F51006D920E /* UIAlertView+ESAdditions.h */,
@@ -516,6 +521,15 @@
 				E7C946A218FBC9500034B110 /* ESFrameworkUIKitResources-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E7C9474E18FC7E650034B110 /* BadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				E7C9474F18FC7E7C0034B110 /* ESBadgeView.h */,
+				E7C9475018FC7E7C0034B110 /* ESBadgeView.m */,
+			);
+			path = BadgeView;
 			sourceTree = "<group>";
 		};
 		E7FEF4F418FA7114006E1682 /* Vendor */ = {
@@ -591,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7BCF77218F98F51006D920E /* UIImage+ESAdditions.h in Headers */,
+				E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */,
 				E7BCF76418F98F51006D920E /* ESFrameworkUIKit.h in Headers */,
 				E7BCF77618F98F51006D920E /* UIView+ESAdditions.h in Headers */,
 				E7BCF76618F98F51006D920E /* UIActionSheet+ESAdditions.h in Headers */,
@@ -973,6 +988,7 @@
 				E7BCF77818F98F51006D920E /* UIView+ESAdditions.m in Sources */,
 				E7BCF76C18F98F51006D920E /* UIAlertView+ESAdditions.m in Sources */,
 				E7BCF77C18F98F51006D920E /* UIView+ESShortcut.m in Sources */,
+				E7C9475218FC7E7C0034B110 /* ESBadgeView.m in Sources */,
 				E7BCF77418F98F51006D920E /* UIImage+ESAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
