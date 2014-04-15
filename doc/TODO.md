@@ -5,3 +5,6 @@
 * ESTextView
 * AlertWindow, JDMessageView
 * WebView
+* Memory Cache
+* Attributed Label
+* Collections View
