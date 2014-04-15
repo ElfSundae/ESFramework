@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 #if defined(__cplusplus)
         #define ES_EXTERN extern "C"
@@ -21,6 +22,8 @@
         #define ES_EXTERN_C_BEGIN
         #define ES_EXTERN_C_END
 #endif
+
+#define ES_INLINE       NS_INLINE
 
 /**
  * ESFramework version.
@@ -393,7 +396,38 @@ ES_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
 ES_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
 
 /**
- * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad 
+ * Returns (x, y, w+dx, h+dy);
+ */
+ES_INLINE CGRect ESRectExpandSize(CGRect rect, CGFloat dx, CGFloat dy) {
+        return CGRectMake(rect.origin.x, rect.origin.y, rect.size.width + dx, rect.size.height + dy);
+}
+/**
+ * Returns (x+dx, y+dy, w, h);
+ */
+ES_INLINE CGRect ESRectExpandOrigin(CGRect rect, CGFloat dx, CGFloat dy) {
+        return CGRectMake(rect.origin.x + dx, rect.origin.y + dy, rect.size.width, rect.size.height);
+}
+
+ES_INLINE CGRect ESRectExpandWithEdgeInsets(CGRect rect, UIEdgeInsets insets) {
+        return UIEdgeInsetsInsetRect(rect, insets);
+}
+
+ES_INLINE CGRect ESRectExpandWithEdgeInsetsFrom(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
+        return ESRectExpandWithEdgeInsets(rect, UIEdgeInsetsMake(top, left, bottom, right));
+}
+
+ES_INLINE CGFloat ESSizeCenterX(CGSize containerSize, CGSize size) {
+        return floorf((containerSize.width - size.width) / 2.f);
+}
+
+ES_INLINE CGFloat ESSizeCenterY(CGSize containerSize, CGSize size) {
+        return floorf((containerSize.height - size.height) / 2.f);
+}
+
+ES_EXTERN CGRect ESFrameOfCenteredViewWithinView(UIView *view, UIView *containerView);
+
+/**
+ * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
  */
 ES_EXTERN BOOL ESIsPadUI(void);
 /**

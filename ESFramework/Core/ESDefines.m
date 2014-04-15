@@ -116,6 +116,16 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
         return (radians * 180.0 / M_PI);
 }
 
+CGRect ESFrameOfCenteredViewWithinView(UIView *view, UIView *containerView)
+{
+        CGRect rect;
+        CGSize containerSize = containerView.bounds.size;
+        rect.size = view.frame.size;
+        rect.origin.x = ESSizeCenterX(containerSize, rect.size);
+        rect.origin.y = ESSizeCenterY(containerSize, rect.size);
+        return rect;
+}
+
 BOOL ESIsPadUI(void)
 {
         static BOOL _isPad;
