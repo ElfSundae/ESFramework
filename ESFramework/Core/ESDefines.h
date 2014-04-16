@@ -80,6 +80,20 @@ ES_EXTERN NSInteger ESMaxLogLevel;
 #define NSLogError(fmt, ...)
 #endif // #ifdef DEBUG
 
+/**
+ * Calc the execution time.
+ */
+#if DEBUG
+#include <mach/mach_time.h>
+ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
+#define ES_STOPWATCH_BEGIN(begin_time)  uint64_t begin_time = mach_absolute_time();
+#define ES_STOPWATCH_END(begin_time)    NSLog(@"<Execution Time> %llums", ((mach_absolute_time() - begin_time) * __es_timebase_info__.numer / __es_timebase_info__.denom / 1000 ) );
+#else
+#define ES_STOPWATCH_BEGIN(begin_time)
+#define ES_STOPWATCH_END(begin_time)
+#endif
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ARC
