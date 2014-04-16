@@ -378,6 +378,11 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 
 ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 
+ES_EXTERN NSBundle *ESFWBundle(void);
+#define ESFWLocalizedString(key)        NSLocalizedStringFromTableInBundle(key, nil, ESFWBundle(), nil)
+#define ESFWLocalizedStringWithFormat(key, ...) [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(key, nil, ESFWBundle(), nil), ##__VA_ARGS__]
+#undef _es_
+#define _es_(key) ESFWLocalizedString(key)
 /**
  * Returns the current statusBar's height, in any orientation.
  */

@@ -14,7 +14,6 @@
 				E7926A5C18FBC17700CD276F /* Build Framework */,
 			);
 			dependencies = (
-				E7C946AC18FBCD1C0034B110 /* PBXTargetDependency */,
 				E7926A5B18FBC16A00CD276F /* PBXTargetDependency */,
 			);
 			name = ESFrameworkCore;
@@ -71,6 +70,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C9469A18FBC9500034B110 /* CoreFoundation.framework */; };
+		E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7223F3A18FE7BEC006BCC0D /* Localizable.strings */; };
 		E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A05D18FE63F4000DCDBD /* NSDate+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A06E18FE63F4000DCDBD /* NSDate+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A05E18FE63F4000DCDBD /* NSDate+ESAdditions.m */; };
 		E757A06F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A05F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -118,9 +119,6 @@
 		E7BCF7C318F99825006D920E /* ESValue.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BCF7C118F99825006D920E /* ESValue.m */; };
 		E7BCF7C618FA5AB1006D920E /* UIDevice+ESInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF7C418FA5AB1006D920E /* UIDevice+ESInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7BCF7C718FA5AB1006D920E /* UIDevice+ESInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E7BCF7C518FA5AB1006D920E /* UIDevice+ESInfo.m */; };
-		E7C9469B18FBC9500034B110 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C9469A18FBC9500034B110 /* CoreFoundation.framework */; };
-		E7C946A118FBC9500034B110 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7C9469F18FBC9500034B110 /* InfoPlist.strings */; };
-		E7C9472718FBD6940034B110 /* ESFrameworkUIKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E7C9469918FBC9500034B110 /* ESFrameworkUIKitResources.bundle */; };
 		E7C9472F18FBE0530034B110 /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C9472D18FBE0530034B110 /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7C9473018FBE0530034B110 /* ESDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C9472E18FBE0530034B110 /* ESDefines.m */; };
 		E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C9474F18FC7E7C0034B110 /* ESBadgeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,19 +139,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E7223F4918FE7FE9006BCC0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E714E39418FE796600CAF140;
+			remoteInfo = ESFrameworkResources;
+		};
 		E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E7BCF61D18F98614006D920E;
 			remoteInfo = Core;
-		};
-		E7C946AB18FBCD1C0034B110 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E7C9469818FBC9500034B110;
-			remoteInfo = ESFrameworkUIKitResources;
 		};
 		E7C946B618FBD30D0034B110 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -234,6 +232,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7223F3918FE7BEC006BCC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E7223F3B18FE7BF3006BCC0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -295,11 +296,7 @@
 		E7BCF7C118F99825006D920E /* ESValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
 		E7BCF7C418FA5AB1006D920E /* UIDevice+ESInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESInfo.h"; sourceTree = "<group>"; };
 		E7BCF7C518FA5AB1006D920E /* UIDevice+ESInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESInfo.m"; sourceTree = "<group>"; };
-		E7C9469918FBC9500034B110 /* ESFrameworkUIKitResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkUIKitResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C9469A18FBC9500034B110 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		E7C9469E18FBC9500034B110 /* ESFrameworkUIKitResources-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ESFrameworkUIKitResources-Info.plist"; sourceTree = "<group>"; };
-		E7C946A018FBC9500034B110 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E7C946A218FBC9500034B110 /* ESFrameworkUIKitResources-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESFrameworkUIKitResources-Prefix.pch"; sourceTree = "<group>"; };
 		E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Bundle.xcconfig; sourceTree = "<group>"; };
 		E7C9472D18FBE0530034B110 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E7C9472E18FBE0530034B110 /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
@@ -325,6 +322,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E714E39218FE796600CAF140 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7BCF63618F98614006D920E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -365,17 +370,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E7C9469618FBC9500034B110 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E7C9469B18FBC9500034B110 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E714E39718FE796600CAF140 /* ESFrameworkResources */ = {
+			isa = PBXGroup;
+			children = (
+				E7223F3A18FE7BEC006BCC0D /* Localizable.strings */,
+			);
+			path = ESFrameworkResources;
+			sourceTree = "<group>";
+		};
 		E7522DE718EC427E0087B95E = {
 			isa = PBXGroup;
 			children = (
@@ -385,7 +390,7 @@
 				E7BCF7BE18F9971C006D920E /* Network */,
 				E7BCF69818F98C1F006D920E /* StoreKit */,
 				E7522E5418EC43030087B95E /* Config */,
-				E7C9469C18FBC9500034B110 /* ESFrameworkUIKitResources */,
+				E714E39718FE796600CAF140 /* ESFrameworkResources */,
 				E7522DF218EC427E0087B95E /* Frameworks */,
 				E7522DF118EC427E0087B95E /* Products */,
 			);
@@ -399,7 +404,7 @@
 				E7BCF6D218F98C27006D920E /* ESFrameworkUIKit.a */,
 				E7BCF70C18F98C4B006D920E /* ESFrameworkStoreKit.a */,
 				E7BCF7BD18F996F5006D920E /* ESFrameworkNetwork.a */,
-				E7C9469918FBC9500034B110 /* ESFrameworkUIKitResources.bundle */,
+				E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -581,24 +586,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		E7C9469C18FBC9500034B110 /* ESFrameworkUIKitResources */ = {
-			isa = PBXGroup;
-			children = (
-				E7C9469D18FBC9500034B110 /* Supporting Files */,
-			);
-			path = ESFrameworkUIKitResources;
-			sourceTree = "<group>";
-		};
-		E7C9469D18FBC9500034B110 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E7C9469E18FBC9500034B110 /* ESFrameworkUIKitResources-Info.plist */,
-				E7C9469F18FBC9500034B110 /* InfoPlist.strings */,
-				E7C946A218FBC9500034B110 /* ESFrameworkUIKitResources-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E7C9474E18FC7E650034B110 /* BadgeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,6 +705,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E714E39418FE796600CAF140 /* ESFrameworkResources */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E714E39E18FE796600CAF140 /* Build configuration list for PBXNativeTarget "ESFrameworkResources" */;
+			buildPhases = (
+				E714E39118FE796600CAF140 /* Sources */,
+				E714E39218FE796600CAF140 /* Frameworks */,
+				E714E39318FE796600CAF140 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ESFrameworkResources;
+			productName = ESFrameworkResources;
+			productReference = E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		E7BCF61D18F98614006D920E /* Core */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7BCF65318F98614006D920E /* Build configuration list for PBXNativeTarget "Core" */;
@@ -732,6 +736,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E7223F4A18FE7FE9006BCC0D /* PBXTargetDependency */,
 			);
 			name = Core;
 			productName = ESFramework;
@@ -814,23 +819,6 @@
 			productReference = E7BCF7BD18F996F5006D920E /* ESFrameworkNetwork.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		E7C9469818FBC9500034B110 /* ESFrameworkUIKitResources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E7C946A518FBC9500034B110 /* Build configuration list for PBXNativeTarget "ESFrameworkUIKitResources" */;
-			buildPhases = (
-				E7C9469518FBC9500034B110 /* Sources */,
-				E7C9469618FBC9500034B110 /* Frameworks */,
-				E7C9469718FBC9500034B110 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ESFrameworkUIKitResources;
-			productName = ESFrameworkUIKitResources;
-			productReference = E7C9469918FBC9500034B110 /* ESFrameworkUIKitResources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -846,6 +834,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = E7522DE718EC427E0087B95E;
 			productRefGroup = E7522DF118EC427E0087B95E /* Products */;
@@ -857,7 +846,7 @@
 				E7BCF69918F98C27006D920E /* UIKit */,
 				E7BCF6D318F98C4B006D920E /* StoreKit */,
 				E7BCF7B418F996F5006D920E /* Network */,
-				E7C9469818FBC9500034B110 /* ESFrameworkUIKitResources */,
+				E714E39418FE796600CAF140 /* ESFrameworkResources */,
 				E7926A5618FBC16500CD276F /* ESFrameworkCore */,
 				E7C946B218FBD3050034B110 /* ESFrameworkFoundation */,
 				E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */,
@@ -868,11 +857,11 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E7C9469718FBC9500034B110 /* Resources */ = {
+		E714E39318FE796600CAF140 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7C946A118FBC9500034B110 /* InfoPlist.strings in Resources */,
+				E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,7 +869,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7C9472718FBD6940034B110 /* ESFrameworkUIKitResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,6 +1018,13 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E714E39118FE796600CAF140 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7BCF61E18F98614006D920E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1093,25 +1088,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E7C9469518FBC9500034B110 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E7223F4A18FE7FE9006BCC0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E714E39418FE796600CAF140 /* ESFrameworkResources */;
+			targetProxy = E7223F4918FE7FE9006BCC0D /* PBXContainerItemProxy */;
+		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7BCF61D18F98614006D920E /* Core */;
 			targetProxy = E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */;
-		};
-		E7C946AC18FBCD1C0034B110 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E7C9469818FBC9500034B110 /* ESFrameworkUIKitResources */;
-			targetProxy = E7C946AB18FBCD1C0034B110 /* PBXContainerItemProxy */;
 		};
 		E7C946B718FBD30D0034B110 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1136,17 +1124,45 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E7C9469F18FBC9500034B110 /* InfoPlist.strings */ = {
+		E7223F3A18FE7BEC006BCC0D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E7C946A018FBC9500034B110 /* en */,
+				E7223F3918FE7BEC006BCC0D /* en */,
+				E7223F3B18FE7BF3006BCC0D /* zh-Hans */,
 			);
-			name = InfoPlist.strings;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E714E39F18FE796600CAF140 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */;
+			buildSettings = {
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ESFrameworkResources/ESFrameworkResources-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+			};
+			name = Debug;
+		};
+		E714E3A018FE796600CAF140 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ESFrameworkResources/ESFrameworkResources-Prefix.pch";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+			};
+			name = Release;
+		};
 		E7522E1118EC427E0087B95E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1307,41 +1323,6 @@
 			};
 			name = Release;
 		};
-		E7C946A318FBC9500034B110 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */;
-			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ESFrameworkUIKitResources/ESFrameworkUIKitResources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ESFrameworkUIKitResources/ESFrameworkUIKitResources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		E7C946A418FBC9500034B110 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ESFrameworkUIKitResources/ESFrameworkUIKitResources-Prefix.pch";
-				INFOPLIST_FILE = "ESFrameworkUIKitResources/ESFrameworkUIKitResources-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		E7C946B418FBD3050034B110 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1401,6 +1382,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E714E39E18FE796600CAF140 /* Build configuration list for PBXNativeTarget "ESFrameworkResources" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E714E39F18FE796600CAF140 /* Debug */,
+				E714E3A018FE796600CAF140 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E7522DEB18EC427E0087B95E /* Build configuration list for PBXProject "ESFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1460,15 +1450,6 @@
 			buildConfigurations = (
 				E7BCF7BB18F996F5006D920E /* Debug */,
 				E7BCF7BC18F996F5006D920E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E7C946A518FBC9500034B110 /* Build configuration list for PBXNativeTarget "ESFrameworkUIKitResources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E7C946A318FBC9500034B110 /* Debug */,
-				E7C946A418FBC9500034B110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

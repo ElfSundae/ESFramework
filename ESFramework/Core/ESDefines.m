@@ -103,6 +103,16 @@ NSBundle *ESBundleWithName(NSString *bundleName)
         return nil;
 }
 
+NSBundle *ESFWBundle(void)
+{
+        static NSBundle *__es_bundle = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                __es_bundle = ESBundleWithName(@"ESFrameworkResources.bundle");
+        });
+        return __es_bundle;
+}
+
 CGFloat ESStatusBarHeight(void)
 {
         CGRect frame = [UIApplication sharedApplication].statusBarFrame;

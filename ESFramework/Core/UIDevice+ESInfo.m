@@ -21,7 +21,7 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
         // if (NSClassFromString(@"NSByteCountFormatter")) {
         //         return [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
         // }
-        
+
         static const NSString *sOrdersOfMagnitude[] = {
                 @"bytes", @"KB", @"MB", @"GB"
         };
