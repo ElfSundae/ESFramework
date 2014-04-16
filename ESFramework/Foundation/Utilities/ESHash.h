@@ -19,6 +19,12 @@
 - (NSString *)sha1Hash;
 /** Lower case. */
 - (NSString *)sha256Hash;
+
+- (NSData *)base64EncodedData;
+- (NSString *)base64EncodedString;
+- (NSData *)base64DecodedData;
+- (NSString *)base64DecodedString;
+
 @end
 
 @interface NSString (ESHash)
@@ -29,5 +35,10 @@
 - (NSString *)sha1Hash;
 /** Lower case. */
 - (NSString *)sha256Hash;
+
+- (NSData *)base64EncodedData;
+- (NSString *)base64EncodedString;
+- (NSData *)base64DecodedData;
+- (NSString *)base64DecodedString;
 
 @end

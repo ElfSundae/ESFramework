@@ -72,6 +72,8 @@
 /* Begin PBXBuildFile section */
 		E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C9469A18FBC9500034B110 /* CoreFoundation.framework */; };
 		E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7223F3A18FE7BEC006BCC0D /* Localizable.strings */; };
+		E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */; };
+		E7223F4E18FE83D9006BCC0D /* ESTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */; };
 		E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A05D18FE63F4000DCDBD /* NSDate+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A06E18FE63F4000DCDBD /* NSDate+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A05E18FE63F4000DCDBD /* NSDate+ESAdditions.m */; };
 		E757A06F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A05F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -139,7 +141,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E7223F4918FE7FE9006BCC0D /* PBXContainerItemProxy */ = {
+		E7223F4F18FE83F9006BCC0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
 			proxyType = 1;
@@ -235,6 +237,8 @@
 		E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7223F3918FE7BEC006BCC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E7223F3B18FE7BF3006BCC0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTimeIntervalFormatter.h; sourceTree = "<group>"; };
+		E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -452,6 +456,8 @@
 			children = (
 				E757A06818FE63F4000DCDBD /* ESFormatter.h */,
 				E757A06918FE63F4000DCDBD /* ESFormatter.m */,
+				E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */,
+				E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				E7BCF73B18F98F27006D920E /* ESFrameworkFoundation.h in Headers */,
 				E757A07918FE63F4000DCDBD /* ESHash.h in Headers */,
 				E757A07318FE63F4000DCDBD /* NSURL+ESAdditions.h in Headers */,
+				E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */,
 				E757A07118FE63F4000DCDBD /* NSString+ESAdditions.h in Headers */,
 				E757A07518FE63F4000DCDBD /* NSUserDefaults+ESAdditions.h in Headers */,
 				E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */,
@@ -736,7 +743,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E7223F4A18FE7FE9006BCC0D /* PBXTargetDependency */,
 			);
 			name = Core;
 			productName = ESFramework;
@@ -756,6 +762,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E7223F5018FE83F9006BCC0D /* PBXTargetDependency */,
 			);
 			name = Foundation;
 			productName = ESFramework;
@@ -1047,6 +1054,7 @@
 				E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */,
 				E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */,
 				E757A07618FE63F4000DCDBD /* NSUserDefaults+ESAdditions.m in Sources */,
+				E7223F4E18FE83D9006BCC0D /* ESTimeIntervalFormatter.m in Sources */,
 				E757A07018FE63F4000DCDBD /* NSDictionary+ESAdditions.m in Sources */,
 				E757A07218FE63F4000DCDBD /* NSString+ESAdditions.m in Sources */,
 				E757A06E18FE63F4000DCDBD /* NSDate+ESAdditions.m in Sources */,
@@ -1091,10 +1099,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E7223F4A18FE7FE9006BCC0D /* PBXTargetDependency */ = {
+		E7223F5018FE83F9006BCC0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E714E39418FE796600CAF140 /* ESFrameworkResources */;
-			targetProxy = E7223F4918FE7FE9006BCC0D /* PBXContainerItemProxy */;
+			targetProxy = E7223F4F18FE83F9006BCC0D /* PBXContainerItemProxy */;
 		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
