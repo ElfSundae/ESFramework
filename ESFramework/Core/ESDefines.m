@@ -113,28 +113,6 @@ NSBundle *ESFWBundle(void)
         return __es_bundle;
 }
 
-CGFloat ESStatusBarHeight(void)
-{
-        CGRect frame = [UIApplication sharedApplication].statusBarFrame;
-        // Avoid having to check the status bar orientation.
-        return MIN(frame.size.width, frame.size.height);
-}
-
-UIInterfaceOrientation ESInterfaceOrientation(void)
-{
-        return [UIApplication sharedApplication].statusBarOrientation;
-}
-
-CGFloat ESDegreesToRadians(CGFloat degrees)
-{
-        return (degrees * M_PI / 180.0);
-}
-
-CGFloat ESRadiansToDegrees(CGFloat radians)
-{
-        return (radians * 180.0 / M_PI);
-}
-
 CGRect ESFrameOfCenteredViewWithinView(UIView *view, UIView *containerView)
 {
         CGRect rect;

@@ -386,21 +386,31 @@ ES_EXTERN NSBundle *ESFWBundle(void);
 /**
  * Returns the current statusBar's height, in any orientation.
  */
-ES_EXTERN CGFloat ESStatusBarHeight(void);
+ES_INLINE CGFloat ESStatusBarHeight(void) {
+        CGRect frame = [UIApplication sharedApplication].statusBarFrame;
+        // Avoid having to check the status bar orientation.
+        return MIN(frame.size.width, frame.size.height);
+};
 
 /**
  * Returns the application's current interface orientation.
  */
-ES_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
+ES_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
+        return [UIApplication sharedApplication].statusBarOrientation;
+}
 
 /**
  * Convert degrees to radians.
  */
-ES_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
+ES_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
+        return (degrees * M_PI / 180.0);
+}
 /**
  * Convert radians to degrees.
  */
-ES_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
+ES_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
+        return (radians * 180.0 / M_PI);
+}
 
 /**
  * Returns (x, y, w+dx, h+dy);
