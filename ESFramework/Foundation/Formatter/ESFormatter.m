@@ -10,13 +10,4 @@
 
 @implementation ESFormatter
 
-+ (NSString *)stringFromByteCount:(unsigned long long)fileSize
-{
-        NSString *result = @"";
-        if (NSClassFromString(@"NSByteCountFormatter")) {
-                result = [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
-        }
-        return result;
-}
-
 @end

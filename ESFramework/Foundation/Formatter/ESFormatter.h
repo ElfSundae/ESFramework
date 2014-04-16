@@ -10,10 +10,4 @@
 
 @interface ESFormatter : NSObject
 
-/**
- * Formats a number of bytes in a human-readable format.
- * Will create a string showing the size in bytes, KBs, MBs, or GBs.
- */
-+ (NSString *)stringFromByteCount:(unsigned long long)fileSize;
-
 @end

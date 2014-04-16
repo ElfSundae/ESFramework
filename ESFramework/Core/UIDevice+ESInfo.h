@@ -11,6 +11,7 @@
 
 /**
  * Formats a number of bytes in a human-readable format.
+ * Will create a string showing the size in bytes, KBs, MBs, or GBs.
  */
 ES_EXTERN NSString *ESStringFromFileByteCount(unsigned long long fileSize);
 
