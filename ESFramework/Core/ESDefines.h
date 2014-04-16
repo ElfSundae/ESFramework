@@ -479,7 +479,9 @@ ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
 ES_EXTERN NSString *ESPathForTemporary(void);
 ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 
-#pragma mark - Dispatch
+#pragma mark - Dispatch & Block
+
+typedef void (^ESBasicBlock)(void);
 
 ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block);
 ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block);
@@ -510,14 +512,24 @@ ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
 ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
 
 /**
- * Call a selector with multiple arguments.
- * The arguments should be ended with a #nil or #NULL sentinel.
+ * Call a selector with unknown numbers of arguments.
  *
  @code
- id ret = ESInvokeSelector(self, @selector(foo:bar:), @"arg1", @"arg2", nil);
- NSString *ret = ESInvokeSelector([self class], @selector(foo), nil);
+ // trun off compiler warning if there is.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+ 
+ ESInvokeSelector(self, @selector(test), NULL);
+ 
+ NSInteger result = 0;
+ ESInvokeSelector([Foo class], @selector(classMethod:), &result, CGSizeMake(10, 20));
+ 
+ if (ESInvokeSelector(someObject, @selector(someSelector:::), NULL, arg1, arg2, arg3)) {
+        // Invoked OK
+ }
+ 
+#pragma clang diagnostic pop
  @endcode
  */
-ES_EXTERN id ESInvokeSelector(id target, SEL selector, id arguments, ...) NS_REQUIRES_NIL_TERMINATION;
-
+ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 #endif // ESFramework_ESDefines_h
