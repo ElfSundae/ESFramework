@@ -83,5 +83,14 @@ ES_SINGLETON_DEC(sharedApp);
  */
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion;
 
+/**
+ * Clean all HTTP Cookies.
+ */
 + (void)deleteAllHTTPCookies;
+
+/**
+ * Simulate low memory warning.
+ * Don't use this in production because it uses private API
+ */
++ (void)simulateLowMemoryWarning;
 @end

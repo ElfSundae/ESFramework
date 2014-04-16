@@ -6,23 +6,20 @@
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-
-/**
- * Optional Vendor:
- *
- * Required Vendor:
- * 1. Reachability (DDG version) for "UIDevice(ESNetwork)"
- */
-
-
 #ifndef ESFramework_ESFoundation_h
 #define ESFramework_ESFoundation_h
 
-#import "ESHash.h"
+// Additions
 #import "NSString+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"
-#import "NSDictionary+ESAdditions.h"
 #import "NSDate+ESAdditions.h"
+#import "NSDictionary+ESAdditions.h"
+
+// Utilities
+#import "ESHash.h"
+
+// Formatter
+#import "ESFormatter.h"
 
 #endif

@@ -6,14 +6,41 @@
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
+@import CoreTelephony;
+@import CoreGraphics;
 #import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #import "ESDefines.h"
 #import "OpenUDID.h"
+#import "ESValue.h"
 
-@import CoreTelephony;
-@import CoreGraphics;
+NSString *ESStringFromFileByteCount(unsigned long long fileSize)
+{
+        // NSByteCountFormatter uses 1000 step length
+        // if (NSClassFromString(@"NSByteCountFormatter")) {
+        //         return [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
+        // }
+        
+        static const NSString *sOrdersOfMagnitude[] = {
+                @"bytes", @"KB", @"MB", @"GB"
+        };
+        static const NSUInteger sOrdersOfMagnitude_len = sizeof(sOrdersOfMagnitude) / sizeof(sOrdersOfMagnitude[0]);
+        
+        int multiplyFactor = 0;
+        long double convertedValue = (long double)fileSize;
+        while (convertedValue > 1024.0 && multiplyFactor < sOrdersOfMagnitude_len) {
+                convertedValue /= 1024;
+                ++multiplyFactor;
+        }
+        
+        const NSString *token = sOrdersOfMagnitude[multiplyFactor];
+        if (multiplyFactor > 0) {
+                return [NSString stringWithFormat:@"%.2Lf %@", convertedValue, token];
+        } else {
+                return [NSString stringWithFormat:@"%lld %@", fileSize, token];
+        }
+}
 
 @implementation UIDevice (ESInfo)
 
@@ -89,6 +116,32 @@
         });
         
         return __isJailBroken;
+}
+
++ (unsigned long long)diskFreeSize
+{
+	unsigned long long bytes = 0;
+        NSDictionary *fileSystem = [[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL];
+        ESULongLongVal(&bytes, fileSystem[NSFileSystemFreeSize]);
+        return bytes;
+}
+
++ (NSString *)diskFreeSizeString
+{
+        return ESStringFromFileByteCount([self diskFreeSize]);
+}
+
++ (unsigned long long)diskTotalSize
+{
+        unsigned long long bytes = 0;
+        NSDictionary *fileSystem = [[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL];
+        ESULongLongVal(&bytes, fileSystem[NSFileSystemSize]);
+        return bytes;
+}
+
++ (NSString *)diskTotalSizeString
+{
+        return ESStringFromFileByteCount([self diskTotalSize]);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

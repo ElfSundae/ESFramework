@@ -94,6 +94,15 @@ BOOL ESDeviceOSVersionIsAbove7(void)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 
+NSBundle *ESBundleWithName(NSString *bundleName)
+{
+        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                return [NSBundle bundleWithPath:path];
+        }
+        return nil;
+}
+
 CGFloat ESStatusBarHeight(void)
 {
         CGRect frame = [UIApplication sharedApplication].statusBarFrame;

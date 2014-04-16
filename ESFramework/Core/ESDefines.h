@@ -376,6 +376,8 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 #undef _
 #define _(key) ESLocalizedString(key)
 
+ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
+
 /**
  * Returns the current statusBar's height, in any orientation.
  */
