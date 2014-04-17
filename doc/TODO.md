@@ -8,3 +8,6 @@
 * Memory Cache
 * Attributed Label
 * Collections View
+* Crash report
+* App upgrade
+* Push notification
