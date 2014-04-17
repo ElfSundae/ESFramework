@@ -15,6 +15,7 @@
 #import "NSUserDefaults+ESAdditions.h"
 #import "NSDate+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
+#import "NSArray+ESAdditions.h"
 
 // Utilities
 #import "ESHash.h"

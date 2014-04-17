@@ -19,4 +19,60 @@
         return object;
 }
 
+- (void)each:(void (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+                block(key, obj);
+        }];
+}
+
+- (void)each_reversely:(void (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        [self enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(id key, id obj, BOOL *stop) {
+                block(key, obj);
+        }];
+}
+
+- (void)each_concurrently:(void (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        [self enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id key, id obj, BOOL *stop) {
+                block(key, obj);
+        }];
+}
+
+- (id)match:(BOOL (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        NSSet *set = [self keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
+                if (block(key, obj)) {
+                        *stop = YES;
+                        return YES;
+                }
+                return NO;
+        }];
+        return [set anyObject];
+}
+
+- (NSDictionary *)matches:(BOOL (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        NSSet *set = [self keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
+                return block(key, obj);
+        }];
+        NSArray *keys = [set allObjects];
+        NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
+        return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+}
+
+- (NSDictionary *)reject:(BOOL (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        return [self matches:^BOOL(id key, id obj) {
+                return !block(key, obj);
+        }];
+}
+
 @end

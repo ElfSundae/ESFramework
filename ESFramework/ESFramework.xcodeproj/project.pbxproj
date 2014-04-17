@@ -74,6 +74,8 @@
 		E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7223F3A18FE7BEC006BCC0D /* Localizable.strings */; };
 		E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */; };
 		E7223F4E18FE83D9006BCC0D /* ESTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */; };
+		E74A307318FFD22700F91D6D /* NSArray+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E74A307118FFD22700F91D6D /* NSArray+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E74A307418FFD22700F91D6D /* NSArray+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A307218FFD22700F91D6D /* NSArray+ESAdditions.m */; };
 		E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A05D18FE63F4000DCDBD /* NSDate+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A06E18FE63F4000DCDBD /* NSDate+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A05E18FE63F4000DCDBD /* NSDate+ESAdditions.m */; };
 		E757A06F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A05F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -239,6 +241,8 @@
 		E7223F3B18FE7BF3006BCC0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTimeIntervalFormatter.h; sourceTree = "<group>"; };
 		E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTimeIntervalFormatter.m; sourceTree = "<group>"; };
+		E74A307118FFD22700F91D6D /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
+		E74A307218FFD22700F91D6D /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 				E757A05E18FE63F4000DCDBD /* NSDate+ESAdditions.m */,
 				E757A05F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h */,
 				E757A06018FE63F4000DCDBD /* NSDictionary+ESAdditions.m */,
+				E74A307118FFD22700F91D6D /* NSArray+ESAdditions.h */,
+				E74A307218FFD22700F91D6D /* NSArray+ESAdditions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -664,6 +670,7 @@
 				E757A07918FE63F4000DCDBD /* ESHash.h in Headers */,
 				E757A07318FE63F4000DCDBD /* NSURL+ESAdditions.h in Headers */,
 				E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */,
+				E74A307318FFD22700F91D6D /* NSArray+ESAdditions.h in Headers */,
 				E757A07118FE63F4000DCDBD /* NSString+ESAdditions.h in Headers */,
 				E757A07518FE63F4000DCDBD /* NSUserDefaults+ESAdditions.h in Headers */,
 				E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */,
@@ -1051,6 +1058,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E757A07818FE63F4000DCDBD /* ESFormatter.m in Sources */,
+				E74A307418FFD22700F91D6D /* NSArray+ESAdditions.m in Sources */,
 				E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */,
 				E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */,
 				E757A07618FE63F4000DCDBD /* NSUserDefaults+ESAdditions.m in Sources */,
