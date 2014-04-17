@@ -27,7 +27,7 @@
         }];
 }
 
-- (void)each_reversely:(void (^)(id key, id obj))block
+- (void)eachReversely:(void (^)(id key, id obj))block
 {
         NSParameterAssert(block);
         [self enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(id key, id obj, BOOL *stop) {
@@ -35,7 +35,7 @@
         }];
 }
 
-- (void)each_concurrently:(void (^)(id key, id obj))block
+- (void)eachConcurrently:(void (^)(id key, id obj))block
 {
         NSParameterAssert(block);
         [self enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id key, id obj, BOOL *stop) {
@@ -76,3 +76,29 @@
 }
 
 @end
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSMutableDictionary
+@implementation NSMutableDictionary (ESAdditions)
+
+- (void)matchWith:(BOOL (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        NSArray *keys = [[self keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
+                return !block(key, obj);
+        }] allObjects];
+        [self removeObjectsForKeys:keys];
+}
+
+- (void)rejectWith:(BOOL (^)(id key, id obj))block
+{
+        NSParameterAssert(block);
+        [self matchWith:^BOOL(id key, id obj) {
+                return !block(key, obj);
+        }];
+}
+
+@end
+

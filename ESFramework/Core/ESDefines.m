@@ -368,8 +368,8 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         }
 
         NSMethodSignature *signature = invocation.methodSignature;
-        NSInteger argCount = 2;
-        int totalArguments = signature.numberOfArguments;
+        NSUInteger argCount = 2;
+        NSUInteger totalArguments = signature.numberOfArguments;
         
         if (argCount < totalArguments) {
                 va_list argsList;
@@ -443,7 +443,7 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                 va_end(argsList);
         }
         
-        NSCAssert(argCount == totalArguments, @"Invocation arguments count mismatch: %d expected, %d sent.\n", totalArguments, argCount);
+        NSCAssert(argCount == totalArguments, @"Invocation arguments count mismatch: %lu expected, %lu sent.\n", (unsigned long)totalArguments, (unsigned long)argCount);
         
         [invocation invoke];
 

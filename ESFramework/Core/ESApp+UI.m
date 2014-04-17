@@ -10,7 +10,7 @@
 
 @implementation ESApp (UI)
 
-+ (UIViewController *)rootViewControllerForPresenting
++ (UIViewController *)rootViewController
 {
         UIViewController *rootViewController = nil;
         id appDelegate = [UIApplication sharedApplication].delegate;
@@ -24,6 +24,13 @@
         if (![rootViewController isKindOfClass:[UIViewController class]]) {
                 return nil;
         }
+
+        return rootViewController;
+}
+
++ (UIViewController *)rootViewControllerForPresenting
+{
+        UIViewController *rootViewController = [self rootViewController];
         
         if ([rootViewController respondsToSelector:@selector(presentedViewController)]) {
                 while ([rootViewController.presentedViewController isKindOfClass:[UIViewController class]]) {
@@ -34,4 +41,11 @@
         return rootViewController;
 }
 
++ (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion
+{
+        UIViewController *root = [self rootViewController];
+        if (root) {
+                [root dismissViewControllerAnimated:flag completion:completion];
+        }
+}
 @end

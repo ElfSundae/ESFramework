@@ -19,11 +19,11 @@
 
 - (void)each:(void (^)(id key, id obj))block;
 
-- (void)each_reversely:(void (^)(id key, id obj))block;
+- (void)eachReversely:(void (^)(id key, id obj))block;
 /**
  * @see NSArray -each_concurrently
  */
-- (void)each_concurrently:(void (^)(id key, id obj))block;
+- (void)eachConcurrently:(void (^)(id key, id obj))block;
 
 /**
  * Returns the key that first matchs the block;
@@ -35,4 +35,9 @@
  */
 - (NSDictionary *)matches:(BOOL (^)(id key, id obj))block;
 
+@end
+
+@interface NSMutableDictionary (ESAdditions)
+- (void)matchWith:(BOOL (^)(id key, id obj))block;
+- (void)rejectWith:(BOOL (^)(id key, id obj))block;
 @end

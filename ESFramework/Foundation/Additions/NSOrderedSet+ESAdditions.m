@@ -1,18 +1,14 @@
 //
-//  NSArray+ESAdditions.m
+//  NSOrderedSet+ESAdditions.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-17.
+//  Created by Elf Sundae on 14-4-18.
 //  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#import "NSArray+ESAdditions.h"
+#import "NSOrderedSet+ESAdditions.h"
 
-@implementation NSArray (ESAdditions)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Blocks
+@implementation NSOrderedSet (ESAdditions)
 
 - (void)each:(void (^)(id obj, NSUInteger idx))block
 {
@@ -21,7 +17,6 @@
                 block(obj, idx);
         }];
 }
-
 - (void)eachReversely:(void (^)(id obj, NSUInteger idx))block
 {
         NSParameterAssert(block);
@@ -29,7 +24,6 @@
                 block(obj, idx);
         }];
 }
-
 - (void)eachConcurrently:(void (^)(id obj))block
 {
         NSParameterAssert(block);
@@ -38,27 +32,31 @@
         }];
 }
 
-- (id)match:(BOOL (^)(id obj, NSUInteger idx))block
+- (id)match:(BOOL (^)(id obj))block
 {
         NSParameterAssert(block);
         NSUInteger index = [self indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                return block(obj, idx);
+                return block(obj);
         }];
-        if (index == NSNotFound) {
+        if (NSNotFound == index) {
                 return nil;
         }
         return self[index];
 }
 
-- (NSArray *)matches:(BOOL (^)(id obj, NSUInteger idx))block
+- (NSOrderedSet *)matches:(BOOL (^)(id obj, NSUInteger idx))block
 {
         NSParameterAssert(block);
-        return [self objectsAtIndexes:[self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        NSArray *objects = [self objectsAtIndexes:[self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
                 return block(obj, idx);
         }]];
+        if (!objects.count) {
+                return [[self class] orderedSet];
+        }
+        return [[self class] orderedSetWithArray:objects];
 }
 
-- (NSArray *)reject:(BOOL (^)(id obj, NSUInteger idx))block
+- (NSOrderedSet *)reject:(BOOL (^)(id obj, NSUInteger idx))block
 {
         NSParameterAssert(block);
         return [self matches:^BOOL(id obj, NSUInteger idx) {
@@ -68,32 +66,26 @@
 
 @end
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSMutableArray
-
-@implementation NSMutableArray (ESAdditions)
+@implementation NSMutableOrderedSet (ESAdditions)
 
 - (void)matchWith:(BOOL (^)(id obj, NSUInteger idx))block
 {
         NSParameterAssert(block);
-        NSIndexSet *indexes = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        NSIndexSet *set = [self indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
                 return !block(obj, idx);
         }];
-        if (!indexes.count) {
+        if (!set.count) {
                 return;
         }
-        [self removeObjectsAtIndexes:indexes];
+        [self removeObjectsAtIndexes:set];
 }
 
 - (void)rejectWith:(BOOL (^)(id obj, NSUInteger idx))block
 {
         NSParameterAssert(block);
-        return [self matchWith:^BOOL(id obj, NSUInteger idx) {
+        [self matches:^BOOL(id obj, NSUInteger idx) {
                 return !block(obj, idx);
         }];
 }
-
 
 @end

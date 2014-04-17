@@ -16,7 +16,7 @@
 /**
  * Enumerates (Block Enumeration) through an array *reversely* and executes the given block with each object.
  */
-- (void)each_reversely:(void (^)(id obj, NSUInteger idx))block;
+- (void)eachReversely:(void (^)(id obj, NSUInteger idx))block;
 /**
  * Enumerates (Block Enumeration) through an array *concurrently* and executes the given block with each object.
  *
@@ -30,7 +30,7 @@
  * @see http://darkdust.net/writings/objective-c/nsarray-enumeration-performance
  * @see cn_zh: http://www.oschina.net/translate/nsarray-enumeration-performance
  */
-- (void)each_concurrently:(void (^)(id obj))block;
+- (void)eachConcurrently:(void (^)(id obj))block;
 /**
  * Loops through an array to find the object that first matching the block.
  */
@@ -43,4 +43,13 @@
  * Loops through an array to find the objects that does not match the block.
  */
 - (NSArray *)reject:(BOOL (^)(id obj, NSUInteger idx))block;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSMutableArray
+@interface NSMutableArray (ESAdditions)
+- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx))block;
+- (void)rejectWith:(BOOL (^)(id obj, NSUInteger idx))block;
 @end

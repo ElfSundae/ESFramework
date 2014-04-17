@@ -66,9 +66,20 @@ ES_SINGLETON_DEC(sharedApp);
 #pragma mark - UI 
 @interface ESApp (UI)
 /**
+ * The rootViewController of the keyWindow.
+ */
++ (UIViewController *)rootViewController;
+
+/**
  * The real rootViewController for presenting modalViewController.
  */
 + (UIViewController *)rootViewControllerForPresenting;
+
+/**
+ * Dismiss all Modal ViewControllers.
+ */
++ (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

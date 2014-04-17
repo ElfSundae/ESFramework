@@ -83,10 +83,6 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
 {
 #if !TARGET_IPHONE_SIMULATOR
         return [OpenUDID value];
-        Class openUDIDClass = NSClassFromString(@"OpenUDID");
-        if (openUDIDClass) {
-                return (NSString *)ESInvokeSelector(openUDIDClass, @selector(value), nil);
-        }
 #endif
         return @"0000000000000000000000000000000000000000";
 }
