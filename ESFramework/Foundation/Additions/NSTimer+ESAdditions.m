@@ -13,13 +13,13 @@
 + (instancetype)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats
 {
 	NSParameterAssert(block != nil);
-	return [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(_es_timerHandler:) userInfo:[block copy] repeats:inRepeats];
+	return [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(_es_timerHandler:) userInfo:block repeats:inRepeats];
 }
 
 + (instancetype)timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats
 {
 	NSParameterAssert(block != nil);
-	return [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(_es_timerHandler:) userInfo:[block copy] repeats:inRepeats];
+	return [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(_es_timerHandler:) userInfo:block repeats:inRepeats];
 }
 
 + (void)_es_timerHandler:(NSTimer *)timer
@@ -27,8 +27,6 @@
         void (^block)(NSTimer *) = [timer userInfo];
         if (block) {
                 block(timer);
-        } else {
-                NSLog(@"++++");
         }
 }
 
