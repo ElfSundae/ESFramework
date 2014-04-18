@@ -172,9 +172,9 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
  @endcode
  */
 #if __es_arc_enabled
-        #define ES_WEAK_VAR(_var, _weak_var)    __es_weak __es_typeof(_var) _weak_var = _var
+        #define ES_WEAK_VAR(var, _weak_var)    __es_weak __es_typeof(var) _weak_var = var
 #else
-        #define ES_WEAK_VAR(_var, _weak_var)    __block __es_typeof(_var) _weak_var = _var
+        #define ES_WEAK_VAR(var, _weak_var)    __block __es_typeof(var) _weak_var = var
 #endif
 #define ES_STRONG_VAR(_weak_var, _strong_var)        __es_typeof(_weak_var) _strong_var = _weak_var
 #define ES_STRONG_VAR_CHECK_NULL(_weak_var, _strong_var)        ES_STRONG_VAR(_weak_var, _strong_var); if(!_strong_var) return;
@@ -506,6 +506,7 @@ ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 #pragma mark - Dispatch & Block
 
 typedef void (^ESBasicBlock)(void);
+typedef void (^ESHandlerBlock)(id sender);
 
 ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block);
 ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block);
@@ -556,4 +557,56 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
  @endcode
  */
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSObject+ESAssociatedObject
+/**
+ * Get/Set associated objects. It's useful to add properties to a class's category.
+ *
+ @code
+ 
+ @interface SomeClass (additions)
+ @property (nonatomic, es_weak_property) __es_weak id<SomeDelegate> delegate;
+ @property (nonatomic, strong) UIView *view;
+ @end
+ 
+ // SomeClass+additions.m
+ 
+ static char _delegateKey;
+ // OR
+ static const void *_viewKey = &_viewKey;
+ 
+ @implementation SomeClass (additions)
+ - (id<SomeDelegate>)delegate
+ {
+        return [self getAssociatedObject:&_delegateKey];
+ }
+ - (void)setDelegate:(id<SomeDelegate>)delegate
+ {
+        [self setAssociatedObject_nonatomic_weak:delegate key:&_delegateKey];
+ }
+ - (UIView *)view
+ {
+        return [self getAssociatedObject:_viewKey];
+ }
+ - (void)setView:(UIView *)view
+ {
+        [self setAssociatedObject_nonatomic_retain:view key:_viewKey];
+ }
+ @end
+ 
+ @endcode
+ */
+
+@interface NSObject (ESAssociatedObject)
+- (id)getAssociatedObject:(const void *)key;
+- (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key;
+- (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
+- (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
+- (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key;
+- (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key;
+- (void)removeAllAssociatedObjects;
+@end
+
 #endif // ESFramework_ESDefines_h

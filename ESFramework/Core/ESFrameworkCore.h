@@ -10,7 +10,6 @@
 #define ESFramework_ESFrameworkCore_h
 
 #import "ESDefines.h"
-#import "NSObject+ESAssociatedObject.h"
 #import "ESApp.h"
 #import "ESValue.h"
 #import "UIDevice+ESInfo.h"

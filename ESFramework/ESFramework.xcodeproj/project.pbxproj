@@ -115,8 +115,6 @@
 		E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8918FDDC3F00487E34 /* UIView+ESAdditions.m */; };
 		E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8D18FDDC3F00487E34 /* ESAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8E18FDDC3F00487E34 /* ESAnimations.m */; };
-		E796BC981900E62300F692C0 /* NSObject+ESAssociatedObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E796BC961900E62300F692C0 /* NSObject+ESAssociatedObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E796BC991900E62300F692C0 /* NSObject+ESAssociatedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E796BC971900E62300F692C0 /* NSObject+ESAssociatedObject.m */; };
 		E7BCF63718F98614006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7BCF67518F98B92006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7BCF6B318F98C27006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -293,8 +291,6 @@
 		E793AB8918FDDC3F00487E34 /* UIView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB8D18FDDC3F00487E34 /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
 		E793AB8E18FDDC3F00487E34 /* ESAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAnimations.m; sourceTree = "<group>"; };
-		E796BC961900E62300F692C0 /* NSObject+ESAssociatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAssociatedObject.h"; sourceTree = "<group>"; };
-		E796BC971900E62300F692C0 /* NSObject+ESAssociatedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAssociatedObject.m"; sourceTree = "<group>"; };
 		E7BCF65618F98615006D920E /* ESFrameworkCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoreDebug.xcconfig; sourceTree = "<group>"; };
 		E7BCF69418F98B92006D920E /* ESFrameworkFoundation.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkFoundation.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -547,8 +543,6 @@
 				E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */,
 				E7C9472D18FBE0530034B110 /* ESDefines.h */,
 				E7C9472E18FBE0530034B110 /* ESDefines.m */,
-				E796BC961900E62300F692C0 /* NSObject+ESAssociatedObject.h */,
-				E796BC971900E62300F692C0 /* NSObject+ESAssociatedObject.m */,
 				E7BCF71118F98ED6006D920E /* ESApp.h */,
 				E7BCF71218F98ED6006D920E /* ESApp.m */,
 				E7BCF71318F98ED6006D920E /* ESApp+Helper.m */,
@@ -683,7 +677,6 @@
 				E7BCF71C18F98ED6006D920E /* ESApp.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
 				E74A308B1900C88A00F91D6D /* UIView+ESShortcut.h in Headers */,
-				E796BC981900E62300F692C0 /* NSObject+ESAssociatedObject.h in Headers */,
 				E7BCF7C618FA5AB1006D920E /* UIDevice+ESInfo.h in Headers */,
 				E7C9472F18FBE0530034B110 /* ESDefines.h in Headers */,
 			);
@@ -1074,7 +1067,6 @@
 				E7C9473018FBE0530034B110 /* ESDefines.m in Sources */,
 				E7BCF7C318F99825006D920E /* ESValue.m in Sources */,
 				E74A308A1900C88A00F91D6D /* UIAlertView+ESBlock.m in Sources */,
-				E796BC991900E62300F692C0 /* NSObject+ESAssociatedObject.m in Sources */,
 				E7BCF71E18F98ED6006D920E /* ESApp.m in Sources */,
 				E7FEF4FA18FA7114006E1682 /* OpenUDID.m in Sources */,
 				E7BCF72018F98ED6006D920E /* ESApp+Helper.m in Sources */,
