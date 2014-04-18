@@ -18,7 +18,9 @@ ES_SINGLETON_IMP(sharedApp);
 
 + (void)load
 {
-        [self sharedApp];
+        @autoreleasepool {
+                [self sharedApp];
+        }
 }
 
 - (id)init

@@ -22,7 +22,8 @@
  // SomeClass+additions.m
  
  static char _delegateKey;
- static char _viewKey;
+ // OR
+ static void *_viewKey = &_viewKey;
  
  @implementation SomeClass (additions)
  - (id<SomeDelegate>)delegate
@@ -35,11 +36,11 @@
  }
  - (UIView *)view
  {
-        return [self getAssociatedObject:&_viewKey];
+        return [self getAssociatedObject:_viewKey];
  }
  - (void)setView:(UIView *)view
  {
-        [self setAssociatedObject_nonatomic_retain:view key:&_viewKey];
+        [self setAssociatedObject_nonatomic_retain:view key:_viewKey];
  }
  @end
  
@@ -54,5 +55,6 @@
 - (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
 - (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key;
 - (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key;
+- (void)removeAllAssociatedObjects;
 
 @end

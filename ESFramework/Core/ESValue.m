@@ -14,10 +14,12 @@ static NSNumberFormatter *__sharedNumberFormatter = nil;
 
 + (void)load
 {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __sharedNumberFormatter = [[NSNumberFormatter alloc] init];
-        });
+        @autoreleasepool {
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                        __sharedNumberFormatter = [[NSNumberFormatter alloc] init];
+                });
+        }
 }
 
 @end

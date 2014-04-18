@@ -56,4 +56,9 @@
         objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY);
 }
 
+- (void)removeAllAssociatedObjects
+{
+        objc_removeAssociatedObjects(self);
+}
+
 @end
