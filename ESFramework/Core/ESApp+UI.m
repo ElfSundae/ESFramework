@@ -10,32 +10,39 @@
 
 @implementation ESApp (UI)
 
-+ (UIViewController *)rootViewController
++ (UIWindow *)keyWindow
 {
-        UIViewController *rootViewController = nil;
-        id appDelegate = [UIApplication sharedApplication].delegate;
-        if ([appDelegate respondsToSelector:@selector(window)]) {
-                rootViewController = [(UIWindow *)[appDelegate valueForKey:@"window"] rootViewController];
-                if (!rootViewController) {
-                        rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+        static UIWindow *__gKeyWindow = nil;
+        if (!__gKeyWindow) {
+                id delegate = [UIApplication sharedApplication].delegate;
+                if ([delegate respondsToSelector:@selector(window)]) {
+                        __gKeyWindow = (UIWindow *)[delegate valueForKey:@"window"];
                 }
         }
         
-        if (![rootViewController isKindOfClass:[UIViewController class]]) {
-                return nil;
+        if (__gKeyWindow) {
+                return __gKeyWindow;
         }
+        
+        return [UIApplication sharedApplication].keyWindow;
+        
+}
 
-        return rootViewController;
++ (UIViewController *)rootViewController
+{
+        UIViewController *rootViewController = [self keyWindow].rootViewController;
+        if ([rootViewController isKindOfClass:[UIViewController class]]) {
+                return rootViewController;
+        }
+        return nil;
 }
 
 + (UIViewController *)rootViewControllerForPresenting
 {
         UIViewController *rootViewController = [self rootViewController];
         
-        if ([rootViewController respondsToSelector:@selector(presentedViewController)]) {
-                while ([rootViewController.presentedViewController isKindOfClass:[UIViewController class]]) {
-                        rootViewController = rootViewController.presentedViewController;
-                }
+        while ([rootViewController.presentedViewController isKindOfClass:[UIViewController class]]) {
+                rootViewController = rootViewController.presentedViewController;
         }
         
         return rootViewController;
@@ -43,9 +50,7 @@
 
 + (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion
 {
-        UIViewController *root = [self rootViewController];
-        if (root) {
-                [root dismissViewControllerAnimated:flag completion:completion];
-        }
+        [[self rootViewController] dismissViewControllerAnimated:flag completion:completion];
 }
+
 @end
