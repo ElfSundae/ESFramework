@@ -70,6 +70,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		E700822D1902DDA200C6931D /* ESButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E700822B1902DDA200C6931D /* ESButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E700822E1902DDA200C6931D /* ESButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E700822C1902DDA200C6931D /* ESButton.m */; };
 		E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */; };
 		E70F7E64190142BE007A6ACB /* UIControl+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70F7E6819029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E70F7E6619029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -107,14 +109,12 @@
 		E757A07818FE63F4000DCDBD /* ESFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06918FE63F4000DCDBD /* ESFormatter.m */; };
 		E757A07918FE63F4000DCDBD /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06B18FE63F4000DCDBD /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
-		E78F59B31902D823002116EF /* UIButton+ESStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = E78F59B11902D823002116EF /* UIButton+ESStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E78F59B41902D823002116EF /* UIButton+ESStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E78F59B21902D823002116EF /* UIButton+ESStyle.m */; };
 		E793AB7618FDD03300487E34 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB7418FDD03300487E34 /* SwipeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB7718FDD03300487E34 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB7518FDD03300487E34 /* SwipeView.m */; };
 		E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB9418FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.m */; };
-		E793AB9518FDDC3F00487E34 /* UIColor+ESFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8418FDDC3F00487E34 /* UIColor+ESFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E793AB9618FDDC3F00487E34 /* UIColor+ESFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8518FDDC3F00487E34 /* UIColor+ESFormat.m */; };
+		E793AB9518FDDC3F00487E34 /* UIColor+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8418FDDC3F00487E34 /* UIColor+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E793AB9618FDDC3F00487E34 /* UIColor+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8518FDDC3F00487E34 /* UIColor+ESAdditions.m */; };
 		E793AB9718FDDC3F00487E34 /* UIImage+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8618FDDC3F00487E34 /* UIImage+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8718FDDC3F00487E34 /* UIImage+ESAdditions.m */; };
 		E793AB9918FDDC3F00487E34 /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8818FDDC3F00487E34 /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -248,6 +248,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E700822B1902DDA200C6931D /* ESButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESButton.h; sourceTree = "<group>"; };
+		E700822C1902DDA200C6931D /* ESButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESButton.m; sourceTree = "<group>"; };
 		E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
 		E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E70F7E6619029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
@@ -288,15 +290,13 @@
 		E757A06918FE63F4000DCDBD /* ESFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFormatter.m; sourceTree = "<group>"; };
 		E757A06B18FE63F4000DCDBD /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
 		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
-		E78F59B11902D823002116EF /* UIButton+ESStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ESStyle.h"; sourceTree = "<group>"; };
-		E78F59B21902D823002116EF /* UIButton+ESStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ESStyle.m"; sourceTree = "<group>"; };
 		E793AB0C18FDCF5A00487E34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E793AB7418FDD03300487E34 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwipeView.h; path = SwipeView/SwipeView.h; sourceTree = "<group>"; };
 		E793AB7518FDD03300487E34 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = SwipeView/SwipeView.m; sourceTree = "<group>"; };
 		E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
 		E793AB8318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
-		E793AB8418FDDC3F00487E34 /* UIColor+ESFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESFormat.h"; sourceTree = "<group>"; };
-		E793AB8518FDDC3F00487E34 /* UIColor+ESFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESFormat.m"; sourceTree = "<group>"; };
+		E793AB8418FDDC3F00487E34 /* UIColor+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESAdditions.h"; sourceTree = "<group>"; };
+		E793AB8518FDDC3F00487E34 /* UIColor+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB8618FDDC3F00487E34 /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
 		E793AB8718FDDC3F00487E34 /* UIImage+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB8818FDDC3F00487E34 /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
@@ -510,8 +510,8 @@
 		E78F59B01902D806002116EF /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				E78F59B11902D823002116EF /* UIButton+ESStyle.h */,
-				E78F59B21902D823002116EF /* UIButton+ESStyle.m */,
+				E700822B1902DDA200C6931D /* ESButton.h */,
+				E700822C1902DDA200C6931D /* ESButton.m */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -543,8 +543,8 @@
 				E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */,
 				E70F7E6619029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h */,
 				E70F7E6719029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m */,
-				E793AB8418FDDC3F00487E34 /* UIColor+ESFormat.h */,
-				E793AB8518FDDC3F00487E34 /* UIColor+ESFormat.m */,
+				E793AB8418FDDC3F00487E34 /* UIColor+ESAdditions.h */,
+				E793AB8518FDDC3F00487E34 /* UIColor+ESAdditions.m */,
 				E793AB8618FDDC3F00487E34 /* UIImage+ESAdditions.h */,
 				E793AB8718FDDC3F00487E34 /* UIImage+ESAdditions.m */,
 				E793AB8818FDDC3F00487E34 /* UIView+ESAdditions.h */,
@@ -732,17 +732,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E700822D1902DDA200C6931D /* ESButton.h in Headers */,
 				E70F7E6819029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h in Headers */,
 				E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */,
 				E70F7E64190142BE007A6ACB /* UIControl+ESAdditions.h in Headers */,
-				E793AB9518FDDC3F00487E34 /* UIColor+ESFormat.h in Headers */,
+				E793AB9518FDDC3F00487E34 /* UIColor+ESAdditions.h in Headers */,
 				E793AB9918FDDC3F00487E34 /* UIView+ESAdditions.h in Headers */,
 				E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */,
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E793AB7618FDD03300487E34 /* SwipeView.h in Headers */,
 				E793AB9718FDDC3F00487E34 /* UIImage+ESAdditions.h in Headers */,
 				E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */,
-				E78F59B31902D823002116EF /* UIButton+ESStyle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,12 +1132,12 @@
 				E793AB7718FDD03300487E34 /* SwipeView.m in Sources */,
 				E7C9475218FC7E7C0034B110 /* ESBadgeView.m in Sources */,
 				E70F7E6919029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m in Sources */,
-				E78F59B41902D823002116EF /* UIButton+ESStyle.m in Sources */,
+				E700822E1902DDA200C6931D /* ESButton.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
 				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
 				E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */,
 				E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */,
-				E793AB9618FDDC3F00487E34 /* UIColor+ESFormat.m in Sources */,
+				E793AB9618FDDC3F00487E34 /* UIColor+ESAdditions.m in Sources */,
 				E793AB9418FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
