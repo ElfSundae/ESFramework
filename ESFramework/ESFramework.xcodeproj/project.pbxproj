@@ -70,6 +70,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */; };
+		E70F7E64190142BE007A6ACB /* UIControl+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C9469A18FBC9500034B110 /* CoreFoundation.framework */; };
 		E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7223F3A18FE7BEC006BCC0D /* Localizable.strings */; };
 		E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */; };
@@ -242,6 +244,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
+		E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7223F3918FE7BEC006BCC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E7223F3B18FE7BF3006BCC0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -518,6 +522,8 @@
 			children = (
 				E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */,
 				E793AB8318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.m */,
+				E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */,
+				E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */,
 				E793AB8418FDDC3F00487E34 /* UIColor+ESFormat.h */,
 				E793AB8518FDDC3F00487E34 /* UIColor+ESFormat.m */,
 				E793AB8618FDDC3F00487E34 /* UIImage+ESAdditions.h */,
@@ -707,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */,
+				E70F7E64190142BE007A6ACB /* UIControl+ESAdditions.h in Headers */,
 				E793AB9518FDDC3F00487E34 /* UIColor+ESFormat.h in Headers */,
 				E793AB9918FDDC3F00487E34 /* UIView+ESAdditions.h in Headers */,
 				E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */,
@@ -1103,6 +1110,7 @@
 				E793AB7718FDD03300487E34 /* SwipeView.m in Sources */,
 				E7C9475218FC7E7C0034B110 /* ESBadgeView.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
+				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
 				E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */,
 				E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */,
 				E793AB9618FDDC3F00487E34 /* UIColor+ESFormat.m in Sources */,
