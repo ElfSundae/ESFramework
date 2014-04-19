@@ -19,7 +19,7 @@ ES_SINGLETON_IMP(sharedApp);
 + (void)load
 {
         @autoreleasepool {
-                [self sharedApp];
+                [self sharedApp];       
         }
 }
 
@@ -28,6 +28,10 @@ ES_SINGLETON_IMP(sharedApp);
         self = [super init];
         if (self) {
                 [[self class] isFreshLaunch:nil];
+                ES_WEAK_VAR(self, _weakSelf);
+                [self setNotificationHandler:^(NSNotification *notification) {
+                        [_weakSelf enableMultitasking];
+                } name:UIApplicationDidFinishLaunchingNotification object:nil];
         }
         return self;
 }

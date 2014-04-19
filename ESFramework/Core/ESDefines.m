@@ -504,4 +504,51 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         objc_removeAssociatedObjects(self);
 }
 
+//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+
+@end
+
+@interface NSObject (_ESObserverInternal)
+@property (nonatomic, strong) NSMutableDictionary *__es_notificationHandlers;
+@end
+static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
+@implementation NSObject (ESObserver)
+- (void)set__es_notificationHandlers:(NSMutableDictionary *)handlers
+{
+        [self setAssociatedObject_nonatomic_retain:handlers key:__es_notificationHandlersKey];
+}
+- (NSMutableDictionary *)__es_notificationHandlers
+{
+        NSMutableDictionary *dict = [self getAssociatedObject:__es_notificationHandlersKey];
+        if (!dict) {
+                dict = [NSMutableDictionary dictionary];
+                [self set__es_notificationHandlers:dict];
+        }
+        return dict;
+}
+- (void)__es_notificationHandler:(NSNotification *)notification
+{
+        ESNotificationHandler handler = self.__es_notificationHandlers[notification.name];
+        if (handler) {
+                handler(notification);
+        }
+}
+
+- (void)setNotificationHandler:(ESNotificationHandler)handler name:(NSString *)name object:(id)object
+{
+        if (name) {
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:name object:nil];
+                [self.__es_notificationHandlers removeObjectForKey:name];
+                if (handler) {
+                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(__es_notificationHandler:) name:name object:nil];
+                        [self.__es_notificationHandlers setObject:[handler copy] forKey:name];
+                }
+        }
+        
+        if (!handler && !name) {
+                // Remove all notification handlers
+                [[NSNotificationCenter defaultCenter] removeObserver:self];
+        }
+}
+
 @end

@@ -609,4 +609,14 @@ ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 - (void)removeAllAssociatedObjects;
 @end
 
+typedef void (^ESNotificationHandler)(NSNotification *notification);
+@interface NSObject (ESObserver)
+/**
+ * Set #self to NSNotificationCenter observer.
+ * #handler may be #nil to stop handling the notification.
+ * If #handler and #name both are nil, it will remove all observers from NSNotificationCenter.
+ */
+- (void)setNotificationHandler:(ESNotificationHandler)handler name:(NSString *)name object:(id)object;
+@end
+
 #endif // ESFramework_ESDefines_h
