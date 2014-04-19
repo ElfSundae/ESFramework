@@ -107,6 +107,8 @@
 		E757A07818FE63F4000DCDBD /* ESFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06918FE63F4000DCDBD /* ESFormatter.m */; };
 		E757A07918FE63F4000DCDBD /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06B18FE63F4000DCDBD /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
+		E78F59B31902D823002116EF /* UIButton+ESStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = E78F59B11902D823002116EF /* UIButton+ESStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E78F59B41902D823002116EF /* UIButton+ESStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E78F59B21902D823002116EF /* UIButton+ESStyle.m */; };
 		E793AB7618FDD03300487E34 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB7418FDD03300487E34 /* SwipeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB7718FDD03300487E34 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB7518FDD03300487E34 /* SwipeView.m */; };
 		E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +288,8 @@
 		E757A06918FE63F4000DCDBD /* ESFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFormatter.m; sourceTree = "<group>"; };
 		E757A06B18FE63F4000DCDBD /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
 		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
+		E78F59B11902D823002116EF /* UIButton+ESStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ESStyle.h"; sourceTree = "<group>"; };
+		E78F59B21902D823002116EF /* UIButton+ESStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ESStyle.m"; sourceTree = "<group>"; };
 		E793AB0C18FDCF5A00487E34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E793AB7418FDD03300487E34 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwipeView.h; path = SwipeView/SwipeView.h; sourceTree = "<group>"; };
 		E793AB7518FDD03300487E34 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = SwipeView/SwipeView.m; sourceTree = "<group>"; };
@@ -503,6 +507,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		E78F59B01902D806002116EF /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				E78F59B11902D823002116EF /* UIButton+ESStyle.h */,
+				E78F59B21902D823002116EF /* UIButton+ESStyle.m */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
 		E793AAE418FDCF5A00487E34 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,6 +606,7 @@
 			isa = PBXGroup;
 			children = (
 				E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */,
+				E78F59B01902D806002116EF /* Button */,
 				E793AB7D18FDDC3F00487E34 /* Additions */,
 				E793AB8C18FDDC3F00487E34 /* Animations */,
 				E7C9474E18FC7E650034B110 /* BadgeView */,
@@ -728,6 +742,7 @@
 				E793AB7618FDD03300487E34 /* SwipeView.h in Headers */,
 				E793AB9718FDDC3F00487E34 /* UIImage+ESAdditions.h in Headers */,
 				E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */,
+				E78F59B31902D823002116EF /* UIButton+ESStyle.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,6 +1132,7 @@
 				E793AB7718FDD03300487E34 /* SwipeView.m in Sources */,
 				E7C9475218FC7E7C0034B110 /* ESBadgeView.m in Sources */,
 				E70F7E6919029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m in Sources */,
+				E78F59B41902D823002116EF /* UIButton+ESStyle.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
 				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
 				E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */,

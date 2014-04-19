@@ -1,9 +1,9 @@
 //
-//  ESFoundation.h
+//  ESFrameworkFoundation.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-2.
-//  Copyright (c) 2014年 www.0x123.com. All rights reserved.
+//  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
 #ifndef ESFramework_ESFoundation_h
@@ -25,5 +25,7 @@
 
 // Formatter
 #import "ESFormatter.h"
+
+#define kESFrameworkFoundationVersion @"0.1.0"
 
 #endif

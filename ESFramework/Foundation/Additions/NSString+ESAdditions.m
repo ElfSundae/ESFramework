@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-6.
-//  Copyright (c) 2014年 www.0x123.com. All rights reserved.
+//  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
 #import "NSString+ESAdditions.h"
@@ -31,6 +31,11 @@
 - (NSString *)trim
 {
         return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (BOOL)isEmpty
+{
+        return [self isEqualToString:@""];
 }
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";

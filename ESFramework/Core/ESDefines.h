@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-2.
-//  Copyright (c) 2014年 www.0x123.com. All rights reserved.
+//  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
 #ifndef ESFramework_ESDefines_h
@@ -24,11 +24,6 @@
 #endif
 
 #define ES_INLINE       NS_INLINE
-
-/**
- * ESFramework version.
- */
-ES_EXTERN NSString *const ESFrameworkVersion;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

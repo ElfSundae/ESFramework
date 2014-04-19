@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-3.
-//  Copyright (c) 2014年 www.0x123.com. All rights reserved.
+//  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
 #import "ESDefines.h"
@@ -15,8 +15,6 @@
 #if !__has_feature(objc_instancetype)
 #error "ESFramework requires Xcode5 to build."
 #endif
-
-NSString *const ESFrameworkVersion = @"0.1.0";
 
 NSInteger ESMaxLogLevel = ESLOGLEVEL_INFO;
 
