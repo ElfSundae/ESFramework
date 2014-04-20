@@ -65,6 +65,8 @@ ES_SINGLETON_DEC(sharedApp);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UI 
 @interface ESApp (UI)
+
++ (UIWindow *)keyWindow;
 /**
  * The rootViewController of the keyWindow.
  */
