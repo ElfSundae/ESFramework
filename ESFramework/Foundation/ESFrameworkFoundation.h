@@ -24,7 +24,6 @@
 #import "ESHash.h"
 
 // Formatter
-#import "ESFormatter.h"
 
 #define kESFrameworkFoundationVersion @"0.1.0"
 

@@ -78,8 +78,6 @@
 		E70F7E6919029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E70F7E6719029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m */; };
 		E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C9469A18FBC9500034B110 /* CoreFoundation.framework */; };
 		E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7223F3A18FE7BEC006BCC0D /* Localizable.strings */; };
-		E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */; };
-		E7223F4E18FE83D9006BCC0D /* ESTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */; };
 		E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E74A307318FFD22700F91D6D /* NSArray+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E74A307118FFD22700F91D6D /* NSArray+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E74A307418FFD22700F91D6D /* NSArray+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E74A307218FFD22700F91D6D /* NSArray+ESAdditions.m */; };
@@ -105,8 +103,6 @@
 		E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */; };
 		E757A07518FE63F4000DCDBD /* NSUserDefaults+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06518FE63F4000DCDBD /* NSUserDefaults+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07618FE63F4000DCDBD /* NSUserDefaults+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06618FE63F4000DCDBD /* NSUserDefaults+ESAdditions.m */; };
-		E757A07718FE63F4000DCDBD /* ESFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06818FE63F4000DCDBD /* ESFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E757A07818FE63F4000DCDBD /* ESFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06918FE63F4000DCDBD /* ESFormatter.m */; };
 		E757A07918FE63F4000DCDBD /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06B18FE63F4000DCDBD /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
 		E793AB7618FDD03300487E34 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB7418FDD03300487E34 /* SwipeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -257,8 +253,6 @@
 		E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7223F3918FE7BEC006BCC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E7223F3B18FE7BF3006BCC0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTimeIntervalFormatter.h; sourceTree = "<group>"; };
-		E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		E74A307118FFD22700F91D6D /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E74A307218FFD22700F91D6D /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E74A3075190064B100F91D6D /* NSSet+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+ESAdditions.h"; sourceTree = "<group>"; };
@@ -286,8 +280,6 @@
 		E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
 		E757A06518FE63F4000DCDBD /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
 		E757A06618FE63F4000DCDBD /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
-		E757A06818FE63F4000DCDBD /* ESFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFormatter.h; sourceTree = "<group>"; };
-		E757A06918FE63F4000DCDBD /* ESFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESFormatter.m; sourceTree = "<group>"; };
 		E757A06B18FE63F4000DCDBD /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
 		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
 		E793AB0C18FDCF5A00487E34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -490,10 +482,6 @@
 		E757A06718FE63F4000DCDBD /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
-				E757A06818FE63F4000DCDBD /* ESFormatter.h */,
-				E757A06918FE63F4000DCDBD /* ESFormatter.m */,
-				E7223F4B18FE83D9006BCC0D /* ESTimeIntervalFormatter.h */,
-				E7223F4C18FE83D9006BCC0D /* ESTimeIntervalFormatter.m */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -719,12 +707,10 @@
 				E757A07918FE63F4000DCDBD /* ESHash.h in Headers */,
 				E74A3077190064B100F91D6D /* NSSet+ESAdditions.h in Headers */,
 				E757A07318FE63F4000DCDBD /* NSURL+ESAdditions.h in Headers */,
-				E7223F4D18FE83D9006BCC0D /* ESTimeIntervalFormatter.h in Headers */,
 				E74A307318FFD22700F91D6D /* NSArray+ESAdditions.h in Headers */,
 				E757A07118FE63F4000DCDBD /* NSString+ESAdditions.h in Headers */,
 				E757A07518FE63F4000DCDBD /* NSUserDefaults+ESAdditions.h in Headers */,
 				E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */,
-				E757A07718FE63F4000DCDBD /* ESFormatter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1111,14 +1097,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E74A30801900733000F91D6D /* NSTimer+ESAdditions.m in Sources */,
-				E757A07818FE63F4000DCDBD /* ESFormatter.m in Sources */,
 				E74A3078190064B100F91D6D /* NSSet+ESAdditions.m in Sources */,
 				E74A307418FFD22700F91D6D /* NSArray+ESAdditions.m in Sources */,
 				E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */,
 				E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */,
 				E74A307C19006DD500F91D6D /* NSOrderedSet+ESAdditions.m in Sources */,
 				E757A07618FE63F4000DCDBD /* NSUserDefaults+ESAdditions.m in Sources */,
-				E7223F4E18FE83D9006BCC0D /* ESTimeIntervalFormatter.m in Sources */,
 				E757A07018FE63F4000DCDBD /* NSDictionary+ESAdditions.m in Sources */,
 				E757A07218FE63F4000DCDBD /* NSString+ESAdditions.m in Sources */,
 				E757A06E18FE63F4000DCDBD /* NSDate+ESAdditions.m in Sources */,
