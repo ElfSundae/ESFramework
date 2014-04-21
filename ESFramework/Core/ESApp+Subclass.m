@@ -12,7 +12,7 @@
 
 - (void)setupRootViewController
 {
-        _rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
 }
 
 @end

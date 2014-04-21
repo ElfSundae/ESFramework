@@ -72,7 +72,7 @@
 #pragma clang diagnostic pop
         result[@"app_name"] = [self displayName];
         result[@"app_version"] = [self appVersion];
-        result[@"app_id"] = [self bundleIdentifier];
+        result[@"app_identifier"] = [self bundleIdentifier];
         result[@"app_channel"] = [self appChannel];
         
         return result;
@@ -86,6 +86,7 @@
                 NSString *ua = [NSUserDefaults objectForKey:@"UserAgent"];
                 __gUserAgent = [NSString stringWithFormat:@"%@", ua];
         });
+        NSLog(@"%@", __gUserAgent);
         return __gUserAgent;
 }
 

@@ -11,13 +11,16 @@
 #import "ESDefines.h"
 
 @interface ESApp : UIResponder
-{
-        UIViewController *_rootViewController;
-}
+__ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
+/**
+ * Returns the application delegate.
+ */
 + (instancetype)sharedApp;
-- (UIApplication *)application;
 
+/*!
+ * To access these vars, your AppDelegate must be inherited from ESApp
+ */
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UIViewController *rootViewController;
 @property (nonatomic, strong) NSDictionary *remoteNotification;
@@ -180,6 +183,10 @@
 - (void)setupRootViewController;
 /*!
 
+ // Put into your app delegate's implementation .m file.
+ + (void)load { @autoreleasepool { [self sharedApp]; } }
+ 
+ 
  // Call super, do special initiations, then return YES.
  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
  

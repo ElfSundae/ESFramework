@@ -21,11 +21,24 @@
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
         [self.window makeKeyAndVisible];
         
+        [self setupRootViewController];
         self.window.rootViewController = self.rootViewController;
         
-        if (launchOptions) {
-                self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
-        }        
+        ES_WEAK_VAR(self, _self);
+        ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_DEFAULT, ^{
+                [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : [[self class] userAgent]}];
+                [[_self class] enableMultitasking];
+                
+                if (launchOptions) {
+                        _self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+                }
+                
+                if (_self.remoteNotification) {
+                        ESDispatchAsyncOnMainThread(^{
+                                [_self applicationDidReceiveRemoteNotification:_self.remoteNotification];
+                        });
+                }
+        });
         
         return YES;
 }
@@ -57,10 +70,5 @@
 {
         [self applicationDidReceiveRemoteNotification:userInfo];
 }
-
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
-//{
-//        [self applicationDidReceiveRemoteNotification:userInfo];
-//}
 
 @end

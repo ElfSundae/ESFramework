@@ -20,7 +20,7 @@
                 [NSException raise:@"ESAppIsNotApplicationDelegateException" format:@"To use this method, the application delegate must be inherited from ESApp."];
         }
         self._remoteNotificationRegisterResultHandler = hander;
-        [self.application registerForRemoteNotificationTypes:types];
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:types];
 }
 
 - (void)registerRemoteNotificationWithHandler:(ESHandlerBlock)handler
@@ -30,6 +30,7 @@
 
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+        NSLogInfo(@"remote notification:\n%@", userInfo);
         self.remoteNotification = userInfo;
         [self clearApplicationIconBadgeNumber];
 }

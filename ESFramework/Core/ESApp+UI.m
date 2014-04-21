@@ -21,7 +21,7 @@
         }
         
         if (!__gKeyWindow) {
-                // maybe the #keyWindow is a temporary keyWindow,
+                // maybe the #keyWindow is just a temporary keyWindow,
                 // so we do not save it to the #__gKeyWindow.
                 return [UIApplication sharedApplication].keyWindow;
         }
@@ -76,7 +76,7 @@
 
 - (void)clearApplicationIconBadgeNumber
 {
-        self.application.applicationIconBadgeNumber = 0;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 @end
