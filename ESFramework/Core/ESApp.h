@@ -106,7 +106,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (BOOL)isInForeground;
 - (BOOL)isInForeground;
 
-- (void)clearApplicationIconBadgeNumber;
++ (void)clearApplicationIconBadgeNumber;
 
 @end
 

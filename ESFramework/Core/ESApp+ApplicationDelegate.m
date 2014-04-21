@@ -45,7 +45,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application;
 {
-        [self clearApplicationIconBadgeNumber];
+        [[self class] clearApplicationIconBadgeNumber];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -32,7 +32,7 @@
 {
         NSLogInfo(@"remote notification:\n%@", userInfo);
         self.remoteNotification = userInfo;
-        [self clearApplicationIconBadgeNumber];
+        [[self class] clearApplicationIconBadgeNumber];
 }
 
 @end

@@ -74,7 +74,7 @@
         return [[self class] isInForeground];
 }
 
-- (void)clearApplicationIconBadgeNumber
++ (void)clearApplicationIconBadgeNumber
 {
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
