@@ -342,9 +342,9 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 /**
  * Mark the #alloc #new method as unavailable.
  */
-#define __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION \
-+ (id)alloc __attribute__((unavailable("alloc not available, call the shared instance instead."))); \
-+ (id)new __attribute__((unavailable("new not available, call the shared instance instead.")));
+#define __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION //\
+//+ (id)alloc __attribute__((unavailable("alloc not available, call the shared instance instead."))); \
+//+ (id)new __attribute__((unavailable("new not available, call the shared instance instead.")));
 /**
  * Implement singleton #sharedInstance# methods.
  *
@@ -356,7 +356,7 @@ ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
 { \
         static id __sharedInstance__ = nil; \
         static dispatch_once_t onceToken; \
-        dispatch_once(&onceToken, ^{ __sharedInstance__ = [[super alloc] initMethod]; }); \
+        dispatch_once(&onceToken, ^{ __sharedInstance__ = [[self alloc] initMethod]; }); \
         return __sharedInstance__; \
 }
 /**
@@ -604,14 +604,35 @@ ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 - (void)removeAllAssociatedObjects;
 @end
 
-typedef void (^ESNotificationHandler)(NSNotification *notification);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Notification with block
+typedef void (^ESNotificationHandler)(NSNotification *notification, NSDictionary *userInfo);
 @interface NSObject (ESObserver)
 /**
- * Set #self to NSNotificationCenter observer.
+ * Add #self to NSNotificationCenter as an observer.
  * #handler may be #nil to stop handling the notification.
  * If #handler and #name both are nil, it will remove all observers from NSNotificationCenter.
  */
-- (void)setNotificationHandler:(ESNotificationHandler)handler name:(NSString *)name object:(id)object;
+- (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler;
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSUserDefaults+ESHelper
+@interface NSUserDefaults (ESHelper)
+/**
+ * Get object for the given key.
+ */
++ (id)objectForKey:(NSString *)key;
+/**
+ * Async saving object.
+ */
++ (void)setObject:(id)object forKey:(NSString *)key;
+/**
+ * Async removing object.
+ */
++ (void)removeObjectForKey:(NSString *)key;
 @end
 
 #endif // ESFramework_ESDefines_h

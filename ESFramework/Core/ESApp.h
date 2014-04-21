@@ -10,23 +10,39 @@
 @import UIKit;
 #import "ESDefines.h"
 
-@interface ESApp : NSObject
+@interface ESApp : UIResponder
 {
-        UIBackgroundTaskIdentifier _backgroundTaskID;
+        UIViewController *_rootViewController;
 }
 
-ES_SINGLETON_DEC(sharedApp);
++ (instancetype)sharedApp;
+- (UIApplication *)application;
 
-- (void)enableMultitasking;
-- (void)disableMultitasking;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) UIViewController *rootViewController;
+@property (nonatomic, strong) NSDictionary *remoteNotification;
+@property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
+@end
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - AppInfo
+@interface ESApp (AppInfo)
 
 + (NSBundle *)mainBundle;
 + (NSDictionary *)infoDictionary;
++ (id)objectForInfoDictionaryKey:(NSString *)key;
 + (NSString *)displayName;
 + (NSString *)appVersion;
 + (NSString *)bundleIdentifier;
++ (NSString *)appChannel;
 
++ (NSMutableDictionary *)analyticsInformation;
+
+/**
+ * Default User Agent for UIWebView and HTTP Request.
+ */
++ (NSString *)userAgent;
 /**
  * Returns all URL Schemes that specified in the Info.plist.
  */
@@ -46,20 +62,15 @@ ES_SINGLETON_DEC(sharedApp);
  */
 + (NSString *)URLScheme;
 
-+ (BOOL)canOpenURL:(NSURL *)url;
-+ (BOOL)openURL:(NSURL *)url;
-+ (BOOL)openURLWithString:(NSString *)urlString;
-/**
- * Checks whether current device can make a phone call.
- */
-+ (BOOL)canOpenPhoneCall;
-/**
- * Make a phone call to the given phone number.
- * If #returnToAppAfterCall is YES, it will return back to this app after phone call.
- */
-+ (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ApplicationDelegate
+@interface ESApp (ApplicationDelegate) <UIApplicationDelegate>
 
 @end
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,6 +78,8 @@ ES_SINGLETON_DEC(sharedApp);
 @interface ESApp (UI)
 
 + (UIWindow *)keyWindow;
+- (UIWindow *)keyWindow;
+
 /**
  * The rootViewController of the keyWindow.
  */
@@ -76,11 +89,21 @@ ES_SINGLETON_DEC(sharedApp);
  * The real rootViewController for presenting modalViewController.
  */
 + (UIViewController *)rootViewControllerForPresenting;
+- (UIViewController *)rootViewControllerForPresenting;
 
+/**
+ * Presents a viewController.
+ */
++ (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion;
 /**
  * Dismiss all Modal ViewControllers.
  */
 + (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion;
+
++ (BOOL)isInForeground;
+- (BOOL)isInForeground;
+
+- (void)clearApplicationIconBadgeNumber;
 
 @end
 
@@ -88,6 +111,7 @@ ES_SINGLETON_DEC(sharedApp);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Helper
 @interface ESApp (Helper)
+
 /**
  * Checks whether the current launch is a "fresh launch" which means that 
  * this is the first time launched by user, after the app was installed or updated.
@@ -106,4 +130,64 @@ ES_SINGLETON_DEC(sharedApp);
  * Don't use this in production because it uses private API
  */
 + (void)simulateLowMemoryWarning;
+
+/**
+ * Multitasking
+ */
++ (void)enableMultitasking;
++ (void)disableMultitasking;
+
++ (BOOL)canOpenURL:(NSURL *)url;
++ (BOOL)openURL:(NSURL *)url;
++ (BOOL)openURLWithString:(NSString *)urlString;
+/**
+ * Checks whether current device can make a phone call.
+ */
++ (BOOL)canOpenPhoneCall;
+/**
+ * Make a phone call to the given phone number.
+ * If #returnToAppAfterCall is YES, it will return back to this app after phone call.
+ */
++ (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Notification
+
+@interface ESApp (Notification)
+/**
+ * If register succueed, handler's #sender will be the device token (NSString type without blank chars.),
+ * otherwise, #sender will be a NSError object.
+ */
+- (void)registerRemoteNotificationWithHandler:(ESHandlerBlock)handler;
+- (void)registerRemoteNotificationTypes:(UIRemoteNotificationType)types handler:(ESHandlerBlock)hander;
+/**
+ * Should be subclassed
+ */
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Subclass
+@interface ESApp (Subclass)
+
+/**
+ * self.rootViewController = ....;
+ */
+- (void)setupRootViewController;
+/*!
+
+ // Call super, do special initiations, then return YES.
+ - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+ 
+ // Invoked after receiving remote notification
+ - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
+
+ // Returns the current app channel, e.g. @"App Store"
+ + (NSString *)appChannel;
+ */
+
 @end

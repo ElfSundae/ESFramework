@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp.h"
+#import "ESApp+ESInternal.h"
 
 @implementation ESApp (UI)
 
@@ -20,21 +20,22 @@
                 }
         }
         
-        if (__gKeyWindow) {
-                return __gKeyWindow;
+        if (!__gKeyWindow) {
+                // maybe the #keyWindow is a temporary keyWindow,
+                // so we do not save it to the #__gKeyWindow.
+                return [UIApplication sharedApplication].keyWindow;
         }
-        
-        return [UIApplication sharedApplication].keyWindow;
-        
+        return __gKeyWindow;
+}
+
+- (UIWindow *)keyWindow
+{
+        return [[self class] keyWindow];
 }
 
 + (UIViewController *)rootViewController
 {
-        UIViewController *rootViewController = [self keyWindow].rootViewController;
-        if ([rootViewController isKindOfClass:[UIViewController class]]) {
-                return rootViewController;
-        }
-        return nil;
+        return [self keyWindow].rootViewController;
 }
 
 + (UIViewController *)rootViewControllerForPresenting
@@ -48,9 +49,34 @@
         return rootViewController;
 }
 
+- (UIViewController *)rootViewControllerForPresenting
+{
+        return [[self class] rootViewControllerForPresenting];
+}
+
++ (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion
+{
+        [[self rootViewControllerForPresenting] presentViewController:viewControllerToPresent animated:flag completion:completion];
+}
+
 + (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion
 {
         [[self rootViewController] dismissViewControllerAnimated:flag completion:completion];
+}
+
++ (BOOL)isInForeground
+{
+        return ([UIApplication sharedApplication].applicationState == UIApplicationStateActive);
+}
+
+- (BOOL)isInForeground
+{
+        return [[self class] isInForeground];
+}
+
+- (void)clearApplicationIconBadgeNumber
+{
+        self.application.applicationIconBadgeNumber = 0;
 }
 
 @end

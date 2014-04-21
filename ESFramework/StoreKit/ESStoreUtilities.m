@@ -7,7 +7,7 @@
 //
 
 #import "ESStoreUtilities.h"
-#import "ESApp.h"
+#import <ESFrameworkCore/ESApp.h>
 
 @implementation ESStoreUtilities
 

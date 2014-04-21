@@ -68,7 +68,7 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
         sysctlbyname("hw.machine", machine, &size, NULL, 0);
         NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
         free(machine);
-        return platform;
+        return platform ?: @"";
 }
 
 + (NSString *)carrierString

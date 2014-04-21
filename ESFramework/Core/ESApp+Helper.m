@@ -7,7 +7,6 @@
 //
 
 #import "ESApp.h"
-#import "NSUserDefaults+ESAdditions.h"
 
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
@@ -39,9 +38,9 @@
 + (void)deleteAllHTTPCookies
 {
         NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-        [cookieStorage.cookies enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                [cookieStorage deleteCookie:obj];
-        }];
+        for (NSHTTPCookie *c in cookieStorage.cookies) {
+                [cookieStorage deleteCookie:c];
+        }
 }
 
 + (void)simulateLowMemoryWarning
@@ -61,5 +60,82 @@
         }
 #endif
 }
+
+static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
++ (void)enableMultitasking
+{
+        if (!__es_gBackgroundTaskID || __es_gBackgroundTaskID == UIBackgroundTaskInvalid) {
+                __es_gBackgroundTaskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                        ESDispatchAsyncOnMainThread(^{
+                                if (UIBackgroundTaskInvalid != __es_gBackgroundTaskID) {
+                                        [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
+                                        __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
+                                }
+                                [[self class] enableMultitasking];
+                        });
+                }];
+        }
+}
+
++ (void)disableMultitasking
+{
+        ESDispatchSyncOnMainThread(^{
+                if (__es_gBackgroundTaskID) {
+                        [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
+                        __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
+                }
+        });
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - OpenURL
+
++ (BOOL)canOpenURL:(NSURL *)url
+{
+        return [[UIApplication sharedApplication] canOpenURL:url];
+}
+
++ (BOOL)openURL:(NSURL *)url
+{
+        if ([self canOpenURL:url]) {
+                return [[UIApplication sharedApplication] openURL:url];
+        }
+        return NO;
+}
+
++ (BOOL)openURLWithString:(NSString *)urlString
+{
+        return [self openURL:[NSURL URLWithString:urlString]];
+}
+
++ (BOOL)canOpenPhoneCall
+{
+        return [self canOpenURL:[NSURL URLWithString:@"tel:"]];
+}
++ (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn
+{
+        if (![phoneNumber isKindOfClass:[NSString class]] || !phoneNumber.length) {
+                return NO;
+        }
+        
+        NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", (phoneNumber ?: @"")]];
+        if ([self canOpenURL:telURL]) {
+                if (shouldReturn) {
+                        static UIWebView *__sharedPhoneCallWebView = nil;
+                        static dispatch_once_t onceToken;
+                        dispatch_once(&onceToken, ^{
+                                __sharedPhoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+                        });
+                        [__sharedPhoneCallWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
+                        return YES;
+                } else {
+                        [self openURL:telURL];
+                }
+        }
+        return NO;
+}
+
 
 @end

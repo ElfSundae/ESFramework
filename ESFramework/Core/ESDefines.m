@@ -502,10 +502,10 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         objc_removeAssociatedObjects(self);
 }
 
-//[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunching:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-
 @end
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Notification with block
 @interface NSObject (_ESObserverInternal)
 @property (nonatomic, strong) NSMutableDictionary *__es_notificationHandlers;
 @end
@@ -524,29 +524,67 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
         }
         return dict;
 }
-- (void)__es_notificationHandler:(NSNotification *)notification
+- (void)__es_appendNotificationHandler:(ESNotificationHandler)handler toName:(NSString *)name
 {
-        ESNotificationHandler handler = self.__es_notificationHandlers[notification.name];
-        if (handler) {
-                handler(notification);
+        [[self __es_notificationHandlersWithName:name] addObject:[handler copy]];
+}
+- (NSMutableArray *)__es_notificationHandlersWithName:(NSString *)name
+{
+        NSMutableArray *array = self.__es_notificationHandlers[name];
+        if (!array) {
+                array = [NSMutableArray array];
+                [self.__es_notificationHandlers setObject:array forKey:name];
+        }
+        return array;
+}
+
+- (void)__es_notificationSelector:(NSNotification *)notification
+{
+        NSMutableArray *array = [self __es_notificationHandlersWithName:notification.name];
+        for (ESNotificationHandler handler in array) {
+                handler(notification, notification.userInfo);
         }
 }
 
-- (void)setNotificationHandler:(ESNotificationHandler)handler name:(NSString *)name object:(id)object
+- (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler
 {
-        if (name) {
-                [[NSNotificationCenter defaultCenter] removeObserver:self name:name object:nil];
-                [self.__es_notificationHandlers removeObjectForKey:name];
+        if ([name isKindOfClass:[NSString class]]) {
                 if (handler) {
-                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(__es_notificationHandler:) name:name object:nil];
-                        [self.__es_notificationHandlers setObject:[handler copy] forKey:name];
+                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(__es_notificationSelector:) name:name object:nil];
+                        [self __es_appendNotificationHandler:handler toName:name];
+                } else {
+                        [[self __es_notificationHandlersWithName:name] removeAllObjects];
                 }
-        }
-        
-        if (!handler && !name) {
-                // Remove all notification handlers
+        } else {
                 [[NSNotificationCenter defaultCenter] removeObserver:self];
         }
 }
 
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSUserDefaults+ESHelper
+
+@implementation NSUserDefaults (ESHelper)
++ (id)objectForKey:(NSString *)key
+{
+        return [[self standardUserDefaults] objectForKey:key];
+}
++ (void)setObject:(id)object forKey:(NSString *)key
+{
+        NSUserDefaults *ud = [self standardUserDefaults];
+        ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, ^{
+                [ud setObject:object forKey:key];
+                [ud synchronize];
+        });
+}
++ (void)removeObjectForKey:(NSString *)key
+{
+        NSUserDefaults *ud = [self standardUserDefaults];
+        ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, ^{
+                [ud removeObjectForKey:key];
+                [ud synchronize];
+        });
+}
 @end
