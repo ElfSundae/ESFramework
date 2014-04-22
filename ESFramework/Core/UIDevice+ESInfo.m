@@ -17,7 +17,7 @@
 
 NSString *ESStringFromFileByteCount(unsigned long long fileSize)
 {
-        // NSByteCountFormatter uses 1000 step length
+        // !!: NSByteCountFormatter uses 1000 step length
         // if (NSClassFromString(@"NSByteCountFormatter")) {
         //         return [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
         // }
@@ -56,19 +56,43 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
 {
         return [[UIDevice currentDevice] systemVersion];
 }
++ (NSString *)systemBuildIdentifier
+{
+        static NSString *__gBuildIdentifier = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                NSString *build = nil;
+                int mib[] = { CTL_KERN, KERN_OSVERSION };
+                size_t size;
+                sysctl(mib, 2, NULL, &size, NULL, 0);
+                char *str = malloc(size);
+                if (sysctl(mib, 2, str, &size, NULL, 0) >= 0) {
+                        build = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
+                }
+                free(str);
+                __gBuildIdentifier = build ?: @"";
+        });
+        return __gBuildIdentifier;
+}
 + (NSString *)model
 {
         return [[UIDevice currentDevice] model];
 }
+
 + (NSString *)platform
 {
-        size_t size;
-        sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-        char *machine = malloc(size);
-        sysctlbyname("hw.machine", machine, &size, NULL, 0);
-        NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
-        free(machine);
-        return platform ?: @"";
+        static NSString *__gPlatfrom = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                size_t size;
+                sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+                char *machine = malloc(size);
+                sysctlbyname("hw.machine", machine, &size, NULL, 0);
+                NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+                free(machine);
+                __gPlatfrom = platform ?: @"";
+        });
+        return __gPlatfrom;
 }
 
 + (NSString *)carrierString
@@ -112,6 +136,16 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
         });
         
         return __isJailBroken;
+}
+
++ (BOOL)isPhoneDevice
+{
+        return ESIsPhoneDevice();
+}
+
++ (BOOL)isPadDevice
+{
+        return ESIsPadDevice();
 }
 
 + (unsigned long long)diskFreeSize

@@ -103,6 +103,8 @@
 		E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */; };
 		E757A07918FE63F4000DCDBD /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06B18FE63F4000DCDBD /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
+		E78FDE831906643C00564BA0 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E78FDE841906643C00564BA0 /* NSData+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */; };
 		E793AB7618FDD03300487E34 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB7418FDD03300487E34 /* SwipeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB7718FDD03300487E34 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB7518FDD03300487E34 /* SwipeView.m */; };
 		E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -284,6 +286,8 @@
 		E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
 		E757A06B18FE63F4000DCDBD /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
 		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
+		E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
+		E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB0C18FDCF5A00487E34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		E793AB7418FDD03300487E34 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwipeView.h; path = SwipeView/SwipeView.h; sourceTree = "<group>"; };
 		E793AB7518FDD03300487E34 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = SwipeView/SwipeView.m; sourceTree = "<group>"; };
@@ -469,6 +473,8 @@
 				E757A06218FE63F4000DCDBD /* NSString+ESAdditions.m */,
 				E757A06318FE63F4000DCDBD /* NSURL+ESAdditions.h */,
 				E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */,
+				E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */,
+				E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */,
 				E757A05D18FE63F4000DCDBD /* NSDate+ESAdditions.h */,
 				E757A05E18FE63F4000DCDBD /* NSDate+ESAdditions.m */,
 				E74A307118FFD22700F91D6D /* NSArray+ESAdditions.h */,
@@ -723,6 +729,7 @@
 				E74A307318FFD22700F91D6D /* NSArray+ESAdditions.h in Headers */,
 				E757A07118FE63F4000DCDBD /* NSString+ESAdditions.h in Headers */,
 				E757A06D18FE63F4000DCDBD /* NSDate+ESAdditions.h in Headers */,
+				E78FDE831906643C00564BA0 /* NSData+ESAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1121,6 +1128,7 @@
 				E74A307C19006DD500F91D6D /* NSOrderedSet+ESAdditions.m in Sources */,
 				E757A07018FE63F4000DCDBD /* NSDictionary+ESAdditions.m in Sources */,
 				E757A07218FE63F4000DCDBD /* NSString+ESAdditions.m in Sources */,
+				E78FDE841906643C00564BA0 /* NSData+ESAdditions.m in Sources */,
 				E757A06E18FE63F4000DCDBD /* NSDate+ESAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

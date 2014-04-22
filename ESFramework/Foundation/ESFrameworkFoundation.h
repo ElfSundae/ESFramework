@@ -12,6 +12,7 @@
 // Additions
 #import "NSString+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
+#import "NSData+ESAdditions.h"
 #import "NSDate+ESAdditions.h"
 #import "NSArray+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"

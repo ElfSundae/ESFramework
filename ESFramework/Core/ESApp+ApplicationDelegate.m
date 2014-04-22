@@ -17,18 +17,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        /* Setup window */
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
         [self.window makeKeyAndVisible];
         
+        /* Setup root viewController */
         [self setupRootViewController];
         self.window.rootViewController = self.rootViewController;
         
         ES_WEAK_VAR(self, _self);
         ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_DEFAULT, ^{
-                [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : [[self class] userAgent]}];
+                /* Set the UserAgent for UIWebView */
+                NSString *ua = [[self class] userAgentForWebView];
+                if (ua) {
+                        [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua}];
+                }
+                
+                /* Enable multitasking */
                 [[_self class] enableMultitasking];
                 
+                /* Process launch options */
                 if (launchOptions) {
                         _self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
                 }

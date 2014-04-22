@@ -32,6 +32,10 @@ ES_EXTERN NSString *ESStringFromFileByteCount(unsigned long long fileSize);
  */
 + (NSString *)systemVersion;
 /**
+ * e.g. @"11D169"
+ */
++ (NSString *)systemBuildIdentifier;
+/**
  * e.g. @"iPhone", @"iPod touch", @"iPhone Simulator"
  */
 + (NSString *)model;
@@ -56,6 +60,9 @@ ES_EXTERN NSString *ESStringFromFileByteCount(unsigned long long fileSize);
 + (NSString *)deviceIdentifier;
 
 + (BOOL)isJailBroken;
+
++ (BOOL)isPhoneDevice;
++ (BOOL)isPadDevice;
 
 + (unsigned long long)diskFreeSize;
 + (NSString *)diskFreeSizeString;

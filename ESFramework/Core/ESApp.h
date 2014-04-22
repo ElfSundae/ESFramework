@@ -41,9 +41,16 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (NSString *)appChannel;
 
 + (NSMutableDictionary *)analyticsInformation;
+/**
+ * Returns User Agent for UIWebView.
+ *
+ * Default User Agent for UIWebView, it registered after app launched.
+ * Subclass can return #nil to use the default user-agent for UIWebView.
+ */
++ (NSString *)userAgentForWebView;
 
 /**
- * Default User Agent for UIWebView and HTTP Request.
+ * Returns User Agent for HTTP request.
  */
 + (NSString *)userAgent;
 /**
@@ -197,4 +204,8 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  + (NSString *)appChannel;
  */
 
+@end
+
+@interface NSMutableURLRequest (ESUserAgent)
+- (void)addUserAgent;
 @end

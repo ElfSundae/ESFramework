@@ -78,15 +78,36 @@
         return result;
 }
 
++ (NSString *)userAgentForWebView
+{
+        static NSString *__gUserAgentForWebView = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                __gUserAgentForWebView = [NSString stringWithFormat:@"Mozilla/5.0 (%@; CPU %@ %@ like Mac OS X) Mobile/%@ %@",
+                                          [UIDevice model],
+                                          (ESIsPhoneDevice() ? @"iPhone OS" : @"OS"),
+                                          [[UIDevice systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"],
+                                          [UIDevice systemBuildIdentifier],
+                                          [self userAgent]];
+        });
+        return __gUserAgentForWebView;
+}
+
 + (NSString *)userAgent
 {
         static NSString *__gUserAgent = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                NSString *ua = [NSUserDefaults objectForKey:@"UserAgent"];
-                __gUserAgent = [NSString stringWithFormat:@"%@", ua];
+                __gUserAgent = [NSString stringWithFormat:@"ES(%@;%@;%@;%@;%@;%@;%@;%@)",
+                                @"iOS",
+                                [UIDevice systemVersion],
+                                [self bundleIdentifier],
+                                [self appVersion],
+                                [self appChannel],
+                                [UIDevice deviceIdentifier],
+                                [UIDevice screenSizeString],
+                                [UIDevice currentLocaleIdentifier]];
         });
-        NSLog(@"%@", __gUserAgent);
         return __gUserAgent;
 }
 
