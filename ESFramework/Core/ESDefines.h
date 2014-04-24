@@ -222,7 +222,7 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 #endif
 #ifndef NSFoundationVersionNumber_iOS_7_0
 //TODO: Correct _iOS_7_0 value from Apple officer when the next SDK distributed.
-#define NSFoundationVersionNumber_iOS_7_0  1047.00
+#define NSFoundationVersionNumber_iOS_7_0  1047.22
 #endif
 
 /**
