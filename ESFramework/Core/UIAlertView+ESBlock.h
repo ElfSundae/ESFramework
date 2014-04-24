@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ESFrameworkCore/ESDefines.h>
 
 typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger buttonIndex);
 
@@ -20,7 +21,7 @@ typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger b
  * Set message alignment.
  * @warning It's not work on iOS 7.0+
  */
-@property (nonatomic) NSTextAlignment messageAlignment;
+@property (nonatomic) NSTextAlignment messageAlignment __ES_ATTRIBUTE_DEPRECATED;
 /**
  * Invoked after dismissed.
  */

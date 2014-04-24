@@ -8,7 +8,6 @@
 
 #import "UIAlertView+ESBlock.h"
 #import <objc/runtime.h>
-#import <ESFrameworkCore/ESDefines.h>
 
 static char _didDismissBlockKey;
 
