@@ -20,6 +20,7 @@
 {
         return [[NSBundle mainBundle] infoDictionary];
 }
+
 + (id)objectForInfoDictionaryKey:(NSString *)key
 {
         return [[self mainBundle] objectForInfoDictionaryKey:key];
@@ -37,6 +38,19 @@
                 version = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
         }
         return (version ?: @"");
+}
+
++ (BOOL)isUIViewControllerBasedStatusBarAppearance
+{
+        static BOOL __isUIViewControllerBasedStatusBarAppearance = YES;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                id setting = [self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
+                if (setting) {
+                        __isUIViewControllerBasedStatusBarAppearance = [setting boolValue];
+                }
+        });
+        return __isUIViewControllerBasedStatusBarAppearance;
 }
 
 + (NSString *)bundleIdentifier

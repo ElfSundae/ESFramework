@@ -37,6 +37,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (id)objectForInfoDictionaryKey:(NSString *)key;
 + (NSString *)displayName;
 + (NSString *)appVersion;
++ (BOOL)isUIViewControllerBasedStatusBarAppearance;
 + (NSString *)bundleIdentifier;
 + (NSString *)appChannel;
 
