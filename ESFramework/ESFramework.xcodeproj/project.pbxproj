@@ -103,6 +103,8 @@
 		E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */; };
 		E757A07918FE63F4000DCDBD /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06B18FE63F4000DCDBD /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
+		E77BABAB190A8B25007EDE9A /* UINavigationController+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E77BABA9190A8B25007EDE9A /* UINavigationController+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E77BABAC190A8B25007EDE9A /* UINavigationController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E77BABAA190A8B25007EDE9A /* UINavigationController+ESAdditions.m */; };
 		E78FDE831906643C00564BA0 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E78FDE841906643C00564BA0 /* NSData+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */; };
 		E793AB7618FDD03300487E34 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB7418FDD03300487E34 /* SwipeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,6 +288,8 @@
 		E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
 		E757A06B18FE63F4000DCDBD /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
 		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
+		E77BABA9190A8B25007EDE9A /* UINavigationController+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ESAdditions.h"; sourceTree = "<group>"; };
+		E77BABAA190A8B25007EDE9A /* UINavigationController+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ESAdditions.m"; sourceTree = "<group>"; };
 		E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
 		E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB0C18FDCF5A00487E34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
@@ -549,6 +553,8 @@
 				E793AB8718FDDC3F00487E34 /* UIImage+ESAdditions.m */,
 				E793AB8818FDDC3F00487E34 /* UIView+ESAdditions.h */,
 				E793AB8918FDDC3F00487E34 /* UIView+ESAdditions.m */,
+				E77BABA9190A8B25007EDE9A /* UINavigationController+ESAdditions.h */,
+				E77BABAA190A8B25007EDE9A /* UINavigationController+ESAdditions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -743,6 +749,7 @@
 				E70F7E64190142BE007A6ACB /* UIControl+ESAdditions.h in Headers */,
 				E793AB9518FDDC3F00487E34 /* UIColor+ESAdditions.h in Headers */,
 				E793AB9918FDDC3F00487E34 /* UIView+ESAdditions.h in Headers */,
+				E77BABAB190A8B25007EDE9A /* UINavigationController+ESAdditions.h in Headers */,
 				E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */,
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E793AB7618FDD03300487E34 /* SwipeView.h in Headers */,
@@ -1142,6 +1149,7 @@
 				E70F7E6919029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m in Sources */,
 				E700822E1902DDA200C6931D /* ESButton.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
+				E77BABAC190A8B25007EDE9A /* UINavigationController+ESAdditions.m in Sources */,
 				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
 				E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */,
 				E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */,

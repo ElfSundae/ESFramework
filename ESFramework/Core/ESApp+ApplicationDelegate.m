@@ -34,6 +34,9 @@
                         [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua}];
                 }
                 
+                /* Set Cookie Accept Plicy */
+                [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+                
                 /* Enable multitasking */
                 [[_self class] enableMultitasking];
                 
