@@ -283,12 +283,12 @@ ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
 ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 /**
  @code
- UIColorWithHexString(@"#33AF00", 1.f);
- UIColorWithHexString(@"0x33AF00", 0.3f);
- UIColorWithHexString(@"33AF00", 0.9);
+ UIColorWithRGBHexString(@"#33AF00", 1.f);
+ UIColorWithRGBHexString(@"0x33AF00", 0.3f);
+ UIColorWithRGBHexString(@"33AF00", 0.9);
  @endcode
  */
-ES_EXTERN UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha);
+ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

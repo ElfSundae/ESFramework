@@ -56,7 +56,7 @@ UIColor *UIColorWithRGBHex(NSInteger rgbValue)
         return UIColorWithRGBAHex(rgbValue, 1.f);
 }
 
-UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha)
+UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
 {
         unsigned rgbValue = 0;
         if ([hexString isKindOfClass:[NSString class]]) {
