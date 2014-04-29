@@ -513,13 +513,24 @@ ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
 
 #pragma mark - Selector
 /**
- * Swizzle class method.
+ * e.g.
+ @code
+ + (void)load {
+        @autoreleasepool {
+                ESSwizzleInstanceMethod([self class], @selector(viewDidLoad), @selector(viewDidLoad_new));
+        }
+ }
+ @endcode
  */
-ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new);
 /**
  * Swizzle instance method.
  */
 ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
+/**
+ * Swizzle class method.
+ * @see ESSwizzleInstanceMethod
+ */
+ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new);
 
 /**
  * Constructs an NSInvocation for a class target or an instance target.

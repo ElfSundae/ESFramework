@@ -317,16 +317,6 @@ void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Selector
-void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
-{
-        Method origMethod = class_getClassMethod(c, orig);
-        Method newMethod = class_getClassMethod(c, new);
-        if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
-                class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-        } else {
-                method_exchangeImplementations(origMethod, newMethod);
-        }
-}
 
 void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
 {
@@ -338,6 +328,18 @@ void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
                 method_exchangeImplementations(origMethod, newMethod);
         }
 }
+
+void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
+{
+        Method origMethod = class_getClassMethod(c, orig);
+        Method newMethod = class_getClassMethod(c, new);
+        if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
+                class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+        } else {
+                method_exchangeImplementations(origMethod, newMethod);
+        }
+}
+
 
 NSInvocation *ESInvocationWith(id target, SEL selector)
 {
