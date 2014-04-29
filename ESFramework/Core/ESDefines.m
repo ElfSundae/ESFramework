@@ -78,7 +78,7 @@ UIColor *UIColorWithHexString(NSString *hexString, CGFloat alpha)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - SDK Compatibility
 
-NSString *ESDeviceOSVersion(void)
+NSString *ESOSVersion(void)
 {
         static NSString *_deviceOSVersion = nil;
         static dispatch_once_t onceToken;
@@ -88,19 +88,19 @@ NSString *ESDeviceOSVersion(void)
         return _deviceOSVersion;
 }
 
-BOOL ESDeviceOSVersionIsAtLeast(double versionNumber)
+BOOL ESOSVersionIsAtLeast(double versionNumber)
 {
         return (floor(NSFoundationVersionNumber) >= versionNumber);
 }
 
-BOOL ESDeviceOSVersionIsAbove(double versionNumber)
+BOOL ESOSVersionIsAbove(double versionNumber)
 {
         return (floor(NSFoundationVersionNumber) > versionNumber);
 }
 
-BOOL ESDeviceOSVersionIsAbove7(void)
+BOOL ESOSVersionIsAbove7(void)
 {
-        return ESDeviceOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

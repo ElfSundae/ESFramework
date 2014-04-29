@@ -72,6 +72,8 @@
 /* Begin PBXBuildFile section */
 		E700822D1902DDA200C6931D /* ESButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E700822B1902DDA200C6931D /* ESButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E700822E1902DDA200C6931D /* ESButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E700822C1902DDA200C6931D /* ESButton.m */; };
+		E7089F73190FE6C80014C8F6 /* ESArrowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089F71190FE6C80014C8F6 /* ESArrowButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7089F74190FE6C80014C8F6 /* ESArrowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089F72190FE6C80014C8F6 /* ESArrowButton.m */; };
 		E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */; };
 		E70F7E64190142BE007A6ACB /* UIControl+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70F7E6819029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E70F7E6619029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -254,6 +256,8 @@
 /* Begin PBXFileReference section */
 		E700822B1902DDA200C6931D /* ESButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESButton.h; sourceTree = "<group>"; };
 		E700822C1902DDA200C6931D /* ESButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESButton.m; sourceTree = "<group>"; };
+		E7089F71190FE6C80014C8F6 /* ESArrowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESArrowButton.h; sourceTree = "<group>"; };
+		E7089F72190FE6C80014C8F6 /* ESArrowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESArrowButton.m; sourceTree = "<group>"; };
 		E70F7E5E1901143C007A6ACB /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
 		E70F7E5F1901143C007A6ACB /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E70F7E6619029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
@@ -413,6 +417,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7089F6B190FB1E30014C8F6 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		E714E39718FE796600CAF140 /* ESFrameworkResources */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +527,8 @@
 			children = (
 				E700822B1902DDA200C6931D /* ESButton.h */,
 				E700822C1902DDA200C6931D /* ESButton.m */,
+				E7089F71190FE6C80014C8F6 /* ESArrowButton.h */,
+				E7089F72190FE6C80014C8F6 /* ESArrowButton.m */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -618,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */,
+				E7089F6B190FB1E30014C8F6 /* Private */,
 				E78F59B01902D806002116EF /* Button */,
 				E793AB7D18FDDC3F00487E34 /* Additions */,
 				E793AB8C18FDDC3F00487E34 /* Animations */,
@@ -751,6 +765,7 @@
 				E793AB9918FDDC3F00487E34 /* UIView+ESAdditions.h in Headers */,
 				E77BABAB190A8B25007EDE9A /* UINavigationController+ESAdditions.h in Headers */,
 				E7C9475118FC7E7C0034B110 /* ESBadgeView.h in Headers */,
+				E7089F73190FE6C80014C8F6 /* ESArrowButton.h in Headers */,
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E793AB7618FDD03300487E34 /* SwipeView.h in Headers */,
 				E793AB9718FDDC3F00487E34 /* UIImage+ESAdditions.h in Headers */,
@@ -1149,6 +1164,7 @@
 				E70F7E6919029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m in Sources */,
 				E700822E1902DDA200C6931D /* ESButton.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
+				E7089F74190FE6C80014C8F6 /* ESArrowButton.m in Sources */,
 				E77BABAC190A8B25007EDE9A /* UINavigationController+ESAdditions.m in Sources */,
 				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
 				E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */,

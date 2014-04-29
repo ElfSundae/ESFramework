@@ -234,30 +234,30 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
  * Returns the device's OS version.
  * e.g. @"6.1"
  */
-ES_EXTERN NSString *ESDeviceOSVersion(void);
+ES_EXTERN NSString *ESOSVersion(void);
 
 /**
  * Checks whether the device's OS version is at least the given version number.
  *
  * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
  */
-ES_EXTERN BOOL ESDeviceOSVersionIsAtLeast(double versionNumber);
+ES_EXTERN BOOL ESOSVersionIsAtLeast(double versionNumber);
 
 /**
  * Checks whether the device's OS version is above the given version number.
  *
  * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
  */
-ES_EXTERN BOOL ESDeviceOSVersionIsAbove(double versionNumber);
+ES_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
 
 /**
  * Checks whether the device's OS version is above iOS7.0
  *
  @code
- return ESDeviceOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+ return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
  @endcode
  */
-ES_EXTERN BOOL ESDeviceOSVersionIsAbove7(void);
+ES_EXTERN BOOL ESOSVersionIsAbove7(void);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
