@@ -10,6 +10,7 @@
 
 @interface NSDictionary (ESAdditions)
 
+- (BOOL)isEmpty;
 /**
  * If the object is [NSNull null], it will returns #nil.
  * It is useful while accessing a JSONObject which parsed

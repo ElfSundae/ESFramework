@@ -10,6 +10,11 @@
 
 @implementation NSDictionary (ESAdditions)
 
+- (BOOL)isEmpty
+{
+        return (0 == self.count);
+}
+
 - (id)smartObjectForKey:(id)key
 {
         id object = [self objectForKey:key];

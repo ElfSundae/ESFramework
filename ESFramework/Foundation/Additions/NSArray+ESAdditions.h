@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface NSArray (ESAdditions)
+
+- (BOOL)isEmpty;
+
 /**
  * Enumerates (Block Enumeration) through an array and executes the given block with each object.
  */

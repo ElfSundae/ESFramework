@@ -10,6 +10,40 @@
 @import UIKit;
 #import "ESDefines.h"
 
+/**
+ * Global app helper class, or you can subclass it as your app delegate.
+ *
+ * ## Subclassing Notes
+ *
+ *
+ *	// Call super, do special initiations, then return YES.
+ *	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+ *	{
+ *	        [super application:application didFinishLaunchingWithOptions:launchOptions];
+ *	        self.window.backgroundColor = [UIColor whiteColor];
+ *	        return YES;
+ *	}
+ *
+ *	- (void)setupRootViewController
+ *	{
+ *	        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+ *	}
+ *
+ *	// Invoked after receiving remote notification
+ *	- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
+ *	{
+ *	        // `super` will clear `ApplicationIconBadgeNumber`
+ *	        [super applicationDidReceiveRemoteNotification:userInfo];
+ *	}
+ *
+ *	// Returns the current app channel, e.g. @"App Store"
+ *	+ (NSString *)appChannel
+ *	{
+ *	        return @"App Store";
+ *	}
+ *	
+ *
+ */
 @interface ESApp : UIResponder
 __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
@@ -18,20 +52,18 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 + (instancetype)sharedApp;
 
-/*!
- * To access these vars, your AppDelegate must be inherited from ESApp
- */
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UIViewController *rootViewController;
 @property (nonatomic, strong) NSDictionary *remoteNotification;
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
+
+- (void)setupRootViewController;
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - AppInfo
+#pragma mark - ESApp (AppInfo)
 @interface ESApp (AppInfo)
-
 + (NSBundle *)mainBundle;
 + (NSDictionary *)infoDictionary;
 + (id)objectForInfoDictionaryKey:(NSString *)key;
@@ -52,6 +84,8 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 /**
  * Returns User Agent for HTTP request.
+ *
+ * @see [NSMutableURLRequest addUserAgent]
  */
 + (NSString *)userAgent;
 /**
@@ -77,7 +111,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ApplicationDelegate
+#pragma mark - ESApp (ApplicationDelegate)
 @interface ESApp (ApplicationDelegate) <UIApplicationDelegate>
 
 @end
@@ -85,7 +119,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UI 
+#pragma mark - ESApp (UI)
 @interface ESApp (UI)
 
 + (UIWindow *)keyWindow;
@@ -120,11 +154,11 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Helper
+#pragma mark - ESApp (Helper)
 @interface ESApp (Helper)
 
 /**
- * Checks whether the current launch is a "fresh launch" which means that 
+ * Checks whether the current launch is a **fresh launch** which means that
  * this is the first time launched by user, after the app was installed or updated.
  *
  * @param previousAppVersion return the previous app version, it may be the same as the current app version if it's not a fresh launch.
@@ -138,14 +172,17 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 /**
  * Simulate low memory warning.
- * Don't use this in production because it uses private API
+ * Don't use this in production because it uses private API.
  */
 + (void)simulateLowMemoryWarning;
 
 /**
- * Multitasking
+ * Enable multitasking.
  */
 + (void)enableMultitasking;
+/**
+ * Disable multitasking.
+ */
 + (void)disableMultitasking;
 
 + (BOOL)canOpenURL:(NSURL *)url;
@@ -157,7 +194,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (BOOL)canOpenPhoneCall;
 /**
  * Make a phone call to the given phone number.
- * If #returnToAppAfterCall is YES, it will return back to this app after phone call.
+ * If `shouldReturn` is YES, it will return back to this app after phone call.
  */
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
@@ -165,7 +202,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Notification
+#pragma mark - ESApp (Notification)
 
 @interface ESApp (Notification)
 /**
@@ -182,27 +219,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Subclass
-@interface ESApp (Subclass)
-
-/**
- * self.rootViewController = ....;
- */
-- (void)setupRootViewController;
-/*!
- 
- // Call super, do special initiations, then return YES.
- - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
- 
- // Invoked after receiving remote notification
- - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
-
- // Returns the current app channel, e.g. @"App Store"
- + (NSString *)appChannel;
- */
-
-@end
-
+#pragma mark - NSMutableURLRequest (ESUserAgent)
 @interface NSMutableURLRequest (ESUserAgent)
 - (void)addUserAgent;
 @end

@@ -80,7 +80,8 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-        [self applicationDidReceiveRemoteNotification:userInfo];
+        self.remoteNotification = userInfo;
+        [self applicationDidReceiveRemoteNotification:self.remoteNotification];
 }
 
 @end

@@ -31,7 +31,6 @@
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {
         NSLogInfo(@"remote notification:\n%@", userInfo);
-        self.remoteNotification = userInfo;
         [[self class] clearApplicationIconBadgeNumber];
 }
 

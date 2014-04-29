@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSOrderedSet (ESAdditions)
+- (BOOL)isEmpty;
 - (void)each:(void (^)(id obj, NSUInteger idx))block;
 - (void)eachReversely:(void (^)(id obj, NSUInteger idx))block;
 - (void)eachConcurrently:(void (^)(id obj))block;

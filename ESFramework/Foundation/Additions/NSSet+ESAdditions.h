@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSSet (ESAdditions)
+- (BOOL)isEmpty;
 - (void)each:(void (^)(id obj))block;
 - (void)eachConcurrently:(void (^)(id obj))block;
 - (id)match:(BOOL (^)(id obj))block;

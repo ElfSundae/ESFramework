@@ -10,6 +10,11 @@
 
 @implementation NSSet (ESAdditions)
 
+- (BOOL)isEmpty
+{
+        return (0 == self.count);
+}
+
 - (void)each:(void (^)(id obj))block
 {
         NSParameterAssert(block);

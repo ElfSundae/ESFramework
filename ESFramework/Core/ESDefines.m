@@ -177,24 +177,6 @@ BOOL ESIsPhoneDevice(void)
         return _isPhoneDevice;
 }
 
-BOOL ESIsEmptyString(id object)
-{
-        return ([object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0);
-}
-BOOL ESIsEmptyArray(id object)
-{
-        return ([object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0);
-}
-BOOL ESIsEmptyDictionary(id object)
-{
-        return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0);
-}
-BOOL ESIsEmptySet(id object)
-{
-        return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
-}
-
-
 NSMutableSet *ESCreateNonretainedMutableSet(void)
 {
         return CFBridgingRelease(CFSetCreateMutable(NULL, 0, NULL));
