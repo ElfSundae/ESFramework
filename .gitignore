@@ -20,5 +20,5 @@ DerivedData
 #CocoaPods
 Pods
 
-docs/docset/*
 !docs/docset/README.md
+docs/docset/*
