@@ -138,6 +138,8 @@
 		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
+		E779E0911911266700452A95 /* UIProgressView+ESStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = E779E08F1911266700452A95 /* UIProgressView+ESStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E779E0921911266700452A95 /* UIProgressView+ESStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E779E0901911266700452A95 /* UIProgressView+ESStyle.m */; };
 		E78FDE831906643C00564BA0 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E78FDE841906643C00564BA0 /* NSData+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */; };
 		E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -332,6 +334,8 @@
 		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
 		E7792AAE19105E410060D935 /* ESApp+ESInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+ESInternal.h"; sourceTree = "<group>"; };
 		E7792AAF19105E410060D935 /* ESApp+ESInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ESInternal.m"; sourceTree = "<group>"; };
+		E779E08F1911266700452A95 /* UIProgressView+ESStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+ESStyle.h"; sourceTree = "<group>"; };
+		E779E0901911266700452A95 /* UIProgressView+ESStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+ESStyle.m"; sourceTree = "<group>"; };
 		E78FDE811906643C00564BA0 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
 		E78FDE821906643C00564BA0 /* NSData+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
@@ -475,6 +479,7 @@
 		E7089FA4190FECA70014C8F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E779E08A1911246300452A95 /* ProgressView */,
 				E7089FB5190FED200014C8F6 /* Button */,
 				E7089FB6190FED2F0014C8F6 /* Badge */,
 				E7089FB7190FED3D0014C8F6 /* SwipeView */,
@@ -629,6 +634,15 @@
 				E7792AAF19105E410060D935 /* ESApp+ESInternal.m */,
 			);
 			path = _Internal;
+			sourceTree = "<group>";
+		};
+		E779E08A1911246300452A95 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				E779E08F1911266700452A95 /* UIProgressView+ESStyle.h */,
+				E779E0901911266700452A95 /* UIProgressView+ESStyle.m */,
+			);
+			name = ProgressView;
 			sourceTree = "<group>";
 		};
 		E793AB7D18FDDC3F00487E34 /* Additions */ = {
@@ -796,6 +810,7 @@
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E7089FAD190FECD20014C8F6 /* ESBadgeView.h in Headers */,
 				E7089F90190FEAC50014C8F6 /* ESViewController.h in Headers */,
+				E779E0911911266700452A95 /* UIProgressView+ESStyle.h in Headers */,
 				E7089F98190FEB9E0014C8F6 /* ESTableViewController.h in Headers */,
 				E793AB9718FDDC3F00487E34 /* UIImage+ESAdditions.h in Headers */,
 				E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */,
@@ -1208,6 +1223,7 @@
 				E7089F9E190FEBFE0014C8F6 /* ESWebViewController.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
 				E7089FA2190FEC0A0014C8F6 /* ESWebView.m in Sources */,
+				E779E0921911266700452A95 /* UIProgressView+ESStyle.m in Sources */,
 				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
 				E793AB9818FDDC3F00487E34 /* UIImage+ESAdditions.m in Sources */,
 				E7089FB0190FECD20014C8F6 /* ESButton.m in Sources */,
