@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Shortcuts for view's frame, center, size, etc.
+ */
 @interface UIView (ESShortcut)
+
+/// frame.origin
+@property (nonatomic) CGPoint origin;
+/// frame.size
+@property (nonatomic) CGSize size;
 /// Shortcut for frame.origin.x
 @property (nonatomic) CGFloat left;
 /// Shortcut for frame.origin.y
@@ -25,10 +33,5 @@
 @property (nonatomic) CGFloat centerX;
 /// Shortcut for center.y
 @property (nonatomic) CGFloat centerY;
-
-/// frame.origin
-@property (nonatomic) CGPoint origin;
-/// frame.size
-@property (nonatomic) CGSize size;
 
 @end

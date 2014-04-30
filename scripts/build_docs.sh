@@ -5,8 +5,8 @@ outputPath="${SRCROOT}/../docs";
 --project-company "www.0x123.com" \
 --company-id "com.0x123" \
 --docset-atom-filename "${PROJECT_NAME}.atom" \
---docset-feed-url "http://www.0x123.com/%DOCSETATOMFILENAME" \
---docset-package-url "http://www.0x123.com/%DOCSETPACKAGEFILENAME" \
+--docset-feed-url "https://raw.githubusercontent.com/ElfSundae/ESFramework/master/docs/publish/%DOCSETATOMFILENAME" \
+--docset-package-url "https://raw.githubusercontent.com/ElfSundae/ESFramework/master/docs/publish/%DOCSETPACKAGEFILENAME" \
 --docset-fallback-url "http://www.0x123.com" \
 --output "${outputPath}" \
 --publish-docset \

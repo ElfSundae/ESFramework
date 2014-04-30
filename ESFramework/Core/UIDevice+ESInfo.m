@@ -8,6 +8,8 @@
 
 @import CoreTelephony;
 @import CoreGraphics;
+//#import <SystemConfiguration/CaptiveNetwork.h>
+@import SystemConfiguration;
 #import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
@@ -41,6 +43,10 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
                 return [NSString stringWithFormat:@"%lld %@", fileSize, token];
         }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UIDevice (ESInfo)
 
 @implementation UIDevice (ESInfo)
 
@@ -101,6 +107,23 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
         CTCarrier *carrier_t = [netInfo subscriberCellularProvider];
         NSString *carrier = [carrier_t carrierName];
         return carrier ?: @"";
+}
+
++ (NSString *)currentWiFiSSID
+{
+        NSString *ssid = nil;
+#if !TARGET_IPHONE_SIMULATOR
+        NSArray *interfaces = CFBridgingRelease(CNCopySupportedInterfaces());
+        for (NSString *name in interfaces) {
+                CFStringRef interface = (__bridge CFStringRef)name; // @"en0"
+                NSDictionary *info = CFBridgingRelease(CNCopyCurrentNetworkInfo(interface));
+                if (info[@"SSID"]) {
+                        ssid = info[@"SSID"];
+                        break;
+                }
+        }
+#endif
+        return ssid;
 }
 
 + (NSString *)deviceIdentifier

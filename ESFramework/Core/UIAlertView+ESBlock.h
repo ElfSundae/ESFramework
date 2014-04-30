@@ -11,32 +11,55 @@
 
 typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger buttonIndex);
 
+/**
+ * `UIAlertView` with blocks.
+ */
 @interface UIAlertView (ESBlock) <UIAlertViewDelegate>
 
-/**
- * Dismiss without callback.
- */
-- (void)dismissWithAnimated:(BOOL)animated;
-/**
- * Set message alignment.
- * @warning It's not work on iOS 7.0+
- */
-@property (nonatomic) NSTextAlignment messageAlignment __ES_ATTRIBUTE_DEPRECATED;
-/**
- * Invoked after dismissed.
- */
-@property (nonatomic, copy) ESUIAlertViewDidDismissBlock didDismissBlock;
+///=============================================
+/// @name Initialization
+///=============================================
 
 + (instancetype)alertViewWithTitle:(NSString *)title
                            message:(NSString *)message
                  cancelButtonTitle:(NSString *)cancelButtonTitle
                       didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
                  otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
+
+///=============================================
+/// @name Customization
+///=============================================
+
 /**
- * Show a alertView with a cancel button, the cacel button title is localized "OK" string.
+ * Set message alignment.
+ *
+ * @warning It's not work on iOS 7.0+
+ */
+@property (nonatomic) NSTextAlignment messageAlignment __ES_ATTRIBUTE_DEPRECATED;
+
+///=============================================
+/// @name Helper Methods
+///=============================================
+
+/**
+ * Shows a alertView with a cancel button, the cancel button title is localized "OK" string.
  */
 + (void)showWithTitle:(NSString *)title message:(NSString *)message;
 
 + (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle;
+
+///=============================================
+/// @name Dismiss
+///=============================================
+
+/**
+ * Invoked after dismissed.
+ */
+@property (nonatomic, copy) ESUIAlertViewDidDismissBlock didDismissBlock;
+/**
+ * Dismiss alert view without callback.
+ */
+- (void)dismissWithAnimated:(BOOL)animated;
+
 
 @end

@@ -10,12 +10,16 @@
 
 typedef void (^ESUIActionSheetDidDismissBlock)(UIActionSheet *actionSheet, NSInteger buttonIndex);
 
+/**
+ * `UIActionSheet` with blocks.
+ */
 @interface UIActionSheet (ESBlock) <UIActionSheetDelegate>
 
-/**
- * Invoked after dismissed.
- */
 @property (nonatomic, copy) ESUIActionSheetDidDismissBlock didDismissBlock;
+
+///=============================================
+/// @name Initialization
+///=============================================
 
 + (instancetype)actionSheetWithTitle:(NSString *)title
                    cancelButtonTitle:(NSString *)cancelButtonTitle
