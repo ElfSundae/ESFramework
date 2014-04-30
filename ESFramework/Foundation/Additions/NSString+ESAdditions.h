@@ -18,9 +18,10 @@
 - (BOOL)containsString:(NSString*)string;
 - (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options;
 /**
- * Trims whitespaceAndNewline
+ * Trims `[NSCharacterSet whitespaceAndNewlineCharacterSet]`
  */
 - (NSString *)trim;
+
 - (BOOL)isEmpty;
 
 /**
@@ -28,12 +29,12 @@
  */
 - (NSString *)URLEncode;
 /**
- * Calls <code>-stringByReplacingPercentEscapesUsingEncoding:</code>
+ * Calls `-stringByReplacingPercentEscapesUsingEncoding:`
  */
 - (NSString *)URLDecode;
 
 /**
- * Append URL query string from #queryDictionary.
+ * Append URL query string from `queryDictionary`.
  * Supports 'array' params, like "?key[]=value1&key[]=value2".
  */
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;

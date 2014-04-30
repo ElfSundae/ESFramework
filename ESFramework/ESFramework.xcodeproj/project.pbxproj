@@ -613,13 +613,6 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
-		E757A06718FE63F4000DCDBD /* Formatter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Formatter;
-			sourceTree = "<group>";
-		};
 		E757A06A18FE63F4000DCDBD /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,7 +695,6 @@
 			children = (
 				E7BCF72F18F98F27006D920E /* ESFrameworkFoundation.h */,
 				E757A05C18FE63F4000DCDBD /* Additions */,
-				E757A06718FE63F4000DCDBD /* Formatter */,
 				E757A06A18FE63F4000DCDBD /* Utilities */,
 				E7BCF69518F98BB8006D920E /* FoundationDebug.xcconfig */,
 				E7EDF3F618FBA5630067E849 /* FoundationRelease.xcconfig */,

@@ -11,7 +11,7 @@
 @interface ESStoreUtilities : NSObject
 
 /**
- * Returns the iTunes item identifier from the iTunes Store URL, nil if parsed failed.
+ * Returns the iTunes item identifier(ID) from the iTunes Store URL, `nil` if parsing failed.
  * All types of iTunes link are supported, include scheme http[s], itms, itms-apps, etc.
  *
  * e.g. The url https://itunes.apple.com/us/app/qq-cai-xin/id520005183?mt=8

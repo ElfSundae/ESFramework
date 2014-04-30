@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <ESFrameworkCore/ESDefines.h>
+#import "ESStoreUtilities.h"
 
 typedef void (^ESStoreProductViewControllerManagerBlock)(void);
 
@@ -21,10 +22,10 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION;
 
 
 /**
- * On iOS 6.0 or later, it will present SKStoreProductViewController if the iTunesStore reachability, otherwise
- * uses [ESApp openURL:] to open #iTunesLink.
- * The first time to present SKStoreProductViewController will be slowly, then you can
- * handler #willAppear block to show a activityView or a HUD.
+ * On iOS 6.0 or later, it will present `SKStoreProductViewController` if the iTunesStore reachability, otherwise
+ * will uses [ESApp openURL:] to open `iTunesLink`.
+ * The first time to present `SKStoreProductViewController` will be slowly, then you can
+ * handler `willAppear` block to show a activityView or a HUD.
  *
  * @see [ESStoreUtilities itemIDFromITunesLink]
  *

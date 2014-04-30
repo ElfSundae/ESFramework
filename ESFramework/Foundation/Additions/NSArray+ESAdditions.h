@@ -21,7 +21,7 @@
  */
 - (void)eachReversely:(void (^)(id obj, NSUInteger idx))block;
 /**
- * Enumerates (Block Enumeration) through an array *concurrently* and executes the given block with each object.
+ * Enumerates (Block Enumeration) through an array **concurrently** and executes the given block with each object.
  *
  * Enumeration will occur on appropriate background queues. This
  * will have a noticeable speed increase, especially on dual-core

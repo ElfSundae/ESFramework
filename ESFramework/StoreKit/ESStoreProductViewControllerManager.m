@@ -9,7 +9,6 @@
 @import StoreKit.SKStoreProductViewController;
 #import "ESStoreProductViewControllerManager.h"
 #import <ESFrameworkCore/ESApp.h>
-#import "ESStoreUtilities.h"
 
 @interface ESStoreProductViewControllerManager ()
 {

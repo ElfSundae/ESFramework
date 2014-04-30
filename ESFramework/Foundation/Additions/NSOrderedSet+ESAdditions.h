@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * @see NSArray(ESAdditions)
+ */
 @interface NSOrderedSet (ESAdditions)
 - (BOOL)isEmpty;
 - (void)each:(void (^)(id obj, NSUInteger idx))block;

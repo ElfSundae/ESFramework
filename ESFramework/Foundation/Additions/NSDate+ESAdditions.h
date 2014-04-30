@@ -10,22 +10,9 @@
 
 @interface NSDate (ESAdditions)
 
+/**
+ * `return [[self date] timeIntervalSince1970]`
+ */
 + (NSTimeInterval)nowTimeInterval;
-- (NSTimeInterval)microseconds;
-
-/// Default is @"yyyy-MM-dd HH:mm:ss"
-+ (NSString *)defaultDateFormat;
-+ (void)setDefaultDateFormat:(NSString *)dateFormat;
-/// Default is [NSTimeZone defaultTimeZone]
-+ (NSTimeZone *)defaultTimeZone;
-+ (void)setDefaultTimeZone:(NSTimeZone *)timeZone;
-
-+ (NSDateFormatter *)sharedDateFormatter;
-+ (NSDateFormatter *)sharedDateFormatterWithDateFormat:(NSString *)dateFormat timeZone:(NSTimeZone *)timeZone;
-
-+ (NSDate *)dateFromString:(NSString *)dateString dateFormat:(NSString *)dateFormat timeZone:(NSTimeZone *)timeZone;
-+ (NSDate *)dateFromString:(NSString *)dateString;
-+ (NSString *)stringFromDate:(NSDate *)date dateFormat:(NSString *)dateFormat timeZone:(NSTimeZone *)timeZone;
-+ (NSString *)stringFromDate:(NSDate *)date;
 
 @end

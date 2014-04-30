@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ESHash : NSObject
-@end
-
 @interface NSData (ESHash)
 
 /** Lower case. */
