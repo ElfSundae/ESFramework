@@ -8,8 +8,8 @@
 
 @import CoreTelephony;
 @import CoreGraphics;
-//#import <SystemConfiguration/CaptiveNetwork.h>
 @import SystemConfiguration;
+#import <SystemConfiguration/CaptiveNetwork.h>
 #import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>

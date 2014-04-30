@@ -1,5 +1,5 @@
 #appledoc Xcode script
-outputPath="${SRCROOT}/../docs";
+outputPath="${SRCROOT}/../docs/docset";
 /usr/local/bin/appledoc \
 --project-name "${PROJECT_NAME}" \
 --project-company "www.0x123.com" \
