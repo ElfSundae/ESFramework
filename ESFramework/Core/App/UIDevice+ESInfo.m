@@ -13,7 +13,6 @@
 #import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
-#import "ESDefines.h"
 #import "OpenUDID.h"
 #import "ESValue.h"
 

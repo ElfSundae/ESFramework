@@ -7,8 +7,8 @@
 //
 
 #import "NSString+ESAdditions.h"
-#import <ESFrameworkCore/ESDefines.h>
-#import <ESFrameworkCore/ESHash.h>
+#import "ESDefines.h"
+#import "ESHash.h"
 
 @implementation NSString (ESAdditions)
 

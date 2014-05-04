@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ESFrameworkCore/ESDefines.h>
+#import "ESDefines.h"
 
 typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger buttonIndex);
 
