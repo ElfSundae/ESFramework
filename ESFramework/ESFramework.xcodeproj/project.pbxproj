@@ -859,7 +859,6 @@
 				E7BCF63818F98614006D920E /* CopyFiles */,
 				E7BCF63918F98614006D920E /* Headers */,
 				E7926A4B18FBBBB900CD276F /* Prepare Framework */,
-				E7C9472618FBD6890034B110 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -991,13 +990,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E7C9472618FBD6890034B110 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
