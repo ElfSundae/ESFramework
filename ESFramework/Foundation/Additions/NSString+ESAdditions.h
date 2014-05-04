@@ -16,7 +16,15 @@
  */
 - (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block;
 
+/**
+ * 36bits
+ */
 + (NSString *)newUUID;
+
+/**
+ * `md5([self newUUID])` **Uppercase** 16bits
+ */
++ (NSString *)newUUIDWithMD5;
 
 /**
  * NSCaseInsensitiveSearch

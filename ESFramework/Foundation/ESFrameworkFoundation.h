@@ -21,7 +21,7 @@
 #import "NSTimer+ESAdditions.h"
 
 // Utilities
-#import "ESHash.h"
+
 
 // Formatter
 

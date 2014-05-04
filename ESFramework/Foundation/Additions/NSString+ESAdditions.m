@@ -8,6 +8,7 @@
 
 #import "NSString+ESAdditions.h"
 #import <ESFrameworkCore/ESDefines.h>
+#import <ESFrameworkCore/ESHash.h>
 
 @implementation NSString (ESAdditions)
 
@@ -42,6 +43,12 @@
         CFStringRef string = CFUUIDCreateString(NULL, theUUID);
         CFBridgingRelease(theUUID);
         return CFBridgingRelease(string);
+}
+
++ (NSString *)newUUIDWithMD5
+{
+        NSString *uuid = [self newUUID];
+        return [[uuid md5Hash] uppercaseString];
 }
 
 - (BOOL)containsString:(NSString*)string

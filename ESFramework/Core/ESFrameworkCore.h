@@ -12,6 +12,7 @@
 #import "ESDefines.h"
 #import "ESApp.h"
 #import "ESValue.h"
+#import "ESHash.h"
 #import "UIDevice+ESInfo.h"
 #import "UIActionSheet+ESBlock.h"
 #import "UIAlertView+ESBlock.h"

@@ -134,8 +134,8 @@
 		E757A07218FE63F4000DCDBD /* NSString+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06218FE63F4000DCDBD /* NSString+ESAdditions.m */; };
 		E757A07318FE63F4000DCDBD /* NSURL+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06318FE63F4000DCDBD /* NSURL+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */; };
-		E757A07918FE63F4000DCDBD /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E757A06B18FE63F4000DCDBD /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E757A06C18FE63F4000DCDBD /* ESHash.m */; };
+		E7659510191620AA00C3AC14 /* ESHash.h in Headers */ = {isa = PBXBuildFile; fileRef = E765950E191620AA00C3AC14 /* ESHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7659511191620AA00C3AC14 /* ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E765950F191620AA00C3AC14 /* ESHash.m */; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
 		E779E0911911266700452A95 /* UIProgressView+ESStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = E779E08F1911266700452A95 /* UIProgressView+ESStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -330,8 +330,8 @@
 		E757A06218FE63F4000DCDBD /* NSString+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESAdditions.m"; sourceTree = "<group>"; };
 		E757A06318FE63F4000DCDBD /* NSURL+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ESAdditions.h"; sourceTree = "<group>"; };
 		E757A06418FE63F4000DCDBD /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
-		E757A06B18FE63F4000DCDBD /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
-		E757A06C18FE63F4000DCDBD /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
+		E765950E191620AA00C3AC14 /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
+		E765950F191620AA00C3AC14 /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
 		E7792AAE19105E410060D935 /* ESApp+ESInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+ESInternal.h"; sourceTree = "<group>"; };
 		E7792AAF19105E410060D935 /* ESApp+ESInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ESInternal.m"; sourceTree = "<group>"; };
 		E779E08F1911266700452A95 /* UIProgressView+ESStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+ESStyle.h"; sourceTree = "<group>"; };
@@ -618,15 +618,6 @@
 			path = Additions;
 			sourceTree = "<group>";
 		};
-		E757A06A18FE63F4000DCDBD /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				E757A06B18FE63F4000DCDBD /* ESHash.h */,
-				E757A06C18FE63F4000DCDBD /* ESHash.m */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		E7792AAD19105E260060D935 /* _Internal */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,8 +667,8 @@
 		E7BCF61818F985C4006D920E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E7792AAD19105E260060D935 /* _Internal */,
 				E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */,
+				E7792AAD19105E260060D935 /* _Internal */,
 				E7C9472D18FBE0530034B110 /* ESDefines.h */,
 				E7C9472E18FBE0530034B110 /* ESDefines.m */,
 				E7BCF71118F98ED6006D920E /* ESApp.h */,
@@ -689,6 +680,8 @@
 				E7B8F3BD1904F82400750B0A /* ESApp+Notification.m */,
 				E7BCF7C018F99825006D920E /* ESValue.h */,
 				E7BCF7C118F99825006D920E /* ESValue.m */,
+				E765950E191620AA00C3AC14 /* ESHash.h */,
+				E765950F191620AA00C3AC14 /* ESHash.m */,
 				E7BCF7C418FA5AB1006D920E /* UIDevice+ESInfo.h */,
 				E7BCF7C518FA5AB1006D920E /* UIDevice+ESInfo.m */,
 				E74A30811900C88A00F91D6D /* UIActionSheet+ESBlock.h */,
@@ -709,7 +702,6 @@
 			children = (
 				E7BCF72F18F98F27006D920E /* ESFrameworkFoundation.h */,
 				E757A05C18FE63F4000DCDBD /* Additions */,
-				E757A06A18FE63F4000DCDBD /* Utilities */,
 				E7BCF69518F98BB8006D920E /* FoundationDebug.xcconfig */,
 				E7EDF3F618FBA5630067E849 /* FoundationRelease.xcconfig */,
 			);
@@ -772,6 +764,7 @@
 				E74A308B1900C88A00F91D6D /* UIView+ESShortcut.h in Headers */,
 				E7BCF7C618FA5AB1006D920E /* UIDevice+ESInfo.h in Headers */,
 				E7C9472F18FBE0530034B110 /* ESDefines.h in Headers */,
+				E7659510191620AA00C3AC14 /* ESHash.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,7 +776,6 @@
 				E757A06F18FE63F4000DCDBD /* NSDictionary+ESAdditions.h in Headers */,
 				E74A307F1900733000F91D6D /* NSTimer+ESAdditions.h in Headers */,
 				E7BCF73B18F98F27006D920E /* ESFrameworkFoundation.h in Headers */,
-				E757A07918FE63F4000DCDBD /* ESHash.h in Headers */,
 				E74A3077190064B100F91D6D /* NSSet+ESAdditions.h in Headers */,
 				E757A07318FE63F4000DCDBD /* NSURL+ESAdditions.h in Headers */,
 				E74A307318FFD22700F91D6D /* NSArray+ESAdditions.h in Headers */,
@@ -1192,6 +1184,7 @@
 				E74A30881900C88A00F91D6D /* UIActionSheet+ESBlock.m in Sources */,
 				E7BCF72418F98ED6006D920E /* ESApp+UI.m in Sources */,
 				E7BCF7C718FA5AB1006D920E /* UIDevice+ESInfo.m in Sources */,
+				E7659511191620AA00C3AC14 /* ESHash.m in Sources */,
 				E7CA68161904E68900F61DA5 /* ESApp+ApplicationDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1203,7 +1196,6 @@
 				E74A30801900733000F91D6D /* NSTimer+ESAdditions.m in Sources */,
 				E74A3078190064B100F91D6D /* NSSet+ESAdditions.m in Sources */,
 				E74A307418FFD22700F91D6D /* NSArray+ESAdditions.m in Sources */,
-				E757A07A18FE63F4000DCDBD /* ESHash.m in Sources */,
 				E757A07418FE63F4000DCDBD /* NSURL+ESAdditions.m in Sources */,
 				E74A307C19006DD500F91D6D /* NSOrderedSet+ESAdditions.m in Sources */,
 				E757A07018FE63F4000DCDBD /* NSDictionary+ESAdditions.m in Sources */,
