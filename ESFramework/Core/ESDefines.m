@@ -18,6 +18,8 @@
 
 NSInteger ESMaxLogLevel = ESLOGLEVEL_INFO;
 
+NSString *const ESErrorDomain = @"com.0x123.ESErrorDomain";
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -106,6 +108,7 @@ BOOL ESOSVersionIsAbove7(void)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 
+
 NSBundle *ESBundleWithName(NSString *bundleName)
 {
         NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
@@ -284,10 +287,28 @@ void ESDispatchAsyncOnMainThread(dispatch_block_t block)
         }
 }
 
-void ESDispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
+void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
 {
         dispatch_async(dispatch_get_global_queue(priority, 0), block);
 }
+
+void ESDispatchOnDefaultQueue(dispatch_block_t block)
+{
+        ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_DEFAULT, block);
+}
+void ESDispatchOnHighQueue(dispatch_block_t block)
+{
+       ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_HIGH, block);
+}
+void ESDispatchOnLowQueue(dispatch_block_t block)
+{
+        ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_LOW, block);
+}
+void ESDispatchOnBackgroundQueue(dispatch_block_t block)
+{
+        ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block);
+}
+
 
 void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
 {
@@ -558,7 +579,7 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
 + (void)setObject:(id)object forKey:(NSString *)key
 {
         NSUserDefaults *ud = [self standardUserDefaults];
-        ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, ^{
+        ESDispatchOnDefaultQueue(^{
                 [ud setObject:object forKey:key];
                 [ud synchronize];
         });
@@ -566,7 +587,7 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
 + (void)removeObjectForKey:(NSString *)key
 {
         NSUserDefaults *ud = [self standardUserDefaults];
-        ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, ^{
+        ESDispatchOnDefaultQueue(^{
                 [ud removeObjectForKey:key];
                 [ud synchronize];
         });

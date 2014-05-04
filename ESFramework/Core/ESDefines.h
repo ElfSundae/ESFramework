@@ -346,6 +346,8 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 /// @name Helper
 ///========================================================================================================
 #pragma mark - Helper
+
+ES_EXTERN NSString *const ESErrorDomain;
 /**
  * Check bit (flag) 
  */
@@ -473,7 +475,12 @@ typedef void (^ESHandlerBlock)(id sender);
 
 ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block);
 ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block);
-ES_EXTERN void ESDispatchAsyncOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
+ES_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
+ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
+ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
+ES_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
+ES_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
+
 /**
  * After `delayTime`, dispatch `block` on the main thread.
  */

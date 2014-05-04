@@ -27,7 +27,7 @@
         self.window.rootViewController = self.rootViewController;
         
         ES_WEAK_VAR(self, _self);
-        ESDispatchAsyncOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_DEFAULT, ^{
+        ESDispatchOnHighQueue(^{
                 /* Set the UserAgent for UIWebView */
                 NSString *ua = [[self class] userAgentForWebView];
                 if (ua) {

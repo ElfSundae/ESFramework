@@ -7,8 +7,34 @@
 //
 
 #import "NSString+ESAdditions.h"
+#import <ESFrameworkCore/ESDefines.h>
 
 @implementation NSString (ESAdditions)
+
+- (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block
+{
+        ESDispatchOnDefaultQueue(^{
+                NSString *dir = [path stringByDeletingLastPathComponent];
+                NSError *outError = [NSError errorWithDomain:ESErrorDomain code:4 userInfo:@{NSLocalizedDescriptionKey : @"The operation couldn’t be completed."}];
+                NSError *error = nil;
+                if (!dir) {
+                        if (block) block(NO, outError);
+                        return;
+                }
+                
+                NSFileManager *fm = [NSFileManager defaultManager];
+                BOOL isDirectory = NO;
+                if (![fm fileExistsAtPath:dir isDirectory:&isDirectory] || !isDirectory) {
+                        if (![fm createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:&error]) {
+                                if (block) block(NO, error);
+                                return;
+                        }
+                }
+                
+                BOOL res = [self writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+                if (block) block(res, error);
+        });
+}
 
 + (NSString *)newUUID
 {

@@ -10,6 +10,12 @@
 
 @interface NSString (ESAdditions)
 
+/**
+ * Asynchronously write file.
+ * It will create directories if not exists.
+ */
+- (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block;
+
 + (NSString *)newUUID;
 
 /**
