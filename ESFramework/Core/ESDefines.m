@@ -578,16 +578,16 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
 }
 + (void)setObject:(id)object forKey:(NSString *)key
 {
-        NSUserDefaults *ud = [self standardUserDefaults];
         ESDispatchOnDefaultQueue(^{
+                NSUserDefaults *ud = [self standardUserDefaults];
                 [ud setObject:object forKey:key];
                 [ud synchronize];
         });
 }
 + (void)removeObjectForKey:(NSString *)key
 {
-        NSUserDefaults *ud = [self standardUserDefaults];
         ESDispatchOnDefaultQueue(^{
+                NSUserDefaults *ud = [self standardUserDefaults];
                 [ud removeObjectForKey:key];
                 [ud synchronize];
         });
