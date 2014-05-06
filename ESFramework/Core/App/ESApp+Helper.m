@@ -137,5 +137,16 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return NO;
 }
 
++ (void)openAppReviewPageWithAppID:(NSString *)appID
+{
+        if ([appID isKindOfClass:[NSNumber class]]) {
+                appID = [(NSNumber *)appID stringValue];
+        }
+        if (![appID isKindOfClass:[NSString class]] || appID.length < 8) {
+                return;
+        }
+        NSString *reviewURL = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", appID];
+        [self openURLWithString:reviewURL];
+}
 
 @end

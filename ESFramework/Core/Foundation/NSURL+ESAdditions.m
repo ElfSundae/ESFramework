@@ -15,4 +15,9 @@
         return [self.absoluteString queryDictionary];
 }
 
+- (NSString *)iTunesItemID
+{
+        return [self.absoluteString iTunesItemID];
+}
+
 @end

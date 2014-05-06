@@ -198,6 +198,10 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
+/**
+ * Open App Store, and goto the Review page.
+ */
++ (void)openAppReviewPageWithAppID:(NSString *)appID;
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -12,6 +12,50 @@
 
 @implementation NSString (ESAdditions)
 
++ (NSString *)newUUID
+{
+        CFUUIDRef theUUID = CFUUIDCreate(NULL);
+        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+        CFBridgingRelease(theUUID);
+        return CFBridgingRelease(string);
+}
+
++ (NSString *)newUUIDWithMD5
+{
+        NSString *uuid = [self newUUID];
+        return [uuid md5Hash];
+}
+
+- (NSString *)iTunesItemID
+{
+        NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:@"://itunes.apple.com/.*/id(\\d{8,})\\D" options:NSRegularExpressionCaseInsensitive error:NULL];
+        NSTextCheckingResult *match = [reg firstMatchInString:self options:0 range:NSMakeRange(0, self.length)];
+        if (match) {
+                return [self substringWithRange:[match rangeAtIndex:1]];
+        }
+        return nil;
+}
+
+- (BOOL)containsString:(NSString*)string
+{
+	return [self containsString:string options:NSCaseInsensitiveSearch];
+}
+
+- (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options
+{
+        return (NSNotFound != [self rangeOfString:string options:options].location);
+}
+
+- (NSString *)trim
+{
+        return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (BOOL)isEmpty
+{
+        return [self isEqualToString:@""];
+}
+
 - (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block
 {
         ESDispatchOnDefaultQueue(^{
@@ -35,40 +79,6 @@
                 BOOL res = [self writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
                 if (block) block(res, error);
         });
-}
-
-+ (NSString *)newUUID
-{
-        CFUUIDRef theUUID = CFUUIDCreate(NULL);
-        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-        CFBridgingRelease(theUUID);
-        return CFBridgingRelease(string);
-}
-
-+ (NSString *)newUUIDWithMD5
-{
-        NSString *uuid = [self newUUID];
-        return [[uuid md5Hash] uppercaseString];
-}
-
-- (BOOL)containsString:(NSString*)string
-{
-	return [self containsString:string options:NSCaseInsensitiveSearch];
-}
-
-- (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options
-{
-        return (NSNotFound != [self rangeOfString:string options:options].location);
-}
-
-- (NSString *)trim
-{
-        return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-}
-
-- (BOOL)isEmpty
-{
-        return [self isEqualToString:@""];
 }
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
@@ -147,7 +157,7 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
                         result[key] = (value ?: [NSNull null]);
                 }
         }
-        return result;
+        return (NSDictionary *)result;
 }
 
 @end

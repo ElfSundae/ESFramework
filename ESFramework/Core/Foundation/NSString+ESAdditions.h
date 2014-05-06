@@ -10,21 +10,28 @@
 
 @interface NSString (ESAdditions)
 
-/**
- * Asynchronously write file.
- * It will create directories if not exists.
- */
-- (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block;
+///=============================================
+/// @name UUID
+///=============================================
 
 /**
- * 36bits
+ * 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
  */
 + (NSString *)newUUID;
-
 /**
- * `md5([self newUUID])` **Uppercase** 16bits
+ * 16bits, e.g. @"1f3b3d5cb1c893ef0fabfdfced53c9e2"
  */
 + (NSString *)newUUIDWithMD5;
+
+/**
+ * Returns the iTunes item identifier(ID) from the iTunes Store URL, returns `nil` if parsing failed.
+ * All types of iTunes link are supported, include scheme http[s], itms, itms-apps, etc.
+ *
+ * e.g. The url https://itunes.apple.com/us/app/qq-cai-xin/id520005183?mt=8 will get @"520005183".
+ *
+ * Supports all type iTunes links like Apps, Books, Music, Music Videos, Audio Book, Podcast, Movie, etc.
+ */
+- (NSString *)iTunesItemID;
 
 /**
  * NSCaseInsensitiveSearch
@@ -37,6 +44,12 @@
 - (NSString *)trim;
 
 - (BOOL)isEmpty;
+
+/**
+ * Asynchronously write file.
+ * It will create directories automatically if not exists.
+ */
+- (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block;
 
 /**
  * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="

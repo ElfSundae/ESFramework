@@ -34,5 +34,6 @@
 // App
 #import "ESApp.h"
 #import "UIDevice+ESInfo.h"
+#import "ESRouter.h"
 
 #endif
