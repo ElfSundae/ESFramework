@@ -15,4 +15,9 @@
         return [[self date] timeIntervalSince1970];
 }
 
++ (unsigned long long)timestamp
+{
+        return (unsigned long long)[self nowTimeInterval];
+}
+
 @end

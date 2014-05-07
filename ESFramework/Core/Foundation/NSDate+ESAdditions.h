@@ -15,4 +15,6 @@
  */
 + (NSTimeInterval)nowTimeInterval;
 
++ (unsigned long long)timestamp;
+
 @end

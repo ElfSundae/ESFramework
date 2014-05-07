@@ -10,6 +10,8 @@
 
 @interface NSTimer (ESAdditions)
 
+@property (nonatomic, copy) NSString *name;
+
 + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats;
 + (NSTimer *)timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats;
 

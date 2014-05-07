@@ -7,8 +7,20 @@
 //
 
 #import "NSTimer+ESAdditions.h"
+#import "ESDefines.h"
+
+static void *_timerNameKey = &_timerNameKey;
 
 @implementation NSTimer (ESAdditions)
+
+- (NSString *)name
+{
+        return [self getAssociatedObject:_timerNameKey];
+}
+- (void)setName:(NSString *)name
+{
+        [self setAssociatedObject_nonatomic_copy:name key:_timerNameKey];
+}
 
 + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats
 {
