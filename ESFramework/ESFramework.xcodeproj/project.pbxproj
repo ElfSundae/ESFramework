@@ -473,6 +473,13 @@
 			name = StoreProduct;
 			sourceTree = "<group>";
 		};
+		E73613CB191A514B008A39CD /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		E7522DE718EC427E0087B95E = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +580,7 @@
 				E7F5D8FA1916DBAA00D11273 /* UI */,
 				E7F5D9071916DBE100D11273 /* App */,
 				E7089FC1190FEDE20014C8F6 /* OpenUDID */,
+				E73613CB191A514B008A39CD /* Cache */,
 				E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */,
 				E7EDF3F518FBA5430067E849 /* CoreRelease.xcconfig */,
 			);
