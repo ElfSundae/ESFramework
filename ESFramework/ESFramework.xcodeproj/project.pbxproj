@@ -80,8 +80,6 @@
 		E72F6A4719177D79006893A5 /* ESRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A4519177D79006893A5 /* ESRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72F6A4819177D79006893A5 /* ESRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A4619177D79006893A5 /* ESRouter.m */; };
 		E72F6A5019178FA0006893A5 /* ESRouterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A4E19178FA0006893A5 /* ESRouterObject.m */; };
-		E72F6A531917E012006893A5 /* ESRouter+Services.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A511917E012006893A5 /* ESRouter+Services.h */; };
-		E72F6A541917E012006893A5 /* ESRouter+Services.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A521917E012006893A5 /* ESRouter+Services.m */; };
 		E72F6A60191825AB006893A5 /* ESNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A56191825AB006893A5 /* ESNavigationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72F6A61191825AB006893A5 /* ESNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A57191825AB006893A5 /* ESNavigationController.m */; };
 		E72F6A62191825AB006893A5 /* ESTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A58191825AB006893A5 /* ESTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -95,6 +93,7 @@
 		E72F6A6F19182623006893A5 /* ESStoreProductViewControllerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A6D19182623006893A5 /* ESStoreProductViewControllerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72F6A7019182623006893A5 /* ESStoreProductViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A6E19182623006893A5 /* ESStoreProductViewControllerManager.m */; };
 		E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E739698B19199CE800F56B78 /* ESFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = E739698A19199CAD00F56B78 /* ESFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
 		E779E0911911266700452A95 /* UIProgressView+ESStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = E779E08F1911266700452A95 /* UIProgressView+ESStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -234,8 +233,6 @@
 		E72F6A4519177D79006893A5 /* ESRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRouter.h; sourceTree = "<group>"; };
 		E72F6A4619177D79006893A5 /* ESRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRouter.m; sourceTree = "<group>"; };
 		E72F6A4E19178FA0006893A5 /* ESRouterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRouterObject.m; sourceTree = "<group>"; };
-		E72F6A511917E012006893A5 /* ESRouter+Services.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESRouter+Services.h"; sourceTree = "<group>"; };
-		E72F6A521917E012006893A5 /* ESRouter+Services.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESRouter+Services.m"; sourceTree = "<group>"; };
 		E72F6A56191825AB006893A5 /* ESNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNavigationController.h; sourceTree = "<group>"; };
 		E72F6A57191825AB006893A5 /* ESNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNavigationController.m; sourceTree = "<group>"; };
 		E72F6A58191825AB006893A5 /* ESTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
@@ -248,6 +245,7 @@
 		E72F6A5F191825AB006893A5 /* ESWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESWebViewController.m; sourceTree = "<group>"; };
 		E72F6A6D19182623006893A5 /* ESStoreProductViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESStoreProductViewControllerManager.h; sourceTree = "<group>"; };
 		E72F6A6E19182623006893A5 /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
+		E739698A19199CAD00F56B78 /* ESFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFoundation.h; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -603,6 +601,7 @@
 		E7F5D8CD1916DAE700D11273 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E739698A19199CAD00F56B78 /* ESFoundation.h */,
 				E7F5D8DA1916DB0B00D11273 /* NSString+ESAdditions.h */,
 				E7F5D8DB1916DB0B00D11273 /* NSString+ESAdditions.m */,
 				E7F5D8DE1916DB0B00D11273 /* NSURL+ESAdditions.h */,
@@ -659,8 +658,6 @@
 				E72F6A4519177D79006893A5 /* ESRouter.h */,
 				E72F6A4619177D79006893A5 /* ESRouter.m */,
 				E72F6A4E19178FA0006893A5 /* ESRouterObject.m */,
-				E72F6A511917E012006893A5 /* ESRouter+Services.h */,
-				E72F6A521917E012006893A5 /* ESRouter+Services.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -679,8 +676,8 @@
 				E7F5D8EE1916DB0B00D11273 /* NSTimer+ESAdditions.h in Headers */,
 				E7F5D8E61916DB0B00D11273 /* NSDictionary+ESAdditions.h in Headers */,
 				E7F5D8E81916DB0B00D11273 /* NSOrderedSet+ESAdditions.h in Headers */,
+				E739698B19199CE800F56B78 /* ESFoundation.h in Headers */,
 				E72F6A4719177D79006893A5 /* ESRouter.h in Headers */,
-				E72F6A531917E012006893A5 /* ESRouter+Services.h in Headers */,
 				E7F5D8F01916DB0B00D11273 /* NSURL+ESAdditions.h in Headers */,
 				E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */,
 				E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */,
@@ -988,7 +985,6 @@
 				E7F5D9191916DC0700D11273 /* UIDevice+ESInfo.m in Sources */,
 				E7F5D8ED1916DB0B00D11273 /* NSString+ESAdditions.m in Sources */,
 				E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */,
-				E72F6A541917E012006893A5 /* ESRouter+Services.m in Sources */,
 				E7F5D8E51916DB0B00D11273 /* NSDate+ESAdditions.m in Sources */,
 				E7F5D8E71916DB0B00D11273 /* NSDictionary+ESAdditions.m in Sources */,
 				E72F6A4819177D79006893A5 /* ESRouter.m in Sources */,

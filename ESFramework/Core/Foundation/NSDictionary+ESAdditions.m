@@ -15,7 +15,7 @@
         return (0 == self.count);
 }
 
-- (id)smartObjectForKey:(id)key
+- (id)esObjectForKey:(id)key
 {
         id object = [self objectForKey:key];
         if ([object isKindOfClass:[NSNull class]]) {

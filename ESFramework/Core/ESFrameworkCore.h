@@ -12,20 +12,8 @@
 #define kESFrameworkCoreVersion @"0.1.0"
 
 #import "ESDefines.h"
-
 // Foundation
-#import "NSString+ESAdditions.h"
-#import "NSURL+ESAdditions.h"
-#import "NSData+ESAdditions.h"
-#import "NSArray+ESAdditions.h"
-#import "NSDictionary+ESAdditions.h"
-#import "NSDate+ESAdditions.h"
-#import "NSSet+ESAdditions.h"
-#import "NSOrderedSet+ESAdditions.h"
-#import "NSTimer+ESAdditions.h"
-#import "ESHash.h"
-#import "ESValue.h"
-
+#import "ESFoundation.h"
 // UI
 #import "UIActionSheet+ESBlock.h"
 #import "UIAlertView+ESBlock.h"

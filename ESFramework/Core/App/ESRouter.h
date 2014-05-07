@@ -22,11 +22,11 @@
 
 typedef void (^ESRouterOpenBlock)(NSDictionary *params);
 typedef void (^ESRouterOpeningCallback)(UIViewController *fromController, UIViewController *toController, NSDictionary *openParams);
-typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDictionary *openParams, NSDictionary *result);
+//typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDictionary *openParams, NSDictionary *result);
 
 /// e.g. @"vc://profile/?uid=123456"
 #define ESRouterURLSchemeController     @"vc"
-/// e.g. @"fun://logout"
+/// e.g. @"func://logout"
 #define ESRouterURLSchemeBlock          @"func"
 
 #define ESRouterURLKeyParam             @"p"
@@ -37,7 +37,7 @@ typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDicti
 #define ESRouterURLKeyIsAnimated        @"__animated__"
 
 /**
- * URL Router for UIViewControllers, Blocks, External URLs, In App Service.
+ * URL Router for UIViewControllers, Blocks.
  * Inspired by [Routable iOS](https://github.com/usepropeller/routable-ios).
  *
  * ## Supports types
@@ -54,31 +54,19 @@ typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDicti
  *
  *      * `ESRouterOpenBlock` type.
  *
- * ### External URLs
- * Open link in in-app controller if possible, or use -[ESApp openURL:].
- *
- *      * Safari: `http://`, `https://`, etc.
- *      * Mail: `mailto:`, use in-app `MFMailComposeViewController` if possible.
- *      * Message: `sms:`, use in-app `MFMessageComposeViewController` if possible.
- *      * App Store: `app-store://appID`, `itms-apps://`.
- *
- *              + `@"app-store://12345678" (SKStoreProductViewController if possible)`
- *              + `@"app-store://12345678&__inapp__=0&__app_review__=1" (App Store)`
- *
- *
- * ### In App Service
- *      * MFMailComposeViewController
- *      * MFMessageComposeViewController
- *      * SKStoreProductViewController (`ESFrameworkUIKit required`)
- *      * ESWebViewController (***TODO***)
- *              
  *
  * ## URL format
  *
- * `URL` formats as `scheme:[/][/]path[/p][/][?param1=value1][&param2=value2][...]` .
+ * `URL` formats as `[scheme:[/][/]]path[/p][/][?param1=value1][&param2=value2][...]` .
  *
- * The params prefix can be `?`, `&`, `#`. e.g.
+ * `path` is required, and it could be any string without '/', ':' or any other blank/space chars.
  *
+ * The params' prefix can be `?`, `&`, `#`.
+ *
+ *
+ * 	user/123456
+ * 	somePath/pValue/p1Value/p2Value&key1=value1&key2=value2
+ * 	UserProfileViewController/123456
  * 	vc://user/123456/?key1=value1&key2=value2
  * 	vc://user/123456?key1=value1&key2=value2
  * 	vc://user/123456/&key1=value1&key2=value2
@@ -88,7 +76,42 @@ typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDicti
  * 	vc:user/123456&key1=value1&key2=value2
  * 	vc:user#p=123456&key1=value1&key2=value2
  *
+ *
  * ## Usage
+ *
+ * Optionally register `path`s before `open:path`.
+ *
+ * 	// In AppDelegate, register path
+ * 	[[ESRouter sharedRouter] registerPath:@"test_block" toBlock:^(NSDictionary *params) {
+ * 	        NSLog(@"test_block called.");
+ * 	}];
+ *
+ * 	[[[ESRouter sharedRouter] registerPath:@"block_params" toBlock:^(NSDictionary *params) {
+ * 	        NSLog(@"block_params called: %@", params);
+ * 	}] setDefaultParams:@{@"default key": @"default value"}];
+ *
+ * 	ESRouterObject *profileObject = [[ESRouter sharedRouter] registerPath:@"profile" toClass:@"UserProfileViewController"];
+ * 	profileObject.openingCallback = ^(UIViewController *fromController, UIViewController *toController, NSDictionary *openParams){
+ * 	        NSLog(@"Will open profile");
+ * 	        [ESApp dismissAllViewControllersAnimated:NO completion:nil];
+ * 	};
+ *
+ * Open.
+ *
+ * 	// Open a path
+ * 	[[ESRouter sharedRouter] open:@"test_block"];
+ * 	// Open with params
+ * 	[[ESRouter sharedRouter] open:@"block_params/pValue/p1Value/p2Value?index=123&%@=%@",
+ * 	 [@"code key" URLEncode], [@"code value" URLEncode]];
+ *
+ * 	[[ESRouter sharedRouter] open:@"profile/123456"];
+ *
+ * 	// open with params and extraInfo
+ * 	[[ESRouter sharedRouter] open:@"UserProfileViewController/654321"
+ * 	                       params:@{ESRouterURLKeyIsModal : @NO,
+ * 	                                ESRouterURLKeyIsRoot : @YES}
+ * 	                    extraInfo:[MyUserData data]];
+ *
  *
  * ### Discussion
  *
@@ -107,13 +130,11 @@ typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDicti
 ES_SINGLETON_DEC(sharedRouter);
 
 @property (nonatomic, copy) NSString *defaultContainerNavigationControllerForPresenting;
+@property (nonatomic, strong, readonly) Class defaultContainerNavigationControllerClassForPresenting; // Cached
 @property (nonatomic, strong) UINavigationController *defaultNavigationController;
 
 ///=============================================
 /// @name Register
-///
-/// @discussion
-/// Optionally register a path as alias to an `UIViewController` or a block.
 ///=============================================
 
 - (ESRouterObject *)registerPath:(NSString *)path toRouterObject:(ESRouterObject *)routerObject;
@@ -121,22 +142,25 @@ ES_SINGLETON_DEC(sharedRouter);
 - (ESRouterObject *)registerPath:(NSString *)path toBlock:(ESRouterOpenBlock)block;
 
 ///=============================================
-/// @name Router
+/// @name Route Method
 ///=============================================
 
-//- (void)open:(NSString *)path params:(NSDictionary *)routerParams extraInfo:(id)extraInfo;
-//- (void)open:(NSString *)path params:(NSDictionary *)routerParams;
-
 /**
- * `URL` must be URLEncoded.
- *
- * e.g. `@"vc://"`
- *
+ * Params in URL must be URLEncoded.
  * @see -[NSString URLEncode]
  */
-//- (void)openURL:(NSString *)format, ...;
+- (BOOL)open:(NSString *)format, ...;
+/**
+ * Params in URL must be URLEncoded.
+ * @see -[NSString URLEncode]
+ */
+- (BOOL)open:(NSString *)url params:(NSDictionary *)routerParams extraInfo:(id)extraInfo;
 
-- (void)openURL:(NSString *)url params:(NSDictionary *)routerParams extraInfo:(id)extraInfo;
+/**
+ * Dismiss or pop `controller`.
+ */
++ (void)close:(UIViewController *)controller animated:(BOOL)animated;
+- (void)close:(UIViewController *)controller animated:(BOOL)animated;
 
 ///=============================================
 /// @name Internal
@@ -147,8 +171,10 @@ ES_SINGLETON_DEC(sharedRouter);
  */
 @property (nonatomic, strong, readonly) NSMutableDictionary *map;
 /**
- * `params` will always out of a `NSMutableDictionary` instance if passed **point** is not nil.
+ * Returns registered `routerObject` for `path`.
  */
+- (ESRouterObject *)routerObjectForPath:(NSString *)path;
+- (BOOL)openRouterObject:(ESRouterObject *)routerObject params:(NSMutableDictionary *)params extraInfo:(id)extraInfo;
 - (BOOL)_parseURL:(NSString *)url toScheme:(NSString **)scheme toPath:(NSString **)path toParams:(NSMutableDictionary **)params;
 @end
 
@@ -159,7 +185,7 @@ ES_SINGLETON_DEC(sharedRouter);
 /**
  * Data model for ESRouter
  */
-@interface ESRouterObject : NSObject
+@interface ESRouterObject : NSObject <NSCopying>
 
 ///=============================================
 /// @name Objects To Map
@@ -188,19 +214,18 @@ ES_SINGLETON_DEC(sharedRouter);
  */
 @property (nonatomic, strong) NSDictionary *defaultParams;
 /**
- * Set **Open Options**, it will be invoked before **open**.
- * i.e. you can set `UIModalPresentationStyle`, `UIModalTransitionStyle`, etc.
- */
-@property (nonatomic, copy) ESRouterOpeningCallback openingCallback;
-/**
  * Invocked when dismissed or poped.
  */
-@property (nonatomic, copy) ESRouterClosedCallback closedCallback;
+//@property (nonatomic, copy) ESRouterClosedCallback closedCallback;
 
 ///=============================================
 /// @name UIViewController Opening Options
 ///=============================================
-
+/**
+ * It will be invoked before opening.
+ * i.e. you can set `UIModalPresentationStyle`, `UIModalTransitionStyle`, etc.
+ */
+@property (nonatomic, copy) ESRouterOpeningCallback openingCallback;
 /**
  * The `UINavigationController` instance which will be used to push `UIViewController`.
  */
@@ -241,8 +266,29 @@ ES_SINGLETON_DEC(sharedRouter);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESRouterDelegate
 
+/**
+ * `UIViewController` may implement `ESRouterDelegate` to get `routerParams` or `routerExtraInfo`.
+ */
 @protocol ESRouterDelegate <NSObject>
 @optional
+/**
+ * All `NSString` params
+ */
 @property (nonatomic, strong) NSDictionary *routerParams;
+/**
+ * The first 'p' value
+ */
+@property (nonatomic, copy) NSString *routerParam;
+/**
+ * The second 'p1' value
+ */
+@property (nonatomic, copy) NSString *routerParam1;
+/**
+ * The third 'p2' value
+ */
+@property (nonatomic, copy) NSString *routerParam2;
+/**
+ * Other param with `id` type.
+ */
 @property (nonatomic, strong) id routerExtraInfo;
 @end

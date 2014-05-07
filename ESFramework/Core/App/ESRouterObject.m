@@ -24,6 +24,22 @@
         return self;
 }
 
+- (instancetype)copyWithZone:(NSZone *)zone
+{
+        ESRouterObject *object = [[self class] allocWithZone:zone];
+        object.openClassName = self.openClassName;
+        object->_openClass = self->_openClass;
+        object.openBlock = self.openBlock;
+        object.defaultParams = self.defaultParams;
+        object.openingCallback = self.openingCallback;
+        object.navigationController = self.navigationController;
+        object.root = self.root;
+        object.containerNavigationControllerForPresenting = self.containerNavigationControllerForPresenting;
+        object.modal = self.modal;
+        object.animated = self.animated;
+        return object;
+}
+
 + (instancetype)objectWithClass:(NSString *)className
 {
         return [self objectWithClass:className isModal:YES isRoot:NO];

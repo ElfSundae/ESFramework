@@ -16,10 +16,9 @@
 - (BOOL)isEmpty;
 /**
  * If the object is `[NSNull null]`, it will returns `nil`.
- * It is useful while accessing a JSONObject which parsed
- * from JSON data.
+ * It is useful when accessing a JSONObject which parsed from JSON data.
  */
-- (id)smartObjectForKey:(id)key;
+- (id)esObjectForKey:(id)key;
 
 - (void)each:(void (^)(id key, id obj))block;
 

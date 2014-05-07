@@ -11,7 +11,7 @@
 #import "ESDefines.h"
 
 /**
- * Global app helper class, or you can subclass it as your app delegate.
+ * App helper class, and you can subclass it as your app delegate.
  *
  * ## Subclassing Notes
  *
@@ -32,9 +32,12 @@
  *	// Invoked after receiving remote notification
  *	- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
  *	{
- *	        // `super` will clear `ApplicationIconBadgeNumber`
- *	        [super applicationDidReceiveRemoteNotification:userInfo];
+ *              [self clearApplicationIconBadgeNumber];
  *	}
+ *
+ *      - (void)applicationDidEnterBackground:(UIApplication *)application {
+ *              [[self class] clearApplicationIconBadgeNumber];
+ *      }
  *
  *	// Returns the current app channel, e.g. @"App Store"
  *	+ (NSString *)appChannel

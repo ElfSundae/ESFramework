@@ -37,7 +37,10 @@
  * NSCaseInsensitiveSearch
  */
 - (BOOL)containsString:(NSString*)string;
+
 - (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options;
+
+- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
 /**
  * Trims `[NSCharacterSet whitespaceAndNewlineCharacterSet]`
  */

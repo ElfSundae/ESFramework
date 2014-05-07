@@ -45,7 +45,10 @@
 {
         return (NSNotFound != [self rangeOfString:string options:options].location);
 }
-
+- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
+{
+        return (NSOrderedSame == [self compare:aString options:NSCaseInsensitiveSearch]);
+}
 - (NSString *)trim
 {
         return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
