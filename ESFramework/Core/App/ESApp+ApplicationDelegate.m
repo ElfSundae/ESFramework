@@ -10,11 +10,6 @@
 
 @implementation ESApp (ApplicationDelegate)
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application
-{
-        [self application:application didFinishLaunchingWithOptions:nil];
-}
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
         /* Setup window */
@@ -61,7 +56,7 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
         NSString *token = [deviceToken description];
-        [token stringByReplacingOccurrencesOfString:@"[<>\\s]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, token.length)];
+        token = [token stringByReplacingOccurrencesOfString:@"[<>\\s]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, token.length)];
         if (self._remoteNotificationRegisterResultHandler) {
                 self._remoteNotificationRegisterResultHandler(token);
         }

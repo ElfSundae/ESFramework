@@ -16,36 +16,64 @@
  * ## Subclassing Notes
  *
  *
- *	// Call super, do special initiations, then return YES.
- *	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
- *	{
- *	        [super application:application didFinishLaunchingWithOptions:launchOptions];
- *	        self.window.backgroundColor = [UIColor whiteColor];
- *	        return YES;
- *	}
+ * 	// Call super, do special initiations, then return YES.
+ * 	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+ * 	{
+ * 	        [super application:application didFinishLaunchingWithOptions:launchOptions];
+ * 	        self.window.backgroundColor = [UIColor whiteColor];
+ * 	        return YES;
+ * 	}
  *
- *	- (void)setupRootViewController
- *	{
- *	        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
- *	}
+ * 	- (void)setupRootViewController
+ * 	{
+ * 	        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+ * 	}
  *
- *	// Invoked after receiving remote notification
- *	- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
- *	{
- *              [self clearApplicationIconBadgeNumber];
- *	}
+ * 	// handle `openURL`
+ * 	- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+ * 		return YES;
+ * 	}
  *
- *      - (void)applicationDidEnterBackground:(UIApplication *)application {
- *              [[self class] clearApplicationIconBadgeNumber];
- *      }
+ * 	// in someone method:
+ * 	{
+ * 		// Register remote notification
+ * 		[[AppDelegate sharedApp] registerRemoteNotificationWithHandler:^(id sender) {
+ * 		        NSLog(@"%@", sender);
+ * 		}];
+ * 	}
  *
- *	// Returns the current app channel, e.g. @"App Store"
- *	+ (NSString *)appChannel
- *	{
- *	        return @"App Store";
- *	}
+ * 	// Invoked after receiving remote notification
+ * 	- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo {
+ * 	        [[self class] clearApplicationIconBadgeNumber];
+ * 	}
+ *
+ * 	- (void)applicationDidEnterBackground:(UIApplication *)application {
+ * 	        [[self class] clearApplicationIconBadgeNumber];
+ * 	}
+ *
+ * 	// Returns the current app channel, e.g. @"App Store"
+ * 	+ (NSString *)appChannel
+ * 	{
+ * 	        return @"App Store";
+ * 	}
  *	
  *
+ * ### Remote notification Payload
+ *
+ * 	{
+ * 	    aps =     {
+ * 	        alert = "kfang (Enterprise)";
+ * 	        badge = 30;
+ * 	        sound = default;
+ * 	    };
+ * 	    custom =     {
+ * 	        key = value;
+ * 	    };
+ * 	    foo = bar;
+ * 	}
+ *
+ * ### TODO
+ * 1. handle local notification
  */
 @interface ESApp : UIResponder
 __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
@@ -88,7 +116,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 /**
  * Returns User Agent for HTTP request.
  *
- * @see [NSMutableURLRequest addUserAgent]
+ * @see -[NSMutableURLRequest(ESUserAgent) addUserAgent]
  */
 + (NSString *)userAgent;
 /**
@@ -106,7 +134,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 /**
  * The first scheme for the blank or NULL identifier.
  * In general, this may be the App Scheme that used to open this app
- * from another app (like Safari, [[UIApplication sharedApplication] openURL:...])
+ * from another app (like Safari, -[UIApplication openURL:])
  */
 + (NSString *)URLScheme;
 
@@ -213,8 +241,8 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 @interface ESApp (Notification)
 /**
- * If register succueed, handler's #sender will be the device token (NSString type without blank chars.),
- * otherwise, #sender will be a NSError object.
+ * If register succueed, handler's `sender` will be the device token (NSString type without blank chars.),
+ * or else `sender` will be a NSError object.
  */
 - (void)registerRemoteNotificationWithHandler:(ESHandlerBlock)handler;
 - (void)registerRemoteNotificationTypes:(UIRemoteNotificationType)types handler:(ESHandlerBlock)hander;
