@@ -22,4 +22,4 @@ Pods
 
 docs/docset/*
 !docs/docset/README.md
-!docs/docset/publish/*
+!docs/docset/publish
