@@ -93,6 +93,8 @@
 		E72F6A6F19182623006893A5 /* ESStoreProductViewControllerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A6D19182623006893A5 /* ESStoreProductViewControllerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72F6A7019182623006893A5 /* ESStoreProductViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A6E19182623006893A5 /* ESStoreProductViewControllerManager.m */; };
 		E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E73613C9191A3827008A39CD /* UIViewController+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E73613C7191A3827008A39CD /* UIViewController+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E73613CA191A3827008A39CD /* UIViewController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E73613C8191A3827008A39CD /* UIViewController+ESAdditions.m */; };
 		E739698B19199CE800F56B78 /* ESFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = E739698A19199CAD00F56B78 /* ESFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
@@ -245,6 +247,8 @@
 		E72F6A5F191825AB006893A5 /* ESWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESWebViewController.m; sourceTree = "<group>"; };
 		E72F6A6D19182623006893A5 /* ESStoreProductViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESStoreProductViewControllerManager.h; sourceTree = "<group>"; };
 		E72F6A6E19182623006893A5 /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
+		E73613C7191A3827008A39CD /* UIViewController+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESAdditions.h"; sourceTree = "<group>"; };
+		E73613C8191A3827008A39CD /* UIViewController+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESAdditions.m"; sourceTree = "<group>"; };
 		E739698A19199CAD00F56B78 /* ESFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFoundation.h; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -429,6 +433,8 @@
 			children = (
 				E72F6A5A191825AB006893A5 /* ESViewController.h */,
 				E72F6A5B191825AB006893A5 /* ESViewController.m */,
+				E73613C7191A3827008A39CD /* UIViewController+ESAdditions.h */,
+				E73613C8191A3827008A39CD /* UIViewController+ESAdditions.m */,
 				E72F6A56191825AB006893A5 /* ESNavigationController.h */,
 				E72F6A57191825AB006893A5 /* ESNavigationController.m */,
 				E72F6A6B191825C6006893A5 /* TableView */,
@@ -705,6 +711,7 @@
 				E72F6A66191825AB006893A5 /* ESWebView.h in Headers */,
 				E7089FB3190FED0E0014C8F6 /* SwipeView.h in Headers */,
 				E793AB9518FDDC3F00487E34 /* UIColor+ESAdditions.h in Headers */,
+				E73613C9191A3827008A39CD /* UIViewController+ESAdditions.h in Headers */,
 				E7089FAF190FECD20014C8F6 /* ESButton.h in Headers */,
 				E793AB9918FDDC3F00487E34 /* UIView+ESAdditions.h in Headers */,
 				E72F6A6F19182623006893A5 /* ESStoreProductViewControllerManager.h in Headers */,
@@ -999,6 +1006,7 @@
 			files = (
 				E70F7E6919029CC7007A6ACB /* UIGestureRecognizer+ESAdditions.m in Sources */,
 				E7089FAC190FECD20014C8F6 /* ESArrowButton.m in Sources */,
+				E73613CA191A3827008A39CD /* UIViewController+ESAdditions.m in Sources */,
 				E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */,
 				E779E0921911266700452A95 /* UIProgressView+ESStyle.m in Sources */,
 				E70F7E611901143C007A6ACB /* UIControl+ESAdditions.m in Sources */,
