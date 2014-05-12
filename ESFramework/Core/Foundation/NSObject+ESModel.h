@@ -91,6 +91,7 @@
  * Save current object to `+modelSharedInstanceFilePath`.
  */
 - (void)saveModelSharedInstance:(void (^)(BOOL result))block;
+- (void)saveModelSharedInstance;
 /**
  * File path for the shared instance.
  * Default path is `{app}/Library/ESModel/{ClassName}.archive`.

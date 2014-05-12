@@ -103,6 +103,11 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
         [self modelWriteToFile:[self.class modelSharedInstanceFilePath] atomically:YES withBlock:block];
 }
 
+- (void)saveModelSharedInstance
+{
+        [self saveModelSharedInstance:nil];
+}
+
 + (NSString *)modelSharedInstanceFilePath
 {
         return ESPathForLibraryResource(@"ESModel/%@.archive", NSStringFromClass(self));
