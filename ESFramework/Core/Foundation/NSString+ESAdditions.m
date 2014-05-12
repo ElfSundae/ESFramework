@@ -12,6 +12,76 @@
 
 @implementation NSString (ESAdditions)
 
+- (BOOL)containsString:(NSString*)string
+{
+	return [self containsString:string options:NSCaseInsensitiveSearch];
+}
+
+- (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options
+{
+        return (NSNotFound != [self rangeOfString:string options:options].location);
+}
+- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
+{
+        return (NSOrderedSame == [self compare:aString options:NSCaseInsensitiveSearch]);
+}
+
+- (NSString *)trim
+{
+        return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (BOOL)isEmpty
+{
+        return [self isEqualToString:@""];
+}
+
+- (BOOL)fileExists
+{
+        return [[NSFileManager defaultManager] fileExistsAtPath:self];
+}
+
+- (BOOL)fileExists:(BOOL *)isDirectory
+{
+        return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
+}
+
+
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
+{
+        ESDispatchOnDefaultQueue(^{
+                NSString *filePath = ESTouchFilePath(path);
+                if (!filePath) {
+                        if (block) {
+                                block(NO);
+                        }
+                        return;
+                }
+                
+                BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
+                if (block) {
+                        block(res);
+                }
+        });
+}
+
+- (NSString *)append:(NSString *)format, ...
+{
+        NSString *str = @"";
+        if (format) {
+                va_list args;
+                va_start(args, format);
+                str = [[NSString alloc] initWithFormat:format arguments:args];
+                va_end(args);
+        }
+        return [self stringByAppendingString:format];
+}
+
+- (NSString *)replace:(NSString *)string with:(NSString *)replacement
+{
+        return [self stringByReplacingOccurrencesOfString:string withString:replacement options:NSCaseInsensitiveSearch range:NSMakeRange(0, self.length)];
+}
+
 + (NSString *)newUUID
 {
         CFUUIDRef theUUID = CFUUIDCreate(NULL);
@@ -36,56 +106,9 @@
         return nil;
 }
 
-- (BOOL)containsString:(NSString*)string
-{
-	return [self containsString:string options:NSCaseInsensitiveSearch];
-}
 
-- (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options
-{
-        return (NSNotFound != [self rangeOfString:string options:options].location);
-}
-- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
-{
-        return (NSOrderedSame == [self compare:aString options:NSCaseInsensitiveSearch]);
-}
-- (NSString *)trim
-{
-        return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-}
 
-- (BOOL)isEmpty
-{
-        return [self isEqualToString:@""];
-}
 
-- (BOOL)fileExists
-{
-        return [[NSFileManager defaultManager] fileExistsAtPath:self];
-}
-
-- (BOOL)fileExists:(BOOL *)isDirectory
-{
-        return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
-}
-
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
-{
-        ESDispatchOnDefaultQueue(^{
-                NSString *filePath = ESTouchFilePath(path);
-                if (!filePath) {
-                        if (block) {
-                                block(NO);
-                        }
-                        return;
-                }
-                
-                BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
-                if (block) {
-                        block(res);
-                }
-        });
-}
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode
