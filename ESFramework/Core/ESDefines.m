@@ -180,6 +180,47 @@ BOOL ESIsPhoneDevice(void)
         return _isPhoneDevice;
 }
 
+BOOL ESIsRetinaScreen(void)
+{
+        static BOOL _gIsRetina;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                _gIsRetina = ([UIScreen mainScreen].scale == 2.0);
+        });
+        return _gIsRetina;
+}
+
+UIImage *UIImageFrom(NSString *path, ...)
+{
+        NSString *filePath = nil;
+        if ([path isKindOfClass:[NSString class]]) {
+                va_list args;
+                va_start(args, path);
+                filePath = [[NSString alloc] initWithFormat:path arguments:args];
+                va_end(args);
+        }
+        if (!filePath) {
+                return nil;
+        }
+        if (![filePath isAbsolutePath]) {
+                filePath = ESPathForMainBundleResource(filePath);
+        }
+//        NSFileManager *fm = [NSFileManager defaultManager];
+//        if (![fm fileExistsAtPath:filePath]) {
+//                NSString *fileDir = [filePath stringByDeletingLastPathComponent];
+//                NSString *fileName = [filePath lastPathComponent];
+//                NSArray *filePathComponents = [fileName pathComponents];
+//                if (filePathComponents.count < 2 || ![filePathComponents[1] length]) {
+//                        filePath = [fileDir stringByAppendingPathComponent:[filePathComponents[0] stringByAppendingPathExtension:@"png"]];
+//                        if (![fm fileExistsAtPath:filePath]) {
+//                                filePath = [fileDir stringByAppendingPathComponent:[filePathComponents[0] stringByAppendingString:@"@2x.png"]];
+//                        }
+//                }
+//        }
+        UIImage *image = [UIImage imageWithContentsOfFile:filePath];
+        return image;
+}
+
 NSMutableSet *ESCreateNonretainedMutableSet(void)
 {
         return CFBridgingRelease(CFSetCreateMutable(NULL, 0, NULL));

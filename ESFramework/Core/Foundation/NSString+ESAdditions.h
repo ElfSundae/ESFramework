@@ -49,6 +49,12 @@
 - (BOOL)isEmpty;
 
 /**
+ * Detect whether file exists.
+ */
+- (BOOL)fileExists;
+- (BOOL)fileExists:(BOOL *)isDirectory;
+
+/**
  * Asynchronously write file.
  * It will create directories automatically if not exists.
  */

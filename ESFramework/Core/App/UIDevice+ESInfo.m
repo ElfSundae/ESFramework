@@ -218,7 +218,7 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
 
 + (BOOL)isRetinaScreen
 {
-        return ([UIScreen mainScreen].scale == 2.0);
+        return ESIsRetinaScreen();
 }
 
 + (BOOL)isIPhoneRetina4InchScreen

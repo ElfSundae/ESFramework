@@ -59,6 +59,16 @@
         return [self isEqualToString:@""];
 }
 
+- (BOOL)fileExists
+{
+        return [[NSFileManager defaultManager] fileExistsAtPath:self];
+}
+
+- (BOOL)fileExists:(BOOL *)isDirectory
+{
+        return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
+}
+
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
         ESDispatchOnDefaultQueue(^{

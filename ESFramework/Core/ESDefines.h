@@ -452,6 +452,18 @@ ES_EXTERN BOOL ESIsPhoneUI(void);
  */
 ES_EXTERN BOOL ESIsPhoneDevice(void);
 
+ES_EXTERN BOOL ESIsRetinaScreen(void);
+
+/**
+ * Returns an `UIImage` instance using `+[UIImage imageWithContentsOfFile:]` method.
+ *
+ * `path` could be a absolute path, or a path that relative to the `[NSBundle mainBunld]`.
+ * It loads `@2x.png` retina file by default, and it not necessary to specify `.png` extension, or
+ * `@2x` suffix.
+ *
+ */
+ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
+
 /**
  * Creates a mutable set which does not retain references to the objects it contains.
  */
@@ -479,6 +491,7 @@ ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
 #pragma mark - Dispatch & Block
 
 typedef void (^ESBasicBlock)(void);
+typedef void (^ESErrorBlock)(NSError *error);
 typedef void (^ESHandlerBlock)(id sender);
 
 ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block);
