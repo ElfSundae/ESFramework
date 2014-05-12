@@ -7,9 +7,8 @@
 //
 
 #import "UIAlertView+ESBlock.h"
-#import <objc/runtime.h>
 
-static char _didDismissBlockKey;
+static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 @implementation UIAlertView (ESBlock)
 
@@ -18,11 +17,11 @@ static char _didDismissBlockKey;
 
 - (ESUIAlertViewDidDismissBlock)didDismissBlock
 {
-        return objc_getAssociatedObject(self, &_didDismissBlockKey);
+        return [self getAssociatedObject:_didDismissBlockKey];
 }
 - (void)setDidDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
 {
-        objc_setAssociatedObject(self, &_didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        [self setAssociatedObject_nonatomic_copy:didDismissBlock key:_didDismissBlockKey];
 }
 
 - (UILabel *)_esMessageLabel

@@ -59,28 +59,21 @@
         return [self isEqualToString:@""];
 }
 
-- (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
         ESDispatchOnDefaultQueue(^{
-                NSString *dir = [path stringByDeletingLastPathComponent];
-                NSError *outError = [NSError errorWithDomain:ESErrorDomain code:4 userInfo:@{NSLocalizedDescriptionKey : @"The operation couldn’t be completed."}];
-                NSError *error = nil;
-                if (!dir) {
-                        if (block) block(NO, outError);
+                NSString *filePath = ESTouchFilePath(path);
+                if (!filePath) {
+                        if (block) {
+                                block(NO);
+                        }
                         return;
                 }
                 
-                NSFileManager *fm = [NSFileManager defaultManager];
-                BOOL isDirectory = NO;
-                if (![fm fileExistsAtPath:dir isDirectory:&isDirectory] || !isDirectory) {
-                        if (![fm createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:&error]) {
-                                if (block) block(NO, error);
-                                return;
-                        }
+                BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
+                if (block) {
+                        block(res);
                 }
-                
-                BOOL res = [self writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
-                if (block) block(res, error);
         });
 }
 

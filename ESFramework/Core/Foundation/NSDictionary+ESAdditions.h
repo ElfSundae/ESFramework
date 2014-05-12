@@ -38,6 +38,13 @@
  */
 - (NSDictionary *)matches:(BOOL (^)(id key, id obj))block;
 
+/**
+ * Asynchronously write file.
+ * It will create directories automatically if not exists.
+ */
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
+
+
 @end
 
 @interface NSMutableDictionary (ESAdditions)

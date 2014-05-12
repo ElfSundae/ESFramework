@@ -7,20 +7,20 @@
 //
 
 #import "UIActionSheet+ESBlock.h"
-#import <objc/runtime.h>
+#import "ESDefines.h"
 
-static char _didDismissBlockKey;
+static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 @implementation UIActionSheet (ESBlock)
 
 - (ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        return objc_getAssociatedObject(self, &_didDismissBlockKey);
+        return [self getAssociatedObject:_didDismissBlockKey];
 }
 
 - (void)setDidDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        objc_setAssociatedObject(self, &_didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        [self setAssociatedObject_nonatomic_copy:didDismissBlock key:_didDismissBlockKey];
 }
 
 - (instancetype)initWithTitle:(NSString *)title didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock

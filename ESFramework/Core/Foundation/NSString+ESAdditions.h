@@ -52,7 +52,7 @@
  * Asynchronously write file.
  * It will create directories automatically if not exists.
  */
-- (void)writeToFile:(NSString *)path withBlock:(void (^)(BOOL result, NSError *error))block;
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
 
 /**
  * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="

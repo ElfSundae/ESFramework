@@ -200,15 +200,30 @@ NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Path
 
-NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath)
+NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...)
 {
         NSBundle *b = bundle ?: [NSBundle mainBundle];
-        return [[b resourcePath] stringByAppendingPathComponent:relativePath];
+        NSString *filePath = [b resourcePath];
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                NSString *path = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+                filePath = [filePath stringByAppendingPathComponent:path];
+        }
+        return filePath;
 }
 
-NSString *ESPathForMainBundleResource(NSString *relativePath)
+NSString *ESPathForMainBundleResource(NSString *relativePath, ...)
 {
-        return ESPathForBundleResource([NSBundle mainBundle], relativePath);
+        NSString *path = nil;
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                path = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+        }
+        return ESPathForBundleResource([NSBundle mainBundle], path);
 }
 
 NSString *ESPathForDocuments(void)
@@ -221,9 +236,16 @@ NSString *ESPathForDocuments(void)
         return docs;
 }
 
-NSString *ESPathForDocumentsResource(NSString *relativePath)
+NSString *ESPathForDocumentsResource(NSString *relativePath, ...)
 {
-        return [ESPathForDocuments() stringByAppendingPathComponent:relativePath];
+        NSString *filePath = @"";
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+        }
+        return [ESPathForDocuments() stringByAppendingPathComponent:filePath];
 }
 
 NSString *ESPathForLibrary(void)
@@ -236,9 +258,16 @@ NSString *ESPathForLibrary(void)
         return lib;
 }
 
-NSString *ESPathForLibraryResource(NSString *relativePath)
+NSString *ESPathForLibraryResource(NSString *relativePath, ...)
 {
-        return [ESPathForLibrary() stringByAppendingPathComponent:relativePath];
+        NSString *filePath = @"";
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+        }
+        return [ESPathForLibrary() stringByAppendingPathComponent:filePath];
 }
 
 NSString *ESPathForCaches(void)
@@ -251,9 +280,16 @@ NSString *ESPathForCaches(void)
         return caches;
 }
 
-NSString *ESPathForCachesResource(NSString *relativePath)
+NSString *ESPathForCachesResource(NSString *relativePath, ...)
 {
-        return [ESPathForCaches() stringByAppendingPathComponent:relativePath];
+        NSString *filePath = @"";
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+        }
+        return [ESPathForCaches() stringByAppendingPathComponent:filePath];
 }
 
 NSString *ESPathForTemporary(void)
@@ -261,9 +297,47 @@ NSString *ESPathForTemporary(void)
         return NSTemporaryDirectory();
 }
 
-NSString *ESPathForTemporaryResource(NSString *relativePath)
+NSString *ESPathForTemporaryResource(NSString *relativePath, ...)
 {
-        return [ESPathForTemporary() stringByAppendingPathComponent:relativePath];
+        NSString *filePath = @"";
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+        }
+        return [ESPathForTemporary() stringByAppendingPathComponent:filePath];
+}
+
+BOOL ESTouchDirectory(NSString *dir)
+{
+        if (![dir isKindOfClass:[NSString class]] || 0 == dir.length) {
+                return NO;
+        }
+        NSFileManager *fm = [NSFileManager defaultManager];
+        BOOL isDirectory = NO;
+        if (![fm fileExistsAtPath:dir isDirectory:&isDirectory] || !isDirectory) {
+                if (![fm createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:NULL]) {
+                        return NO;
+                }
+        }
+        return YES;
+}
+
+NSString *ESTouchFilePath(NSString *filePath, ...)
+{
+        NSString *path = @"";
+        if ([filePath isKindOfClass:[NSString class]]) {
+                va_list args;
+                va_start(args, filePath);
+                path = [[NSString alloc] initWithFormat:filePath arguments:args];
+                va_end(args);
+        }
+        NSString *dir = [path stringByDeletingLastPathComponent];
+        if (!ESTouchDirectory(dir)) {
+                return nil;
+        }
+        return path;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -477,6 +551,15 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         }
         return obj;
 }
++ (id)getAssociatedObject:(const void *)key
+{
+        id obj = objc_getAssociatedObject(self, key);
+        if ([obj isKindOfClass:[_ESWeakAssociatedObject class]]) {
+                obj = [(_ESWeakAssociatedObject *)obj weakObject];
+        }
+        return obj;
+}
+
 - (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key
 {
         _ESWeakAssociatedObject *object = objc_getAssociatedObject(self, key);
@@ -486,11 +569,30 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         }
         object.weakObject = weakObject;
 }
++ (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key
+{
+        _ESWeakAssociatedObject *object = objc_getAssociatedObject(self, key);
+        if (!object) {
+                object = [[_ESWeakAssociatedObject alloc] init];
+                [self setAssociatedObject_nonatomic_retain:object key:key];
+        }
+        object.weakObject = weakObject;
+}
+
 - (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key
 {
         objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
++ (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key
+{
+        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 - (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key
+{
+        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
++ (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key
 {
         objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
@@ -498,11 +600,24 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 {
         objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN);
 }
++ (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key
+{
+        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN);
+}
 - (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key
 {
         objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY);
 }
++ (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key
+{
+        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY);
+}
+
 - (void)removeAllAssociatedObjects
+{
+        objc_removeAssociatedObjects(self);
+}
++ (void)removeAllAssociatedObjects
 {
         objc_removeAssociatedObjects(self);
 }

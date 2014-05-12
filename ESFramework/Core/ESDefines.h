@@ -352,6 +352,10 @@ ES_EXTERN NSString *const ESErrorDomain;
  * Check bit (flag) 
  */
 #define ESIsMaskSet(value, flag)     (((value) & (flag)) == (flag))
+
+ES_INLINE BOOL ESIsNonEmptyString(NSString *string) {
+        return ([string isKindOfClass:[NSString class]] && ![string isEqualToString:@""]);
+};
 /** 
  * LocalizedString 
  */
@@ -457,16 +461,20 @@ ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 #pragma mark - Path
 
-ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
-ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
+ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForDocuments(void);
-ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
+ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForLibrary(void);
-ES_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
+ES_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForCaches(void);
-ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
+ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForTemporary(void);
-ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
+ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath, ...);
+/// Create the `dir`  if it doesn't exist
+ES_EXTERN BOOL ESTouchDirectory(NSString *dir);
+/// Create directories if it doesn't exist, returns `nil` if failed.
+ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
 
 #pragma mark - Dispatch & Block
 
@@ -578,12 +586,20 @@ ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
  */
 @interface NSObject (ESAssociatedObject)
 - (id)getAssociatedObject:(const void *)key;
++ (id)getAssociatedObject:(const void *)key;
+/// Since `OBJC_ASSOCIATION_ASSIGN` is not a `zeroing weak references`.
 - (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key;
++ (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key;
 - (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
++ (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
 - (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
++ (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
 - (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key;
++ (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key;
 - (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key;
++ (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key;
 - (void)removeAllAssociatedObjects;
++ (void)removeAllAssociatedObjects;
 @end
 
 ///========================================================================================================

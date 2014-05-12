@@ -53,9 +53,8 @@
 
 - (NSString *)base64EncodedString
 {
-        if ([self respondsToSelector:@selector(base64EncodedDataWithOptions:)]) {
-                NSData *data = [self base64EncodedDataWithOptions:0];
-                return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if ([self respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+                return [self base64EncodedStringWithOptions:0];
         }
         return [self base64Encoding];
 }

@@ -7,10 +7,29 @@
 //
 
 #import "NSData+ESAdditions.h"
-
+#import "ESDefines.h"
 @implementation NSData (ESAdditions)
 - (NSString *)stringValue
 {
         return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
+
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
+{
+        ESDispatchOnDefaultQueue(^{
+                NSString *filePath = ESTouchFilePath(path);
+                if (!filePath) {
+                        if (block) {
+                                block(NO);
+                        }
+                        return;
+                }
+                
+                BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile];
+                if (block) {
+                        block(res);
+                }
+        });
+}
+
 @end

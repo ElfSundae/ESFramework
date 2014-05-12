@@ -47,6 +47,12 @@
  */
 - (NSArray *)reject:(BOOL (^)(id obj, NSUInteger idx))block;
 
+/**
+ * Asynchronously write file.
+ * It will create directories automatically if not exists.
+ */
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

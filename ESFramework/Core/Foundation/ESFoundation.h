@@ -20,5 +20,6 @@
 #import "NSTimer+ESAdditions.h"
 #import "ESHash.h"
 #import "ESValue.h"
+#import "NSObject+ESModel.h"
 
 #endif
