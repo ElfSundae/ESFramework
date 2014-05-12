@@ -455,12 +455,22 @@ ES_EXTERN BOOL ESIsPhoneDevice(void);
 ES_EXTERN BOOL ESIsRetinaScreen(void);
 
 /**
- * Returns an `UIImage` instance using `+[UIImage imageWithContentsOfFile:]` method.
+ * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
+ * App bundle could includes only `@2x` high resolution images, this method will
+ * return correct `scaled` image for normal resolution device such as iPad mini 1th.
+ * 
+ * + Standard: `<ImageName><device_modifier>.<filename_extension>`
+ * + High resolution: `<ImageName>@2x<device_modifier>.<filename_extension>`
  *
- * `path` could be a absolute path, or a path that relative to the `[NSBundle mainBunld]`.
- * It loads `@2x.png` retina file by default, and it not necessary to specify `.png` extension, or
- * `@2x` suffix.
+ * The `<device_modifier>` portion is optional and contains either the string `~ipad` or `~iphone`
  *
+ * @see https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8
+ */
+ES_EXTERN UIImage *UIImageFromCache(NSString *path, ...);
+/**
+ * Returns a new `UIImage` instance.
+ *
+ * The `path` specification is the same as `UIImageFromCache(NSString *)`, as well as `+[UIImage imageNamed:]`.
  */
 ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
 
