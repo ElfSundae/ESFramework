@@ -11,6 +11,7 @@
 #import "NSDictionary+ESAdditions.h"
 
 static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
+static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 @implementation NSObject (ESModel)
 
@@ -23,7 +24,7 @@ static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
 {
         self = [self init];
         if (self) {
-                [self modelSetWithCoder:aDecoder];
+                [self setModelWithCoder:aDecoder];
         }
         return self;
 }
@@ -39,7 +40,7 @@ static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
         }
 }
 
-- (void)modelSetWithCoder:(NSCoder *)aDecoder
+- (void)setModelWithCoder:(NSCoder *)aDecoder
 {
         for (NSString *key in [[self class] modelCodablePropertiesKeys]) {
                 id value = [aDecoder decodeObjectForKey:key];
@@ -49,18 +50,10 @@ static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
         }
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Subclass
-
-+ (NSString *)modelFilePath
++ (instancetype)modelInstance
 {
-        return ESPathForLibraryResource(@"ESModel/%@.archive", NSStringFromClass(self));
+        return [[self alloc] init];
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Constructors
 
 + (instancetype)modelWithContentsOfFile:(NSString *)filePath
 {
@@ -69,6 +62,76 @@ static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
                 return object;
         }
         return nil;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Shared Instance
+
+
++ (instancetype)modelSharedInstance
+{
+        @synchronized([self class]) {
+                id instance = [self getAssociatedObject:_es_modelSharedInstanceKey];
+                if (nil == instance) {
+                        instance = [self modelWithContentsOfFile:[self modelSharedInstanceFilePath]];
+                        if (nil == instance) {
+                                instance = [self modelInstance];
+                        }
+                        [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];
+                }
+                return instance;
+        }
+}
+
++ (BOOL)modelSharedInstanceExists
+{
+        return !![self getAssociatedObject:_es_modelSharedInstanceKey];
+}
+
++ (void)setModelSharedInstance:(id)instance
+{
+        if (instance && ![instance isKindOfClass:self]) {
+                [NSException raise:@"NSObjectException(ESModel)" format:@"setModelSharedInstance: instance(%@) class does not match.", NSStringFromClass([instance class])];
+        }
+        
+        [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];
+}
+
+- (void)saveModelSharedInstance:(void (^)(BOOL result))block
+{
+        [self modelWriteToFile:[self.class modelSharedInstanceFilePath] atomically:YES withBlock:block];
+}
+
++ (NSString *)modelSharedInstanceFilePath
+{
+        return ESPathForLibraryResource(@"ESModel/%@.archive", NSStringFromClass(self));
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - File Access
+
+- (void)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
+{
+        ESDispatchOnDefaultQueue(^{
+                BOOL res = [self modelWriteToFile:path atomically:useAuxiliaryFile];
+                if (block) {
+                        block(res);
+                }
+        });
+}
+
+- (BOOL)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile
+{
+        NSString *filePath = ESTouchFilePath(path);
+        if (!filePath) {
+                return NO;
+        }
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+        return [data writeToFile:path atomically:useAuxiliaryFile];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -190,34 +253,5 @@ static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
         return description;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - File Access
-
-- (void)modelWriteToFileWithBlock:(void (^)(BOOL result))block
-{
-        [self modelWriteToFile:[self.class modelFilePath] atomically:YES withBlock:block];
-}
-
-- (void)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
-{
-        ESDispatchOnDefaultQueue(^{
-                BOOL res = [self modelWriteToFile:path atomically:useAuxiliaryFile];
-                if (block) {
-                        block(res);
-                }
-        });
-}
-
-- (BOOL)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile
-{
-        NSString *filePath = ESTouchFilePath(path);
-        if (!filePath) {
-                return NO;
-        }
-        
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-        return [data writeToFile:path atomically:useAuxiliaryFile];
-}
 
 @end

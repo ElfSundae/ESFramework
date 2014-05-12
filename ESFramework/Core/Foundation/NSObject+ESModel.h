@@ -56,24 +56,62 @@
 @interface NSObject (ESModel)
 
 ///=============================================
-/// @name Subclass
-///=============================================
-
-/**
- * The shared singleton file path.
- * Default path is `{app}/Library/ESModel/{ClassName}.archive`.
- */
-+ (NSString *)modelFilePath;
-- (void)modelSetWithCoder:(NSCoder *)aDecoder;
-
-///=============================================
 /// @name Constructors
 ///=============================================
 
 /**
+ * Returns a new model instance.
+ */
++ (instancetype)modelInstance;
+/**
  * Returns `nil` if loading fail.
  */
 + (instancetype)modelWithContentsOfFile:(NSString *)filePath;
+
+- (void)setModelWithCoder:(NSCoder *)aDecoder;
+
+///=============================================
+/// @name Shared Instance
+///=============================================
+
+/**
+ * Returns the shared instance, it will load from `+modelSharedInstanceFilePath` at first.
+ */
++ (instancetype)modelSharedInstance;
+/**
+ * Detect whether the shared instance exists.
+ */
++ (BOOL)modelSharedInstanceExists;
+/**
+ * Set a instance to replace shared instance.
+ * Set `nil` to destroy shared instance.
+ */
++ (void)setModelSharedInstance:(id)instance;
+/**
+ * Save current object to `+modelSharedInstanceFilePath`.
+ */
+- (void)saveModelSharedInstance:(void (^)(BOOL result))block;
+/**
+ * File path for the shared instance.
+ * Default path is `{app}/Library/ESModel/{ClassName}.archive`.
+ */
++ (NSString *)modelSharedInstanceFilePath;
+
+
+///=============================================
+/// @name File Access
+///=============================================
+
+/**
+ * Asynchronously write file.
+ * It will create directories automatically if not exists.
+ */
+- (void)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
+/**
+ * Synchronously write file.
+ * It will create directories automatically if not exists.
+ */
+- (BOOL)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile;
 
 ///=============================================
 /// @name Properties Access
@@ -91,24 +129,5 @@
  * It's useful while debuging.
  */
 - (NSString *)modelDescription;
-
-///=============================================
-/// @name File Access
-///=============================================
-
-/**
- * Svae shared singleton object to file, path to +[self modelFilePath].
- */
-- (void)modelWriteToFileWithBlock:(void (^)(BOOL result))block;
-/**
- * Asynchronously write file.
- * It will create directories automatically if not exists.
- */
-- (void)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
-/**
- * Synchronously write file.
- * It will create directories automatically if not exists.
- */
-- (BOOL)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile;
 
 @end
