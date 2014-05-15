@@ -15,11 +15,16 @@
 @end
 
 @implementation ESCache
+@synthesize name = _name,
+queue = _queue,
+dictionary = _dictionary;
+
 
 ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
 
 - (void)dealloc
 {
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
         if (_queue) {
                 dispatch_release(_queue);
                 _queue = NULL;
@@ -35,9 +40,82 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
                 _queue = dispatch_queue_create(queueName.UTF8String, DISPATCH_QUEUE_CONCURRENT);
                 
                 _dictionary = [[NSMutableDictionary alloc] init];
+                
+                NSString *cacheFile = [self _diskCacheFilePath];
+                if (cacheFile) {
+                        id cacheObject = [NSKeyedUnarchiver unarchiveObjectWithFile:cacheFile];
+                        if ([cacheObject isKindOfClass:[NSDictionary class]]) {
+                                [_dictionary addEntriesFromDictionary:(NSDictionary *)cacheObject];
+                        }
+                        ES_WEAK_VAR(self, weakSelf);
+                        [self addNotification:UIApplicationDidEnterBackgroundNotification handler:^(NSNotification *notification, NSDictionary *userInfo) {
+                                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                                [_self _save];
+                        }];
+                }
         }
         return self;
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Properties
+
+- (NSString *)name
+{
+        __block NSString *name_ = nil;
+        dispatch_sync(_queue, ^{
+                name_ = _name;
+        });
+        return name_;
+}
+
+- (void)setName:(NSString *)name
+{
+        ES_WEAK_VAR(self, weakSelf);
+        dispatch_barrier_async(_queue, ^{
+                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                _self->_name = name;
+        });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private
+
+- (NSString *)diskCacheFileName
+{
+        return [NSString stringWithFormat:@"%@.cache", _name];
+}
+
+- (NSString *)_diskCacheFilePath
+{
+        static NSString *_gDiskCacheFilePath = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                NSString *filename = self.diskCacheFileName;
+                if (filename) {
+                        _gDiskCacheFilePath = ESTouchFilePath(ESPathForCachesResource(@"ESCache/%@", filename));
+                }
+        });
+        return _gDiskCacheFilePath;
+}
+
+- (void)_save
+{
+        ES_WEAK_VAR(self, weakSelf);
+        dispatch_barrier_async(_queue, ^{
+                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                if ([_self _diskCacheFilePath]) {
+                        if (_self.dictionary.count) {
+                                [NSKeyedArchiver archiveRootObject:_self.dictionary toFile:[_self _diskCacheFilePath]];
+                        } else {
+                                [[NSFileManager defaultManager] removeItemAtPath:[_self _diskCacheFilePath] error:NULL];
+                        }
+                }
+        });
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -100,6 +178,7 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
         dispatch_barrier_async(_queue, ^{
                 ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
                 [_self.dictionary removeAllObjects];
+                [_self _save];
                 
                 if (block) {
                         dispatch_async(_self->_queue, ^{
@@ -107,6 +186,7 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
                                 block(_self);
                         });
                 }
+                
         });
 }
 
@@ -204,5 +284,6 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_release(semaphore);
 }
+
 
 @end

@@ -120,8 +120,10 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 - (void)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
+        ES_WEAK_VAR(self, weakSelf);
         ESDispatchOnDefaultQueue(^{
-                BOOL res = [self modelWriteToFile:path atomically:useAuxiliaryFile];
+                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                BOOL res = [_self modelWriteToFile:path atomically:useAuxiliaryFile];
                 if (block) {
                         block(res);
                 }
