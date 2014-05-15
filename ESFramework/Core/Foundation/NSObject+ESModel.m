@@ -110,7 +110,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (NSString *)modelSharedInstanceFilePath
 {
-        return ESPathForLibraryResource(@"ESModel/%@.archive", NSStringFromClass(self));
+        return ESPathForCachesResource(@"ESModel/%@.archive", NSStringFromClass(self));
 }
 
 

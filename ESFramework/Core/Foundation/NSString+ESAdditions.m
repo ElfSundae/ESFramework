@@ -109,10 +109,6 @@
         return nil;
 }
 
-
-
-
-
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode
 {

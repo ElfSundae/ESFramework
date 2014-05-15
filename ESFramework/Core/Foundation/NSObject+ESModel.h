@@ -94,7 +94,7 @@
 - (void)saveModelSharedInstance;
 /**
  * File path for the shared instance.
- * Default path is `{app}/Library/ESModel/{ClassName}.archive`.
+ * Default path is `{app}/Library/Caches/ESModel/{ClassName}.archive`.
  */
 + (NSString *)modelSharedInstanceFilePath;
 
