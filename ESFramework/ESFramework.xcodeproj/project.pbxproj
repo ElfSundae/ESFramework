@@ -30,6 +30,18 @@
 			name = ESFrameworkCore;
 			productName = ESFrameworkCore;
 		};
+		E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E7B8B3D11924FF7200196EE9 /* Build configuration list for PBXAggregateTarget "ESFrameworkDatabase" */;
+			buildPhases = (
+				E7B8B3D61924FF8800196EE9 /* Build Framework */,
+			);
+			dependencies = (
+				E7B8B3D51924FF8100196EE9 /* PBXTargetDependency */,
+			);
+			name = ESFrameworkDatabase;
+			productName = ESFrameworkDatabase;
+		};
 		E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = E7C946BE18FBD4480034B110 /* Build configuration list for PBXAggregateTarget "ESFrameworkUIKit" */;
@@ -116,6 +128,9 @@
 		E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8E18FDDC3F00487E34 /* ESAnimations.m */; };
 		E7B8B35E1924E22B00196EE9 /* ESCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B35C1924E22B00196EE9 /* ESCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B8B35F1924E22B00196EE9 /* ESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B35D1924E22B00196EE9 /* ESCache.m */; };
+		E7B8B3A41924FE1200196EE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
+		E7B8B3CE1924FEE700196EE9 /* DBTest.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B3CC1924FEE700196EE9 /* DBTest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7B8B3CF1924FEE700196EE9 /* DBTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B3CD1924FEE700196EE9 /* DBTest.m */; };
 		E7BCF63718F98614006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7BCF6B318F98C27006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7BCF7B718F996F5006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -170,6 +185,13 @@
 			remoteGlobalIDString = E7BCF61D18F98614006D920E;
 			remoteInfo = Core;
 		};
+		E7B8B3D41924FF8100196EE9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7B8B3A21924FE1200196EE9;
+			remoteInfo = Database;
+		};
 		E7C946CA18FBD4740034B110 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
@@ -187,6 +209,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E7B8B3A11924FE1200196EE9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7BCF63818F98614006D920E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +312,14 @@
 		E793AB8E18FDDC3F00487E34 /* ESAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAnimations.m; sourceTree = "<group>"; };
 		E7B8B35C1924E22B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCache.h; sourceTree = "<group>"; };
 		E7B8B35D1924E22B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCache.m; sourceTree = "<group>"; };
+		E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7B8B3B11924FE1200196EE9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E7B8B3B41924FE1300196EE9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E7B8B3C91924FE8600196EE9 /* DatabaseDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DatabaseDebug.xcconfig; sourceTree = "<group>"; };
+		E7B8B3CA1924FE9200196EE9 /* DatabaseRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DatabaseRelease.xcconfig; sourceTree = "<group>"; };
+		E7B8B3CB1924FECB00196EE9 /* ESFrameworkDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkDatabase.h; sourceTree = "<group>"; };
+		E7B8B3CC1924FEE700196EE9 /* DBTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTest.h; sourceTree = "<group>"; };
+		E7B8B3CD1924FEE700196EE9 /* DBTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBTest.m; sourceTree = "<group>"; };
 		E7BCF65618F98615006D920E /* ESFrameworkCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoreDebug.xcconfig; sourceTree = "<group>"; };
 		E7BCF69718F98C01006D920E /* UIKitDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitDebug.xcconfig; sourceTree = "<group>"; };
@@ -344,6 +383,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7B8B3A01924FE1200196EE9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B8B3A41924FE1200196EE9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +540,7 @@
 				E7BCF61818F985C4006D920E /* Core */,
 				E7BCF69618F98BF5006D920E /* UIKit */,
 				E7BCF7BE18F9971C006D920E /* Network */,
+				E7B8B3A51924FE1200196EE9 /* Database */,
 				E7522E5418EC43030087B95E /* Config */,
 				E714E39718FE796600CAF140 /* ESFrameworkResources */,
 				E7522DF218EC427E0087B95E /* Frameworks */,
@@ -507,6 +555,7 @@
 				E7BCF6D218F98C27006D920E /* ESFrameworkUIKit.a */,
 				E7BCF7BD18F996F5006D920E /* ESFrameworkNetwork.a */,
 				E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */,
+				E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -516,6 +565,8 @@
 			children = (
 				E7522DF318EC427E0087B95E /* Foundation.framework */,
 				E7C9469A18FBC9500034B110 /* CoreFoundation.framework */,
+				E7B8B3B11924FE1200196EE9 /* XCTest.framework */,
+				E7B8B3B41924FE1300196EE9 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,6 +629,18 @@
 				E793AB8E18FDDC3F00487E34 /* ESAnimations.m */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		E7B8B3A51924FE1200196EE9 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8B3CB1924FECB00196EE9 /* ESFrameworkDatabase.h */,
+				E7B8B3CC1924FEE700196EE9 /* DBTest.h */,
+				E7B8B3CD1924FEE700196EE9 /* DBTest.m */,
+				E7B8B3C91924FE8600196EE9 /* DatabaseDebug.xcconfig */,
+				E7B8B3CA1924FE9200196EE9 /* DatabaseRelease.xcconfig */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		E7BCF61818F985C4006D920E /* Core */ = {
@@ -693,6 +756,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		E7B8B3C71924FE2B00196EE9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B8B3CE1924FEE700196EE9 /* DBTest.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7BCF63918F98614006D920E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -782,6 +853,25 @@
 			productReference = E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
+		E7B8B3A21924FE1200196EE9 /* Database */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7B8B3C11924FE1300196EE9 /* Build configuration list for PBXNativeTarget "Database" */;
+			buildPhases = (
+				E7B8B39F1924FE1200196EE9 /* Sources */,
+				E7B8B3A01924FE1200196EE9 /* Frameworks */,
+				E7B8B3A11924FE1200196EE9 /* CopyFiles */,
+				E7B8B3C71924FE2B00196EE9 /* Headers */,
+				E7B8B3C81924FE2D00196EE9 /* Prepare Framework */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Database;
+			productName = Database;
+			productReference = E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		E7BCF61D18F98614006D920E /* Core */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7BCF65318F98614006D920E /* Build configuration list for PBXNativeTarget "Core" */;
@@ -864,11 +954,13 @@
 				E7BCF61D18F98614006D920E /* Core */,
 				E7BCF69918F98C27006D920E /* UIKit */,
 				E7BCF7B418F996F5006D920E /* Network */,
+				E7B8B3A21924FE1200196EE9 /* Database */,
 				E714E39418FE796600CAF140 /* ESFrameworkResources */,
 				E7926A5618FBC16500CD276F /* ESFrameworkCore */,
 				E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */,
 				E7C946C118FBD4560034B110 /* ESFrameworkNetwork */,
 				E7089FC619102A890014C8F6 /* Documentation */,
+				E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */,
 			);
 		};
 /* End PBXProject section */
@@ -913,6 +1005,34 @@
 			shellScript = "";
 		};
 		E7926A5C18FBC17700CD276F /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh ../scripts/build_framework.sh";
+			shellScript = "";
+		};
+		E7B8B3C81924FE2D00196EE9 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh ../scripts/prepare_framework.sh";
+			shellScript = "";
+		};
+		E7B8B3D61924FF8800196EE9 /* Build Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -989,6 +1109,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7B8B39F1924FE1200196EE9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B8B3CF1924FEE700196EE9 /* DBTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,6 +1198,11 @@
 			isa = PBXTargetDependency;
 			target = E7BCF61D18F98614006D920E /* Core */;
 			targetProxy = E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */;
+		};
+		E7B8B3D51924FF8100196EE9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7B8B3A21924FE1200196EE9 /* Database */;
+			targetProxy = E7B8B3D41924FF8100196EE9 /* PBXContainerItemProxy */;
 		};
 		E7C946CB18FBD4740034B110 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1217,6 +1350,36 @@
 			};
 			name = Release;
 		};
+		E7B8B3C21924FE1300196EE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7B8B3C91924FE8600196EE9 /* DatabaseDebug.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/Database.dst;
+			};
+			name = Debug;
+		};
+		E7B8B3C31924FE1300196EE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7B8B3CA1924FE9200196EE9 /* DatabaseRelease.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/Database.dst;
+			};
+			name = Release;
+		};
+		E7B8B3D21924FF7200196EE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E7B8B3D31924FF7200196EE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E7BCF65418F98614006D920E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */;
@@ -1331,6 +1494,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E7B8B3C11924FE1300196EE9 /* Build configuration list for PBXNativeTarget "Database" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7B8B3C21924FE1300196EE9 /* Debug */,
+				E7B8B3C31924FE1300196EE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E7B8B3D11924FF7200196EE9 /* Build configuration list for PBXAggregateTarget "ESFrameworkDatabase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7B8B3D21924FF7200196EE9 /* Debug */,
+				E7B8B3D31924FF7200196EE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		E7BCF65318F98614006D920E /* Build configuration list for PBXNativeTarget "Core" */ = {
 			isa = XCConfigurationList;

@@ -7,3 +7,9 @@
 [submodule "ESFramework/UIKit/Vendor/SwipeView"]
 	path = ESFramework/UIKit/Vendor/SwipeView
 	url = git@github.com:ElfSundae/SwipeView.git
+[submodule "ESFramework/Network/Vendor/SDWebImage"]
+	path = ESFramework/Network/Vendor/SDWebImage
+	url = git@github.com:ElfSundae/SDWebImage.git
+[submodule "ESFramework/Network/Vendor/AFNetworking"]
+	path = ESFramework/Network/Vendor/AFNetworking
+	url = git@github.com:ElfSundae/AFNetworking.git
