@@ -13,3 +13,6 @@
 [submodule "ESFramework/Network/Vendor/AFNetworking"]
 	path = ESFramework/Network/Vendor/AFNetworking
 	url = git@github.com:ElfSundae/AFNetworking.git
+[submodule "ESFramework/Database/Vendor/SQLitePersistentObjects"]
+	path = ESFramework/Database/Vendor/SQLitePersistentObjects
+	url = git@github.com:ElfSundae/SQLitePersistentObjects.git
