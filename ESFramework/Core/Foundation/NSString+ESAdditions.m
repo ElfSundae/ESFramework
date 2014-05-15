@@ -76,7 +76,7 @@
                 str = [[NSString alloc] initWithFormat:format arguments:args];
                 va_end(args);
         }
-        return [self stringByAppendingString:format];
+        return [self stringByAppendingString:str];
 }
 
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement
