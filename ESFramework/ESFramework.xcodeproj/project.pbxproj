@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		E70490F71925763200C0EDAD /* AllFrameworks */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E70490F81925763200C0EDAD /* Build configuration list for PBXAggregateTarget "AllFrameworks" */;
+			buildPhases = (
+			);
+			dependencies = (
+				E70490FC1925764700C0EDAD /* PBXTargetDependency */,
+				E70490FE1925764700C0EDAD /* PBXTargetDependency */,
+				E70491001925764700C0EDAD /* PBXTargetDependency */,
+				E70491021925764700C0EDAD /* PBXTargetDependency */,
+				E70491041925764700C0EDAD /* PBXTargetDependency */,
+			);
+			name = AllFrameworks;
+			productName = AllFrameworks;
+		};
 		E7089FC619102A890014C8F6 /* Documentation */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = E7089FC919102A890014C8F6 /* Build configuration list for PBXAggregateTarget "Documentation" */;
@@ -234,6 +249,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E70490FB1925764700C0EDAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E714E39418FE796600CAF140;
+			remoteInfo = ESFrameworkResources;
+		};
+		E70490FD1925764700C0EDAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7926A5618FBC16500CD276F;
+			remoteInfo = ESFrameworkCore;
+		};
+		E70490FF1925764700C0EDAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7C946BD18FBD4480034B110;
+			remoteInfo = ESFrameworkUIKit;
+		};
+		E70491011925764700C0EDAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7C946C118FBD4560034B110;
+			remoteInfo = ESFrameworkNetwork;
+		};
+		E70491031925764700C0EDAD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7B8B3D01924FF7200196EE9;
+			remoteInfo = ESFrameworkDatabase;
+		};
 		E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
@@ -1208,6 +1258,7 @@
 				E7C946C118FBD4560034B110 /* ESFrameworkNetwork */,
 				E7089FC619102A890014C8F6 /* Documentation */,
 				E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */,
+				E70490F71925763200C0EDAD /* AllFrameworks */,
 			);
 		};
 /* End PBXProject section */
@@ -1468,6 +1519,31 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E70490FC1925764700C0EDAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E714E39418FE796600CAF140 /* ESFrameworkResources */;
+			targetProxy = E70490FB1925764700C0EDAD /* PBXContainerItemProxy */;
+		};
+		E70490FE1925764700C0EDAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7926A5618FBC16500CD276F /* ESFrameworkCore */;
+			targetProxy = E70490FD1925764700C0EDAD /* PBXContainerItemProxy */;
+		};
+		E70491001925764700C0EDAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */;
+			targetProxy = E70490FF1925764700C0EDAD /* PBXContainerItemProxy */;
+		};
+		E70491021925764700C0EDAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7C946C118FBD4560034B110 /* ESFrameworkNetwork */;
+			targetProxy = E70491011925764700C0EDAD /* PBXContainerItemProxy */;
+		};
+		E70491041925764700C0EDAD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */;
+			targetProxy = E70491031925764700C0EDAD /* PBXContainerItemProxy */;
+		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7BCF61D18F98614006D920E /* Core */;
@@ -1503,6 +1579,20 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E70490F91925763200C0EDAD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E70490FA1925763200C0EDAD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E7089FC719102A890014C8F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1733,6 +1823,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E70490F81925763200C0EDAD /* Build configuration list for PBXAggregateTarget "AllFrameworks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E70490F91925763200C0EDAD /* Debug */,
+				E70490FA1925763200C0EDAD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E7089FC919102A890014C8F6 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
