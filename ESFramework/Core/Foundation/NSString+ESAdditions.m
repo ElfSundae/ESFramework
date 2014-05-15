@@ -79,6 +79,9 @@
 
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement
 {
+        if (!replacement) {
+                replacement = @"";
+        }
         return [self stringByReplacingOccurrencesOfString:string withString:replacement options:NSCaseInsensitiveSearch range:NSMakeRange(0, self.length)];
 }
 

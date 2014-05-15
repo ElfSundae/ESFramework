@@ -22,12 +22,6 @@
 
 typedef void (^ESRouterOpenBlock)(NSDictionary *params);
 typedef void (^ESRouterOpeningCallback)(UIViewController *fromController, UIViewController *toController, NSDictionary *openParams);
-//typedef void (^ESRouterClosedCallback)(UIViewController *fromController, NSDictionary *openParams, NSDictionary *result);
-
-/// e.g. @"vc://profile/?uid=123456"
-#define ESRouterURLSchemeController     @"vc"
-/// e.g. @"func://logout"
-#define ESRouterURLSchemeBlock          @"func"
 
 #define ESRouterURLKeyParam             @"p"
 #define ESRouterURLKeyParam1            @"p1"
@@ -57,9 +51,9 @@ typedef void (^ESRouterOpeningCallback)(UIViewController *fromController, UIView
  *
  * ## URL format
  *
- * `URL` formats as `[scheme:[/][/]]path[/p][/][?param1=value1][&param2=value2][...]` .
+ * `URL` formats as `path[/p][/p1][/p2][/][?param1=value1][&param2=value2][...]` .
  *
- * `path` is required, and it could be any string without '/', ':' or any other blank/space chars.
+ * `path` is required, **All parts in URL must be URLEncoded.**
  *
  * The params' prefix can be `?`, `&`, `#`.
  *
@@ -67,14 +61,14 @@ typedef void (^ESRouterOpeningCallback)(UIViewController *fromController, UIView
  * 	user/123456
  * 	somePath/pValue/p1Value/p2Value&key1=value1&key2=value2
  * 	UserProfileViewController/123456
- * 	vc://user/123456/?key1=value1&key2=value2
- * 	vc://user/123456?key1=value1&key2=value2
- * 	vc://user/123456/&key1=value1&key2=value2
- * 	vc://user/123456&key1=value1&key2=value2
- * 	vc://user/123456/#key1=value1&key2=value2
- * 	vc://user/123456#key1=value1&key2=value2
- * 	vc:user/123456&key1=value1&key2=value2
- * 	vc:user#p=123456&key1=value1&key2=value2
+ * 	user/123456/?key1=value1&key2=value2
+ * 	user/123456?key1=value1&key2=value2
+ * 	user/123456/&key1=value1&key2=value2
+ * 	user/123456&key1=value1&key2=value2
+ * 	user/123456/#key1=value1&key2=value2
+ * 	user/123456#key1=value1&key2=value2
+ * 	user/123456&key1=value1&key2=value2
+ * 	user#p=123456&key1=value1&key2=value2
  *
  *
  * ## Usage
@@ -146,12 +140,13 @@ ES_SINGLETON_DEC(sharedRouter);
 ///=============================================
 
 /**
- * Params in URL must be URLEncoded.
+ * All parts in URL must be URLEncoded.
  * @see -[NSString URLEncode]
  */
 - (BOOL)open:(NSString *)format, ...;
+
 /**
- * Params in URL must be URLEncoded.
+ * All parts in URL must be URLEncoded.
  * @see -[NSString URLEncode]
  */
 - (BOOL)open:(NSString *)url params:(NSDictionary *)routerParams extraInfo:(id)extraInfo;
@@ -175,7 +170,7 @@ ES_SINGLETON_DEC(sharedRouter);
  */
 - (ESRouterObject *)routerObjectForPath:(NSString *)path;
 - (BOOL)openRouterObject:(ESRouterObject *)routerObject params:(NSMutableDictionary *)params extraInfo:(id)extraInfo;
-- (BOOL)_parseURL:(NSString *)url toScheme:(NSString **)scheme toPath:(NSString **)path toParams:(NSMutableDictionary **)params;
+- (BOOL)_parseURL:(NSString *)url toPath:(NSString **)path toParams:(NSMutableDictionary **)params;
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

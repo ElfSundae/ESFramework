@@ -92,36 +92,24 @@ ES_SINGLETON_IMP(sharedRouter);
 
 - (BOOL)open:(NSString *)url params:(NSDictionary *)routerParams extraInfo:(id)extraInfo
 {
-        NSString *scheme = ESRouterURLSchemeController;
         NSString *path = nil;
         NSMutableDictionary *params = nil;
-        if (![self _parseURL:url toScheme:&scheme toPath:&path toParams:&params]) {
+        if (![self _parseURL:url toPath:&path toParams:&params]) {
                 return NO;
         }
         [params addEntriesFromDictionary:routerParams];
-        //NSLog(@"=======\n%@\n%@\n%@\n%@", url, scheme, path, params);
+        NSLog(@"=======\nURL: %@\nPath: %@\nParams: %@", url, path, params);
         if (!path) {
                 return NO;
         }
 
         ESRouterObject *routerObject = [self.map objectForKey:path];
         if (routerObject) {
-                // If there are '__modal__' '__root__' '__animated__' in URL params,
-                // then copy the routerObject and set these opening options
-                if ([params match:^BOOL(id key, id obj) {
-                        NSString *str = (NSString *)key;
-                        return ([str isEqualToStringCaseInsensitive:ESRouterURLKeyIsModal] ||
-                                [str isEqualToStringCaseInsensitive:ESRouterURLKeyIsRoot] ||
-                                [str isEqualToStringCaseInsensitive:ESRouterURLKeyIsAnimated]);
-                }]) {
-                        routerObject = [routerObject copy];
-                }
+                [params addEntriesFromDictionary:routerObject.defaultParams];
         } else {
-                if ([scheme isEqualToStringCaseInsensitive:ESRouterURLSchemeController]) {
-                       routerObject = [ESRouterObject objectWithClass:path];
-                }
+                // opening view controller by default
+                routerObject = [ESRouterObject objectWithClass:path];
         }
-        [params addEntriesFromDictionary:routerObject.defaultParams];
         
         return [self openRouterObject:routerObject params:params extraInfo:extraInfo];
 }
@@ -130,17 +118,6 @@ ES_SINGLETON_IMP(sharedRouter);
 {
         if (!params || !routerObject) {
                 return NO;
-        }
-        
-        BOOL isRoot, isModal, isAnimated;
-        if (ESBoolVal(&isRoot, params[ESRouterURLKeyIsRoot])) {
-                routerObject.root = isRoot;
-        }
-        if (ESBoolVal(&isModal, params[ESRouterURLKeyIsModal])) {
-                routerObject.modal = isModal;
-        }
-        if (ESBoolVal(&isAnimated, params[ESRouterURLKeyIsAnimated])) {
-                routerObject.animated = isAnimated;
         }
         
         /* Open block */
@@ -176,7 +153,14 @@ ES_SINGLETON_IMP(sharedRouter);
                 openViewController.routerExtraInfo = extraInfo;
         }
         
-        if (routerObject.isModal) {
+        BOOL isRoot = routerObject.isRoot;
+        ESBoolVal(&isRoot, params[ESRouterURLKeyIsRoot]);
+        BOOL isModal = routerObject.isModal;
+        ESBoolVal(&isModal, params[ESRouterURLKeyIsModal]);
+        BOOL isAnimated = routerObject.isAnimated;
+        ESBoolVal(&isAnimated, params[ESRouterURLKeyIsAnimated]);
+        
+        if (isModal) {
                 // Create navigation controller
                 UINavigationController *navController = nil;
                 if ([openViewController isKindOfClass:[UINavigationController class]]) {
@@ -202,7 +186,7 @@ ES_SINGLETON_IMP(sharedRouter);
                 if (routerObject.openingCallback) {
                         routerObject.openingCallback(rootController, openViewController, params);
                 }
-                [ESApp presentViewController:navController animated:routerObject.isAnimated completion:nil];
+                [ESApp presentViewController:navController animated:isAnimated completion:nil];
         } else {
                 // Get navigation controller to push
                 UINavigationController *navController = routerObject.navigationController;
@@ -216,10 +200,13 @@ ES_SINGLETON_IMP(sharedRouter);
                 if (routerObject.openingCallback) {
                         routerObject.openingCallback(navController, openViewController, params);
                 }
-                if (routerObject.isRoot) {
-                        [navController setViewControllers:@[openViewController] animated:routerObject.isAnimated];
+                if (!navController) {
+                        return NO;
+                }
+                if (isRoot) {
+                        [navController setViewControllers:@[openViewController] animated:isAnimated];
                 } else {
-                        [navController pushViewController:openViewController animated:routerObject.isAnimated];
+                        [navController pushViewController:openViewController animated:isAnimated];
                 }
         }
         return YES;
@@ -263,40 +250,41 @@ ES_SINGLETON_IMP(sharedRouter);
         }
         return object;
 }
-- (BOOL)_parseURL:(NSString *)url toScheme:(NSString **)scheme toPath:(NSString **)path toParams:(NSMutableDictionary **)params
+
+- (BOOL)_parseURL:(NSString *)url toPath:(NSString **)path toParams:(NSMutableDictionary **)params
 {
         if (![url isKindOfClass:[NSString class]]) {
                 return NO;
         }
-        static NSString *const pattern = @"^(([^\\s:]+):/?/?)?([^\\s\\?/&#]+)(/[^\\s\\?/&#]+)?(/[^\\s\\?/&#]+)?(/[^\\s\\?/&#]+)?";
+        static NSString *const pattern = @"^([^\\s\\?/&#]+)(/[^\\s\\?/&#]+)?(/[^\\s\\?/&#]+)?(/[^\\s\\?/&#]+)?";
         NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionCaseInsensitive error:NULL];
         NSTextCheckingResult *matchResult = [reg firstMatchInString:url options:0 range:NSMakeRange(0, url.length)];
-        if (!matchResult || matchResult.numberOfRanges < 6) {
+        if (!matchResult || matchResult.numberOfRanges < 5) {
                 return NO;
         }
         
         if (!(*params)) {
                 *params = [NSMutableDictionary dictionary];
         }
-
+        
         for (NSInteger i = 0; i < matchResult.numberOfRanges; i++) {
                 NSRange range = [matchResult rangeAtIndex:i];
                 if (NSNotFound == range.location) {
                         continue;
                 }
-                if (2 == i && scheme) {
-                        *scheme = [url substringWithRange:range];
-                } else if (3 == i && path) {
-                        *path = [url substringWithRange:range];
+                if (1 == i) {
+                        if (path) {
+                                *path = [[url substringWithRange:range] URLDecode];
+                        }
                 } else if (params) {
                         NSRange r = NSMakeRange(range.location+1, range.length-1);
-                        NSString *p = [url substringWithRange:r];
-                        if (4 == i) {
+                        NSString *p = [[url substringWithRange:r] URLDecode];
+                        if (2 == i) {
                                 [*params setObject:p forKey:ESRouterURLKeyParam];
-                        } else if (5 == i) {
-                               [*params setObject:p forKey:ESRouterURLKeyParam1];
-                        } else if (6 == i) {
-                               [*params setObject:p forKey:ESRouterURLKeyParam2];
+                        } else if (3 == i) {
+                                [*params setObject:p forKey:ESRouterURLKeyParam1];
+                        } else if (4 == i) {
+                                [*params setObject:p forKey:ESRouterURLKeyParam2];
                         }
                 }
         }
@@ -308,4 +296,6 @@ ES_SINGLETON_IMP(sharedRouter);
         
         return YES;
 }
+
+
 @end
