@@ -114,6 +114,8 @@
 		E793AB9A18FDDC3F00487E34 /* UIView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8918FDDC3F00487E34 /* UIView+ESAdditions.m */; };
 		E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8D18FDDC3F00487E34 /* ESAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8E18FDDC3F00487E34 /* ESAnimations.m */; };
+		E7B8B3561924A05B00196EE9 /* ESCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B3541924A05B00196EE9 /* ESCache.h */; };
+		E7B8B3571924A05B00196EE9 /* ESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B3551924A05B00196EE9 /* ESCache.m */; };
 		E7BCF63718F98614006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7BCF6B318F98C27006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7BCF7B718F996F5006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -277,6 +279,8 @@
 		E793AB8918FDDC3F00487E34 /* UIView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
 		E793AB8D18FDDC3F00487E34 /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
 		E793AB8E18FDDC3F00487E34 /* ESAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAnimations.m; sourceTree = "<group>"; };
+		E7B8B3541924A05B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCache.h; sourceTree = "<group>"; };
+		E7B8B3551924A05B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCache.m; sourceTree = "<group>"; };
 		E7BCF65618F98615006D920E /* ESFrameworkCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoreDebug.xcconfig; sourceTree = "<group>"; };
 		E7BCF69718F98C01006D920E /* UIKitDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitDebug.xcconfig; sourceTree = "<group>"; };
@@ -483,13 +487,6 @@
 			name = StoreProduct;
 			sourceTree = "<group>";
 		};
-		E73613CB191A514B008A39CD /* Cache */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cache;
-			sourceTree = "<group>";
-		};
 		E7522DE718EC427E0087B95E = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +580,15 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		E7B8B3531924A04100196EE9 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				E7B8B3541924A05B00196EE9 /* ESCache.h */,
+				E7B8B3551924A05B00196EE9 /* ESCache.m */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
 		E7BCF61818F985C4006D920E /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,8 +599,8 @@
 				E7F5D8CD1916DAE700D11273 /* Foundation */,
 				E7F5D8FA1916DBAA00D11273 /* UI */,
 				E7F5D9071916DBE100D11273 /* App */,
+				E7B8B3531924A04100196EE9 /* Cache */,
 				E7089FC1190FEDE20014C8F6 /* OpenUDID */,
-				E73613CB191A514B008A39CD /* Cache */,
 				E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */,
 				E7EDF3F518FBA5430067E849 /* CoreRelease.xcconfig */,
 			);
@@ -701,6 +707,7 @@
 			files = (
 				E7F5D8EC1916DB0B00D11273 /* NSString+ESAdditions.h in Headers */,
 				E7F5D9051916DBC800D11273 /* UIView+ESShortcut.h in Headers */,
+				E7B8B3561924A05B00196EE9 /* ESCache.h in Headers */,
 				E7F5D9181916DC0700D11273 /* UIDevice+ESInfo.h in Headers */,
 				E7F5D8E01916DB0B00D11273 /* NSArray+ESAdditions.h in Headers */,
 				E7F5D8EE1916DB0B00D11273 /* NSTimer+ESAdditions.h in Headers */,
@@ -1008,6 +1015,7 @@
 				E7F5D9061916DBC800D11273 /* UIView+ESShortcut.m in Sources */,
 				E7F5D8F91916DB8900D11273 /* ESValue.m in Sources */,
 				E7F5D9171916DC0700D11273 /* ESApp+UI.m in Sources */,
+				E7B8B3571924A05B00196EE9 /* ESCache.m in Sources */,
 				E72F6A5019178FA0006893A5 /* ESRouterObject.m in Sources */,
 				E7F5D8EB1916DB0B00D11273 /* NSSet+ESAdditions.m in Sources */,
 				E7F5D9141916DC0700D11273 /* ESApp+ApplicationDelegate.m in Sources */,
