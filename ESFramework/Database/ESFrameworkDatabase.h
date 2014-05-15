@@ -9,6 +9,7 @@
 #ifndef ESFramework_ESFrameworkDatabase_h
 #define ESFramework_ESFrameworkDatabase_h
 
-
+#import "SQLitePersistentObject.h"
+#import "SQLiteInstanceManager.h"
 
 #endif
