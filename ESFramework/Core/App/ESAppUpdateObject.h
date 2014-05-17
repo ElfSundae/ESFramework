@@ -62,6 +62,7 @@ typedef NS_ENUM(NSUInteger, ESAppUpdateAlertMask) {
  * `ESAppUpdateObject` will be backed by filesystem, thus you can check `updateResult`
  * to detect if there's a forced update when app launched even if the device's network connection
  * is no reached, that you can `showAppUpdateAlert`, `exit(0)` will be called after alert dismissed.
+ * **Note** in this situation you may check `+[ESApp isFreshLaunch:]` at first.
  *
  */
 @interface ESAppUpdateObject : NSObject

@@ -277,6 +277,10 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 /**
  * Shows an `UIAlertView` for app update, use `+openURL:` to open external App Store when "Update" button clicked.
  */
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateResult updateResult, BOOL alertCanceld))handler;
+/**
+ * You can subclass this method to give a global handler, such as ***resetUser*** or clean caches.
+ */
 - (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask;
 
 @end

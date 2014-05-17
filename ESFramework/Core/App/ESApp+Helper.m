@@ -165,7 +165,9 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         [self openURL:NSURLWith([appID appLinkForAppStore])];
 }
 
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject
+                 alertMask:(ESAppUpdateAlertMask)alertMask
+                   handler:(BOOL (^)(ESAppUpdateResult updateResult, BOOL alertCanceld))handler
 {
         if (![updateObject isKindOfClass:[ESAppUpdateObject class]] ||
             !ESIsMaskSet(alertMask, updateObject.updateResult)) {
@@ -174,15 +176,26 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         
         ES_WEAK_VAR(self, _self);
         if (ESAppUpdateResultNone == updateObject.updateResult) {
-                [UIAlertView showWithTitle:updateObject.alertTitle message:updateObject.alertMessage cancelButtonTitle:updateObject.alertCancelButtonTitle];
+                UIAlertView *alert =
+                [UIAlertView alertViewWithTitle:updateObject.alertTitle
+                                        message:updateObject.alertMessage
+                              cancelButtonTitle:updateObject.alertCancelButtonTitle
+                                didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                        if (handler) {
+                                                handler(updateObject.updateResult, NO);
+                                        }
+                                } otherButtonTitles:nil];
+                [alert show];
         } else if (ESAppUpdateResultOptional == updateObject.updateResult) {
                 UIAlertView *alert =
                 [UIAlertView alertViewWithTitle:updateObject.alertTitle
                                         message:updateObject.alertMessage
                               cancelButtonTitle:updateObject.alertUpdateButtonTitle
                                 didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                        if (buttonIndex == alertView.cancelButtonIndex) {
-                                                [[_self class] openURL:NSURLWith(updateObject.updateURL)];
+                                        BOOL alertCanceld = (buttonIndex != alertView.cancelButtonIndex);
+                                        if ((!handler && !alertCanceld) ||
+                                            (handler && handler(updateObject.updateResult, alertCanceld))) {
+                                              [[_self class] openURLWithString:updateObject.updateURL];
                                         }
                                 } otherButtonTitles:updateObject.alertCancelButtonTitle, nil];
                 [alert show];
@@ -192,11 +205,19 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                                         message:updateObject.alertMessage
                               cancelButtonTitle:updateObject.alertUpdateButtonTitle
                                 didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                        [[_self class] openURL:NSURLWith(updateObject.updateURL)];
-                                        exit(0);
-                                } otherButtonTitles:nil, nil];
+                                        if (!handler ||
+                                            (handler && handler(updateObject.updateResult, NO))) {
+                                                [[_self class] openURL:NSURLWith(updateObject.updateURL)];
+                                                exit(0);
+                                        }
+                                } otherButtonTitles:nil];
                 [alert show];
         }
+}
+
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask
+{
+        [self showAppUpdateAlert:updateObject alertMask:alertMask handler:nil];
 }
 
 @end
