@@ -31,7 +31,6 @@ typedef void (^ESCacheEnumerationBlock)(ESCache *cache, NSString *key, id object
 ES_SINGLETON_DEC(sharedCache);
 
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, readonly, getter = isDiskCached) BOOL diskCached;
 
 - (instancetype)initWithName:(NSString *)name;
 
@@ -79,5 +78,14 @@ ES_SINGLETON_DEC(sharedCache);
  */
 - (NSString *)diskCacheFileName;
 
+@end
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ESMemoryCache
+
+/**
+ * Cached only in memory.
+ */
+@interface ESMemoryCache : ESCache
 @end
