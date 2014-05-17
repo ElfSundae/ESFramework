@@ -69,6 +69,10 @@
  * itms-apps://itunes.apple.com/app/idxxxxx
  */
 - (NSString *)appLinkForAppStore;
+/**
+ * itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=xxxxxxx
+ */
+- (NSString *)appReviewLinkForAppStore;
 
 /**
  * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="

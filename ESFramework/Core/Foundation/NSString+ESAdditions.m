@@ -113,10 +113,7 @@
 
 - (BOOL)_es_isITunesItemID
 {
-        if ([self rangeOfString:@"^\\d{8,}$" options:NSRegularExpressionSearch].location != NSNotFound) {
-                return YES;
-        }
-        return NO;
+        return ([self rangeOfString:@"^\\d{8,}$" options:NSRegularExpressionSearch].location != NSNotFound);
 }
 
 - (NSString *)appLink
@@ -131,6 +128,14 @@
 {
         if ([self _es_isITunesItemID]) {
                 return [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", self];
+        }
+        return nil;
+}
+
+- (NSString *)appReviewLinkForAppStore
+{
+        if ([self _es_isITunesItemID]) {
+                return [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", self];
         }
         return nil;
 }
