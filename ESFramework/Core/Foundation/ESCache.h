@@ -44,6 +44,10 @@ ES_SINGLETON_DEC(sharedCache);
 - (void)removeObjectForKey:(NSString *)key block:(ESCacheObjectBlock)block;
 - (void)removeAllObjects:(ESCacheBlock)block;
 - (void)enumerateObjectsWithBlock:(ESCacheEnumerationBlock)block completion:(ESCacheBlock)completionBlock;
+/**
+ * `-save` will be called automatically when app enters background, or after `-removeAllObjects:` called.
+ */
+- (void)save;
 
 ///=============================================
 /// @name Synchronous Methods

@@ -50,7 +50,7 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
                         ES_WEAK_VAR(self, weakSelf);
                         [self addNotification:UIApplicationDidEnterBackgroundNotification handler:^(NSNotification *notification, NSDictionary *userInfo) {
                                 ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
-                                [_self _save];
+                                [_self save];
                         }];
                 }
         }
@@ -85,7 +85,7 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
 
 - (NSString *)diskCacheFileName
 {
-        return [NSString stringWithFormat:@"%@.cache", _name];
+        return [NSString stringWithFormat:@"%@.%@.cache", NSStringFromClass(self.class), _name];
 }
 
 - (NSString *)_diskCacheFilePath
@@ -100,22 +100,6 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
         });
         return _gDiskCacheFilePath;
 }
-
-- (void)_save
-{
-        ES_WEAK_VAR(self, weakSelf);
-        dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
-                if ([_self _diskCacheFilePath]) {
-                        if (_self.dictionary.count) {
-                                [NSKeyedArchiver archiveRootObject:_self.dictionary toFile:[_self _diskCacheFilePath]];
-                        } else {
-                                [[NSFileManager defaultManager] removeItemAtPath:[_self _diskCacheFilePath] error:NULL];
-                        }
-                }
-        });
-}
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -178,7 +162,6 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
         dispatch_barrier_async(_queue, ^{
                 ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
                 [_self.dictionary removeAllObjects];
-                [_self _save];
                 
                 if (block) {
                         dispatch_async(_self->_queue, ^{
@@ -188,6 +171,8 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
                 }
                 
         });
+        
+        [self save];
 }
 
 - (void)enumerateObjectsWithBlock:(ESCacheEnumerationBlock)block completion:(ESCacheBlock)completionBlock
@@ -211,6 +196,21 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
                                 ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
                                 completionBlock(_self);
                         });
+                }
+        });
+}
+
+- (void)save
+{
+        ES_WEAK_VAR(self, weakSelf);
+        dispatch_barrier_async(_queue, ^{
+                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                if ([_self _diskCacheFilePath]) {
+                        if (_self.dictionary.count) {
+                                [NSKeyedArchiver archiveRootObject:_self.dictionary toFile:[_self _diskCacheFilePath]];
+                        } else {
+                                [[NSFileManager defaultManager] removeItemAtPath:[_self _diskCacheFilePath] error:NULL];
+                        }
                 }
         });
 }
