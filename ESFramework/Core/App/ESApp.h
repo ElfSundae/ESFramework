@@ -57,6 +57,15 @@
  * 	        return @"App Store";
  * 	}
  *	
+ * 	+ (NSString *)appID
+ * 	{
+ * 	        return @"11111111";
+ * 	}
+ * 	+ (NSTimeZone *)serverTimeZone
+ * 	{
+ * 	        return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+ * 	}
+ *      
  *
  * ### Remote notification Payload
  *
@@ -104,6 +113,10 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (BOOL)isUIViewControllerBasedStatusBarAppearance;
 + (NSString *)bundleIdentifier;
 + (NSString *)appChannel;
+/**
+ * App ID in App Store.
+ */
++ (NSString *)appID;
 
 + (NSMutableDictionary *)analyticsInformation;
 /**

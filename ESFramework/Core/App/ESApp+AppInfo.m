@@ -63,6 +63,11 @@
         return @"App Store";
 }
 
++ (NSString *)appID
+{
+        return nil;
+}
+
 + (NSMutableDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
