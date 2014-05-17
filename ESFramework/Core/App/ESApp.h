@@ -99,7 +99,30 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 @property (nonatomic, strong) NSDictionary *remoteNotification;
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
 
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Subclassing
+
+@interface ESApp (Subclassing)
 - (void)setupRootViewController;
+- (NSString *)appChannel;
+/** App ID in App Store. */
+- (NSString *)appID;
+/**
+ * TimeZone from server (e.g. HTTP server).
+ *
+ * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
+ */
+- (NSTimeZone *)serverTimeZone;
+
+- (ESAppUpdateObject *)appUpdateSharedObject;
+/**
+ * You can subclass this method to give a global handler, such as ***resetUser*** or ***cleanCaches*** inside handler,
+ * do remember call `openURL` if `handler` return `NO`.
+ */
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask;
 
 @end
 
@@ -116,11 +139,6 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (BOOL)isUIViewControllerBasedStatusBarAppearance;
 + (NSString *)bundleIdentifier;
 
-- (NSString *)appChannel;
-/**
- * App ID in App Store.
- */
-- (NSString *)appID;
 
 - (NSMutableDictionary *)analyticsInformation;
 /**
@@ -159,13 +177,6 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  * from another app (like Safari, -[UIApplication openURL:])
  */
 + (NSString *)URLScheme;
-
-/**
- * TimeZone from server (e.g. HTTP server).
- *
- * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
- */
-- (NSTimeZone *)serverTimeZone;
 
 @end
 
@@ -277,11 +288,23 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 /**
  * Shows an `UIAlertView` for app update, use `+openURL:` to open external App Store when "Update" button clicked.
  */
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateResult updateResult, BOOL alertCanceld))handler;
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler;
 /**
- * You can subclass this method to give a global handler, such as ***resetUser*** or clean caches.
+ * Use `-appUpdateSharedObject`.
  */
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask;
+- (void)showAppUpdateAlert:(ESAppUpdateAlertMask)alertMask;
+/**
+ * You may call this method when app launched.
+ *
+ * If it's not the first launching, and there's a forced update, then call `handler`, it `handler` is nil
+ * or `handler` returns `YES`, it will `openURL:updateObject`
+ *
+ * If it's the first launching, or there's not a forced update, then `updateObject` will be passed `nil`, 
+ * cause the cache maybe incorrect.
+ *
+ * `appUpdateSharedObject` will be used to check.
+ */
+- (void)checkForcedAppUpdateExists:(BOOL (^)(ESAppUpdateObject *updateObject))handler;
 
 @end
 
@@ -301,6 +324,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
 @end
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

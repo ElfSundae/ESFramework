@@ -47,11 +47,6 @@
         return [[self class] rootViewController];
 }
 
-- (void)setupRootViewController
-{
-        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
-}
-
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -44,9 +44,13 @@ typedef NS_ENUM(NSUInteger, ESAppUpdateAlertMask) {
          */
         ESAppUpdateAlertMaskExistUpdates = (ESAppUpdateResultOptional | ESAppUpdateResultForced),
         /**
+         * Only show alert when there's a forced update.
+         */
+        ESAppUpdateAlertMaskOnlyForced   = ESAppUpdateResultForced,
+        /**
          * Shows alert no matter how.
          */
-        ESAppUpdateAlertMaskAll         = 0xFF,
+        ESAppUpdateAlertMaskAll          = 0xFF,
 };
 
 /**

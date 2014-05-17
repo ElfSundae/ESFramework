@@ -58,16 +58,6 @@
         return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"];
 }
 
-- (NSString *)appChannel
-{
-        return @"App Store";
-}
-
-- (NSString *)appID
-{
-        return nil;
-}
-
 - (NSMutableDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
@@ -168,11 +158,6 @@
 + (NSString *)URLScheme
 {
         return [self URLSchemeForIdentifier:nil];
-}
-
-- (NSTimeZone *)serverTimeZone
-{
-        return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
 }
 
 @end
