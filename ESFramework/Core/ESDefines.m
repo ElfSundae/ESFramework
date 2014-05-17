@@ -263,6 +263,33 @@ UIImage *UIImageFrom(NSString *path, ...)
         return nil;
 }
 
+NSString *NSStringWith(NSString *format, ...)
+{
+        NSString *string = nil;
+        if (format) {
+                va_list args;
+                va_start(args, format);
+                string = [[NSString alloc] initWithFormat:format arguments:args];
+                va_end(args);
+        }
+        return string;
+}
+
+NSURL *NSURLWith(NSString *format, ...)
+{
+        NSString *string = nil;
+        if (format) {
+                va_list args;
+                va_start(args, format);
+                string = [[NSString alloc] initWithFormat:format arguments:args];
+                va_end(args);
+        }
+        if (string) {
+                return [NSURL URLWithString:string];
+        }
+        return nil;
+}
+
 NSMutableSet *ESCreateNonretainedMutableSet(void)
 {
         return CFBridgingRelease(CFSetCreateMutable(NULL, 0, NULL));

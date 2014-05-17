@@ -480,6 +480,9 @@ ES_EXTERN UIImage *UIImageFromCache(NSString *path, ...);
  */
 ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
 
+ES_EXTERN NSString *NSStringWith(NSString *format, ...);
+ES_EXTERN NSURL *NSURLWith(NSString *format, ...);
+
 /**
  * Creates a mutable set which does not retain references to the objects it contains.
  */
