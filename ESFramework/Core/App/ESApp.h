@@ -243,7 +243,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 + (BOOL)canOpenURL:(NSURL *)url;
 + (BOOL)openURL:(NSURL *)url;
-+ (BOOL)openURLWithString:(NSString *)urlString;
+
 /**
  * Checks whether current device can make a phone call.
  */
@@ -255,9 +255,20 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
 /**
+ * Open App Store, and goto this app's Review page. `+[ESApp appID]` must be implemented.
+ */
++ (void)openAppReviewPage;
+/**
  * Open App Store, and goto the Review page.
  */
 + (void)openAppReviewPageWithAppID:(NSString *)appID;
+
+/**
+ * Open App Store, and goto this app's download page.
+ */
++ (void)openAppStore;
++ (void)openAppStoreWithAppID:(NSString *)appID;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

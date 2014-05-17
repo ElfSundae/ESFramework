@@ -7,6 +7,7 @@
 //
 
 #import "ESApp.h"
+#import "NSString+ESAdditions.h"
 
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
@@ -105,11 +106,6 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return NO;
 }
 
-+ (BOOL)openURLWithString:(NSString *)urlString
-{
-        return [self openURL:[NSURL URLWithString:urlString]];
-}
-
 + (BOOL)canOpenPhoneCall
 {
         return [self canOpenURL:[NSURL URLWithString:@"tel:"]];
@@ -137,16 +133,31 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return NO;
 }
 
++ (void)openAppReviewPage
+{
+        [self openAppReviewPageWithAppID:[self appID]];
+}
+
 + (void)openAppReviewPageWithAppID:(NSString *)appID
 {
         if ([appID isKindOfClass:[NSNumber class]]) {
                 appID = [(NSNumber *)appID stringValue];
         }
-        if (![appID isKindOfClass:[NSString class]] || appID.length < 8) {
-                return;
+        
+        [self openURL:NSURLWith([appID appReviewLinkForAppStore])];
+}
+
++ (void)openAppStore
+{
+        [self openAppStoreWithAppID:[self appID]];
+}
+
++ (void)openAppStoreWithAppID:(NSString *)appID
+{
+        if ([appID isKindOfClass:[NSNumber class]]) {
+                appID = [(NSNumber *)appID stringValue];
         }
-        NSString *reviewURL = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", appID];
-        [self openURLWithString:reviewURL];
+        [self openURL:NSURLWith([appID appLinkForAppStore])];
 }
 
 @end
