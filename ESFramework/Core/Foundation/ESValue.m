@@ -168,3 +168,17 @@ BOOL ESStringVal(NSString **var, id obj)
         }
         return NO;
 }
+
+BOOL ESURLVal(NSURL **var, id obj)
+{
+        if (obj) {
+                if ([obj isKindOfClass:[NSURL class]]) {
+                        *var = obj;
+                        return YES;
+                } else if ([obj isKindOfClass:[NSString class]] && ![(NSString *)obj isEqualToString:@""]) {
+                        *var = [NSURL URLWithString:(NSString *)obj];
+                        return YES;
+                }
+        }
+        return NO;
+}

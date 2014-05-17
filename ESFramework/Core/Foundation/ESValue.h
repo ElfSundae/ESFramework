@@ -54,6 +54,7 @@ BOOL ESDoubleVal(double *var, id obj);
  */
 BOOL ESBoolVal(BOOL *var, id obj);
 BOOL ESStringVal(NSString **var, id obj);
+BOOL ESURLVal(NSURL **var, id obj);
 
 ES_EXTERN_C_END
 
