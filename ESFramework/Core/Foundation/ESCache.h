@@ -59,6 +59,16 @@ ES_SINGLETON_DEC(sharedCache);
 - (void)removeAllObjects;
 - (void)enumerateObjectsWithBlock:(ESCacheEnumerationBlock)block;
 
+- (NSString *)stringForKey:(NSString *)key;
+- (NSURL *)URLForKey:(NSString *)key;
+- (NSArray *)arrayForKey:(NSString *)key;
+- (NSDictionary *)dictionaryForKey:(NSString *)key;
+- (NSData *)dataForKey:(NSString *)key;
+- (NSInteger)integerForKey:(NSString *)key;
+- (float)floatForKey:(NSString *)key;
+- (double)doubleForKey:(NSString *)key;
+- (BOOL)boolForKey:(NSString *)key;
+
 ///=============================================
 /// @name Subclass
 ///=============================================

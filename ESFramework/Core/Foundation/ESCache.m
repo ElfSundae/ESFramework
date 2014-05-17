@@ -7,6 +7,7 @@
 //
 
 #import "ESCache.h"
+#import "ESValue.h"
 
 @interface ESCache ()
 @property (nonatomic, copy, readwrite) NSString *name;
@@ -285,5 +286,58 @@ ES_SINGLETON_IMP_AS(sharedCache, initWithName:@"sharedCache");
         dispatch_release(semaphore);
 }
 
+
+- (NSString *)stringForKey:(NSString *)key
+{
+        __autoreleasing NSString *result = nil;
+        ESStringVal(&result, [self objectForKey:key]);
+        return result;
+}
+- (NSURL *)URLForKey:(NSString *)key
+{
+        __autoreleasing NSURL *result = nil;
+        ESURLVal(&result, [self objectForKey:key]);
+        return result;
+}
+- (NSArray *)arrayForKey:(NSString *)key
+{
+        NSArray *result = [self objectForKey:key];
+        return ([result isKindOfClass:[NSArray class]] ? result : nil);
+}
+- (NSDictionary *)dictionaryForKey:(NSString *)key
+{
+        NSDictionary *result = [self objectForKey:key];
+        return ([result isKindOfClass:[NSDictionary class]] ? result : nil);
+}
+- (NSData *)dataForKey:(NSString *)key
+{
+        NSData *result = [self objectForKey:key];
+        return ([result isKindOfClass:[NSData class]] ? result : nil);
+}
+- (NSInteger)integerForKey:(NSString *)key
+{
+        NSInteger result = 0;
+        ESIntegerVal(&result, [self objectForKey:key]);
+        return result;
+        
+}
+- (float)floatForKey:(NSString *)key
+{
+        float result = 0.f;
+        ESFloatVal(&result, [self objectForKey:key]);
+        return result;
+}
+- (double)doubleForKey:(NSString *)key
+{
+        double result = 0.0;
+        ESDoubleVal(&result, [self objectForKey:key]);
+        return result;
+}
+- (BOOL)boolForKey:(NSString *)key
+{
+        BOOL result = NO;
+        ESBoolVal(&result, [self objectForKey:key]);
+        return result;
+}
 
 @end
