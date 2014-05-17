@@ -424,10 +424,16 @@ ES_INLINE CGRect ESRectExpandWithEdgeInsetsFrom(CGRect rect, CGFloat top, CGFloa
         return ESRectExpandWithEdgeInsets(rect, UIEdgeInsetsMake(top, left, bottom, right));
 }
 
+/**
+ * `return floorf((containerSize.width - size.width) / 2.f);`
+ */
 ES_INLINE CGFloat ESSizeCenterX(CGSize containerSize, CGSize size) {
         return floorf((containerSize.width - size.width) / 2.f);
 }
 
+/**
+ * `return floorf((containerSize.height - size.height) / 2.f);`
+ */
 ES_INLINE CGFloat ESSizeCenterY(CGSize containerSize, CGSize size) {
         return floorf((containerSize.height - size.height) / 2.f);
 }
@@ -485,6 +491,7 @@ ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForESFWBundleResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForDocuments(void);
 ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForLibrary(void);

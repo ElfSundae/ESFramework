@@ -30,7 +30,6 @@ typedef void (^ESCacheEnumerationBlock)(ESCache *cache, NSString *key, id object
 
 ES_SINGLETON_DEC(sharedCache);
 
-
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, readonly, getter = isDiskCached) BOOL diskCached;
 

@@ -309,6 +309,18 @@ NSString *ESPathForMainBundleResource(NSString *relativePath, ...)
         return ESPathForBundleResource([NSBundle mainBundle], path);
 }
 
+NSString *ESPathForESFWBundleResource(NSString *relativePath, ...)
+{
+        NSString *path = nil;
+        if (relativePath) {
+                va_list args;
+                va_start(args, relativePath);
+                path = [[NSString alloc] initWithFormat:relativePath arguments:args];
+                va_end(args);
+        }
+        return ESPathForBundleResource(ESFWBundle(), path);
+}
+
 NSString *ESPathForDocuments(void)
 {
         static NSString *docs = nil;

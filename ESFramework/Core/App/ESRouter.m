@@ -114,6 +114,7 @@ ES_SINGLETON_IMP(sharedRouter);
         return [self openRouterObject:routerObject params:params extraInfo:extraInfo];
 }
 
+
 - (BOOL)openRouterObject:(ESRouterObject *)routerObject params:(NSMutableDictionary *)params extraInfo:(id)extraInfo
 {
         if (!params || !routerObject) {
