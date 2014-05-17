@@ -94,6 +94,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESApp (AppInfo)
+
 @interface ESApp (AppInfo)
 + (NSBundle *)mainBundle;
 + (NSDictionary *)infoDictionary;
@@ -137,6 +138,13 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  * from another app (like Safari, -[UIApplication openURL:])
  */
 + (NSString *)URLScheme;
+
+/**
+ * TimeZone from server (e.g. HTTP server).
+ *
+ * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
+ */
++ (NSTimeZone *)serverTimeZone;
 
 @end
 

@@ -165,5 +165,9 @@
         return [self URLSchemeForIdentifier:nil];
 }
 
++ (NSTimeZone *)serverTimeZone
+{
+        return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+}
 
 @end
