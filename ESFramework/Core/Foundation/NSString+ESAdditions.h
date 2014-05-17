@@ -61,7 +61,14 @@
  * Supports all type iTunes links like Apps, Books, Music, Music Videos, Audio Book, Podcast, Movie, etc.
  */
 - (NSString *)iTunesItemID;
-
+/**
+ * https://itunes.apple.com/app/idxxxxxxx
+ */
+- (NSString *)appLink;
+/**
+ * itms-apps://itunes.apple.com/app/idxxxxx
+ */
+- (NSString *)appLinkForAppStore;
 
 /**
  * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="

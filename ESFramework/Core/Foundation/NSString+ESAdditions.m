@@ -111,6 +111,30 @@
         return nil;
 }
 
+- (BOOL)_es_isITunesItemID
+{
+        if ([self rangeOfString:@"^\\d{8,}$" options:NSRegularExpressionSearch].location != NSNotFound) {
+                return YES;
+        }
+        return NO;
+}
+
+- (NSString *)appLink
+{
+        if ([self _es_isITunesItemID]) {
+                return [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self];
+        }
+        return nil;
+}
+
+- (NSString *)appLinkForAppStore
+{
+        if ([self _es_isITunesItemID]) {
+                return [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", self];
+        }
+        return nil;
+}
+
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode
 {
