@@ -58,17 +58,17 @@
         return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"];
 }
 
-+ (NSString *)appChannel
+- (NSString *)appChannel
 {
         return @"App Store";
 }
 
-+ (NSString *)appID
+- (NSString *)appID
 {
         return nil;
 }
 
-+ (NSMutableDictionary *)analyticsInformation
+- (NSMutableDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
         result[@"system"] = [UIDevice systemName];
@@ -89,15 +89,15 @@
                 result[@"network"] = network;
         }
 #pragma clang diagnostic pop
-        result[@"app_name"] = [self displayName];
-        result[@"app_version"] = [self appVersion];
-        result[@"app_identifier"] = [self bundleIdentifier];
+        result[@"app_name"] = [self.class displayName];
+        result[@"app_version"] = [self.class appVersion];
+        result[@"app_identifier"] = [self.class bundleIdentifier];
         result[@"app_channel"] = [self appChannel];
         
         return result;
 }
 
-+ (NSString *)userAgentForWebView
+- (NSString *)userAgentForWebView
 {
         static NSString *__gUserAgentForWebView = nil;
         static dispatch_once_t onceToken;
@@ -112,7 +112,7 @@
         return __gUserAgentForWebView;
 }
 
-+ (NSString *)userAgent
+- (NSString *)userAgent
 {
         static NSString *__gUserAgent = nil;
         static dispatch_once_t onceToken;
@@ -120,8 +120,8 @@
                 __gUserAgent = [NSString stringWithFormat:@"ES(%@;%@;%@;%@;%@;%@;%@;%@)",
                                 @"iOS",
                                 [UIDevice systemVersion],
-                                [self bundleIdentifier],
-                                [self appVersion],
+                                [self.class bundleIdentifier],
+                                [self.class appVersion],
                                 [self appChannel],
                                 [UIDevice deviceIdentifier],
                                 [UIDevice screenSizeString],
@@ -170,7 +170,7 @@
         return [self URLSchemeForIdentifier:nil];
 }
 
-+ (NSTimeZone *)serverTimeZone
+- (NSTimeZone *)serverTimeZone
 {
         return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
 }

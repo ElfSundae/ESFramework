@@ -8,7 +8,7 @@
 
 #import "ESApp.h"
 #import "NSString+ESAdditions.h"
-
+#import "UIAlertView+ESBlock.h"
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
 @implementation ESApp (Helper)
@@ -106,6 +106,11 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return NO;
 }
 
++ (BOOL)openURLWithString:(NSString *)string
+{
+        return [self openURL:NSURLWith(string)];
+}
+
 + (BOOL)canOpenPhoneCall
 {
         return [self canOpenURL:[NSURL URLWithString:@"tel:"]];
@@ -135,7 +140,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppReviewPage
 {
-        [self openAppReviewPageWithAppID:[self appID]];
+        [self openAppReviewPageWithAppID:[[self sharedApp] appID]];
 }
 
 + (void)openAppReviewPageWithAppID:(NSString *)appID
@@ -149,7 +154,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppStore
 {
-        [self openAppStoreWithAppID:[self appID]];
+        [self openAppStoreWithAppID:[[self sharedApp] appID]];
 }
 
 + (void)openAppStoreWithAppID:(NSString *)appID
@@ -158,6 +163,40 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                 appID = [(NSNumber *)appID stringValue];
         }
         [self openURL:NSURLWith([appID appLinkForAppStore])];
+}
+
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask
+{
+        if (![updateObject isKindOfClass:[ESAppUpdateObject class]] ||
+            !ESIsMaskSet(alertMask, updateObject.updateResult)) {
+                return;
+        }
+        
+        ES_WEAK_VAR(self, _self);
+        if (ESAppUpdateResultNone == updateObject.updateResult) {
+                [UIAlertView showWithTitle:updateObject.alertTitle message:updateObject.alertMessage cancelButtonTitle:updateObject.alertCancelButtonTitle];
+        } else if (ESAppUpdateResultOptional == updateObject.updateResult) {
+                UIAlertView *alert =
+                [UIAlertView alertViewWithTitle:updateObject.alertTitle
+                                        message:updateObject.alertMessage
+                              cancelButtonTitle:updateObject.alertUpdateButtonTitle
+                                didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                        if (buttonIndex == alertView.cancelButtonIndex) {
+                                                [[_self class] openURL:NSURLWith(updateObject.updateURL)];
+                                        }
+                                } otherButtonTitles:updateObject.alertCancelButtonTitle, nil];
+                [alert show];
+        } else if (ESAppUpdateResultForced == updateObject.updateResult) {
+                UIAlertView *alert =
+                [UIAlertView alertViewWithTitle:updateObject.alertTitle
+                                        message:updateObject.alertMessage
+                              cancelButtonTitle:updateObject.alertUpdateButtonTitle
+                                didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                        [[_self class] openURL:NSURLWith(updateObject.updateURL)];
+                                        exit(0);
+                                } otherButtonTitles:nil, nil];
+                [alert show];
+        }
 }
 
 @end

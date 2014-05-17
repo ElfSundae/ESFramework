@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ESDefines.h"
+#import "ESAppUpdateObject.h"
 
 /**
  * App helper class, and you can subclass it as your app delegate.
@@ -57,11 +58,11 @@
  * 	        return @"App Store";
  * 	}
  *	
- * 	+ (NSString *)appID
+ * 	- (NSString *)appID
  * 	{
  * 	        return @"11111111";
  * 	}
- * 	+ (NSTimeZone *)serverTimeZone
+ * 	- (NSTimeZone *)serverTimeZone
  * 	{
  * 	        return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
  * 	}
@@ -88,7 +89,8 @@
 __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 /**
- * Returns the application delegate.
+ * Returns the application delegate if the `AppDelegate` is a subclass of `ESApp`, 
+ * otherwise returns a shared `ESApp` instance.
  */
 + (instancetype)sharedApp;
 
@@ -98,6 +100,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
 
 - (void)setupRootViewController;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,13 +115,14 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (NSString *)appVersion;
 + (BOOL)isUIViewControllerBasedStatusBarAppearance;
 + (NSString *)bundleIdentifier;
-+ (NSString *)appChannel;
+
+- (NSString *)appChannel;
 /**
  * App ID in App Store.
  */
-+ (NSString *)appID;
+- (NSString *)appID;
 
-+ (NSMutableDictionary *)analyticsInformation;
+- (NSMutableDictionary *)analyticsInformation;
 /**
  * Returns User Agent for UIWebView.
  *
@@ -127,7 +131,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  *
  * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_1 like Mac OS X) Mobile/11D201 ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
  */
-+ (NSString *)userAgentForWebView;
+- (NSString *)userAgentForWebView;
 
 /**
  * Returns User Agent for HTTP request.
@@ -136,7 +140,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  *
  * e.g. `ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
  */
-+ (NSString *)userAgent;
+- (NSString *)userAgent;
 /**
  * Returns all URL Schemes that specified in the Info.plist.
  */
@@ -161,7 +165,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  *
  * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
  */
-+ (NSTimeZone *)serverTimeZone;
+- (NSTimeZone *)serverTimeZone;
 
 @end
 
@@ -243,6 +247,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 + (BOOL)canOpenURL:(NSURL *)url;
 + (BOOL)openURL:(NSURL *)url;
++ (BOOL)openURLWithString:(NSString *)string;
 
 /**
  * Checks whether current device can make a phone call.
@@ -255,7 +260,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
 /**
- * Open App Store, and goto this app's Review page. `+[ESApp appID]` must be implemented.
+ * Open App Store, and goto this app's Review page. `-appID` must be implemented.
  */
 + (void)openAppReviewPage;
 /**
@@ -268,6 +273,11 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 + (void)openAppStore;
 + (void)openAppStoreWithAppID:(NSString *)appID;
+
+/**
+ * Shows an `UIAlertView` for app update, use `+openURL:` to open external App Store when "Update" button clicked.
+ */
+- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask;
 
 @end
 

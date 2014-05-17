@@ -77,9 +77,9 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 {
         @synchronized([self class]) {
                 id instance = [self getAssociatedObject:_es_modelSharedInstanceKey];
-                if (nil == instance) {
+                if (!instance) {
                         instance = [self modelWithContentsOfFile:[self modelSharedInstanceFilePath]];
-                        if (nil == instance) {
+                        if (!instance) {
                                 instance = [self modelInstance];
                         }
                         [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];

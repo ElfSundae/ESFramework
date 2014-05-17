@@ -61,6 +61,6 @@
 @implementation NSMutableURLRequest (ESUserAgent)
 - (void)addUserAgent
 {
-        [self setValue:[[[ESApp sharedApp] class] userAgent] forHTTPHeaderField:@"User-Agent"];
+        [self setValue:[[ESApp sharedApp] userAgent] forHTTPHeaderField:@"User-Agent"];
 }
 @end

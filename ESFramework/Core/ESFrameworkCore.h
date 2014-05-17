@@ -21,6 +21,7 @@
 
 // App
 #import "ESApp.h"
+#import "ESAppUpdateObject.h"
 #import "UIDevice+ESInfo.h"
 #import "ESRouter.h"
 
