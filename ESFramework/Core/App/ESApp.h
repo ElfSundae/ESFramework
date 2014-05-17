@@ -124,6 +124,8 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  *
  * Default User Agent for UIWebView, it registered after app launched.
  * Subclass can return #nil to use the default user-agent for UIWebView.
+ *
+ * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_1 like Mac OS X) Mobile/11D201 ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
  */
 + (NSString *)userAgentForWebView;
 
@@ -131,6 +133,8 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  * Returns User Agent for HTTP request.
  *
  * @see -[NSMutableURLRequest(ESUserAgent) addUserAgent]
+ *
+ * e.g. `ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
  */
 + (NSString *)userAgent;
 /**
