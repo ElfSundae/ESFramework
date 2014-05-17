@@ -57,6 +57,10 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (instancetype)modelWithContentsOfFile:(NSString *)filePath
 {
+        if (!filePath) {
+                return nil;
+        }
+        
         id object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
         if ([object isKindOfClass:[self class]]) {
                 return object;
@@ -132,6 +136,10 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 - (BOOL)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile
 {
+        if (!path) {
+                return NO;
+        }
+        
         NSString *filePath = ESTouchFilePath(path);
         if (!filePath) {
                 return NO;

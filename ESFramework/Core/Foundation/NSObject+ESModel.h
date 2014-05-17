@@ -95,6 +95,7 @@
 /**
  * File path for the shared instance.
  * Default path is `{app}/Library/Caches/ESModel/{ClassName}.archive`.
+ * If you do not want the shared instance to be cached to file, just return `nil`.
  */
 + (NSString *)modelSharedInstanceFilePath;
 
