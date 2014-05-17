@@ -24,7 +24,7 @@
         ES_WEAK_VAR(self, _self);
         ESDispatchOnHighQueue(^{
                 /* Set the UserAgent for UIWebView */
-                NSString *ua = [[self class] userAgentForWebView];
+                NSString *ua = self.userAgentForWebView;
                 if (ua) {
                         [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua}];
                 }

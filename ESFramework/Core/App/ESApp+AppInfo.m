@@ -92,7 +92,7 @@
         result[@"app_name"] = [self.class displayName];
         result[@"app_version"] = [self.class appVersion];
         result[@"app_identifier"] = [self.class bundleIdentifier];
-        result[@"app_channel"] = [self appChannel];
+        result[@"app_channel"] = self.appChannel;
         
         return result;
 }

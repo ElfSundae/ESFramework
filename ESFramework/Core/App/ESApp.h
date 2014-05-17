@@ -53,7 +53,7 @@
  * 	}
  *
  * 	// Returns the current app channel, e.g. @"App Store"
- * 	+ (NSString *)appChannel
+ * 	- (NSString *)appChannel
  * 	{
  * 	        return @"App Store";
  * 	}
