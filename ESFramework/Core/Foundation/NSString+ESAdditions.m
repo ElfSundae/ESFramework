@@ -12,15 +12,21 @@
 
 @implementation NSString (ESAdditions)
 
-- (BOOL)containsString:(NSString*)string
+- (BOOL)contains:(NSString *)string
 {
-	return [self containsString:string options:NSCaseInsensitiveSearch];
+        return [self contains:string options:0];
 }
 
-- (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options
+- (BOOL)containsStringCaseInsensitive:(NSString *)string
+{
+        return [self contains:string options:NSCaseInsensitiveSearch];
+}
+
+- (BOOL)contains:(NSString *)string options:(NSStringCompareOptions)options
 {
         return (NSNotFound != [self rangeOfString:string options:options].location);
 }
+
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
 {
         return (NSOrderedSame == [self compare:aString options:NSCaseInsensitiveSearch]);
@@ -79,12 +85,43 @@
         return [self stringByAppendingString:str];
 }
 
+- (NSString *)appendPathComponent:(NSString *)format, ...
+{
+        NSString *str = @"";
+        if (format) {
+                va_list args;
+                va_start(args, format);
+                str = [[NSString alloc] initWithFormat:format arguments:args];
+                va_end(args);
+        }
+        return [self stringByAppendingPathComponent:str];
+}
+
+- (NSString *)appendPathExtension:(NSString *)extension
+{
+        return [self stringByAppendingPathExtension:extension];
+}
+
+- (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary
+{
+        return [self stringByAppendingQueryDictionary:queryDictionary];
+}
+
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement
+{
+        return [self replace:string with:replacement options:0];
+}
+- (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement
+{
+        return [self replace:string with:replacement options:NSCaseInsensitiveSearch];
+}
+
+- (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options
 {
         if (!replacement) {
                 replacement = @"";
         }
-        return [self stringByReplacingOccurrencesOfString:string withString:replacement options:NSCaseInsensitiveSearch range:NSMakeRange(0, self.length)];
+        return [self stringByReplacingOccurrencesOfString:string withString:replacement options:options range:NSMakeRange(0, self.length)];
 }
 
 + (NSString *)newUUID
@@ -182,7 +219,7 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         
         if (array.count) {
                 NSString *params = [array componentsJoinedByString:@"&"];
-                if ([result containsString:@"?"]) {
+                if ([result contains:@"?"]) {
                         [result appendFormat:@"&%@", params];
                 } else {
                         [result appendFormat:@"?%@", params];

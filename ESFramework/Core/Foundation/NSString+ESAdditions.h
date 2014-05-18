@@ -13,8 +13,9 @@
 /**
  * NSCaseInsensitiveSearch
  */
-- (BOOL)containsString:(NSString*)string;
-- (BOOL)containsString:(NSString*)string options:(NSStringCompareOptions)options;
+- (BOOL)contains:(NSString*)string;
+- (BOOL)containsStringCaseInsensitive:(NSString *)string;
+- (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
 
@@ -38,10 +39,16 @@
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
 
 - (NSString *)append:(NSString *)format, ...;
+- (NSString *)appendPathComponent:(NSString *)format, ...;
+- (NSString *)appendPathExtension:(NSString *)extension;
+- (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary;
+
 /**
  * Case-insensitive.
  */
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement;
+- (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement;
+- (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
 
 /**
  * 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
