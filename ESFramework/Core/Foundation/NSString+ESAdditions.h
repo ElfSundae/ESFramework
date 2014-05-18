@@ -7,17 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSRegularExpression+ESAdditions.h"
 
 @interface NSString (ESAdditions)
 
-/**
- * NSCaseInsensitiveSearch
- */
 - (BOOL)contains:(NSString*)string;
 - (BOOL)containsStringCaseInsensitive:(NSString *)string;
 - (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
+
+/**
+ * Regex
+ */
+- (NSRange)match:(NSString *)pattern;
+- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
+- (BOOL)isMatch:(NSString *)pattern;
+- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
 
 /**
  * Trims `[NSCharacterSet whitespaceAndNewlineCharacterSet]`
@@ -43,12 +49,22 @@
 - (NSString *)appendPathExtension:(NSString *)extension;
 - (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary;
 
-/**
- * Case-insensitive.
- */
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement;
 - (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement;
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
+- (NSString *)replaceInRange:(NSRange)range with:(NSString *)replacement;
+/**
+ * The `replacement` is treated as a template, with $0 being replaced by the 
+ * contents of the matched range, $1 by the contents of the first capture group, 
+ * and so on. 
+ * Additional digits beyond the maximum required to represent
+ * the number of capture groups will be treated as ordinary characters, as will
+ * a $ not followed by digits.  Backslash will escape both $ and itself.
+ */
+- (NSString *)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
+
+- (NSArray *)splitWith:(NSString *)separator;
+- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
 /**
  * 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
@@ -101,5 +117,20 @@
  */
 - (NSDictionary *)queryDictionary;
 
+- (NSRegularExpression *)regex;
+- (NSRegularExpression *)regexCaseInsensitive;
+- (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options;
+
 @end
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSMutableString
+
+@interface NSMutableString (ESAdditions)
+- (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options;
+- (void)replace:(NSString *)string to:(NSString *)replacement;
+- (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement;
+- (void)replaceInRange:(NSRange)range to:(NSString *)replacement;
+- (void)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
+@end

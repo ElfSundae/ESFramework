@@ -10,6 +10,7 @@
 #define ESFramework_ESFoundation_h
 
 #import "NSString+ESAdditions.h"
+#import "NSRegularExpression+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
 #import "NSData+ESAdditions.h"
 #import "NSArray+ESAdditions.h"

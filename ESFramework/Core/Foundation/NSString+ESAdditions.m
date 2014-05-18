@@ -29,7 +29,24 @@
 
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
 {
-        return (NSOrderedSame == [self compare:aString options:NSCaseInsensitiveSearch]);
+        return (NSOrderedSame == [self caseInsensitiveCompare:aString]);
+}
+
+- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
+{
+        return [self rangeOfString:pattern options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
+}
+- (NSRange)match:(NSString *)pattern
+{
+        return [self match:pattern caseInsensitive:NO];
+}
+- (BOOL)isMatch:(NSString *)pattern
+{
+        return [self isMatch:pattern caseInsensitive:NO];
+}
+- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
+{
+        return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
 }
 
 - (NSString *)trim
@@ -122,6 +139,27 @@
                 replacement = @"";
         }
         return [self stringByReplacingOccurrencesOfString:string withString:replacement options:options range:NSMakeRange(0, self.length)];
+}
+- (NSString *)replaceInRange:(NSRange)range with:(NSString *)replacement
+{
+        if (!replacement) {
+                replacement = @"";
+        }
+        return [self stringByReplacingCharactersInRange:range withString:replacement];
+}
+
+- (NSString *)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
+{
+        return [self replace:pattern with:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
+}
+
+- (NSArray *)splitWith:(NSString *)separator
+{
+        return [self componentsSeparatedByString:separator];
+}
+- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator
+{
+        return [self componentsSeparatedByCharactersInSet:separator];
 }
 
 + (NSString *)newUUID
@@ -254,6 +292,19 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
                 }
         }
         return (NSDictionary *)result;
+}
+
+- (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options
+{
+        return [NSRegularExpression regex:self options:options];
+}
+- (NSRegularExpression *)regex
+{
+        return [self regexWithOptions:0];
+}
+- (NSRegularExpression *)regexCaseInsensitive
+{
+        return [self regexWithOptions:NSRegularExpressionCaseInsensitive];
 }
 
 @end

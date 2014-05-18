@@ -195,6 +195,9 @@
 		E73613E8191AC7A9008A39CD /* NSObject+ESModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E73613E6191AC7A9008A39CD /* NSObject+ESModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E73613E9191AC7A9008A39CD /* NSObject+ESModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E73613E7191AC7A9008A39CD /* NSObject+ESModel.m */; };
 		E739698B19199CE800F56B78 /* ESFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = E739698A19199CAD00F56B78 /* ESFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E746C13B1929422700AD082C /* NSRegularExpression+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E746C1391929422700AD082C /* NSRegularExpression+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E746C13C1929422700AD082C /* NSRegularExpression+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C13A1929422700AD082C /* NSRegularExpression+ESAdditions.m */; };
+		E746C1401929484D00AD082C /* NSMutableString+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C13E1929484D00AD082C /* NSMutableString+ESAdditions.m */; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
 		E793AB9318FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8218FDDC3F00487E34 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -474,6 +477,9 @@
 		E73613F1191BC646008A39CD /* _ESModelInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ESModelInternal.h; sourceTree = "<group>"; };
 		E73613F2191BC646008A39CD /* _ESModelInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ESModelInternal.m; sourceTree = "<group>"; };
 		E739698A19199CAD00F56B78 /* ESFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFoundation.h; sourceTree = "<group>"; };
+		E746C1391929422700AD082C /* NSRegularExpression+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+ESAdditions.h"; sourceTree = "<group>"; };
+		E746C13A1929422700AD082C /* NSRegularExpression+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+ESAdditions.m"; sourceTree = "<group>"; };
+		E746C13E1929484D00AD082C /* NSMutableString+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+ESAdditions.m"; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -1006,6 +1012,9 @@
 				E739698A19199CAD00F56B78 /* ESFoundation.h */,
 				E7F5D8DA1916DB0B00D11273 /* NSString+ESAdditions.h */,
 				E7F5D8DB1916DB0B00D11273 /* NSString+ESAdditions.m */,
+				E746C13E1929484D00AD082C /* NSMutableString+ESAdditions.m */,
+				E746C1391929422700AD082C /* NSRegularExpression+ESAdditions.h */,
+				E746C13A1929422700AD082C /* NSRegularExpression+ESAdditions.m */,
 				E7F5D8DE1916DB0B00D11273 /* NSURL+ESAdditions.h */,
 				E7F5D8DF1916DB0B00D11273 /* NSURL+ESAdditions.m */,
 				E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */,
@@ -1110,6 +1119,7 @@
 				E7F5D8E81916DB0B00D11273 /* NSOrderedSet+ESAdditions.h in Headers */,
 				E739698B19199CE800F56B78 /* ESFoundation.h in Headers */,
 				E72F6A4719177D79006893A5 /* ESRouter.h in Headers */,
+				E746C13B1929422700AD082C /* NSRegularExpression+ESAdditions.h in Headers */,
 				E7F5D8F01916DB0B00D11273 /* NSURL+ESAdditions.h in Headers */,
 				E73613E8191AC7A9008A39CD /* NSObject+ESModel.h in Headers */,
 				E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */,
@@ -1492,6 +1502,7 @@
 				E7C9473018FBE0530034B110 /* ESDefines.m in Sources */,
 				E73613E9191AC7A9008A39CD /* NSObject+ESModel.m in Sources */,
 				E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */,
+				E746C13C1929422700AD082C /* NSRegularExpression+ESAdditions.m in Sources */,
 				E7F5D8E31916DB0B00D11273 /* NSData+ESAdditions.m in Sources */,
 				E7F5D8F11916DB0B00D11273 /* NSURL+ESAdditions.m in Sources */,
 				E7F5D8EF1916DB0B00D11273 /* NSTimer+ESAdditions.m in Sources */,
@@ -1513,6 +1524,7 @@
 				E7F5D8F71916DB8900D11273 /* ESHash.m in Sources */,
 				E7F5D9191916DC0700D11273 /* UIDevice+ESInfo.m in Sources */,
 				E7F5D8ED1916DB0B00D11273 /* NSString+ESAdditions.m in Sources */,
+				E746C1401929484D00AD082C /* NSMutableString+ESAdditions.m in Sources */,
 				E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */,
 				E7F5D8E51916DB0B00D11273 /* NSDate+ESAdditions.m in Sources */,
 				E7F5D8E71916DB0B00D11273 /* NSDictionary+ESAdditions.m in Sources */,
