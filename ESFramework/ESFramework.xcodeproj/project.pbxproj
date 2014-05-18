@@ -1886,6 +1886,7 @@
 				E70490FA1925763200C0EDAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7089FC919102A890014C8F6 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
 			isa = XCConfigurationList;

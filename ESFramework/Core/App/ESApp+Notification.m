@@ -28,9 +28,4 @@
         [self registerRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound) handler:handler];
 }
 
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-        NSLogInfo(@"remote notification:\n%@", userInfo);
-}
-
 @end

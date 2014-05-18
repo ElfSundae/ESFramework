@@ -40,4 +40,9 @@
         [self showAppUpdateAlert:updateObject alertMask:alertMask handler:nil];
 }
 
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+        NSLogInfo(@"remote notification:\n%@", userInfo);
+}
+
 @end

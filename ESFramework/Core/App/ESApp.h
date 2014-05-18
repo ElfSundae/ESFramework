@@ -124,6 +124,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 - (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask;
 
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -319,10 +320,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 - (void)registerRemoteNotificationWithHandler:(ESHandlerBlock)handler;
 - (void)registerRemoteNotificationTypes:(UIRemoteNotificationType)types handler:(ESHandlerBlock)hander;
-/**
- * Should be subclassed
- */
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
+
 @end
 
 
