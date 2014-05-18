@@ -16,7 +16,6 @@
 {
         self = [super init];
         if (self) {
-                _updateURL = [[ESApp sharedApp].appID appLinkForAppStore];
                 _alertTitle = _es_(@"Check Updates");
                 _alertTitleForUpdateExists = _alertTitle;
                 _alertMessage = _es_(@"You're up-to-date.");
@@ -29,7 +28,7 @@
 - (NSString *)updateURL
 {
         if (!_updateURL || [_updateURL isEmpty]) {
-                return [ESApp sharedApp].appID;
+                return [[ESApp sharedApp].appID appLinkForAppStore];
         }
         return _updateURL;
 }

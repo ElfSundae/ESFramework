@@ -1,3 +1,0 @@
-
-#include "Base.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS

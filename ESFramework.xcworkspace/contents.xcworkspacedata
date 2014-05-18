@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <Group
+      location = "group:scripts"
+      name = "scripts">
+      <FileRef
+         location = "group:build_docs.sh">
+      </FileRef>
+      <FileRef
+         location = "group:build_framework.sh">
+      </FileRef>
+      <FileRef
+         location = "group:prepare_framework.sh">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:ESFramework/ESFramework.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:example/ESCatalog/ESCatalog.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:example/Demo/ESDemo.xcodeproj">
+   </FileRef>
+</Workspace>
