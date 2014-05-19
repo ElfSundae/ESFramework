@@ -197,6 +197,8 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 + (UIWindow *)keyWindow;
 - (UIWindow *)keyWindow;
 
++ (void)dismissKeyboard;
+
 /**
  * The rootViewController of the keyWindow.
  */

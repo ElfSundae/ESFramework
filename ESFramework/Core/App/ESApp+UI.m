@@ -33,6 +33,11 @@
         return [[self class] keyWindow];
 }
 
++ (void)dismissKeyboard
+{
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
 + (UIViewController *)rootViewController
 {
         return [self keyWindow].rootViewController;
