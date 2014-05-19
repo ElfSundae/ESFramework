@@ -120,5 +120,11 @@
         }];
 }
 
-
+- (void)replaceObject:(id)object withObject:(id)anObject
+{
+        NSUInteger index = [self indexOfObject:object];
+        if (index != NSNotFound) {
+                [self replaceObjectAtIndex:index withObject:anObject];
+        }
+}
 @end

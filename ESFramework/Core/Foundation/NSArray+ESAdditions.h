@@ -61,4 +61,5 @@
 @interface NSMutableArray (ESAdditions)
 - (void)matchWith:(BOOL (^)(id obj, NSUInteger idx))block;
 - (void)rejectWith:(BOOL (^)(id obj, NSUInteger idx))block;
+- (void)replaceObject:(id)object withObject:(id)anObject;
 @end
