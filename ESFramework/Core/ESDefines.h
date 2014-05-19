@@ -406,6 +406,10 @@ ES_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
         return [UIApplication sharedApplication].statusBarOrientation;
 }
 
+ES_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
+
+ES_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
+
 /**
  * Convert degrees to radians.
  */

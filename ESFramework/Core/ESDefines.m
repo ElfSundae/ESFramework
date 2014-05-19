@@ -128,6 +128,28 @@ NSBundle *ESFWBundle(void)
         return __es_bundle;
 }
 
+UIDeviceOrientation ESDeviceOrientation(void)
+{
+        UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+        if (UIDeviceOrientationUnknown == orientation) {
+                orientation = UIDeviceOrientationPortrait;
+        }
+        return orientation;
+}
+
+CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation)
+{
+        if (UIInterfaceOrientationLandscapeLeft == orientation) {
+                return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
+        } else if (UIInterfaceOrientationLandscapeRight == orientation) {
+                return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
+        } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
+                return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
+        } else {
+                return CGAffineTransformIdentity;
+        }
+}
+
 CGRect ESFrameOfCenteredViewWithinView(UIView *view, UIView *containerView)
 {
         CGRect rect;
