@@ -117,6 +117,11 @@ typedef void (^ESRouterOpeningCallback)(UIViewController *fromController, UIView
  * `ESRouter` to give different `defaultNavigationController`, or specify `navigationController`
  * in `ESRouterObject`.
  *
+ * ### TODO
+ *
+ * + Push issue, should can be set as a shared controller, like TTNavigator.
+ *      @warning until now, you should only use `ESRouter` to open a block or present a view controller,
+ *      **No** pushing.
  *
  */
 @interface ESRouter : NSObject
