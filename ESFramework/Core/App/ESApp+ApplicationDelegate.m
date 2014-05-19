@@ -18,7 +18,7 @@
         [self.window makeKeyAndVisible];
         
         /* Setup root viewController */
-        [self setupRootViewController];
+        [self _setupRootViewController];
         self.window.rootViewController = self.rootViewController;
         
         ES_WEAK_VAR(self, _self);

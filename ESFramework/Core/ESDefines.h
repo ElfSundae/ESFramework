@@ -349,14 +349,30 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
 ES_EXTERN NSString *const ESErrorDomain;
 /**
- * Check bit (flag) 
+ * Bitmask
  */
-#define ESIsMaskSet(value, flag)     (((value) & (flag)) == (flag))
+#define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
+#define ESMaskSet(value, flag)          do { (value) |= (flag); } while(0)
+#define ESMaskUnset(value, flag)        do { (value) &= ~(flag); } while(0)
 
-ES_INLINE BOOL ESIsNonEmptyString(NSString *string) {
-        return ([string isKindOfClass:[NSString class]] && ![string isEqualToString:@""]);
-};
-/** 
+ES_INLINE BOOL ESIsStringWithAnyText(id object) {
+        return ([object isKindOfClass:[NSString class]] && ![(NSString *)object isEqualToString:@""]);
+}
+
+ES_INLINE BOOL ESIsArrayWithItems(id object) {
+        return ([object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0);
+}
+
+ES_INLINE BOOL ESIsDictionaryWithItems(id object) {
+        return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0);
+}
+
+ES_INLINE BOOL ESIsSetWithItems(id object) {
+        return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
+}
+
+
+/**
  * LocalizedString 
  */
 #define ESLocalizedString(key)          NSLocalizedString(key,nil)

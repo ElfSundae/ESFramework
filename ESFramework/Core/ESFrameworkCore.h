@@ -18,6 +18,8 @@
 #import "UIActionSheet+ESBlock.h"
 #import "UIAlertView+ESBlock.h"
 #import "UIView+ESShortcut.h"
+#import "UINavigationController+ESAdditions.h"
+#import "UIViewController+ESAdditions.h"
 
 // App
 #import "ESApp.h"

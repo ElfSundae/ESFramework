@@ -168,7 +168,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 - (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler
 {
         if (![updateObject isKindOfClass:[ESAppUpdateObject class]] ||
-            !ESIsMaskSet(alertMask, updateObject.updateResult)) {
+            !ESMaskIsSet(alertMask, updateObject.updateResult)) {
                 return;
         }
         

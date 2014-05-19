@@ -25,7 +25,7 @@
  * 	        return YES;
  * 	}
  *
- * 	- (void)setupRootViewController
+ * 	- (void)_setupRootViewController
  * 	{
  * 	        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
  * 	}
@@ -106,7 +106,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 #pragma mark - Subclassing
 
 @interface ESApp (Subclassing)
-- (void)setupRootViewController;
+- (void)_setupRootViewController;
 - (NSString *)appChannel;
 /** App ID in App Store. */
 - (NSString *)appID;
