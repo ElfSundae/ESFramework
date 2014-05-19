@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * 
+ * ### Note
+ *
+ * @warning This category has swizzled `-viewDidLoad` on iOS7.0+, to fix [iOS 7 push/pop issue](http://stackoverflow.com/q/18881427)
+ *
+ */
 @interface UIViewController (ESAdditions)
 
 /**
