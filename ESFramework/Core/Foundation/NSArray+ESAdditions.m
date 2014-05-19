@@ -122,6 +122,9 @@
 
 - (void)replaceObject:(id)object withObject:(id)anObject
 {
+        if (!object || !anObject) {
+                return;
+        }
         NSUInteger index = [self indexOfObject:object];
         if (index != NSNotFound) {
                 [self replaceObjectAtIndex:index withObject:anObject];

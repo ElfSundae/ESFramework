@@ -206,6 +206,8 @@
 		E76FEADD1929B178001461D1 /* ESArrowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEADB1929B178001461D1 /* ESArrowButton.m */; };
 		E76FEAE01929B2DC001461D1 /* UITableView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEADE1929B2DC001461D1 /* UITableView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEAE11929B2DC001461D1 /* UITableView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEADF1929B2DC001461D1 /* UITableView+ESAdditions.m */; };
+		E76FEAE61929F1D9001461D1 /* UIToolbar+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAE41929F1D9001461D1 /* UIToolbar+ESAdditions.h */; };
+		E76FEAE71929F1D9001461D1 /* UIToolbar+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAE51929F1D9001461D1 /* UIToolbar+ESAdditions.m */; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
 		E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8D18FDDC3F00487E34 /* ESAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -491,6 +493,8 @@
 		E76FEADB1929B178001461D1 /* ESArrowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESArrowButton.m; sourceTree = "<group>"; };
 		E76FEADE1929B2DC001461D1 /* UITableView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+ESAdditions.h"; sourceTree = "<group>"; };
 		E76FEADF1929B2DC001461D1 /* UITableView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ESAdditions.m"; sourceTree = "<group>"; };
+		E76FEAE41929F1D9001461D1 /* UIToolbar+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+ESAdditions.h"; sourceTree = "<group>"; };
+		E76FEAE51929F1D9001461D1 /* UIToolbar+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+ESAdditions.m"; sourceTree = "<group>"; };
 		E7792AAE19105E410060D935 /* ESApp+ESInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+ESInternal.h"; sourceTree = "<group>"; };
 		E7792AAF19105E410060D935 /* ESApp+ESInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ESInternal.m"; sourceTree = "<group>"; };
 		E793AB8D18FDDC3F00487E34 /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
@@ -901,6 +905,10 @@
 		E76FEAE31929D964001461D1 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				E76FEAC61929B101001461D1 /* UIColor+ESAdditions.h */,
+				E76FEAC71929B101001461D1 /* UIColor+ESAdditions.m */,
+				E76FEACB1929B101001461D1 /* UIImage+ESAdditions.h */,
+				E76FEACC1929B101001461D1 /* UIImage+ESAdditions.m */,
 				E7F5D8FB1916DBC800D11273 /* UIActionSheet+ESBlock.h */,
 				E7F5D8FC1916DBC800D11273 /* UIActionSheet+ESBlock.m */,
 				E7F5D8FD1916DBC800D11273 /* UIAlertView+ESBlock.h */,
@@ -913,14 +921,12 @@
 				E76FEADF1929B2DC001461D1 /* UITableView+ESAdditions.m */,
 				E76FEAC81929B101001461D1 /* UIControl+ESAdditions.h */,
 				E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */,
+				E76FEAE41929F1D9001461D1 /* UIToolbar+ESAdditions.h */,
+				E76FEAE51929F1D9001461D1 /* UIToolbar+ESAdditions.m */,
 				E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */,
 				E76FEAC51929B101001461D1 /* UIBarButtonItem+ESAdditions.m */,
-				E76FEAC61929B101001461D1 /* UIColor+ESAdditions.h */,
-				E76FEAC71929B101001461D1 /* UIColor+ESAdditions.m */,
 				E76FEAC91929B101001461D1 /* UIGestureRecognizer+ESAdditions.h */,
 				E76FEACA1929B101001461D1 /* UIGestureRecognizer+ESAdditions.m */,
-				E76FEACB1929B101001461D1 /* UIImage+ESAdditions.h */,
-				E76FEACC1929B101001461D1 /* UIImage+ESAdditions.m */,
 				E746C14719299E6100AD082C /* UINavigationController+ESAdditions.h */,
 				E746C14819299E6100AD082C /* UINavigationController+ESAdditions.m */,
 				E746C14E1929A20800AD082C /* UIViewController+ESAdditions.h */,
@@ -1129,6 +1135,7 @@
 				E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */,
 				E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */,
 				E7F5D8F81916DB8900D11273 /* ESValue.h in Headers */,
+				E76FEAE61929F1D9001461D1 /* UIToolbar+ESAdditions.h in Headers */,
 				E7F5D8EA1916DB0B00D11273 /* NSSet+ESAdditions.h in Headers */,
 				E7B8B35E1924E22B00196EE9 /* ESCache.h in Headers */,
 				E746C1501929A20800AD082C /* UIViewController+ESAdditions.h in Headers */,
@@ -1507,6 +1514,7 @@
 				E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */,
 				E7F5D9161916DC0700D11273 /* ESApp+Notification.m in Sources */,
 				E7B8B35F1924E22B00196EE9 /* ESCache.m in Sources */,
+				E76FEAE71929F1D9001461D1 /* UIToolbar+ESAdditions.m in Sources */,
 				E7F5D9061916DBC800D11273 /* UIView+ESShortcut.m in Sources */,
 				E7F5D8F91916DB8900D11273 /* ESValue.m in Sources */,
 				E7F5D9171916DC0700D11273 /* ESApp+UI.m in Sources */,

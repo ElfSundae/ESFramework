@@ -39,8 +39,8 @@ typedef void (^ESRouterOpeningCallback)(UIViewController *fromController, UIView
  * ### UIViewController
  * Push or Present an `UIViewController` instance.
  *
- *      * `@"user/?id=123456" // 'user' behave has been registered to Router.`
- *      * `@"user?id=123456&__modal__=1&refresh=1" // force presenting instead registered behave.`
+ *      * `@"user/?id=123456" // 'user' behavior has been registered to Router.`
+ *      * `@"user?id=123456&__modal__=1&refresh=1" // force presenting instead registered behavior.`
  *      * `@"MyProfileViewController?key=foo%20bar&__root__=1" // pushing as the root view controller.`
  *      * `@"MyWebViewController?__modal__=0&url=http%3A%2F%2Fwww.google.com" // pushing with default navigation controller.`
  *

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- * `UINavigationController`'s statusBar behave, orientation behave is preferred by it's lastViewController's behave,
+ * `UINavigationController`'s statusBar behavior, orientation behavior is preferred by it's lastViewController's behavior,
  * including:
  *
  * 	- (UIStatusBarStyle)preferredStatusBarStyle;
