@@ -68,7 +68,7 @@ static const void *__es_EventsKey = &__es_EventsKey;
 @implementation UIControl (ESAdditions)
 
 /**
- * Just support a single controlEvents.
+ * Just support a single controlEvent.
  */
 - (void)_es_addEventHandler:(ESUIControlHandler)handler forControlEvents:(UIControlEvents)controlEvents
 {
