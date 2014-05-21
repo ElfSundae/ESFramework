@@ -144,30 +144,33 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 /**
  * Weak object.
  *
- *	 ES_WEAK_VAR(self, _weakSelf);
- *	 [self someBlock:^{
- *	        ES_STRONG_VAR(_weakSelf, _strongSelf);
- *	        if (_strongSelf) {
- *	                // do stuff...
- *	        }
- *	 }];
+ * 	ESWeak(imageView, weakImageView);
+ * 	[self testBlock:^(UIImage *image) {
+ * 	        ESStrong(weakImageView, strongImageView);
+ * 	        strongImageView.image = image;
+ * 	}];
  *
- *	 // Or
  *
- *	 [self someBlock:^{
- *	        ES_STRONG_VAR_CHECK_NULL(_weakSelf, _self);
- *	        // Now the #_self is not nil.
- *	        // do stuff...
- *	 }];
+ * 	ESWeakSelf;
+ * 	[self testBlock:^(UIImage *image) {
+ * 	        ESStrongSelf;
+ * 	        _self.imageView = image;
+ * 	}];
+ *
  *
  */
 #if __es_arc_enabled
-        #define ES_WEAK_VAR(var, _weak_var)    __es_weak __es_typeof(var) _weak_var = var
+        #define ESWeak(var, weakVar) __es_weak __es_typeof(var) weakVar = var
 #else
-        #define ES_WEAK_VAR(var, _weak_var)    __block __es_typeof(var) _weak_var = var
+        #define ESWeak(var, weakVar) __block __es_typeof(var) weakVar = var
 #endif
-#define ES_STRONG_VAR(_weak_var, _strong_var)        __es_typeof(_weak_var) _strong_var = _weak_var
-#define ES_STRONG_VAR_CHECK_NULL(_weak_var, _strong_var)        ES_STRONG_VAR(_weak_var, _strong_var); if(!_strong_var) return;
+#define ESStrong_DoNotCheckNil(weakVar, _var) __es_typeof(weakVar) _var = weakVar
+#define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
+
+/** defines a weak self named "__weakSelf" */
+#define ESWeakSelf      ESWeak(self, __weakSelf);
+/** defines a strong self named "_self" from "__weakSelf" */
+#define ESStrongSelf    ESStrong(__weakSelf, _self);
 
 ///========================================================================================================
 /// @name SDK Compatibility

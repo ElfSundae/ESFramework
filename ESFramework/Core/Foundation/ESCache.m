@@ -56,9 +56,9 @@ dictionary = _dictionary;
                         if ([cacheObject isKindOfClass:[NSDictionary class]]) {
                                 [_dictionary addEntriesFromDictionary:(NSDictionary *)cacheObject];
                         }
-                        ES_WEAK_VAR(self, weakSelf);
+                        ESWeak(self, weakSelf);
                         [self addNotification:UIApplicationDidEnterBackgroundNotification handler:^(NSNotification *notification, NSDictionary *userInfo) {
-                                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                                ESStrong(weakSelf, _self);
                                 [_self save];
                         }];
                 }
@@ -81,9 +81,9 @@ dictionary = _dictionary;
 
 - (void)setName:(NSString *)name
 {
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 _self->_name = name;
         });
 }
@@ -119,9 +119,9 @@ dictionary = _dictionary;
         if (!key || !block) {
                 return;
         }
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 id object = [_self.dictionary objectForKey:key];
                 block(_self, key, object);
         });
@@ -132,14 +132,14 @@ dictionary = _dictionary;
         if (!key || !object) {
                 return;
         }
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 [_self.dictionary setObject:object forKey:key];
                 
                 if (block) {
                         dispatch_async(_self->_queue, ^{
-                              ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                              ESStrong(weakSelf, _self);
                                 block(_self, key, object);
                         });
                 }
@@ -151,14 +151,14 @@ dictionary = _dictionary;
         if (!key) {
                 return;
         }
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 [_self.dictionary removeObjectForKey:key];
                 
                 if (block) {
                         dispatch_async(_self->_queue, ^{
-                                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                                ESStrong(weakSelf, _self);
                                 block(_self, key, nil);
                         });
                 }
@@ -167,14 +167,14 @@ dictionary = _dictionary;
 
 - (void)removeAllObjects:(ESCacheBlock)block
 {
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 [_self.dictionary removeAllObjects];
                 
                 if (block) {
                         dispatch_async(_self->_queue, ^{
-                                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                                ESStrong(weakSelf, _self);
                                 block(_self);
                         });
                 }
@@ -189,9 +189,9 @@ dictionary = _dictionary;
         if (!block) {
                 return;
         }
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 for (NSString *key in _self.dictionary) {
                         BOOL stop = NO;
                         block(_self, key, [_self.dictionary objectForKey:key], &stop);
@@ -202,7 +202,7 @@ dictionary = _dictionary;
                 
                 if (completionBlock) {
                         dispatch_async(_self->_queue, ^{
-                                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                                ESStrong(weakSelf, _self);
                                 completionBlock(_self);
                         });
                 }
@@ -211,9 +211,9 @@ dictionary = _dictionary;
 
 - (void)save
 {
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 if ([_self _diskCacheFilePath]) {
                         if (_self.dictionary.count) {
                                 [NSKeyedArchiver archiveRootObject:_self.dictionary toFile:[_self _diskCacheFilePath]];

@@ -172,7 +172,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                 return;
         }
         
-        ES_WEAK_VAR(self, _self);
+        ESWeak(self, _self);
         if (ESAppUpdateResultNone == updateObject.updateResult) {
                 UIAlertView *alert =
                 [UIAlertView alertViewWithTitle:updateObject.alertTitle

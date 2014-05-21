@@ -73,9 +73,9 @@
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeak(self, weakSelf);
         ESDispatchOnDefaultQueue(^{
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrong(weakSelf, _self);
                 NSString *filePath = ESTouchFilePath(path);
                 if (!filePath) {
                         if (block) {

@@ -23,11 +23,11 @@ static const void *_esImageDownloadOperationKey = &_esImageDownloadOperationKey;
         
         self.image = placeholder;
         if ([imageURL isKindOfClass:[NSURL class]]) {
-                ES_WEAK_VAR(self, weakSelf);
+                ESWeak(self, weakSelf);
                 id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadWithURL:imageURL options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished) {
-                        ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                        ESStrong(weakSelf, _self);
                         ESDispatchSyncOnMainThread(^{
-                                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                                ESStrong(weakSelf, _self);
                                 if (completedBlock && finished) {
                                         completedBlock(image, error, cacheType);
                                 }
@@ -53,9 +53,9 @@ static const void *_esImageDownloadOperationKey = &_esImageDownloadOperationKey;
 
 - (void)setImageAnimatedWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletedBlock)completedBlock
 {
-        ES_WEAK_VAR(self, weakSelf);
+        ESWeakSelf;
         [self downloadImageWithURL:imageURL placeholderImage:placeholder options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                ES_STRONG_VAR_CHECK_NULL(weakSelf, _self);
+                ESStrongSelf;
                 if (image) {
                         [_self setImageAnimated:image];
                         [_self setNeedsLayout];

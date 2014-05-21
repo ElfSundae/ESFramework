@@ -21,7 +21,7 @@
         [self _setupRootViewController];
         self.window.rootViewController = self.rootViewController;
         
-        ES_WEAK_VAR(self, _self);
+        ESWeak(self, _self);
         ESDispatchOnHighQueue(^{
                 /* Set the UserAgent for UIWebView */
                 NSString *ua = self.userAgentForWebView;

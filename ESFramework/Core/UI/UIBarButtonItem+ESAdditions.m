@@ -48,9 +48,9 @@ static const void *__es_HandlerBlockKey = &__es_HandlerBlockKey;
         ESBarButtonArrowItem *item = [[self alloc] initWithCustomView:button];
         button.arrowStyle = style;
         button.tintColor = ([[self appearance] tintColor] ?: item.tintColor);
-        ES_WEAK_VAR(self, _weakSelf);
+        ESWeak(self, _weakSelf);
         [button addEventHandler:^(id sender, UIControlEvents controlEvents) {
-                ES_STRONG_VAR_CHECK_NULL(_weakSelf, _self);
+                ESStrong(_weakSelf, _self);
                 handler(_self);
         } forControlEvents:UIControlEventTouchUpInside];
         return item;
