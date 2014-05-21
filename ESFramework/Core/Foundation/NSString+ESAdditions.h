@@ -53,6 +53,8 @@
 - (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement;
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
 - (NSString *)replaceInRange:(NSRange)range with:(NSString *)replacement;
+- (NSString *)replaceWithDictionary:(NSDictionary *)dictionary withOptions:(NSStringCompareOptions)options;
+
 /**
  * The `replacement` is treated as a template, with $0 being replaced by the 
  * contents of the matched range, $1 by the contents of the first capture group, 
@@ -189,4 +191,9 @@
 - (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement;
 - (void)replaceInRange:(NSRange)range to:(NSString *)replacement;
 - (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
+/**
+ * `dictionary` is NSString keyed, vlaued with NSString or NSNumber.
+ * `options` can be any including `NSRegularExpressionSearch`.
+ */
+- (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
 @end

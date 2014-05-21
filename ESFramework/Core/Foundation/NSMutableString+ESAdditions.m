@@ -7,6 +7,7 @@
 //
 
 #import "NSString+ESAdditions.h"
+#import "ESValue.h"
 
 @implementation NSMutableString (ESAdditions)
 
@@ -39,6 +40,16 @@
 - (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
 {
         [self replace:pattern to:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
+}
+
+- (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
+{
+        for (NSString *key in dictionary) {
+                NSString *value;
+                if (ESStringVal(&value, dictionary[key])) {
+                        [self replace:key to:value options:options];
+                }
+        }
 }
 
 @end

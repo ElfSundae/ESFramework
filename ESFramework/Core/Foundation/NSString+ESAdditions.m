@@ -149,6 +149,15 @@
         return [self stringByReplacingCharactersInRange:range withString:replacement];
 }
 
+- (NSString *)replaceWithDictionary:(NSDictionary *)dictionary withOptions:(NSStringCompareOptions)options
+{
+        NSMutableString *result = [NSMutableString stringWithString:self];
+        if (result.length > 0) {
+                [result replaceWithDictionary:dictionary options:options];
+        }
+        return (NSString *)result;
+}
+
 - (NSString *)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
 {
         return [self replace:pattern with:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
@@ -345,7 +354,6 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 {
         return [self stringByReplacingCamelcaseWith:@"_"];
 }
-
 
 - (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options
 {
