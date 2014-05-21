@@ -355,6 +355,18 @@ ES_EXTERN NSString *const ESErrorDomain;
 #define ESMaskSet(value, flag)          do { (value) |= (flag); } while(0)
 #define ESMaskUnset(value, flag)        do { (value) &= ~(flag); } while(0)
 
+/**
+ * Datetime constants
+ */
+
+#define ES_MINUTE (60)
+#define ES_HOUR   (60 * ES_MINUTE)
+#define ES_DAY    (24 * ES_HOUR)
+#define ES_5_DAYS (5 * ES_DAY)
+#define ES_WEEK   (7 * ES_DAY)
+#define ES_MONTH  (30.5 * ES_DAY)
+#define ES_YEAR   (365 * ES_DAY)
+
 ES_INLINE BOOL ESIsStringWithAnyText(id object) {
         return ([object isKindOfClass:[NSString class]] && ![(NSString *)object isEqualToString:@""]);
 }
