@@ -23,6 +23,7 @@
 #import "UIAlertView+ESBlock.h"
 #import "UIView+ESShortcut.h"
 #import "UIView+ESAdditions.h"
+#import "UIImageView+ESAdditions.h"
 #import "UITableView+ESAdditions.h"
 #import "UIControl+ESAdditions.h"
 #import "UIBarButtonItem+ESAdditions.h"

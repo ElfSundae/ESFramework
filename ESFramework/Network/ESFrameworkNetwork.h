@@ -11,6 +11,8 @@
 
 #define kESFrameworkNetworkVersion @"0.1.0"
 
+#import "UIImageView+ESWebImage.h"
+
 // Reachability
 #import "Reachability.h"
 #import "UIDevice+Reachability.h"

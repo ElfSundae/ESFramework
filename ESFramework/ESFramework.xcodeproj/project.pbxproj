@@ -192,6 +192,12 @@
 		E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14F1929A20800AD082C /* UIViewController+ESAdditions.m */; };
 		E75A686E192C736D0073705C /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A686C192C736D0073705C /* GTMNSString+HTML.h */; };
 		E75A686F192C736D0073705C /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A686D192C736D0073705C /* GTMNSString+HTML.m */; };
+		E75A6872192D4E110073705C /* UIImageView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E75A6873192D4E110073705C /* UIImageView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */; };
+		E75A687A192D58670073705C /* NSObject+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6878192D58670073705C /* NSObject+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E75A687B192D58670073705C /* NSObject+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6879192D58670073705C /* NSObject+ESAdditions.m */; };
+		E75A687E192D5A7E0073705C /* UIImageView+ESWebImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A687C192D5A7E0073705C /* UIImageView+ESWebImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E75A687F192D5A7E0073705C /* UIImageView+ESWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A687D192D5A7E0073705C /* UIImageView+ESWebImage.m */; };
 		E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */; };
 		E76FEAD01929B101001461D1 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -495,6 +501,12 @@
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		E75A686C192C736D0073705C /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
 		E75A686D192C736D0073705C /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ESAdditions.h"; sourceTree = "<group>"; };
+		E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESAdditions.m"; sourceTree = "<group>"; };
+		E75A6878192D58670073705C /* NSObject+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAdditions.h"; sourceTree = "<group>"; };
+		E75A6879192D58670073705C /* NSObject+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAdditions.m"; sourceTree = "<group>"; };
+		E75A687C192D5A7E0073705C /* UIImageView+ESWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ESWebImage.h"; sourceTree = "<group>"; };
+		E75A687D192D5A7E0073705C /* UIImageView+ESWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESWebImage.m"; sourceTree = "<group>"; };
 		E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
@@ -959,6 +971,8 @@
 				E7F5D9001916DBC800D11273 /* UIView+ESShortcut.m */,
 				E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */,
 				E76FEACD1929B101001461D1 /* UIView+ESAdditions.m */,
+				E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */,
+				E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */,
 				E76FEADE1929B2DC001461D1 /* UITableView+ESAdditions.h */,
 				E76FEADF1929B2DC001461D1 /* UITableView+ESAdditions.m */,
 				E76FEAC81929B101001461D1 /* UIControl+ESAdditions.h */,
@@ -1080,6 +1094,8 @@
 			isa = PBXGroup;
 			children = (
 				E7FEF50718FA71C2006E1682 /* ESFrameworkNetwork.h */,
+				E75A687C192D5A7E0073705C /* UIImageView+ESWebImage.h */,
+				E75A687D192D5A7E0073705C /* UIImageView+ESWebImage.m */,
 				E70490421925682300C0EDAD /* SDWebImage */,
 				E7089FB8190FED990014C8F6 /* Reachability */,
 				E7BCF7BF18F99735006D920E /* NetworkDebug.xcconfig */,
@@ -1092,6 +1108,8 @@
 			isa = PBXGroup;
 			children = (
 				E739698A19199CAD00F56B78 /* ESFoundation.h */,
+				E75A6878192D58670073705C /* NSObject+ESAdditions.h */,
+				E75A6879192D58670073705C /* NSObject+ESAdditions.m */,
 				E7F5D8DA1916DB0B00D11273 /* NSString+ESAdditions.h */,
 				E7F5D8DB1916DB0B00D11273 /* NSString+ESAdditions.m */,
 				E746C13E1929484D00AD082C /* NSMutableString+ESAdditions.m */,
@@ -1205,11 +1223,13 @@
 				E72F6A4719177D79006893A5 /* ESRouter.h in Headers */,
 				E746C13B1929422700AD082C /* NSRegularExpression+ESAdditions.h in Headers */,
 				E76FEADC1929B178001461D1 /* ESArrowButton.h in Headers */,
+				E75A687A192D58670073705C /* NSObject+ESAdditions.h in Headers */,
 				E7F5D8F01916DB0B00D11273 /* NSURL+ESAdditions.h in Headers */,
 				E76FEAD51929B101001461D1 /* UIGestureRecognizer+ESAdditions.h in Headers */,
 				E76FEAD41929B101001461D1 /* UIControl+ESAdditions.h in Headers */,
 				E73613E8191AC7A9008A39CD /* NSObject+ESModel.h in Headers */,
 				E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */,
+				E75A6872192D4E110073705C /* UIImageView+ESAdditions.h in Headers */,
 				E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */,
 				E7F5D9031916DBC800D11273 /* UIAlertView+ESBlock.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
@@ -1275,6 +1295,7 @@
 				E7089FBD190FEDAB0014C8F6 /* Reachability.h in Headers */,
 				E704909919256F2300C0EDAD /* SDWebImageDownloaderOperation.h in Headers */,
 				E704908D19256F2300C0EDAD /* MKAnnotationView+WebCache.h in Headers */,
+				E75A687E192D5A7E0073705C /* UIImageView+ESWebImage.h in Headers */,
 				E70490A419256F2300C0EDAD /* UIImage+MultiFormat.h in Headers */,
 				E704909719256F2300C0EDAD /* SDWebImageDownloader.h in Headers */,
 				E704909D19256F2300C0EDAD /* SDWebImageOperation.h in Headers */,
@@ -1600,6 +1621,7 @@
 				E7F5D8EF1916DB0B00D11273 /* NSTimer+ESAdditions.m in Sources */,
 				E7F5D9041916DBC800D11273 /* UIAlertView+ESBlock.m in Sources */,
 				E76FEAD11929B101001461D1 /* UIBarButtonItem+ESAdditions.m in Sources */,
+				E75A687B192D58670073705C /* NSObject+ESAdditions.m in Sources */,
 				E70493E319275A8100C0EDAD /* ESAppUpdateObject.m in Sources */,
 				E76FEAE11929B2DC001461D1 /* UITableView+ESAdditions.m in Sources */,
 				E70493E719281C1800C0EDAD /* ESApp+Subclassing.m in Sources */,
@@ -1625,6 +1647,7 @@
 				E7F5D9191916DC0700D11273 /* UIDevice+ESInfo.m in Sources */,
 				E79D85CE192C6A4F0000B57E /* NSError+ESAdditions.m in Sources */,
 				E7F5D8ED1916DB0B00D11273 /* NSString+ESAdditions.m in Sources */,
+				E75A6873192D4E110073705C /* UIImageView+ESAdditions.m in Sources */,
 				E746C1401929484D00AD082C /* NSMutableString+ESAdditions.m in Sources */,
 				E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */,
 				E76FEAD91929B101001461D1 /* UIView+ESAdditions.m in Sources */,
@@ -1667,6 +1690,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E704909019256F2300C0EDAD /* NSData+ImageContentType.m in Sources */,
+				E75A687F192D5A7E0073705C /* UIImageView+ESWebImage.m in Sources */,
 				E704909C19256F2300C0EDAD /* SDWebImageManager.m in Sources */,
 				E704909819256F2300C0EDAD /* SDWebImageDownloader.m in Sources */,
 				E70490A919256F2300C0EDAD /* UIImageView+WebCache.m in Sources */,
