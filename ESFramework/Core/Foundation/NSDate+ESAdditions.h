@@ -17,4 +17,7 @@
 
 + (unsigned long long)timestamp;
 
+- (BOOL)isBefore:(NSDate *)aDate;
+- (BOOL)isAfter:(NSDate *)aDate;
+
 @end

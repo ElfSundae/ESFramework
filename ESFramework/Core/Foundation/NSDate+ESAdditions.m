@@ -20,4 +20,14 @@
         return (unsigned long long)[self nowTimeInterval];
 }
 
+- (BOOL)isBefore:(NSDate *)aDate
+{
+        return [self timeIntervalSinceDate:aDate] < 0;
+}
+
+- (BOOL)isAfter:(NSDate *)aDate
+{
+        return [self timeIntervalSinceDate:aDate] > 0;
+}
+
 @end
