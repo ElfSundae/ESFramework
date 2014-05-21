@@ -513,6 +513,9 @@ ES_EXTERN UIImage *UIImageFromCache(NSString *path, ...);
 ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
 
 ES_EXTERN NSString *NSStringWith(NSString *format, ...);
+/**
+ * It can handle 'xxxx:[//]' or a file path.
+ */
 ES_EXTERN NSURL *NSURLWith(NSString *format, ...);
 
 /**

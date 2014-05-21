@@ -307,7 +307,11 @@ NSURL *NSURLWith(NSString *format, ...)
                 va_end(args);
         }
         if (string) {
-                return [NSURL URLWithString:string];
+                if ([string rangeOfString:@"^[^\\s:]+:" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound) {
+                        return [NSURL URLWithString:string];
+                } else {
+                        return [NSURL fileURLWithPath:string];
+                }
         }
         return nil;
 }
