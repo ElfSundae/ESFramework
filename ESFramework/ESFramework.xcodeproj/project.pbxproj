@@ -190,6 +190,8 @@
 		E746C14A19299E6100AD082C /* UINavigationController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14819299E6100AD082C /* UINavigationController+ESAdditions.m */; };
 		E746C1501929A20800AD082C /* UIViewController+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E746C14E1929A20800AD082C /* UIViewController+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14F1929A20800AD082C /* UIViewController+ESAdditions.m */; };
+		E75A686E192C736D0073705C /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A686C192C736D0073705C /* GTMNSString+HTML.h */; };
+		E75A686F192C736D0073705C /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A686D192C736D0073705C /* GTMNSString+HTML.m */; };
 		E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */; };
 		E76FEAD01929B101001461D1 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -226,6 +228,8 @@
 		E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = E793AB8E18FDDC3F00487E34 /* ESAnimations.m */; };
 		E79D85BF192C45330000B57E /* ESTableViewController+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E79D85BD192C45330000B57E /* ESTableViewController+DataSource.m */; };
 		E79D85C1192C48760000B57E /* ESTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = E79D85C0192C48760000B57E /* ESTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79D85CD192C6A4F0000B57E /* NSError+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E79D85CB192C6A4F0000B57E /* NSError+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79D85CE192C6A4F0000B57E /* NSError+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E79D85CC192C6A4F0000B57E /* NSError+ESAdditions.m */; };
 		E7B8B35E1924E22B00196EE9 /* ESCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B35C1924E22B00196EE9 /* ESCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B8B35F1924E22B00196EE9 /* ESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B35D1924E22B00196EE9 /* ESCache.m */; };
 		E7B8B3A41924FE1200196EE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -478,8 +482,6 @@
 		E72F6A4E19178FA0006893A5 /* ESRouterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRouterObject.m; sourceTree = "<group>"; };
 		E73613E6191AC7A9008A39CD /* NSObject+ESModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESModel.h"; sourceTree = "<group>"; };
 		E73613E7191AC7A9008A39CD /* NSObject+ESModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESModel.m"; sourceTree = "<group>"; };
-		E73613F1191BC646008A39CD /* _ESModelInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _ESModelInternal.h; sourceTree = "<group>"; };
-		E73613F2191BC646008A39CD /* _ESModelInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _ESModelInternal.m; sourceTree = "<group>"; };
 		E739698A19199CAD00F56B78 /* ESFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFoundation.h; sourceTree = "<group>"; };
 		E746C1391929422700AD082C /* NSRegularExpression+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+ESAdditions.h"; sourceTree = "<group>"; };
 		E746C13A1929422700AD082C /* NSRegularExpression+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+ESAdditions.m"; sourceTree = "<group>"; };
@@ -491,6 +493,8 @@
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
+		E75A686C192C736D0073705C /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
+		E75A686D192C736D0073705C /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
 		E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
@@ -527,6 +531,8 @@
 		E793AB8E18FDDC3F00487E34 /* ESAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAnimations.m; sourceTree = "<group>"; };
 		E79D85BD192C45330000B57E /* ESTableViewController+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESTableViewController+DataSource.m"; sourceTree = "<group>"; };
 		E79D85C0192C48760000B57E /* ESTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewDataSource.h; sourceTree = "<group>"; };
+		E79D85CB192C6A4F0000B57E /* NSError+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+ESAdditions.h"; sourceTree = "<group>"; };
+		E79D85CC192C6A4F0000B57E /* NSError+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+ESAdditions.m"; sourceTree = "<group>"; };
 		E7B8B35C1924E22B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCache.h; sourceTree = "<group>"; };
 		E7B8B35D1924E22B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCache.m; sourceTree = "<group>"; };
 		E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1014,8 +1020,8 @@
 			children = (
 				E7792AAE19105E410060D935 /* ESApp+ESInternal.h */,
 				E7792AAF19105E410060D935 /* ESApp+ESInternal.m */,
-				E73613F1191BC646008A39CD /* _ESModelInternal.h */,
-				E73613F2191BC646008A39CD /* _ESModelInternal.m */,
+				E75A686C192C736D0073705C /* GTMNSString+HTML.h */,
+				E75A686D192C736D0073705C /* GTMNSString+HTML.m */,
 			);
 			path = _Internal;
 			sourceTree = "<group>";
@@ -1107,6 +1113,8 @@
 				E7F5D8D71916DB0B00D11273 /* NSOrderedSet+ESAdditions.m */,
 				E7F5D8DC1916DB0B00D11273 /* NSTimer+ESAdditions.h */,
 				E7F5D8DD1916DB0B00D11273 /* NSTimer+ESAdditions.m */,
+				E79D85CB192C6A4F0000B57E /* NSError+ESAdditions.h */,
+				E79D85CC192C6A4F0000B57E /* NSError+ESAdditions.m */,
 				E7F5D8F21916DB8900D11273 /* ESHash.h */,
 				E7F5D8F31916DB8900D11273 /* ESHash.m */,
 				E7F5D8F41916DB8900D11273 /* ESValue.h */,
@@ -1205,6 +1213,8 @@
 				E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */,
 				E7F5D9031916DBC800D11273 /* UIAlertView+ESBlock.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
+				E79D85CD192C6A4F0000B57E /* NSError+ESAdditions.h in Headers */,
+				E75A686E192C736D0073705C /* GTMNSString+HTML.h in Headers */,
 				E7F5D9011916DBC800D11273 /* UIActionSheet+ESBlock.h in Headers */,
 				E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */,
 				E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */,
@@ -1581,6 +1591,7 @@
 			files = (
 				E7C9473018FBE0530034B110 /* ESDefines.m in Sources */,
 				E73613E9191AC7A9008A39CD /* NSObject+ESModel.m in Sources */,
+				E75A686F192C736D0073705C /* GTMNSString+HTML.m in Sources */,
 				E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */,
 				E76FEAD31929B101001461D1 /* UIColor+ESAdditions.m in Sources */,
 				E746C13C1929422700AD082C /* NSRegularExpression+ESAdditions.m in Sources */,
@@ -1612,6 +1623,7 @@
 				E7F5D8E91916DB0B00D11273 /* NSOrderedSet+ESAdditions.m in Sources */,
 				E7F5D8F71916DB8900D11273 /* ESHash.m in Sources */,
 				E7F5D9191916DC0700D11273 /* UIDevice+ESInfo.m in Sources */,
+				E79D85CE192C6A4F0000B57E /* NSError+ESAdditions.m in Sources */,
 				E7F5D8ED1916DB0B00D11273 /* NSString+ESAdditions.m in Sources */,
 				E746C1401929484D00AD082C /* NSMutableString+ESAdditions.m in Sources */,
 				E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */,

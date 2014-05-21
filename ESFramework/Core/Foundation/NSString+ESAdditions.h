@@ -117,6 +117,45 @@
  */
 - (NSDictionary *)queryDictionary;
 
+
+/**
+ * Returns a string that escaped for HTML.
+ * e.g. '<' becomes '&lt;' , '&' become '&amp;'
+ *
+ * This will only cover characters from table
+ * A.2.2 of http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
+ * which is what you want for a unicode encoded webpage.
+ *
+ * @see http://google-toolbox-for-mac.googlecode.com/svn/trunk/Foundation/GTMNSString+HTML.h
+ * @see https://github.com/mwaterfall/MWFeedParser/blob/master/Classes/GTMNSString%2BHTML.h
+ */
+- (NSString *)stringByEncodingUnicodeHTMLEntities;
+/**
+ *  For example, '&' become '&amp;'
+ *  All non-mapped characters (unicode that don't have a &keyword; mapping)
+ *  will be converted to the appropriate &#xxx; value. If your webpage is
+ *  unicode encoded (UTF16 or UTF8) use stringByEscapingHTML instead as it is
+ *  faster, and produces less bloated and more readable HTML (as long as you
+ *  are using a unicode compliant HTML reader).
+ *
+ * For obvious reasons this call is only safe once.
+ *
+ * @see http://google-toolbox-for-mac.googlecode.com/svn/trunk/Foundation/GTMNSString+HTML.h
+ * @see https://github.com/mwaterfall/MWFeedParser/blob/master/Classes/GTMNSString%2BHTML.h
+ */
+- (NSString *)stringByEncodingAsciiHTMLEntities;
+
+/**
+ * Get a string where internal characters that are escaped for HTML are unescaped
+ *
+ * For example, '&amp;' becomes '&'
+ * Handles &#32; and &#x32; cases as well
+ *
+ */
+- (NSString *)stringByDecodingHTMLEntities;
+
+
+
 - (NSRegularExpression *)regex;
 - (NSRegularExpression *)regexCaseInsensitive;
 - (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options;

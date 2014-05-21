@@ -9,6 +9,7 @@
 #import "NSString+ESAdditions.h"
 #import "ESDefines.h"
 #import "ESHash.h"
+#import "GTMNSString+HTML.h"
 
 @implementation NSString (ESAdditions)
 
@@ -292,6 +293,33 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
                 }
         }
         return (NSDictionary *)result;
+}
+
+- (NSString *)stringByEncodingUnicodeHTMLEntities
+{
+        NSString *result = [self gtm_stringByEscapingForHTML];
+        if (result) {
+                return [NSString stringWithString:result];
+        }
+        return nil;
+}
+
+- (NSString *)stringByEncodingAsciiHTMLEntities
+{
+        NSString *result = [self gtm_stringByEscapingForAsciiHTML];
+        if (result) {
+                return [NSString stringWithString:result];
+        }
+        return nil;
+}
+
+- (NSString *)stringByUnescapingForHTML
+{
+        NSString *result = [self gtm_stringByUnescapingFromHTML];
+        if (result) {
+                return [NSString stringWithString:result];
+        }
+        return nil;
 }
 
 - (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options
