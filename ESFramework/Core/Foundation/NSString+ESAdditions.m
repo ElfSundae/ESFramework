@@ -313,7 +313,7 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return nil;
 }
 
-- (NSString *)stringByUnescapingForHTML
+- (NSString *)stringByDecodingHTMLEntities
 {
         NSString *result = [self gtm_stringByUnescapingFromHTML];
         if (result) {

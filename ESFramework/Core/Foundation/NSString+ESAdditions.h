@@ -120,7 +120,7 @@
 
 /**
  * Returns a string that escaped for HTML.
- * e.g. '<' becomes '&lt;' , '&' become '&amp;'
+ * e.g. '<' becomes '&lt;' , '>' to '&gt;', '&' become '&amp;'
  *
  * This will only cover characters from table
  * A.2.2 of http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
@@ -155,6 +155,9 @@
 - (NSString *)stringByDecodingHTMLEntities;
 
 
+///=============================================
+/// @name NSRegularExpression Maker
+///=============================================
 
 - (NSRegularExpression *)regex;
 - (NSRegularExpression *)regexCaseInsensitive;
