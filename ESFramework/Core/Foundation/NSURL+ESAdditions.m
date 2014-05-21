@@ -20,4 +20,10 @@
         return [self.absoluteString iTunesItemID];
 }
 
+- (BOOL)isEqualToURL:(NSURL *)anotherURL
+{
+        return (([self.absoluteURL isEqual:anotherURL.absoluteURL]) ||
+                (self.isFileURL && anotherURL.isFileURL && [self.path isEqualToString:anotherURL.path]));
+}
+
 @end

@@ -24,4 +24,6 @@
  */
 - (NSString *)iTunesItemID;
 
+- (BOOL)isEqualToURL:(NSURL *)anotherURL;
+
 @end
