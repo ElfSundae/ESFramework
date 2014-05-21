@@ -322,6 +322,31 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return nil;
 }
 
+- (NSString *)stringByReplacingCamelcaseWith:(NSString *)replace
+{
+        NSString *string = [self replaceRegex:@"\\W" with:@"_" caseInsensitive:YES];
+        NSMutableString *result = [NSMutableString string];
+        for (NSUInteger i = 0; i < string.length; i++) {
+                NSString *aChar = [string substringWithRange:NSMakeRange(i, 1)];
+                if (![aChar isEqualToString:@"_"] && [aChar isEqualToString:[aChar uppercaseString]]) {
+                        if (i == 0) {
+                                [result appendString:[aChar lowercaseString]];
+                        } else {
+                                [result appendFormat:@"%@%@", replace, [aChar lowercaseString]];
+                        }
+                } else {
+                        [result appendString:[aChar lowercaseString]];
+                }
+        }
+        return result;
+}
+
+- (NSString *)stringByReplacingCamelcaseWithUnderscore
+{
+        return [self stringByReplacingCamelcaseWith:@"_"];
+}
+
+
 - (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options
 {
         return [NSRegularExpression regex:self options:options];

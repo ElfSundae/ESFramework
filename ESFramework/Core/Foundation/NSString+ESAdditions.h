@@ -154,6 +154,20 @@
  */
 - (NSString *)stringByDecodingHTMLEntities;
 
+/**
+ * @"camelCase" to @"camel<replace>case"
+ * @"CamelCase" to @"camel<replace>case"
+ *
+ * It will convert all "\W" to "_", and replace Uppercase to "_"+lowercase.
+ */
+- (NSString *)stringByReplacingCamelcaseWith:(NSString *)replace;
+/**
+ * @"camelCase" to @"camel_case"
+ * @"CamelCase" to @"camel_case"
+ *
+ * @see -stringByReplacingCamelcaseWith:
+ */
+- (NSString *)stringByReplacingCamelcaseWithUnderscore;
 
 ///=============================================
 /// @name NSRegularExpression Maker
@@ -174,5 +188,5 @@
 - (void)replace:(NSString *)string to:(NSString *)replacement;
 - (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement;
 - (void)replaceInRange:(NSRange)range to:(NSString *)replacement;
-- (void)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
+- (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
 @end
