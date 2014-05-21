@@ -216,6 +216,8 @@
 		E76FEAFD192B59B8001461D1 /* ESStatusOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAFB192B59B8001461D1 /* ESStatusOverlayView.m */; };
 		E76FEB08192B7BAC001461D1 /* ESTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEB06192B7BAC001461D1 /* ESTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEB09192B7BAC001461D1 /* ESTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB07192B7BAC001461D1 /* ESTableViewDataSource.m */; };
+		E76FEB0C192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEB0A192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E76FEB0D192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB0B192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m */; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
 		E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8D18FDDC3F00487E34 /* ESAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -511,6 +513,8 @@
 		E76FEAFB192B59B8001461D1 /* ESStatusOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStatusOverlayView.m; sourceTree = "<group>"; };
 		E76FEB06192B7BAC001461D1 /* ESTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewDataSource.h; sourceTree = "<group>"; };
 		E76FEB07192B7BAC001461D1 /* ESTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTableViewDataSource.m; sourceTree = "<group>"; };
+		E76FEB0A192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESStatusOverlayView.h"; sourceTree = "<group>"; };
+		E76FEB0B192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
 		E7792AAE19105E410060D935 /* ESApp+ESInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+ESInternal.h"; sourceTree = "<group>"; };
 		E7792AAF19105E410060D935 /* ESApp+ESInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ESInternal.m"; sourceTree = "<group>"; };
 		E793AB8D18FDDC3F00487E34 /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
@@ -979,6 +983,8 @@
 			children = (
 				E76FEAFA192B59B8001461D1 /* ESStatusOverlayView.h */,
 				E76FEAFB192B59B8001461D1 /* ESStatusOverlayView.m */,
+				E76FEB0A192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h */,
+				E76FEB0B192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m */,
 			);
 			path = StatusOverlay;
 			sourceTree = "<group>";
@@ -1215,6 +1221,7 @@
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E70493621925B19200C0EDAD /* ESErrorView.h in Headers */,
 				E70493DE192720DC00C0EDAD /* ESMoviePlayerViewController.h in Headers */,
+				E76FEB0C192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1602,6 +1609,7 @@
 			files = (
 				E70493631925B19200C0EDAD /* ESErrorView.m in Sources */,
 				E76FEAFD192B59B8001461D1 /* ESStatusOverlayView.m in Sources */,
+				E76FEB0D192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m in Sources */,
 				E76FEAEC192A93DC001461D1 /* ESActivityLabel.m in Sources */,
 				E76FEB09192B7BAC001461D1 /* ESTableViewDataSource.m in Sources */,
 				E7089FB4190FED0E0014C8F6 /* SwipeView.m in Sources */,
