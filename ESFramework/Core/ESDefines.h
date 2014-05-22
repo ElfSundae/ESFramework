@@ -176,19 +176,25 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 /**
  * Weak object.
  *
- * 	ESWeak(imageView, weakImageView);
- * 	[self testBlock:^(UIImage *image) {
- * 	        ESStrong(weakImageView, strongImageView);
- * 	        strongImageView.image = image;
- * 	}];
+ *	ESWeak(imageView, weakImageView);
+ *	[self testBlock:^(UIImage *image) {
+ *	        ESStrong(weakImageView, strongImageView);
+ *	        strongImageView.image = image;
+ *	}];
  *
+ *	// `ESWeak_` will create a var named `weak_imageView`
+ *	ESWeak_(imageView);
+ *	[self testBlock:^(UIImage *image) {
+ *	        ESStrong_(imageView);
+ *		_imageView.image = image;
+ *	}];
  *
- * 	ESWeakSelf;
- * 	[self testBlock:^(UIImage *image) {
- * 	        ESStrongSelf;
- * 	        _self.imageView = image;
- * 	}];
- *
+ *	// weak `self` and strong `self`
+ *	ESWeakSelf;
+ *	[self testBlock:^(UIImage *image) {
+ *	        ESStrongSelf;
+ *	        _self.imageView = image;
+ *	}];
  *
  */
 #if __es_arc_enabled
@@ -198,6 +204,9 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 #endif
 #define ESStrong_DoNotCheckNil(weakVar, _var) __es_typeof(weakVar) _var = weakVar
 #define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
+
+#define ESWeak_(var) ESWeak(var, weak_##var);
+#define ESStrong_(var) ESStrong(weak_##var, _##var);
 
 /** defines a weak self named "__weakSelf" */
 #define ESWeakSelf      ESWeak(self, __weakSelf);
