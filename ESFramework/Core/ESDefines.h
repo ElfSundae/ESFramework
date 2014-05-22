@@ -88,16 +88,16 @@ ES_EXTERN NSInteger ESMaxLogLevel;
 /**
  * Only writes log if condition is satisfied.
  */
-#define NSLogCondition(condition, fmt, ...)     do { if((condition)){ NSLog(fmt, ##__VA_ARGS__); } } while(0)
+#define NSLogCondition(condition, fmt, ...)     if((condition)){ NSLog(fmt, ##__VA_ARGS__); }
 /**
  * Writes log with a prefix, used to debug a specially module.
  *
  * example: `NSLogPrefix(@"<Socket> ", @"Connected to host %@", host);`
  */
-#define NSLogPrefix(prefixString, fmt, ...)     do { NSLog(@"<"prefixString @"> " fmt, ##__VA_ARGS__); } while(0)
-#define NSLogInfo(fmt, ...)     do { if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"Info", fmt, ##__VA_ARGS__); } } while(0)
-#define NSLogWarning(fmt, ...)  do { if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"❗Warning", fmt, ##__VA_ARGS__); } } while(0)
-#define NSLogError(fmt, ...)    do { if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌Error", fmt, ##__VA_ARGS__); } } while(0)
+#define NSLogPrefix(prefixString, fmt, ...)     NSLog(@"<"prefixString @"> " fmt, ##__VA_ARGS__);
+#define NSLogInfo(fmt, ...)     if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"Info", fmt, ##__VA_ARGS__); }
+#define NSLogWarning(fmt, ...)  if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"❗Warning", fmt, ##__VA_ARGS__); }
+#define NSLogError(fmt, ...)    if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌Error", fmt, ##__VA_ARGS__); }
 #else
 #define NSLogCondition(condition, fmt, ...)
 #define NSLogPrefix(prefixString, fmt, ...)
@@ -134,14 +134,14 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
         #define __es_arc_enabled        0
         #define ES_STRONG       retain
         #define ES_AUTORELEASE(exp) [exp autorelease]
-        #define ES_RELEASE(exp)  do { [exp release]; exp = nil; } while(0)
+        #define ES_RELEASE(exp)  [exp release]; exp = nil;
         #define ES_RETAIN(exp) [exp retain]
 #endif
 
 /**
  * Release a CoreFoundation object safely.
  */
-#define ES_RELEASE_CF_SAFELY(__REF)             do { if (nil != (__REF)) { CFRelease(__REF); __REF = nil; } } while(0)
+#define ES_RELEASE_CF_SAFELY(__REF)             if (nil != (__REF)) { CFRelease(__REF); __REF = nil; }
 
 /**
  * Weak property.
@@ -396,8 +396,8 @@ ES_EXTERN NSString *const ESErrorDomain;
  * Bitmask
  */
 #define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
-#define ESMaskSet(value, flag)          do { (value) |= (flag); } while(0)
-#define ESMaskUnset(value, flag)        do { (value) &= ~(flag); } while(0)
+#define ESMaskSet(value, flag)          ((value) |= (flag));
+#define ESMaskUnset(value, flag)        ((value) &= ~(flag));
 
 /**
  * Datetime constants
