@@ -15,7 +15,7 @@
 + (void)load
 {
         @autoreleasepool {
-                if (ESOSVersionIsAbove7()) {
+                if (__ES_CONFIG_FixIOS7UIViewControllerTransition && ESOSVersionIsAbove7()) {
                         ESSwizzleInstanceMethod(self, @selector(viewDidLoad), @selector(_es_viewDidLoad));
                 }
         }
@@ -23,7 +23,7 @@
 
 - (void)_es_viewDidLoad
 {
-        // Fix iOS 7 push/pop issue
+        // Fix iOS 7 push/pop/present/dismiss issue
         // http://stackoverflow.com/q/18881427
         self.view.backgroundColor = [ESApp keyWindow].backgroundColor;
         
@@ -68,6 +68,21 @@
         }
 	
 	return nil;
+}
+
+- (BOOL)isViewVisible
+{
+        return ([self isViewLoaded] && self.view.window != nil);
+}
+
+- (UIViewController *)currentVisibleViewController
+{
+        if ([self isKindOfClass:[UITabBarController class]]) {
+                return [[(UITabBarController *)self selectedViewController] currentVisibleViewController];
+        } else if ([self isKindOfClass:[UINavigationController class]]) {
+                return [[(UINavigationController *)self visibleViewController] currentVisibleViewController];
+        }
+        return self;
 }
 
 @end

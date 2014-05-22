@@ -45,4 +45,30 @@
  */
 - (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
 
+/// self.layer.masksToBounds = YES;
+- (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
+/// self.layer.masksToBounds = NO;
+- (void)setShadowOffset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
+/// insert `CAGradientLayer` at index 0.
+- (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
+
+///=============================================
+/// @name Debug Border
+///=============================================
+
+- (void)enableDebugBorder;
+- (void)enableDebugBorderWithColor:(UIColor *)color;
+
+///=============================================
+/// @name View Hierarchy
+///=============================================
+
+- (NSUInteger)indexOfSuperview;
+- (void)bringToFront;
+- (void)sendToBack;
+- (BOOL)isInFrontOfSuperview;
+- (BOOL)isAtBackOfSuperview;
+
+- (void)moveToCenterOfSuperview;
+
 @end

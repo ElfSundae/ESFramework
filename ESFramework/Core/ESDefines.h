@@ -24,6 +24,38 @@
 
 #define ES_INLINE       NS_INLINE
 
+///=============================================
+/// @name ESFramework configuration
+///=============================================
+
+/**
+ * Configuration for ESFramework, you can re-defining on your PrecompiledHeaders (e.g. in prefix.pch file)
+ *
+ *      #import <ESFrameworkCore/ESFrameworkCore.h>
+ * 	#undef __ES_CONFIG_FixIOS7ViewControllerTransition
+ * 	#define __ES_CONFIG_FixIOS7ViewControllerTransition (0)
+ *
+ */
+ 
+/**
+ * On iOS7+, UIViewController's transition will be with transparent content 
+ * overlaps the previous view if you are not define your own custom UIViewController transitions.
+ * This fix will give iOS6 transitions back, the solution is set view's backgroundd to keyWindow's background.
+ * More info (http://stackoverflow.com/q/18881427)
+ *
+ * @see `UIViewController(ESAdditions)`
+ */
+#define __ES_CONFIG_FixIOS7UIViewControllerTransition (1)
+/**
+ * `UINavigationController`'s statusBar behavior, orientation behavior is preferred by 
+ * it's lastViewController's behavior,
+ *
+ * @see `UINavigationController(ESAdditions)`
+ */
+#define __ES_CONFIG_UINavigationControllerPreferredStatusBarBehaviorFromTheLastViewController (1)
+#define __ES_CONFIG_UINavigationControllerPreferredOrientationBehaviorFromTheLastViewController (1)
+
+
 ///========================================================================================================
 /// @name Log
 ///========================================================================================================

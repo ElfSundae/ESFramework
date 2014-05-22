@@ -8,6 +8,7 @@
 
 #import "UIView+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
+#import "UIColor+ESAdditions.h"
 
 @implementation UIView (ESAdditions)
 
@@ -111,4 +112,84 @@
         [self addGestureRecognizer:longPress];
         return longPress;
 }
+
+- (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor
+{
+	self.layer.masksToBounds = YES;
+	self.layer.cornerRadius = cornerRadius;
+	self.layer.borderWidth = borderWidth;
+	self.layer.borderColor = [borderColor CGColor];
+}
+
+- (void)setShadowOffset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
+{
+	self.layer.masksToBounds = NO;
+	self.layer.shadowOffset = offset;
+	self.layer.shadowRadius = radius;
+	self.layer.shadowOpacity = opacity;
+}
+
+- (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor
+{
+	CAGradientLayer *gradient = [CAGradientLayer layer];
+        
+	gradient.frame = self.bounds;
+	gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id)[endColor CGColor], nil];
+        
+	[self.layer insertSublayer:gradient atIndex:0];
+}
+
+- (void)enableDebugBorderWithColor:(UIColor *)color
+{
+	self.layer.borderColor = color.CGColor;
+	self.layer.borderWidth = 2.0;
+}
+
+- (void)enableDebugBorder
+{
+        [self enableDebugBorderWithColor:[UIColor randomColor]];
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - 
+
+- (NSUInteger)indexOfSuperview
+{
+	return [self.superview.subviews indexOfObject:self];
+}
+
+- (void)bringToFront
+{
+	[self.superview bringSubviewToFront:self];
+}
+
+- (void)sendToBack
+{
+	[self.superview sendSubviewToBack:self];
+}
+
+- (BOOL)isInFrontOfSuperview
+{
+        if (!self.superview) {
+                return NO;
+        }
+        return self.superview.subviews.lastObject == self;
+}
+
+- (BOOL)isAtBackOfSuperview
+{
+        if (!self.superview) {
+                return NO;
+        }
+        return self.superview.subviews.firstObject == self;
+}
+
+- (void)moveToCenterOfSuperview
+{
+        if (self.superview) {
+                self.frame = ESFrameOfCenteredViewWithinView(self, self.superview);
+        }
+}
+
 @end
