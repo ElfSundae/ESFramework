@@ -20,6 +20,7 @@
 #import "NSSet+ESAdditions.h"
 #import "NSOrderedSet+ESAdditions.h"
 #import "NSTimer+ESAdditions.h"
+#import "NSError+ESAdditions.h"
 #import "ESHash.h"
 #import "ESValue.h"
 #import "NSObject+ESModel.h"
