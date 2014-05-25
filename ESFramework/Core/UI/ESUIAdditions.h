@@ -20,6 +20,7 @@
 #import "UIImageView+ESAdditions.h"
 #import "UITableView+ESAdditions.h"
 #import "UIControl+ESAdditions.h"
+#import "UIToolbar+ESAdditions.h"
 #import "UIBarButtonItem+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "UINavigationController+ESAdditions.h"

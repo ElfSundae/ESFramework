@@ -11,5 +11,4 @@
 @interface UIToolbar (ESAdditions)
 - (UIBarButtonItem *)itemWithTag:(NSInteger)tag;
 - (void)replaceItemWithTag:(NSInteger)tag withItem:(UIBarButtonItem *)newItem;
-
 @end
