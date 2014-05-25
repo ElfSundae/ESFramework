@@ -244,6 +244,9 @@
 		E7BCF7B718F996F5006D920E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E7C9472F18FBE0530034B110 /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C9472D18FBE0530034B110 /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7C9473018FBE0530034B110 /* ESDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C9472E18FBE0530034B110 /* ESDefines.m */; };
+		E7DBC831192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7DBC82F192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7DBC832192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DBC830192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m */; };
+		E7DBC837192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DBC835192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m */; };
 		E7F5D8E01916DB0B00D11273 /* NSArray+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */; };
 		E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -562,6 +565,9 @@
 		E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Bundle.xcconfig; sourceTree = "<group>"; };
 		E7C9472D18FBE0530034B110 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E7C9472E18FBE0530034B110 /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
+		E7DBC82F192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRefreshControlDefaultContentView.h; sourceTree = "<group>"; };
+		E7DBC830192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
+		E7DBC835192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ESRefreshControl.m"; sourceTree = "<group>"; };
 		E7EDF3F318FBA2ED0067E849 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		E7EDF3F418FBA2F50067E849 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		E7EDF3F518FBA5430067E849 /* CoreRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CoreRelease.xcconfig; sourceTree = "<group>"; };
@@ -838,8 +844,8 @@
 		E7089FA4190FECA70014C8F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E76FEB0E192C3073001461D1 /* RefreshControl */,
 				E76FEAF9192B597D001461D1 /* StatusOverlay */,
+				E76FEB0E192C3073001461D1 /* RefreshControl */,
 				E76FEAF4192B0B6D001461D1 /* TextView */,
 				E76FEAE8192A93C7001461D1 /* Activity */,
 				E704934C1925B15100C0EDAD /* Badge */,
@@ -1025,6 +1031,9 @@
 			children = (
 				E76FEB0F192C3101001461D1 /* ESRefreshControl.h */,
 				E76FEB10192C3101001461D1 /* ESRefreshControl.m */,
+				E7DBC835192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m */,
+				E7DBC82F192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h */,
+				E7DBC830192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m */,
 			);
 			path = RefreshControl;
 			sourceTree = "<group>";
@@ -1256,6 +1265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E76FEAF7192B0B7B001461D1 /* ESTextView.h in Headers */,
+				E7DBC831192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h in Headers */,
 				E76FEAEB192A93DC001461D1 /* ESActivityLabel.h in Headers */,
 				E76FEB19192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h in Headers */,
 				E70493D51927207B00C0EDAD /* ESWebView.h in Headers */,
@@ -1668,6 +1678,7 @@
 				E76FEAFD192B59B8001461D1 /* ESStatusOverlayView.m in Sources */,
 				E76FEB0D192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m in Sources */,
 				E76FEAEC192A93DC001461D1 /* ESActivityLabel.m in Sources */,
+				E7DBC832192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m in Sources */,
 				E7089FB4190FED0E0014C8F6 /* SwipeView.m in Sources */,
 				E76FEAF8192B0B7B001461D1 /* ESTextView.m in Sources */,
 				E704935C1925B15100C0EDAD /* ESButton.m in Sources */,
@@ -1676,6 +1687,7 @@
 				E79D85BF192C45330000B57E /* ESTableViewController+DataSource.m in Sources */,
 				E70493DA1927207B00C0EDAD /* ESStoreProductViewControllerManager.m in Sources */,
 				E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */,
+				E7DBC837192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m in Sources */,
 				E70493D81927207B00C0EDAD /* ESWebViewController.m in Sources */,
 				E76FEB1A192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m in Sources */,
 				E70493DF192720DC00C0EDAD /* ESMoviePlayerViewController.m in Sources */,

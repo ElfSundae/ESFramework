@@ -139,6 +139,26 @@
 	[self.layer insertSublayer:gradient atIndex:0];
 }
 
+- (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION
+{
+        if (startColor) {
+                NSMutableArray *colors = [NSMutableArray array];
+                va_list args;
+                va_start(args, startColor);
+                UIColor *color = startColor;
+                do {
+                        [colors addObject:(id)color.CGColor];
+                } while ((color = va_arg(args, UIColor *)));
+                va_end(args);
+                
+                CAGradientLayer *gradient = [CAGradientLayer layer];
+                gradient.frame = self.bounds;
+                gradient.colors = colors;
+                
+                [self.layer insertSublayer:gradient atIndex:0];
+        }
+}
+
 - (void)enableDebugBorderWithColor:(UIColor *)color
 {
 	self.layer.borderColor = color.CGColor;

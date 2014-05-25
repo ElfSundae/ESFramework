@@ -13,3 +13,10 @@
 
 /* App Update AlertView */
 "Check Updates" = "Check Updates";
+
+/* ESRefreshControlDefaultContentViewDataSource */
+"Pull down to refresh" = "Pull down to refresh";
+"Refreshing..." = "Refreshing...";
+"Release to refresh" = "Release to refresh";
+
+

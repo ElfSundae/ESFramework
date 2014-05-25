@@ -51,6 +51,8 @@
 - (void)setShadowOffset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
 /// insert `CAGradientLayer` at index 0.
 - (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
+/// insert `CAGradientLayer` at index 0.
+- (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION;
 
 ///=============================================
 /// @name Debug Border
