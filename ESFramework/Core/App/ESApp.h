@@ -107,8 +107,13 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 @interface ESApp (Subclassing)
 - (void)_setupRootViewController;
+/**
+ * @"App Store" as default.
+ */
 - (NSString *)appChannel;
-/** App ID in App Store. */
+/** 
+ * App ID in App Store. 
+ */
 - (NSString *)appID;
 /**
  * TimeZone from server (e.g. HTTP server).
