@@ -12,25 +12,8 @@
 #define kESFrameworkCoreVersion @"0.1.0"
 
 #import "ESDefines.h"
-// Foundation
 #import "ESFoundation.h"
-// UI
-#import "ESArrowButton.h"
-
-#import "UIColor+ESAdditions.h"
-#import "UIImage+ESAdditions.h"
-#import "UIActionSheet+ESBlock.h"
-#import "UIAlertView+ESBlock.h"
-#import "UIView+ESShortcut.h"
-#import "UIView+ESAdditions.h"
-#import "UIImageView+ESAdditions.h"
-#import "UITableView+ESAdditions.h"
-#import "UIControl+ESAdditions.h"
-#import "UIBarButtonItem+ESAdditions.h"
-#import "UIGestureRecognizer+ESAdditions.h"
-#import "UINavigationController+ESAdditions.h"
-#import "UIViewController+ESAdditions.h"
-
+#import "ESUIAdditions.h"
 // App
 #import "ESApp.h"
 #import "UIDevice+ESInfo.h"
