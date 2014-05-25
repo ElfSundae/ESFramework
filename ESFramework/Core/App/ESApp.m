@@ -19,7 +19,7 @@
 
 + (instancetype)sharedApp
 {
-        if ([self _isUIApplicationDelegate]) {
+        if ([ESApp _isUIApplicationDelegate]) {
                 return [UIApplication sharedApplication].delegate;
         }
         

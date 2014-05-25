@@ -15,6 +15,9 @@
  */
 + (NSTimeInterval)nowTimeInterval;
 
+/**
+ * Same as `+nowTimeInterval`
+ */
 + (unsigned long long)timestamp;
 
 - (BOOL)isBefore:(NSDate *)aDate;
