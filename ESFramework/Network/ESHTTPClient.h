@@ -15,10 +15,10 @@
  *
  * Subclasses needs implement `-initWithBaseURL:` to give a baseURL.
  *
- *	@interface ESHTTPJSONClient : ESHTTPClient
+ *	@interface YouHTTPClient : ESHTTPJSONClient
  *	@end
  *
- *	@implementation ESHTTPJSONClient
+ *	@implementation YouHTTPClient
  *
  *	- (id)initWithBaseURL:(NSURL *)url
  *	{
