@@ -18,8 +18,7 @@
         if (self) {
                 _alertTitle = _es_(@"Check Updates");
                 _alertTitleForUpdateExists = _alertTitle;
-                _alertMessage = _es_(@"You're up-to-date.");
-                _alertUpdateButtonTitle = _es_(@"Update");
+                _alertUpdateButtonTitle = _es_(@"Update Now");
                 _alertCancelButtonTitle = _es_(@"Cancel");
         }
         return self;
