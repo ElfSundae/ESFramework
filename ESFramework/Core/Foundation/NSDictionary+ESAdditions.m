@@ -18,7 +18,7 @@
 
 - (id)esObjectForKey:(id)key
 {
-        id object = [self objectForKey:key];
+        id object = self[key];
         if ([object isKindOfClass:[NSNull class]]) {
                 object = nil;
         }

@@ -801,7 +801,7 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
         NSMutableArray *array = self.__es_notificationHandlers[name];
         if (!array) {
                 array = [NSMutableArray array];
-                [self.__es_notificationHandlers setObject:array forKey:name];
+                (self.__es_notificationHandlers)[name] = array;
         }
         return array;
 }

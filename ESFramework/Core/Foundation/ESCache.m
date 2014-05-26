@@ -122,7 +122,7 @@ dictionary = _dictionary;
         ESWeak(self, weakSelf);
         dispatch_async(_queue, ^{
                 ESStrong(weakSelf, _self);
-                id object = [_self.dictionary objectForKey:key];
+                id object = (_self.dictionary)[key];
                 block(_self, key, object);
         });
 }
@@ -135,7 +135,7 @@ dictionary = _dictionary;
         ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
                 ESStrong(weakSelf, _self);
-                [_self.dictionary setObject:object forKey:key];
+                (_self.dictionary)[key] = object;
                 
                 if (block) {
                         dispatch_async(_self->_queue, ^{
@@ -194,7 +194,7 @@ dictionary = _dictionary;
                 ESStrong(weakSelf, _self);
                 for (NSString *key in _self.dictionary) {
                         BOOL stop = NO;
-                        block(_self, key, [_self.dictionary objectForKey:key], &stop);
+                        block(_self, key, (_self.dictionary)[key], &stop);
                         if (stop) {
                                 break;
                         }

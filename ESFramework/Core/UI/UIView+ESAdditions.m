@@ -134,7 +134,7 @@
 	CAGradientLayer *gradient = [CAGradientLayer layer];
         
 	gradient.frame = self.bounds;
-	gradient.colors = [NSArray arrayWithObjects:(id)[startColor CGColor], (id)[endColor CGColor], nil];
+	gradient.colors = @[(id)[startColor CGColor], (id)[endColor CGColor]];
         
 	[self.layer insertSublayer:gradient atIndex:0];
 }

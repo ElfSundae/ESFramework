@@ -103,7 +103,7 @@ ES_SINGLETON_IMP(sharedRouter);
                 return NO;
         }
 
-        ESRouterObject *routerObject = [self.map objectForKey:path];
+        ESRouterObject *routerObject = (self.map)[path];
         if (routerObject) {
                 [params addEntriesFromDictionary:routerObject.defaultParams];
         } else {
@@ -247,7 +247,7 @@ ES_SINGLETON_IMP(sharedRouter);
 {
         ESRouterObject *object = nil;
         @synchronized(self.map) {
-                object = [self.map objectForKey:path];
+                object = (self.map)[path];
         }
         return object;
 }
@@ -281,11 +281,11 @@ ES_SINGLETON_IMP(sharedRouter);
                         NSRange r = NSMakeRange(range.location+1, range.length-1);
                         NSString *p = [[url substringWithRange:r] URLDecode];
                         if (2 == i) {
-                                [*params setObject:p forKey:ESRouterURLKeyParam];
+                                (*params)[ESRouterURLKeyParam] = p;
                         } else if (3 == i) {
-                                [*params setObject:p forKey:ESRouterURLKeyParam1];
+                                (*params)[ESRouterURLKeyParam1] = p;
                         } else if (4 == i) {
-                                [*params setObject:p forKey:ESRouterURLKeyParam2];
+                                (*params)[ESRouterURLKeyParam2] = p;
                         }
                 }
         }

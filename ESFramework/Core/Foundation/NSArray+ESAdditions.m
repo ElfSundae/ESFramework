@@ -127,7 +127,7 @@
         }
         NSUInteger index = [self indexOfObject:object];
         if (index != NSNotFound) {
-                [self replaceObjectAtIndex:index withObject:anObject];
+                self[index] = anObject;
         }
 }
 @end
