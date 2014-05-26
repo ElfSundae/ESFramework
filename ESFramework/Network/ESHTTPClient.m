@@ -41,7 +41,6 @@ ES_SINGLETON_IMP(sharedClient);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #pragma mark - ESHTTPJSONClient
 @implementation ESHTTPJSONClient
 
@@ -53,6 +52,37 @@ ES_SINGLETON_IMP(sharedClient);
                 [self setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
         }
         return self;
+}
+
+@end
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSError
+
+@implementation NSError (ESHTTPClient)
+
+- (BOOL)isHTTPNetworkError
+{
+        if ([self.domain isEqualToString:NSURLErrorDomain]) {
+                NSInteger code = self.code;
+                return (NSURLErrorTimedOut == code ||
+                        NSURLErrorCannotFindHost == code ||
+                        NSURLErrorCannotConnectToHost == code ||
+                        NSURLErrorNetworkConnectionLost == code ||
+                        NSURLErrorDNSLookupFailed == code ||
+                        NSURLErrorNotConnectedToInternet == code);
+        }
+        return NO;
+}
+
+- (BOOL)isHTTPResponseDecodingError
+{
+        if ([self.domain isEqualToString:AFNetworkingErrorDomain]) {
+                return (NSURLErrorCannotDecodeContentData == self.code);
+        }
+        return NO;
 }
 
 @end

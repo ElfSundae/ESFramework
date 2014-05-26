@@ -51,3 +51,8 @@ ES_SINGLETON_DEC(sharedClient);
  */
 @interface ESHTTPJSONClient : ESHTTPClient
 @end
+
+@interface NSError (ESHTTPClient)
+- (BOOL)isHTTPNetworkError;
+- (BOOL)isHTTPResponseDecodingError;
+@end
