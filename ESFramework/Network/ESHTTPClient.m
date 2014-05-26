@@ -14,6 +14,13 @@
 
 @implementation ESHTTPClient
 
++ (void)load
+{
+        @autoreleasepool {
+                [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+        }
+}
+
 ES_SINGLETON_IMP(sharedClient);
 
 - (instancetype)init
