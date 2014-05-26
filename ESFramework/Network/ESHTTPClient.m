@@ -46,7 +46,7 @@ ES_SINGLETON_IMP(sharedClient);
 
 - (id)initWithBaseURL:(NSURL *)url
 {
-        self = [super initWithBaseURL:NSURLWith(@"http://phone.app100646015.twsapp.com/")];
+        self = [super initWithBaseURL:url];
         if (self) {
                 [self registerHTTPOperationClass:[ESJSONRequestOperation class]];
                 [self setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
