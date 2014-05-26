@@ -11,5 +11,5 @@
 "Cancel" = "Cancel";
 
 /* App Update AlertView */
-"Check Updates" = "Check Updates";
-"Update Now" = "Update Now";
+"Check Updates" = "Check Updates"; // default title
+"Update Now" = "Update Now"; // "update" button title
