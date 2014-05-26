@@ -11,8 +11,6 @@
 
 #define kESFrameworkNetworkVersion @"0.1.0"
 
-#import "UIImageView+ESWebImage.h"
-
 // Reachability
 #import "Reachability.h"
 #import "UIDevice+Reachability.h"
@@ -22,5 +20,11 @@
 #import "UIButton+WebCache.h"
 #import "MKAnnotationView+WebCache.h"
 #import "UIImageView+WebCache.h"
+// AFNetworking v1.3.4
+#import "AFNetworking.h"
+
+// ESFrameworkNetwork
+#import "ESHTTPClient.h"
+#import "UIImageView+ESWebImage.h"
 
 #endif

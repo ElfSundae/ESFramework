@@ -14,6 +14,8 @@
 /**
  * App helper class, and you can subclass it as your app delegate.
  *
+ * `AFNetworkActivityIndicatorManager` has been enabled if it exists.
+ *
  * ## Subclassing Notes
  *
  *
@@ -82,8 +84,6 @@
  * 	    foo = bar;
  * 	}
  *
- * ### TODO
- * 1. handle local notification
  */
 @interface ESApp : UIResponder
 __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
@@ -122,6 +122,9 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  */
 - (NSTimeZone *)serverTimeZone;
 
+/**
+ * Your App Update data source.
+ */
 - (ESAppUpdateObject *)appUpdateSharedObject;
 /**
  * You can subclass this method to give a global handler, such as ***resetUser*** or ***cleanCaches*** inside handler,
@@ -257,6 +260,7 @@ __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 /**
  * Enable multitasking.
+ * App in background can continue running 10 mins on iOS6-, 3 mins on iOS7+.
  */
 + (void)enableMultitasking;
 /**

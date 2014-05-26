@@ -16,7 +16,7 @@
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
         [self.window makeKeyAndVisible];
-        
+                
         /* Setup root viewController */
         [self _setupRootViewController];
         self.window.rootViewController = self.rootViewController;
