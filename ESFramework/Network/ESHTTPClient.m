@@ -79,7 +79,8 @@ ES_SINGLETON_IMP(sharedClient);
 
 - (BOOL)isHTTPResponseDecodingError
 {
-        if ([self.domain isEqualToString:AFNetworkingErrorDomain]) {
+        if ([self.domain isEqualToString:AFNetworkingErrorDomain] ||
+            [self.domain isEqualToString:NSURLErrorDomain]) {
                 return (NSURLErrorCannotDecodeContentData == self.code);
         }
         return NO;
