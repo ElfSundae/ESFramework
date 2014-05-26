@@ -894,15 +894,15 @@
 		E7089FA4190FECA70014C8F6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E76FEAF9192B597D001461D1 /* StatusOverlay */,
-				E76FEB0E192C3073001461D1 /* RefreshControl */,
-				E76FEAF4192B0B6D001461D1 /* TextView */,
 				E76FEAE8192A93C7001461D1 /* Activity */,
 				E704934C1925B15100C0EDAD /* Badge */,
 				E704935F1925B17000C0EDAD /* ErrorView */,
 				E704934F1925B15100C0EDAD /* Button */,
 				E70493541925B15100C0EDAD /* ProgressView */,
 				E7089FB7190FED3D0014C8F6 /* SwipeView */,
+				E76FEAF9192B597D001461D1 /* StatusOverlay */,
+				E76FEB0E192C3073001461D1 /* RefreshControl */,
+				E76FEAF4192B0B6D001461D1 /* TextView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
