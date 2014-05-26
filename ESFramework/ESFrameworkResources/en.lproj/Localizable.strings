@@ -9,14 +9,7 @@
 /* Common */
 "OK" = "OK";
 "Cancel" = "Cancel";
-"Update" = "Update";
 
 /* App Update AlertView */
 "Check Updates" = "Check Updates";
-
-/* ESRefreshControlDefaultContentViewDataSource */
-"Pull down to refresh" = "Pull down to refresh";
-"Refreshing..." = "Refreshing...";
-"Release to refresh" = "Release to refresh";
-
-
+"Update Now" = "Update Now";
