@@ -14,17 +14,14 @@
 + (void)load
 {
         @autoreleasepool {
-                if (__ES_CONFIG_UINavigationControllerPreferredStatusBarBehaviorFromTheLastViewController) {
-                        ESSwizzleInstanceMethod(self, @selector(preferredStatusBarStyle), @selector(_es_preferredStatusBarStyle));
-                        ESSwizzleInstanceMethod(self, @selector(preferredStatusBarUpdateAnimation), @selector(_es_preferredStatusBarUpdateAnimation));
-                        ESSwizzleInstanceMethod(self, @selector(prefersStatusBarHidden), @selector(_es_prefersStatusBarHidden));
-                }
-                if (__ES_CONFIG_UINavigationControllerPreferredOrientationBehaviorFromTheLastViewController) {
-                        ESSwizzleInstanceMethod(self, @selector(shouldAutorotateToInterfaceOrientation:), @selector(_es_shouldAutorotateToInterfaceOrientation:));
-                        ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_es_shouldAutorotate));
-                        ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_es_supportedInterfaceOrientations));
-                        ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_es_preferredInterfaceOrientationForPresentation));
-                }
+                ESSwizzleInstanceMethod(self, @selector(preferredStatusBarStyle), @selector(_es_preferredStatusBarStyle));
+                ESSwizzleInstanceMethod(self, @selector(preferredStatusBarUpdateAnimation), @selector(_es_preferredStatusBarUpdateAnimation));
+                ESSwizzleInstanceMethod(self, @selector(prefersStatusBarHidden), @selector(_es_prefersStatusBarHidden));
+                
+                ESSwizzleInstanceMethod(self, @selector(shouldAutorotateToInterfaceOrientation:), @selector(_es_shouldAutorotateToInterfaceOrientation:));
+                ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_es_shouldAutorotate));
+                ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_es_supportedInterfaceOrientations));
+                ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_es_preferredInterfaceOrientationForPresentation)); 
         }
 }
 

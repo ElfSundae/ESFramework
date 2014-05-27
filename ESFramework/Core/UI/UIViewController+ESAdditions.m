@@ -12,25 +12,6 @@
 
 @implementation UIViewController (ESAdditions)
 
-+ (void)load
-{
-        @autoreleasepool {
-                if (__ES_CONFIG_FixIOS7UIViewControllerTransition && ESOSVersionIsAbove7()) {
-                        ESSwizzleInstanceMethod(self, @selector(viewDidLoad), @selector(_es_viewDidLoad));
-                }
-        }
-}
-
-- (void)_es_viewDidLoad
-{
-        // Fix iOS 7 push/pop/present/dismiss issue
-        // http://stackoverflow.com/q/18881427
-        self.view.backgroundColor = [ESApp keyWindow].backgroundColor;
-        
-        [self _es_viewDidLoad];
-}
-
-
 - (UIViewController *)previousViewController
 {
         UINavigationController *navController = self.navigationController;

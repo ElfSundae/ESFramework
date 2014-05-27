@@ -21,10 +21,6 @@
  * 	- (NSUInteger)supportedInterfaceOrientations;
  * 	- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation;
  *
- * You can config them by re-defining `__ES_CONFIG_UINavigationControllerPreferredStatusBarBehaviorFromTheLastViewController`
- * and `__ES_CONFIG_UINavigationControllerPreferredOrientationBehaviorFromTheLastViewController`
- * 
  */
 @interface UINavigationController (ESAdditions)
-
 @end
