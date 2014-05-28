@@ -219,6 +219,12 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                                 // printf("-----:%s\n", propertyName);
                                 NSString *key = @(propertyName);
                                 
+                                // -Elf, maybe already exists,
+                                // found this bug in "SQLitePersistentObject"
+                                if ([keys containsObject:key]) {
+                                        continue;
+                                }
+                                
                                 char *ivar = property_copyAttributeValue(property, "V");
                                 if (ivar) {
                                         // check if ivar has a KVC compliant name
