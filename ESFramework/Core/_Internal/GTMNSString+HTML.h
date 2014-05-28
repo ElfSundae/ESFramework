@@ -18,9 +18,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+ESAdditions.h"
 
 /// Utilities for NSStrings containing HTML
-@interface NSString (GTMNSStringHTMLAdditions)
+@interface NSString (_ES_GTMNSStringHTMLAdditions)
+
+- (NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
+                                             ofSize:(NSUInteger)size
+                                    escapingUnicode:(BOOL)escapeUnicode;
 
 /// Get a string where internal characters that need escaping for HTML are escaped 
 //
@@ -35,7 +40,7 @@
 //  Returns:
 //    Autoreleased NSString
 //
-- (NSString *)gtm_stringByEscapingForHTML;
+- (NSString *)es_gtm_stringByEscapingForHTML;
 
 /// Get a string where internal characters that need escaping for HTML are escaped 
 //
@@ -51,7 +56,7 @@
 //  Returns:
 //    Autoreleased NSString
 //
-- (NSString *)gtm_stringByEscapingForAsciiHTML;
+- (NSString *)es_gtm_stringByEscapingForAsciiHTML;
 
 /// Get a string where internal characters that are escaped for HTML are unescaped 
 //
@@ -61,6 +66,6 @@
 //  Returns:
 //    Autoreleased NSString
 //
-- (NSString *)gtm_stringByUnescapingFromHTML;
+- (NSString *)es_gtm_stringByUnescapingFromHTML;
 
 @end

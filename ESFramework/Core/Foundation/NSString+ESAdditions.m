@@ -304,27 +304,26 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return (NSDictionary *)result;
 }
 
-- (NSString *)stringByEncodingUnicodeHTMLEntities
+- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table escapeUnicode:(BOOL)escapeUnicode
 {
-        NSString *result = [self gtm_stringByEscapingForHTML];
-        if (result) {
-                return [NSString stringWithString:result];
-        }
-        return nil;
+        return [self es_gtm_stringByEscapingHTMLUsingTable:table
+                                                    ofSize:sizeof(table)
+                                           escapingUnicode:escapeUnicode];
 }
 
-- (NSString *)stringByEncodingAsciiHTMLEntities
+- (NSString *)stringByEncodingHTMLEntitiesForUnicode
 {
-        NSString *result = [self gtm_stringByEscapingForAsciiHTML];
-        if (result) {
-                return [NSString stringWithString:result];
-        }
-        return nil;
+        return [self es_gtm_stringByEscapingForHTML];
+}
+
+- (NSString *)stringByEncodingHTMLEntitiesForASCII
+{
+        return [self es_gtm_stringByEscapingForAsciiHTML];
 }
 
 - (NSString *)stringByDecodingHTMLEntities
 {
-        NSString *result = [self gtm_stringByUnescapingFromHTML];
+        NSString *result = [self es_gtm_stringByUnescapingFromHTML];
         if (result) {
                 return [NSString stringWithString:result];
         }
