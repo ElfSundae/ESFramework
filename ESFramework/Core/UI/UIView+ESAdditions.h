@@ -45,6 +45,13 @@
  */
 - (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
 
+/// Set layer.mask, rounds all corners with the same horizontal and vertical radius
+/// @see http://stackoverflow.com/a/5826745
+- (void)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius;
+/// Set layer.mask
+/// @see http://stackoverflow.com/a/5826745
+- (void)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
+
 /// self.layer.masksToBounds = YES;
 - (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
 /// self.layer.masksToBounds = NO;

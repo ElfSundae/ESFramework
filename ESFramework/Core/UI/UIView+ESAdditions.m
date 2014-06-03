@@ -113,6 +113,19 @@
         return longPress;
 }
 
+- (void)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
+{
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.frame = self.bounds;
+        maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:cornerRadii].CGPath;
+        self.layer.mask = maskLayer;
+}
+
+- (void)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius
+{
+        [self setMaskLayerByRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+}
+
 - (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor
 {
 	self.layer.masksToBounds = YES;
