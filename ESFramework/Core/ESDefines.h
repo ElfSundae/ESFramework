@@ -266,7 +266,7 @@ ES_EXTERN BOOL ESOSVersionIsAbove7(void);
 #pragma mark - UIColor Helper
 /// UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
 ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
-/// UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
+/// UIColorWithRGB(123.f, 255.f, 200.f);
 ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
 /// UIColorWithRGBA(0x7bffc8, 1.f);
 ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
