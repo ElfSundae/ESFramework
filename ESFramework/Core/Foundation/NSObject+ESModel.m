@@ -109,7 +109,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 - (void)saveModelSharedInstance
 {
-        [self saveModelSharedInstance:nil];
+        [self modelWriteToFile:[self.class modelSharedInstanceFilePath] atomically:YES];
 }
 
 + (NSString *)modelSharedInstanceFilePath
