@@ -73,6 +73,26 @@
         return nil;
 }
 
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
+{
+        NSParameterAssert(predicate);
+        NSUInteger index = [self match:predicate];
+        if (NSNotFound != index) {
+                return self[index];
+        }
+        return nil;
+}
+
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
+{
+        NSParameterAssert(predicate);
+        NSUInteger index = [self match:predicate option:option];
+        if (NSNotFound != index) {
+                return self[index];
+        }
+        return nil;
+}
+
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
 {
         return [self indexesOfObjectsPassingTest:predicate];
