@@ -308,6 +308,8 @@
 		E7F5D9151916DC0700D11273 /* ESApp+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D90C1916DC0700D11273 /* ESApp+Helper.m */; };
 		E7F5D9161916DC0700D11273 /* ESApp+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D90D1916DC0700D11273 /* ESApp+Notification.m */; };
 		E7F5D9171916DC0700D11273 /* ESApp+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D90E1916DC0700D11273 /* ESApp+UI.m */; };
+		E7F74666194C22D0007970CD /* UIImagePickerController+ESFixOrientation.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F74664194C22D0007970CD /* UIImagePickerController+ESFixOrientation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7F74667194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F74665194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m */; };
 		E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7FEF50818FA71C9006E1682 /* ESFrameworkNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FEF50718FA71C2006E1682 /* ESFrameworkNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -658,6 +660,8 @@
 		E7F5D90C1916DC0700D11273 /* ESApp+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
 		E7F5D90D1916DC0700D11273 /* ESApp+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Notification.m"; sourceTree = "<group>"; };
 		E7F5D90E1916DC0700D11273 /* ESApp+UI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UI.m"; sourceTree = "<group>"; };
+		E7F74664194C22D0007970CD /* UIImagePickerController+ESFixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+ESFixOrientation.h"; sourceTree = "<group>"; };
+		E7F74665194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+ESFixOrientation.m"; sourceTree = "<group>"; };
 		E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFrameworkCore.h; sourceTree = "<group>"; };
 		E7FEF50718FA71C2006E1682 /* ESFrameworkNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkNetwork.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1041,6 +1045,8 @@
 				E76FEACA1929B101001461D1 /* UIGestureRecognizer+ESAdditions.m */,
 				E746C14719299E6100AD082C /* UINavigationController+ESAdditions.h */,
 				E746C14819299E6100AD082C /* UINavigationController+ESAdditions.m */,
+				E7F74664194C22D0007970CD /* UIImagePickerController+ESFixOrientation.h */,
+				E7F74665194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m */,
 				E746C14E1929A20800AD082C /* UIViewController+ESAdditions.h */,
 				E746C14F1929A20800AD082C /* UIViewController+ESAdditions.m */,
 				E7D3B465193233EE0080A416 /* UIDevice+ESInfo.h */,
@@ -1346,6 +1352,7 @@
 				E7F5D9111916DC0700D11273 /* ESApp.h in Headers */,
 				E7F5D8E41916DB0B00D11273 /* NSDate+ESAdditions.h in Headers */,
 				E76FEAD01929B101001461D1 /* UIBarButtonItem+ESAdditions.h in Headers */,
+				E7F74666194C22D0007970CD /* UIImagePickerController+ESFixOrientation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1735,6 +1742,7 @@
 				E75A687B192D58670073705C /* NSObject+ESAdditions.m in Sources */,
 				E70493E319275A8100C0EDAD /* ESAppUpdateObject.m in Sources */,
 				E76FEAE11929B2DC001461D1 /* UITableView+ESAdditions.m in Sources */,
+				E7F74667194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m in Sources */,
 				E70493E719281C1800C0EDAD /* ESApp+Subclassing.m in Sources */,
 				E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */,
 				E7F5D9161916DC0700D11273 /* ESApp+Notification.m in Sources */,

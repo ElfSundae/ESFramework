@@ -24,6 +24,7 @@
 #import "UIBarButtonItem+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "UINavigationController+ESAdditions.h"
+#import "UIImagePickerController+ESFixOrientation.h"
 #import "UIViewController+ESAdditions.h"
 #import "UIDevice+ESInfo.h"
 
