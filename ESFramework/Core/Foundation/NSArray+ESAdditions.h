@@ -46,12 +46,6 @@
 - (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate;
 - (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option;
 
-/**
- * Returns nil if matching failed.
- */
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
-
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 
