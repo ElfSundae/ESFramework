@@ -25,35 +25,21 @@
         return object;
 }
 
-- (void)each:(void (^)(id key, id obj))block
+- (void)each:(void (^)(id key, id obj, BOOL *stop))block
 {
-        NSParameterAssert(block);
-        [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-                block(key, obj);
-        }];
+        [self enumerateKeysAndObjectsUsingBlock:block];
 }
 
-- (void)eachReversely:(void (^)(id key, id obj))block
+- (void)each:(void (^)(id key, id obj, BOOL *stop))block option:(NSEnumerationOptions)option
 {
-        NSParameterAssert(block);
-        [self enumerateKeysAndObjectsWithOptions:NSEnumerationReverse usingBlock:^(id key, id obj, BOOL *stop) {
-                block(key, obj);
-        }];
+        [self enumerateKeysAndObjectsWithOptions:option usingBlock:block];
 }
 
-- (void)eachConcurrently:(void (^)(id key, id obj))block
+- (id)match:(BOOL (^)(id key, id obj))predicate
 {
-        NSParameterAssert(block);
-        [self enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id key, id obj, BOOL *stop) {
-                block(key, obj);
-        }];
-}
-
-- (id)match:(BOOL (^)(id key, id obj))block
-{
-        NSParameterAssert(block);
-        NSSet *set = [self keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
-                if (block(key, obj)) {
+        NSParameterAssert(predicate);
+        NSSet *set = [self matches:^BOOL(id key_, id obj_, BOOL *stop) {
+                if (predicate(key_, obj_)) {
                         *stop = YES;
                         return YES;
                 }
@@ -62,41 +48,62 @@
         return [set anyObject];
 }
 
-- (NSDictionary *)matches:(BOOL (^)(id key, id obj))block
+- (id)match:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option
 {
-        NSParameterAssert(block);
-        NSSet *set = [self keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
-                return block(key, obj);
-        }];
+        NSParameterAssert(predicate);
+        NSSet *set = [self matches:^BOOL(id key_, id obj_, BOOL *stop) {
+                if (predicate(key_, obj_)) {
+                        *stop = YES;
+                        return YES;
+                }
+                return NO;
+        } option:option];
+        return [set anyObject];
+}
+
+- (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate
+{
+        return [self keysOfEntriesPassingTest:predicate];
+}
+
+- (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
+{
+        return [self keysOfEntriesWithOptions:option passingTest:predicate];
+}
+
+- (NSDictionary *)matchesDictionary:(BOOL (^)(id key, id obj, BOOL *stop))predicate
+{
+        NSParameterAssert(predicate);
+        NSSet *set = [self matches:predicate];
         NSArray *keys = [set allObjects];
         NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
         return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 
-- (NSDictionary *)reject:(BOOL (^)(id key, id obj))block
+- (NSDictionary *)matchesDictionary:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
 {
-        NSParameterAssert(block);
-        return [self matches:^BOOL(id key, id obj) {
-                return !block(key, obj);
-        }];
+        NSParameterAssert(predicate);
+        NSSet *set = [self matches:predicate option:option];
+        NSArray *keys = [set allObjects];
+        NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
+        return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
-        ESWeak(self, weakSelf);
+        ESWeakSelf;
         ESDispatchOnDefaultQueue(^{
-                ESStrong(weakSelf, _self);
+                ESStrongSelf;
                 NSString *filePath = ESTouchFilePath(path);
                 if (!filePath) {
                         if (block) {
                                 block(NO);
                         }
-                        return;
-                }
-                
-                BOOL res = [_self writeToFile:filePath atomically:useAuxiliaryFile];
-                if (block) {
-                        block(res);
+                } else {
+                        BOOL res = [_self writeToFile:filePath atomically:useAuxiliaryFile];
+                        if (block) {
+                                block(res);
+                        }
                 }
         });
 }
@@ -109,21 +116,22 @@
 #pragma mark - NSMutableDictionary
 @implementation NSMutableDictionary (ESAdditions)
 
-- (void)matchWith:(BOOL (^)(id key, id obj))block
+- (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate
 {
-        NSParameterAssert(block);
-        NSArray *keys = [[self keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) {
-                return !block(key, obj);
-        }] allObjects];
-        [self removeObjectsForKeys:keys];
+        NSParameterAssert(predicate);
+        NSArray *keys = [[self matches:predicate] allObjects];
+        if (ESIsArrayWithItems(keys)) {
+                [self removeObjectsForKeys:keys];
+        }
 }
 
-- (void)rejectWith:(BOOL (^)(id key, id obj))block
+- (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
 {
-        NSParameterAssert(block);
-        [self matchWith:^BOOL(id key, id obj) {
-                return !block(key, obj);
-        }];
+        NSParameterAssert(predicate);
+        NSArray *keys = [[self matches:predicate option:option] allObjects];
+        if (ESIsArrayWithItems(keys)) {
+                [self removeObjectsForKeys:keys];
+        }
 }
 
 @end

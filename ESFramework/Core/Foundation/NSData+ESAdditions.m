@@ -16,20 +16,19 @@
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
-        ESWeak(self, weakSelf);
+        ESWeakSelf;
         ESDispatchOnDefaultQueue(^{
-                ESStrong(weakSelf, _self);
+                ESStrongSelf;
                 NSString *filePath = ESTouchFilePath(path);
                 if (!filePath) {
                         if (block) {
                                 block(NO);
                         }
-                        return;
-                }
-                
-                BOOL res = [_self writeToFile:filePath atomically:useAuxiliaryFile];
-                if (block) {
-                        block(res);
+                } else {
+                        BOOL res = [_self writeToFile:filePath atomically:useAuxiliaryFile];
+                        if (block) {
+                                block(res);
+                        }       
                 }
         });
 }

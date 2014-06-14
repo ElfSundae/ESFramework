@@ -20,23 +20,26 @@
  */
 - (id)esObjectForKey:(id)key;
 
-- (void)each:(void (^)(id key, id obj))block;
-
-- (void)eachReversely:(void (^)(id key, id obj))block;
-/**
- * @see NSArray -each_concurrently
- */
-- (void)eachConcurrently:(void (^)(id key, id obj))block;
+- (void)each:(void (^)(id key, id obj, BOOL *stop))block;
+- (void)each:(void (^)(id key, id obj, BOOL *stop))block option:(NSEnumerationOptions)option;
 
 /**
- * Returns the key that first matchs the block;
+ * Matches using predicating block, returns the key.
  */
-- (id)match:(BOOL (^)(id key, id obj))block;
+- (id)match:(BOOL (^)(id key, id obj))predicate;
+- (id)match:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option;
+
 /**
- * Loops through to find the objects that matching the block, 
- * returns key/value pairs dictionary.
+ * Matches using predicating block, returns the keys.
  */
-- (NSDictionary *)matches:(BOOL (^)(id key, id obj))block;
+- (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate;
+- (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
+/**
+ * Matches using predicating block, returns the keys and objects.
+ */
+- (NSDictionary *)matchesDictionary:(BOOL (^)(id key, id obj, BOOL *stop))predicate;
+- (NSDictionary *)matchesDictionary:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 
 /**
  * Asynchronously write file.
@@ -48,6 +51,6 @@
 @end
 
 @interface NSMutableDictionary (ESAdditions)
-- (void)matchWith:(BOOL (^)(id key, id obj))block;
-- (void)rejectWith:(BOOL (^)(id key, id obj))block;
+- (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate;
+- (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 @end

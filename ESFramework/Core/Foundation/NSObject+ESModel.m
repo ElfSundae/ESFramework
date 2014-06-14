@@ -267,7 +267,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 {
         NSMutableString *description = [NSMutableString string];
         [description appendFormat:@"<%@: %p:\n", [self class], self];
-        [self.modelDictionaryRepresentation each:^(id key, id obj) {
+        [self.modelDictionaryRepresentation enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
                 [description appendFormat:@"%@ = %@\n", key, obj];
         }];
         [description appendFormat:@">"];

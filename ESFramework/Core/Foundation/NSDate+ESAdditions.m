@@ -10,14 +10,14 @@
 
 @implementation NSDate (ESAdditions)
 
-+ (NSTimeInterval)nowTimeInterval
++ (NSTimeInterval)timeIntervalSince1970
 {
         return [[self date] timeIntervalSince1970];
 }
 
 + (unsigned long long)timestamp
 {
-        return (unsigned long long)[self nowTimeInterval];
+        return (unsigned long long)[self timeIntervalSince1970];
 }
 
 - (BOOL)isBefore:(NSDate *)aDate

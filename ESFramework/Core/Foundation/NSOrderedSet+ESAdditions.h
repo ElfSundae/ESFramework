@@ -13,15 +13,21 @@
  */
 @interface NSOrderedSet (ESAdditions)
 - (BOOL)isEmpty;
-- (void)each:(void (^)(id obj, NSUInteger idx))block;
-- (void)eachReversely:(void (^)(id obj, NSUInteger idx))block;
-- (void)eachConcurrently:(void (^)(id obj))block;
-- (id)match:(BOOL (^)(id obj))block;
-- (NSOrderedSet *)matches:(BOOL (^)(id obj, NSUInteger idx))block;
-- (NSOrderedSet *)reject:(BOOL (^)(id obj, NSUInteger idx))block;
+- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option;
+
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
+- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
+- (NSOrderedSet *)matchesOrderedSets:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSOrderedSet *)matchesOrderedSets:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
 @end
 
 @interface NSMutableOrderedSet (ESAdditions)
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx))block;
-- (void)rejectWith:(BOOL (^)(id obj, NSUInteger idx))block;
+- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 @end

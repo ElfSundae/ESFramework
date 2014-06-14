@@ -15,14 +15,12 @@
 /**
  * Enumerates (Block Enumeration) through an array and executes the given block with each object.
  */
-- (void)each:(void (^)(id obj, NSUInteger idx))block;
+- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+
 /**
- * Enumerates (Block Enumeration) through an array *reversely* and executes the given block with each object.
- */
-- (void)eachReversely:(void (^)(id obj, NSUInteger idx))block;
-/**
- * Enumerates (Block Enumeration) through an array **concurrently** and executes the given block with each object.
+ * Enumerates (Block Enumeration) through an array and executes the given block with each object.
  *
+ * If option is `NSEnumerationConcurrent`,
  * Enumeration will occur on appropriate background queues. This
  * will have a noticeable speed increase, especially on dual-core
  * devices, but you *must* be aware of the thread safety of the
@@ -32,20 +30,19 @@
  *
  * @see http://darkdust.net/writings/objective-c/nsarray-enumeration-performance
  * @see cn_zh: http://www.oschina.net/translate/nsarray-enumeration-performance
+ *
  */
-- (void)eachConcurrently:(void (^)(id obj))block;
+- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option;
+
 /**
- * Loops through an array to find the object that first matching the block.
+ * Find matched object index via passing test predicate block.
  */
-- (id)match:(BOOL (^)(id obj, NSUInteger idx))block;
-/**
- * Loops through an array to find the objects that matching the block.
- */
-- (NSArray *)matches:(BOOL (^)(id obj, NSUInteger idx))block;
-/**
- * Loops through an array to find the objects that does not match the block.
- */
-- (NSArray *)reject:(BOOL (^)(id obj, NSUInteger idx))block;
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
+- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
 
 /**
  * Asynchronously write file.
@@ -59,7 +56,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSMutableArray
 @interface NSMutableArray (ESAdditions)
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx))block;
-- (void)rejectWith:(BOOL (^)(id obj, NSUInteger idx))block;
+- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 - (void)replaceObject:(id)object withObject:(id)anObject;
 @end

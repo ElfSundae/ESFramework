@@ -10,14 +10,7 @@
 
 @interface NSDate (ESAdditions)
 
-/**
- * `return [[self date] timeIntervalSince1970]`
- */
-+ (NSTimeInterval)nowTimeInterval;
-
-/**
- * Same as `+nowTimeInterval`
- */
++ (NSTimeInterval)timeIntervalSince1970;
 + (unsigned long long)timestamp;
 
 - (BOOL)isBefore:(NSDate *)aDate;

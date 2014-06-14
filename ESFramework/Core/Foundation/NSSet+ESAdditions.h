@@ -13,14 +13,21 @@
  */
 @interface NSSet (ESAdditions)
 - (BOOL)isEmpty;
-- (void)each:(void (^)(id obj))block;
-- (void)eachConcurrently:(void (^)(id obj))block;
-- (id)match:(BOOL (^)(id obj))block;
-- (NSSet *)matches:(BOOL (^)(id obj))block;
-- (NSSet *)reject:(BOOL (^)(id obj))block;
+
+- (void)each:(void (^)(id obj, BOOL *stop))block;
+- (void)each:(void (^)(id obj, BOOL *stop))block option:(NSEnumerationOptions)option;
+
+- (id)match:(BOOL (^)(id obj))predicate;
+- (id)match:(BOOL (^)(id obj))predicate option:(NSEnumerationOptions)option;
+
+- (NSSet *)matches:(BOOL (^)(id obj, BOOL *stop))predicate;
+- (NSSet *)matches:(BOOL (^)(id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
 @end
 
 @interface NSMutableSet (ESAdditions)
-- (void)matchWith:(BOOL (^)(id obj))block;
-- (void)rejectWith:(BOOL (^)(id obj))block;
+
+- (void)matchWith:(BOOL (^)(id obj, BOOL *stop))predicate;
+- (void)matchWith:(BOOL (^)(id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
 @end
