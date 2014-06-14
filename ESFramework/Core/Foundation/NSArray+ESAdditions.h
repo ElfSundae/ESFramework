@@ -40,9 +40,17 @@
 - (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
 - (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 
+/**
+ * Returns nil if matching failed.
+ */
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 
+- (NSArray *)matchesObjects:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSArray *)matchesObjects:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 
 /**
  * Asynchronously write file.

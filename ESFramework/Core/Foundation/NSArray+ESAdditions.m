@@ -39,6 +39,26 @@
         return [self indexOfObjectWithOptions:option passingTest:predicate];
 }
 
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
+{
+        NSParameterAssert(predicate);
+        NSUInteger index = [self match:predicate];
+        if (NSNotFound != index) {
+                return self[index];
+        }
+        return nil;
+}
+
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
+{
+        NSParameterAssert(predicate);
+        NSUInteger index = [self match:predicate option:option];
+        if (NSNotFound != index) {
+                return self[index];
+        }
+        return nil;
+}
+
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
 {
         return [self indexesOfObjectsPassingTest:predicate];
@@ -49,6 +69,25 @@
         return [self indexesOfObjectsWithOptions:option passingTest:predicate];
 }
 
+- (NSArray *)matchesObjects:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
+{
+        NSParameterAssert(predicate);
+        NSIndexSet *indexes = [self matches:predicate];
+        if ([indexes count]) {
+                return [self objectsAtIndexes:indexes];
+        }
+        return [NSArray array];
+}
+
+- (NSArray *)matchesObjects:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
+{
+        NSParameterAssert(predicate);
+        NSIndexSet *indexes = [self matches:predicate option:option];
+        if ([indexes count]) {
+                return [self objectsAtIndexes:indexes];
+        }
+        return [NSArray array];
+}
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
