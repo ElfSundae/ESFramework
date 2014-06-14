@@ -61,6 +61,26 @@
         return [set anyObject];
 }
 
+- (NSDictionary *)matchDictionary:(BOOL (^)(id key, id obj))predicate
+{
+        id key = [self match:predicate];
+        if (key) {
+                return self[key];
+        }
+        return nil;
+}
+
+- (NSDictionary *)matchDictionary:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option
+{
+        id key = [self match:predicate option:option];
+        if (key) {
+                return self[key];
+        }
+        return nil;
+}
+
+
+
 - (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate
 {
         return [self keysOfEntriesPassingTest:predicate];

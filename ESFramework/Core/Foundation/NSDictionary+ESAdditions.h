@@ -30,6 +30,12 @@
 - (id)match:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option;
 
 /**
+ * Returns nil if matching failed.
+ */
+- (NSDictionary *)matchDictionary:(BOOL (^)(id key, id obj))predicate;
+- (NSDictionary *)matchDictionary:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option;
+
+/**
  * Matches using predicating block, returns the keys.
  */
 - (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate;

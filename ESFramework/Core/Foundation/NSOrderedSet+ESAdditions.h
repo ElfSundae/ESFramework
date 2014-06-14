@@ -16,8 +16,12 @@
 - (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 - (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option;
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate;
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option;
+
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate;
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option;
+
 
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;

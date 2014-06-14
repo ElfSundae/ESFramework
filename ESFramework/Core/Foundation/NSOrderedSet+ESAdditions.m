@@ -26,14 +26,46 @@
         [self enumerateObjectsWithOptions:option usingBlock:block];
 }
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate
 {
-        return [self indexOfObjectPassingTest:predicate];
+        return [self indexOfObjectPassingTest:^BOOL(id obj_, NSUInteger idx_, BOOL *stop) {
+                if (predicate(obj_, idx_)) {
+                        *stop = YES;
+                        return YES;
+                }
+                return NO;
+        }];
 }
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
+- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option
 {
-        return [self indexOfObjectWithOptions:option passingTest:predicate];
+        return [self indexOfObjectWithOptions:option passingTest:^BOOL(id obj_, NSUInteger idx_, BOOL *stop) {
+                if (predicate(obj_, idx_)) {
+                        *stop = YES;
+                        return YES;
+                }
+                return NO;
+        }];
+}
+
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate
+{
+        NSParameterAssert(predicate);
+        NSUInteger index = [self match:predicate];
+        if (NSNotFound != index) {
+                return self[index];
+        }
+        return nil;
+}
+
+- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option
+{
+        NSParameterAssert(predicate);
+        NSUInteger index = [self match:predicate option:option];
+        if (NSNotFound != index) {
+                return self[index];
+        }
+        return nil;
 }
 
 - (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
