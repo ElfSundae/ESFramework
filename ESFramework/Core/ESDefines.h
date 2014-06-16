@@ -372,12 +372,12 @@ ES_EXTERN NSString *const ESErrorDomain;
  */
 
 #define ES_MINUTE (60)
-#define ES_HOUR   (60 * ES_MINUTE)
-#define ES_DAY    (24 * ES_HOUR)
-#define ES_5_DAYS (5 * ES_DAY)
-#define ES_WEEK   (7 * ES_DAY)
-#define ES_MONTH  (30.5 * ES_DAY)
-#define ES_YEAR   (365 * ES_DAY)
+#define ES_HOUR   (3600)
+#define ES_DAY    (86400)
+#define ES_5_DAYS (432000)
+#define ES_WEEK   (604800)
+#define ES_MONTH  (2635200) /* 30.5 days */
+#define ES_YEAR   (31536000) /* 365 days */
 
 ES_INLINE BOOL ESIsStringWithAnyText(id object) {
         return ([object isKindOfClass:[NSString class]] && ![(NSString *)object isEqualToString:@""]);
