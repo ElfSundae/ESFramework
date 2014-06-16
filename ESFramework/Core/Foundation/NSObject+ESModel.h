@@ -91,6 +91,9 @@
  * Save current object to `+modelSharedInstanceFilePath`.
  */
 - (void)saveModelSharedInstance:(void (^)(BOOL result))block;
+/**
+ * Synchronously write file.
+ */
 - (void)saveModelSharedInstance;
 /**
  * File path for the shared instance.
