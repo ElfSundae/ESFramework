@@ -43,10 +43,7 @@ ES_SINGLETON_DEC(sharedCache);
 - (void)removeObjectForKey:(NSString *)key block:(ESCacheObjectBlock)block;
 - (void)removeAllObjects:(ESCacheBlock)block;
 - (void)enumerateObjectsWithBlock:(ESCacheEnumerationBlock)block completion:(ESCacheBlock)completionBlock;
-/**
- * `-save` will be called automatically when app enters background, or after `-removeAllObjects:` called.
- */
-- (void)save;
+- (void)save:(ESCacheBlock)block;
 
 ///=============================================
 /// @name Synchronous Methods
@@ -57,6 +54,11 @@ ES_SINGLETON_DEC(sharedCache);
 - (void)removeObjectForKey:(NSString *)key;
 - (void)removeAllObjects;
 - (void)enumerateObjectsWithBlock:(ESCacheEnumerationBlock)block;
+/**
+ * `-save` will be called automatically when app enters background, 
+ * or after `-removeAllObjects:` called.
+ */
+- (void)save;
 
 - (NSString *)stringForKey:(NSString *)key;
 - (NSURL *)URLForKey:(NSString *)key;
@@ -74,7 +76,7 @@ ES_SINGLETON_DEC(sharedCache);
 
 /**
  * Returns `nil` if there's no disk cache, default is `name.cache`,
- * the cache file is loacated in 'Library/Caches'
+ * the cache file is loacated in 'Library/Caches/ESCache'
  */
 - (NSString *)diskCacheFileName;
 

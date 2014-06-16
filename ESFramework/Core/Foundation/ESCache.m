@@ -171,7 +171,9 @@ dictionary = _dictionary;
         dispatch_barrier_async(_queue, ^{
                 ESStrong(weakSelf, _self);
                 [_self.dictionary removeAllObjects];
-                
+                if ([_self _diskCacheFilePath]) {
+                        [[NSFileManager defaultManager] removeItemAtPath:[_self _diskCacheFilePath] error:NULL];
+                }
                 if (block) {
                         dispatch_async(_self->_queue, ^{
                                 ESStrong(weakSelf, _self);
@@ -180,8 +182,6 @@ dictionary = _dictionary;
                 }
                 
         });
-        
-        [self save];
 }
 
 - (void)enumerateObjectsWithBlock:(ESCacheEnumerationBlock)block completion:(ESCacheBlock)completionBlock
@@ -209,7 +209,7 @@ dictionary = _dictionary;
         });
 }
 
-- (void)save
+- (void)save:(ESCacheBlock)block
 {
         ESWeak(self, weakSelf);
         dispatch_barrier_async(_queue, ^{
@@ -220,6 +220,12 @@ dictionary = _dictionary;
                         } else {
                                 [[NSFileManager defaultManager] removeItemAtPath:[_self _diskCacheFilePath] error:NULL];
                         }
+                }
+                if (block) {
+                        dispatch_async(_self->_queue, ^{
+                                ESStrong(weakSelf, _self);
+                                block(_self);
+                        });
                 }
         });
 }
@@ -289,6 +295,16 @@ dictionary = _dictionary;
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         [self enumerateObjectsWithBlock:block completion:^(ESCache *cache) {
               dispatch_semaphore_signal(semaphore);
+        }];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        dispatch_release(semaphore);
+}
+
+- (void)save
+{
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        [self save:^(ESCache *cache) {
+                dispatch_semaphore_signal(semaphore);
         }];
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_release(semaphore);
