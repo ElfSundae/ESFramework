@@ -20,6 +20,7 @@
 #import "UIButton+WebCache.h"
 #import "MKAnnotationView+WebCache.h"
 #import "UIImageView+WebCache.h"
+#import "SDWebImageDecoder.h"
 // AFNetworking v1.3.4
 #import "AFNetworking.h"
 
