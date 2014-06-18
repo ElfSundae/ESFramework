@@ -15,7 +15,6 @@
 @implementation NSData (ESHash)
 - (NSString *)md5Hash
 {
-        if (!self) return nil;
         unsigned char buffer[CC_MD5_DIGEST_LENGTH];
         CC_MD5(self.bytes, (CC_LONG)self.length, buffer);
         return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
@@ -24,7 +23,6 @@
 
 - (NSString *)sha1Hash
 {
-        if (!self) return nil;
         unsigned char buffer[CC_SHA1_DIGEST_LENGTH];
         CC_SHA1(self.bytes, (CC_LONG)self.length, buffer);
         return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
@@ -33,7 +31,6 @@
 
 - (NSString *)sha256Hash
 {
-        if (!self) return nil;
         unsigned char buffer[CC_SHA256_DIGEST_LENGTH];
         CC_SHA256(self.bytes, (CC_LONG)self.length, buffer);
         return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
@@ -90,7 +87,6 @@
 
 - (NSString *)md5Hash
 {
-        if (!self) return nil;
         const char *cString = [self cStringUsingEncoding:NSUTF8StringEncoding];
         unsigned char buffer[CC_MD5_DIGEST_LENGTH];
         CC_MD5(cString, (CC_LONG)strlen(cString), buffer);
@@ -100,7 +96,6 @@
 
 - (NSString *)sha1Hash
 {
-        if (!self) return nil;
         const char *cString = [self cStringUsingEncoding:NSUTF8StringEncoding];
         unsigned char buffer[CC_SHA1_DIGEST_LENGTH];
         CC_SHA1(cString, (CC_LONG)strlen(cString), buffer);
@@ -110,7 +105,6 @@
 
 - (NSString *)sha256Hash
 {
-        if (!self) return nil;
         const char *cString = [self cStringUsingEncoding:NSUTF8StringEncoding];
         unsigned char buffer[CC_SHA256_DIGEST_LENGTH];
         CC_SHA256(cString, (CC_LONG)strlen(cString), buffer);
