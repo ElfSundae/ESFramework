@@ -13,24 +13,21 @@
 /**
  * `ESHTTPClient` and `ESHTTPxxxxClient` sets are designed as a super class for subclassing.
  *
- * Subclasses needs implement `-initWithBaseURL:` to give a baseURL.
+ * ## Subclass
  *
- *	@interface YouHTTPClient : ESHTTPJSONClient
- *	@end
+ *	@implementation ESHTTPJSONClient
  *
- *	@implementation YouHTTPClient
+ *	ES_SINGLETON_IMP_AS(sharedClient, gSharedHTTPJSONClient);
  *
- *	- (id)initWithBaseURL:(NSURL *)url
+ *	- (instancetype)initWithBaseURL:(NSURL *)url
  *	{
- *	        self = [super initWithBaseURL:NSURLWith(@"http://example.com/")];
+ *	        self = [super initWithBaseURL:NSURLWith(@"http://google.com")];
  *	        if (self) {
- *	                [self setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
- *	                self.parameterEncoding = AFJSONParameterEncoding;
  *	                [self registerHTTPOperationClass:[ESJSONRequestOperation class]];
+ *	                [self setDefaultHeader:@"Accept-Encoding" value:@"gzip"];
  *	        }
  *	        return self;
  *	}
- *	
  *	@end
  *
  *

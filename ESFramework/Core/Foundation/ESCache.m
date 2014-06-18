@@ -20,16 +20,7 @@
 queue = _queue,
 dictionary = _dictionary;
 
-+ (instancetype)sharedCache
-{
-        static ESCache *__gSharedCache = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                NSString *name = [NSString stringWithFormat:@"%@_sharedCache", NSStringFromClass([self class])];
-                __gSharedCache = [[self alloc] initWithName:name];
-        });
-        return __gSharedCache;
-}
+ES_SINGLETON_IMP(sharedCache);
 
 - (void)dealloc
 {
@@ -38,6 +29,12 @@ dictionary = _dictionary;
                 dispatch_release(_queue);
                 _queue = NULL;
         }
+}
+
+- (instancetype)init
+{
+        NSString *name = [NSString stringWithFormat:@"%@_sharedCache", NSStringFromClass([self class])];
+        return [self initWithName:name];
 }
 
 - (instancetype)initWithName:(NSString *)name
@@ -371,6 +368,8 @@ dictionary = _dictionary;
 #pragma mark - ESMemoryCache
 
 @implementation ESMemoryCache
+ES_SINGLETON_IMP_AS(sharedCache, gSharedMemoryCache);
+
 - (NSString *)diskCacheFileName
 {
         return nil;

@@ -26,7 +26,7 @@
         static ESApp *__gSharedApp = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __gSharedApp = [[super alloc] init];
+                __gSharedApp = [[[self class] alloc] init];
         });
         return __gSharedApp;
 }

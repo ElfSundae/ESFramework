@@ -12,7 +12,8 @@
 
 + (instancetype)newInstance
 {
-        return [[self alloc] init];
+        return [[[self class] alloc] init];
 }
+
 
 @end

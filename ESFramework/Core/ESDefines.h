@@ -283,42 +283,34 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 /**
  * Singleton Example:
  *
- *	 @interface MyLocationManager : NSObject
+ * @code
  *
- *	 ES_SINGLETON_DEC(sharedManager);
- *	 ES_SINGLETON_DEC(anotherManager);
+ *	@interface MyLocationManager : NSObject
+ *	ES_SINGLETON_DEC(sharedManager);
+ *	ES_SINGLETON_DEC(anotherManager);
+ *	@end
  *
- *	 /// other methods
- *	 - (void)start;
- *	 @end
+ *	@implementation MyLocationManager
+ *	ES_SINGLETON_IMP(sharedManager);
+ *	ES_SINGLETON_IMP_AS(anotherManager, gAnotherManager);
+ *	@end
  *
- *	 @implementation MyLocationManager
- *	 ES_SINGLETON_IMP(sharedManager);
+ *	@interface SubclassManager : MyLocationManager
+ *	@end
  *
- *	 - (instancetype)init
- *	 {
- *	        self = [super init];
- *	        if (self) NSLog(@"sharedManager init.");
- *	        return self;
- *	 }
- *	 - (instancetype)initAnotherManager;
- *	 {
- *	        self = [super init];
- *	        if (self) NSLog(@"anotherManager init.");
- *	        return self;
- *	 }
- *
- *	 - (void)start
- *	 {
- *	        // ...
- *	 }
- *	 @end
+ *	@implementation SubclassManager
+ *	 // Subclasses must give a different variable name for evey shared instance.
+ *	 // You can use `ES_SINGLETON_IMP_AS` to overwrite the sharedInstance methods.
+ *	ES_SINGLETON_IMP_AS(sharedManager, gSharedSubclassManager);
+ *	ES_SINGLETON_IMP_AS(anotherManager, gSharedAnotherManager);
+ *	@end
+ *	
+ * @endcode
  *
  */
 
 /**
  * Declare singleton `sharedInstance` methods.
- * #Option means this class also can be allocated to create a new instance.
  *
  * @param sharedInstance The shared instance's method name.
  */
@@ -326,17 +318,19 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 /**
  * Implement singleton `sharedInstance` methods.
  *
- * @param sharedInstance The shared instance's method name.
- * @param initMethod Your initiation method.
+ * If you are subclassing a signleton class, make sure overwrite the `sharedInstance` method to 
+ * give a different variable name.
+ *
  */
-#define ES_SINGLETON_IMP(sharedInstance) \
+#define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
 + (instancetype)sharedInstance \
 { \
-/**/    static id __sharedInstance__ = nil; \
+/**/    static id __##sharedInstanceName = nil; \
 /**/    static dispatch_once_t onceToken; \
-/**/    dispatch_once(&onceToken, ^{ __sharedInstance__ = [[self alloc] init]; }); \
-/**/    return __sharedInstance__; \
+/**/    dispatch_once(&onceToken, ^{ __##sharedInstanceName = [[[self class] alloc] init]; }); \
+/**/    return __##sharedInstanceName; \
 }
+#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, gSharedInstance)
 
 
 ///========================================================================================================

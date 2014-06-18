@@ -21,14 +21,11 @@
         }
 }
 
-+ (instancetype)sharedClient
+ES_SINGLETON_IMP(sharedClient);
+
+- (instancetype)init
 {
-        static id __gSharedClient = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __gSharedClient = [[self alloc] initWithBaseURL:nil];
-        });
-        return __gSharedClient;
+        return [self initWithBaseURL:nil];
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url
@@ -47,7 +44,9 @@
 #pragma mark - ESHTTPJSONClient
 @implementation ESHTTPJSONClient
 
-- (id)initWithBaseURL:(NSURL *)url
+ES_SINGLETON_IMP_AS(sharedClient, gSharedHTTPJSONClient);
+
+- (instancetype)initWithBaseURL:(NSURL *)url
 {
         self = [super initWithBaseURL:url];
         if (self) {
