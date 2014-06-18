@@ -294,7 +294,6 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
  *
  *	 @implementation MyLocationManager
  *	 ES_SINGLETON_IMP(sharedManager);
- *	 ES_SINGLETON_IMP_AS(anotherManager, initAnotherManager);
  *
  *	 - (instancetype)init
  *	 {
@@ -330,20 +329,14 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
  * @param sharedInstance The shared instance's method name.
  * @param initMethod Your initiation method.
  */
-#define ES_SINGLETON_IMP_AS(sharedInstance, initMethod) \
+#define ES_SINGLETON_IMP(sharedInstance) \
 + (instancetype)sharedInstance \
 { \
 /**/    static id __sharedInstance__ = nil; \
 /**/    static dispatch_once_t onceToken; \
-/**/    dispatch_once(&onceToken, ^{ __sharedInstance__ = [[self alloc] initMethod]; }); \
+/**/    dispatch_once(&onceToken, ^{ __sharedInstance__ = [[self alloc] init]; }); \
 /**/    return __sharedInstance__; \
 }
-/**
- * Implement singleton `sharedInstance` methods.
- *
- * @param sharedInstance The shared instance's method name.
- */
-#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, init)
 
 
 ///========================================================================================================

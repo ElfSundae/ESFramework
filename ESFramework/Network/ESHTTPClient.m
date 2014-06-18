@@ -21,11 +21,14 @@
         }
 }
 
-ES_SINGLETON_IMP(sharedClient);
-
-- (instancetype)init
++ (instancetype)sharedClient
 {
-        return [self initWithBaseURL:nil];
+        static id __gSharedClient = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                __gSharedClient = [[self alloc] initWithBaseURL:nil];
+        });
+        return __gSharedClient;
 }
 
 - (instancetype)initWithBaseURL:(NSURL *)url
