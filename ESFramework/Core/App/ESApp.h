@@ -86,7 +86,6 @@
  *
  */
 @interface ESApp : UIResponder
-__ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
 
 /**
  * Returns the application delegate if the `AppDelegate` is a subclass of `ESApp`, 

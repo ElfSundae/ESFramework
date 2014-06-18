@@ -284,8 +284,6 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
  * Singleton Example:
  *
  *	 @interface MyLocationManager : NSObject
- *	 /// Add this line to avoid method #alloc #new being called.
- *	 __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION
  *
  *	 ES_SINGLETON_DEC(sharedManager);
  *	 ES_SINGLETON_DEC(anotherManager);
@@ -327,12 +325,6 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
  */
 #define ES_SINGLETON_DEC(sharedInstance)        + (instancetype)sharedInstance;
 /**
- * Mark the #alloc #new method as unavailable.
- */
-#define __ES_ATTRIBUTE_UNAVAILABLE_SINGLETON_ALLOCATION \
-+ (id)alloc __attribute__((unavailable("alloc not available, call the shared instance instead."))); \
-+ (id)new __attribute__((unavailable("new not available, call the shared instance instead.")));
-/**
  * Implement singleton `sharedInstance` methods.
  *
  * @param sharedInstance The shared instance's method name.
@@ -343,7 +335,7 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 { \
 /**/    static id __sharedInstance__ = nil; \
 /**/    static dispatch_once_t onceToken; \
-/**/    dispatch_once(&onceToken, ^{ __sharedInstance__ = [[super alloc] initMethod]; }); \
+/**/    dispatch_once(&onceToken, ^{ __sharedInstance__ = [[self alloc] initMethod]; }); \
 /**/    return __sharedInstance__; \
 }
 /**
