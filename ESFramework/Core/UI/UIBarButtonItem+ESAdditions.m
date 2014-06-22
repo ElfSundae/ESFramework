@@ -8,25 +8,6 @@
 
 #import "UIBarButtonItem+ESAdditions.h"
 #import "UIControl+ESAdditions.h"
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - _ESAdditionsInternal
-@interface UIBarButtonItem (_ESAdditionsInternal)
-@property (nonatomic, copy) ESHandlerBlock __es_HandlerBlock;
-@end
-
-static const void *__es_HandlerBlockKey = &__es_HandlerBlockKey;
-
-@implementation UIBarButtonItem (_ESAdditionsInternal)
-- (ESHandlerBlock)__es_HandlerBlock
-{
-        return [self getAssociatedObject:__es_HandlerBlockKey];
-}
-- (void)set__es_HandlerBlock:(ESHandlerBlock)block
-{
-        [self setAssociatedObject_nonatomic_copy:block key:__es_HandlerBlockKey];
-}
-@end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,10 +29,12 @@ static const void *__es_HandlerBlockKey = &__es_HandlerBlockKey;
         ESBarButtonArrowItem *item = [[self alloc] initWithCustomView:button];
         button.arrowStyle = style;
         button.tintColor = ([[self appearance] tintColor] ?: item.tintColor);
-        ESWeak(self, _weakSelf);
+        ESWeakSelf;
         [button addEventHandler:^(id sender, UIControlEvents controlEvents) {
-                ESStrong(_weakSelf, _self);
-                handler(_self);
+                ESStrongSelf;
+                if (handler) {
+                        handler(_self);
+                }
         } forControlEvents:UIControlEventTouchUpInside];
         return item;
 }
@@ -61,97 +44,125 @@ static const void *__es_HandlerBlockKey = &__es_HandlerBlockKey;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark
+#pragma mark -
+
+static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
+
 @implementation UIBarButtonItem (ESAdditions)
 
-- (void)__es_handler:(UIBarButtonItem *)sender
+- (ESUIBarButtonItemHandler)handlerBlock
 {
-        if (self.__es_HandlerBlock) {
-                self.__es_HandlerBlock(self);
+        return [self getAssociatedObject:_ESUIBarButtonItemHandlerKey];
+}
+
+- (void)setHandlerBlock:(ESUIBarButtonItemHandler)handlerBlock
+{
+        [self setAssociatedObject_nonatomic_copy:handlerBlock key:_ESUIBarButtonItemHandlerKey];
+        if (handlerBlock) {
+                self.target = self;
+                self.action = @selector(_esBarButtonItemHandler:);
+        } else {
+                self.target = nil;
+                self.action = nil;
         }
 }
 
-- (instancetype)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
+- (void)_esBarButtonItemHandler:(id)sender
 {
-        self = [self initWithImage:image style:style target:self action:@selector(__es_handler:)];
-        self.__es_HandlerBlock = handler;
+        if (self.handlerBlock) {
+                self.handlerBlock(self);
+        }
+}
+
+- (instancetype)initWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
+{
+        self = [self initWithImage:image style:style target:nil action:nil];
+        if (handler) {
+                self.handlerBlock = handler;
+        }
         return self;
 }
-+ (instancetype)itemWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
++ (instancetype)itemWithImage:(UIImage *)image style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
         return [[self alloc] initWithImage:image style:style handler:handler];
 }
 
-- (instancetype)initWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
+- (instancetype)initWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
-        self = [self initWithImage:image landscapeImagePhone:landscapeImagePhone style:style target:self action:@selector(__es_handler:)];
-        self.__es_HandlerBlock = handler;
+        self = [self initWithImage:image landscapeImagePhone:landscapeImagePhone style:style target:nil action:nil];
+        if (handler) {
+                self.handlerBlock = handler;
+        }
         return self;
 }
 
-+ (instancetype)itemWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
++ (instancetype)itemWithImage:(UIImage *)image landscapeImagePhone:(UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
         return [[self alloc] initWithImage:image landscapeImagePhone:landscapeImagePhone style:style handler:handler];
 }
 
-- (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
+- (instancetype)initWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
-        self = [self initWithTitle:title style:style target:self action:@selector(__es_handler:)];
-        self.__es_HandlerBlock = handler;
+        self = [self initWithTitle:title style:style target:nil action:nil];
+        if (handler) {
+                self.handlerBlock = handler;
+        }
         return self;
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
++ (instancetype)itemWithTitle:(NSString *)title style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
         return [[self alloc] initWithTitle:title style:style handler:handler];
 }
 
-- (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem handler:(ESHandlerBlock)handler
+- (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem handler:(ESUIBarButtonItemHandler)handler
 {
-        self = [self initWithBarButtonSystemItem:systemItem target:self action:@selector(__es_handler:)];
-        self.__es_HandlerBlock = handler;
+        self = [self initWithBarButtonSystemItem:systemItem target:nil action:nil];
+        if (handler) {
+                self.handlerBlock = handler;
+        }
         return self;
 }
 
-+ (instancetype)itemWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem handler:(ESHandlerBlock)handler
++ (instancetype)itemWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem handler:(ESUIBarButtonItemHandler)handler
 {
         return [[self alloc] initWithBarButtonSystemItem:systemItem handler:handler];
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title handler:(ESHandlerBlock)handler
++ (instancetype)itemWithTitle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
         return [self itemWithTitle:title style:UIBarButtonItemStyleBordered handler:handler];
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title tintColor:(UIColor *)tintColor style:(UIBarButtonItemStyle)style handler:(ESHandlerBlock)handler
++ (instancetype)itemWithTitle:(NSString *)title tintColor:(UIColor *)tintColor style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
         UIBarButtonItem *item = [self itemWithTitle:title style:style handler:handler];
         item.tintColor = tintColor;
         return item;
 }
 
-+ (instancetype)itemWithTitle:(NSString *)title tintColor:(UIColor *)tintColor handler:(ESHandlerBlock)handler
++ (instancetype)itemWithTitle:(NSString *)title tintColor:(UIColor *)tintColor handler:(ESUIBarButtonItemHandler)handler
 {
         return [self itemWithTitle:title tintColor:tintColor style:UIBarButtonItemStyleBordered handler:handler];
 }
 
 
-+ (instancetype)itemWithRedStyle:(NSString *)title handler:(ESHandlerBlock)handler
++ (instancetype)itemWithRedStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
         return [self itemWithTitle:title tintColor:UIColorWithRGBHex(0xfa140e) style:UIBarButtonItemStyleBordered handler:handler];
 }
 
-+ (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESHandlerBlock)handler
++ (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
         return [self itemWithTitle:title style:UIBarButtonItemStyleDone handler:handler];
 }
 
-+ (instancetype)itemWithLeftArrow:(ESHandlerBlock)handler
++ (instancetype)itemWithLeftArrow:(ESUIBarButtonItemHandler)handler
 {
         return [ESBarButtonArrowItem _arrowItemWithButtonStyle:ESArrowButtonStyleLeft handler:handler];
 }
 
-+ (instancetype)itemWithRightArrow:(ESHandlerBlock)handler
++ (instancetype)itemWithRightArrow:(ESUIBarButtonItemHandler)handler
 {
         return [ESBarButtonArrowItem _arrowItemWithButtonStyle:ESArrowButtonStyleRight handler:handler];
 }
