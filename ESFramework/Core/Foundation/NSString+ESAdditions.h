@@ -152,7 +152,7 @@ typedef struct {
  *
  * Example of usage:
  * @code
- * [self stringByEncodingHTMLEntitiesUsingTable:__gMyUnicodeHTMLEscapeMap escapeUnicode:NO];
+ * [self stringByEncodingHTMLEntitiesUsingTable:__gMyUnicodeHTMLEscapeMap size:sizeof(__gMyUnicodeHTMLEscapeMap) escapeUnicode:NO];
  * @endcode
  *
  * @param table     escaping table
@@ -162,7 +162,7 @@ typedef struct {
  * @see https://github.com/mwaterfall/MWFeedParser/blob/master/Classes/GTMNSString%2BHTML.h
  *
  */
-- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table escapeUnicode:(BOOL)escapeUnicode;
+- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table ofSize:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode;
 
 /**
  * Returns a string that escaped for HTML.

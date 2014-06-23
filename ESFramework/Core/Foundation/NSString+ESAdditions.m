@@ -304,10 +304,10 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return (NSDictionary *)result;
 }
 
-- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table escapeUnicode:(BOOL)escapeUnicode
+- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table ofSize:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
 {
         return [self es_gtm_stringByEscapingHTMLUsingTable:table
-                                                    ofSize:sizeof(table)
+                                                    ofSize:size
                                            escapingUnicode:escapeUnicode];
 }
 
