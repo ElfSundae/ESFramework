@@ -267,6 +267,8 @@
  */
 + (void)disableMultitasking;
 
++ (BOOL)isMultitaskingEnabled;
+
 + (BOOL)canOpenURL:(NSURL *)url;
 + (BOOL)openURL:(NSURL *)url;
 + (BOOL)openURLWithString:(NSString *)string;
