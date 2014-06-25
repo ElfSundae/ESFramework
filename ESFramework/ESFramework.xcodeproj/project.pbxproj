@@ -13,7 +13,6 @@
 			buildPhases = (
 			);
 			dependencies = (
-				E70490FC1925764700C0EDAD /* PBXTargetDependency */,
 				E70490FE1925764700C0EDAD /* PBXTargetDependency */,
 				E70491001925764700C0EDAD /* PBXTargetDependency */,
 				E70491021925764700C0EDAD /* PBXTargetDependency */,
@@ -152,7 +151,6 @@
 		E704935E1925B15100C0EDAD /* UIProgressView+ESStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493561925B15100C0EDAD /* UIProgressView+ESStyle.m */; };
 		E70493621925B19200C0EDAD /* ESErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493601925B19200C0EDAD /* ESErrorView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70493631925B19200C0EDAD /* ESErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493611925B19200C0EDAD /* ESErrorView.m */; };
-		E70493B61926EC6E00C0EDAD /* image in Resources */ = {isa = PBXBuildFile; fileRef = E70493B51926EC6E00C0EDAD /* image */; };
 		E70493CD1927207B00C0EDAD /* ESTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493BC1927207B00C0EDAD /* ESTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70493CE1927207B00C0EDAD /* ESTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493BD1927207B00C0EDAD /* ESTableViewController.m */; };
 		E70493D51927207B00C0EDAD /* ESWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493C61927207B00C0EDAD /* ESWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -174,8 +172,6 @@
 		E7089FC0190FEDAB0014C8F6 /* UIDevice+Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */; };
 		E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FC2190FEDF10014C8F6 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FC3190FEDF10014C8F6 /* OpenUDID.m */; };
-		E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C9469A18FBC9500034B110 /* CoreFoundation.framework */; };
-		E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7223F3A18FE7BEC006BCC0D /* Localizable.strings */; };
 		E72A54B51931B41400264130 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72A54B61931B41400264130 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */; };
 		E72F6A4719177D79006893A5 /* ESRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A4519177D79006893A5 /* ESRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -315,13 +311,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E70490FB1925764700C0EDAD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E714E39418FE796600CAF140;
-			remoteInfo = ESFrameworkResources;
-		};
 		E70490FD1925764700C0EDAD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
@@ -487,7 +476,6 @@
 		E70493561925B15100C0EDAD /* UIProgressView+ESStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+ESStyle.m"; sourceTree = "<group>"; };
 		E70493601925B19200C0EDAD /* ESErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESErrorView.h; sourceTree = "<group>"; };
 		E70493611925B19200C0EDAD /* ESErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESErrorView.m; sourceTree = "<group>"; };
-		E70493B51926EC6E00C0EDAD /* image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = image; sourceTree = "<group>"; };
 		E70493BC1927207B00C0EDAD /* ESTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
 		E70493BD1927207B00C0EDAD /* ESTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTableViewController.m; sourceTree = "<group>"; };
 		E70493C61927207B00C0EDAD /* ESWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESWebView.h; sourceTree = "<group>"; };
@@ -509,9 +497,6 @@
 		E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+Reachability.m"; path = "Vendor/Reachability/UIDevice+Reachability.m"; sourceTree = "<group>"; };
 		E7089FC2190FEDF10014C8F6 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenUDID.h; path = Vendor/OpenUDID/OpenUDID.h; sourceTree = "<group>"; };
 		E7089FC3190FEDF10014C8F6 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenUDID.m; path = Vendor/OpenUDID/OpenUDID.m; sourceTree = "<group>"; };
-		E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ESFrameworkResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7223F3918FE7BEC006BCC0D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E7223F3B18FE7BF3006BCC0D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
 		E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		E72F6A4519177D79006893A5 /* ESRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRouter.h; sourceTree = "<group>"; };
@@ -667,14 +652,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E714E39218FE796600CAF140 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E714E39618FE796600CAF140 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E7B8B3A01924FE1200196EE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -940,15 +917,6 @@
 			name = OpenUDID;
 			sourceTree = "<group>";
 		};
-		E714E39718FE796600CAF140 /* ESFrameworkResources */ = {
-			isa = PBXGroup;
-			children = (
-				E70493B51926EC6E00C0EDAD /* image */,
-				E7223F3A18FE7BEC006BCC0D /* Localizable.strings */,
-			);
-			path = ESFrameworkResources;
-			sourceTree = "<group>";
-		};
 		E72F6A55191825AB006893A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -967,7 +935,6 @@
 				E7BCF69618F98BF5006D920E /* UIKit */,
 				E7BCF7BE18F9971C006D920E /* Network */,
 				E7B8B3A51924FE1200196EE9 /* Database */,
-				E714E39718FE796600CAF140 /* ESFrameworkResources */,
 				E7522E5418EC43030087B95E /* Config */,
 				E7522DF218EC427E0087B95E /* Frameworks */,
 				E7522DF118EC427E0087B95E /* Products */,
@@ -980,7 +947,6 @@
 				E7BCF65618F98615006D920E /* ESFrameworkCore.a */,
 				E7BCF6D218F98C27006D920E /* ESFrameworkUIKit.a */,
 				E7BCF7BD18F996F5006D920E /* ESFrameworkNetwork.a */,
-				E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */,
 				E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */,
 			);
 			name = Products;
@@ -1423,23 +1389,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E714E39418FE796600CAF140 /* ESFrameworkResources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E714E39E18FE796600CAF140 /* Build configuration list for PBXNativeTarget "ESFrameworkResources" */;
-			buildPhases = (
-				E714E39118FE796600CAF140 /* Sources */,
-				E714E39218FE796600CAF140 /* Frameworks */,
-				E714E39318FE796600CAF140 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ESFrameworkResources;
-			productName = ESFrameworkResources;
-			productReference = E714E39518FE796600CAF140 /* ESFrameworkResources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		E7B8B3A21924FE1200196EE9 /* Database */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7B8B3C11924FE1300196EE9 /* Build configuration list for PBXNativeTarget "Database" */;
@@ -1542,7 +1491,6 @@
 				E7BCF69918F98C27006D920E /* UIKit */,
 				E7BCF7B418F996F5006D920E /* Network */,
 				E7B8B3A21924FE1200196EE9 /* Database */,
-				E714E39418FE796600CAF140 /* ESFrameworkResources */,
 				E7926A5618FBC16500CD276F /* ESFrameworkCore */,
 				E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */,
 				E7C946C118FBD4560034B110 /* ESFrameworkNetwork */,
@@ -1552,18 +1500,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		E714E39318FE796600CAF140 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E70493B61926EC6E00C0EDAD /* image in Resources */,
-				E7223F3818FE7BEC006BCC0D /* Localizable.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		E7089FCB19102AAD0014C8F6 /* ShellScript */ = {
@@ -1694,13 +1630,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E714E39118FE796600CAF140 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E7B8B39F1924FE1200196EE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1843,11 +1772,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E70490FC1925764700C0EDAD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E714E39418FE796600CAF140 /* ESFrameworkResources */;
-			targetProxy = E70490FB1925764700C0EDAD /* PBXContainerItemProxy */;
-		};
 		E70490FE1925764700C0EDAD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7926A5618FBC16500CD276F /* ESFrameworkCore */;
@@ -1890,18 +1814,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		E7223F3A18FE7BEC006BCC0D /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7223F3918FE7BEC006BCC0D /* en */,
-				E7223F3B18FE7BF3006BCC0D /* zh-Hans */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		E70490F91925763200C0EDAD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1928,33 +1840,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		E714E39F18FE796600CAF140 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */;
-			buildSettings = {
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ESFrameworkResources/ESFrameworkResources-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-			};
-			name = Debug;
-		};
-		E714E3A018FE796600CAF140 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ESFrameworkResources/ESFrameworkResources-Prefix.pch";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 			};
 			name = Release;
 		};
@@ -2161,15 +2046,6 @@
 			buildConfigurations = (
 				E7089FC719102A890014C8F6 /* Debug */,
 				E7089FC819102A890014C8F6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E714E39E18FE796600CAF140 /* Build configuration list for PBXNativeTarget "ESFrameworkResources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E714E39F18FE796600CAF140 /* Debug */,
-				E714E3A018FE796600CAF140 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -16,10 +16,10 @@
 {
         self = [super init];
         if (self) {
-                _alertTitle = _es_(@"Check Updates");
+                _alertTitle = _(@"Check Updates");
                 _alertTitleForUpdateExists = _alertTitle;
-                _alertUpdateButtonTitle = _es_(@"Update Now");
-                _alertCancelButtonTitle = _es_(@"Cancel");
+                _alertUpdateButtonTitle = _(@"Update Now");
+                _alertCancelButtonTitle = _(@"Cancel");
         }
         return self;
 }
