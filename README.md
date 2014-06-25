@@ -21,7 +21,7 @@ Install Documentation
 	
 	
 Building Frameworks
-=====================
-Open `ESFramework.xcworkspace` workspace, select `AllFrameworks` scheme and target iOS Device, then clean & build.
-After building succeed, right-click one `xxxx.a` under `Products` and "Show in Finder", you will get all Frameworks.
+=====================	
+Close `ESFramework.xcworkspace` workspace from Xcode and open `ESFramework.xcodeproj` project, scheme `AllFrameworks` and target `iOS Device`, then clean & build.
+After building succeed, right-click one `xxxx.a` under `Products` and "Show in Finder", you will get all Frameworks and `ESFrameworkResources.bundle`.
 
