@@ -162,8 +162,6 @@
 /**
  * Returns User Agent for HTTP request.
  *
- * @see -[NSMutableURLRequest(ESUserAgent) addUserAgent]
- *
  * e.g. `ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
  */
 - (NSString *)userAgent;
