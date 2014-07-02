@@ -9,6 +9,8 @@
 #import "ESApp.h"
 #import "NSString+ESAdditions.h"
 #import "UIAlertView+ESBlock.h"
+@import AddressBook;
+
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
 @implementation ESApp (Helper)
@@ -170,6 +172,10 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         [self openURL:NSURLWith([appID appLinkForAppStore])];
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - App Upgrade
+
 - (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler
 {
         if (![updateObject isKindOfClass:[ESAppUpdateObject class]] ||
@@ -238,6 +244,37 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                 [self showAppUpdateAlert:ESAppUpdateAlertMaskOnlyForced];
         }
         
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Authorization
+
+- (void)requestAddressBookAccessWithCompletion:(ESBasicBlock)completion failure:(ESBasicBlock)failure
+{
+        if (!ABAddressBookRequestAccessWithCompletion) {
+                if (completion) ESDispatchAsyncOnMainThread(completion);
+                return;
+        }
+        
+        ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
+        if (kABAuthorizationStatusAuthorized == status) {
+                if (completion) ESDispatchAsyncOnMainThread(completion);
+        } else if (kABAuthorizationStatusNotDetermined == status) {
+                ABAddressBookRef addressBook = ABAddressBookCreate();
+                ABAddressBookRequestAccessWithCompletion(ABAddressBookCreate(), ^(bool granted, CFErrorRef error) {
+                        if (addressBook) {
+                                CFRelease(addressBook);
+                        }
+                        if (granted) {
+                                if (completion) ESDispatchAsyncOnMainThread(completion);
+                        } else {
+                                if (failure) ESDispatchAsyncOnMainThread(failure);
+                        }
+                });
+        } else {
+                if (failure) ESDispatchAsyncOnMainThread(failure);
+        }
 }
 
 @end

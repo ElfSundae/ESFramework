@@ -234,6 +234,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESApp (Helper)
+
 @interface ESApp (Helper)
 
 /**
@@ -267,6 +268,11 @@
 
 + (BOOL)isMultitaskingEnabled;
 
+///=============================================
+/// @name Open URL
+///=============================================
+
+
 + (BOOL)canOpenURL:(NSURL *)url;
 + (BOOL)openURL:(NSURL *)url;
 + (BOOL)openURLWithString:(NSString *)string;
@@ -296,14 +302,20 @@
 + (void)openAppStore;
 + (void)openAppStoreWithAppID:(NSString *)appID;
 
+///=============================================
+/// @name App Update
+///=============================================
+
 /**
  * Shows an `UIAlertView` for app update, use `+openURL:` to open external App Store when "Update" button clicked.
  */
 - (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler;
+
 /**
  * Use `-appUpdateSharedObject`.
  */
 - (void)showAppUpdateAlert:(ESAppUpdateAlertMask)alertMask;
+
 /**
  * You may call this method when app launched.
  *
@@ -316,6 +328,15 @@
  * `appUpdateSharedObject` will be used to check.
  */
 - (void)checkForcedAppUpdateExists:(BOOL (^)(ESAppUpdateObject *updateObject))handler;
+
+///=============================================
+/// @name Authorization
+///=============================================
+
+/**
+ * Request `AddressBook` authorization if needed. `completion` will callback on the main thread.
+ */
+- (void)requestAddressBookAccessWithCompletion:(ESBasicBlock)completion failure:(ESBasicBlock)failure;
 
 @end
 
