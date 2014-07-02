@@ -188,9 +188,9 @@
 
 - (NSString *)iTunesItemID
 {
-        NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:@"://itunes.apple.com/.*/id(\\d{8,})\\D" options:NSRegularExpressionCaseInsensitive error:NULL];
-        NSTextCheckingResult *match = [reg firstMatchInString:self options:0 range:NSMakeRange(0, self.length)];
-        if (match) {
+        NSRegularExpression *regex = [NSRegularExpression regex:@"://itunes\\.apple\\.com/.*/id(\\d{8,})" caseInsensitive:YES];
+        NSTextCheckingResult *match = [regex firstMatchInString:self options:0 range:NSMakeRange(0, self.length)];
+        if (match && match.numberOfRanges > 1) {
                 return [self substringWithRange:[match rangeAtIndex:1]];
         }
         return nil;
