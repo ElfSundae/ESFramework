@@ -10,11 +10,11 @@
 #import "ESDefines.h"
 
 /**
- * Formats a number of bytes in a human-readable format.
+ * Formats a number of bytes in a human-readable format. e.g. @"12.34 bytes", @"123 GB"
  *
  * Returns a string showing the size in bytes, KBs, MBs, or GBs. Steps with 1024 bytes.
  */
-ES_EXTERN NSString *ESStringFromFileByteCount(unsigned long long fileSize);
+ES_EXTERN NSString *NSStringFromFileSizeBytes(unsigned long long fileSize);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

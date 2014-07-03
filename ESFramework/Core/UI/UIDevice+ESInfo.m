@@ -16,7 +16,7 @@
 #import "OpenUDID.h"
 #import "ESValue.h"
 
-NSString *ESStringFromFileByteCount(unsigned long long fileSize)
+NSString *NSStringFromFileSizeBytes(unsigned long long fileSize)
 {
         // !!: NSByteCountFormatter uses 1000 step length
         // if (NSClassFromString(@"NSByteCountFormatter")) {
@@ -24,7 +24,7 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
         // }
 
         static const NSString *sOrdersOfMagnitude[] = {
-                @"bytes", @"KB", @"MB", @"GB"
+                @"bytes", @"KB", @"MB", @"GB", @"TB", @"PB"
         };
         static const NSUInteger sOrdersOfMagnitude_len = sizeof(sOrdersOfMagnitude) / sizeof(sOrdersOfMagnitude[0]);
         
@@ -180,7 +180,7 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
 
 + (NSString *)diskFreeSizeString
 {
-        return ESStringFromFileByteCount([self diskFreeSize]);
+        return NSStringFromFileSizeBytes([self diskFreeSize]);
 }
 
 + (unsigned long long)diskTotalSize
@@ -193,7 +193,7 @@ NSString *ESStringFromFileByteCount(unsigned long long fileSize)
 
 + (NSString *)diskTotalSizeString
 {
-        return ESStringFromFileByteCount([self diskTotalSize]);
+        return NSStringFromFileSizeBytes([self diskTotalSize]);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
