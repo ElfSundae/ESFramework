@@ -194,7 +194,7 @@
 		E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */; };
 		E723C5D31978CF7B006B98A3 /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D11978CF7B006B98A3 /* ogg.framework */; };
 		E723C5D41978CF7B006B98A3 /* speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D21978CF7B006B98A3 /* speex.framework */; };
-		E723C5EC19790425006B98A3 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5EA19790425006B98A3 /* UIView+WebCacheOperation.h */; };
+		E723C5EC19790425006B98A3 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5EA19790425006B98A3 /* UIView+WebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C5ED19790425006B98A3 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */; };
 		E72A54B51931B41400264130 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72A54B61931B41400264130 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */; };
