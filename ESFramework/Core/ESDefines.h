@@ -84,8 +84,8 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 #define ES_STOPWATCH_BEGIN(begin_time_var, log, ...)  uint64_t begin_time_var = mach_absolute_time(); NSLog(@"<ES_STOPWATCH_BEGIN> " log, ##__VA_ARGS__);
 #define ES_STOPWATCH_END(begin_time_var, log, ...)    NSLog(@"<ES_STOPWATCH_END> %llums = " log, ((mach_absolute_time() - begin_time_var) * __es_timebase_info__.numer / __es_timebase_info__.denom / 1000 ), ##__VA_ARGS__ );
 #else
-#define ES_STOPWATCH_BEGIN(begin_time_var)
-#define ES_STOPWATCH_END(begin_time_var)
+#define ES_STOPWATCH_BEGIN(begin_time_var, log, ...)
+#define ES_STOPWATCH_END(begin_time_var, log, ...)
 #endif
 
 
