@@ -212,8 +212,8 @@
 		E746C14A19299E6100AD082C /* UINavigationController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14819299E6100AD082C /* UINavigationController+ESAdditions.m */; };
 		E746C1501929A20800AD082C /* UIViewController+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E746C14E1929A20800AD082C /* UIViewController+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14F1929A20800AD082C /* UIViewController+ESAdditions.m */; };
-		E75A686E192C736D0073705C /* GTMNSString+HTML.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A686C192C736D0073705C /* GTMNSString+HTML.h */; };
-		E75A686F192C736D0073705C /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A686D192C736D0073705C /* GTMNSString+HTML.m */; };
+		E75A686E192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A686C192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.h */; };
+		E75A686F192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A686D192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m */; };
 		E75A6872192D4E110073705C /* UIImageView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75A6873192D4E110073705C /* UIImageView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */; };
 		E75A687A192D58670073705C /* NSObject+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6878192D58670073705C /* NSObject+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -573,8 +573,8 @@
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
-		E75A686C192C736D0073705C /* GTMNSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+HTML.h"; sourceTree = "<group>"; };
-		E75A686D192C736D0073705C /* GTMNSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+HTML.m"; sourceTree = "<group>"; };
+		E75A686C192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+GTMNSStringHTMLAdditions.h"; sourceTree = "<group>"; };
+		E75A686D192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GTMNSStringHTMLAdditions.m"; sourceTree = "<group>"; };
 		E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ESAdditions.h"; sourceTree = "<group>"; };
 		E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESAdditions.m"; sourceTree = "<group>"; };
 		E75A6878192D58670073705C /* NSObject+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAdditions.h"; sourceTree = "<group>"; };
@@ -1168,8 +1168,8 @@
 			children = (
 				E7792AAE19105E410060D935 /* ESApp+ESInternal.h */,
 				E7792AAF19105E410060D935 /* ESApp+ESInternal.m */,
-				E75A686C192C736D0073705C /* GTMNSString+HTML.h */,
-				E75A686D192C736D0073705C /* GTMNSString+HTML.m */,
+				E75A686C192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.h */,
+				E75A686D192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m */,
 			);
 			path = _Internal;
 			sourceTree = "<group>";
@@ -1414,7 +1414,7 @@
 				E7F5D9031916DBC800D11273 /* UIAlertView+ESBlock.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
 				E79D85CD192C6A4F0000B57E /* NSError+ESAdditions.h in Headers */,
-				E75A686E192C736D0073705C /* GTMNSString+HTML.h in Headers */,
+				E75A686E192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.h in Headers */,
 				E7F5D9011916DBC800D11273 /* UIActionSheet+ESBlock.h in Headers */,
 				E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */,
 				E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */,
@@ -1842,7 +1842,7 @@
 			files = (
 				E7C9473018FBE0530034B110 /* ESDefines.m in Sources */,
 				E73613E9191AC7A9008A39CD /* NSObject+ESModel.m in Sources */,
-				E75A686F192C736D0073705C /* GTMNSString+HTML.m in Sources */,
+				E75A686F192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m in Sources */,
 				E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */,
 				E76FEAD31929B101001461D1 /* UIColor+ESAdditions.m in Sources */,
 				E746C13C1929422700AD082C /* NSRegularExpression+ESAdditions.m in Sources */,

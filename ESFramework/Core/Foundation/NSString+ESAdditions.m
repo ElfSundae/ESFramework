@@ -9,7 +9,7 @@
 #import "NSString+ESAdditions.h"
 #import "ESDefines.h"
 #import "ESHash.h"
-#import "GTMNSString+HTML.h"
+#import "NSString+GTMNSStringHTMLAdditions.h"
 
 @implementation NSString (ESAdditions)
 

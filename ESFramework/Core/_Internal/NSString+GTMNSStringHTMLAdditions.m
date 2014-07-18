@@ -18,11 +18,11 @@
 //
 
 //#import "GTMDefines.h"
-#import "GTMNSString+HTML.h"
+#import "NSString+GTMNSStringHTMLAdditions.h"
 
 // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
 // Ordered by uchar lowest to highest for bsearching
-static ESHTMLEscapeMap gAsciiHTMLEscapeMap[] = {
+static ESHTMLEscapeMap __es_gAsciiHTMLEscapeMap[] = {
 	// A.2.2. Special characters
 	{ @"&quot;", 34 },
 	{ @"&amp;", 38 },
@@ -306,7 +306,7 @@ static ESHTMLEscapeMap gAsciiHTMLEscapeMap[] = {
 
 // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
 // This is table A.2.2 Special Characters
-static ESHTMLEscapeMap gUnicodeHTMLEscapeMap[] = {
+static ESHTMLEscapeMap __es_gUnicodeHTMLEscapeMap[] = {
 	// C0 Controls and Basic Latin
 	{ @"&quot;", 34 },
 	{ @"&amp;", 38 },
@@ -351,7 +351,7 @@ static ESHTMLEscapeMap gUnicodeHTMLEscapeMap[] = {
 
 
 // Utility function for Bsearching table above
-static int EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
+static int es_EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 	const unichar *uchar = (const unichar*)ucharVoid;
 	const ESHTMLEscapeMap *map = (const ESHTMLEscapeMap*)mapVoid;
 	int val;
@@ -365,7 +365,7 @@ static int EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 	return val;
 }
 
-@implementation NSString (_ES_GTMNSStringHTMLAdditions)
+@implementation NSString (GTMNSStringHTMLAdditions)
 
 - (NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
                                           ofSize:(NSUInteger)size
@@ -408,7 +408,7 @@ static int EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 	for (NSUInteger i = 0; i < length; ++i) {
 		ESHTMLEscapeMap *val = bsearch(&buffer[i], table,
                                              size / sizeof(ESHTMLEscapeMap),
-                                             sizeof(ESHTMLEscapeMap), EscapeMapCompare);
+                                             sizeof(ESHTMLEscapeMap), es_EscapeMapCompare);
 		if (val || (escapeUnicode && buffer[i] > 127)) {
 			if (buffer2Length) {
 				CFStringAppendCharacters((CFMutableStringRef)finalString,
@@ -437,14 +437,14 @@ static int EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 }
 
 - (NSString *)es_gtm_stringByEscapingForHTML {
-	return [self es_gtm_stringByEscapingHTMLUsingTable:gUnicodeHTMLEscapeMap
-                                                 ofSize:sizeof(gUnicodeHTMLEscapeMap)
+	return [self es_gtm_stringByEscapingHTMLUsingTable:__es_gUnicodeHTMLEscapeMap
+                                                 ofSize:sizeof(__es_gUnicodeHTMLEscapeMap)
                                         escapingUnicode:NO];
 } // gtm_stringByEscapingHTML
 
 - (NSString *)es_gtm_stringByEscapingForAsciiHTML {
-	return [self es_gtm_stringByEscapingHTMLUsingTable:gAsciiHTMLEscapeMap
-                                                 ofSize:sizeof(gAsciiHTMLEscapeMap)
+	return [self es_gtm_stringByEscapingHTMLUsingTable:__es_gAsciiHTMLEscapeMap
+                                                 ofSize:sizeof(__es_gAsciiHTMLEscapeMap)
                                         escapingUnicode:YES];
 } // gtm_stringByEscapingAsciiHTML
 
@@ -500,9 +500,9 @@ static int EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 				}
 			} else {
 				// "standard" sequences
-				for (unsigned i = 0; i < sizeof(gAsciiHTMLEscapeMap) / sizeof(ESHTMLEscapeMap); ++i) {
-					if ([escapeString isEqualToString:gAsciiHTMLEscapeMap[i].escapeSequence]) {
-						[finalString replaceCharactersInRange:escapeRange withString:[NSString stringWithCharacters:&gAsciiHTMLEscapeMap[i].uchar length:1]];
+				for (unsigned i = 0; i < sizeof(__es_gAsciiHTMLEscapeMap) / sizeof(ESHTMLEscapeMap); ++i) {
+					if ([escapeString isEqualToString:__es_gAsciiHTMLEscapeMap[i].escapeSequence]) {
+						[finalString replaceCharactersInRange:escapeRange withString:[NSString stringWithCharacters:&__es_gAsciiHTMLEscapeMap[i].uchar length:1]];
 						break;
 					}
 				}
