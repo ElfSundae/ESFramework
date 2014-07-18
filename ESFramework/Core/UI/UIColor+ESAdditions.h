@@ -31,6 +31,32 @@
 + (UIColor *)esGroupTableViewBackgroundColor;
 
 ///=============================================
+/// @name Flat UI Colors
+///=============================================
+
++ (instancetype)alizarinColor;
++ (instancetype)amethystColor;
++ (instancetype)asbestosColor;
++ (instancetype)belizeHoleColor;
++ (instancetype)carrotColor;
++ (instancetype)cloudsColor;
++ (instancetype)concreteColor;
++ (instancetype)emeraldColor;
++ (instancetype)greenSeaColor;
++ (instancetype)midnightBlueColor;
++ (instancetype)nephritisColor;
++ (instancetype)flatOrangeColor;
++ (instancetype)peterRiverColor;
++ (instancetype)pomegranateColor;
++ (instancetype)pumpkinColor;
++ (instancetype)silverColor;
++ (instancetype)sunFlowerColor;
++ (instancetype)turquoiseColor;
++ (instancetype)wetAsphaltColor;
++ (instancetype)wisteriaColor;
+
+
+///=============================================
 /// @name BButton
 ///=============================================
 
