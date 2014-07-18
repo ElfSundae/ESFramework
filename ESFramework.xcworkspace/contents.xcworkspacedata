@@ -26,4 +26,7 @@
    <FileRef
       location = "group:example/Demo/ESDemo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:example/SpeexKitDemo/SpeexKitDemo.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				E723C3FD1977B0FD006B98A3 /* PBXTargetDependency */,
 				E70490FE1925764700C0EDAD /* PBXTargetDependency */,
 				E70491001925764700C0EDAD /* PBXTargetDependency */,
 				E70491021925764700C0EDAD /* PBXTargetDependency */,
@@ -31,6 +32,18 @@
 			);
 			name = Documentation;
 			productName = Documentation;
+		};
+		E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E723C3F01977AF93006B98A3 /* Build configuration list for PBXAggregateTarget "ESFrameworkSpeexKit" */;
+			buildPhases = (
+				E723C3FB1977B0F0006B98A3 /* Build Framework */,
+			);
+			dependencies = (
+				E723C3FA1977B0EF006B98A3 /* PBXTargetDependency */,
+			);
+			name = ESFrameworkSpeexKit;
+			productName = ESFrameworkSpeexKit;
 		};
 		E7926A5618FBC16500CD276F /* ESFrameworkCore */ = {
 			isa = PBXAggregateTarget;
@@ -172,6 +185,15 @@
 		E7089FC0190FEDAB0014C8F6 /* UIDevice+Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */; };
 		E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FC2190FEDF10014C8F6 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FC3190FEDF10014C8F6 /* OpenUDID.m */; };
+		E723C3CE1977AF70006B98A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
+		E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E723C4CA1977B84F006B98A3 /* ESSpeexHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C4C91977B84F006B98A3 /* ESSpeexHeaders.h */; };
+		E723C5751978C334006B98A3 /* ESSpeexPlayer+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5731978C334006B98A3 /* ESSpeexPlayer+Private.h */; };
+		E723C5761978C334006B98A3 /* ESSpeexPlayer+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C5741978C334006B98A3 /* ESSpeexPlayer+Private.m */; };
+		E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */; };
+		E723C5D31978CF7B006B98A3 /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D11978CF7B006B98A3 /* ogg.framework */; };
+		E723C5D41978CF7B006B98A3 /* speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D21978CF7B006B98A3 /* speex.framework */; };
 		E72A54B51931B41400264130 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72A54B61931B41400264130 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */; };
 		E72F6A4719177D79006893A5 /* ESRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A4519177D79006893A5 /* ESRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -339,6 +361,20 @@
 			remoteGlobalIDString = E7B8B3D01924FF7200196EE9;
 			remoteInfo = ESFrameworkDatabase;
 		};
+		E723C3F91977B0EF006B98A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E723C3CC1977AF70006B98A3;
+			remoteInfo = SpeexKit;
+		};
+		E723C3FC1977B0FD006B98A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E723C3EF1977AF93006B98A3;
+			remoteInfo = ESFrameworkSpeexKit;
+		};
 		E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
@@ -370,6 +406,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E723C3CB1977AF70006B98A3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B8B3A11924FE1200196EE9 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +542,17 @@
 		E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+Reachability.m"; path = "Vendor/Reachability/UIDevice+Reachability.m"; sourceTree = "<group>"; };
 		E7089FC2190FEDF10014C8F6 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenUDID.h; path = Vendor/OpenUDID/OpenUDID.h; sourceTree = "<group>"; };
 		E7089FC3190FEDF10014C8F6 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenUDID.m; path = Vendor/OpenUDID/OpenUDID.m; sourceTree = "<group>"; };
+		E723C3CD1977AF70006B98A3 /* ESFrameworkSpeexKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkSpeexKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFrameworkSpeexKit.h; sourceTree = "<group>"; };
+		E723C3FE1977B11E006B98A3 /* SpeexKitDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpeexKitDebug.xcconfig; sourceTree = "<group>"; };
+		E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpeexKitRelease.xcconfig; sourceTree = "<group>"; };
+		E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexPlayer.h; sourceTree = "<group>"; };
+		E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexPlayer.m; sourceTree = "<group>"; };
+		E723C4C91977B84F006B98A3 /* ESSpeexHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexHeaders.h; sourceTree = "<group>"; };
+		E723C5731978C334006B98A3 /* ESSpeexPlayer+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESSpeexPlayer+Private.h"; sourceTree = "<group>"; };
+		E723C5741978C334006B98A3 /* ESSpeexPlayer+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESSpeexPlayer+Private.m"; sourceTree = "<group>"; };
+		E723C5D11978CF7B006B98A3 /* ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ogg.framework; sourceTree = "<group>"; };
+		E723C5D21978CF7B006B98A3 /* speex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = speex.framework; sourceTree = "<group>"; };
 		E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
 		E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		E72F6A4519177D79006893A5 /* ESRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRouter.h; sourceTree = "<group>"; };
@@ -574,7 +630,6 @@
 		E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUIKit.h; sourceTree = "<group>"; };
 		E7BCF7BD18F996F5006D920E /* ESFrameworkNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7BCF7BF18F99735006D920E /* NetworkDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = NetworkDebug.xcconfig; sourceTree = "<group>"; };
-		E7C9469A18FBC9500034B110 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E7C946A618FBC9EC0034B110 /* Bundle.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Bundle.xcconfig; sourceTree = "<group>"; };
 		E7C9472D18FBE0530034B110 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E7C9472E18FBE0530034B110 /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
@@ -652,6 +707,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E723C3CA1977AF70006B98A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E723C5D41978CF7B006B98A3 /* speex.framework in Frameworks */,
+				E723C5D31978CF7B006B98A3 /* ogg.framework in Frameworks */,
+				E723C3CE1977AF70006B98A3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B8B3A01924FE1200196EE9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -917,6 +982,39 @@
 			name = OpenUDID;
 			sourceTree = "<group>";
 		};
+		E723C3CF1977AF70006B98A3 /* SpeexKit */ = {
+			isa = PBXGroup;
+			children = (
+				E723C5D01978CF7B006B98A3 /* Vendor */,
+				E723C4C81977B824006B98A3 /* _Internal */,
+				E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */,
+				E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */,
+				E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */,
+				E723C3FE1977B11E006B98A3 /* SpeexKitDebug.xcconfig */,
+				E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */,
+			);
+			path = SpeexKit;
+			sourceTree = "<group>";
+		};
+		E723C4C81977B824006B98A3 /* _Internal */ = {
+			isa = PBXGroup;
+			children = (
+				E723C4C91977B84F006B98A3 /* ESSpeexHeaders.h */,
+				E723C5731978C334006B98A3 /* ESSpeexPlayer+Private.h */,
+				E723C5741978C334006B98A3 /* ESSpeexPlayer+Private.m */,
+			);
+			path = _Internal;
+			sourceTree = "<group>";
+		};
+		E723C5D01978CF7B006B98A3 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				E723C5D11978CF7B006B98A3 /* ogg.framework */,
+				E723C5D21978CF7B006B98A3 /* speex.framework */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
 		E72F6A55191825AB006893A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -935,6 +1033,7 @@
 				E7BCF69618F98BF5006D920E /* UIKit */,
 				E7BCF7BE18F9971C006D920E /* Network */,
 				E7B8B3A51924FE1200196EE9 /* Database */,
+				E723C3CF1977AF70006B98A3 /* SpeexKit */,
 				E7522E5418EC43030087B95E /* Config */,
 				E7522DF218EC427E0087B95E /* Frameworks */,
 				E7522DF118EC427E0087B95E /* Products */,
@@ -948,6 +1047,7 @@
 				E7BCF6D218F98C27006D920E /* ESFrameworkUIKit.a */,
 				E7BCF7BD18F996F5006D920E /* ESFrameworkNetwork.a */,
 				E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */,
+				E723C3CD1977AF70006B98A3 /* ESFrameworkSpeexKit.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -956,7 +1056,6 @@
 			isa = PBXGroup;
 			children = (
 				E7522DF318EC427E0087B95E /* Foundation.framework */,
-				E7C9469A18FBC9500034B110 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1248,6 +1347,17 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		E723C3F61977B0BD006B98A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E723C4CA1977B84F006B98A3 /* ESSpeexHeaders.h in Headers */,
+				E723C5751978C334006B98A3 /* ESSpeexPlayer+Private.h in Headers */,
+				E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */,
+				E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B8B3C71924FE2B00196EE9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1389,6 +1499,26 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E723C3CC1977AF70006B98A3 /* SpeexKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E723C3E91977AF70006B98A3 /* Build configuration list for PBXNativeTarget "SpeexKit" */;
+			buildPhases = (
+				E723C3C91977AF70006B98A3 /* Sources */,
+				E723C3CA1977AF70006B98A3 /* Frameworks */,
+				E723C3CB1977AF70006B98A3 /* CopyFiles */,
+				E723C3F61977B0BD006B98A3 /* Headers */,
+				E723C3F81977B0DA006B98A3 /* Prepare Framework */,
+				E723C5E31978D074006B98A3 /* Copy Ogg&Speex Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeexKit;
+			productName = SpeexKit;
+			productReference = E723C3CD1977AF70006B98A3 /* ESFrameworkSpeexKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		E7B8B3A21924FE1200196EE9 /* Database */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7B8B3C11924FE1300196EE9 /* Build configuration list for PBXNativeTarget "Database" */;
@@ -1491,11 +1621,13 @@
 				E7BCF69918F98C27006D920E /* UIKit */,
 				E7BCF7B418F996F5006D920E /* Network */,
 				E7B8B3A21924FE1200196EE9 /* Database */,
+				E723C3CC1977AF70006B98A3 /* SpeexKit */,
 				E7926A5618FBC16500CD276F /* ESFrameworkCore */,
 				E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */,
 				E7C946C118FBD4560034B110 /* ESFrameworkNetwork */,
 				E7089FC619102A890014C8F6 /* Documentation */,
 				E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */,
+				E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */,
 				E70490F71925763200C0EDAD /* AllFrameworks */,
 			);
 		};
@@ -1514,6 +1646,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh ../scripts/build_docs.sh";
 			shellScript = "";
+		};
+		E723C3F81977B0DA006B98A3 /* Prepare Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Prepare Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh ../scripts/prepare_framework.sh";
+			shellScript = "";
+		};
+		E723C3FB1977B0F0006B98A3 /* Build Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build Framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh ../scripts/build_framework.sh";
+			shellScript = "";
+		};
+		E723C5E31978D074006B98A3 /* Copy Ogg&Speex Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Ogg&Speex Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -a \"${SOURCE_ROOT}/SpeexKit/Vendor/ogg.framework/Headers/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\ncp -a \"${SOURCE_ROOT}/SpeexKit/Vendor/speex.framework/Headers/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"";
 		};
 		E7926A4B18FBBBB900CD276F /* Prepare Framework */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1630,6 +1804,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E723C3C91977AF70006B98A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
+				E723C5761978C334006B98A3 /* ESSpeexPlayer+Private.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B8B39F1924FE1200196EE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1792,6 +1975,16 @@
 			target = E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */;
 			targetProxy = E70491031925764700C0EDAD /* PBXContainerItemProxy */;
 		};
+		E723C3FA1977B0EF006B98A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E723C3CC1977AF70006B98A3 /* SpeexKit */;
+			targetProxy = E723C3F91977B0EF006B98A3 /* PBXContainerItemProxy */;
+		};
+		E723C3FD1977B0FD006B98A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */;
+			targetProxy = E723C3FC1977B0FD006B98A3 /* PBXContainerItemProxy */;
+		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7BCF61D18F98614006D920E /* Core */;
@@ -1837,6 +2030,36 @@
 			name = Debug;
 		};
 		E7089FC819102A890014C8F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E723C3EA1977AF70006B98A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E723C3FE1977B11E006B98A3 /* SpeexKitDebug.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/SpeexKit.dst;
+			};
+			name = Debug;
+		};
+		E723C3EB1977AF70006B98A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/SpeexKit.dst;
+			};
+			name = Release;
+		};
+		E723C3F11977AF93006B98A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E723C3F21977AF93006B98A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2046,6 +2269,24 @@
 			buildConfigurations = (
 				E7089FC719102A890014C8F6 /* Debug */,
 				E7089FC819102A890014C8F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E723C3E91977AF70006B98A3 /* Build configuration list for PBXNativeTarget "SpeexKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E723C3EA1977AF70006B98A3 /* Debug */,
+				E723C3EB1977AF70006B98A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E723C3F01977AF93006B98A3 /* Build configuration list for PBXAggregateTarget "ESFrameworkSpeexKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E723C3F11977AF93006B98A3 /* Debug */,
+				E723C3F21977AF93006B98A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
