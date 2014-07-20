@@ -13,11 +13,11 @@
 			buildPhases = (
 			);
 			dependencies = (
-				E723C3FD1977B0FD006B98A3 /* PBXTargetDependency */,
 				E70490FE1925764700C0EDAD /* PBXTargetDependency */,
 				E70491001925764700C0EDAD /* PBXTargetDependency */,
 				E70491021925764700C0EDAD /* PBXTargetDependency */,
 				E70491041925764700C0EDAD /* PBXTargetDependency */,
+				E723C638197955E9006B98A3 /* PBXTargetDependency */,
 			);
 			name = AllFrameworks;
 			productName = AllFrameworks;
@@ -185,17 +185,25 @@
 		E7089FC0190FEDAB0014C8F6 /* UIDevice+Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */; };
 		E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FC2190FEDF10014C8F6 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FC3190FEDF10014C8F6 /* OpenUDID.m */; };
+		E714CD56197AF149000B6C94 /* ESSpeexInternalRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E714CD54197AF149000B6C94 /* ESSpeexInternalRecorder.h */; };
+		E714CD57197AF149000B6C94 /* ESSpeexInternalRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E714CD55197AF149000B6C94 /* ESSpeexInternalRecorder.m */; };
 		E723C3CE1977AF70006B98A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E723C4CA1977B84F006B98A3 /* ESSpeexHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C4C91977B84F006B98A3 /* ESSpeexHeaders.h */; };
-		E723C5751978C334006B98A3 /* ESSpeexPlayer+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5731978C334006B98A3 /* ESSpeexPlayer+Private.h */; };
-		E723C5761978C334006B98A3 /* ESSpeexPlayer+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C5741978C334006B98A3 /* ESSpeexPlayer+Private.m */; };
 		E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */; };
 		E723C5D31978CF7B006B98A3 /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D11978CF7B006B98A3 /* ogg.framework */; };
 		E723C5D41978CF7B006B98A3 /* speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D21978CF7B006B98A3 /* speex.framework */; };
 		E723C5EC19790425006B98A3 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5EA19790425006B98A3 /* UIView+WebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C5ED19790425006B98A3 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */; };
+		E723C60119795179006B98A3 /* ESSpeexInternalPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */; };
+		E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */; };
+		E723C645197963FE006B98A3 /* ESAudioInternalPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C644197963FE006B98A3 /* ESAudioInternalPlayer.h */; };
+		E723C64919796499006B98A3 /* ESAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C64719796499006B98A3 /* ESAudioPlayer.h */; };
+		E723C64A19796499006B98A3 /* ESAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C64819796499006B98A3 /* ESAudioPlayer.m */; };
+		E723C64D197964A8006B98A3 /* ESAudioRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C64B197964A8006B98A3 /* ESAudioRecorder.h */; };
+		E723C64E197964A8006B98A3 /* ESAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C64C197964A8006B98A3 /* ESAudioRecorder.m */; };
+		E723C673197AF04A006B98A3 /* ESSpeexRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */; };
 		E72A54B51931B41400264130 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72A54B61931B41400264130 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */; };
 		E72F6A4719177D79006893A5 /* ESRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A4519177D79006893A5 /* ESRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -368,12 +376,19 @@
 			remoteGlobalIDString = E723C3CC1977AF70006B98A3;
 			remoteInfo = SpeexKit;
 		};
-		E723C3FC1977B0FD006B98A3 /* PBXContainerItemProxy */ = {
+		E723C637197955E9006B98A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E723C3EF1977AF93006B98A3;
 			remoteInfo = ESFrameworkSpeexKit;
+		};
+		E723C662197ABED3006B98A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7BCF61D18F98614006D920E;
+			remoteInfo = Core;
 		};
 		E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -542,19 +557,27 @@
 		E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+Reachability.m"; path = "Vendor/Reachability/UIDevice+Reachability.m"; sourceTree = "<group>"; };
 		E7089FC2190FEDF10014C8F6 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenUDID.h; path = Vendor/OpenUDID/OpenUDID.h; sourceTree = "<group>"; };
 		E7089FC3190FEDF10014C8F6 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenUDID.m; path = Vendor/OpenUDID/OpenUDID.m; sourceTree = "<group>"; };
+		E714CD54197AF149000B6C94 /* ESSpeexInternalRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexInternalRecorder.h; sourceTree = "<group>"; };
+		E714CD55197AF149000B6C94 /* ESSpeexInternalRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexInternalRecorder.m; sourceTree = "<group>"; };
 		E723C3CD1977AF70006B98A3 /* ESFrameworkSpeexKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkSpeexKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFrameworkSpeexKit.h; sourceTree = "<group>"; };
 		E723C3FE1977B11E006B98A3 /* SpeexKitDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpeexKitDebug.xcconfig; sourceTree = "<group>"; };
 		E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpeexKitRelease.xcconfig; sourceTree = "<group>"; };
 		E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexPlayer.h; sourceTree = "<group>"; };
 		E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexPlayer.m; sourceTree = "<group>"; };
-		E723C4C91977B84F006B98A3 /* ESSpeexHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexHeaders.h; sourceTree = "<group>"; };
-		E723C5731978C334006B98A3 /* ESSpeexPlayer+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESSpeexPlayer+Private.h"; sourceTree = "<group>"; };
-		E723C5741978C334006B98A3 /* ESSpeexPlayer+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESSpeexPlayer+Private.m"; sourceTree = "<group>"; };
 		E723C5D11978CF7B006B98A3 /* ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ogg.framework; sourceTree = "<group>"; };
 		E723C5D21978CF7B006B98A3 /* speex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = speex.framework; sourceTree = "<group>"; };
 		E723C5EA19790425006B98A3 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "Vendor/SDWebImage/SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "Vendor/SDWebImage/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexInternalPlayer.h; sourceTree = "<group>"; };
+		E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexInternalPlayer.m; sourceTree = "<group>"; };
+		E723C644197963FE006B98A3 /* ESAudioInternalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAudioInternalPlayer.h; sourceTree = "<group>"; };
+		E723C64719796499006B98A3 /* ESAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAudioPlayer.h; sourceTree = "<group>"; };
+		E723C64819796499006B98A3 /* ESAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAudioPlayer.m; sourceTree = "<group>"; };
+		E723C64B197964A8006B98A3 /* ESAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAudioRecorder.h; sourceTree = "<group>"; };
+		E723C64C197964A8006B98A3 /* ESAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAudioRecorder.m; sourceTree = "<group>"; };
+		E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexRecorder.h; sourceTree = "<group>"; };
+		E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexRecorder.m; sourceTree = "<group>"; };
 		E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
 		E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		E72F6A4519177D79006893A5 /* ESRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRouter.h; sourceTree = "<group>"; };
@@ -992,6 +1015,8 @@
 				E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */,
 				E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */,
 				E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */,
+				E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */,
+				E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */,
 				E723C3FE1977B11E006B98A3 /* SpeexKitDebug.xcconfig */,
 				E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */,
 			);
@@ -1001,9 +1026,10 @@
 		E723C4C81977B824006B98A3 /* _Internal */ = {
 			isa = PBXGroup;
 			children = (
-				E723C4C91977B84F006B98A3 /* ESSpeexHeaders.h */,
-				E723C5731978C334006B98A3 /* ESSpeexPlayer+Private.h */,
-				E723C5741978C334006B98A3 /* ESSpeexPlayer+Private.m */,
+				E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */,
+				E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */,
+				E714CD54197AF149000B6C94 /* ESSpeexInternalRecorder.h */,
+				E714CD55197AF149000B6C94 /* ESSpeexInternalRecorder.m */,
 			);
 			path = _Internal;
 			sourceTree = "<group>";
@@ -1015,6 +1041,25 @@
 				E723C5D21978CF7B006B98A3 /* speex.framework */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		E723C643197963DB006B98A3 /* _Internal */ = {
+			isa = PBXGroup;
+			children = (
+				E723C644197963FE006B98A3 /* ESAudioInternalPlayer.h */,
+			);
+			path = _Internal;
+			sourceTree = "<group>";
+		};
+		E723C64619796459006B98A3 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				E723C64719796499006B98A3 /* ESAudioPlayer.h */,
+				E723C64819796499006B98A3 /* ESAudioPlayer.m */,
+				E723C64B197964A8006B98A3 /* ESAudioRecorder.h */,
+				E723C64C197964A8006B98A3 /* ESAudioRecorder.m */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		E72F6A55191825AB006893A5 /* Controllers */ = {
@@ -1215,6 +1260,8 @@
 			isa = PBXGroup;
 			children = (
 				E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */,
+				E723C64619796459006B98A3 /* Audio */,
+				E723C643197963DB006B98A3 /* _Internal */,
 				E72F6A55191825AB006893A5 /* Controllers */,
 				E7089FA4190FECA70014C8F6 /* Views */,
 				E793AB8C18FDDC3F00487E34 /* Animations */,
@@ -1351,10 +1398,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E723C4CA1977B84F006B98A3 /* ESSpeexHeaders.h in Headers */,
-				E723C5751978C334006B98A3 /* ESSpeexPlayer+Private.h in Headers */,
 				E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */,
+				E723C60119795179006B98A3 /* ESSpeexInternalPlayer.h in Headers */,
+				E714CD56197AF149000B6C94 /* ESSpeexInternalRecorder.h in Headers */,
 				E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */,
+				E723C673197AF04A006B98A3 /* ESSpeexRecorder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1446,6 +1494,7 @@
 				E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */,
 				E70493D71927207B00C0EDAD /* ESWebViewController.h in Headers */,
 				E7089FB3190FED0E0014C8F6 /* SwipeView.h in Headers */,
+				E723C64919796499006B98A3 /* ESAudioPlayer.h in Headers */,
 				E704935B1925B15100C0EDAD /* ESButton.h in Headers */,
 				E76FEB11192C3101001461D1 /* ESRefreshControl.h in Headers */,
 				E70493571925B15100C0EDAD /* ESBadgeView.h in Headers */,
@@ -1454,7 +1503,9 @@
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E76FEAF7192B0B7B001461D1 /* ESTextView.h in Headers */,
 				E70493621925B19200C0EDAD /* ESErrorView.h in Headers */,
+				E723C64D197964A8006B98A3 /* ESAudioRecorder.h in Headers */,
 				E70493DE192720DC00C0EDAD /* ESMoviePlayerViewController.h in Headers */,
+				E723C645197963FE006B98A3 /* ESAudioInternalPlayer.h in Headers */,
 				E76FEB0C192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1513,6 +1564,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E723C663197ABED3006B98A3 /* PBXTargetDependency */,
 			);
 			name = SpeexKit;
 			productName = SpeexKit;
@@ -1625,9 +1677,9 @@
 				E7926A5618FBC16500CD276F /* ESFrameworkCore */,
 				E7C946BD18FBD4480034B110 /* ESFrameworkUIKit */,
 				E7C946C118FBD4560034B110 /* ESFrameworkNetwork */,
-				E7089FC619102A890014C8F6 /* Documentation */,
 				E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */,
 				E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */,
+				E7089FC619102A890014C8F6 /* Documentation */,
 				E70490F71925763200C0EDAD /* AllFrameworks */,
 			);
 		};
@@ -1808,8 +1860,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E714CD57197AF149000B6C94 /* ESSpeexInternalRecorder.m in Sources */,
 				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
-				E723C5761978C334006B98A3 /* ESSpeexPlayer+Private.m in Sources */,
+				E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */,
+				E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1897,6 +1951,7 @@
 			files = (
 				E70493631925B19200C0EDAD /* ESErrorView.m in Sources */,
 				E76FEAFD192B59B8001461D1 /* ESStatusOverlayView.m in Sources */,
+				E723C64A19796499006B98A3 /* ESAudioPlayer.m in Sources */,
 				E76FEB0D192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m in Sources */,
 				E76FEAEC192A93DC001461D1 /* ESActivityLabel.m in Sources */,
 				E7DBC832192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m in Sources */,
@@ -1912,6 +1967,7 @@
 				E70493D81927207B00C0EDAD /* ESWebViewController.m in Sources */,
 				E76FEB1A192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m in Sources */,
 				E70493DF192720DC00C0EDAD /* ESMoviePlayerViewController.m in Sources */,
+				E723C64E197964A8006B98A3 /* ESAudioRecorder.m in Sources */,
 				E704935E1925B15100C0EDAD /* UIProgressView+ESStyle.m in Sources */,
 				E76FEB12192C3101001461D1 /* ESRefreshControl.m in Sources */,
 				E70493581925B15100C0EDAD /* ESBadgeView.m in Sources */,
@@ -1980,10 +2036,15 @@
 			target = E723C3CC1977AF70006B98A3 /* SpeexKit */;
 			targetProxy = E723C3F91977B0EF006B98A3 /* PBXContainerItemProxy */;
 		};
-		E723C3FD1977B0FD006B98A3 /* PBXTargetDependency */ = {
+		E723C638197955E9006B98A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */;
-			targetProxy = E723C3FC1977B0FD006B98A3 /* PBXContainerItemProxy */;
+			targetProxy = E723C637197955E9006B98A3 /* PBXContainerItemProxy */;
+		};
+		E723C663197ABED3006B98A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7BCF61D18F98614006D920E /* Core */;
+			targetProxy = E723C662197ABED3006B98A3 /* PBXContainerItemProxy */;
 		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
