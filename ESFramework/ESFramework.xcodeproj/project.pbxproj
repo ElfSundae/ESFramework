@@ -191,8 +191,6 @@
 		E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */; };
-		E723C5D31978CF7B006B98A3 /* ogg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D11978CF7B006B98A3 /* ogg.framework */; };
-		E723C5D41978CF7B006B98A3 /* speex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E723C5D21978CF7B006B98A3 /* speex.framework */; };
 		E723C5EC19790425006B98A3 /* UIView+WebCacheOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5EA19790425006B98A3 /* UIView+WebCacheOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C5ED19790425006B98A3 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */; };
 		E723C60119795179006B98A3 /* ESSpeexInternalPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */; };
@@ -264,6 +262,26 @@
 		E79D85C1192C48760000B57E /* ESTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = E79D85C0192C48760000B57E /* ESTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E79D85CD192C6A4F0000B57E /* NSError+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E79D85CB192C6A4F0000B57E /* NSError+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E79D85CE192C6A4F0000B57E /* NSError+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E79D85CC192C6A4F0000B57E /* NSError+ESAdditions.m */; };
+		E7AF665A197EA6D70038976B /* config_types.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6643197EA6D70038976B /* config_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF665B197EA6D70038976B /* ogg.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6644197EA6D70038976B /* ogg.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF665C197EA6D70038976B /* os_types.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6645197EA6D70038976B /* os_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF665D197EA6D70038976B /* libogg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6647197EA6D70038976B /* libogg.a */; };
+		E7AF665E197EA6D70038976B /* speex.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF664B197EA6D70038976B /* speex.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF665F197EA6D70038976B /* speex_bits.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF664C197EA6D70038976B /* speex_bits.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6660197EA6D70038976B /* speex_buffer.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF664D197EA6D70038976B /* speex_buffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6661197EA6D70038976B /* speex_callbacks.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF664E197EA6D70038976B /* speex_callbacks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6662197EA6D70038976B /* speex_config_types.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF664F197EA6D70038976B /* speex_config_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6663197EA6D70038976B /* speex_echo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6650197EA6D70038976B /* speex_echo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6664197EA6D70038976B /* speex_header.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6651197EA6D70038976B /* speex_header.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6665197EA6D70038976B /* speex_jitter.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6652197EA6D70038976B /* speex_jitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6666197EA6D70038976B /* speex_preprocess.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6653197EA6D70038976B /* speex_preprocess.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6667197EA6D70038976B /* speex_resampler.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6654197EA6D70038976B /* speex_resampler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6668197EA6D70038976B /* speex_stereo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6655197EA6D70038976B /* speex_stereo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF6669197EA6D70038976B /* speex_types.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6656197EA6D70038976B /* speex_types.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AF666A197EA6D70038976B /* libspeex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6658197EA6D70038976B /* libspeex.a */; };
+		E7AF666B197EA6D70038976B /* libspeexdsp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6659197EA6D70038976B /* libspeexdsp.a */; };
+		E7AF6670197EF1980038976B /* ESSpeexKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */; };
+		E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */; };
 		E7B8B35E1924E22B00196EE9 /* ESCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B35C1924E22B00196EE9 /* ESCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B8B35F1924E22B00196EE9 /* ESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B35D1924E22B00196EE9 /* ESCache.m */; };
 		E7B8B3A41924FE1200196EE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -382,13 +400,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E723C3EF1977AF93006B98A3;
 			remoteInfo = ESFrameworkSpeexKit;
-		};
-		E723C662197ABED3006B98A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E7BCF61D18F98614006D920E;
-			remoteInfo = Core;
 		};
 		E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -565,8 +576,6 @@
 		E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SpeexKitRelease.xcconfig; sourceTree = "<group>"; };
 		E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexPlayer.h; sourceTree = "<group>"; };
 		E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexPlayer.m; sourceTree = "<group>"; };
-		E723C5D11978CF7B006B98A3 /* ogg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ogg.framework; sourceTree = "<group>"; };
-		E723C5D21978CF7B006B98A3 /* speex.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = speex.framework; sourceTree = "<group>"; };
 		E723C5EA19790425006B98A3 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "Vendor/SDWebImage/SDWebImage/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "Vendor/SDWebImage/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexInternalPlayer.h; sourceTree = "<group>"; };
@@ -640,6 +649,26 @@
 		E79D85C0192C48760000B57E /* ESTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewDataSource.h; sourceTree = "<group>"; };
 		E79D85CB192C6A4F0000B57E /* NSError+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+ESAdditions.h"; sourceTree = "<group>"; };
 		E79D85CC192C6A4F0000B57E /* NSError+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+ESAdditions.m"; sourceTree = "<group>"; };
+		E7AF6643197EA6D70038976B /* config_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config_types.h; sourceTree = "<group>"; };
+		E7AF6644197EA6D70038976B /* ogg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ogg.h; sourceTree = "<group>"; };
+		E7AF6645197EA6D70038976B /* os_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_types.h; sourceTree = "<group>"; };
+		E7AF6647197EA6D70038976B /* libogg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libogg.a; sourceTree = "<group>"; };
+		E7AF664B197EA6D70038976B /* speex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex.h; sourceTree = "<group>"; };
+		E7AF664C197EA6D70038976B /* speex_bits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_bits.h; sourceTree = "<group>"; };
+		E7AF664D197EA6D70038976B /* speex_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_buffer.h; sourceTree = "<group>"; };
+		E7AF664E197EA6D70038976B /* speex_callbacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_callbacks.h; sourceTree = "<group>"; };
+		E7AF664F197EA6D70038976B /* speex_config_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_config_types.h; sourceTree = "<group>"; };
+		E7AF6650197EA6D70038976B /* speex_echo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_echo.h; sourceTree = "<group>"; };
+		E7AF6651197EA6D70038976B /* speex_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_header.h; sourceTree = "<group>"; };
+		E7AF6652197EA6D70038976B /* speex_jitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_jitter.h; sourceTree = "<group>"; };
+		E7AF6653197EA6D70038976B /* speex_preprocess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_preprocess.h; sourceTree = "<group>"; };
+		E7AF6654197EA6D70038976B /* speex_resampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_resampler.h; sourceTree = "<group>"; };
+		E7AF6655197EA6D70038976B /* speex_stereo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_stereo.h; sourceTree = "<group>"; };
+		E7AF6656197EA6D70038976B /* speex_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = speex_types.h; sourceTree = "<group>"; };
+		E7AF6658197EA6D70038976B /* libspeex.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libspeex.a; sourceTree = "<group>"; };
+		E7AF6659197EA6D70038976B /* libspeexdsp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libspeexdsp.a; sourceTree = "<group>"; };
+		E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexKitDefines.h; sourceTree = "<group>"; };
+		E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexKitDefines.m; sourceTree = "<group>"; };
 		E7B8B35C1924E22B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCache.h; sourceTree = "<group>"; };
 		E7B8B35D1924E22B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCache.m; sourceTree = "<group>"; };
 		E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -734,9 +763,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E723C5D41978CF7B006B98A3 /* speex.framework in Frameworks */,
-				E723C5D31978CF7B006B98A3 /* ogg.framework in Frameworks */,
 				E723C3CE1977AF70006B98A3 /* Foundation.framework in Frameworks */,
+				E7AF666A197EA6D70038976B /* libspeex.a in Frameworks */,
+				E7AF665D197EA6D70038976B /* libogg.a in Frameworks */,
+				E7AF666B197EA6D70038976B /* libspeexdsp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,6 +1056,8 @@
 		E723C4C81977B824006B98A3 /* _Internal */ = {
 			isa = PBXGroup;
 			children = (
+				E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */,
+				E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */,
 				E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */,
 				E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */,
 				E714CD54197AF149000B6C94 /* ESSpeexInternalRecorder.h */,
@@ -1037,8 +1069,8 @@
 		E723C5D01978CF7B006B98A3 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				E723C5D11978CF7B006B98A3 /* ogg.framework */,
-				E723C5D21978CF7B006B98A3 /* speex.framework */,
+				E7AF6640197EA6D70038976B /* libogg-1.3.2 */,
+				E7AF6648197EA6D70038976B /* speex-1.2rc1 */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -1228,6 +1260,86 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		E7AF6640197EA6D70038976B /* libogg-1.3.2 */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6641197EA6D70038976B /* include */,
+				E7AF6646197EA6D70038976B /* lib */,
+			);
+			path = "libogg-1.3.2";
+			sourceTree = "<group>";
+		};
+		E7AF6641197EA6D70038976B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6642197EA6D70038976B /* ogg */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E7AF6642197EA6D70038976B /* ogg */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6643197EA6D70038976B /* config_types.h */,
+				E7AF6644197EA6D70038976B /* ogg.h */,
+				E7AF6645197EA6D70038976B /* os_types.h */,
+			);
+			path = ogg;
+			sourceTree = "<group>";
+		};
+		E7AF6646197EA6D70038976B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6647197EA6D70038976B /* libogg.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		E7AF6648197EA6D70038976B /* speex-1.2rc1 */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6649197EA6D70038976B /* include */,
+				E7AF6657197EA6D70038976B /* lib */,
+			);
+			path = "speex-1.2rc1";
+			sourceTree = "<group>";
+		};
+		E7AF6649197EA6D70038976B /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF664A197EA6D70038976B /* speex */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E7AF664A197EA6D70038976B /* speex */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF664B197EA6D70038976B /* speex.h */,
+				E7AF664C197EA6D70038976B /* speex_bits.h */,
+				E7AF664D197EA6D70038976B /* speex_buffer.h */,
+				E7AF664E197EA6D70038976B /* speex_callbacks.h */,
+				E7AF664F197EA6D70038976B /* speex_config_types.h */,
+				E7AF6650197EA6D70038976B /* speex_echo.h */,
+				E7AF6651197EA6D70038976B /* speex_header.h */,
+				E7AF6652197EA6D70038976B /* speex_jitter.h */,
+				E7AF6653197EA6D70038976B /* speex_preprocess.h */,
+				E7AF6654197EA6D70038976B /* speex_resampler.h */,
+				E7AF6655197EA6D70038976B /* speex_stereo.h */,
+				E7AF6656197EA6D70038976B /* speex_types.h */,
+			);
+			path = speex;
+			sourceTree = "<group>";
+		};
+		E7AF6657197EA6D70038976B /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				E7AF6658197EA6D70038976B /* libspeex.a */,
+				E7AF6659197EA6D70038976B /* libspeexdsp.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		E7B8B3A51924FE1200196EE9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -1399,10 +1511,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */,
+				E7AF6668197EA6D70038976B /* speex_stereo.h in Headers */,
+				E7AF665B197EA6D70038976B /* ogg.h in Headers */,
+				E7AF6670197EF1980038976B /* ESSpeexKitDefines.h in Headers */,
 				E723C60119795179006B98A3 /* ESSpeexInternalPlayer.h in Headers */,
+				E7AF6663197EA6D70038976B /* speex_echo.h in Headers */,
+				E7AF665E197EA6D70038976B /* speex.h in Headers */,
+				E7AF665F197EA6D70038976B /* speex_bits.h in Headers */,
+				E7AF6664197EA6D70038976B /* speex_header.h in Headers */,
+				E7AF6669197EA6D70038976B /* speex_types.h in Headers */,
 				E714CD56197AF149000B6C94 /* ESSpeexInternalRecorder.h in Headers */,
 				E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */,
+				E7AF665A197EA6D70038976B /* config_types.h in Headers */,
+				E7AF6665197EA6D70038976B /* speex_jitter.h in Headers */,
+				E7AF665C197EA6D70038976B /* os_types.h in Headers */,
+				E7AF6662197EA6D70038976B /* speex_config_types.h in Headers */,
+				E7AF6666197EA6D70038976B /* speex_preprocess.h in Headers */,
+				E7AF6667197EA6D70038976B /* speex_resampler.h in Headers */,
 				E723C673197AF04A006B98A3 /* ESSpeexRecorder.h in Headers */,
+				E7AF6660197EA6D70038976B /* speex_buffer.h in Headers */,
+				E7AF6661197EA6D70038976B /* speex_callbacks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1564,7 +1692,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				E723C663197ABED3006B98A3 /* PBXTargetDependency */,
 			);
 			name = SpeexKit;
 			productName = SpeexKit;
@@ -1739,7 +1866,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -a \"${SOURCE_ROOT}/SpeexKit/Vendor/ogg.framework/Headers/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\ncp -a \"${SOURCE_ROOT}/SpeexKit/Vendor/speex.framework/Headers/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"";
+			shellScript = "# cp -a \"${SOURCE_ROOT}/SpeexKit/Vendor/ogg.framework/Headers/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"\n# cp -a \"${SOURCE_ROOT}/SpeexKit/Vendor/speex.framework/Headers/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/${FRAMEWORK_VERSION}/Headers\"";
 		};
 		E7926A4B18FBBBB900CD276F /* Prepare Framework */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1861,6 +1988,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E714CD57197AF149000B6C94 /* ESSpeexInternalRecorder.m in Sources */,
+				E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */,
 				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
 				E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */,
 				E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */,
@@ -2040,11 +2168,6 @@
 			isa = PBXTargetDependency;
 			target = E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */;
 			targetProxy = E723C637197955E9006B98A3 /* PBXContainerItemProxy */;
-		};
-		E723C663197ABED3006B98A3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E7BCF61D18F98614006D920E /* Core */;
-			targetProxy = E723C662197ABED3006B98A3 /* PBXContainerItemProxy */;
 		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
