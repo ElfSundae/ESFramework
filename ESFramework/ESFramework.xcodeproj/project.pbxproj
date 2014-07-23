@@ -17,7 +17,6 @@
 				E70491001925764700C0EDAD /* PBXTargetDependency */,
 				E70491021925764700C0EDAD /* PBXTargetDependency */,
 				E70491041925764700C0EDAD /* PBXTargetDependency */,
-				E723C638197955E9006B98A3 /* PBXTargetDependency */,
 			);
 			name = AllFrameworks;
 			productName = AllFrameworks;
@@ -282,8 +281,6 @@
 		E7AF666B197EA6D70038976B /* libspeexdsp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6659197EA6D70038976B /* libspeexdsp.a */; };
 		E7AF6670197EF1980038976B /* ESSpeexKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */; };
 		E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */; };
-		E7AF6674197F00900038976B /* wav_io.c in Sources */ = {isa = PBXBuildFile; fileRef = E7AF6672197F00900038976B /* wav_io.c */; };
-		E7AF6675197F00900038976B /* wav_io.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF6673197F00900038976B /* wav_io.h */; };
 		E7B8B35E1924E22B00196EE9 /* ESCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B35C1924E22B00196EE9 /* ESCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B8B35F1924E22B00196EE9 /* ESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B35D1924E22B00196EE9 /* ESCache.m */; };
 		E7B8B3A41924FE1200196EE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -395,13 +392,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = E723C3CC1977AF70006B98A3;
 			remoteInfo = SpeexKit;
-		};
-		E723C637197955E9006B98A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E723C3EF1977AF93006B98A3;
-			remoteInfo = ESFrameworkSpeexKit;
 		};
 		E7926A5A18FBC16A00CD276F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -671,8 +661,6 @@
 		E7AF6659197EA6D70038976B /* libspeexdsp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libspeexdsp.a; sourceTree = "<group>"; };
 		E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexKitDefines.h; sourceTree = "<group>"; };
 		E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexKitDefines.m; sourceTree = "<group>"; };
-		E7AF6672197F00900038976B /* wav_io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wav_io.c; sourceTree = "<group>"; };
-		E7AF6673197F00900038976B /* wav_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav_io.h; sourceTree = "<group>"; };
 		E7B8B35C1924E22B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCache.h; sourceTree = "<group>"; };
 		E7B8B35D1924E22B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCache.m; sourceTree = "<group>"; };
 		E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1060,8 +1048,6 @@
 		E723C4C81977B824006B98A3 /* _Internal */ = {
 			isa = PBXGroup;
 			children = (
-				E7AF6672197F00900038976B /* wav_io.c */,
-				E7AF6673197F00900038976B /* wav_io.h */,
 				E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */,
 				E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */,
 				E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */,
@@ -1529,7 +1515,6 @@
 				E714CD56197AF149000B6C94 /* ESSpeexInternalRecorder.h in Headers */,
 				E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */,
 				E7AF665A197EA6D70038976B /* config_types.h in Headers */,
-				E7AF6675197F00900038976B /* wav_io.h in Headers */,
 				E7AF6665197EA6D70038976B /* speex_jitter.h in Headers */,
 				E7AF665C197EA6D70038976B /* os_types.h in Headers */,
 				E7AF6662197EA6D70038976B /* speex_config_types.h in Headers */,
@@ -1996,7 +1981,6 @@
 			files = (
 				E714CD57197AF149000B6C94 /* ESSpeexInternalRecorder.m in Sources */,
 				E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */,
-				E7AF6674197F00900038976B /* wav_io.c in Sources */,
 				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
 				E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */,
 				E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */,
@@ -2171,11 +2155,6 @@
 			isa = PBXTargetDependency;
 			target = E723C3CC1977AF70006B98A3 /* SpeexKit */;
 			targetProxy = E723C3F91977B0EF006B98A3 /* PBXContainerItemProxy */;
-		};
-		E723C638197955E9006B98A3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */;
-			targetProxy = E723C637197955E9006B98A3 /* PBXContainerItemProxy */;
 		};
 		E7926A5B18FBC16A00CD276F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
