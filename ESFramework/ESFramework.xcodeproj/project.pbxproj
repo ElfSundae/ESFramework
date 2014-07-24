@@ -281,6 +281,8 @@
 		E7AF666B197EA6D70038976B /* libspeexdsp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AF6659197EA6D70038976B /* libspeexdsp.a */; };
 		E7AF6670197EF1980038976B /* ESSpeexKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */; };
 		E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */; };
+		E7AF671E1980B8A00038976B /* ESSpeexDecoderOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = E7AF671C1980B8A00038976B /* ESSpeexDecoderOperation.h */; };
+		E7AF671F1980B8A00038976B /* ESSpeexDecoderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AF671D1980B8A00038976B /* ESSpeexDecoderOperation.m */; };
 		E7B8B35E1924E22B00196EE9 /* ESCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B8B35C1924E22B00196EE9 /* ESCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B8B35F1924E22B00196EE9 /* ESCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B8B35D1924E22B00196EE9 /* ESCache.m */; };
 		E7B8B3A41924FE1200196EE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
@@ -661,6 +663,8 @@
 		E7AF6659197EA6D70038976B /* libspeexdsp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libspeexdsp.a; sourceTree = "<group>"; };
 		E7AF666E197EF1980038976B /* ESSpeexKitDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexKitDefines.h; sourceTree = "<group>"; };
 		E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexKitDefines.m; sourceTree = "<group>"; };
+		E7AF671C1980B8A00038976B /* ESSpeexDecoderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexDecoderOperation.h; sourceTree = "<group>"; };
+		E7AF671D1980B8A00038976B /* ESSpeexDecoderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexDecoderOperation.m; sourceTree = "<group>"; };
 		E7B8B35C1924E22B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCache.h; sourceTree = "<group>"; };
 		E7B8B35D1924E22B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCache.m; sourceTree = "<group>"; };
 		E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1052,6 +1056,8 @@
 				E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */,
 				E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */,
 				E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */,
+				E7AF671C1980B8A00038976B /* ESSpeexDecoderOperation.h */,
+				E7AF671D1980B8A00038976B /* ESSpeexDecoderOperation.m */,
 				E714CD54197AF149000B6C94 /* ESSpeexInternalRecorder.h */,
 				E714CD55197AF149000B6C94 /* ESSpeexInternalRecorder.m */,
 			);
@@ -1523,6 +1529,7 @@
 				E723C673197AF04A006B98A3 /* ESSpeexRecorder.h in Headers */,
 				E7AF6660197EA6D70038976B /* speex_buffer.h in Headers */,
 				E7AF6661197EA6D70038976B /* speex_callbacks.h in Headers */,
+				E7AF671E1980B8A00038976B /* ESSpeexDecoderOperation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1983,6 +1990,7 @@
 				E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */,
 				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
 				E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */,
+				E7AF671F1980B8A00038976B /* ESSpeexDecoderOperation.m in Sources */,
 				E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
