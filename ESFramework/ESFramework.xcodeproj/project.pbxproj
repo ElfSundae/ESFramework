@@ -253,6 +253,8 @@
 		E76FEB12192C3101001461D1 /* ESRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB10192C3101001461D1 /* ESRefreshControl.m */; };
 		E76FEB19192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEB17192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEB1A192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB18192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m */; };
+		E772C42D1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E772C42E1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E772C42C1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m */; };
 		E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = E7792AAE19105E410060D935 /* ESApp+ESInternal.h */; };
 		E7792AB119105E410060D935 /* ESApp+ESInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = E7792AAF19105E410060D935 /* ESApp+ESInternal.m */; };
 		E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = E793AB8D18FDDC3F00487E34 /* ESAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -635,6 +637,8 @@
 		E76FEB10192C3101001461D1 /* ESRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControl.m; sourceTree = "<group>"; };
 		E76FEB17192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+ESTableViewAdditions.h"; sourceTree = "<group>"; };
 		E76FEB18192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+ESTableViewAdditions.m"; sourceTree = "<group>"; };
+		E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexRecorderSettings.h; sourceTree = "<group>"; };
+		E772C42C1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexRecorderSettings.m; sourceTree = "<group>"; };
 		E7792AAE19105E410060D935 /* ESApp+ESInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+ESInternal.h"; sourceTree = "<group>"; };
 		E7792AAF19105E410060D935 /* ESApp+ESInternal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+ESInternal.m"; sourceTree = "<group>"; };
 		E793AB8D18FDDC3F00487E34 /* ESAnimations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAnimations.h; sourceTree = "<group>"; };
@@ -1043,6 +1047,8 @@
 				E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */,
 				E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */,
 				E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */,
+				E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */,
+				E772C42C1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m */,
 				E723C3FE1977B11E006B98A3 /* SpeexKitDebug.xcconfig */,
 				E723C3FF1977B12B006B98A3 /* SpeexKitRelease.xcconfig */,
 			);
@@ -1516,6 +1522,7 @@
 				E7AF6663197EA6D70038976B /* speex_echo.h in Headers */,
 				E7AF665E197EA6D70038976B /* speex.h in Headers */,
 				E7AF665F197EA6D70038976B /* speex_bits.h in Headers */,
+				E772C42D1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h in Headers */,
 				E7AF6664197EA6D70038976B /* speex_header.h in Headers */,
 				E7AF6669197EA6D70038976B /* speex_types.h in Headers */,
 				E714CD56197AF149000B6C94 /* ESSpeexInternalRecorder.h in Headers */,
@@ -1992,6 +1999,7 @@
 				E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */,
 				E7AF671F1980B8A00038976B /* ESSpeexDecoderOperation.m in Sources */,
 				E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */,
+				E772C42E1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
