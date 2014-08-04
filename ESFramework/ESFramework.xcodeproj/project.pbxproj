@@ -176,6 +176,8 @@
 		E70493E219275A8100C0EDAD /* ESAppUpdateObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493E019275A8100C0EDAD /* ESAppUpdateObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70493E319275A8100C0EDAD /* ESAppUpdateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493E119275A8100C0EDAD /* ESAppUpdateObject.m */; };
 		E70493E719281C1800C0EDAD /* ESApp+Subclassing.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493E519281C1800C0EDAD /* ESApp+Subclassing.m */; };
+		E704F128199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */; };
+		E704F129199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */; };
 		E7089FB3190FED0E0014C8F6 /* SwipeView.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FB1190FED0E0014C8F6 /* SwipeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7089FB4190FED0E0014C8F6 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FB2190FED0E0014C8F6 /* SwipeView.m */; };
 		E7089FBD190FEDAB0014C8F6 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FB9190FEDAB0014C8F6 /* Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -558,6 +560,8 @@
 		E70493E019275A8100C0EDAD /* ESAppUpdateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAppUpdateObject.h; sourceTree = "<group>"; };
 		E70493E119275A8100C0EDAD /* ESAppUpdateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAppUpdateObject.m; sourceTree = "<group>"; };
 		E70493E519281C1800C0EDAD /* ESApp+Subclassing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Subclassing.m"; sourceTree = "<group>"; };
+		E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESSpeexRecorderSettings+Private.h"; sourceTree = "<group>"; };
+		E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESSpeexRecorderSettings+Private.m"; sourceTree = "<group>"; };
 		E7089FB1190FED0E0014C8F6 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwipeView.h; path = UIKit/Vendor/SwipeView/SwipeView/SwipeView.h; sourceTree = SOURCE_ROOT; };
 		E7089FB2190FED0E0014C8F6 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwipeView.m; path = UIKit/Vendor/SwipeView/SwipeView/SwipeView.m; sourceTree = SOURCE_ROOT; };
 		E7089FB9190FEDAB0014C8F6 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Vendor/Reachability/Reachability.h; sourceTree = "<group>"; };
@@ -1069,6 +1073,8 @@
 				E7AF671C1980B8A00038976B /* ESSpeexDecoderOperation.h */,
 				E7AF671D1980B8A00038976B /* ESSpeexDecoderOperation.m */,
 				E772C43319882E6800CDAEE6 /* ESSpeexRecorder+Private.h */,
+				E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */,
+				E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */,
 				E772C43419882E6800CDAEE6 /* ESSpeexRecorder+Private.m */,
 				E772C4371988D0C100CDAEE6 /* ESSpeexEncoderOperation.h */,
 				E772C4381988D0C100CDAEE6 /* ESSpeexEncoderOperation.m */,
@@ -1531,6 +1537,7 @@
 				E7AF665F197EA6D70038976B /* speex_bits.h in Headers */,
 				E772C42D1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h in Headers */,
 				E772C4391988D0C100CDAEE6 /* ESSpeexEncoderOperation.h in Headers */,
+				E704F128199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h in Headers */,
 				E7AF6664197EA6D70038976B /* speex_header.h in Headers */,
 				E7AF6669197EA6D70038976B /* speex_types.h in Headers */,
 				E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */,
@@ -2000,6 +2007,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E704F129199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m in Sources */,
 				E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */,
 				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
 				E772C43A1988D0C100CDAEE6 /* ESSpeexEncoderOperation.m in Sources */,
