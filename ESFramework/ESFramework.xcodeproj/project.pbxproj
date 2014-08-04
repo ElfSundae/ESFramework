@@ -221,8 +221,6 @@
 		E75A6873192D4E110073705C /* UIImageView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */; };
 		E75A687A192D58670073705C /* NSObject+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6878192D58670073705C /* NSObject+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75A687B192D58670073705C /* NSObject+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6879192D58670073705C /* NSObject+ESAdditions.m */; };
-		E7665F261988F428009A21D1 /* ESSpeexDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E7665F251988F428009A21D1 /* ESSpeexDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7665F2819892338009A21D1 /* ESSpeexDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E7665F2719892338009A21D1 /* ESSpeexDefines.m */; };
 		E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */; };
 		E76FEAD01929B101001461D1 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -609,8 +607,6 @@
 		E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESAdditions.m"; sourceTree = "<group>"; };
 		E75A6878192D58670073705C /* NSObject+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAdditions.h"; sourceTree = "<group>"; };
 		E75A6879192D58670073705C /* NSObject+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAdditions.m"; sourceTree = "<group>"; };
-		E7665F251988F428009A21D1 /* ESSpeexDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexDefines.h; sourceTree = "<group>"; };
-		E7665F2719892338009A21D1 /* ESSpeexDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexDefines.m; sourceTree = "<group>"; };
 		E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
@@ -1051,8 +1047,6 @@
 				E723C5D01978CF7B006B98A3 /* Vendor */,
 				E723C4C81977B824006B98A3 /* _Internal */,
 				E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */,
-				E7665F251988F428009A21D1 /* ESSpeexDefines.h */,
-				E7665F2719892338009A21D1 /* ESSpeexDefines.m */,
 				E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */,
 				E723C4011977B2AA006B98A3 /* ESSpeexPlayer.m */,
 				E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */,
@@ -1537,7 +1531,6 @@
 				E7AF665F197EA6D70038976B /* speex_bits.h in Headers */,
 				E772C42D1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h in Headers */,
 				E772C4391988D0C100CDAEE6 /* ESSpeexEncoderOperation.h in Headers */,
-				E7665F261988F428009A21D1 /* ESSpeexDefines.h in Headers */,
 				E7AF6664197EA6D70038976B /* speex_header.h in Headers */,
 				E7AF6669197EA6D70038976B /* speex_types.h in Headers */,
 				E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */,
@@ -2007,7 +2000,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7665F2819892338009A21D1 /* ESSpeexDefines.m in Sources */,
 				E7AF6671197EF1980038976B /* ESSpeexKitDefines.m in Sources */,
 				E723C5CF1978CF54006B98A3 /* ESSpeexPlayer.m in Sources */,
 				E772C43A1988D0C100CDAEE6 /* ESSpeexEncoderOperation.m in Sources */,
