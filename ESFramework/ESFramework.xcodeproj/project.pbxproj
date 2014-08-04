@@ -13,6 +13,7 @@
 			buildPhases = (
 			);
 			dependencies = (
+				E704F12B1990380400B4F41E /* PBXTargetDependency */,
 				E70490FE1925764700C0EDAD /* PBXTargetDependency */,
 				E70491001925764700C0EDAD /* PBXTargetDependency */,
 				E70491021925764700C0EDAD /* PBXTargetDependency */,
@@ -393,6 +394,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E7B8B3D01924FF7200196EE9;
 			remoteInfo = ESFrameworkDatabase;
+		};
+		E704F12A1990380400B4F41E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7522DE818EC427E0087B95E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E723C3EF1977AF93006B98A3;
+			remoteInfo = ESFrameworkSpeexKit;
 		};
 		E723C3F91977B0EF006B98A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -2182,6 +2190,11 @@
 			isa = PBXTargetDependency;
 			target = E7B8B3D01924FF7200196EE9 /* ESFrameworkDatabase */;
 			targetProxy = E70491031925764700C0EDAD /* PBXContainerItemProxy */;
+		};
+		E704F12B1990380400B4F41E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E723C3EF1977AF93006B98A3 /* ESFrameworkSpeexKit */;
+			targetProxy = E704F12A1990380400B4F41E /* PBXContainerItemProxy */;
 		};
 		E723C3FA1977B0EF006B98A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
