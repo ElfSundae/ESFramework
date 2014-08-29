@@ -42,7 +42,7 @@
 
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-        NSLogInfo(@"remote notification:\n%@", userInfo);
+        NSLog(@"remote notification:\n%@", userInfo);
 }
 
 @end

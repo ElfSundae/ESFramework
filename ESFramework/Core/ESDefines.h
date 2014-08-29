@@ -1,12 +1,13 @@
-// ESDefines.h
+//
+//  ESDefines.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-2.
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#ifndef ESFramework_ESDefines_h
-#define ESFramework_ESDefines_h
+#ifndef ESFramework_ESDefines_H
+#define ESFramework_ESDefines_H
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
@@ -24,59 +25,27 @@
 
 #define ES_INLINE       NS_INLINE
 
-///========================================================================================================
+///=============================================
 /// @name Log
-///========================================================================================================
+///=============================================
 #pragma mark - Log
 
+#undef NSLogIf
+
 #ifdef DEBUG
-/**
- * A better NSLog.
- */
-#define NSLog(fmt, ...)		NSLog((@"%@:%d %s " fmt),[[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define NSLog(fmt, ...) NSLog((@"%@:%d %s " fmt),[[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define NSLogIf(condition, fmt, ...)    if((condition)){ NSLog(fmt, ##__VA_ARGS__); }
 #else
 #define NSLog(fmt, ...)
+#define NSLogIf(condition, fmt, ...)
 #endif
 
-/**
- * Log level.
- */
-#define ESLOGLEVEL_INFO     8
-#define ESLOGLEVEL_WARNING  4
-#define ESLOGLEVEL_ERROR    1
-/**
- * The maximum log level, can be changed at runtime.
- *
- * The default value is ESLOGLEVEL_INFO.
- */
-ES_EXTERN NSInteger ESMaxLogLevel;
+///=============================================
+/// @name ES_STOPWATCH
+///=============================================
+#pragma mark - ES_STOPWATCH
 
-#undef NSLogCondition
-#ifdef DEBUG
-/**
- * Only writes log if condition is satisfied.
- */
-#define NSLogCondition(condition, fmt, ...)     if((condition)){ NSLog(fmt, ##__VA_ARGS__); }
-/**
- * Writes log with a prefix, used to debug a specially module.
- *
- * example: `NSLogPrefix(@"<Socket> ", @"Connected to host %@", host);`
- */
-#define NSLogPrefix(prefixString, fmt, ...)     NSLog(@"<"prefixString @"> " fmt, ##__VA_ARGS__);
-#define NSLogInfo(fmt, ...)     if(ESLOGLEVEL_INFO <= ESMaxLogLevel){ NSLogPrefix(@"Info", fmt, ##__VA_ARGS__); }
-#define NSLogWarning(fmt, ...)  if(ESLOGLEVEL_WARNING <= ESMaxLogLevel){ NSLogPrefix(@"❗Warning", fmt, ##__VA_ARGS__); }
-#define NSLogError(fmt, ...)    if(ESLOGLEVEL_ERROR <= ESMaxLogLevel){ NSLogPrefix(@"❌Error", fmt, ##__VA_ARGS__); }
-#else
-#define NSLogCondition(condition, fmt, ...)
-#define NSLogPrefix(prefixString, fmt, ...)
-#define NSLogInfo(fmt, ...)
-#define NSLogWarning(fmt, ...)
-#define NSLogError(fmt, ...)
-#endif // #ifdef DEBUG
-
-/**
- * Calc the execution time.
- */
+// Calc the execution time.
 #include <mach/mach_time.h>
 ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 
@@ -88,111 +57,53 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 #define ES_STOPWATCH_END(begin_time_var, log, ...)
 #endif
 
-
-///========================================================================================================
-/// @name ARC
-///========================================================================================================
-#pragma mark - ARC
-#if __has_feature(objc_arc)
-        #define __es_arc_enabled        1
-        #define ES_STRONG       strong
-        #define ES_AUTORELEASE(exp)
-        #define ES_RELEASE(exp)
-        #define ES_RETAIN(exp)
-#else
-        #define __es_arc_enabled        0
-        #define ES_STRONG       retain
-        #define ES_AUTORELEASE(exp) [exp autorelease]
-        #define ES_RELEASE(exp)  [exp release]; exp = nil;
-        #define ES_RETAIN(exp) [exp retain]
-#endif
-
+///=============================================
+/// @name Weak Object
+///=============================================
+#pragma mark - Weak Object
 /**
- * Release a CoreFoundation object safely.
+ * @code
+ * ESWeak(imageView, weakImageView);
+ * [self testBlock:^(UIImage *image) {
+ *         ESStrong(weakImageView, strongImageView);
+ *         strongImageView.image = image;
+ * }];
+ *
+ * // `ESWeak_` will create a var named `weak_imageView`
+ * ESWeak_(imageView);
+ * [self testBlock:^(UIImage *image) {
+ *         ESStrong_(imageView);
+ * 	_imageView.image = image;
+ * }];
+ *
+ * // weak `self` and strong `self`
+ * ESWeakSelf;
+ * [self testBlock:^(UIImage *image) {
+ *         ESStrongSelf;
+ *         _self.imageView = image;
+ * }];
+ * @endcode
  */
-#define ES_RELEASE_CF_SAFELY(__REF)             if (nil != (__REF)) { CFRelease(__REF); __REF = nil; }
 
-/**
- * Weak property.
- *
- *      @property (nonatomic, es_weak_property) __es_weak id<SomeDelegate> delegate;
- */
-#if TARGET_OS_IPHONE && defined(__IPHONE_5_0) && (__IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_5_0) && __clang__ && (__clang_major__ >= 3)
-        #define ES_SDK_SUPPORTS_WEAK 1
-#elif TARGET_OS_MAC && defined(__MAC_10_7) && (MAC_OS_X_VERSION_MIN_REQUIRED >= __MAC_10_7) && __clang__ && (__clang_major__ >= 3)
-        #define ES_SDK_SUPPORTS_WEAK 1
-#else
-        #define ES_SDK_SUPPORTS_WEAK 0
-#endif
-
-#if ES_SDK_SUPPORTS_WEAK
-        #define __es_weak        __weak
-        #define es_weak_property weak
-#else
-        #if __clang__ && (__clang_major__ >= 3)
-                #define __es_weak __unsafe_unretained
-        #else
-                #define __es_weak
-        #endif
-        #define es_weak_property assign
-#endif
-
-/**
- * Get the var's type
- */
-#define __es_typeof(var)         __typeof(&*var)
-
-/**
- * Weak object.
- *
- *	ESWeak(imageView, weakImageView);
- *	[self testBlock:^(UIImage *image) {
- *	        ESStrong(weakImageView, strongImageView);
- *	        strongImageView.image = image;
- *	}];
- *
- *	// `ESWeak_` will create a var named `weak_imageView`
- *	ESWeak_(imageView);
- *	[self testBlock:^(UIImage *image) {
- *	        ESStrong_(imageView);
- *		_imageView.image = image;
- *	}];
- *
- *	// weak `self` and strong `self`
- *	ESWeakSelf;
- *	[self testBlock:^(UIImage *image) {
- *	        ESStrongSelf;
- *	        _self.imageView = image;
- *	}];
- *
- */
-#if __es_arc_enabled
-        #define ESWeak(var, weakVar) __es_weak __es_typeof(var) weakVar = var
-#else
-        #define ESWeak(var, weakVar) __block __es_typeof(var) weakVar = var
-#endif
-#define ESStrong_DoNotCheckNil(weakVar, _var) __es_typeof(weakVar) _var = weakVar
+#define ESWeak(var, weakVar) __weak __typeof(&*var) weakVar = var
+#define ESStrong_DoNotCheckNil(weakVar, _var) __typeof(&*weakVar) _var = weakVar
 #define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
 
 #define ESWeak_(var) ESWeak(var, weak_##var);
 #define ESStrong_(var) ESStrong(weak_##var, _##var);
 
-/** defines a weak self named "__weakSelf" */
+/** defines a weak `self` named `__weakSelf` */
 #define ESWeakSelf      ESWeak(self, __weakSelf);
-/** defines a strong self named "_self" from "__weakSelf" */
+/** defines a strong `self` named `_self` from `__weakSelf` */
 #define ESStrongSelf    ESStrong(__weakSelf, _self);
 
-///========================================================================================================
+///=============================================
 /// @name SDK Compatibility
-///========================================================================================================
+///=============================================
 #pragma mark - SDK Compatibility
+
 #import <Availability.h>
-/**
- *
- *      #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_7_0
- *      // This code will only compile on versions >= iOS 7.0
- *      #endif
- */
+
 #ifndef __IPHONE_5_0
 #define __IPHONE_5_0     50000
 #endif
@@ -261,10 +172,11 @@ ES_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
  */
 ES_EXTERN BOOL ESOSVersionIsAbove7(void);
 
-///========================================================================================================
+///=============================================
 /// @name UIColor Helper
-///========================================================================================================
+///=============================================
 #pragma mark - UIColor Helper
+
 /// UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
 ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 /// UIColorWithRGB(123.f, 255.f, 200.f);
@@ -277,37 +189,38 @@ ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 /// UIColorWithRGBHexString(@"33AF00", 0.9);
 ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
-///========================================================================================================
+
+///=============================================
 /// @name Singleton
-///========================================================================================================
+///=============================================
 #pragma mark - Singleton
+
 /**
  * Singleton Example:
  *
  * @code
  *
- *	@interface MyLocationManager : NSObject
- *	ES_SINGLETON_DEC(sharedManager);
- *	ES_SINGLETON_DEC(anotherManager);
- *	@end
+ * @interface MyLocationManager : NSObject
+ * ES_SINGLETON_DEC(sharedManager);
+ * ES_SINGLETON_DEC(anotherManager);
+ * @end
  *
- *	@implementation MyLocationManager
- *	ES_SINGLETON_IMP(sharedManager);
- *	ES_SINGLETON_IMP_AS(anotherManager, gAnotherManager);
- *	@end
+ * @implementation MyLocationManager
+ * ES_SINGLETON_IMP(sharedManager);
+ * ES_SINGLETON_IMP_AS(anotherManager, gAnotherManager);
+ * @end
  *
- *	@interface SubclassManager : MyLocationManager
- *	@end
+ * @interface SubclassManager : MyLocationManager
+ * @end
  *
- *	@implementation SubclassManager
- *	 // Subclasses must give a different variable name for evey shared instance.
- *	 // You can use `ES_SINGLETON_IMP_AS` to overwrite the sharedInstance methods.
- *	ES_SINGLETON_IMP_AS(sharedManager, gSharedSubclassManager);
- *	ES_SINGLETON_IMP_AS(anotherManager, gSharedAnotherManager);
- *	@end
- *	
+ * @implementation SubclassManager
+ *  // Subclasses *MUST* give a different variable name for evey shared instance.
+ *  // You can use `ES_SINGLETON_IMP_AS` to overwrite the sharedInstance methods.
+ * ES_SINGLETON_IMP_AS(sharedManager, gSharedSubclassManager);
+ * ES_SINGLETON_IMP_AS(anotherManager, gSharedAnotherManager);
+ * @end
+ *
  * @endcode
- *
  */
 
 /**
@@ -321,7 +234,6 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
  *
  * If you are subclassing a signleton class, make sure overwrite the `sharedInstance` method to 
  * give a different variable name.
- *
  */
 #define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
 + (instancetype)sharedInstance \
@@ -334,23 +246,17 @@ ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, gSharedInstance)
 
 
-///========================================================================================================
+///=============================================
 /// @name Helper
-///========================================================================================================
+///=============================================
 #pragma mark - Helper
 
-ES_EXTERN NSString *const ESErrorDomain;
-/**
- * Bitmask
- */
+/** Bitmask */
 #define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
 #define ESMaskSet(value, flag)          ((value) |= (flag));
 #define ESMaskUnset(value, flag)        ((value) &= ~(flag));
 
-/**
- * Datetime constants
- */
-
+/** Datetime constants */
 #define ES_MINUTE (60)
 #define ES_HOUR   (3600)
 #define ES_DAY    (86400)
@@ -376,31 +282,21 @@ ES_INLINE BOOL ESIsSetWithItems(id object) {
 }
 
 
-/**
- * LocalizedString 
- */
+/** LocalizedString */
 #define ESLocalizedString(key)          NSLocalizedString(key,nil)
 #define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
-/** 
- * Shortcut for ESLocalizedString(key) 
- */
-#undef _
-#define _(key) ESLocalizedString(key)
+/** Shortcut for ESLocalizedString(key) */
+#undef _e
+#define _e(key) ESLocalizedString(key)
 
 ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 
-ES_EXTERN NSBundle *ESFWBundle(void);
-#define ESFWLocalizedString(key)        NSLocalizedStringFromTableInBundle(key, nil, ESFWBundle(), nil)
-#define ESFWLocalizedStringWithFormat(key, ...) [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(key, nil, ESFWBundle(), nil), ##__VA_ARGS__]
-#undef _es_
-#define _es_(key) ESFWLocalizedString(key)
 /**
  * Returns the current statusBar's height, in any orientation.
  */
 ES_INLINE CGFloat ESStatusBarHeight(void) {
         CGRect frame = [UIApplication sharedApplication].statusBarFrame;
-        // Avoid having to check the status bar orientation.
-        return MIN(frame.size.width, frame.size.height);
+        return fminf(frame.size.width, frame.size.height);
 };
 
 /**
@@ -420,49 +316,13 @@ ES_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientati
 ES_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
         return (degrees * M_PI / 180.0);
 }
+
 /**
  * Convert radians to degrees.
  */
 ES_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
         return (radians * 180.0 / M_PI);
 }
-
-/**
- * Returns (x, y, w+dx, h+dy);
- */
-ES_INLINE CGRect ESRectExpandSize(CGRect rect, CGFloat dx, CGFloat dy) {
-        return CGRectMake(rect.origin.x, rect.origin.y, rect.size.width + dx, rect.size.height + dy);
-}
-/**
- * Returns (x+dx, y+dy, w, h);
- */
-ES_INLINE CGRect ESRectExpandOrigin(CGRect rect, CGFloat dx, CGFloat dy) {
-        return CGRectMake(rect.origin.x + dx, rect.origin.y + dy, rect.size.width, rect.size.height);
-}
-
-ES_INLINE CGRect ESRectExpandWithEdgeInsets(CGRect rect, UIEdgeInsets insets) {
-        return UIEdgeInsetsInsetRect(rect, insets);
-}
-
-ES_INLINE CGRect ESRectExpandWithEdgeInsetsFrom(CGRect rect, CGFloat top, CGFloat left, CGFloat bottom, CGFloat right) {
-        return ESRectExpandWithEdgeInsets(rect, UIEdgeInsetsMake(top, left, bottom, right));
-}
-
-/**
- * `return floorf((containerSize.width - size.width) / 2.f);`
- */
-ES_INLINE CGFloat ESSizeCenterX(CGSize containerSize, CGSize size) {
-        return floorf((containerSize.width - size.width) / 2.f);
-}
-
-/**
- * `return floorf((containerSize.height - size.height) / 2.f);`
- */
-ES_INLINE CGFloat ESSizeCenterY(CGSize containerSize, CGSize size) {
-        return floorf((containerSize.height - size.height) / 2.f);
-}
-
-ES_EXTERN CGRect ESFrameOfCenteredViewWithinView(UIView *view, UIView *containerView);
 
 /**
  * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
@@ -482,11 +342,14 @@ ES_EXTERN BOOL ESIsPhoneUI(void);
  */
 ES_EXTERN BOOL ESIsPhoneDevice(void);
 
+/**
+ * [UIScreen mainScreen].scale == 2.0
+ */
 ES_EXTERN BOOL ESIsRetinaScreen(void);
 
 /**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
- * App bundle could includes only `@2x` high resolution images, this method will
+ * App bundle could only includes `@2x` high resolution images, this method will
  * return correct `scaled` image for normal resolution device such as iPad mini 1th.
  * 
  * + Standard: `<ImageName><device_modifier>.<filename_extension>`
@@ -494,9 +357,10 @@ ES_EXTERN BOOL ESIsRetinaScreen(void);
  *
  * The `<device_modifier>` portion is optional and contains either the string `~ipad` or `~iphone`
  *
- * @see https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8
+ * @see Updating Your Image Resource Files https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8
  */
 ES_EXTERN UIImage *UIImageFromCache(NSString *path, ...);
+
 /**
  * Returns a new `UIImage` instance.
  *
@@ -505,9 +369,6 @@ ES_EXTERN UIImage *UIImageFromCache(NSString *path, ...);
 ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
 
 ES_EXTERN NSString *NSStringWith(NSString *format, ...);
-/**
- * It can handle 'xxxx:[//]' or a file path.
- */
 ES_EXTERN NSURL *NSURLWith(NSString *format, ...);
 
 /**
@@ -517,6 +378,9 @@ ES_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
 ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
 ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
+///=============================================
+/// @name Path
+///=============================================
 #pragma mark - Path
 
 ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...);
@@ -535,6 +399,9 @@ ES_EXTERN BOOL ESTouchDirectory(NSString *dir);
 /// Create directories if it doesn't exist, returns `nil` if failed.
 ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
 
+///=============================================
+/// @name Dispatch & Block
+///=============================================
 #pragma mark - Dispatch & Block
 
 typedef void (^ESBasicBlock)(void);
@@ -548,37 +415,33 @@ ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
-
-/**
- * After `delayTime`, dispatch `block` on the main thread.
- */
+/** After `delayTime`, dispatch `block` on the main thread. */
 ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
-#pragma mark - Selector
+///=============================================
+/// @name Invocation
+///=============================================
+#pragma mark - Invocation
 /**
- * e.g.
- *
- *	 + (void)load {
- *	        @autoreleasepool {
- *	                ESSwizzleInstanceMethod([self class], @selector(viewDidLoad), @selector(viewDidLoad_new));
- *	        }
- *	 }
+ * @code
+ * + (void)load {
+ *        @autoreleasepool {
+ *                ESSwizzleInstanceMethod([self class], @selector(viewDidLoad), @selector(viewDidLoad_new));
+ *        }
+ * }
+ * @endcode
  */
-/**
- * Swizzle instance method.
- */
-ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
-/**
- * Swizzle class method.
- * @see ESSwizzleInstanceMethod(Class c, SEL orig, SEL new);
- */
-ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new);
+
+ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
+ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 
 /**
  * Constructs an NSInvocation for a class target or an instance target.
  *
- *      NSInvocation *invocation = ESInvocation(self, @selector(foo:));
- *      NSInvocation *invocation = ESInvocation([self class], @selector(classMethod:));
+ * @code
+ * NSInvocation *invocation = ESInvocation(self, @selector(foo:));
+ * NSInvocation *invocation = ESInvocation([self class], @selector(classMethod:));
+ * @endcode
  *
  */
 ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
@@ -586,70 +449,74 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
 /**
  * Call a selector with unknown numbers of arguments.
  *
- * 	 // trun off compiler warning if there is.
- * 	#pragma clang diagnostic push
- * 	#pragma clang diagnostic ignored "-Wundeclared-selector"
+ * @code
+ *  // trun off compiler warning if there is.
+ * #pragma clang diagnostic push
+ * #pragma clang diagnostic ignored "-Wundeclared-selector"
  *
- * 	 ESInvokeSelector(self, @selector(test), NULL);
+ *  ESInvokeSelector(self, @selector(test), NULL);
  *
- * 	 NSInteger result = 0;
- * 	 ESInvokeSelector([Foo class], @selector(classMethod:), &result, CGSizeMake(10, 20));
+ *  NSInteger result = 0;
+ *  ESInvokeSelector([Foo class], @selector(classMethod:), &result, CGSizeMake(10, 20));
  *
- * 	 if (ESInvokeSelector(someObject, @selector(someSelector:::), NULL, arg1, arg2, arg3)) {
- * 	        // Invoked OK
- * 	 }
+ *  if (ESInvokeSelector(someObject, @selector(someSelector:::), NULL, arg1, arg2, arg3)) {
+ *         // Invoked OK
+ *  }
  *
- * 	#pragma clang diagnostic pop
+ * #pragma clang diagnostic pop
+ * @endcode
  *
  */
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 
-///========================================================================================================
+///=============================================
 /// @name NSObject(ESAssociatedObject)
-///========================================================================================================
+///=============================================
 #pragma mark - NSObject(ESAssociatedObject)
 /**
  * NSObject(ESAssociatedObject)
  * 
  * Get/Set associated objects. It's useful to add properties to a class's category.
  *
- * 	 @interface SomeClass (additions)
- * 	 @property (nonatomic, es_weak_property) __es_weak id<SomeDelegate> delegate;
- * 	 @property (nonatomic, strong) UIView *view;
- * 	 @end
+ * @code
+ * @interface SomeClass (additions)
+ * @property (nonatomic, weak) __weak id<SomeDelegate> delegate;
+ * @property (nonatomic, strong) UIView *view;
+ * @end
  *
- * 	 // SomeClass+additions.m
+ * // SomeClass+additions.m
  *
- * 	 static char _delegateKey;
- * 	 // OR
- * 	 static const void *_viewKey = &_viewKey;
+ * static char _delegateKey;
+ * // OR
+ * static const void *_viewKey = &_viewKey;
  *
- * 	 @implementation SomeClass (additions)
- * 	 - (id<SomeDelegate>)delegate
- * 	 {
- * 	        return [self getAssociatedObject:&_delegateKey];
- * 	 }
- * 	 - (void)setDelegate:(id<SomeDelegate>)delegate
- * 	 {
- * 	        [self setAssociatedObject_nonatomic_weak:delegate key:&_delegateKey];
- * 	 }
- * 	 - (UIView *)view
- * 	 {
- * 	        return [self getAssociatedObject:_viewKey];
- * 	 }
- * 	 - (void)setView:(UIView *)view
- * 	 {
- * 	        [self setAssociatedObject_nonatomic_retain:view key:_viewKey];
- * 	 }
- * 	 @end
+ * @implementation SomeClass (additions)
+ * - (id<SomeDelegate>)delegate
+ * {
+ *        return [self getAssociatedObject:&_delegateKey];
+ * }
+ * - (void)setDelegate:(id<SomeDelegate>)delegate
+ * {
+ *        [self setAssociatedObject_nonatomic_weak:delegate key:&_delegateKey];
+ * }
+ * - (UIView *)view
+ * {
+ *        return [self getAssociatedObject:_viewKey];
+ * }
+ * - (void)setView:(UIView *)view
+ * {
+ *        [self setAssociatedObject_nonatomic_retain:view key:_viewKey];
+ * }
+ * @end
+ * @endcode
  *
  */
 @interface NSObject (ESAssociatedObject)
 - (id)getAssociatedObject:(const void *)key;
 + (id)getAssociatedObject:(const void *)key;
-/// Since `OBJC_ASSOCIATION_ASSIGN` is not a `zeroing weak references`.
-- (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key;
-+ (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key;
+/// `OBJC_ASSOCIATION_ASSIGN` is not a `zeroing weak references`.
+- (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key;
++ (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key;
 - (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
 + (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
 - (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
@@ -662,27 +529,25 @@ ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 + (void)removeAllAssociatedObjects;
 @end
 
-///========================================================================================================
+///=============================================
 /// @name Notification with block
-///========================================================================================================
+///=============================================
 #pragma mark - Notification with block
-/**
- * Notification with block
- */
+
 typedef void (^ESNotificationHandler)(NSNotification *notification, NSDictionary *userInfo);
 @interface NSObject (ESObserver)
 /**
  * Add `self` to `NSNotificationCenter` as an observer.
- * `handler` may be `nil` to stop handling the notification.
+ * `handler` may be `nil` to stop handling that notification.
  * If `handler` and `name` both are `nil`, it will remove all observers from `NSNotificationCenter`.
  */
 - (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler;
 @end
 
-///========================================================================================================
-/// @name NSUserDefaults+ESHelper
-///========================================================================================================
-#pragma mark - NSUserDefaults+ESHelper
+///=============================================
+/// @name NSUserDefaults (ESHelper)
+///=============================================
+#pragma mark - NSUserDefaults (ESHelper)
 @interface NSUserDefaults (ESHelper)
 /**
  * Get object for the given key.
@@ -698,4 +563,4 @@ typedef void (^ESNotificationHandler)(NSNotification *notification, NSDictionary
 + (void)removeObjectForKey:(NSString *)key;
 @end
 
-#endif // ESFramework_ESDefines_h
+#endif // ESFramework_ESDefines_H

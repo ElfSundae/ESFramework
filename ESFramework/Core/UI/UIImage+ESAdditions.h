@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-@import UIKit;
-@import CoreGraphics;
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 /**
  * @see http://vocaro.com/trevor/blog/2009/10/12/resize-a-uiimage-the-right-way/

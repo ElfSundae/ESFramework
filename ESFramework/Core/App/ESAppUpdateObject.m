@@ -16,10 +16,10 @@
 {
         self = [super init];
         if (self) {
-                _alertTitle = _(@"Check Updates");
+                _alertTitle = ESLocalizedString(@"Check Updates");
                 _alertTitleForUpdateExists = _alertTitle;
-                _alertUpdateButtonTitle = _(@"Update Now");
-                _alertCancelButtonTitle = _(@"Cancel");
+                _alertUpdateButtonTitle = ESLocalizedString(@"Update Now");
+                _alertCancelButtonTitle = ESLocalizedString(@"Cancel");
         }
         return self;
 }

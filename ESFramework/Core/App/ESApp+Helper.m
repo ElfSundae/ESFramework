@@ -51,7 +51,7 @@
 #if DEBUG
         SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");
         if ([[UIApplication sharedApplication] respondsToSelector:memoryWarningSel]) {
-                NSLogInfo(@"Simulate low memory warning");
+                printf("Simulate low memory warning\n");
                 // Supress the warning. -Wundeclared-selector was used while ARC is enabled.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

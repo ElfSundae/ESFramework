@@ -221,7 +221,10 @@
 - (void)moveToCenterOfSuperview
 {
         if (self.superview) {
-                self.frame = ESFrameOfCenteredViewWithinView(self, self.superview);
+                self.frame = CGRectMake(floorf((self.superview.bounds.size.width - self.frame.size.width) / 2.f),
+                                        floorf((self.superview.bounds.size.height - self.frame.size.height) / 2.f),
+                                        self.frame.size.width,
+                                        self.frame.size.height);
         }
 }
 

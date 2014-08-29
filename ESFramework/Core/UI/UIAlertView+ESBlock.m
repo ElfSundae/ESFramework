@@ -100,7 +100,7 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 + (void)showWithTitle:(NSString *)title message:(NSString *)message
 {
-        [self showWithTitle:title message:message cancelButtonTitle:_(@"OK")];
+        [self showWithTitle:title message:message cancelButtonTitle:ESLocalizedString(@"OK")];
 }
 
 + (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle

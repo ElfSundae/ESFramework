@@ -9,30 +9,48 @@
 #import "ESDefines.h"
 #import <objc/runtime.h>
 
-#if !__es_arc_enabled
-#error "ESFramework requires ARC support."
-#endif
-#if !__has_feature(objc_instancetype)
-#error "ESFramework requires Xcode5 to build."
-#endif
-
-NSInteger ESMaxLogLevel = ESLOGLEVEL_INFO;
-
-NSString *const ESErrorDomain = @"com.0x123.ESErrorDomain";
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 mach_timebase_info_data_t __es_timebase_info__;
 
 @interface ESDefinesInternal : NSObject
 @end
 
 @implementation ESDefinesInternal
-+ (void)load {
+
++ (void)load
+{
         (void)mach_timebase_info(&__es_timebase_info__);
 }
+
 @end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - SDK Compatibility
+
+NSString *ESOSVersion(void)
+{
+        static NSString *_deviceOSVersion = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                _deviceOSVersion = [[UIDevice currentDevice] systemVersion];
+        });
+        return _deviceOSVersion;
+}
+
+BOOL ESOSVersionIsAtLeast(double versionNumber)
+{
+        return (floor(NSFoundationVersionNumber) >= versionNumber);
+}
+
+BOOL ESOSVersionIsAbove(double versionNumber)
+{
+        return (floor(NSFoundationVersionNumber) > versionNumber);
+}
+
+BOOL ESOSVersionIsAbove7(void)
+{
+        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -78,35 +96,6 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - SDK Compatibility
-
-NSString *ESOSVersion(void)
-{
-        static NSString *_deviceOSVersion = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _deviceOSVersion = [[UIDevice currentDevice] systemVersion];
-        });
-        return _deviceOSVersion;
-}
-
-BOOL ESOSVersionIsAtLeast(double versionNumber)
-{
-        return (floor(NSFoundationVersionNumber) >= versionNumber);
-}
-
-BOOL ESOSVersionIsAbove(double versionNumber)
-{
-        return (floor(NSFoundationVersionNumber) > versionNumber);
-}
-
-BOOL ESOSVersionIsAbove7(void)
-{
-        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 
 
 NSBundle *ESBundleWithName(NSString *bundleName)
@@ -116,16 +105,6 @@ NSBundle *ESBundleWithName(NSString *bundleName)
                 return [NSBundle bundleWithPath:path];
         }
         return nil;
-}
-
-NSBundle *ESFWBundle(void)
-{
-        static NSBundle *__es_bundle = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __es_bundle = ESBundleWithName(@"ESFrameworkResources.bundle");
-        });
-        return __es_bundle;
 }
 
 UIDeviceOrientation ESDeviceOrientation(void)
@@ -148,16 +127,6 @@ CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orienta
         } else {
                 return CGAffineTransformIdentity;
         }
-}
-
-CGRect ESFrameOfCenteredViewWithinView(UIView *view, UIView *containerView)
-{
-        CGRect rect;
-        CGSize containerSize = containerView.bounds.size;
-        rect.size = view.frame.size;
-        rect.origin.x = ESSizeCenterX(containerSize, rect.size);
-        rect.origin.y = ESSizeCenterY(containerSize, rect.size);
-        return rect;
 }
 
 BOOL ESIsPadUI(void)
@@ -370,18 +339,6 @@ NSString *ESPathForMainBundleResource(NSString *relativePath, ...)
         return ESPathForBundleResource([NSBundle mainBundle], path);
 }
 
-NSString *ESPathForESFWBundleResource(NSString *relativePath, ...)
-{
-        NSString *path = nil;
-        if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                path = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
-        }
-        return ESPathForBundleResource(ESFWBundle(), path);
-}
-
 NSString *ESPathForDocuments(void)
 {
         static NSString *docs = nil;
@@ -539,7 +496,6 @@ void ESDispatchOnBackgroundQueue(dispatch_block_t block)
         ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block);
 }
 
-
 void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
 {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)),
@@ -692,7 +648,7 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSObject+ESAssociatedObject
 @interface _ESWeakAssociatedObject : NSObject
-@property (nonatomic, es_weak_property) __es_weak id weakObject;
+@property (nonatomic, weak) __weak id weakObject;
 @end
 @implementation _ESWeakAssociatedObject
 @end
@@ -716,7 +672,7 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         return obj;
 }
 
-- (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key
+- (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key
 {
         _ESWeakAssociatedObject *object = objc_getAssociatedObject(self, key);
         if (!object) {
@@ -725,7 +681,7 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         }
         object.weakObject = weakObject;
 }
-+ (void)setAssociatedObject_nonatomic_weak:(__es_weak id)weakObject key:(const void *)key
++ (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key
 {
         _ESWeakAssociatedObject *object = objc_getAssociatedObject(self, key);
         if (!object) {
