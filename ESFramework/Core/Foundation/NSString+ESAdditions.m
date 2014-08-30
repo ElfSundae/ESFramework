@@ -288,18 +288,32 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         NSArray *components = [subString componentsSeparatedByString:@"&"];
         for (NSString *str in components) {
                 NSArray *keyValue = [str componentsSeparatedByString:@"="];
-                NSString *key = nil;
-                NSString *value = nil;
                 const NSUInteger count = keyValue.count;
-                if (count == 1 || count == 2) {
-                        key = [(NSString *)keyValue[0] URLDecode];
-                        if (2 == count) {
-                                value = [(NSString *)keyValue[1] URLDecode];
+                
+                if (count > 0) {
+                        NSString *key = keyValue[0];
+                        if ([key hasSuffix:@"[]"]) {
+                                // array
+                                key = [key substringToIndex:key.length - 2];
+                                key = [key URLDecode];
+                                if (![result[key] isKindOfClass:[NSMutableArray class]]) {
+                                        result[key] = [NSMutableArray array];
+                                }
+                        } else {
+                                key = [key URLDecode];
+                                result[key] = [NSNull null];
+                        }
+                        
+                        if (count > 1) {
+                                NSString *value = [keyValue[1] URLDecode];
+                                if ([result[key] isKindOfClass:[NSMutableArray class]]) {
+                                        [(NSMutableArray *)result[key] addObject:value];
+                                } else {
+                                        result[key] = value;
+                                }
                         }
                 }
-                if (key) {
-                        result[key] = (value ?: [NSNull null]);
-                }
+              
         }
         return (NSDictionary *)result;
 }

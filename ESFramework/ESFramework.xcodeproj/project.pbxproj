@@ -222,8 +222,6 @@
 		E75A686F192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A686D192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m */; };
 		E75A6872192D4E110073705C /* UIImageView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75A6873192D4E110073705C /* UIImageView+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */; };
-		E75A687A192D58670073705C /* NSObject+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6878192D58670073705C /* NSObject+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E75A687B192D58670073705C /* NSObject+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A6879192D58670073705C /* NSObject+ESAdditions.m */; };
 		E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */; };
 		E76FEAD01929B101001461D1 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -617,8 +615,6 @@
 		E75A686D192C736D0073705C /* NSString+GTMNSStringHTMLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+GTMNSStringHTMLAdditions.m"; sourceTree = "<group>"; };
 		E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ESAdditions.h"; sourceTree = "<group>"; };
 		E75A6871192D4E110073705C /* UIImageView+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESAdditions.m"; sourceTree = "<group>"; };
-		E75A6878192D58670073705C /* NSObject+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAdditions.h"; sourceTree = "<group>"; };
-		E75A6879192D58670073705C /* NSObject+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAdditions.m"; sourceTree = "<group>"; };
 		E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
@@ -1460,8 +1456,6 @@
 			isa = PBXGroup;
 			children = (
 				E739698A19199CAD00F56B78 /* ESFoundation.h */,
-				E75A6878192D58670073705C /* NSObject+ESAdditions.h */,
-				E75A6879192D58670073705C /* NSObject+ESAdditions.m */,
 				E7F5D8DA1916DB0B00D11273 /* NSString+ESAdditions.h */,
 				E7F5D8DB1916DB0B00D11273 /* NSString+ESAdditions.m */,
 				E746C13E1929484D00AD082C /* NSMutableString+ESAdditions.m */,
@@ -1606,7 +1600,6 @@
 				E72F6A4719177D79006893A5 /* ESRouter.h in Headers */,
 				E746C13B1929422700AD082C /* NSRegularExpression+ESAdditions.h in Headers */,
 				E76FEADC1929B178001461D1 /* ESArrowButton.h in Headers */,
-				E75A687A192D58670073705C /* NSObject+ESAdditions.h in Headers */,
 				E7F5D8F01916DB0B00D11273 /* NSURL+ESAdditions.h in Headers */,
 				E76FEAD51929B101001461D1 /* UIGestureRecognizer+ESAdditions.h in Headers */,
 				E76FEAD41929B101001461D1 /* UIControl+ESAdditions.h in Headers */,
@@ -2065,7 +2058,6 @@
 				E7F5D8EF1916DB0B00D11273 /* NSTimer+ESAdditions.m in Sources */,
 				E7F5D9041916DBC800D11273 /* UIAlertView+ESBlock.m in Sources */,
 				E76FEAD11929B101001461D1 /* UIBarButtonItem+ESAdditions.m in Sources */,
-				E75A687B192D58670073705C /* NSObject+ESAdditions.m in Sources */,
 				E70493E319275A8100C0EDAD /* ESAppUpdateObject.m in Sources */,
 				E76FEAE11929B2DC001461D1 /* UITableView+ESAdditions.m in Sources */,
 				E7F74667194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m in Sources */,

@@ -105,7 +105,7 @@ typedef struct {
 - (NSString *)appReviewLinkForAppStore;
 
 /**
- * Add percent escapes for characters in @":/?#[]@!$&'()*+,;="
+ * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
  */
 - (NSString *)URLEncode;
 /**
