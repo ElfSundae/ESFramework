@@ -9,13 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ESDefines.h"
 
-/**
- * Formats a number of bytes in a human-readable format. e.g. @"12.34 bytes", @"123 GB"
- *
- * Returns a string showing the size in bytes, KBs, MBs, or GBs. Steps with 1024 bytes.
- */
-ES_EXTERN NSString *NSStringFromFileSizeBytes(unsigned long long fileSize);
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
@@ -68,6 +61,8 @@ ES_EXTERN NSString *NSStringFromFileSizeBytes(unsigned long long fileSize);
  * @see [OpenUDID](https://github.com/ylechelle/OpenUDID)
  */
 + (NSString *)deviceIdentifier;
+
++ (NSString *)IDFA;
 
 /**
  * Detect whether this device has been jailbroken.

@@ -105,22 +105,25 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 #import <Availability.h>
 
 #ifndef __IPHONE_5_0
-#define __IPHONE_5_0     50000
+#define __IPHONE_5_0    50000
 #endif
 #ifndef __IPHONE_5_1
-#define __IPHONE_5_1     50100
+#define __IPHONE_5_1    50100
 #endif
 #ifndef __IPHONE_6_0
-#define __IPHONE_6_0     60000
+#define __IPHONE_6_0    60000
 #endif
 #ifndef __IPHONE_6_1
-#define __IPHONE_6_1     60100
+#define __IPHONE_6_1    60100
 #endif
 #ifndef __IPHONE_7_0
-#define __IPHONE_7_0     70000
+#define __IPHONE_7_0    70000
 #endif
 #ifndef __IPHONE_7_1
-#define __IPHONE_7_1     70100
+#define __IPHONE_7_1    70100
+#endif
+#ifndef __IPHONE_8_0
+#define __IPHONE_8_0    80000
 #endif
 
 #ifndef NSFoundationVersionNumber_iOS_5_0
@@ -136,9 +139,15 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 #define NSFoundationVersionNumber_iOS_6_1  993.00
 #endif
 #ifndef NSFoundationVersionNumber_iOS_7_0
-//TODO: Correct _iOS_7_0 value from Apple officer when the next SDK distributed.
-#define NSFoundationVersionNumber_iOS_7_0  1047.22
+#define NSFoundationVersionNumber_iOS_7_0 1047.20
 #endif
+#ifndef NSFoundationVersionNumber_iOS_7_1
+#define NSFoundationVersionNumber_iOS_7_1 1047.25
+#endif
+#ifndef NSFoundationVersionNumber_iOS_8_0
+#define NSFoundationVersionNumber_iOS_8_0 1140.11
+#endif
+
 
 /**
  * Marks a method or property as deprecated to the compiler.
@@ -370,6 +379,14 @@ ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
 
 ES_EXTERN NSString *NSStringWith(NSString *format, ...);
 ES_EXTERN NSURL *NSURLWith(NSString *format, ...);
+
+/**
+ * Formats a number of bytes in a human-readable format. e.g. @"12.34 bytes", @"123 GB"
+ *
+ * Returns a string showing the size in bytes, KBs, MBs, or GBs. Steps with 1024 bytes.
+ */
+ES_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
+ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
 
 /**
  * Creates a mutable set which does not retain references to the objects it contains.

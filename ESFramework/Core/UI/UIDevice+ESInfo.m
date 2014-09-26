@@ -15,33 +15,7 @@
 #import <mach/mach.h>
 #import "OpenUDID.h"
 #import "ESValue.h"
-
-NSString *NSStringFromFileSizeBytes(unsigned long long fileSize)
-{
-        // !!: NSByteCountFormatter uses 1000 step length
-        // if (NSClassFromString(@"NSByteCountFormatter")) {
-        //         return [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
-        // }
-
-        static const NSString *sOrdersOfMagnitude[] = {
-                @"bytes", @"KB", @"MB", @"GB", @"TB", @"PB"
-        };
-        static const NSUInteger sOrdersOfMagnitude_len = sizeof(sOrdersOfMagnitude) / sizeof(sOrdersOfMagnitude[0]);
-        
-        int multiplyFactor = 0;
-        long double convertedValue = (long double)fileSize;
-        while (convertedValue > 1024.0 && multiplyFactor < sOrdersOfMagnitude_len) {
-                convertedValue /= 1024;
-                ++multiplyFactor;
-        }
-        
-        const NSString *token = sOrdersOfMagnitude[multiplyFactor];
-        if (multiplyFactor > 0) {
-                return [NSString stringWithFormat:@"%.2Lf %@", convertedValue, token];
-        } else {
-                return [NSString stringWithFormat:@"%lld %@", fileSize, token];
-        }
-}
+@import AdSupport;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -133,6 +107,20 @@ NSString *NSStringFromFileSizeBytes(unsigned long long fileSize)
         return @"0000000000000000000000000000000000000000";
 }
 
++ (NSString *)IDFA
+{
+#if !TARGET_IPHONE_SIMULATOR
+        NSString *idfa = nil;
+        Class cls = NSClassFromString(@"ASIdentifierManager");
+        if (cls) {
+                idfa = [[[cls sharedManager] advertisingIdentifier] UUIDString];
+        }
+        return idfa ?: @"";
+#else
+        return @"00000000-0000-0000-0000-000000000000";
+#endif
+}
+
 + (BOOL)isJailBroken
 {
         static BOOL __isJailBroken = NO;
@@ -180,7 +168,7 @@ NSString *NSStringFromFileSizeBytes(unsigned long long fileSize)
 
 + (NSString *)diskFreeSizeString
 {
-        return NSStringFromFileSizeBytes([self diskFreeSize]);
+        return NSStringFromBytesSize([self diskFreeSize]);
 }
 
 + (unsigned long long)diskTotalSize
@@ -193,7 +181,7 @@ NSString *NSStringFromFileSizeBytes(unsigned long long fileSize)
 
 + (NSString *)diskTotalSizeString
 {
-        return NSStringFromFileSizeBytes([self diskTotalSize]);
+        return NSStringFromBytesSize([self diskTotalSize]);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
