@@ -107,7 +107,7 @@
         static NSString *__gUserAgent = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __gUserAgent = [NSString stringWithFormat:@"ES(%@;%@;%@;%@;%@;%@;%@;%@)",
+                __gUserAgent = [NSString stringWithFormat:@"ESFramework(%@;%@;%@;%@;%@;%@;%@;%@)",
                                 @"iOS",
                                 [UIDevice systemVersion],
                                 [self.class bundleIdentifier],
