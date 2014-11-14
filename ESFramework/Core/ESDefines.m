@@ -9,19 +9,7 @@
 #import "ESDefines.h"
 #import <objc/runtime.h>
 
-mach_timebase_info_data_t __es_timebase_info__;
-
-@interface ESDefinesInternal : NSObject
-@end
-
-@implementation ESDefinesInternal
-
-+ (void)load
-{
-        (void)mach_timebase_info(&__es_timebase_info__);
-}
-
-@end
+mach_timebase_info_data_t __es_timebase_info;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +64,7 @@ UIColor *UIColorWithRGBHex(NSInteger rgbValue)
         return UIColorWithRGBAHex(rgbValue, 1.f);
 }
 
-UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
+UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
 {
         unsigned rgbValue = 0;
         if ([hexString isKindOfClass:[NSString class]]) {
@@ -173,12 +161,7 @@ BOOL ESIsPhoneDevice(void)
 
 BOOL ESIsRetinaScreen(void)
 {
-        static BOOL _gIsRetina;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _gIsRetina = ([UIScreen mainScreen].scale == 2.0);
-        });
-        return _gIsRetina;
+        return [UIScreen mainScreen].scale >= 2.0;
 }
 
 UIImage *UIImageFromCache(NSString *path, ...)
@@ -209,47 +192,78 @@ UIImage *UIImageFrom(NSString *path, ...)
                 return nil;
         }
         
+        // 如果不是绝对路径,加上mainBundle的路径
         if (![filePath isAbsolutePath]) {
                 filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filePath];
         }
         
         NSFileManager *fm = [NSFileManager defaultManager];
-        if ([fm fileExistsAtPath:filePath]) {
-                return [UIImage imageWithContentsOfFile:filePath];
-        }
         
+        /* 分辨率倍数: "", "@2x", "@3x", 根据当前适配的屏幕分辨率获得 */
+        static NSString *__scaleExtension = nil;
+        /* 设备修饰符 */
+        static NSString *__deviceModifier = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                int scale = (int)[UIScreen mainScreen].scale;
+                if (0 == scale) {
+                        __scaleExtension = @"";
+                } else {
+                        __scaleExtension = NSStringWith(@"@%dx", scale);
+                }
+                __deviceModifier = ESIsPadUI() ? @"~ipad" : @"~iphone";
+        });
+        
+        // 获取pathInfo
         NSString *fileDir = [filePath stringByDeletingLastPathComponent];
         NSString *fileFullName = [filePath lastPathComponent];
         NSString *fileShortName = [fileFullName stringByDeletingPathExtension];
         NSString *fileExtension = [fileFullName pathExtension];
         
-        if (0 == fileExtension.length) {
+        if ([fileExtension isEqualToString:@""]) {
+#if 0 //Elf: 不规范的命名放在最后面处理. 因为常见的使用方法是不写扩展名, 从而导致每次都检查文件存在性, 放到最后再检查以优化性能
+                // 如果没有扩展名, 检查是否存在没有扩展名的文件,如果有则直接使用
+                if ([fm fileExistsAtPath:filePath]) {
+                        return [UIImage imageWithContentsOfFile:filePath];
+                }
+#endif
+                
+                // 默认的扩展名是小写的png
                 fileExtension = @"png";
-                filePath = [fileDir stringByAppendingPathComponent:[fileShortName stringByAppendingPathExtension:fileExtension]];
         }
+        
+        NSString *retina = [fileDir stringByAppendingFormat:@"/%@%@.%@", fileShortName, __scaleExtension, fileExtension];
+        if ([fm fileExistsAtPath:retina]) {
+                return [UIImage imageWithContentsOfFile:retina];
+        }
+        
+        NSString *retina_device = [fileDir stringByAppendingFormat:@"/%@%@%@.%@", fileShortName, __scaleExtension, __deviceModifier, fileExtension];
+        if ([fm fileExistsAtPath:retina_device]) {
+                return [UIImage imageWithContentsOfFile:retina_device];
+        }
+
+        /* 处理不符合命名规范的情况 */
+        
+        // 文件没有扩展名但是这个文件确实存在,
+        // 或者有扩展名但是不符合命名规范,但是这个文件确实存在,
+        // 就直接加载这个图片
         if ([fm fileExistsAtPath:filePath]) {
                 return [UIImage imageWithContentsOfFile:filePath];
         }
         
-        fileShortName = [fileShortName stringByReplacingOccurrencesOfString:@"@2x" withString:@""];
-        NSString *x2 = [fileDir stringByAppendingFormat:@"/%@@2x.%@", fileShortName, fileExtension];
-        if ([fm fileExistsAtPath:x2]) {
-                return [UIImage imageWithContentsOfFile:x2];
+        // 非高清屏手机上没有对应的图片,使用@2x图片
+        if ([__scaleExtension isEqualToString:@""]) {
+                NSString *x2 = [fileDir stringByAppendingFormat:@"/%@%@.%@", fileShortName, @"@2x", fileExtension];
+                if ([fm fileExistsAtPath:x2]) {
+                        return [UIImage imageWithContentsOfFile:x2];
+                }
+                
+                NSString *x2_device = [fileDir stringByAppendingFormat:@"/%@%@%@.%@", fileShortName, @"@2x", __deviceModifier, fileExtension];
+                if ([fm fileExistsAtPath:x2_device]) {
+                        return [UIImage imageWithContentsOfFile:x2_device];
+                }
         }
-        
-        NSString *x2_device = [fileDir stringByAppendingFormat:@"/%@@2x~%@.%@", fileShortName, (ESIsPadUI() ? @"ipad" : @"iphone"), fileExtension];
-        if ([fm fileExistsAtPath:x2_device]) {
-                return [UIImage imageWithContentsOfFile:x2_device];
-        }
-        
-        NSString *original = [fileDir stringByAppendingFormat:@"/%@.%@", fileShortName, fileExtension];
-        if ([fm fileExistsAtPath:original]) {
-                return [UIImage imageWithContentsOfFile:original];
-        }
-        NSString *original_device = [fileDir stringByAppendingFormat:@"/%@~%@.%@", fileShortName, (ESIsPadUI() ? @"ipad" : @"iphone"), fileExtension];
-        if ([fm fileExistsAtPath:original_device]) {
-                return [UIImage imageWithContentsOfFile:original_device];
-        }
+
         
         return nil;
 }
@@ -276,19 +290,11 @@ NSURL *NSURLWith(NSString *format, ...)
                 va_end(args);
         }
         if (string) {
-#if 0
-                if ([string rangeOfString:@"^[^\\s:]+:" options:NSCaseInsensitiveSearch|NSRegularExpressionSearch].location != NSNotFound) {
-                        return [NSURL URLWithString:string];
-                } else {
-                        return [NSURL fileURLWithPath:string];
-                }
-#else
                 if ([string hasPrefix:@"/"]) {
                         return [NSURL fileURLWithPath:string];
                 } else {
                         return [NSURL URLWithString:string];
                 }
-#endif
         }
         return nil;
 }
@@ -301,7 +307,7 @@ NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step)
         // }
         
         static const NSString *sOrdersOfMagnitude[] = {
-                @"bytes", @"KB", @"MB", @"GB", @"TB", @"PB"
+                @"Bytes", @"KB", @"MB", @"GB", @"TB", @"PB"
         };
         static const NSUInteger sOrdersOfMagnitude_len = sizeof(sOrdersOfMagnitude) / sizeof(sOrdersOfMagnitude[0]);
         
@@ -361,6 +367,7 @@ NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...)
 
 NSString *ESPathForMainBundleResource(NSString *relativePath, ...)
 {
+        NSString *filePath = [NSBundle mainBundle].resourcePath;
         NSString *path = nil;
         if (relativePath) {
                 va_list args;
@@ -368,7 +375,10 @@ NSString *ESPathForMainBundleResource(NSString *relativePath, ...)
                 path = [[NSString alloc] initWithFormat:relativePath arguments:args];
                 va_end(args);
         }
-        return ESPathForBundleResource([NSBundle mainBundle], path);
+        if (path) {
+                filePath = [filePath stringByAppendingPathComponent:path];
+        }
+        return filePath;
 }
 
 NSString *ESPathForDocuments(void)
@@ -456,7 +466,7 @@ NSString *ESPathForTemporaryResource(NSString *relativePath, ...)
 
 BOOL ESTouchDirectory(NSString *dir)
 {
-        if (![dir isKindOfClass:[NSString class]] || 0 == dir.length) {
+        if (!ESIsStringWithAnyText(dir)) {
                 return NO;
         }
         NSFileManager *fm = [NSFileManager defaultManager];
@@ -488,7 +498,8 @@ NSString *ESTouchFilePath(NSString *filePath, ...)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Dispatch
-void ESDispatchSyncOnMainThread(dispatch_block_t block)
+
+void ESDispatchOnMainThreadSynchronously(dispatch_block_t block)
 {
         if ([NSThread isMainThread]) {
                 block();
@@ -496,14 +507,23 @@ void ESDispatchSyncOnMainThread(dispatch_block_t block)
                 dispatch_sync(dispatch_get_main_queue(), block);
         }
 }
-
-void ESDispatchAsyncOnMainThread(dispatch_block_t block)
+void ESDispatchOnMainThreadAsynchronously(dispatch_block_t block)
 {
         if ([NSThread isMainThread]) {
                 block();
         } else {
                 dispatch_async(dispatch_get_main_queue(), block);
         }
+}
+
+void ESDispatchSyncOnMainThread(dispatch_block_t block)
+{
+        ESDispatchOnMainThreadSynchronously(block);
+}
+
+void ESDispatchAsyncOnMainThread(dispatch_block_t block)
+{
+        ESDispatchOnMainThreadAsynchronously(block);
 }
 
 void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
@@ -771,9 +791,14 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Notification with block
 @interface NSObject (_ESObserverInternal)
+/**
+ * 保存所有notication的handlers: notification_name => handlers array
+ */
 @property (nonatomic, strong) NSMutableDictionary *__es_notificationHandlers;
 @end
+
 static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
+
 @implementation NSObject (ESObserver)
 - (void)set__es_notificationHandlers:(NSMutableDictionary *)handlers
 {
@@ -802,6 +827,7 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
         return array;
 }
 
+/// Notification Handler
 - (void)__es_notificationSelector:(NSNotification *)notification
 {
         NSMutableArray *array = [self __es_notificationHandlersWithName:notification.name];
@@ -812,16 +838,19 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
 
 - (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler
 {
-        if ([name isKindOfClass:[NSString class]]) {
-                if (handler) {
-                        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(__es_notificationSelector:) name:name object:nil];
-                        [self __es_appendNotificationHandler:handler toName:name];
-                } else {
-                        [[self __es_notificationHandlersWithName:name] removeAllObjects];
-                }
-        } else {
-                [[NSNotificationCenter defaultCenter] removeObserver:self];
+        if (ESIsStringWithAnyText(name) && handler) {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(__es_notificationSelector:) name:name object:nil];
+                [self __es_appendNotificationHandler:handler toName:name];
         }
+}
+
+- (void)removeNotification:(NSString *)name
+{
+        if (!ESIsStringWithAnyText(name)) {
+                return;
+        }
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:name object:nil];
+        [self.__es_notificationHandlers removeObjectForKey:name];
 }
 
 @end

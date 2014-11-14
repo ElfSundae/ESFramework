@@ -69,7 +69,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 {
         if (!__es_gBackgroundTaskID || __es_gBackgroundTaskID == UIBackgroundTaskInvalid) {
                 __es_gBackgroundTaskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-                        ESDispatchAsyncOnMainThread(^{
+                        ESDispatchOnMainThreadAsynchronously(^{
                                 if (UIBackgroundTaskInvalid != __es_gBackgroundTaskID) {
                                         [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
                                         __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
@@ -82,7 +82,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)disableMultitasking
 {
-        ESDispatchSyncOnMainThread(^{
+        ESDispatchOnMainThreadSynchronously(^{
                 if (__es_gBackgroundTaskID) {
                         [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
                         __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
@@ -253,13 +253,16 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 - (void)requestAddressBookAccessWithCompletion:(ESBasicBlock)completion failure:(ESBasicBlock)failure
 {
         if (!ABAddressBookRequestAccessWithCompletion) {
-                if (completion) ESDispatchAsyncOnMainThread(completion);
+                if (completion)
+                        ESDispatchOnMainThreadAsynchronously(completion);
                 return;
         }
         
         ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
         if (kABAuthorizationStatusAuthorized == status) {
-                if (completion) ESDispatchAsyncOnMainThread(completion);
+                if (completion)
+                        ESDispatchOnMainThreadAsynchronously(completion);
+                
         } else if (kABAuthorizationStatusNotDetermined == status) {
                 ABAddressBookRef addressBook = ABAddressBookCreate();
                 ABAddressBookRequestAccessWithCompletion(ABAddressBookCreate(), ^(bool granted, CFErrorRef error) {
@@ -267,13 +270,14 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                                 CFRelease(addressBook);
                         }
                         if (granted) {
-                                if (completion) ESDispatchAsyncOnMainThread(completion);
+                                if (completion) ESDispatchOnMainThreadAsynchronously(completion);
                         } else {
-                                if (failure) ESDispatchAsyncOnMainThread(failure);
+                                if (failure) ESDispatchOnMainThreadAsynchronously(failure);
                         }
                 });
         } else {
-                if (failure) ESDispatchAsyncOnMainThread(failure);
+                if (failure)
+                        ESDispatchOnMainThreadAsynchronously(failure);
         }
 }
 

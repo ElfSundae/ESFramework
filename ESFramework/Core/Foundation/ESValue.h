@@ -19,7 +19,7 @@
 
 @end
 
-ES_EXTERN_C_BEGIN
+//ES_EXTERN_C_BEGIN
 
 BOOL ESIntVal(int *var, id obj);
 BOOL ESUIntVal(unsigned int *var, id obj);

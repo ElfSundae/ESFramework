@@ -14,16 +14,16 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 #if defined(__cplusplus)
-        #define ES_EXTERN extern "C"
-        #define ES_EXTERN_C_BEGIN extern "C" {
-        #define ES_EXTERN_C_END }
+        #define ES_EXTERN               extern "C" __attribute__((visibility ("default")))
+        #define ES_EXTERN_C_BEGIN       extern "C" {
+        #define ES_EXTERN_C_END         }
 #else
-        #define ES_EXTERN extern
+        #define ES_EXTERN               extern
         #define ES_EXTERN_C_BEGIN
         #define ES_EXTERN_C_END
 #endif
 
-#define ES_INLINE       NS_INLINE
+#define ES_INLINE                       NS_INLINE
 
 ///=============================================
 /// @name Log
@@ -33,28 +33,34 @@
 #undef NSLogIf
 
 #ifdef DEBUG
-#define NSLog(fmt, ...) NSLog((@"%@:%d %s " fmt),[[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
-#define NSLogIf(condition, fmt, ...)    if((condition)){ NSLog(fmt, ##__VA_ARGS__); }
+#define NSLog(fmt, ...)                 NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define NSLogIf(condition, fmt, ...)    if((condition)) { NSLog(fmt, ##__VA_ARGS__); }
 #else
 #define NSLog(fmt, ...)
 #define NSLogIf(condition, fmt, ...)
 #endif
 
 ///=============================================
-/// @name ES_STOPWATCH
+/// @name Stopwatch
 ///=============================================
-#pragma mark - ES_STOPWATCH
+#pragma mark - Stopwatch
 
 // Calc the execution time.
 #include <mach/mach_time.h>
-ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
+ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
 
 #if DEBUG
-#define ES_STOPWATCH_BEGIN(begin_time_var, log, ...)  uint64_t begin_time_var = mach_absolute_time(); NSLog(@"<ES_STOPWATCH_BEGIN> " log, ##__VA_ARGS__);
-#define ES_STOPWATCH_END(begin_time_var, log, ...)    NSLog(@"<ES_STOPWATCH_END> %llums = " log, ((mach_absolute_time() - begin_time_var) * __es_timebase_info__.numer / __es_timebase_info__.denom / 1000 ), ##__VA_ARGS__ );
+#define ES_STOPWATCH_BEGIN(stopwatch_begin_var)  \
+        uint64_t stopwatch_begin_var = mach_absolute_time();
+#define ES_STOPWATCH_END(stopwatch_begin_var) \
+        uint64_t end_##stopwatch_begin_var = mach_absolute_time() - stopwatch_begin_var; \
+        if (__es_timebase_info.denom == 0) { (void) mach_timebase_info(&__es_timebase_info); } \
+        end_##stopwatch_begin_var = end_##stopwatch_begin_var * __es_timebase_info.numer / __es_timebase_info.denom; \
+        double ms_end_##stopwatch_begin_var = (double)end_##stopwatch_begin_var / 1000000; \
+        printf("‼️Stopwatch‼️[%s:%d] %s %fms\n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, ms_end_##stopwatch_begin_var);
 #else
-#define ES_STOPWATCH_BEGIN(begin_time_var, log, ...)
-#define ES_STOPWATCH_END(begin_time_var, log, ...)
+#define ES_STOPWATCH_BEGIN(stopwatch_begin_var)
+#define ES_STOPWATCH_END(stopwatch_begin_var)
 #endif
 
 ///=============================================
@@ -104,55 +110,19 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info__;
 
 #import <Availability.h>
 
-#ifndef __IPHONE_5_0
-#define __IPHONE_5_0    50000
-#endif
-#ifndef __IPHONE_5_1
-#define __IPHONE_5_1    50100
-#endif
-#ifndef __IPHONE_6_0
-#define __IPHONE_6_0    60000
-#endif
-#ifndef __IPHONE_6_1
-#define __IPHONE_6_1    60100
-#endif
-#ifndef __IPHONE_7_0
-#define __IPHONE_7_0    70000
-#endif
-#ifndef __IPHONE_7_1
-#define __IPHONE_7_1    70100
-#endif
 #ifndef __IPHONE_8_0
 #define __IPHONE_8_0    80000
 #endif
+#ifndef __IPHONE_8_1
+#define __IPHONE_8_1    80100
+#endif
 
-#ifndef NSFoundationVersionNumber_iOS_5_0
-#define NSFoundationVersionNumber_iOS_5_0  881.00
-#endif
-#ifndef NSFoundationVersionNumber_iOS_5_1
-#define NSFoundationVersionNumber_iOS_5_1  890.10
-#endif
-#ifndef NSFoundationVersionNumber_iOS_6_0
-#define NSFoundationVersionNumber_iOS_6_0  993.00
-#endif
-#ifndef NSFoundationVersionNumber_iOS_6_1
-#define NSFoundationVersionNumber_iOS_6_1  993.00
-#endif
-#ifndef NSFoundationVersionNumber_iOS_7_0
-#define NSFoundationVersionNumber_iOS_7_0 1047.20
-#endif
 #ifndef NSFoundationVersionNumber_iOS_7_1
 #define NSFoundationVersionNumber_iOS_7_1 1047.25
 #endif
 #ifndef NSFoundationVersionNumber_iOS_8_0
 #define NSFoundationVersionNumber_iOS_8_0 1140.11
 #endif
-
-
-/**
- * Marks a method or property as deprecated to the compiler.
- */
-#define __ES_ATTRIBUTE_DEPRECATED       __attribute__((deprecated))
 
 /**
  * Returns the device's OS version.
@@ -164,6 +134,10 @@ ES_EXTERN NSString *ESOSVersion(void);
  * Checks whether the device's OS version is at least the given version number.
  *
  * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
+ *
+ * @code
+ * return (floor(NSFoundationVersionNumber) >= versionNumber);
+ * @endcode
  */
 ES_EXTERN BOOL ESOSVersionIsAtLeast(double versionNumber);
 
@@ -171,13 +145,19 @@ ES_EXTERN BOOL ESOSVersionIsAtLeast(double versionNumber);
  * Checks whether the device's OS version is above the given version number.
  *
  * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
+ *
+ * @code
+ * return (floor(NSFoundationVersionNumber) > versionNumber);
+ * @endcode
  */
 ES_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
 
 /**
  * Checks whether the device's OS version is above iOS7.0.
  *
- *      return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+ * @code
+ * return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+ * @endcode
  */
 ES_EXTERN BOOL ESOSVersionIsAbove7(void);
 
@@ -196,7 +176,7 @@ ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 /// UIColorWithRGBHexString(@"#33AF00", 1.f);
 /// UIColorWithRGBHexString(@"0x33AF00", 0.3f);
 /// UIColorWithRGBHexString(@"33AF00", 0.9);
-ES_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
+ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 
 
 ///=============================================
@@ -352,7 +332,7 @@ ES_EXTERN BOOL ESIsPhoneUI(void);
 ES_EXTERN BOOL ESIsPhoneDevice(void);
 
 /**
- * [UIScreen mainScreen].scale == 2.0
+ * [UIScreen mainScreen].scale >= 2.0
  */
 ES_EXTERN BOOL ESIsRetinaScreen(void);
 
@@ -382,10 +362,15 @@ ES_EXTERN NSURL *NSURLWith(NSString *format, ...);
 
 /**
  * Formats a number of bytes in a human-readable format. e.g. @"12.34 bytes", @"123 GB"
+ * 
+ * **Note**: NSByteCountFormatter uses 1000 step length.
  *
  * Returns a string showing the size in bytes, KBs, MBs, or GBs. Steps with 1024 bytes.
  */
 ES_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
+/**
+ * With 1024 step.
+ */
 ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
 
 /**
@@ -396,13 +381,12 @@ ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
 ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 ///=============================================
-/// @name Path
+/// @name Paths
 ///=============================================
 #pragma mark - Path
 
 ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath, ...);
-ES_EXTERN NSString *ESPathForESFWBundleResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForDocuments(void);
 ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForLibrary(void);
@@ -411,9 +395,10 @@ ES_EXTERN NSString *ESPathForCaches(void);
 ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath, ...);
 ES_EXTERN NSString *ESPathForTemporary(void);
 ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath, ...);
-/// Create the `dir`  if it doesn't exist
+
+/// Creates the `dir`  if it doesn't exist
 ES_EXTERN BOOL ESTouchDirectory(NSString *dir);
-/// Create directories if it doesn't exist, returns `nil` if failed.
+/// Creates directories if it doesn't exist, returns `nil` if failed.
 ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
 
 ///=============================================
@@ -422,11 +407,13 @@ ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
 #pragma mark - Dispatch & Block
 
 typedef void (^ESBasicBlock)(void);
-typedef void (^ESErrorBlock)(NSError *error);
 typedef void (^ESHandlerBlock)(id sender);
 
-ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block);
-ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block);
+ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block) __attribute__((deprecated("use ESDispatchOnMainThreadSynchronously instead.")));
+ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block) __attribute__((deprecated("use ESDispatchOnMainThreadAsynchronously instead.")));
+
+ES_EXTERN void ESDispatchOnMainThreadSynchronously(dispatch_block_t block);
+ES_EXTERN void ESDispatchOnMainThreadAsynchronously(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
 ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
@@ -555,10 +542,9 @@ typedef void (^ESNotificationHandler)(NSNotification *notification, NSDictionary
 @interface NSObject (ESObserver)
 /**
  * Add `self` to `NSNotificationCenter` as an observer.
- * `handler` may be `nil` to stop handling that notification.
- * If `handler` and `name` both are `nil`, it will remove all observers from `NSNotificationCenter`.
  */
 - (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler;
+- (void)removeNotification:(NSString *)name;
 @end
 
 ///=============================================

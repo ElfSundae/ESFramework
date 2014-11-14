@@ -41,7 +41,7 @@
                 }
                 
                 if (_self.remoteNotification) {
-                        ESDispatchAsyncOnMainThread(^{
+                        ESDispatchOnMainThreadAsynchronously(^{
                                 [_self applicationDidReceiveRemoteNotification:_self.remoteNotification];
                         });
                 }
