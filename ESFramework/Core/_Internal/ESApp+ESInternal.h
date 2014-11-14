@@ -15,7 +15,7 @@
 
 @interface ESApp (ESInternal)
 /**
- * Returns YES if the AppDelegate class is inherited from this class.
+ * Returns YES if the AppDelegate class is inherited from this class(ESApp).
  */
 + (BOOL)_isUIApplicationDelegate;
 

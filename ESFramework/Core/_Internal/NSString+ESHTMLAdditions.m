@@ -18,7 +18,7 @@
 //
 
 //#import "GTMDefines.h"
-#import "NSString+GTMNSStringHTMLAdditions.h"
+#import "NSString+ESHTMLAdditions.h"
 
 // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
 // Ordered by uchar lowest to highest for bsearching
@@ -365,7 +365,7 @@ static int es_EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 	return val;
 }
 
-@implementation NSString (GTMNSStringHTMLAdditions)
+@implementation NSString (ESHTMLAdditions)
 
 - (NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
                                           ofSize:(NSUInteger)size

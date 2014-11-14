@@ -21,7 +21,7 @@
 #import "NSString+ESAdditions.h"
 
 /// Utilities for NSStrings containing HTML
-@interface NSString (GTMNSStringHTMLAdditions)
+@interface NSString (ESHTMLAdditions)
 
 - (NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
                                              ofSize:(NSUInteger)size
