@@ -10,6 +10,7 @@
 #import "ESDefines.h"
 #import "ESHash.h"
 #import "NSString+ESHTMLAdditions.h"
+#import "NSDictionary+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
 
@@ -79,14 +80,18 @@
                 NSString *filePath = ESTouchFilePath(path);
                 if (!filePath) {
                         if (block) {
-                                block(NO);
+                                ESDispatchOnMainThreadAsynchronously(^{
+                                        block(NO);
+                                });
                         }
                         return;
                 }
                 
                 BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
                 if (block) {
-                        block(res);
+                        ESDispatchOnMainThreadAsynchronously(^{
+                                block(res);
+                        });
                 }
         });
 }
@@ -122,7 +127,17 @@
 
 - (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary
 {
-        return [self stringByAppendingQueryDictionary:queryDictionary];
+        NSString *queryString = queryDictionary.queryString;
+        if (queryString.isEmpty) {
+                return self;
+        }
+        
+        NSString *trimed = [self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"?&"]];
+        if ([trimed contains:@"?"]) {
+                return [trimed append:@"&%@", queryString];
+        } else {
+                return [trimed append:@"?%@", queryString];
+        }
 }
 
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement
@@ -183,12 +198,12 @@
 + (NSString *)newUUIDWithMD5
 {
         NSString *uuid = [self newUUID];
-        return [uuid md5Hash];
+        return [uuid es_md5Hash];
 }
 
 - (NSString *)iTunesItemID
 {
-        NSRegularExpression *regex = [NSRegularExpression regex:@"://itunes\\.apple\\.com/.*/id(\\d{8,})" caseInsensitive:YES];
+        NSRegularExpression *regex = [NSRegularExpression regex:@"://itunes\\.apple\\.com/.+/id(\\d{8,})" caseInsensitive:YES];
         NSTextCheckingResult *match = [regex firstMatchInString:self options:0 range:NSMakeRange(0, self.length)];
         if (match && match.numberOfRanges > 1) {
                 return [self substringWithRange:[match rangeAtIndex:1]];
@@ -238,87 +253,60 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return [decoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
-{
-        NSMutableString *result = [NSMutableString stringWithString:@""];
-        if (self) {
-                [result appendString:self];
-        }
-        
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (NSString *key in [queryDictionary keyEnumerator]) {
-                id value = queryDictionary[key];
-                if ([value isKindOfClass:[NSArray class]]) {
-                        [(NSArray *)value enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                [array addObject:[NSString stringWithFormat:@"%@[]=%@", key, [(NSString *)obj URLEncode]]];
-                        }];
-                } else {
-                        NSString *valueString = nil;
-                        if ([value isKindOfClass:[NSString class]]) {
-                                valueString = (NSString *)value;
-                        } else if ([value isKindOfClass:[NSNumber class]]) {
-                                valueString = [(NSNumber *)value stringValue];
-                        }
-                        if (valueString) {
-                                [array addObject:[NSString stringWithFormat:@"%@=%@", key, [valueString URLEncode]]];
-                        }
-                }
-        }
-        
-        if (array.count) {
-                NSString *params = [array componentsJoinedByString:@"&"];
-                if ([result contains:@"?"]) {
-                        [result appendFormat:@"&%@", params];
-                } else {
-                        [result appendFormat:@"?%@", params];
-                }
-        }
-
-        return result;
-}
-
 - (NSDictionary *)queryDictionary
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        NSRange firstMarkRange = [self rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?&#"]];
-        if (firstMarkRange.location == NSNotFound) {
-                return result;
+
+        // 搜索第一个 ?&# 的range
+        NSRange searchFirstMarkInRange;
+        // 在第一个"="前搜索, 因为self是一个不带"?"前缀的串,例如"test=xxx&abc=foo"
+        NSRange firstEqual = [self rangeOfString:@"="];
+        if (NSNotFound == firstEqual.location) {
+                searchFirstMarkInRange = NSMakeRange(0, self.length);
+        } else {
+                searchFirstMarkInRange = NSMakeRange(0, firstEqual.location);
         }
-        NSString *subString = [self substringFromIndex:firstMarkRange.location+1];
-        NSArray *components = [subString componentsSeparatedByString:@"&"];
+        // 搜索第一个 ?&#, 把这个mark之前的舍弃掉
+        NSRange firstMarkRange = [self rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?&#"]
+                                                       options:0
+                                                         range:searchFirstMarkInRange];
+        // 去掉mark之前的字符串,得到queryString
+        NSString *string = nil;
+        if (firstMarkRange.location == NSNotFound) {
+                string = self;
+        } else {
+                string = [self substringFromIndex:firstMarkRange.location + 1];
+        }
+        // 将queryString按 & 分割
+        NSArray *components = [string componentsSeparatedByString:@"&"];
+        
         for (NSString *str in components) {
                 NSArray *keyValue = [str componentsSeparatedByString:@"="];
                 const NSUInteger count = keyValue.count;
-                
-                if (count > 0) {
-                        NSString *key = keyValue[0];
-                        if ([key hasSuffix:@"[]"]) {
-                                // array
-                                key = [key substringToIndex:key.length - 2];
-                                key = [key URLDecode];
-                                if (![result[key] isKindOfClass:[NSMutableArray class]]) {
-                                        result[key] = [NSMutableArray array];
-                                }
-                        } else {
-                                key = [key URLDecode];
-                                result[key] = [NSNull null];
-                        }
-                        
-                        if (count > 1) {
-                                NSString *value = [keyValue[1] URLDecode];
-                                if ([result[key] isKindOfClass:[NSMutableArray class]]) {
-                                        [(NSMutableArray *)result[key] addObject:value];
-                                } else {
-                                        result[key] = value;
-                                }
-                        }
+                if (0 == count) {
+                        continue;
                 }
-              
+                
+                NSString *key = keyValue[0];
+                NSString *value = count > 1 ? [keyValue[1] URLDecode] : nil;
+                
+                if ([key hasSuffix:@"[]"]) { // array
+                        key = [[key substringToIndex:key.length - 2] URLDecode];
+                        if (![result[key] isKindOfClass:[NSMutableArray class]]) {
+                                result[key] = [NSMutableArray array];
+                        }
+                        if (value) {
+                                [(NSMutableArray *)(result[key]) addObject:value];
+                        }
+                } else {
+                        key = [key URLDecode];
+                        result[key] = value ?: [NSNull null];
+                }
         }
         return (NSDictionary *)result;
 }
 
-- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table ofSize:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
+- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
 {
         return [self es_gtm_stringByEscapingHTMLUsingTable:table
                                                     ofSize:size

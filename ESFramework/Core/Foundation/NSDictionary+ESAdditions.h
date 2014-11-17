@@ -14,6 +14,17 @@
 @interface NSDictionary (ESAdditions)
 
 - (BOOL)isEmpty;
+
+/**
+ * Generate URL query string.
+ *
+ * {key1:value1, key2:[a,b]} to
+ * key1=value1&key2[]=a&key2[2]=b
+ *
+ * key and value must be NSString or NSNumber
+ */
+- (NSString *)queryString;
+
 /**
  * If the object is `[NSNull null]`, it will returns `nil`.
  * It is useful when accessing a JSONObject which parsed from JSON data.

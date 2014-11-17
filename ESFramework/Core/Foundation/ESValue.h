@@ -9,17 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "ESDefines.h"
 
-/**
+/*!
  * Get value from NSNumber or NSString safely.
- *
- * See `ESValue.h` for more information.
- *
  */
-@interface ESValue : NSObject
 
-@end
-
-//ES_EXTERN_C_BEGIN
+ES_EXTERN_C_BEGIN
 
 BOOL ESIntVal(int *var, id obj);
 BOOL ESUIntVal(unsigned int *var, id obj);

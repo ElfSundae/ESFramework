@@ -22,12 +22,16 @@
                 NSString *filePath = ESTouchFilePath(path);
                 if (!filePath) {
                         if (block) {
-                                block(NO);
+                                ESDispatchOnMainThreadAsynchronously(^{
+                                        block(NO);
+                                });
                         }
                 } else {
                         BOOL res = [_self writeToFile:filePath atomically:useAuxiliaryFile];
                         if (block) {
-                                block(res);
+                                ESDispatchOnMainThreadAsynchronously(^{
+                                        block(res);
+                                });
                         }       
                 }
         });

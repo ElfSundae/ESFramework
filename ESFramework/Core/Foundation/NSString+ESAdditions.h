@@ -52,7 +52,15 @@ typedef struct {
 - (NSString *)append:(NSString *)format, ...;
 - (NSString *)appendPathComponent:(NSString *)format, ...;
 - (NSString *)appendPathExtension:(NSString *)extension;
+/**
+ * Append URL query string from `queryDictionary`.
+ * Supports 'array' params, like "?key[]=value1&key[]=value2".
+ *
+ * In `queryDictionary`, the keys must be NSString/NSNumber, the values must be
+ * NSString/NSNumber/NSArray with NSString,NSNumber.
+ */
 - (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary;
+
 
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement;
 - (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement;
@@ -92,15 +100,15 @@ typedef struct {
  */
 - (NSString *)iTunesItemID;
 /**
- * https://itunes.apple.com/app/idxxxxxxx
+ * e.g. @"12345678" to @"https://itunes.apple.com/app/id12345678"
  */
 - (NSString *)appLink;
 /**
- * itms-apps://itunes.apple.com/app/idxxxxx
+ * e.g. @"12345678" to @"itms-apps://itunes.apple.com/app/id12345678"
  */
 - (NSString *)appLinkForAppStore;
 /**
- * itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=xxxxxxx
+ * e.g. @"12345678" to @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
  */
 - (NSString *)appReviewLinkForAppStore;
 
@@ -109,18 +117,12 @@ typedef struct {
  */
 - (NSString *)URLEncode;
 /**
- * Calls `-stringByReplacingPercentEscapesUsingEncoding:`
+ * Replaces "+" to " ", then calls `-stringByReplacingPercentEscapesUsingEncoding:`
  */
 - (NSString *)URLDecode;
 
 /**
- * Append URL query string from `queryDictionary`.
- * Supports 'array' params, like "?key[]=value1&key[]=value2".
- */
-- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
-
-/**
- * Parse query string to dictionary.
+ * Parse query string (http://foo.bar?key=value) to dictionary ({key:value}).
  */
 - (NSDictionary *)queryDictionary;
 
@@ -162,7 +164,7 @@ typedef struct {
  * @see https://github.com/mwaterfall/MWFeedParser/blob/master/Classes/GTMNSString%2BHTML.h
  *
  */
-- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table ofSize:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode;
+- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode;
 
 /**
  * Returns a string that escaped for HTML.

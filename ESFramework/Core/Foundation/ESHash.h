@@ -11,31 +11,31 @@
 @interface NSData (ESHash)
 
 /** Lower case. */
-- (NSString *)md5Hash;
+- (NSString *)es_md5Hash;
 /** Lower case. */
-- (NSString *)sha1Hash;
+- (NSString *)es_sha1Hash;
 /** Lower case. */
-- (NSString *)sha256Hash;
+- (NSString *)es_sha256Hash;
 
-- (NSData *)base64EncodedData;
-- (NSString *)base64EncodedString;
-- (NSData *)base64DecodedData;
-- (NSString *)base64DecodedString;
+- (NSData *)es_base64EncodedData;
+- (NSString *)es_base64EncodedString;
+- (NSData *)es_base64DecodedData;
+- (NSString *)es_base64DecodedString;
 
 @end
 
 @interface NSString (ESHash)
 
 /** Lower case. */
-- (NSString *)md5Hash;
+- (NSString *)es_md5Hash;
 /** Lower case. */
-- (NSString *)sha1Hash;
+- (NSString *)es_sha1Hash;
 /** Lower case. */
-- (NSString *)sha256Hash;
+- (NSString *)es_sha256Hash;
 
-- (NSData *)base64EncodedData;
-- (NSString *)base64EncodedString;
-- (NSData *)base64DecodedData;
-- (NSString *)base64DecodedString;
+- (NSData *)es_base64EncodedData;
+- (NSString *)es_base64EncodedString;
+- (NSData *)es_base64DecodedData;
+- (NSString *)es_base64DecodedString;
 
 @end

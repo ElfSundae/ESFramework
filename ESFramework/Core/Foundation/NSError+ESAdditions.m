@@ -21,18 +21,15 @@
 
 + (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason
 {
-        NSMutableDictionary *userInfo = nil;
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         if ([description isKindOfClass:[NSString class]]) {
-                userInfo = [NSMutableDictionary dictionary];
                 userInfo[NSLocalizedDescriptionKey] = description;
         }
         if ([failureReason isKindOfClass:[NSString class]]) {
-                if (!userInfo) {
-                        userInfo = [NSMutableDictionary dictionary];
-                        userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
-                }
+                userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
         }
-        return [self errorWithDomain:domain code:code userInfo:userInfo];
+        NSDictionary *info = (userInfo.count) ? (NSDictionary *)userInfo : nil;
+        return [self errorWithDomain:domain code:code userInfo:info];
 }
 
 @end
