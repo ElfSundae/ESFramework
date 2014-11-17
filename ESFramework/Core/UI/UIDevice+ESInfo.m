@@ -96,32 +96,34 @@
                 }
         }
 #endif
-        return ssid;
+        return ssid ?: @"";
 }
 
 + (NSString *)deviceIdentifier
 {
-#if !TARGET_IPHONE_SIMULATOR
+        return [self openUDID];
+}
+
++ (NSString *)openUDID
+{
         return [OpenUDID value];
-#endif
-        return @"0000000000000000000000000000000000000000";
 }
 
 + (NSString *)IDFA
 {
-#if !TARGET_IPHONE_SIMULATOR
+//#if !TARGET_IPHONE_SIMULATOR
         NSString *idfa = nil;
         Class cls = NSClassFromString(@"ASIdentifierManager");
         if (cls) {
                 idfa = [[[cls sharedManager] advertisingIdentifier] UUIDString];
         }
-        return idfa ?: @"";
-#else
-        return @"00000000-0000-0000-0000-000000000000";
-#endif
+        return idfa ?: nil;
+//#else
+//        return @"00000000-0000-0000-0000-000000000000";
+//#endif
 }
 
-+ (BOOL)isJailBroken
++ (BOOL)isJailbroken
 {
         static BOOL __isJailBroken = NO;
         static dispatch_once_t onceToken;
@@ -209,15 +211,26 @@
         return ESIsRetinaScreen();
 }
 
++ (BOOL)isIPhoneRetina35InchScreen
+{
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 960.f));
+}
+
 + (BOOL)isIPhoneRetina4InchScreen
 {
         return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 1136.f));
 }
 
-+ (BOOL)isIPhoneRetina35InchScreen
++ (BOOL)isIPhoneRetina47InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 960.f));
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(750.f, 1334.f));
 }
+
++ (BOOL)isIPhoneRetina55InchScreen
+{
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(1242.f, 2208.f));
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

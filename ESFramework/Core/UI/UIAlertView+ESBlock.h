@@ -35,7 +35,7 @@ typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger b
  *
  * @warning It's not work on iOS 7.0+
  */
-@property (nonatomic) NSTextAlignment messageAlignment __attribute__((deprecated("It is not work on iOS 7+")));
+//@property (nonatomic) NSTextAlignment messageAlignment __attribute__((deprecated("It is not work on iOS 7+")));
 
 ///=============================================
 /// @name Helper Methods

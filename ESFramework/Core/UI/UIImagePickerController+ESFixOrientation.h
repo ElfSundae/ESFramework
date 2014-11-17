@@ -28,8 +28,10 @@
  * Rewrite `-shouldAutorotate`, `-shouldAutorotateToInterfaceOrientation:`,
  * `-supportedInterfaceOrientations`, `-preferredInterfaceOrientationForPresentation` 
  * via Category.
+ * The UIImagePickerController class only supports portrait mode:
+ * https://developer.apple.com/library/ios/documentation/uikit/reference/UIImagePickerController_Class/UIImagePickerController/UIImagePickerController.html
  *
- * http://stackoverflow.com/a/12570501/521946
+ * ref: http://stackoverflow.com/a/12570501/521946
  *
  */
 @interface UIImagePickerController (ESFixOrientation)

@@ -24,30 +24,30 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
         [self setAssociatedObject_nonatomic_copy:didDismissBlock key:_didDismissBlockKey];
 }
 
-- (UILabel *)_esMessageLabel
-{
-        int i = 0;
-        for (UIView *v in self.subviews) {
-                if ([v isKindOfClass:[UILabel class]]) {
-                        UILabel *label = (UILabel *)v;
-                        if (!self.title || (self.title && i > 0)) {
-                                return label;
-                        }
-                        i++;
-                }
-        }
-        return nil;
-}
-
-- (NSTextAlignment)messageAlignment
-{
-        return [self _esMessageLabel].textAlignment;
-}
-
-- (void)setMessageAlignment:(NSTextAlignment)messageAlignment
-{
-        [self _esMessageLabel].textAlignment = messageAlignment;
-}
+//- (UILabel *)_esMessageLabel
+//{
+//        int i = 0;
+//        for (UIView *v in self.subviews) {
+//                if ([v isKindOfClass:[UILabel class]]) {
+//                        UILabel *label = (UILabel *)v;
+//                        if (!self.title || (self.title && i > 0)) {
+//                                return label;
+//                        }
+//                        i++;
+//                }
+//        }
+//        return nil;
+//}
+//
+//- (NSTextAlignment)messageAlignment
+//{
+//        return [self _esMessageLabel].textAlignment;
+//}
+//
+//- (void)setMessageAlignment:(NSTextAlignment)messageAlignment
+//{
+//        [self _esMessageLabel].textAlignment = messageAlignment;
+//}
 
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message dismissBlock:(ESUIAlertViewDidDismissBlock)dismissBlock
 {
@@ -105,7 +105,7 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 + (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
 {
-        UIAlertView *alertView = [self alertViewWithTitle:title message:message cancelButtonTitle:cancelButtonTitle didDismissBlock:nil otherButtonTitles:nil, nil];
+        UIAlertView *alertView = [self alertViewWithTitle:title message:message cancelButtonTitle:cancelButtonTitle didDismissBlock:nil otherButtonTitles:nil];
         [alertView show];
 }
 

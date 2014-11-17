@@ -61,7 +61,8 @@
         if ([self isKindOfClass:[UITabBarController class]]) {
                 return [[(UITabBarController *)self selectedViewController] currentVisibleViewController];
         } else if ([self isKindOfClass:[UINavigationController class]]) {
-                return [[(UINavigationController *)self visibleViewController] currentVisibleViewController];
+                //return [[(UINavigationController *)self topViewController] currentVisibleViewController];
+                return [(UINavigationController *)self topViewController];
         }
         return self;
 }

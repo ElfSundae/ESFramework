@@ -67,8 +67,8 @@
         result[@"name"] = [UIDevice name];
         result[@"platform"] = [UIDevice platform];
         result[@"carrier"] = [UIDevice carrierString];
-        result[@"udid"] = [UIDevice deviceIdentifier];
-        result[@"jailbroken"] = @([UIDevice isJailBroken] ? 1 : 0);
+        result[@"udid"] = [UIDevice openUDID];
+        result[@"jailbroken"] = @([UIDevice isJailbroken] ? 1 : 0);
         result[@"screen_size"] = [UIDevice screenSizeString];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"] = [UIDevice currentLocaleIdentifier];
@@ -113,7 +113,7 @@
                                 [self.class bundleIdentifier],
                                 [self.class appVersion],
                                 [self appChannel],
-                                [UIDevice deviceIdentifier],
+                                [UIDevice openUDID],
                                 [UIDevice screenSizeString],
                                 [UIDevice currentLocaleIdentifier]];
         });

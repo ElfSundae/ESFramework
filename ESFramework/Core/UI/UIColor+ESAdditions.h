@@ -18,9 +18,6 @@
 - (NSString *)rgbaString;
 /// `#EF9CFF`
 - (NSString *)hexString;
-/// `#EF9CFF`
-/// @see -[UIColor hexString]
-- (NSString *)stringValue;
 /// Returns a random color
 + (UIColor *)randomColor;
 
@@ -28,7 +25,7 @@
 /// @name Useful color
 ///=============================================
 
-+ (UIColor *)esGroupTableViewBackgroundColor;
++ (UIColor *)es_groupTableViewBackgroundColor;
 
 ///=============================================
 /// @name Flat UI Colors

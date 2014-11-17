@@ -15,21 +15,43 @@ typedef void (^ESUIGestureRecognizerHandler)(UIGestureRecognizer *sender, UIGest
  * UIGestureRecognizer with block.
  */
 @interface UIGestureRecognizer (ESAdditions)
+
+- (instancetype)initWithHandler:(ESUIGestureRecognizerHandler)handler;
 + (instancetype)recognizerWithHandler:(ESUIGestureRecognizerHandler)handler;
+
 /**
- * To fix [iOS5 UIControl issue](http://stackoverflow.com/a/13662967/521946) for UITapGestureRecognizer.
- * `[UIGestureRecognizer recognizerWithHandler:] already fix this, If you implement UIGestureRecognizerDelegate
- * for an UIGestureRecognizer, call this method first.
+ * !!!Note: This method is used to fix UITapGestureRecognizer issue on iOS5.
+ * See http://stackoverflow.com/q/3344341/521946
+ * On iOS6+, Apple has fixed this, see http://stackoverflow.com/a/20093084/521946
  *
- *	- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
- *	{
- *	        if (![gestureRecognizer esShouldReceiveTouch:touch]) {
- *	                return NO;
- *	        }
- *	        // other stuff
- *	        return YES;
- *	}
+ * `[UIGestureRecognizer recognizerWithHandler:]` method already apply this fix,
+ * If you implement UIGestureRecognizerDelegate yourself, for an UIGestureRecognizer, 
+ * call this method first in the delegate method like this:
+ *
+ * @code
+ * - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+ * {
+ *         if (![gestureRecognizer es_shouldReceiveTouch:touch]) {
+ *                 return NO;
+ *         }
+ *         // other stuff
+ *         return YES;
+ * }
+ * @endcode
+ *
+ * @code
+ * // Source code of -es_shouldReceiveTouch:
+ * - (BOOL)es_shouldReceiveTouch:(UITouch *)touch
+ * {
+ *         if ([self isKindOfClass:[UITapGestureRecognizer class]] &&
+ *             [touch.view isKindOfClass:[UIControl class]]) {
+ *                 return NO;
+ *         }
+ *         return YES;
+ * }
+ * @endcode
  *
  */
-- (BOOL)esShouldReceiveTouch:(UITouch *)touch;
+- (BOOL)es_shouldReceiveTouch:(UITouch *)touch;
+
 @end

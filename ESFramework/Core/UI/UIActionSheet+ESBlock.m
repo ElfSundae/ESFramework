@@ -25,7 +25,7 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 - (instancetype)initWithTitle:(NSString *)title didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        self = [self initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+        self = [self initWithTitle:title delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
         self.didDismissBlock = didDismissBlock;
         return self;
 }

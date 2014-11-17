@@ -15,6 +15,8 @@ typedef NS_ENUM(NSUInteger, ESArrowButtonStyle) {
 
 /**
  * UIButton with arrow, used for UIBarButtonItem's `customView`.
+ *
+ * TODO: rewrite ESArrowButton to fully support tintColor.
  */
 @interface ESArrowButton : UIButton
 @property (nonatomic) ESArrowButtonStyle arrowStyle;

@@ -32,11 +32,6 @@
         return [NSString stringWithFormat:@"#%02lX%02lX%02lX", (unsigned long)round(r * 0xFF), (unsigned long)round(g * 0xFF), (unsigned long)round(b * 0xFF)];
 }
 
-- (NSString *)stringValue
-{
-        return [self hexString];
-}
-
 + (UIColor *)randomColor
 {
         return [UIColor colorWithRed:(CGFloat)arc4random()/UINT_MAX green:(CGFloat)arc4random()/UINT_MAX blue:(CGFloat)arc4random()/UINT_MAX alpha:1.f];
@@ -46,7 +41,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 
 
-+ (UIColor *)esGroupTableViewBackgroundColor
++ (UIColor *)es_groupTableViewBackgroundColor
 {
         if (ESOSVersionIsAtLeast(NSFoundationVersionNumber_iOS_6_0)) {
                 static UIImage *__esGroupTableViewBackgroundImage = nil;

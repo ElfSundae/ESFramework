@@ -42,7 +42,9 @@
 @interface UIControl (__ESAdditionsInternal)
 @property (nonatomic, strong) NSMutableDictionary *__es_Events;
 @end
+
 static const void *__es_EventsKey = &__es_EventsKey;
+
 @implementation UIControl (__ESAdditionsInternal)
 - (NSMutableDictionary *)__es_Events
 {

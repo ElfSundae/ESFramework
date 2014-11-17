@@ -44,11 +44,12 @@
  */
 + (NSString *)platform;
 /**
+ * Returns the subscriber's cellular service provider.
  * e.g. @"AT&T", @"ChinaNet"
  */
 + (NSString *)carrierString;
 /**
- * Returns the current Wi-Fi SSID.
+ * Returns the current Wi-Fi SSID
  */
 + (NSString *)currentWiFiSSID;
 
@@ -56,18 +57,20 @@
  * Returns the device's UDID, a 40 hexadecimal numbers in lower-case, using **OpenUDID** library.
  * e.g. @"36acf6e5d9f3bf66d2084dbc2b2b07f895ea9848"
  *
- * iOS Simulator will always returns @"0000000000000000000000000000000000000000"
- *
  * @see [OpenUDID](https://github.com/ylechelle/OpenUDID)
  */
-+ (NSString *)deviceIdentifier;
++ (NSString *)deviceIdentifier __attribute__((deprecated("use +openUDID instead.")));
++ (NSString *)openUDID;
 
-+ (NSString *)IDFA;
+/**
+ * [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString
+ */
++ (NSString *)IDFA NS_AVAILABLE(NA, 6_0);
 
 /**
  * Detect whether this device has been jailbroken.
  */
-+ (BOOL)isJailBroken;
++ (BOOL)isJailbroken;
 
 /**
  * Returns `ESIsPhoneDevice()`
@@ -101,8 +104,14 @@
 + (NSString *)screenSizeString;
 
 + (BOOL)isRetinaScreen;
-+ (BOOL)isIPhoneRetina4InchScreen;
+// iPhone 4/4S, 640x960
 + (BOOL)isIPhoneRetina35InchScreen;
+// iPhone 5/5S, 640x1136
++ (BOOL)isIPhoneRetina4InchScreen;
+// iPhone 6, 750x1334
++ (BOOL)isIPhoneRetina47InchScreen;
+// iPhone 6 Plus, 1242x2208
++ (BOOL)isIPhoneRetina55InchScreen;
 
 ///=============================================
 /// @name Locale

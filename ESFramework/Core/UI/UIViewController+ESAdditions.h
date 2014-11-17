@@ -26,8 +26,11 @@
 - (BOOL)isViewVisible;
 
 /**
- * Returns UITabBarController's selected controller or UINavigationController's visibleController,
+ * Returns UITabBarController's selected controller or UINavigationController's topViewController,
  * or this controller itself.
+ *
+ * Note: it returns the current "visible" UIViewController, not the "real" controller such as UINavigationController in a UITabBarController.
+ *
  */
 - (UIViewController *)currentVisibleViewController;
 

@@ -23,6 +23,6 @@
 #import "ESHash.h"
 #import "ESValue.h"
 #import "NSObject+ESModel.h"
-#import "ESCache.h"
+//#import "ESCache.h"
 
 #endif
