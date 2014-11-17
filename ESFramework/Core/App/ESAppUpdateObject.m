@@ -44,7 +44,9 @@
 
 - (void)save
 {
-        [self saveModelSharedInstance];
+        //TODO:
+#warning todo
+        //[self saveModelSharedInstance];
 }
 
 - (void)fillWithDictionary:(NSDictionary *)dictionary

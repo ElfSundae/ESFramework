@@ -79,10 +79,6 @@
  */
 + (instancetype)modelSharedInstance;
 /**
- * Detect whether the shared instance exists.
- */
-+ (BOOL)modelSharedInstanceExists;
-/**
  * Set a instance to replace shared instance.
  * Set `nil` to destroy shared instance.
  */
@@ -90,14 +86,15 @@
 /**
  * Save current object to `+modelSharedInstanceFilePath`.
  */
-- (void)saveModelSharedInstance:(void (^)(BOOL result))block;
++ (void)saveModelSharedInstance:(void (^)(BOOL result))block;
 /**
  * Synchronously write file.
  */
-- (void)saveModelSharedInstance;
++ (void)saveModelSharedInstance;
 /**
  * File path for the shared instance.
  * Default path is `{app}/Library/Caches/ESModel/{ClassName}.archive`.
+ *
  * If you do not want the shared instance to be cached to file, just return `nil`.
  */
 + (NSString *)modelSharedInstanceFilePath;

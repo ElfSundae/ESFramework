@@ -57,13 +57,11 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (instancetype)modelWithContentsOfFile:(NSString *)filePath
 {
-        if (!filePath) {
-                return nil;
-        }
-        
-        id object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-        if ([object isKindOfClass:[self class]]) {
-                return object;
+        if (ESIsStringWithAnyText(filePath)) {
+                id object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+                if ([object isKindOfClass:[self class]]) {
+                        return object;
+                }
         }
         return nil;
 }
@@ -72,44 +70,44 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Shared Instance
 
-
 + (instancetype)modelSharedInstance
 {
-        @synchronized([self class]) {
-                id instance = [self getAssociatedObject:_es_modelSharedInstanceKey];
-                if (!instance) {
-                        instance = [self modelWithContentsOfFile:[self modelSharedInstanceFilePath]];
-                        if (!instance) {
-                                instance = [self modelInstance];
-                        }
-                        [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                id shared = [self modelWithContentsOfFile:[self modelSharedInstanceFilePath]];
+                if (!shared) {
+                        shared = [self modelInstance];
                 }
-                return instance;
-        }
-}
-
-+ (BOOL)modelSharedInstanceExists
-{
-        return !![self getAssociatedObject:_es_modelSharedInstanceKey];
+                [self setAssociatedObject_nonatomic_retain:shared key:_es_modelSharedInstanceKey];
+        });
+        return [self getAssociatedObject:_es_modelSharedInstanceKey];
 }
 
 + (void)setModelSharedInstance:(id)instance
 {
-        if (instance && ![instance isKindOfClass:self]) {
-                [NSException raise:@"NSObjectException(ESModel)" format:@"setModelSharedInstance: instance(%@) class does not match.", NSStringFromClass([instance class])];
+        if (nil == instance) {
+                [self setAssociatedObject_nonatomic_retain:nil key:_es_modelSharedInstanceKey];
+                NSString *filePath = [self modelSharedInstanceFilePath];
+                if (filePath) {
+                        [[NSFileManager defaultManager] removeItemAtPath:filePath error:NULL];
+                }
+        } else if ([instance isKindOfClass:[self class]]) {
+                [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];
+        } else {
+                printf("<Error> ESModelException: +setModelSharedInstance: parameter of class %s does not match, should be %s.",
+                       [NSStringFromClass([instance class]) UTF8String],
+                       [NSStringFromClass([self class]) UTF8String]);
         }
-        
-        [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];
 }
 
-- (void)saveModelSharedInstance:(void (^)(BOOL result))block
++ (void)saveModelSharedInstance:(void (^)(BOOL result))block
 {
-        [self modelWriteToFile:[self.class modelSharedInstanceFilePath] atomically:YES withBlock:block];
+        [[self modelSharedInstance] modelWriteToFile:[self modelSharedInstanceFilePath] atomically:YES withBlock:block];
 }
 
-- (void)saveModelSharedInstance
++ (void)saveModelSharedInstance
 {
-        [self modelWriteToFile:[self.class modelSharedInstanceFilePath] atomically:YES];
+        [[self modelSharedInstance] modelWriteToFile:[self modelSharedInstanceFilePath] atomically:YES];
 }
 
 + (NSString *)modelSharedInstanceFilePath
@@ -129,7 +127,9 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 ESStrongSelf;
                 BOOL res = [_self modelWriteToFile:path atomically:useAuxiliaryFile];
                 if (block) {
-                        block(res);
+                        ESDispatchOnMainThreadAsynchronously(^{
+                                block(res);
+                        });
                 }
         });
 }
