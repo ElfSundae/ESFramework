@@ -15,7 +15,7 @@
         static BOOL __isRealAppDelegate = NO;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __isRealAppDelegate = ([[UIApplication sharedApplication].delegate isKindOfClass:[ESApp class]]);
+                __isRealAppDelegate = ([[UIApplication sharedApplication].delegate isKindOfClass:[self class]]);
         });
         return __isRealAppDelegate;
 }

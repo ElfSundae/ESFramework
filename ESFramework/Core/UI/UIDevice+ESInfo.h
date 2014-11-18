@@ -23,7 +23,7 @@
  */
 + (NSString *)name;
 /**
- * e.g. @"iOS"
+ * @"iOS"
  */
 + (NSString *)systemName;
 /**

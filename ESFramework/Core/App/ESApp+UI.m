@@ -21,7 +21,7 @@
         }
         
         if (!__gKeyWindow) {
-                // maybe the #keyWindow is just a temporary keyWindow,
+                // maybe the #keyWindow just is a temporary keyWindow,
                 // so we do not save it to the #__gKeyWindow.
                 return [UIApplication sharedApplication].keyWindow;
         }

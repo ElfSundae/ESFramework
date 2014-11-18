@@ -29,7 +29,8 @@
 }
 + (NSString *)systemName
 {
-        return [[UIDevice currentDevice] systemName];
+        return @"iOS";
+        //return [[UIDevice currentDevice] systemName];
 }
 + (NSString *)systemVersion
 {

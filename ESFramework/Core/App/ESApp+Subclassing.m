@@ -10,9 +10,11 @@
 
 @implementation ESApp (Subclassing)
 
-- (void)_setupRootViewController
+- (UIViewController *)_setupRootViewController
 {
-        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.title = @"Root View Controller";
+        return [[UINavigationController alloc] initWithRootViewController:vc];
 }
 
 - (NSString *)appChannel

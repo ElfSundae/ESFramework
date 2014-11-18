@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, ESAppUpdateResult) {
          */
         ESAppUpdateResultNone           = 0,
         /**
-         * Exists a new version, and it is a optional update.
+         * Exists a new version, and it is an optional update.
          */
         ESAppUpdateResultOptional       = 1 << 0,
         /**
@@ -63,7 +63,7 @@ typedef NS_ENUM(NSUInteger, ESAppUpdateAlertMask) {
  * To show a "Check Update" alert when app launch (and there's a new version), or when the user
  * tapped "Check Update" in app's "Settings", you can call `[ESApp showAppUpdateAlert:alertMask:]`.
  *
- * `ESAppUpdateObject` will be backed by filesystem, thus you can check `updateResult`
+ * `ESAppUpdateObject` may be backed by filesystem, thus you can check `updateResult`
  * to detect if there's a forced update when app launched even if the device's network connection
  * is no reached, that you can `showAppUpdateAlert`, `exit(0)` will be called after alert dismissed.
  * **Note** in this situation you may check `+[ESApp isFreshLaunch:]` at first.

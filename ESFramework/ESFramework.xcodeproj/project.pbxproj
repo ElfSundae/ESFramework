@@ -204,9 +204,6 @@
 		E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */; };
 		E72A54B51931B41400264130 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E72A54B61931B41400264130 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E72A54B41931B41400264130 /* UIImageView+HighlightedWebCache.m */; };
-		E72F6A4719177D79006893A5 /* ESRouter.h in Headers */ = {isa = PBXBuildFile; fileRef = E72F6A4519177D79006893A5 /* ESRouter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E72F6A4819177D79006893A5 /* ESRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A4619177D79006893A5 /* ESRouter.m */; };
-		E72F6A5019178FA0006893A5 /* ESRouterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E72F6A4E19178FA0006893A5 /* ESRouterObject.m */; };
 		E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E73613E8191AC7A9008A39CD /* NSObject+ESModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E73613E6191AC7A9008A39CD /* NSObject+ESModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E73613E9191AC7A9008A39CD /* NSObject+ESModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E73613E7191AC7A9008A39CD /* NSObject+ESModel.m */; };
@@ -1513,8 +1510,8 @@
 				E7F5D9081916DC0700D11273 /* ESApp.h */,
 				E7F5D9091916DC0700D11273 /* ESApp.m */,
 				E70493E519281C1800C0EDAD /* ESApp+Subclassing.m */,
-				E7F5D90A1916DC0700D11273 /* ESApp+AppInfo.m */,
 				E7F5D90B1916DC0700D11273 /* ESApp+ApplicationDelegate.m */,
+				E7F5D90A1916DC0700D11273 /* ESApp+AppInfo.m */,
 				E7F5D90C1916DC0700D11273 /* ESApp+Helper.m */,
 				E7F5D90D1916DC0700D11273 /* ESApp+Notification.m */,
 				E7F5D90E1916DC0700D11273 /* ESApp+UI.m */,
@@ -1603,7 +1600,6 @@
 				E739698B19199CE800F56B78 /* ESFoundation.h in Headers */,
 				E7D3B4641932331B0080A416 /* ESUIAdditions.h in Headers */,
 				E746C14919299E6100AD082C /* UINavigationController+ESAdditions.h in Headers */,
-				E72F6A4719177D79006893A5 /* ESRouter.h in Headers */,
 				E746C13B1929422700AD082C /* NSRegularExpression+ESAdditions.h in Headers */,
 				E76FEADC1929B178001461D1 /* ESArrowButton.h in Headers */,
 				E7F5D8F01916DB0B00D11273 /* NSURL+ESAdditions.h in Headers */,
@@ -2073,7 +2069,6 @@
 				E7F5D9061916DBC800D11273 /* UIView+ESShortcut.m in Sources */,
 				E7F5D8F91916DB8900D11273 /* ESValue.m in Sources */,
 				E7F5D9171916DC0700D11273 /* ESApp+UI.m in Sources */,
-				E72F6A5019178FA0006893A5 /* ESRouterObject.m in Sources */,
 				E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */,
 				E746C14A19299E6100AD082C /* UINavigationController+ESAdditions.m in Sources */,
 				E7F5D8EB1916DB0B00D11273 /* NSSet+ESAdditions.m in Sources */,
@@ -2095,7 +2090,6 @@
 				E7F5D8E51916DB0B00D11273 /* NSDate+ESAdditions.m in Sources */,
 				E7F5D8E71916DB0B00D11273 /* NSDictionary+ESAdditions.m in Sources */,
 				E76FEADD1929B178001461D1 /* ESArrowButton.m in Sources */,
-				E72F6A4819177D79006893A5 /* ESRouter.m in Sources */,
 				E7F5D9151916DC0700D11273 /* ESApp+Helper.m in Sources */,
 				E7F5D9021916DBC800D11273 /* UIActionSheet+ESBlock.m in Sources */,
 			);

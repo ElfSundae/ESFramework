@@ -25,6 +25,7 @@
 
 - (void)registerRemoteNotificationWithHandler:(ESHandlerBlock)handler
 {
+        //TODO: iOS 8 BugFix
         [self registerRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound) handler:handler];
 }
 

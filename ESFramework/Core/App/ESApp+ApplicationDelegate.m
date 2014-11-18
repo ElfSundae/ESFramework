@@ -18,11 +18,12 @@
         [self.window makeKeyAndVisible];
                 
         /* Setup root viewController */
-        [self _setupRootViewController];
+        self.rootViewController = [self _setupRootViewController];
         self.window.rootViewController = self.rootViewController;
         
-        ESWeak(self, _self);
+        ESWeakSelf;
         ESDispatchOnHighQueue(^{
+                ESStrongSelf;
                 /* Set the UserAgent for UIWebView */
                 NSString *ua = self.userAgentForWebView;
                 if (ua) {

@@ -33,11 +33,13 @@
 
 + (NSString *)appVersion
 {
+        // version for displaying
         NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        if (!version || ![version length]) {
+        if (!ESIsStringWithAnyText(version)) {
+                // build version
                 version = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
         }
-        return (version ?: @"");
+        return version ?: @"";
 }
 
 + (BOOL)isUIViewControllerBasedStatusBarAppearance
@@ -61,8 +63,8 @@
 - (NSMutableDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        result[@"system"] = [UIDevice systemName];
-        result[@"system_version"] = [UIDevice systemVersion];
+        result[@"os"] = [UIDevice systemName];
+        result[@"os_version"] = [UIDevice systemVersion];
         result[@"model"] = [UIDevice model];
         result[@"name"] = [UIDevice name];
         result[@"platform"] = [UIDevice platform];

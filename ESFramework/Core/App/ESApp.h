@@ -27,9 +27,9 @@
  * 	        return YES;
  * 	}
  *
- * 	- (void)_setupRootViewController
+ * 	- (UIViewController *)_setupRootViewController
  * 	{
- * 	        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
+ * 	        return [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
  * 	}
  *
  * 	// handle `openURL`
@@ -105,24 +105,29 @@
 #pragma mark - Subclassing
 
 @interface ESApp (Subclassing)
-- (void)_setupRootViewController;
+/**
+ * Setup your rootViewController for keyWindow.
+ * You can overwrite property `rootViewController` and @dynamic in your appDelegate implementation file.
+ */
+- (UIViewController *)_setupRootViewController;
 /**
  * @"App Store" as default.
  */
 - (NSString *)appChannel;
 /** 
- * App ID in App Store. 
+ * App ID in App Store, used to generate App Store Download link and the review link.
+ *
+ * @see +openAppStore +openAppReviewPage
  */
 - (NSString *)appID;
 /**
- * TimeZone from server (e.g. HTTP server).
+ * Returns the timeZone used by your web server, used to convert datetime from server to local.
  *
  * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
  */
 - (NSTimeZone *)serverTimeZone;
-
 /**
- * Your App Update data source.
+ * Your App Update datasource.
  */
 - (ESAppUpdateObject *)appUpdateSharedObject;
 /**
@@ -144,10 +149,34 @@
 + (id)objectForInfoDictionaryKey:(NSString *)key;
 + (NSString *)displayName;
 + (NSString *)appVersion;
+/// https://developer.apple.com/library/mac/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW29
 + (BOOL)isUIViewControllerBasedStatusBarAppearance;
 + (NSString *)bundleIdentifier;
 
-
+/**
+ * e.g.
+ *
+ * @code
+ * {
+ *     os = iOS;
+ *     "os_version" = "7.1";
+ *     "app_channel" = "App Store";
+ *     "app_identifier" = "com.0x123.ESDemo";
+ *     "app_name" = "ES Demo";
+ *     "app_version" = "1.0.0";
+ *     carrier = "";
+ *     jailbroken = 0;
+ *     locale = "en_US";
+ *     model = "iPhone Simulator";
+ *     name = "iPhone Simulator";
+ *     network = WiFi;
+ *     platform = "x86_64";
+ *     "screen_size" = 640x1136;
+ *     "timezone_gmt" = 8;
+ *     udid = 266caef7e386667663d6f994f8d2b2cac4e89a9f;
+ * }
+ * @endcode
+ */
 - (NSMutableDictionary *)analyticsInformation;
 /**
  * Returns User Agent for UIWebView.
@@ -155,14 +184,14 @@
  * Default User Agent for UIWebView, it registered after app launched.
  * Subclass can return #nil to use the default user-agent for UIWebView.
  *
- * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_1 like Mac OS X) Mobile/11D201 ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
+ * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_1 like Mac OS X) Mobile/11D201 ESFramework(iOS;7.1;com.0x123.ESDemo;1.0.0;App Store;266caef7e386667663d6f994f8d2b2cac4e89a9f;640x1136;en_US)`
  */
 - (NSString *)userAgentForWebView;
 
 /**
  * Returns User Agent for HTTP request.
  *
- * e.g. `ES(iOS;7.1.1;com.0x123.ESDemo;1.0.0;App Store;6ec547beea181d3fca2b0aa770353a0706f7fb3f;640x960;zh_CN)`
+ * e.g. `ESFramework(iOS;7.1;com.0x123.ESDemo;1.0.0;App Store;266caef7e386667663d6f994f8d2b2cac4e89a9f;640x1136;en_US)`
  */
 - (NSString *)userAgent;
 /**
@@ -190,7 +219,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESApp (ApplicationDelegate)
 @interface ESApp (ApplicationDelegate) <UIApplicationDelegate>
-
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 @end
 
 
@@ -299,7 +328,7 @@
 /**
  * Open App Store, and goto this app's download page.
  */
-+ (void)openAppStore;
++ (void)openAppStore; //`-appID` must be implemented.
 + (void)openAppStoreWithAppID:(NSString *)appID;
 
 ///=============================================

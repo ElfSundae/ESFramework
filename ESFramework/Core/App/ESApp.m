@@ -19,16 +19,16 @@
 
 + (instancetype)sharedApp
 {
-        if ([ESApp _isUIApplicationDelegate]) {
-                return [UIApplication sharedApplication].delegate;
-        }
-        
-        static ESApp *__gSharedApp = nil;
+        static id __sharedApp = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __gSharedApp = [[[self class] alloc] init];
+                if ([[UIApplication sharedApplication].delegate isKindOfClass:[self class]]) {
+                        __sharedApp = [UIApplication sharedApplication].delegate;
+                } else {
+                        __sharedApp = [[self alloc] init];
+                }
         });
-        return __gSharedApp;
+        return __sharedApp;
 }
 
 - (UIWindow *)window
