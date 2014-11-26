@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ESUIControlHandler)(id sender, UIControlEvents controlEvents);
+typedef void (^ESUIControlHandler)(id sender, UIControlEvents controlEvent);
 
 /**
  * Block ways to invoke `-addTarget:action:forControlEvents`.

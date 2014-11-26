@@ -88,7 +88,10 @@ static const void *__es_EventsKey = &__es_EventsKey;
 - (void)addEventHandler:(ESUIControlHandler)handler forControlEvents:(UIControlEvents)controlEvents
 {
         NSParameterAssert(handler);
-        for (NSUInteger i = 0, event = (1 << i); event <= UIControlEventEditingDidEndOnExit; event = 1 << ++i) {
+        for (NSUInteger i = 0, event = (1 << i);
+             event <= UIControlEventEditingDidEndOnExit;
+             event = 1 << ++i)
+        {
                 if (9 == i || 10 == i || 11 == i ||
                     13 == i || 14 == i || 15 == i) {
                         continue;
