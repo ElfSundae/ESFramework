@@ -28,7 +28,11 @@
 
 + (NSString *)displayName
 {
-        return [self objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *result = [self objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        if (!result) {
+                result = [self objectForInfoDictionaryKey:@"CFBundleName"];
+        }
+        return result ?: @"";
 }
 
 + (NSString *)appVersion

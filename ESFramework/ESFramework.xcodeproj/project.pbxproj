@@ -185,8 +185,6 @@
 		E7089FBE190FEDAB0014C8F6 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FBA190FEDAB0014C8F6 /* Reachability.m */; };
 		E7089FBF190FEDAB0014C8F6 /* UIDevice+Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FBB190FEDAB0014C8F6 /* UIDevice+Reachability.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7089FC0190FEDAB0014C8F6 /* UIDevice+Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FBC190FEDAB0014C8F6 /* UIDevice+Reachability.m */; };
-		E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FC2190FEDF10014C8F6 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FC3190FEDF10014C8F6 /* OpenUDID.m */; };
 		E723C3CE1977AF70006B98A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C4021977B2AA006B98A3 /* ESSpeexPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C4001977B2AA006B98A3 /* ESSpeexPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -215,6 +213,8 @@
 		E746C14A19299E6100AD082C /* UINavigationController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14819299E6100AD082C /* UINavigationController+ESAdditions.m */; };
 		E746C1501929A20800AD082C /* UIViewController+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E746C14E1929A20800AD082C /* UIViewController+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E746C14F1929A20800AD082C /* UIViewController+ESAdditions.m */; };
+		E747A9261A259B3A00B773CC /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7089FC2190FEDF10014C8F6 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E747A9271A259B3F00B773CC /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7089FC3190FEDF10014C8F6 /* OpenUDID.m */; };
 		E75A686E192C736D0073705C /* NSString+ESHTMLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A686C192C736D0073705C /* NSString+ESHTMLAdditions.h */; };
 		E75A686F192C736D0073705C /* NSString+ESHTMLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75A686D192C736D0073705C /* NSString+ESHTMLAdditions.m */; };
 		E75A6872192D4E110073705C /* UIImageView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75A6870192D4E110073705C /* UIImageView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1609,9 +1609,9 @@
 				E7D3B467193233EE0080A416 /* UIDevice+ESInfo.h in Headers */,
 				E7792AB019105E410060D935 /* ESApp+ESInternal.h in Headers */,
 				E75A6872192D4E110073705C /* UIImageView+ESAdditions.h in Headers */,
-				E7089FC4190FEDF10014C8F6 /* OpenUDID.h in Headers */,
 				E7F5D9031916DBC800D11273 /* UIAlertView+ESBlock.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
+				E747A9261A259B3A00B773CC /* OpenUDID.h in Headers */,
 				E79D85CD192C6A4F0000B57E /* NSError+ESAdditions.h in Headers */,
 				E75A686E192C736D0073705C /* NSString+ESHTMLAdditions.h in Headers */,
 				E7F5D9011916DBC800D11273 /* UIActionSheet+ESBlock.h in Headers */,
@@ -2061,6 +2061,7 @@
 				E76FEAD11929B101001461D1 /* UIBarButtonItem+ESAdditions.m in Sources */,
 				E70493E319275A8100C0EDAD /* ESAppUpdateObject.m in Sources */,
 				E76FEAE11929B2DC001461D1 /* UITableView+ESAdditions.m in Sources */,
+				E747A9271A259B3F00B773CC /* OpenUDID.m in Sources */,
 				E7F74667194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m in Sources */,
 				E70493E719281C1800C0EDAD /* ESApp+Subclassing.m in Sources */,
 				E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */,
@@ -2084,7 +2085,6 @@
 				E7F5D8ED1916DB0B00D11273 /* NSString+ESAdditions.m in Sources */,
 				E75A6873192D4E110073705C /* UIImageView+ESAdditions.m in Sources */,
 				E746C1401929484D00AD082C /* NSMutableString+ESAdditions.m in Sources */,
-				E7089FC5190FEDF10014C8F6 /* OpenUDID.m in Sources */,
 				E76FEAD91929B101001461D1 /* UIView+ESAdditions.m in Sources */,
 				E7D3B468193233EE0080A416 /* UIDevice+ESInfo.m in Sources */,
 				E7F5D8E51916DB0B00D11273 /* NSDate+ESAdditions.m in Sources */,
