@@ -43,6 +43,7 @@
 /**
  * Add an UILongPressGestureRecognizer with block way.
  */
+//TODO: block里应该回调各种state, 只回调begin的单独写一个方法
 - (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
 
 /// Set layer.mask, rounds all corners with the same horizontal and vertical radius
