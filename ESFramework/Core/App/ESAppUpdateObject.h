@@ -61,7 +61,7 @@ typedef NS_ENUM(NSUInteger, ESAppUpdateAlertMask) {
  * or the outside.
  *
  * To show a "Check Update" alert when app launch (and there's a new version), or when the user
- * tapped "Check Update" in app's "Settings", you can call `[ESApp showAppUpdateAlert:alertMask:]`.
+ * tapped "Check Update" in app's "Settings", you can call `-[ESApp showAppUpdateAlert:alertMask:]`.
  *
  * `ESAppUpdateObject` may be backed by filesystem, thus you can check `updateResult`
  * to detect if there's a forced update when app launched even if the device's network connection
@@ -71,31 +71,32 @@ typedef NS_ENUM(NSUInteger, ESAppUpdateAlertMask) {
  */
 @interface ESAppUpdateObject : NSObject
 
+@property (nonatomic, copy) NSString *alertTitle;
+@property (nonatomic, copy) NSString *alertTitleForUpdateExists;
+@property (nonatomic, copy) NSString *alertUpdateButtonTitle;
+@property (nonatomic, copy) NSString *alertCancelButtonTitle;
+
 @property (nonatomic) ESAppUpdateResult updateResult;
+
+@property (nonatomic, copy) NSString *alertMessage;
 /**
  * If it's not provided, `[ESApp sharedApp].appID` will be used.
  */
 @property (nonatomic, copy) NSString *updateURL;
 
-@property (nonatomic, copy) NSString *alertTitle;
-@property (nonatomic, copy) NSString *alertTitleForUpdateExists;
-@property (nonatomic, copy) NSString *alertMessage;
-@property (nonatomic, copy) NSString *alertUpdateButtonTitle;
-@property (nonatomic, copy) NSString *alertCancelButtonTitle;
 
 /**
- * Shared instance.
+ * Shared instance, returns +modelSharedInstance;
  */
 + (instancetype)sharedObject;
 /**
  * Destory shared instance from memory.
- * Called after using `+data`
  */
 + (void)destorySharedObject;
 /**
- * Cached to file.
+ * Caches to file.
  */
-- (void)save;
++ (void)save;
 
 ///=============================================
 /// @name Subclass

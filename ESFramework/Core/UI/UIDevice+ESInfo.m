@@ -112,16 +112,12 @@
 
 + (NSString *)IDFA
 {
-//#if !TARGET_IPHONE_SIMULATOR
         NSString *idfa = nil;
         Class cls = NSClassFromString(@"ASIdentifierManager");
         if (cls) {
                 idfa = [[[cls sharedManager] advertisingIdentifier] UUIDString];
         }
-        return idfa ?: nil;
-//#else
-//        return @"00000000-0000-0000-0000-000000000000";
-//#endif
+        return idfa ?: @"";
 }
 
 + (BOOL)isJailbroken
@@ -200,7 +196,7 @@
 {
         CGSize size = [self screenSize];
         if (size.width > size.height) {
-                float t = size.width;
+                CGFloat t = size.width;
                 size.width = size.height;
                 size.height = t;
         }

@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+ESInternal.h"
+#import "ESApp+Internal.h"
 
 @implementation ESApp (Subclassing)
 
 - (UIViewController *)_setupRootViewController
 {
         UIViewController *vc = [[UIViewController alloc] init];
-        vc.title = @"Root View Controller";
+        vc.title = @"RootViewController";
         return [[UINavigationController alloc] initWithRootViewController:vc];
 }
 
@@ -44,7 +44,7 @@
 
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-        NSLog(@"remote notification:\n%@", userInfo);
+        
 }
 
 @end

@@ -26,8 +26,8 @@
 
 - (NSString *)updateURL
 {
-        if (!_updateURL || [_updateURL isEmpty]) {
-                return [[ESApp sharedApp].appID appLinkForAppStore];
+        if (!ESIsStringWithAnyText(_updateURL)) {
+                return [ESApp sharedApp].appID.appLinkForAppStore;
         }
         return _updateURL;
 }
@@ -42,11 +42,9 @@
         [self setModelSharedInstance:nil];
 }
 
-- (void)save
++ (void)save
 {
-        //TODO:
-#warning todo
-        //[self saveModelSharedInstance];
+        [self saveModelSharedInstance:nil];
 }
 
 - (void)fillWithDictionary:(NSDictionary *)dictionary

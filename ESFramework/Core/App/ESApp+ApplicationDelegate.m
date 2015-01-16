@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+ESInternal.h"
+#import "ESApp+Internal.h"
 
 @implementation ESApp (ApplicationDelegate)
 
@@ -25,7 +25,7 @@
         ESDispatchOnHighQueue(^{
                 ESStrongSelf;
                 /* Set the UserAgent for UIWebView */
-                NSString *ua = self.userAgentForWebView;
+                NSString *ua = _self.userAgentForWebView;
                 if (ua) {
                         [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua}];
                 }
@@ -41,11 +41,13 @@
                         _self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
                 }
                 
+#if 0 // 启动时的remoteNotification一般是在主界面展示出来后处理
                 if (_self.remoteNotification) {
                         ESDispatchOnMainThreadAsynchronously(^{
                                 [_self applicationDidReceiveRemoteNotification:_self.remoteNotification];
                         });
                 }
+#endif
         });
         
         return YES;
@@ -54,6 +56,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Remote Notification
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
         NSString *token = [deviceToken description];

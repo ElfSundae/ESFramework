@@ -48,7 +48,6 @@
 
 + (void)simulateLowMemoryWarning
 {
-#if DEBUG
         SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");
         if ([[UIApplication sharedApplication] respondsToSelector:memoryWarningSel]) {
                 printf("Simulate low memory warning\n");
@@ -58,10 +57,10 @@
                 [[UIApplication sharedApplication] performSelector:memoryWarningSel];
 #pragma clang diagnostic pop
         } else {
+                printf("UIApplication no longer responds \"_performMemoryWarning\" selector.\n");
                 // UIApplication no loger responds to _performMemoryWarning
                 exit(1);
         }
-#endif
 }
 
 static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;

@@ -67,6 +67,7 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
 /// @name Weak Object
 ///=============================================
 #pragma mark - Weak Object
+
 /**
  * @code
  * ESWeak(imageView, weakImageView);
@@ -75,7 +76,7 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
  *         strongImageView.image = image;
  * }];
  *
- * // `ESWeak_` will create a var named `weak_imageView`
+ * // `ESWeak_(imageView)` will create a var named `weak_imageView`
  * ESWeak_(imageView);
  * [self testBlock:^(UIImage *image) {
  *         ESStrong_(imageView);
@@ -86,7 +87,7 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
  * ESWeakSelf;
  * [self testBlock:^(UIImage *image) {
  *         ESStrongSelf;
- *         _self.imageView = image;
+ *         _self.image = image;
  * }];
  * @endcode
  */
@@ -160,6 +161,15 @@ ES_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
  * @endcode
  */
 ES_EXTERN BOOL ESOSVersionIsAbove7(void);
+
+/**
+ * Checks whether the device's OS version is above iOS8.0.
+ *
+ * @code
+ * return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
+ * @endcode
+ */
+ES_EXTERN BOOL ESOSVersionIsAbove8(void);
 
 ///=============================================
 /// @name UIColor Helper
@@ -239,6 +249,8 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 /// @name Helper
 ///=============================================
 #pragma mark - Helper
+
+#define CFReleaseSafely(_var)   if(_var){ CFRelease(_var); _var = NULL; }
 
 /** Bitmask */
 #define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))

@@ -14,8 +14,6 @@
 /**
  * App helper class, and you can subclass it as your app delegate.
  *
- * `AFNetworkActivityIndicatorManager` has been enabled if it exists.
- *
  * ## Subclassing Notes
  *
  *
@@ -32,10 +30,6 @@
  * 	        return [[UINavigationController alloc] initWithRootViewController:[[UIViewController alloc] init]];
  * 	}
  *
- * 	// handle `openURL`
- * 	- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
- * 		return YES;
- * 	}
  *
  * 	// in someone method:
  * 	{
@@ -95,6 +89,7 @@
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UIViewController *rootViewController;
+
 @property (nonatomic, strong) NSDictionary *remoteNotification;
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
 
@@ -176,6 +171,8 @@
  *     udid = 266caef7e386667663d6f994f8d2b2cac4e89a9f;
  * }
  * @endcode
+ *
+ * Note: The 'network' requires UIDevice(Reachability), which included in ESFrameworkNetwork.
  */
 - (NSMutableDictionary *)analyticsInformation;
 /**
@@ -219,7 +216,20 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESApp (ApplicationDelegate)
 @interface ESApp (ApplicationDelegate) <UIApplicationDelegate>
+
+/**
+ * Remeber call super at first in your AppDelegate.
+ *
+ * It done:
+ *      + Setup window
+ *      + Setup Root View Controller
+ *      + Set the UserAgent for UIWebView, see -userAgentForWebView;
+ *      + Set Cookie Accept Plicy to NSHTTPCookieAcceptPolicyAlways
+ *      + Enable multitasking, see +enableMultitasking;
+ *      + Save UIApplicationLaunchOptionsRemoteNotification value to self.remoteNotification
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
 @end
 
 
@@ -279,11 +289,14 @@
  */
 + (void)deleteAllHTTPCookies;
 
+#if DEBUG
 /**
  * Simulate low memory warning.
- * Don't use this in production because it uses private API.
+ *
+ * @warning Don't use this in production because it uses private API.
  */
 + (void)simulateLowMemoryWarning;
+#endif
 
 /**
  * Enable multitasking.
@@ -375,10 +388,9 @@
 
 @interface ESApp (Notification)
 /**
- * If register succueed, handler's `sender` will be the device token (NSString type without blank chars.),
- * or else `sender` will be a NSError object.
+ * If register succueed, handler's `sender` will be the device token (NSString type without blank characters.),
+ * otherwise `sender` will be a NSError object.
  */
-- (void)registerRemoteNotificationWithHandler:(ESHandlerBlock)handler;
-- (void)registerRemoteNotificationTypes:(UIRemoteNotificationType)types handler:(ESHandlerBlock)hander;
+- (void)registerRemoteNotificationTypes:(UIRemoteNotificationType)types success:(void (^)(NSString *deviceToken))success failure:(void (^)(NSError *error))failure;
 
 @end

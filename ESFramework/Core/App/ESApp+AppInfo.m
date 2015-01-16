@@ -114,7 +114,7 @@
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
                 __gUserAgent = [NSString stringWithFormat:@"ESFramework(%@;%@;%@;%@;%@;%@;%@;%@)",
-                                @"iOS",
+                                [UIDevice systemName],
                                 [UIDevice systemVersion],
                                 [self.class bundleIdentifier],
                                 [self.class appVersion],
@@ -129,12 +129,12 @@
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier
 {
         NSArray *urlTypes = [self objectForInfoDictionaryKey:@"CFBundleURLTypes"];
-        if (!urlTypes || !urlTypes.count) {
+        if (!ESIsArrayWithItems(urlTypes)) {
                 return nil;
         }
         
         NSPredicate *predicate = nil;
-        if ([identifier isKindOfClass:[NSString class]] && identifier.length) {
+        if (ESIsStringWithAnyText(identifier)) {
                 predicate = [NSPredicate predicateWithFormat:@"SELF['CFBundleURLName'] == %@", identifier];
         } else {
                 predicate = [NSPredicate predicateWithFormat:@"SELF['CFBundleURLName'] == NULL OR SELF['CFBundleURLName'] == ''"];
@@ -145,7 +145,7 @@
         NSDictionary *schemesDict = [filtered firstObject];
         if ([schemesDict isKindOfClass:[NSDictionary class]]) {
                 NSArray *result = schemesDict[@"CFBundleURLSchemes"];
-                if (result && result.count) {
+                if (ESIsArrayWithItems(result)) {
                         return result;
                 }
         }

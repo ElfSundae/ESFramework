@@ -1,14 +1,14 @@
 //
-//  ESApp+ESInternal.m
+//  ESApp+Internal.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 4/21/14.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 14-12-16.
+//  Copyright (c) 2014年 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+ESInternal.h"
+#import "ESApp+Internal.h"
 
-@implementation ESApp (ESInternal)
+@implementation ESApp (Internal)
 
 + (BOOL)_isUIApplicationDelegate
 {

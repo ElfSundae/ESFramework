@@ -9,14 +9,12 @@
 #ifndef ESFramework_ESFrameworkCore_h
 #define ESFramework_ESFrameworkCore_h
 
-#define kESFrameworkCoreVersion @"0.1.1"
+#define kESFrameworkCoreVersion @"0.1.2"
 
 #import "ESDefines.h"
 #import "ESFoundation.h"
 #import "ESUIAdditions.h"
-// App
 #import "ESApp.h"
 #import "UIDevice+ESInfo.h"
-//#import "ESRouter.h"
 
 #endif

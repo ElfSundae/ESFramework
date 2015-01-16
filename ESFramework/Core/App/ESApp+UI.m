@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+ESInternal.h"
+#import "ESApp+Internal.h"
 
 @implementation ESApp (UI)
 
