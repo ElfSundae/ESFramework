@@ -32,7 +32,7 @@
         if (![[self class] _isUIApplicationDelegate]) {
                 [NSException raise:@"ESAppIsNotApplicationDelegateException" format:@"To use this method, the application delegate must be inherited from ESApp."];
         }
-        self._remoteNotificationRegisterResultHandler = hander;
+//        self._remoteNotificationRegisterResultHandler = hander;
 
         //TODO: 管理remoteNotification和localNotification, 提供 注册,查询,注销等方法.
         // 兼容iOS8

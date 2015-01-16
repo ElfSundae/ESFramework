@@ -57,20 +57,20 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Remote Notification
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-        NSString *token = [deviceToken description];
-        token = [token stringByReplacingOccurrencesOfString:@"[<>\\s]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, token.length)];
-        if (self._remoteNotificationRegisterResultHandler) {
-                self._remoteNotificationRegisterResultHandler(token);
-        }
-}
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-        if (self._remoteNotificationRegisterResultHandler) {
-                self._remoteNotificationRegisterResultHandler(error);
-        }
-}
+//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+//{
+//        NSString *token = [deviceToken description];
+//        token = [token stringByReplacingOccurrencesOfString:@"[<>\\s]" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, token.length)];
+//        if (self._remoteNotificationRegisterResultHandler) {
+//                self._remoteNotificationRegisterResultHandler(token);
+//        }
+//}
+//- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+//{
+//        if (self._remoteNotificationRegisterResultHandler) {
+//                self._remoteNotificationRegisterResultHandler(error);
+//        }
+//}
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
