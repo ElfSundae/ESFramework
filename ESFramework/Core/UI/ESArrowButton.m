@@ -14,8 +14,8 @@
 + (instancetype)button
 {
         ESArrowButton *button = [[self alloc] init];
-        button.frame = CGRectMake(0.f, 0.f, 30.f, 28.f);
-        button.edgeInsets = UIEdgeInsetsMake(4.f, 8.f, 4.f, 8.f);
+        button.frame = CGRectMake(0.f, 0.f, 14.f, 22.f);
+        button.edgeInsets = UIEdgeInsetsZero;
         button.lineWidth = 3.f;
         return button;
 }
