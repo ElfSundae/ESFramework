@@ -9,11 +9,7 @@
 #ifndef ESFramework_ESFrameworkNetwork_h
 #define ESFramework_ESFrameworkNetwork_h
 
-#define kESFrameworkNetworkVersion @"0.1.0"
-
-// Reachability
-#import "Reachability.h"
-#import "UIDevice+Reachability.h"
+#define kESFrameworkNetworkVersion @"0.1.1"
 
 // SDWebImage
 #import "SDWebImageDecoder.h"

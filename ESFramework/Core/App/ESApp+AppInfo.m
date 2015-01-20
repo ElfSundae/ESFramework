@@ -1,13 +1,16 @@
 //
-//  ESApp+ESAppInfo.m
+//  ESApp+AppInfo.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 4/21/14.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 1/21/15.
+//  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp.h"
+#import "ESApp+AppInfo.h"
+#import "ESApp+Helper.h"
+#import "ESApp+Subclassing.h"
 #import "UIDevice+ESInfo.h"
+#import "UIDevice+Reachability.h"
 
 @implementation ESApp (AppInfo)
 
@@ -78,13 +81,14 @@
         result[@"screen_size"] = [UIDevice screenSizeString];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"] = [UIDevice currentLocaleIdentifier];
-        NSString *network = @"";
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
-        if (ESInvokeSelector([UIDevice class], @selector(currentNetworkStatusString), &network) && network) {
-                result[@"network"] = network;
-        }
-#pragma clang diagnostic pop
+        result[@"network"] = [UIDevice currentNetworkStatusString];
+//        NSString *network = @"";
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wundeclared-selector"
+//        if (ESInvokeSelector([UIDevice class], @selector(currentNetworkStatusString), &network) && network) {
+//                result[@"network"] = network;
+//        }
+//#pragma clang diagnostic pop
         result[@"app_name"] = [self.class displayName];
         result[@"app_version"] = [self.class appVersion];
         result[@"app_identifier"] = [self.class bundleIdentifier];

@@ -40,8 +40,11 @@ typedef struct {
 /**
  * Detect whether file exists.
  */
-- (BOOL)fileExists;
-- (BOOL)fileExists:(BOOL *)isDirectory;
+- (BOOL)fileExists __attribute__((deprecated));
+- (BOOL)fileExists:(BOOL *)isDirectory __attribute__((deprecated));
+
+- (BOOL)isFileExists;
+- (BOOL)isFileExists:(BOOL *)isDirectory;
 
 /**
  * Asynchronously write file.
@@ -80,6 +83,9 @@ typedef struct {
 
 - (NSArray *)splitWith:(NSString *)separator;
 - (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
+
+- (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters;
+- (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
 /**
  * 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
@@ -232,7 +238,7 @@ typedef struct {
 - (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
 /**
  * `dictionary` is NSString keyed, vlaued with NSString or NSNumber.
- * `options` can be any including `NSRegularExpressionSearch`.
+ * `options` can be any value including `NSRegularExpressionSearch`.
  */
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
 @end

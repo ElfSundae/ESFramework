@@ -2,11 +2,11 @@
 //  ESApp+Subclassing.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 5/18/14.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 1/21/15.
+//  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+Internal.h"
+#import "ESApp+Subclassing.h"
 
 @implementation ESApp (Subclassing)
 
@@ -15,6 +15,16 @@
         UIViewController *vc = [[UIViewController alloc] init];
         vc.title = @"RootViewController";
         return [[UINavigationController alloc] initWithRootViewController:vc];
+}
+
+- (void)_applicationDidFinishLaunching:(UIApplication *)application withOptions:(NSDictionary *)launchOptions
+{
+        
+}
+
+- (void)_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+        
 }
 
 - (NSString *)appChannel
@@ -32,6 +42,7 @@
         return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
 }
 
+#if 0
 - (ESAppUpdateObject *)appUpdateSharedObject
 {
         return [ESAppUpdateObject sharedObject];
@@ -41,10 +52,6 @@
 {
         [self showAppUpdateAlert:updateObject alertMask:alertMask handler:nil];
 }
-
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-        
-}
+#endif
 
 @end

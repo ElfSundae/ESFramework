@@ -14,7 +14,10 @@
 #import "ESDefines.h"
 #import "ESFoundation.h"
 #import "ESUIAdditions.h"
+#import "UIDevice+Reachability.h"
 #import "ESApp.h"
-#import "UIDevice+ESInfo.h"
+#import "ESApp+AppInfo.h"
+#import "ESApp+Subclassing.h"
+#import "ESApp+Helper.h"
 
 #endif

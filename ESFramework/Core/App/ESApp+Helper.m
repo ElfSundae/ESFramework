@@ -2,14 +2,16 @@
 //  ESApp+Helper.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-10.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 1/21/15.
+//  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp.h"
+#import "ESApp+Helper.h"
 #import "NSString+ESAdditions.h"
 #import "UIAlertView+ESBlock.h"
 @import AddressBook;
+#import "ESApp+AppInfo.h"
+#import "ESApp+Subclassing.h"
 
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
@@ -94,6 +96,83 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return (__es_gBackgroundTaskID && __es_gBackgroundTaskID != UIBackgroundTaskInvalid);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UI
+
++ (UIWindow *)keyWindow
+{
+        static UIWindow *__gKeyWindow = nil;
+        if (!__gKeyWindow) {
+                id delegate = [UIApplication sharedApplication].delegate;
+                if ([delegate respondsToSelector:@selector(window)]) {
+                        __gKeyWindow = (UIWindow *)[delegate valueForKey:@"window"];
+                }
+        }
+        
+        if (!__gKeyWindow) {
+                // maybe the #keyWindow just is a temporary keyWindow,
+                // so we do not save it to the #__gKeyWindow.
+                return [UIApplication sharedApplication].keyWindow;
+        }
+        return __gKeyWindow;
+}
+
+- (UIWindow *)keyWindow
+{
+        return [[self class] keyWindow];
+}
+
++ (void)dismissKeyboard
+{
+        [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
++ (UIViewController *)rootViewController
+{
+        return [self keyWindow].rootViewController;
+}
+
++ (UIViewController *)rootViewControllerForPresenting
+{
+        UIViewController *rootViewController = [self rootViewController];
+        
+        while ([rootViewController.presentedViewController isKindOfClass:[UIViewController class]]) {
+                rootViewController = rootViewController.presentedViewController;
+        }
+        
+        return rootViewController;
+}
+
+- (UIViewController *)rootViewControllerForPresenting
+{
+        return [[self class] rootViewControllerForPresenting];
+}
+
++ (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion
+{
+        [[self rootViewControllerForPresenting] presentViewController:viewControllerToPresent animated:flag completion:completion];
+}
+
++ (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion
+{
+        [[self rootViewController] dismissViewControllerAnimated:flag completion:completion];
+}
+
++ (BOOL)isInForeground
+{
+        return ([UIApplication sharedApplication].applicationState == UIApplicationStateActive);
+}
+
+- (BOOL)isInForeground
+{
+        return [[self class] isInForeground];
+}
+
++ (void)clearApplicationIconBadgeNumber
+{
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,6 +254,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - App Upgrade
 
+#if 0
 - (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler
 {
         if (![updateObject isKindOfClass:[ESAppUpdateObject class]] ||
@@ -203,7 +283,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                                         BOOL alertCanceld = (buttonIndex != alertView.cancelButtonIndex);
                                         if ((!handler && !alertCanceld) ||
                                             (handler && handler(updateObject, alertCanceld))) {
-                                              [[_self class] openURLWithString:updateObject.updateURL];
+                                                [[_self class] openURLWithString:updateObject.updateURL];
                                         }
                                 } otherButtonTitles:updateObject.alertCancelButtonTitle, nil];
                 [alert show];
@@ -244,7 +324,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         }
         
 }
-
+#endif
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Authorization
@@ -264,7 +344,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                 
         } else if (kABAuthorizationStatusNotDetermined == status) {
                 ABAddressBookRef addressBook = ABAddressBookCreate();
-                ABAddressBookRequestAccessWithCompletion(ABAddressBookCreate(), ^(bool granted, CFErrorRef error) {
+                ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
                         if (addressBook) {
                                 CFRelease(addressBook);
                         }
@@ -279,5 +359,6 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                         ESDispatchOnMainThreadAsynchronously(failure);
         }
 }
+
 
 @end

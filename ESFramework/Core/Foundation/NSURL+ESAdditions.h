@@ -26,4 +26,7 @@
 
 - (BOOL)isEqualToURL:(NSURL *)anotherURL;
 
+- (BOOL)isFileExists;
+- (BOOL)isFileExists:(BOOL *)isDirectory;
+
 @end

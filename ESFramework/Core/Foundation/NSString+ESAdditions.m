@@ -61,14 +61,24 @@
         return [self isEqualToString:@""];
 }
 
-- (BOOL)fileExists
+- (BOOL)isFileExists
 {
         return [[NSFileManager defaultManager] fileExistsAtPath:self];
 }
 
-- (BOOL)fileExists:(BOOL *)isDirectory
+- (BOOL)isFileExists:(BOOL *)isDirectory
 {
         return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
+}
+
+- (BOOL)fileExists
+{
+        return [self isFileExists];
+}
+
+- (BOOL)fileExists:(BOOL *)isDirectory
+{
+        return [self isFileExists:isDirectory];
 }
 
 
@@ -186,6 +196,17 @@
 {
         return [self componentsSeparatedByCharactersInSet:separator];
 }
+
+- (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters
+{
+        return [[self componentsSeparatedByCharactersInSet:characters] componentsJoinedByString:@""];
+}
+
+- (NSString *)stringByDeletingCharactersInString:(NSString *)string
+{
+        return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
+}
+
 
 + (NSString *)newUUID
 {

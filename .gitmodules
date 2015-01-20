@@ -1,6 +1,3 @@
-[submodule "ESFramework/Network/Vendor/Reachability"]
-	path = ESFramework/Network/Vendor/Reachability
-	url = git@github.com:ElfSundae/Reachability.git
 [submodule "ESFramework/Core/Vendor/OpenUDID"]
 	path = ESFramework/Core/Vendor/OpenUDID
 	url = git@github.com:ElfSundae/OpenUDID.git

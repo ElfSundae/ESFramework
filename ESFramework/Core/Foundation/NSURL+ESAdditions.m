@@ -26,4 +26,14 @@
                 (self.isFileURL && anotherURL.isFileURL && [self.path isEqualToString:anotherURL.path]));
 }
 
+- (BOOL)isFileExists:(BOOL *)isDirectory
+{
+        return (self.isFileURL && [self.path isFileExists:isDirectory]);
+}
+
+- (BOOL)isFileExists
+{
+        return (self.isFileURL && [self.path isFileExists]);
+}
+
 @end
