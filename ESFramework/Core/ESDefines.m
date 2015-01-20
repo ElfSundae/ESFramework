@@ -851,11 +851,16 @@ static const void *__es_notificationHandlersKey = &__es_notificationHandlersKey;
 
 - (void)removeNotification:(NSString *)name
 {
-        if (!ESIsStringWithAnyText(name)) {
-                return;
+        if (ESIsStringWithAnyText(name)) {
+                [[NSNotificationCenter defaultCenter] removeObserver:self name:name object:nil];
+                [self.__es_notificationHandlers removeObjectForKey:name];
+        } else {
+                NSMutableDictionary *dict = [self getAssociatedObject:__es_notificationHandlersKey];
+                [dict enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id key, id obj, BOOL *stop) {
+                        [[NSNotificationCenter defaultCenter] removeObserver:self name:(NSString *)key object:nil];
+                }];
+                [dict removeAllObjects];
         }
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:name object:nil];
-        [self.__es_notificationHandlers removeObjectForKey:name];
 }
 
 @end

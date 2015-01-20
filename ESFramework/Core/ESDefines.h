@@ -57,7 +57,7 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
         if (__es_timebase_info.denom == 0) { (void) mach_timebase_info(&__es_timebase_info); } \
         end_##stopwatch_begin_var = end_##stopwatch_begin_var * __es_timebase_info.numer / __es_timebase_info.denom; \
         double ms_end_##stopwatch_begin_var = (double)end_##stopwatch_begin_var / 1000000; \
-        printf("‼️Stopwatch‼️[%s:%d] %s %fms\n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, ms_end_##stopwatch_begin_var);
+        printf("‼️STOPWATCH‼️[%s:%d] %s %fms\n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, ms_end_##stopwatch_begin_var);
 #else
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var)
 #define ES_STOPWATCH_END(stopwatch_begin_var)
@@ -556,7 +556,12 @@ typedef void (^ESNotificationHandler)(NSNotification *notification, NSDictionary
  * Add `self` to `NSNotificationCenter` as an observer.
  */
 - (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler;
+/**
+ * Remove notification which added using `-addNotification:handler:`.
+ * When the `name` is nil, it will remove all noticications added using `-addNotification:handler:`.
+ */
 - (void)removeNotification:(NSString *)name;
+
 @end
 
 ///=============================================

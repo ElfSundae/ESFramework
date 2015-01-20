@@ -676,8 +676,6 @@
 		E7AF666F197EF1980038976B /* ESSpeexKitDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexKitDefines.m; sourceTree = "<group>"; };
 		E7AF671C1980B8A00038976B /* ESSpeexDecoderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexDecoderOperation.h; sourceTree = "<group>"; };
 		E7AF671D1980B8A00038976B /* ESSpeexDecoderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexDecoderOperation.m; sourceTree = "<group>"; };
-		E7B8B35C1924E22B00196EE9 /* ESCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ESCache.h; path = ../Foundation/ESCache.h; sourceTree = "<group>"; };
-		E7B8B35D1924E22B00196EE9 /* ESCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ESCache.m; path = ../Foundation/ESCache.m; sourceTree = "<group>"; };
 		E7B8B3A31924FE1200196EE9 /* ESFrameworkDatabase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkDatabase.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B8B3C91924FE8600196EE9 /* DatabaseDebug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DatabaseDebug.xcconfig; sourceTree = "<group>"; };
 		E7B8B3CA1924FE9200196EE9 /* DatabaseRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DatabaseRelease.xcconfig; sourceTree = "<group>"; };
@@ -1275,15 +1273,6 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
-		E7994BE71A19F674002CE652 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-				E7B8B35C1924E22B00196EE9 /* ESCache.h */,
-				E7B8B35D1924E22B00196EE9 /* ESCache.m */,
-			);
-			path = Deprecated;
-			sourceTree = "<group>";
-		};
 		E7AF6640197EA6D70038976B /* libogg-1.3.2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1378,7 +1367,6 @@
 		E7BCF61818F985C4006D920E /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E7994BE71A19F674002CE652 /* Deprecated */,
 				E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */,
 				E7C9472D18FBE0530034B110 /* ESDefines.h */,
 				E7C9472E18FBE0530034B110 /* ESDefines.m */,
