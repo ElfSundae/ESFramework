@@ -196,11 +196,6 @@
 		E723C5ED19790425006B98A3 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */; };
 		E723C60119795179006B98A3 /* ESSpeexInternalPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */; };
 		E723C60219795179006B98A3 /* ESSpeexInternalPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */; };
-		E723C645197963FE006B98A3 /* ESAudioInternalPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C644197963FE006B98A3 /* ESAudioInternalPlayer.h */; };
-		E723C64919796499006B98A3 /* ESAudioPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C64719796499006B98A3 /* ESAudioPlayer.h */; };
-		E723C64A19796499006B98A3 /* ESAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C64819796499006B98A3 /* ESAudioPlayer.m */; };
-		E723C64D197964A8006B98A3 /* ESAudioRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C64B197964A8006B98A3 /* ESAudioRecorder.h */; };
-		E723C64E197964A8006B98A3 /* ESAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C64C197964A8006B98A3 /* ESAudioRecorder.m */; };
 		E723C673197AF04A006B98A3 /* ESSpeexRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */; };
 		E72A54B51931B41400264130 /* UIImageView+HighlightedWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -580,11 +575,6 @@
 		E723C5EB19790425006B98A3 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "Vendor/SDWebImage/SDWebImage/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		E723C5FF19795179006B98A3 /* ESSpeexInternalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexInternalPlayer.h; sourceTree = "<group>"; };
 		E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexInternalPlayer.m; sourceTree = "<group>"; };
-		E723C644197963FE006B98A3 /* ESAudioInternalPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAudioInternalPlayer.h; sourceTree = "<group>"; };
-		E723C64719796499006B98A3 /* ESAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAudioPlayer.h; sourceTree = "<group>"; };
-		E723C64819796499006B98A3 /* ESAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAudioPlayer.m; sourceTree = "<group>"; };
-		E723C64B197964A8006B98A3 /* ESAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESAudioRecorder.h; sourceTree = "<group>"; };
-		E723C64C197964A8006B98A3 /* ESAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESAudioRecorder.m; sourceTree = "<group>"; };
 		E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexRecorder.h; sourceTree = "<group>"; };
 		E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexRecorder.m; sourceTree = "<group>"; };
 		E72A54B31931B41400264130 /* UIImageView+HighlightedWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+HighlightedWebCache.h"; path = "Vendor/SDWebImage/SDWebImage/UIImageView+HighlightedWebCache.h"; sourceTree = "<group>"; };
@@ -1077,25 +1067,6 @@
 			path = Vendor;
 			sourceTree = "<group>";
 		};
-		E723C643197963DB006B98A3 /* _Internal */ = {
-			isa = PBXGroup;
-			children = (
-				E723C644197963FE006B98A3 /* ESAudioInternalPlayer.h */,
-			);
-			path = _Internal;
-			sourceTree = "<group>";
-		};
-		E723C64619796459006B98A3 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				E723C64719796499006B98A3 /* ESAudioPlayer.h */,
-				E723C64819796499006B98A3 /* ESAudioPlayer.m */,
-				E723C64B197964A8006B98A3 /* ESAudioRecorder.h */,
-				E723C64C197964A8006B98A3 /* ESAudioRecorder.m */,
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
 		E72F6A55191825AB006893A5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1373,8 +1344,6 @@
 			isa = PBXGroup;
 			children = (
 				E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */,
-				E723C64619796459006B98A3 /* Audio */,
-				E723C643197963DB006B98A3 /* _Internal */,
 				E72F6A55191825AB006893A5 /* Controllers */,
 				E7089FA4190FECA70014C8F6 /* Views */,
 				E793AB8C18FDDC3F00487E34 /* Animations */,
@@ -1617,7 +1586,6 @@
 				E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */,
 				E70493D71927207B00C0EDAD /* ESWebViewController.h in Headers */,
 				E7089FB3190FED0E0014C8F6 /* SwipeView.h in Headers */,
-				E723C64919796499006B98A3 /* ESAudioPlayer.h in Headers */,
 				E704935B1925B15100C0EDAD /* ESButton.h in Headers */,
 				E76FEB11192C3101001461D1 /* ESRefreshControl.h in Headers */,
 				E70493571925B15100C0EDAD /* ESBadgeView.h in Headers */,
@@ -1626,9 +1594,7 @@
 				E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */,
 				E76FEAF7192B0B7B001461D1 /* ESTextView.h in Headers */,
 				E70493621925B19200C0EDAD /* ESErrorView.h in Headers */,
-				E723C64D197964A8006B98A3 /* ESAudioRecorder.h in Headers */,
 				E70493DE192720DC00C0EDAD /* ESMoviePlayerViewController.h in Headers */,
-				E723C645197963FE006B98A3 /* ESAudioInternalPlayer.h in Headers */,
 				E76FEB0C192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2069,7 +2035,6 @@
 			files = (
 				E70493631925B19200C0EDAD /* ESErrorView.m in Sources */,
 				E76FEAFD192B59B8001461D1 /* ESStatusOverlayView.m in Sources */,
-				E723C64A19796499006B98A3 /* ESAudioPlayer.m in Sources */,
 				E76FEB0D192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m in Sources */,
 				E76FEAEC192A93DC001461D1 /* ESActivityLabel.m in Sources */,
 				E7DBC832192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.m in Sources */,
@@ -2085,7 +2050,6 @@
 				E70493D81927207B00C0EDAD /* ESWebViewController.m in Sources */,
 				E76FEB1A192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m in Sources */,
 				E70493DF192720DC00C0EDAD /* ESMoviePlayerViewController.m in Sources */,
-				E723C64E197964A8006B98A3 /* ESAudioRecorder.m in Sources */,
 				E704935E1925B15100C0EDAD /* UIProgressView+ESStyle.m in Sources */,
 				E76FEB12192C3101001461D1 /* ESRefreshControl.m in Sources */,
 				E70493581925B15100C0EDAD /* ESBadgeView.m in Sources */,
