@@ -19,7 +19,6 @@
  *      + Setup window
  *      + Setup Root View Controller
  *      + Set the UserAgent for UIWebView, see -userAgentForWebView;
- *      + Set Cookie Accept Plicy to NSHTTPCookieAcceptPolicyAlways
  *      + Enable multitasking, see +enableMultitasking;
  *      + Save UIApplicationLaunchOptionsRemoteNotification value to self.remoteNotification
  *

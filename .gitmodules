@@ -7,6 +7,3 @@
 [submodule "ESFramework/Network/Vendor/SDWebImage"]
 	path = ESFramework/Network/Vendor/SDWebImage
 	url = git@github.com:ElfSundae/SDWebImage.git
-[submodule "ESFramework/Database/Vendor/SQLitePersistentObjects"]
-	path = ESFramework/Database/Vendor/SQLitePersistentObjects
-	url = git@github.com:ElfSundae/SQLitePersistentObjects.git

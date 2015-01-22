@@ -98,7 +98,6 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         /* Setup window */
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
-        [self.window makeKeyAndVisible];
         
         /* Setup root viewController */
         self.rootViewController = [self _setupRootViewController];
@@ -111,7 +110,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         }
         
         /* Set Cookie Accept Plicy to  NSHTTPCookieAcceptPolicyAlways */
-        [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+        //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
         
         /* Enable multitasking */
         [[self class] enableMultitasking];
@@ -123,6 +122,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         
         [self _applicationDidFinishLaunching:application withOptions:launchOptions];
         
+        [self.window makeKeyAndVisible];
         return YES;
 }
 
