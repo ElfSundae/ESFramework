@@ -100,8 +100,8 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
         
         /* Setup root viewController */
-        self.rootViewController = [self _setupRootViewController];
-        self.window.rootViewController = self.rootViewController;
+        //self.rootViewController = [self _setupRootViewController];
+        //self.window.rootViewController = self.rootViewController;
         
         /* Set the UserAgent for UIWebView */
         NSString *ua = self.userAgentForWebView;
@@ -120,9 +120,9 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
                 self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
         }
         
-        [self _applicationDidFinishLaunching:application withOptions:launchOptions];
+        //[self _applicationDidFinishLaunching:application withOptions:launchOptions];
         
-        [self.window makeKeyAndVisible];
+        //[self.window makeKeyAndVisible];
         return YES;
 }
 
