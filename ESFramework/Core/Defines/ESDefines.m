@@ -649,6 +649,10 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                         } else if (0 == strcmp(argType, @encode(long double))) {
                                 long double arg = va_arg(argsList, long double);
                                 [invocation setArgument:&arg atIndex:argCount++];
+                        } else if (0 == strcmp(argType, @encode(BOOL))) {
+                                // FIXME: build warning with va_arg(argslist, BOOL)
+                                BOOL arg = (BOOL)va_arg(argsList, int);
+                                [invocation setArgument:&arg atIndex:argCount++];
                         } else if (0 == strcmp(argType, @encode(Class))) {
                                 Class arg = va_arg(argsList, Class);
                                 [invocation setArgument:&arg atIndex:argCount++];

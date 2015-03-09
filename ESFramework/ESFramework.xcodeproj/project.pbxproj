@@ -204,6 +204,7 @@
 		E75C4C561AAD9B6B00CF905B /* MVSkinWhiten.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4C0F1AAD9B6B00CF905B /* MVSkinWhiten.m */; };
 		E75C4C571AAD9B6B00CF905B /* MVEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4C111AAD9B6B00CF905B /* MVEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75C4C581AAD9B6B00CF905B /* MVEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4C121AAD9B6B00CF905B /* MVEditor.m */; };
+		E75C4CED1AADAA2600CF905B /* MVRecorderHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75D55D71AAD90300079E891 /* NSString+ESHTMLAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E75D55D51AAD90300079E891 /* NSString+ESHTMLAdditions.h */; };
 		E75D55D81AAD90300079E891 /* NSString+ESHTMLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E75D55D61AAD90300079E891 /* NSString+ESHTMLAdditions.m */; };
 		E75D55DC1AAD90E40079E891 /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E75D55DA1AAD90E40079E891 /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -551,6 +552,7 @@
 		E75C4C0F1AAD9B6B00CF905B /* MVSkinWhiten.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVSkinWhiten.m; sourceTree = "<group>"; };
 		E75C4C111AAD9B6B00CF905B /* MVEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVEditor.h; sourceTree = "<group>"; };
 		E75C4C121AAD9B6B00CF905B /* MVEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVEditor.m; sourceTree = "<group>"; };
+		E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVRecorderHeaders.h; sourceTree = "<group>"; };
 		E75D55D51AAD90300079E891 /* NSString+ESHTMLAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ESHTMLAdditions.h"; sourceTree = "<group>"; };
 		E75D55D61AAD90300079E891 /* NSString+ESHTMLAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESHTMLAdditions.m"; sourceTree = "<group>"; };
 		E75D55DA1AAD90E40079E891 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
@@ -918,13 +920,14 @@
 		E75C4B7A1AAD978D00CF905B /* MVRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */,
 				E75C4BFE1AAD9B6B00CF905B /* Utilities */,
 				E75C4BC61AAD9B6B00CF905B /* Model */,
-				E75C4BDE1AAD9B6B00CF905B /* View */,
 				E75C4BEF1AAD9B6B00CF905B /* Recorder */,
 				E75C4C071AAD9B6B00CF905B /* Player */,
 				E75C4C0A1AAD9B6B00CF905B /* Filters */,
 				E75C4C101AAD9B6B00CF905B /* Editor */,
+				E75C4BDE1AAD9B6B00CF905B /* View */,
 				E75C4B901AAD983800CF905B /* MVRecorderDebug.xcconfig */,
 				E75C4B911AAD984500CF905B /* MVRecorderRelease.xcconfig */,
 			);
@@ -1414,6 +1417,7 @@
 				E75C4C2C1AAD9B6B00CF905B /* MVFocusView.h in Headers */,
 				E75C4C1F1AAD9B6B00CF905B /* MVRecorderSession+Private.h in Headers */,
 				E75C4C3B1AAD9B6B00CF905B /* MVCaptureManager+Private.h in Headers */,
+				E75C4CED1AADAA2600CF905B /* MVRecorderHeaders.h in Headers */,
 				E75C4C441AAD9B6B00CF905B /* MVRecorder+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2216,6 +2220,7 @@
 				E75C4B8B1AAD978D00CF905B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E75C4C5C1AAD9C0100CF905B /* Build configuration list for PBXAggregateTarget "MVRecorder" */ = {
 			isa = XCConfigurationList;
@@ -2224,6 +2229,7 @@
 				E75C4C5E1AAD9C0100CF905B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7926A5718FBC16500CD276F /* Build configuration list for PBXAggregateTarget "ESFrameworkCore" */ = {
 			isa = XCConfigurationList;
