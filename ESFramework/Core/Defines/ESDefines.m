@@ -631,7 +631,8 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                                    0 == strcmp(argType, @encode(short)) ||
                                    0 == strcmp(argType, @encode(unsigned short)) ||
                                    0 == strcmp(argType, @encode(int)) ||
-                                   0 == strcmp(argType, @encode(unsigned int)) ) {
+                                   0 == strcmp(argType, @encode(unsigned int)) ||
+                                   0 == strcmp(argType, @encode(BOOL))) {
                                 int arg = va_arg(argsList, int);
                                 [invocation setArgument:&arg atIndex:argCount++];
                         } else if ( 0 == strcmp(argType, @encode(long)) ||
@@ -648,10 +649,6 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                                 [invocation setArgument:&arg atIndex:argCount++];
                         } else if (0 == strcmp(argType, @encode(long double))) {
                                 long double arg = va_arg(argsList, long double);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(BOOL))) {
-                                // FIXME: build warning with va_arg(argslist, BOOL)
-                                BOOL arg = (BOOL)va_arg(argsList, int);
                                 [invocation setArgument:&arg atIndex:argCount++];
                         } else if (0 == strcmp(argType, @encode(Class))) {
                                 Class arg = va_arg(argsList, Class);
