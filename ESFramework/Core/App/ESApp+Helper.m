@@ -343,7 +343,12 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                         ESDispatchOnMainThreadAsynchronously(completion);
                 
         } else if (kABAuthorizationStatusNotDetermined == status) {
-                ABAddressBookRef addressBook = ABAddressBookCreate();
+                ABAddressBookRef addressBook = NULL;
+                if (ABAddressBookCreateWithOptions) {
+                        addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
+                } else {
+                        addressBook = ABAddressBookCreate();
+                }
                 ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
                         if (addressBook) {
                                 CFRelease(addressBook);

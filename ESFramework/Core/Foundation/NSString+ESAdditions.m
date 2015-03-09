@@ -261,6 +261,11 @@
         return nil;
 }
 
+- (NSString *)wechatRedirectLink
+{
+        return NSStringWith(@"http://mp.weixin.qq.com/mp/redirect?url=%@", [self URLEncode]);
+}
+
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode
 {

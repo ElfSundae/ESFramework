@@ -546,25 +546,6 @@ ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 @end
 
 ///=============================================
-/// @name Notification with block
-///=============================================
-#pragma mark - Notification with block
-
-typedef void (^ESNotificationHandler)(NSNotification *notification, NSDictionary *userInfo);
-@interface NSObject (ESObserver)
-/**
- * Add `self` to `NSNotificationCenter` as an observer.
- */
-- (void)addNotification:(NSString *)name handler:(ESNotificationHandler)handler;
-/**
- * Remove notification which added using `-addNotification:handler:`.
- * When the `name` is nil, it will remove all noticications added using `-addNotification:handler:`.
- */
-- (void)removeNotification:(NSString *)name;
-
-@end
-
-///=============================================
 /// @name NSUserDefaults (ESHelper)
 ///=============================================
 #pragma mark - NSUserDefaults (ESHelper)

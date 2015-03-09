@@ -1,9 +1,0 @@
-[submodule "ESFramework/Core/Vendor/OpenUDID"]
-	path = ESFramework/Core/Vendor/OpenUDID
-	url = git@github.com:ElfSundae/OpenUDID.git
-[submodule "ESFramework/UIKit/Vendor/SwipeView"]
-	path = ESFramework/UIKit/Vendor/SwipeView
-	url = git@github.com:ElfSundae/SwipeView.git
-[submodule "ESFramework/Network/Vendor/SDWebImage"]
-	path = ESFramework/Network/Vendor/SDWebImage
-	url = git@github.com:ElfSundae/SDWebImage.git

@@ -76,7 +76,7 @@
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
 {
-        return CGRectContainsPoint(CGRectInset(self.bounds, -3, -3 ), point );
+        return CGRectContainsPoint(CGRectInset(self.bounds, -3, -3), point);
 }
 
 - (void)drawRect:(CGRect)rect

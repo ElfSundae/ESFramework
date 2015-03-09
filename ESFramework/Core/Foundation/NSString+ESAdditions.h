@@ -119,6 +119,11 @@ typedef struct {
 - (NSString *)appReviewLinkForAppStore;
 
 /**
+ * Returns http://mp.weixin.qq.com/mp/redirect?url=urlencoded
+ */
+- (NSString *)wechatRedirectLink;
+
+/**
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
  */
 - (NSString *)URLEncode;
