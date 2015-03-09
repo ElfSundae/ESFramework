@@ -884,7 +884,9 @@
 				E7522DF218EC427E0087B95E /* Frameworks */,
 				E7522DF118EC427E0087B95E /* Products */,
 			);
+			indentWidth = 8;
 			sourceTree = "<group>";
+			tabWidth = 8;
 		};
 		E7522DF118EC427E0087B95E /* Products */ = {
 			isa = PBXGroup;
