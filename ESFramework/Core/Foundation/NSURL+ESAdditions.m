@@ -20,11 +20,6 @@
         return [self.absoluteString iTunesItemID];
 }
 
-- (NSURL *)wechatRedirectLink
-{
-        return [NSURL URLWithString:self.absoluteString.wechatRedirectLink];
-}
-
 - (BOOL)isEqualToURL:(NSURL *)anotherURL
 {
         return (([self.absoluteURL isEqual:anotherURL.absoluteURL]) ||

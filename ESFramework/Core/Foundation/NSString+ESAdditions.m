@@ -9,7 +9,6 @@
 #import "NSString+ESAdditions.h"
 #import "ESDefines.h"
 #import "ESHash.h"
-#import "NSString+ESHTMLAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
@@ -90,7 +89,7 @@
                 NSString *filePath = ESTouchFilePath(path);
                 if (!filePath) {
                         if (block) {
-                                ESDispatchOnMainThreadAsynchronously(^{
+                                ESDispatchOnMainThreadAsynchrony(^{
                                         block(NO);
                                 });
                         }
@@ -99,7 +98,7 @@
                 
                 BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
                 if (block) {
-                        ESDispatchOnMainThreadAsynchronously(^{
+                        ESDispatchOnMainThreadAsynchrony(^{
                                 block(res);
                         });
                 }
@@ -259,11 +258,6 @@
                 return [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", self];
         }
         return nil;
-}
-
-- (NSString *)wechatRedirectLink
-{
-        return NSStringWith(@"http://mp.weixin.qq.com/mp/redirect?url=%@", [self URLEncode]);
 }
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";

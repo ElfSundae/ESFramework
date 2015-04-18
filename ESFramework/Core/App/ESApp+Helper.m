@@ -70,7 +70,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 {
         if (!__es_gBackgroundTaskID || __es_gBackgroundTaskID == UIBackgroundTaskInvalid) {
                 __es_gBackgroundTaskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-                        ESDispatchOnMainThreadAsynchronously(^{
+                        ESDispatchOnMainThreadAsynchrony(^{
                                 if (UIBackgroundTaskInvalid != __es_gBackgroundTaskID) {
                                         [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
                                         __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
@@ -83,7 +83,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)disableMultitasking
 {
-        ESDispatchOnMainThreadSynchronously(^{
+        ESDispatchOnMainThreadSynchrony(^{
                 if (__es_gBackgroundTaskID) {
                         [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
                         __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
@@ -333,14 +333,14 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 {
         if (!ABAddressBookRequestAccessWithCompletion) {
                 if (completion)
-                        ESDispatchOnMainThreadAsynchronously(completion);
+                        ESDispatchOnMainThreadAsynchrony(completion);
                 return;
         }
         
         ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
         if (kABAuthorizationStatusAuthorized == status) {
                 if (completion)
-                        ESDispatchOnMainThreadAsynchronously(completion);
+                        ESDispatchOnMainThreadAsynchrony(completion);
                 
         } else if (kABAuthorizationStatusNotDetermined == status) {
                 ABAddressBookRef addressBook = NULL;
@@ -354,14 +354,14 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
                                 CFRelease(addressBook);
                         }
                         if (granted) {
-                                if (completion) ESDispatchOnMainThreadAsynchronously(completion);
+                                if (completion) ESDispatchOnMainThreadAsynchrony(completion);
                         } else {
-                                if (failure) ESDispatchOnMainThreadAsynchronously(failure);
+                                if (failure) ESDispatchOnMainThreadAsynchrony(failure);
                         }
                 });
         } else {
                 if (failure)
-                        ESDispatchOnMainThreadAsynchronously(failure);
+                        ESDispatchOnMainThreadAsynchrony(failure);
         }
 }
 

@@ -10,8 +10,8 @@
 #define ESFramework_ESDefines_H
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 
 #if defined(__cplusplus)
         #define ES_EXTERN               extern "C" __attribute__((visibility ("default")))
@@ -22,8 +22,6 @@
         #define ES_EXTERN_C_BEGIN
         #define ES_EXTERN_C_END
 #endif
-
-#define ES_INLINE                       NS_INLINE
 
 ///=============================================
 /// @name Log
@@ -172,27 +170,30 @@ ES_EXTERN BOOL ESOSVersionIsAbove7(void);
 ES_EXTERN BOOL ESOSVersionIsAbove8(void);
 
 ///=============================================
-/// @name UIColor Helper
+/// @name Helper
 ///=============================================
-#pragma mark - UIColor Helper
+#pragma mark - Helper
 
-/// UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
+/**
+ * UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
+ */
 ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
-/// UIColorWithRGB(123.f, 255.f, 200.f);
 ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
-/// UIColorWithRGBA(0x7bffc8, 1.f);
+
+/**
+ * UIColorWithRGBAHex(0x7bffc8, 1.f);
+ */
 ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
 ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
-/// UIColorWithRGBHexString(@"#33AF00", 1.f);
-/// UIColorWithRGBHexString(@"0x33AF00", 0.3f);
-/// UIColorWithRGBHexString(@"33AF00", 0.9);
+
+/**
+ * UIColorWithRGBHexString(@"#33AF00", 1.f);
+ * UIColorWithRGBHexString(@"0x33AF00", 0.3f);
+ * UIColorWithRGBHexString(@"33AF00", 0.9);
+ * 接受6-8位十六进制，取最后6位。
+ */
 ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 
-
-///=============================================
-/// @name Singleton
-///=============================================
-#pragma mark - Singleton
 
 /**
  * Singleton Example:
@@ -231,7 +232,7 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 /**
  * Implement singleton `sharedInstance` methods.
  *
- * If you are subclassing a signleton class, make sure overwrite the `sharedInstance` method to 
+ * If you are subclassing a signleton class, make sure overwrite the `sharedInstance` method to
  * give a different variable name.
  */
 #define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
@@ -244,11 +245,19 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 }
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, gSharedInstance)
 
+/**
+ * Force a category to be loaded when an app starts up.
+ *
+ * Add this macro before each category implementation, so we don't have to use
+ * -all_load or -force_load to load object files from static libraries that only contain
+ * categories and no classes.
+ * See http://developer.apple.com/library/mac/#qa/qa2006/qa1490.html for more info.
+ *
+ * https://github.com/NimbusKit/basics#avoid-requiring-the--all_load-and--force_load-flags
+ */
+#define ES_CATEGORY_FIX(name) @interface ES_CATEGORY_FIX_##name : NSObject @end \
+@implementation ES_CATEGORY_FIX_##name @end
 
-///=============================================
-/// @name Helper
-///=============================================
-#pragma mark - Helper
 
 #define CFReleaseSafely(_var)   if(_var){ CFRelease(_var); _var = NULL; }
 
@@ -266,19 +275,19 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 #define ES_MONTH  (2635200) /* 30.5 days */
 #define ES_YEAR   (31536000) /* 365 days */
 
-ES_INLINE BOOL ESIsStringWithAnyText(id object) {
+NS_INLINE BOOL ESIsStringWithAnyText(id object) {
         return ([object isKindOfClass:[NSString class]] && ![(NSString *)object isEqualToString:@""]);
 }
 
-ES_INLINE BOOL ESIsArrayWithItems(id object) {
+NS_INLINE BOOL ESIsArrayWithItems(id object) {
         return ([object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0);
 }
 
-ES_INLINE BOOL ESIsDictionaryWithItems(id object) {
+NS_INLINE BOOL ESIsDictionaryWithItems(id object) {
         return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0);
 }
 
-ES_INLINE BOOL ESIsSetWithItems(id object) {
+NS_INLINE BOOL ESIsSetWithItems(id object) {
         return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
 }
 
@@ -295,7 +304,7 @@ ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 /**
  * Returns the current statusBar's height, in any orientation.
  */
-ES_INLINE CGFloat ESStatusBarHeight(void) {
+NS_INLINE CGFloat ESStatusBarHeight(void) {
         CGRect frame = [UIApplication sharedApplication].statusBarFrame;
         return fminf(frame.size.width, frame.size.height);
 };
@@ -303,7 +312,7 @@ ES_INLINE CGFloat ESStatusBarHeight(void) {
 /**
  * Returns the application's current interface orientation.
  */
-ES_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
+NS_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
         return [UIApplication sharedApplication].statusBarOrientation;
 }
 
@@ -314,14 +323,14 @@ ES_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientati
 /**
  * Convert degrees to radians.
  */
-ES_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
+NS_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
         return (degrees * M_PI / 180.0);
 }
 
 /**
  * Convert radians to degrees.
  */
-ES_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
+NS_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
         return (radians * 180.0 / M_PI);
 }
 
@@ -421,11 +430,8 @@ ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
 typedef void (^ESBasicBlock)(void);
 typedef void (^ESHandlerBlock)(id sender);
 
-ES_EXTERN void ESDispatchSyncOnMainThread(dispatch_block_t block) __attribute__((deprecated("use ESDispatchOnMainThreadSynchronously instead.")));
-ES_EXTERN void ESDispatchAsyncOnMainThread(dispatch_block_t block) __attribute__((deprecated("use ESDispatchOnMainThreadAsynchronously instead.")));
-
-ES_EXTERN void ESDispatchOnMainThreadSynchronously(dispatch_block_t block);
-ES_EXTERN void ESDispatchOnMainThreadAsynchronously(dispatch_block_t block);
+ES_EXTERN void ESDispatchOnMainThreadSynchrony(dispatch_block_t block);
+ES_EXTERN void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
 ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
@@ -550,18 +556,11 @@ ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 ///=============================================
 #pragma mark - NSUserDefaults (ESHelper)
 @interface NSUserDefaults (ESHelper)
-/**
- * Get object for the given key.
- */
 + (id)objectForKey:(NSString *)key;
-/**
- * Async saving object.
- */
 + (void)setObject:(id)object forKey:(NSString *)key;
-/**
- * Async removing object.
- */
++ (void)setObjectAsynchrony:(id)object forKey:(NSString *)key;
 + (void)removeObjectForKey:(NSString *)key;
++ (void)removeObjectAsynchronyForKey:(NSString *)key;
 @end
 
 #endif // ESFramework_ESDefines_H

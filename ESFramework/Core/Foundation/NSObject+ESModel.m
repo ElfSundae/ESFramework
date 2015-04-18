@@ -127,7 +127,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 ESStrongSelf;
                 BOOL res = [_self modelWriteToFile:path atomically:useAuxiliaryFile];
                 if (block) {
-                        ESDispatchOnMainThreadAsynchronously(^{
+                        ESDispatchOnMainThreadAsynchrony(^{
                                 block(res);
                         });
                 }

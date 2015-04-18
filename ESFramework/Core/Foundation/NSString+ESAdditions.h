@@ -7,12 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+ESGTMHTML.h"
 #import "NSRegularExpression+ESAdditions.h"
-
-typedef struct {
-	__unsafe_unretained NSString *escapeSequence;
-	unichar uchar;
-} ESHTMLEscapeMap;
 
 @interface NSString (ESAdditions)
 
@@ -117,11 +113,6 @@ typedef struct {
  * e.g. @"12345678" to @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
  */
 - (NSString *)appReviewLinkForAppStore;
-
-/**
- * Returns http://mp.weixin.qq.com/mp/redirect?url=urlencoded
- */
-- (NSString *)wechatRedirectLink;
 
 /**
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="

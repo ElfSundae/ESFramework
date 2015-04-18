@@ -63,7 +63,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         
         if (0 == types) {
                 if (failure) {
-                        ESDispatchOnMainThreadAsynchronously(^{
+                        ESDispatchOnMainThreadAsynchrony(^{
                                 failure([NSError errorWithDomain:ESAppErrorDomain code:-10 userInfo:@{NSLocalizedDescriptionKey : @"UIRemoteNotificationTypes is none, which types you will register for?"}]);
                         });
                 }
