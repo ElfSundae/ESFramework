@@ -33,26 +33,14 @@
         return (NSOrderedSame == [self caseInsensitiveCompare:aString]);
 }
 
-- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
-{
-        return [self rangeOfString:pattern options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
-}
-- (NSRange)match:(NSString *)pattern
-{
-        return [self match:pattern caseInsensitive:NO];
-}
-- (BOOL)isMatch:(NSString *)pattern
-{
-        return [self isMatch:pattern caseInsensitive:NO];
-}
-- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
-{
-        return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
-}
-
 - (NSString *)trim
 {
         return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (NSString *)trimWithCharactersInString:(NSString *)string
+{
+        return [self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
 }
 
 - (BOOL)isEmpty
@@ -137,12 +125,12 @@
 - (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary
 {
         NSString *queryString = queryDictionary.queryString;
-        if (queryString.isEmpty) {
+        if (!ESIsStringWithAnyText(queryString)) {
                 return self;
         }
         
-        NSString *trimed = [self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"?&"]];
-        if ([trimed contains:@"?"]) {
+        NSString *trimed = [self trimWithCharactersInString:@"?&"];
+        if ([self contains:@"?"]) {
                 return [trimed append:@"&%@", queryString];
         } else {
                 return [trimed append:@"?%@", queryString];
@@ -173,7 +161,7 @@
         return [self stringByReplacingCharactersInRange:range withString:replacement];
 }
 
-- (NSString *)replaceWithDictionary:(NSDictionary *)dictionary withOptions:(NSStringCompareOptions)options
+- (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
         NSMutableString *result = [NSMutableString stringWithString:self];
         if (result.length > 0) {
@@ -219,45 +207,6 @@
 {
         NSString *uuid = [self newUUID];
         return [uuid es_md5Hash];
-}
-
-- (NSString *)iTunesItemID
-{
-        NSRegularExpression *regex = [NSRegularExpression regex:@"://itunes\\.apple\\.com/.+/id(\\d{8,})" caseInsensitive:YES];
-        NSTextCheckingResult *match = [regex firstMatchInString:self options:0 range:NSMakeRange(0, self.length)];
-        if (match && match.numberOfRanges > 1) {
-                return [self substringWithRange:[match rangeAtIndex:1]];
-        }
-        return nil;
-}
-
-- (BOOL)_es_isITunesItemID
-{
-        return ([self rangeOfString:@"^\\d{8,}$" options:NSRegularExpressionSearch].location != NSNotFound);
-}
-
-- (NSString *)appLink
-{
-        if ([self _es_isITunesItemID]) {
-                return [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self];
-        }
-        return nil;
-}
-
-- (NSString *)appLinkForAppStore
-{
-        if ([self _es_isITunesItemID]) {
-                return [NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%@", self];
-        }
-        return nil;
-}
-
-- (NSString *)appReviewLinkForAppStore
-{
-        if ([self _es_isITunesItemID]) {
-                return [NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", self];
-        }
-        return nil;
 }
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
@@ -387,6 +336,23 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSRegularExpression *)regexCaseInsensitive
 {
         return [self regexWithOptions:NSRegularExpressionCaseInsensitive];
+}
+
+- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
+{
+        return [self rangeOfString:pattern options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
+}
+- (NSRange)match:(NSString *)pattern
+{
+        return [self match:pattern caseInsensitive:NO];
+}
+- (BOOL)isMatch:(NSString *)pattern
+{
+        return [self isMatch:pattern caseInsensitive:NO];
+}
+- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
+{
+        return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
 }
 
 @end

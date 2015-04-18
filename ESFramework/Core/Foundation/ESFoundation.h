@@ -23,5 +23,6 @@
 #import "ESHash.h"
 #import "ESValue.h"
 #import "NSObject+ESModel.h"
+#import "ESITunesStoreHelper.h"
 
 #endif

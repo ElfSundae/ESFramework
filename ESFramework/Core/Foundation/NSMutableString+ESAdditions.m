@@ -45,9 +45,12 @@
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
         for (NSString *key in dictionary) {
-                NSString *value;
-                if (ESStringVal(&value, dictionary[key])) {
-                        [self replace:key to:value options:options];
+                NSString *replace = nil;
+                if (ESStringVal(&replace, key) && replace.length > 0) {
+                        NSString *value;
+                        if (ESStringVal(&value, dictionary[key])) {
+                                [self replace:key to:value options:options];
+                        }  
                 }
         }
 }

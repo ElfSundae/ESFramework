@@ -283,6 +283,8 @@
 		E7DBC837192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DBC835192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m */; };
 		E7F0ECB01AE2F0DC00AEE33C /* NSString+ESGTMHTML.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ECAE1AE2F0DC00AEE33C /* NSString+ESGTMHTML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F0ECB11AE2F0DC00AEE33C /* NSString+ESGTMHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ECAF1AE2F0DC00AEE33C /* NSString+ESGTMHTML.m */; };
+		E7F0ECBA1AE300F200AEE33C /* ESITunesStoreHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7F0ECBB1AE300F200AEE33C /* ESITunesStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */; };
 		E7F5D8E01916DB0B00D11273 /* NSArray+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */; };
 		E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -639,6 +641,8 @@
 		E7EDF3F718FBA5840067E849 /* UIKitRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitRelease.xcconfig; sourceTree = "<group>"; };
 		E7F0ECAE1AE2F0DC00AEE33C /* NSString+ESGTMHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ESGTMHTML.h"; sourceTree = "<group>"; };
 		E7F0ECAF1AE2F0DC00AEE33C /* NSString+ESGTMHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESGTMHTML.m"; sourceTree = "<group>"; };
+		E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESITunesStoreHelper.h; sourceTree = "<group>"; };
+		E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
 		E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -1315,6 +1319,8 @@
 				E7F5D8F51916DB8900D11273 /* ESValue.m */,
 				E73613E6191AC7A9008A39CD /* NSObject+ESModel.h */,
 				E73613E7191AC7A9008A39CD /* NSObject+ESModel.m */,
+				E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */,
+				E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1420,6 +1426,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F0ECBA1AE300F200AEE33C /* ESITunesStoreHelper.h in Headers */,
 				E7F5D8EC1916DB0B00D11273 /* NSString+ESAdditions.h in Headers */,
 				E7F5D9051916DBC800D11273 /* UIView+ESShortcut.h in Headers */,
 				E75D55E21AAD921E0079E891 /* OpenUDID.h in Headers */,
@@ -1847,6 +1854,7 @@
 				E7F5D9061916DBC800D11273 /* UIView+ESShortcut.m in Sources */,
 				E7F5D8F91916DB8900D11273 /* ESValue.m in Sources */,
 				E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */,
+				E7F0ECBB1AE300F200AEE33C /* ESITunesStoreHelper.m in Sources */,
 				E746C14A19299E6100AD082C /* UINavigationController+ESAdditions.m in Sources */,
 				E7F5D8EB1916DB0B00D11273 /* NSSet+ESAdditions.m in Sources */,
 				E71D1ECF1A6EF56200AD0DB2 /* ESApp+Helper.m in Sources */,

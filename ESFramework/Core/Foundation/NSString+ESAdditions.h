@@ -16,25 +16,21 @@
 - (BOOL)containsStringCaseInsensitive:(NSString *)string;
 - (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
+/**
+ * Compare string ignoring case
+ */
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
 
 /**
- * Regex
- */
-- (NSRange)match:(NSString *)pattern;
-- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
-- (BOOL)isMatch:(NSString *)pattern;
-- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
-
-/**
- * Trims `[NSCharacterSet whitespaceAndNewlineCharacterSet]`
+ * Trims with whitespace and new line
  */
 - (NSString *)trim;
+- (NSString *)trimWithCharactersInString:(NSString *)string;
 
 - (BOOL)isEmpty;
 
 /**
- * Detect whether file exists.
+ * Detect whether file exists for this path.
  */
 - (BOOL)fileExists __attribute__((deprecated));
 - (BOOL)fileExists:(BOOL *)isDirectory __attribute__((deprecated));
@@ -43,7 +39,7 @@
 - (BOOL)isFileExists:(BOOL *)isDirectory;
 
 /**
- * Asynchronously write file.
+ * Asynchronously write string to file.
  * It will create directories automatically if not exists.
  */
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
@@ -65,7 +61,7 @@
 - (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement;
 - (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
 - (NSString *)replaceInRange:(NSRange)range with:(NSString *)replacement;
-- (NSString *)replaceWithDictionary:(NSDictionary *)dictionary withOptions:(NSStringCompareOptions)options;
+- (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
 
 /**
  * The `replacement` is treated as a template, with $0 being replaced by the 
@@ -91,28 +87,6 @@
  * 16bits, e.g. @"1f3b3d5cb1c893ef0fabfdfced53c9e2"
  */
 + (NSString *)newUUIDWithMD5;
-
-/**
- * Returns the iTunes item identifier(ID) from the iTunes Store URL, returns `nil` if parsing failed.
- * All types of iTunes link are supported, include scheme http[s], itms, itms-apps, etc.
- *
- * e.g. The url https://itunes.apple.com/us/app/qq-cai-xin/id520005183?mt=8 will get @"520005183".
- *
- * Supports all type iTunes links like Apps, Books, Music, Music Videos, Audio Book, Podcast, Movie, etc.
- */
-- (NSString *)iTunesItemID;
-/**
- * e.g. @"12345678" to @"https://itunes.apple.com/app/id12345678"
- */
-- (NSString *)appLink;
-/**
- * e.g. @"12345678" to @"itms-apps://itunes.apple.com/app/id12345678"
- */
-- (NSString *)appLinkForAppStore;
-/**
- * e.g. @"12345678" to @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
- */
-- (NSString *)appReviewLinkForAppStore;
 
 /**
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
@@ -219,6 +193,15 @@
 - (NSRegularExpression *)regex;
 - (NSRegularExpression *)regexCaseInsensitive;
 - (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options;
+
+/**
+ * Regex
+ */
+- (NSRange)match:(NSString *)pattern;
+- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
+- (BOOL)isMatch:(NSString *)pattern;
+- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
+
 
 @end
 

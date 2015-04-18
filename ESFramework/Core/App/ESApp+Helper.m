@@ -8,6 +8,7 @@
 
 #import "ESApp+Helper.h"
 #import "NSString+ESAdditions.h"
+#import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
 @import AddressBook;
 #import "ESApp+AppInfo.h"
@@ -230,11 +231,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppReviewPageWithAppID:(NSString *)appID
 {
-        if ([appID isKindOfClass:[NSNumber class]]) {
-                appID = [(NSNumber *)appID stringValue];
-        }
-        
-        [self openURL:NSURLWith([appID appReviewLinkForAppStore])];
+        [self openURL:NSURLWith([ESITunesStoreHelper appStoreReviewLinkForAppID:appID])];
 }
 
 + (void)openAppStore
@@ -244,10 +241,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppStoreWithAppID:(NSString *)appID
 {
-        if ([appID isKindOfClass:[NSNumber class]]) {
-                appID = [(NSNumber *)appID stringValue];
-        }
-        [self openURL:NSURLWith([appID appLinkForAppStore])];
+        [self openURL:NSURLWith([ESITunesStoreHelper appStoreLinkForAppID:appID])];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

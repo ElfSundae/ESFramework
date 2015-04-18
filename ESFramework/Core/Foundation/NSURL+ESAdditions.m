@@ -15,11 +15,6 @@
         return [self.absoluteString queryDictionary];
 }
 
-- (NSString *)iTunesItemID
-{
-        return [self.absoluteString iTunesItemID];
-}
-
 - (BOOL)isEqualToURL:(NSURL *)anotherURL
 {
         return (([self.absoluteURL isEqual:anotherURL.absoluteURL]) ||
