@@ -105,9 +105,10 @@
 + (void)openAppReviewPageWithAppID:(NSString *)appID;
 
 /**
- * Open App Store, and goto this app's download page.
+ * Open App Store, and goto this app's download page. `-appID` must be implemented.
  */
-+ (void)openAppStore; //`-appID` must be implemented.
++ (void)openAppStore;
+
 + (void)openAppStoreWithAppID:(NSString *)appID;
 
 #if 0 // deprecated

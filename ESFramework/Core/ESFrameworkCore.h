@@ -9,7 +9,7 @@
 #ifndef ESFramework_ESFrameworkCore_h
 #define ESFramework_ESFrameworkCore_h
 
-#define kESFrameworkCoreVersion @"0.1.3"
+#define kESFrameworkCoreVersion @"0.2.0"
 
 #import "ESDefines.h"
 #import "ESFoundation.h"

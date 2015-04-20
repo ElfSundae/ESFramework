@@ -17,11 +17,9 @@
  * And ESApp has done the following things:
  *
  *      + Setup window
- *      //+ Setup Root View Controller
  *      + Set the UserAgent for UIWebView, see -userAgentForWebView;
  *      + Enable multitasking, see +enableMultitasking;
  *      + Save UIApplicationLaunchOptionsRemoteNotification value to self.remoteNotification
- *
  *
  */
 @interface ESApp : UIResponder <UIApplicationDelegate>

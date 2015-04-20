@@ -11,17 +11,6 @@
 @interface ESApp (Subclassing)
 
 /**
- * Setup your rootViewController for keyWindow.
- * You can overwrite property `rootViewController` and @dynamic in your appDelegate implementation file.
- */
-//- (UIViewController *)_setupRootViewController;
-
-/**
- * Invoked within `-application:didFinishLaunchingWithOptions:`.
- */
-//- (void)_applicationDidFinishLaunching:(UIApplication *)application withOptions:(NSDictionary *)launchOptions;
-
-/**
  * Invoked within `-application:didReceiveRemoteNotification:`.
  * The `self.remoteNotification` has been fill.
  */
