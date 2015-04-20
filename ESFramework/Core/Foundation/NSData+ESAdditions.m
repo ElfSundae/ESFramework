@@ -8,7 +8,9 @@
 
 #import "NSData+ESAdditions.h"
 #import "ESDefines.h"
+
 @implementation NSData (ESAdditions)
+
 - (NSString *)stringValue
 {
         return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];

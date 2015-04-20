@@ -10,6 +10,9 @@
 
 @interface NSData (ESAdditions)
 
+/**
+ * UTF-8 Encoding.
+ */
 - (NSString *)stringValue;
 
 /**
