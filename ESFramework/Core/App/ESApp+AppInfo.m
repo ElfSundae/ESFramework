@@ -10,7 +10,6 @@
 #import "ESApp+Helper.h"
 #import "ESApp+Subclassing.h"
 #import "UIDevice+ESInfo.h"
-#import "UIDevice+Reachability.h"
 
 @implementation ESApp (AppInfo)
 
@@ -81,7 +80,7 @@
         result[@"screen_size"] = [UIDevice screenSizeString];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"] = [UIDevice currentLocaleIdentifier];
-        result[@"network"] = [UIDevice currentNetworkStatusString];
+        //result[@"network"] = [UIDevice currentNetworkStatusString];
 //        NSString *network = @"";
 //#pragma clang diagnostic push
 //#pragma clang diagnostic ignored "-Wundeclared-selector"

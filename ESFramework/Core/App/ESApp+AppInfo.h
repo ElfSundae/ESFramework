@@ -35,7 +35,6 @@
  *     locale = "en_US";
  *     model = "iPhone Simulator";
  *     name = "iPhone Simulator";
- *     network = WiFi;
  *     platform = "x86_64";
  *     "screen_size" = 640x1136;
  *     "timezone_gmt" = 8;
