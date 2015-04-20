@@ -21,6 +21,7 @@
 #import "NSTimer+ESAdditions.h"
 #import "NSError+ESAdditions.h"
 #import "ESHash.h"
+#import "ESCryptor.h"
 #import "ESValue.h"
 #import "NSObject+ESModel.h"
 #import "ESITunesStoreHelper.h"

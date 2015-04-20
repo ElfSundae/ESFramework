@@ -7,38 +7,82 @@
 //
 
 #import "ESHash.h"
+#import "NSData+ESAdditions.h"
 #import <CommonCrypto/CommonDigest.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSData
 @implementation NSData (ESHash)
-- (NSString *)es_md5Hash
+
+- (NSData *)es_md5Hash
 {
         unsigned char buffer[CC_MD5_DIGEST_LENGTH];
         CC_MD5(self.bytes, (CC_LONG)self.length, buffer);
-        return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7],buffer[8], buffer[9], buffer[10], buffer[11],buffer[12], buffer[13], buffer[14], buffer[15]];
+        return [NSData dataWithBytes:buffer length:CC_MD5_DIGEST_LENGTH];
 }
 
-- (NSString *)es_sha1Hash
+- (NSString *)es_md5HashString
+{
+        return [[self es_md5Hash] hexStringValue];
+}
+
+- (NSData *)es_sha1Hash
 {
         unsigned char buffer[CC_SHA1_DIGEST_LENGTH];
         CC_SHA1(self.bytes, (CC_LONG)self.length, buffer);
-        return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7],buffer[8], buffer[9], buffer[10], buffer[11],buffer[12], buffer[13], buffer[14], buffer[15], buffer[16], buffer[17], buffer[18], buffer[19]];
+        return [NSData dataWithBytes:buffer length:CC_SHA1_DIGEST_LENGTH];
+}
+- (NSString *)es_sha1HashString
+{
+        return [[self es_sha1Hash] hexStringValue];
 }
 
-- (NSString *)es_sha256Hash
+- (NSData *)es_sha224Hash
+{
+        unsigned char buffer[CC_SHA224_DIGEST_LENGTH];
+        CC_SHA224(self.bytes, (CC_LONG)self.length, buffer);
+        return [NSData dataWithBytes:buffer length:CC_SHA224_DIGEST_LENGTH];
+}
+- (NSString *)es_sha224HashString
+{
+        return [[self es_sha224Hash] hexStringValue];
+}
+
+- (NSData *)es_sha256Hash
 {
         unsigned char buffer[CC_SHA256_DIGEST_LENGTH];
         CC_SHA256(self.bytes, (CC_LONG)self.length, buffer);
-        return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7],buffer[8], buffer[9], buffer[10], buffer[11],buffer[12], buffer[13], buffer[14], buffer[15], buffer[16], buffer[17], buffer[18], buffer[19],
-                buffer[20], buffer[21], buffer[22], buffer[23], buffer[24], buffer[25], buffer[26], buffer[27], buffer[28], buffer[29], buffer[30], buffer[31]];
+        return [NSData dataWithBytes:buffer length:CC_SHA256_DIGEST_LENGTH];
+}
+- (NSString *)es_sha256HashString
+{
+        return [[self es_sha256Hash] hexStringValue];
 }
 
-- (NSData *)es_base64EncodedData
+- (NSData *)es_sha384Hash
+{
+        unsigned char buffer[CC_SHA384_DIGEST_LENGTH];
+        CC_SHA384(self.bytes, (CC_LONG)self.length, buffer);
+        return [NSData dataWithBytes:buffer length:CC_SHA384_DIGEST_LENGTH];
+}
+- (NSString *)es_sha384HashString
+{
+        return [[self es_sha384Hash] hexStringValue];
+}
+
+- (NSData *)es_sha512Hash
+{
+        unsigned char buffer[CC_SHA512_DIGEST_LENGTH];
+        CC_SHA512(self.bytes, (CC_LONG)self.length, buffer);
+        return [NSData dataWithBytes:buffer length:CC_SHA512_DIGEST_LENGTH];
+}
+- (NSString *)es_sha512HashString
+{
+        return [[self es_sha512Hash] hexStringValue];
+}
+
+- (NSData *)es_base64Encoded
 {
         // iOS 7+
         if ([self respondsToSelector:@selector(base64EncodedDataWithOptions:)]) {
@@ -61,13 +105,13 @@
         return [self base64Encoding];
 }
 
-- (NSData *)es_base64DecodedData
+- (NSData *)es_base64Decoded
 {
         if ([self respondsToSelector:@selector(initWithBase64EncodedData:options:)]) {
                 return [[NSData alloc] initWithBase64EncodedData:self options:0];
         }
         
-        NSString *encodedStr = [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+        NSString *encodedStr = self.stringValue;
         return [[NSData alloc] initWithBase64Encoding:encodedStr];
 }
 
@@ -76,11 +120,11 @@
 {
         if ([self respondsToSelector:@selector(initWithBase64EncodedData:options:)]) {
                 NSData *data = [[NSData alloc] initWithBase64EncodedData:self options:0];
-                return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                return data.stringValue;
         }
         
-        NSData *data = [self es_base64DecodedData];
-        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSData *data = [self es_base64Decoded];
+        return data.stringValue;
 }
 
 @end
@@ -91,47 +135,72 @@
 #pragma mark - NSString
 @implementation NSString (ESHash)
 
-- (NSString *)es_md5Hash
+- (NSData *)es_md5Hash
 {
-        const char *cString = [self cStringUsingEncoding:NSUTF8StringEncoding];
-        unsigned char buffer[CC_MD5_DIGEST_LENGTH];
-        CC_MD5(cString, (CC_LONG)strlen(cString), buffer);
-        return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7],buffer[8], buffer[9], buffer[10], buffer[11],buffer[12], buffer[13], buffer[14], buffer[15]];
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_md5Hash];
 }
 
-- (NSString *)es_sha1Hash
+- (NSString *)es_md5HashString
 {
-        const char *cString = [self cStringUsingEncoding:NSUTF8StringEncoding];
-        unsigned char buffer[CC_SHA1_DIGEST_LENGTH];
-        CC_SHA1(cString, (CC_LONG)strlen(cString), buffer);
-        return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7],buffer[8], buffer[9], buffer[10], buffer[11],buffer[12], buffer[13], buffer[14], buffer[15], buffer[16], buffer[17], buffer[18], buffer[19]];
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_md5HashString];
 }
 
-- (NSString *)es_sha256Hash
+- (NSData *)es_sha1Hash
 {
-        const char *cString = [self cStringUsingEncoding:NSUTF8StringEncoding];
-        unsigned char buffer[CC_SHA256_DIGEST_LENGTH];
-        CC_SHA256(cString, (CC_LONG)strlen(cString), buffer);
-        return [NSString stringWithFormat:@"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-                buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7],buffer[8], buffer[9], buffer[10], buffer[11],buffer[12], buffer[13], buffer[14], buffer[15], buffer[16], buffer[17], buffer[18], buffer[19],
-                buffer[20], buffer[21], buffer[22], buffer[23], buffer[24], buffer[25], buffer[26], buffer[27], buffer[28], buffer[29], buffer[30], buffer[31]];
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha1Hash];
+}
+- (NSString *)es_sha1HashString
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha1HashString];
 }
 
-- (NSData *)es_base64EncodedData
+- (NSData *)es_sha224Hash
 {
-        NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-        return [data es_base64EncodedData];
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha224Hash];
+}
+- (NSString *)es_sha224HashString
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha224HashString];
+}
+
+- (NSData *)es_sha256Hash
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha256Hash];
+}
+- (NSString *)es_sha256HashString
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha256HashString];
+}
+
+- (NSData *)es_sha384Hash
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha384Hash];
+}
+- (NSString *)es_sha384HashString
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha384HashString];
+}
+
+- (NSData *)es_sha512Hash
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha512Hash];
+}
+- (NSString *)es_sha512HashString
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha512HashString];
+}
+
+- (NSData *)es_base64Encoded
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_base64Encoded];
 }
 
 - (NSString *)es_base64EncodedString
 {
-        NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
-        return [data es_base64EncodedString];
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_base64EncodedString];
 }
 
-- (NSData *)es_base64DecodedData
+- (NSData *)es_base64Decoded
 {
         if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)]) {
                 return [[NSData alloc] initWithBase64EncodedString:self options:0];
@@ -141,8 +210,7 @@
 
 - (NSString *)es_base64DecodedString
 {
-        NSData *data = [self es_base64DecodedData];
-        return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        return [[self es_base64Decoded] stringValue];
 }
 
 @end

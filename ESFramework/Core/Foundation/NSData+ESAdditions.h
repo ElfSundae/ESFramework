@@ -16,6 +16,11 @@
 - (NSString *)stringValue;
 
 /**
+ * Lower case.
+ */
+- (NSString *)hexStringValue;
+
+/**
  * Asynchronously write file.
  * It will create directories automatically if not exists.
  */

@@ -206,7 +206,7 @@
 + (NSString *)newUUIDWithMD5
 {
         NSString *uuid = [self newUUID];
-        return [uuid es_md5Hash];
+        return [uuid es_md5HashString];
 }
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";

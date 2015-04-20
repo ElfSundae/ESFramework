@@ -285,6 +285,8 @@
 		E7F0ECB11AE2F0DC00AEE33C /* NSString+ESGTMHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ECAF1AE2F0DC00AEE33C /* NSString+ESGTMHTML.m */; };
 		E7F0ECBA1AE300F200AEE33C /* ESITunesStoreHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F0ECBB1AE300F200AEE33C /* ESITunesStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */; };
+		E7F0ED071AE513B900AEE33C /* ESCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ED051AE513B900AEE33C /* ESCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7F0ED081AE513B900AEE33C /* ESCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ED061AE513B900AEE33C /* ESCryptor.m */; };
 		E7F5D8E01916DB0B00D11273 /* NSArray+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */; };
 		E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -643,6 +645,8 @@
 		E7F0ECAF1AE2F0DC00AEE33C /* NSString+ESGTMHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESGTMHTML.m"; sourceTree = "<group>"; };
 		E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESITunesStoreHelper.h; sourceTree = "<group>"; };
 		E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
+		E7F0ED051AE513B900AEE33C /* ESCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCryptor.h; sourceTree = "<group>"; };
+		E7F0ED061AE513B900AEE33C /* ESCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCryptor.m; sourceTree = "<group>"; };
 		E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -1315,6 +1319,8 @@
 				E79D85CC192C6A4F0000B57E /* NSError+ESAdditions.m */,
 				E7F5D8F21916DB8900D11273 /* ESHash.h */,
 				E7F5D8F31916DB8900D11273 /* ESHash.m */,
+				E7F0ED051AE513B900AEE33C /* ESCryptor.h */,
+				E7F0ED061AE513B900AEE33C /* ESCryptor.m */,
 				E7F5D8F41916DB8900D11273 /* ESValue.h */,
 				E7F5D8F51916DB8900D11273 /* ESValue.m */,
 				E73613E6191AC7A9008A39CD /* NSObject+ESModel.h */,
@@ -1436,6 +1442,7 @@
 				E7F5D8E01916DB0B00D11273 /* NSArray+ESAdditions.h in Headers */,
 				E7F5D8EE1916DB0B00D11273 /* NSTimer+ESAdditions.h in Headers */,
 				E7F5D8E61916DB0B00D11273 /* NSDictionary+ESAdditions.h in Headers */,
+				E7F0ED071AE513B900AEE33C /* ESCryptor.h in Headers */,
 				E7F5D8E81916DB0B00D11273 /* NSOrderedSet+ESAdditions.h in Headers */,
 				E71D1ED51A6F0B9B00AD0DB2 /* UIDevice+Reachability.h in Headers */,
 				E739698B19199CE800F56B78 /* ESFoundation.h in Headers */,
@@ -1863,6 +1870,7 @@
 				E7F5D9121916DC0700D11273 /* ESApp.m in Sources */,
 				E7F5D8E91916DB0B00D11273 /* NSOrderedSet+ESAdditions.m in Sources */,
 				E71D1EC71A6EF3EA00AD0DB2 /* ESApp+AppInfo.m in Sources */,
+				E7F0ED081AE513B900AEE33C /* ESCryptor.m in Sources */,
 				E7F5D8F71916DB8900D11273 /* ESHash.m in Sources */,
 				E79D85CE192C6A4F0000B57E /* NSError+ESAdditions.m in Sources */,
 				E7F5D8ED1916DB0B00D11273 /* NSString+ESAdditions.m in Sources */,
