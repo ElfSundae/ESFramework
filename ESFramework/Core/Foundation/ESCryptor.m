@@ -10,10 +10,27 @@
 
 @implementation ESCryptor
 
-+ (size_t)fixedKeySizeForAlgorithm:(CCAlgorithm)algorithm keySize:(size_t)keySize blockSize:(size_t *)blockSize
++ (NSData *)_es_crypted:(CCOperation)operation data:(NSData *)data withAlgorithm:(CCAlgorithm)algorithm key:(id)key iv:(id)iv options:(CCOptions)options error:(CCCryptorStatus *)error
 {
+        NSMutableData *keyData = nil;
+        NSMutableData *ivData = nil;
+        
+        if ([key isKindOfClass:[NSData class]]) {
+                keyData = [(NSData *)key mutableCopy];
+        } else if ([key isKindOfClass:[NSString class]]) {
+                keyData = [[(NSString *)key dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+        } else {
+                printf("%s: 'key' must be a NSData or a NSString.\n", __PRETTY_FUNCTION__);
+                if (error) {
+                        *error = kCCParamError;
+                }
+                return nil;
+        }
+        
+        size_t keySize = keyData.length;//keyLength;
         size_t ivLength = 0;
-        if (kCCAlgorithmAES128 == algorithm) {
+        
+        if (kCCAlgorithmAES == algorithm) {
                 if (keySize < kCCKeySizeAES128) {
                         keySize = kCCKeySizeAES128;
                 } else if (keySize < kCCKeySizeAES192) {
@@ -41,49 +58,21 @@
                 ivLength = kCCBlockSizeBlowfish;
         }
         
-        if (blockSize) {
-                *blockSize = ivLength;
-        }
-        return keySize;
-}
-
-+ (NSData *)_es_crypted:(CCOperation)operation data:(NSData *)data withAlgorithm:(CCAlgorithm)algorithm key:(id)key iv:(id)iv options:(CCOptions)options error:(CCCryptorStatus *)error
-{
-        NSMutableData *keyData = nil;
-        NSMutableData *ivData = nil;
-        
-        if ([key isKindOfClass:[NSData class]]) {
-                keyData = [(NSData *)key mutableCopy];
-        } else if ([key isKindOfClass:[NSString class]]) {
-                keyData = [[(NSString *)key dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-        } else {
-                printf("%s 'key' must be a NSData or a NSString.", __PRETTY_FUNCTION__);
-                if (error) {
-                        *error = kCCParamError;
-                }
-                return nil;
-        }
-        
-        size_t blockSize = 0;
-        size_t keySize = [self fixedKeySizeForAlgorithm:algorithm keySize:keyData.length blockSize:&blockSize];
-        
         [keyData setLength:(NSUInteger)keySize];
         
-        if (iv != nil) {
-                if (blockSize > 0) {
-                        if ([iv isKindOfClass:[NSData class]]) {
-                                ivData = [(NSData *)iv mutableCopy];
-                        } else if ([iv isKindOfClass:[NSString class]]) {
-                                ivData = [[(NSString *)iv dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-                        } else {
-                                printf("%s 'iv' must be a NSData or a NSString, or nil.", __PRETTY_FUNCTION__);
-                                if (error) {
-                                        *error = kCCParamError;
-                                }
-                                return nil;
+        if (iv != nil && ivLength > 0) {
+                if ([iv isKindOfClass:[NSData class]]) {
+                        ivData = [(NSData *)iv mutableCopy];
+                } else if ([iv isKindOfClass:[NSString class]]) {
+                        ivData = [[(NSString *)iv dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+                } else {
+                        printf("%s: 'iv' must be a NSData or a NSString, or nil.\n", __PRETTY_FUNCTION__);
+                        if (error) {
+                                *error = kCCParamError;
                         }
-                        [ivData setLength:blockSize];
+                        return nil;
                 }
+                [ivData setLength:ivLength];
         }
         
         NSData *resultData = nil;
@@ -132,6 +121,19 @@
 + (NSData *)decryptedData:(NSData *)data withAlgorithm:(CCAlgorithm)algorithm key:(id)key iv:(id)iv options:(CCOptions)options error:(CCCryptorStatus *)error
 {
         return [self _es_crypted:kCCDecrypt data:data withAlgorithm:algorithm key:key iv:iv options:options error:error];
+}
+
+@end
+
+@implementation NSData (ESCryptor)
+
+- (NSData *)es_aesEncryptedDataWithKey:(id)key iv:(id)iv;
+{
+        return [ESCryptor encryptedData:self withAlgorithm:kCCAlgorithmAES
+                                    key:key
+                                     iv:iv
+                                options:(kCCOptionPKCS7Padding|(iv ? 0 : kCCOptionECBMode))
+                                  error:NULL];
 }
 
 @end

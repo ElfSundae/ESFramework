@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 /**
  * All returned hex string are lower case.
@@ -26,6 +27,9 @@
 - (NSString *)es_sha384HashString;
 - (NSData *)es_sha512Hash;
 - (NSString *)es_sha512HashString;
+
+- (NSData *)es_HmacHashWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 
 - (NSData *)es_base64Encoded;
 - (NSString *)es_base64EncodedString;
@@ -49,6 +53,9 @@
 - (NSString *)es_sha384HashString;
 - (NSData *)es_sha512Hash;
 - (NSString *)es_sha512HashString;
+
+- (NSData *)es_HmacHashWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 
 - (NSData *)es_base64Encoded;
 - (NSString *)es_base64EncodedString;

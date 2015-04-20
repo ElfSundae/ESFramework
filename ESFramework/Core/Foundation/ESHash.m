@@ -82,6 +82,45 @@
         return [[self es_sha512Hash] hexStringValue];
 }
 
+- (NSData *)es_HmacHashWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+{
+        NSData *keyData = nil;
+        if ([key isKindOfClass:[NSData class]]) {
+                keyData = (NSData *)key;
+        } else if ([key isKindOfClass:[NSString class]]) {
+                keyData = [(NSString *)key dataUsingEncoding:NSUTF8StringEncoding];
+        } else {
+                printf("%s: 'key' must be a NSData or a NSString.\n", __PRETTY_FUNCTION__);
+                return nil;
+        }
+        size_t size = 0;
+        if (kCCHmacAlgSHA1 == algorithm) {
+                size = CC_SHA1_DIGEST_LENGTH;
+        } else if (kCCHmacAlgMD5 == algorithm) {
+                size = CC_MD5_DIGEST_LENGTH;
+        } else if (kCCHmacAlgSHA224 == algorithm) {
+                size = CC_SHA224_DIGEST_LENGTH;
+        } else if (kCCHmacAlgSHA256 == algorithm) {
+                size = CC_SHA256_DIGEST_LENGTH;
+        } else if (kCCHmacAlgSHA384 == algorithm) {
+                size = CC_SHA384_DIGEST_LENGTH;
+        } else if (kCCHmacAlgSHA512 == algorithm) {
+                size = CC_SHA512_DIGEST_LENGTH;
+        } else {
+                printf("%s: 'algorithm' is wrong.\n", __PRETTY_FUNCTION__);
+                return nil;
+        }
+        
+        unsigned char buffer[size];
+        CCHmac(algorithm, keyData.bytes, keyData.length, self.bytes, self.length, buffer);
+        return [NSData dataWithBytes:buffer length:(NSUInteger)size];
+}
+
+- (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+{
+        return [[self es_HmacHashWithAlgorithm:algorithm key:key] hexStringValue];
+}
+
 - (NSData *)es_base64Encoded
 {
         // iOS 7+
@@ -126,6 +165,7 @@
         NSData *data = [self es_base64Decoded];
         return data.stringValue;
 }
+
 
 @end
 
@@ -188,6 +228,16 @@
 - (NSString *)es_sha512HashString
 {
         return [[self dataUsingEncoding:NSUTF8StringEncoding] es_sha512HashString];
+}
+
+- (NSData *)es_HmacHashWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_HmacHashWithAlgorithm:algorithm key:key];
+}
+
+- (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+{
+        return [[self dataUsingEncoding:NSUTF8StringEncoding] es_HmacHashStringWithAlgorithm:algorithm key:key];
 }
 
 - (NSData *)es_base64Encoded
