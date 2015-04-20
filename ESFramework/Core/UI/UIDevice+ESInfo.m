@@ -13,9 +13,9 @@
 #import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
-#import "OpenUDID.h"
 #import "ESValue.h"
 @import AdSupport;
+#import "ESOpenUDID.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +107,7 @@
 
 + (NSString *)openUDID
 {
-        return [OpenUDID value];
+        return [ESOpenUDID value];
 }
 
 + (NSString *)IDFA

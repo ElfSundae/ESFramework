@@ -207,8 +207,6 @@
 		E75C4CED1AADAA2600CF905B /* MVRecorderHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75D55DC1AAD90E40079E891 /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E75D55DA1AAD90E40079E891 /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75D55DD1AAD90E40079E891 /* ESDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E75D55DB1AAD90E40079E891 /* ESDefines.m */; };
-		E75D55E21AAD921E0079E891 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E75D55DF1AAD921E0079E891 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E75D55E31AAD921E0079E891 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E75D55E01AAD921E0079E891 /* OpenUDID.m */; };
 		E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEACF1929B101001461D1 /* UIControl+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */; };
 		E76FEAD01929B101001461D1 /* UIBarButtonItem+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -287,6 +285,8 @@
 		E7F0ECBB1AE300F200AEE33C /* ESITunesStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */; };
 		E7F0ED071AE513B900AEE33C /* ESCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ED051AE513B900AEE33C /* ESCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F0ED081AE513B900AEE33C /* ESCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ED061AE513B900AEE33C /* ESCryptor.m */; };
+		E7F0ED0C1AE560F400AEE33C /* ESOpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ED0A1AE560F400AEE33C /* ESOpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7F0ED0D1AE560F400AEE33C /* ESOpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ED0B1AE560F400AEE33C /* ESOpenUDID.m */; };
 		E7F5D8E01916DB0B00D11273 /* NSArray+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F5D8E11916DB0B00D11273 /* NSArray+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */; };
 		E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -559,8 +559,6 @@
 		E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVRecorderHeaders.h; sourceTree = "<group>"; };
 		E75D55DA1AAD90E40079E891 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E75D55DB1AAD90E40079E891 /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
-		E75D55DF1AAD921E0079E891 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
-		E75D55E01AAD921E0079E891 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
 		E76FEAC21929B101001461D1 /* UIView+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
 		E76FEAC31929B101001461D1 /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E76FEAC41929B101001461D1 /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
@@ -647,6 +645,8 @@
 		E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
 		E7F0ED051AE513B900AEE33C /* ESCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCryptor.h; sourceTree = "<group>"; };
 		E7F0ED061AE513B900AEE33C /* ESCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCryptor.m; sourceTree = "<group>"; };
+		E7F0ED0A1AE560F400AEE33C /* ESOpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESOpenUDID.h; sourceTree = "<group>"; };
+		E7F0ED0B1AE560F400AEE33C /* ESOpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESOpenUDID.m; sourceTree = "<group>"; };
 		E7F5D8CE1916DB0B00D11273 /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E7F5D8CF1916DB0B00D11273 /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E7F5D8D01916DB0B00D11273 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -1072,15 +1072,6 @@
 			path = Defines;
 			sourceTree = "<group>";
 		};
-		E75D55DE1AAD921E0079E891 /* OpenUDID */ = {
-			isa = PBXGroup;
-			children = (
-				E75D55DF1AAD921E0079E891 /* OpenUDID.h */,
-				E75D55E01AAD921E0079E891 /* OpenUDID.m */,
-			);
-			path = OpenUDID;
-			sourceTree = "<group>";
-		};
 		E76FEAE21929D95D001461D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1263,11 +1254,11 @@
 			isa = PBXGroup;
 			children = (
 				E7FEF4F018FA64DE006E1682 /* ESFrameworkCore.h */,
+				E7F0ED091AE560DF00AEE33C /* OpenUDID */,
 				E75D55D91AAD90CA0079E891 /* Defines */,
 				E7F5D8CD1916DAE700D11273 /* Foundation */,
 				E7F5D8FA1916DBAA00D11273 /* UI */,
 				E7F5D9071916DBE100D11273 /* App */,
-				E75D55DE1AAD921E0079E891 /* OpenUDID */,
 				E71D1ED01A6F0B8200AD0DB2 /* Reachability */,
 				E7BCF65718F9863B006D920E /* CoreDebug.xcconfig */,
 				E7EDF3F518FBA5430067E849 /* CoreRelease.xcconfig */,
@@ -1286,6 +1277,15 @@
 				E7EDF3F718FBA5840067E849 /* UIKitRelease.xcconfig */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		E7F0ED091AE560DF00AEE33C /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				E7F0ED0A1AE560F400AEE33C /* ESOpenUDID.h */,
+				E7F0ED0B1AE560F400AEE33C /* ESOpenUDID.m */,
+			);
+			path = OpenUDID;
 			sourceTree = "<group>";
 		};
 		E7F5D8CD1916DAE700D11273 /* Foundation */ = {
@@ -1435,7 +1435,6 @@
 				E7F0ECBA1AE300F200AEE33C /* ESITunesStoreHelper.h in Headers */,
 				E7F5D8EC1916DB0B00D11273 /* NSString+ESAdditions.h in Headers */,
 				E7F5D9051916DBC800D11273 /* UIView+ESShortcut.h in Headers */,
-				E75D55E21AAD921E0079E891 /* OpenUDID.h in Headers */,
 				E76FEAE01929B2DC001461D1 /* UITableView+ESAdditions.h in Headers */,
 				E76FEAD21929B101001461D1 /* UIColor+ESAdditions.h in Headers */,
 				E76FEAD71929B101001461D1 /* UIImage+ESAdditions.h in Headers */,
@@ -1467,6 +1466,7 @@
 				E7F5D8E21916DB0B00D11273 /* NSData+ESAdditions.h in Headers */,
 				E76FEACE1929B101001461D1 /* UIView+ESAdditions.h in Headers */,
 				E7F5D8F81916DB8900D11273 /* ESValue.h in Headers */,
+				E7F0ED0C1AE560F400AEE33C /* ESOpenUDID.h in Headers */,
 				E7F0ECB01AE2F0DC00AEE33C /* NSString+ESGTMHTML.h in Headers */,
 				E76FEAE61929F1D9001461D1 /* UIToolbar+ESAdditions.h in Headers */,
 				E7F5D8EA1916DB0B00D11273 /* NSSet+ESAdditions.h in Headers */,
@@ -1851,12 +1851,12 @@
 				E7F5D8F11916DB0B00D11273 /* NSURL+ESAdditions.m in Sources */,
 				E75D55DD1AAD90E40079E891 /* ESDefines.m in Sources */,
 				E7F5D8EF1916DB0B00D11273 /* NSTimer+ESAdditions.m in Sources */,
-				E75D55E31AAD921E0079E891 /* OpenUDID.m in Sources */,
 				E7F5D9041916DBC800D11273 /* UIAlertView+ESBlock.m in Sources */,
 				E76FEAD11929B101001461D1 /* UIBarButtonItem+ESAdditions.m in Sources */,
 				E76FEAE11929B2DC001461D1 /* UITableView+ESAdditions.m in Sources */,
 				E7F74667194C22D0007970CD /* UIImagePickerController+ESFixOrientation.m in Sources */,
 				E746C1511929A20800AD082C /* UIViewController+ESAdditions.m in Sources */,
+				E7F0ED0D1AE560F400AEE33C /* ESOpenUDID.m in Sources */,
 				E76FEAE71929F1D9001461D1 /* UIToolbar+ESAdditions.m in Sources */,
 				E7F5D9061916DBC800D11273 /* UIView+ESShortcut.m in Sources */,
 				E7F5D8F91916DB8900D11273 /* ESValue.m in Sources */,
