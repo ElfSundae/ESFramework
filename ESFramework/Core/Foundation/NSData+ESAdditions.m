@@ -9,6 +9,8 @@
 #import "NSData+ESAdditions.h"
 #import "ESDefines.h"
 
+ES_CATEGORY_FIX(NSData_ESAdditions)
+
 @implementation NSData (ESAdditions)
 
 - (NSString *)stringValue

@@ -9,6 +9,8 @@
 #import "NSOrderedSet+ESAdditions.h"
 #import "ESDefines.h"
 
+ES_CATEGORY_FIX(NSOrderedSet_ESAdditions)
+
 @implementation NSOrderedSet (ESAdditions)
 
 - (BOOL)isEmpty

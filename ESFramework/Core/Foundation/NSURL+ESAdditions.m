@@ -8,6 +8,9 @@
 
 #import "NSURL+ESAdditions.h"
 #import "NSString+ESAdditions.h"
+#import "ESDefines.h"
+
+ES_CATEGORY_FIX(NSURL_ESAdditions)
 
 @implementation NSURL (ESAdditions)
 - (NSDictionary *)queryDictionary

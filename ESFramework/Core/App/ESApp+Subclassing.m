@@ -8,6 +8,8 @@
 
 #import "ESApp+Subclassing.h"
 
+ES_CATEGORY_FIX(ESApp_Subclassing)
+
 @implementation ESApp (Subclassing)
 
 //- (UIViewController *)_setupRootViewController

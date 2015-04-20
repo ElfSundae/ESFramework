@@ -14,6 +14,8 @@
 #import "ESApp+AppInfo.h"
 #import "ESApp+Subclassing.h"
 
+ES_CATEGORY_FIX(ESApp_Helper)
+
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
 @implementation ESApp (Helper)

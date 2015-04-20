@@ -254,9 +254,18 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
  * See http://developer.apple.com/library/mac/#qa/qa2006/qa1490.html for more info.
  *
  * https://github.com/NimbusKit/basics#avoid-requiring-the--all_load-and--force_load-flags
+ *
+ * @code
+ * // In the category .m file
+ * ES_CATEGORY_FIX(NSString_ESAdditions)
+ *
+ * @implementation NSString (ESAdditions)
+ * ...
+ * @end
+ * @endcode
  */
-#define ES_CATEGORY_FIX(name) @interface ES_CATEGORY_FIX_##name : NSObject @end \
-@implementation ES_CATEGORY_FIX_##name @end
+#define ES_CATEGORY_FIX(name) @interface _ES_CATEGORY_FIX_##name : NSObject @end \
+@implementation _ES_CATEGORY_FIX_##name @end
 
 
 #define CFReleaseSafely(_var)   if(_var){ CFRelease(_var); _var = NULL; }

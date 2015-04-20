@@ -8,6 +8,8 @@
 
 #import "UINavigationController+ESAdditions.h"
 #import "ESDefines.h"
+ES_CATEGORY_FIX(UINavigationController_ESAdditions)
+
 
 @implementation UINavigationController (ESAdditions)
 

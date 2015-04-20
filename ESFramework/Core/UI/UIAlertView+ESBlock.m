@@ -7,6 +7,9 @@
 //
 
 #import "UIAlertView+ESBlock.h"
+#import "ESDefines.h"
+
+ES_CATEGORY_FIX(UIAlertView_ESBlock)
 
 static const void *_didDismissBlockKey = &_didDismissBlockKey;
 

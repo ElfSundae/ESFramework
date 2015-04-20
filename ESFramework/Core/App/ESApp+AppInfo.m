@@ -11,6 +11,8 @@
 #import "ESApp+Subclassing.h"
 #import "UIDevice+ESInfo.h"
 
+ES_CATEGORY_FIX(ESApp_AppInfo)
+
 @implementation ESApp (AppInfo)
 
 + (NSBundle *)mainBundle

@@ -9,6 +9,8 @@
 #import "NSTimer+ESAdditions.h"
 #import "ESDefines.h"
 
+ES_CATEGORY_FIX(NSTimer_ESAdditions)
+
 static const void *_timerNameKey = &_timerNameKey;
 
 @implementation NSTimer (ESAdditions)

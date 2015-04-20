@@ -7,6 +7,9 @@
 //
 
 #import "NSSet+ESAdditions.h"
+#import "ESDefines.h"
+
+ES_CATEGORY_FIX(NSSet_ESAdditions)
 
 @implementation NSSet (ESAdditions)
 

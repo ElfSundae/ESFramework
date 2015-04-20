@@ -9,6 +9,9 @@
 #import "NSObject+ESModel.h"
 #import <objc/runtime.h>
 #import "NSDictionary+ESAdditions.h"
+#import "ESDefines.h"
+
+ES_CATEGORY_FIX(NSObject_ESModel)
 
 static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
 static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;

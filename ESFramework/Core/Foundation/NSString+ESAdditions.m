@@ -11,6 +11,8 @@
 #import "ESHash.h"
 #import "NSDictionary+ESAdditions.h"
 
+ES_CATEGORY_FIX(NSString_ESAdditions)
+
 @implementation NSString (ESAdditions)
 
 - (BOOL)contains:(NSString *)string

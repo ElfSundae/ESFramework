@@ -7,8 +7,10 @@
 //
 
 #import "UITableView+ESAdditions.h"
-#import "ESDefines.h"
 #import "UIView+ESAdditions.h"
+#import "ESDefines.h"
+ES_CATEGORY_FIX(UITableView_ESAdditions)
+
 
 @implementation UITableView (ESAdditions)
 

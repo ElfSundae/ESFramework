@@ -7,6 +7,9 @@
 //
 
 #import "NSDate+ESAdditions.h"
+#import "ESDefines.h"
+
+ES_CATEGORY_FIX(NSDate_ESAdditions)
 
 @implementation NSDate (ESAdditions)
 

@@ -9,6 +9,8 @@
 #import "UIView+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "UIColor+ESAdditions.h"
+#import "ESDefines.h"
+ES_CATEGORY_FIX(UIView_ESAdditions)
 
 @implementation UIView (ESAdditions)
 
