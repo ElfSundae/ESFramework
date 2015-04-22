@@ -59,7 +59,7 @@
  *
  * @see [OpenUDID](https://github.com/ylechelle/OpenUDID)
  */
-+ (NSString *)deviceIdentifier __attribute__((deprecated("use +openUDID instead.")));
+//+ (NSString *)deviceIdentifier __attribute__((deprecated("use +openUDID instead.")));
 
 + (NSString *)openUDID;
 

@@ -10,6 +10,7 @@
 #import "ESApp+Helper.h"
 #import "ESApp+Subclassing.h"
 #import "UIDevice+ESInfo.h"
+#import "UIDevice+ESNetworkReachability.h"
 
 ES_CATEGORY_FIX(ESApp_AppInfo)
 
@@ -77,11 +78,12 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
         result[@"name"] = [UIDevice name];
         result[@"platform"] = [UIDevice platform];
         result[@"carrier"] = [UIDevice carrierString];
-        result[@"udid"] = [UIDevice openUDID];
+        result[@"open_udid"] = [UIDevice openUDID];
         result[@"jailbroken"] = @([UIDevice isJailbroken] ? 1 : 0);
         result[@"screen_size"] = [UIDevice screenSizeString];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"] = [UIDevice currentLocaleIdentifier];
+        result[@"network"] = [UIDevice currentNetworkReachabilityStatusString];
         //result[@"network"] = [UIDevice currentNetworkStatusString];
 //        NSString *network = @"";
 //#pragma clang diagnostic push

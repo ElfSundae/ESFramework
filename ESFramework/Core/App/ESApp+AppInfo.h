@@ -24,25 +24,25 @@
  *
  * @code
  * {
- *     os = iOS;
- *     "os_version" = "7.1";
  *     "app_channel" = "App Store";
- *     "app_identifier" = "com.0x123.ESDemo";
- *     "app_name" = "ES Demo";
+ *     "app_identifier" = "com.0x123.xunleivip";
+ *     "app_name" = "Thuner VIP";
  *     "app_version" = "1.0.0";
- *     carrier = "";
- *     jailbroken = 0;
- *     locale = "en_US";
- *     model = "iPhone Simulator";
- *     name = "iPhone Simulator";
- *     platform = "x86_64";
- *     "screen_size" = 640x1136;
+ *     carrier = "China Mobile";
+ *     jailbroken = 1;
+ *     locale = "zh_CN";
+ *     model = iPhone;
+ *     name = "Elf Sundae's iPhone";
+ *     network = WiFi;
+ *     "open_udid" = c0f9e011b8a17a904e2b4fe9fdf15640300a7c34;
+ *     os = iOS;
+ *     "os_version" = "8.1.2";
+ *     platform = "iPhone7,1";
+ *     "screen_size" = 1242x2208;
  *     "timezone_gmt" = 8;
- *     udid = 266caef7e386667663d6f994f8d2b2cac4e89a9f;
  * }
  * @endcode
  *
- * Note: The 'network' requires UIDevice(Reachability), which included in ESFrameworkNetwork.
  */
 - (NSMutableDictionary *)analyticsInformation;
 /**
