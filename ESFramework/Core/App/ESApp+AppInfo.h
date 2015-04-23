@@ -44,7 +44,7 @@
  * @endcode
  *
  */
-- (NSMutableDictionary *)analyticsInformation;
+- (NSDictionary *)analyticsInformation;
 /**
  * Returns User Agent for UIWebView.
  *

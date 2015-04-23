@@ -69,7 +69,7 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
         return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"];
 }
 
-- (NSMutableDictionary *)analyticsInformation
+- (NSDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
         result[@"os"] = [UIDevice systemName];
@@ -97,7 +97,7 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
         result[@"app_identifier"] = [self.class bundleIdentifier];
         result[@"app_channel"] = self.appChannel;
         
-        return result;
+        return (NSDictionary *)result;
 }
 
 - (NSString *)userAgentForWebView
