@@ -65,6 +65,7 @@
 
 /**
  * [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString
+ * Note: App must link AdSupport.framework (Optional)
  */
 + (NSString *)IDFA NS_AVAILABLE(NA, 6_0);
 
