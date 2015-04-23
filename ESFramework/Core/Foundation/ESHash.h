@@ -14,21 +14,21 @@
  */
 @interface NSData (ESHash)
 
-- (NSData *)es_md5Hash;
+- (NSData *)es_md5HashData;
 - (NSString *)es_md5HashString;
 
-- (NSData *)es_sha1Hash;
+- (NSData *)es_sha1HashData;
 - (NSString *)es_sha1HashString;
-- (NSData *)es_sha224Hash;
+- (NSData *)es_sha224HashData;
 - (NSString *)es_sha224HashString;
-- (NSData *)es_sha256Hash;
+- (NSData *)es_sha256HashData;
 - (NSString *)es_sha256HashString;
-- (NSData *)es_sha384Hash;
+- (NSData *)es_sha384HashData;
 - (NSString *)es_sha384HashString;
-- (NSData *)es_sha512Hash;
+- (NSData *)es_sha512HashData;
 - (NSString *)es_sha512HashString;
 
-- (NSData *)es_HmacHashWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 - (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 
 - (NSData *)es_base64Encoded;
@@ -40,21 +40,21 @@
 
 @interface NSString (ESHash)
 
-- (NSData *)es_md5Hash;
+- (NSData *)es_md5HashData;
 - (NSString *)es_md5HashString;
 
-- (NSData *)es_sha1Hash;
+- (NSData *)es_sha1HashData;
 - (NSString *)es_sha1HashString;
-- (NSData *)es_sha224Hash;
+- (NSData *)es_sha224HashData;
 - (NSString *)es_sha224HashString;
-- (NSData *)es_sha256Hash;
+- (NSData *)es_sha256HashData;
 - (NSString *)es_sha256HashString;
-- (NSData *)es_sha384Hash;
+- (NSData *)es_sha384HashData;
 - (NSString *)es_sha384HashString;
-- (NSData *)es_sha512Hash;
+- (NSData *)es_sha512HashData;
 - (NSString *)es_sha512HashString;
 
-- (NSData *)es_HmacHashWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 - (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 
 - (NSData *)es_base64Encoded;
