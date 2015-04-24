@@ -13,15 +13,12 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
-#if defined(__cplusplus)
-        #define ES_EXTERN               extern "C" __attribute__((visibility ("default")))
-        #define ES_EXTERN_C_BEGIN       extern "C" {
-        #define ES_EXTERN_C_END         }
+#ifdef __cplusplus
+#define ES_EXTERN       extern "C" __attribute__((visibility ("default")))
 #else
-        #define ES_EXTERN               extern
-        #define ES_EXTERN_C_BEGIN
-        #define ES_EXTERN_C_END
+#define ES_EXTERN       extern __attribute__((visibility ("default")))
 #endif
+
 
 ///=============================================
 /// @name Log
