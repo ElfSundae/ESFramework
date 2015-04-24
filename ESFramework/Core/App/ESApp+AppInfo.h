@@ -51,33 +51,26 @@
  * Default User Agent for UIWebView, it registered after app launched.
  * Subclass can return #nil to use the default user-agent for UIWebView.
  *
- * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 7_1_1 like Mac OS X) Mobile/11D201 ESFramework(iOS;7.1;com.0x123.ESDemo;1.0.0;App Store;266caef7e386667663d6f994f8d2b2cac4e89a9f;640x1136;en_US)`
+ * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_2 like Mac OS X) Mobile/12B440 ESFramework(iOS;8.1.2;com.0x123.ESDemo;1.0.0;App Store;c0f9e011b8a17a904e2b4fe9fdf15640300a7c34;1242x2208;zh_CN)`
  */
 - (NSString *)userAgentForWebView;
 
 /**
  * Returns User Agent for HTTP request.
  *
- * e.g. `ESFramework(iOS;7.1;com.0x123.ESDemo;1.0.0;App Store;266caef7e386667663d6f994f8d2b2cac4e89a9f;640x1136;en_US)`
+ * e.g. `ESFramework(iOS;8.1.2;com.0x123.ESDemo;1.0.0;App Store;c0f9e011b8a17a904e2b4fe9fdf15640300a7c34;1242x2208;zh_CN)`
  */
 - (NSString *)userAgent;
 /**
  * Returns all URL Schemes that specified in the Info.plist.
+ *
+ * @param identifier can be `nil`, `@""`, or a string
  */
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier;
+
 /**
- * Returns all URL Schemes for the blank or NULL identifier.
+ * All URL schemes in the Info.plist.
  */
-+ (NSArray *)URLSchemes;
-/**
- * The first scheme for the identifier.
- */
-+ (NSString *)URLSchemeForIdentifier:(NSString *)identifier;
-/**
- * The first scheme for the blank or NULL identifier.
- * In general, this may be the App Scheme that used to open this app
- * from another app (like Safari, -[UIApplication openURL:])
- */
-+ (NSString *)URLScheme;
++ (NSArray *)allURLSchemes;
 
 @end

@@ -66,7 +66,7 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
 
 + (NSString *)bundleIdentifier
 {
-        return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+        return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
 }
 
 - (NSDictionary *)analyticsInformation
@@ -84,14 +84,6 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"] = [UIDevice currentLocaleIdentifier];
         result[@"network"] = [UIDevice currentNetworkReachabilityStatusString];
-        //result[@"network"] = [UIDevice currentNetworkStatusString];
-//        NSString *network = @"";
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wundeclared-selector"
-//        if (ESInvokeSelector([UIDevice class], @selector(currentNetworkStatusString), &network) && network) {
-//                result[@"network"] = network;
-//        }
-//#pragma clang diagnostic pop
         result[@"app_name"] = [self.class displayName];
         result[@"app_version"] = [self.class appVersion];
         result[@"app_identifier"] = [self.class bundleIdentifier];
@@ -135,42 +127,48 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
 
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier
 {
+        NSMutableArray *result = [NSMutableArray array];
+        
         NSArray *urlTypes = [self objectForInfoDictionaryKey:@"CFBundleURLTypes"];
-        if (!ESIsArrayWithItems(urlTypes)) {
-                return nil;
-        }
-        
-        NSPredicate *predicate = nil;
-        if (ESIsStringWithAnyText(identifier)) {
-                predicate = [NSPredicate predicateWithFormat:@"SELF['CFBundleURLName'] == %@", identifier];
-        } else {
-                predicate = [NSPredicate predicateWithFormat:@"SELF['CFBundleURLName'] == NULL OR SELF['CFBundleURLName'] == ''"];
-        }
-        
-        NSArray *filtered = [urlTypes filteredArrayUsingPredicate:predicate];
-        
-        NSDictionary *schemesDict = [filtered firstObject];
-        if ([schemesDict isKindOfClass:[NSDictionary class]]) {
-                NSArray *result = schemesDict[@"CFBundleURLSchemes"];
-                if (ESIsArrayWithItems(result)) {
-                        return result;
+        if (ESIsArrayWithItems(urlTypes)) {
+                NSPredicate *predicate = nil;
+                if (ESIsStringWithAnyText(identifier)) {
+                        predicate = [NSPredicate predicateWithFormat:@"SELF['CFBundleURLName'] == %@", identifier];
+                } else {
+                        predicate = [NSPredicate predicateWithFormat:@"SELF['CFBundleURLName'] == NULL OR SELF['CFBundleURLName'] == ''"];
+                }
+                
+                NSArray *filtered = [urlTypes filteredArrayUsingPredicate:predicate];
+                for (NSDictionary *dict in filtered) {
+                        if ([dict isKindOfClass:[NSDictionary class]]) {
+                                NSArray *schemes = dict[@"CFBundleURLSchemes"];
+                                if (ESIsArrayWithItems(schemes)) {
+                                        [result addObjectsFromArray:schemes];
+                                }
+                        }
                 }
         }
         
-        return nil;
-}
-+ (NSArray *)URLSchemes
-{
-        return [self URLSchemesForIdentifier:nil];
+        return (NSArray *)result;
 }
 
-+ (NSString *)URLSchemeForIdentifier:(NSString *)identifier
++ (NSArray *)allURLSchemes
 {
-        return [[self URLSchemesForIdentifier:identifier] firstObject];
-}
-+ (NSString *)URLScheme
-{
-        return [self URLSchemeForIdentifier:nil];
+        NSMutableArray *result = [NSMutableArray array];
+        
+        NSArray *urlTypes = [self objectForInfoDictionaryKey:@"CFBundleURLTypes"];
+        if (ESIsArrayWithItems(urlTypes)) {
+                for (NSDictionary *dict in urlTypes) {
+                        if ([dict isKindOfClass:[NSDictionary class]]) {
+                                NSArray *schemes = dict[@"CFBundleURLSchemes"];
+                                if (ESIsArrayWithItems(schemes)) {
+                                        [result addObjectsFromArray:schemes];
+                                }
+                        }
+                }
+        }
+        
+        return (NSArray *)result;
 }
 
 @end
