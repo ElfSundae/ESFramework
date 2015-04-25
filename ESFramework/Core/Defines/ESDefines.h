@@ -494,6 +494,8 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
  * #pragma clang diagnostic pop
  * @endcode
  *
+ * !!! Note: selector的返回值为BOOL时，请定义result类型为int. 
+ * 如果取result时crash了，可以尝试定义result为void*, 执行完ESInvokeSelector后用__bridge关键字转换对象。
  */
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 
