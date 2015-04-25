@@ -13,7 +13,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
-#ifdef __cplusplus
+#if defined(__cplusplus)
 #define ES_EXTERN       extern "C" __attribute__((visibility ("default")))
 #else
 #define ES_EXTERN       extern __attribute__((visibility ("default")))
