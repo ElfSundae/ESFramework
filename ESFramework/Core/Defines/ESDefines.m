@@ -577,6 +577,10 @@ void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
 
 NSInvocation *ESInvocationWith(id target, SEL selector)
 {
+        if (!target || !selector) {
+                return nil;
+        }
+        
         if (![target respondsToSelector:selector]) {
                 return nil;
         }
