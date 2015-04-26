@@ -482,10 +482,10 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
  * #pragma clang diagnostic push
  * #pragma clang diagnostic ignored "-Wundeclared-selector"
  *
- *  ESInvokeSelector(self, @selector(test), NULL);
+ *  ESInvokeSelector(self, NSSelectorFromString(@"test"), NULL);
  *
  *  NSInteger result = 0;
- *  ESInvokeSelector([Foo class], @selector(classMethod:), &result, CGSizeMake(10, 20));
+ *  ESInvokeSelector([Foo class], NSSelectorFromString(@"classMethod:"), &result, CGSizeMake(10, 20));
  *
  *  if (ESInvokeSelector(someObject, @selector(someSelector:::), NULL, arg1, arg2, arg3)) {
  *         // Invoked OK
