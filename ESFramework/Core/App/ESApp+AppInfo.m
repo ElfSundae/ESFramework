@@ -62,7 +62,7 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
         }
         if (ESIsStringWithAnyText(build)) {
                 if (result.length) {
-                        [result appendFormat:@"(%@)", build];
+                        [result appendFormat:@" (%@)", build];
                 } else {
                         [result appendString:build];
                 }
