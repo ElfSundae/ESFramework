@@ -99,6 +99,87 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return (__es_gBackgroundTaskID && __es_gBackgroundTaskID != UIBackgroundTaskInvalid);
 }
 
++ (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;
+{
+        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+        
+        if ([plistURL isKindOfClass:[NSURL class]]) {
+                NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:plistURL];
+                if ([settingsDict isKindOfClass:[NSDictionary class]]) {
+                        NSArray *prefSpecifierArray = settingsDict[@"PreferenceSpecifiers"];
+                        if (ESIsArrayWithItems(prefSpecifierArray)) {
+                                
+                                for (NSDictionary *prefItem in prefSpecifierArray) {
+                                        if (![prefItem isKindOfClass:[NSDictionary class]]) {
+                                                continue;
+                                        }
+                                        
+                                        // What kind of control is used to represent the preference element in the Settings app.
+                                        NSString *itemType = prefItem[@"Type"];
+                                        // How this preference element maps to the defaults database for the app.
+                                        NSString *itemKey = prefItem[@"Key"];
+                                        // The default value for the preference key.
+                                        NSString *itemDefaultValue = prefItem[@"DefaultValue"];
+                                        
+                                        // If this is a 'Child Pane Element'.  That is, a reference to another page.
+                                        if ([itemType isEqualToString:@"PSChildPaneSpecifier"]) {
+                                                
+                                                // There must be a value associated with the 'File' key in this preference
+                                                // element's dictionary.  Its value is the name of the plist file in the
+                                                // Settings bundle for the referenced page.
+                                                NSString *itemFile = prefItem[@"File"];
+                                                
+                                                // Recurs on the referenced page.
+                                                NSURL *childPlistURL = [[plistURL URLByDeletingLastPathComponent] URLByAppendingPathComponent:itemFile];
+                                                NSDictionary *childPageKeyValuePairs = [self loadPreferencesDefaultsFromSettingsPlistAtURL:childPlistURL];
+                                                
+                                                // Add the child results to our dictionary
+                                                [result addEntriesFromDictionary:childPageKeyValuePairs];
+                                                
+                                        } else {
+                                                // Some elements, such as 'Group' or 'Text Field' elements do not contain
+                                                // a key and default value.  Skip those.
+                                                if (ESIsStringWithAnyText(itemKey) && itemDefaultValue) {
+                                                        result[itemKey] = itemDefaultValue;
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+        
+        return result;
+}
+
+
++ (BOOL)registerPreferencesDefaultsWithDefaultValues:(NSDictionary *)defaultValues forRootSettingsPlistAtURL:(NSURL *)rootPlistURL
+{
+        NSMutableDictionary *values = [NSMutableDictionary dictionary];
+        NSDictionary *loadValues = [self loadPreferencesDefaultsFromSettingsPlistAtURL:rootPlistURL];
+        if (ESIsDictionaryWithItems(loadValues)) {
+                [values addEntriesFromDictionary:loadValues];
+        }
+        if (ESIsDictionaryWithItems(defaultValues)) {
+                [values addEntriesFromDictionary:defaultValues];
+        }
+        
+        if (values.count) {
+                [[NSUserDefaults standardUserDefaults] registerDefaults:values];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                return YES;
+        }
+        
+        return NO;
+}
+
++ (BOOL)registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:(NSDictionary *)defaultValues
+{
+        NSURL *defaultRootSettings = [[[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"]
+                                      URLByAppendingPathComponent:@"Root.plist"];
+        return [self registerPreferencesDefaultsWithDefaultValues:defaultValues
+                                        forRootSettingsPlistAtURL:defaultRootSettings];
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UI

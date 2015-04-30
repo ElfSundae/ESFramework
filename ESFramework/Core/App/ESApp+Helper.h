@@ -42,6 +42,39 @@
 
 + (BOOL)isMultitaskingEnabled;
 
+/**
+ * Preferences for iOS apps are displayed by the system-provided Settings app.
+ *
+ * This method returns the registered defaules, or the default value from Settings Plist File,
+ * the plistFile is usually "Root.plist" within main bundle's "Settings.bundle". And this method
+ * will recurs "Child Pane Element" referenced page.
+ * When you got the defaults dictionary, you can register them by call `-[NSUserDefaults registerDefaults:]`
+ * the `-registerDefaults:` will not overwrite extant values.
+ *
+ * Note: this method is synchronously, that means if you provide a remote URL for `plistURL`, you may
+ * consider calling this method on a secondary thread.
+ *
+ * The registration domain is volatile.  It does not persist across launches.
+ * **You must register your defaults at each launch**; otherwise you will get
+ * (system) default values when accessing the values of preferences the
+ * user (via the Settings app) or your app (via set*:forKey:) has not
+ * modified.  Registering a set of default values ensures that your app
+ * always has a known good set of values to operate on.
+ *
+ * @see https://developer.apple.com/library/ios/documentation/PreferenceSettings/Conceptual/SettingsApplicationSchemaReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40007005-SW1
+ */
++ (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;
+
+/**
+ * Loads defaults from `rootPlistURL`, and register them.
+ */
++ (BOOL)registerPreferencesDefaultsWithDefaultValues:(NSDictionary *)defaultValues forRootSettingsPlistAtURL:(NSURL *)rootPlistURL;
+
+/**
+ * Loads and register main bundle's "Settings.bundle/Root.plist"
+ */
++ (BOOL)registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:(NSDictionary *)defaultValues;
+
 ///=============================================
 /// @name UI
 ///=============================================
@@ -79,7 +112,6 @@
 ///=============================================
 /// @name Open URL
 ///=============================================
-
 
 + (BOOL)canOpenURL:(NSURL *)url;
 + (BOOL)openURL:(NSURL *)url;
