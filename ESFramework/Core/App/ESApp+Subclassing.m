@@ -12,18 +12,6 @@ ES_CATEGORY_FIX(ESApp_Subclassing)
 
 @implementation ESApp (Subclassing)
 
-//- (UIViewController *)_setupRootViewController
-//{
-//        UIViewController *vc = [[UIViewController alloc] init];
-//        vc.title = @"RootViewController";
-//        return [[UINavigationController alloc] initWithRootViewController:vc];
-//}
-//
-//- (void)_applicationDidFinishLaunching:(UIApplication *)application withOptions:(NSDictionary *)launchOptions
-//{
-//        
-//}
-
 - (void)_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {
         

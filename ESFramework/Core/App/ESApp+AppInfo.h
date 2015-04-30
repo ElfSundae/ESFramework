@@ -10,13 +10,53 @@
 
 @interface ESApp (AppInfo)
 
+/**
+ * Returns the NSBundle object that corresponds to the directory where the current application executable is located.
+ */
 + (NSBundle *)mainBundle;
+/**
+ * A dictionary, constructed from the bundle's Info.plist file, that contains information about the receiver.
+ */
 + (NSDictionary *)infoDictionary;
+/**
+ * Returns the value associated with the specified key in the main bundle's Info.plist file.
+ */
 + (id)objectForInfoDictionaryKey:(NSString *)key;
+
+/**
+ * Returns the value associated with CFBundleDisplayName in the main bundle's Info.plist file,
+ * if the value is not found, it will return the value of CFBundleName or @""
+ */
 + (NSString *)displayName;
+/**
+ * Returns the value associated with CFBundleShortVersionString in the main bundle's Info.plist file,
+ * if the value is not found, it will return the value of CFBundleVersion or @""
+ */
 + (NSString *)appVersion;
-/// https://developer.apple.com/library/mac/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW29
+
+/**
+ * CFBundleShortVersionString + CFBundleVersion
+ * e.g. "1.2.1(20150433.387)", "1.2.0", "2015988"
+ */
++ (NSString *)appVersionWithBuildVersion;
+
+/**
+ * UIViewControllerBasedStatusBarAppearance (Boolean - iOS) specifies whether the status bar appearance 
+ * is based on the style preferred by the view controller that is currently under the status bar. 
+ * When this key is not present or its value is set to YES, the view controller determines the 
+ * status bar style. When the key is set to NO, view controllers (or the app) must each set the 
+ * status bar style explicitly using the UIApplication object.
+ *
+ * This key is supported in iOS 7.0 and later.
+ *
+ * @see https://developer.apple.com/library/mac/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW29
+ */
 + (BOOL)isUIViewControllerBasedStatusBarAppearance;
+
+/**
+ * Returns the value associated with CFBundleIdentifier in the main bundle's Info.plist file,
+ * if the value is not found, it will return @""
+ */
 + (NSString *)bundleIdentifier;
 
 /**

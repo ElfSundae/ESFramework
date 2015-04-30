@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
+@import CoreFoundation;
 #import "ESApp+AppInfo.h"
 #import "ESApp+Helper.h"
 #import "ESApp+Subclassing.h"
@@ -49,6 +50,24 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
                 version = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
         }
         return version ?: @"";
+}
+
++ (NSString *)appVersionWithBuildVersion
+{
+        NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        NSString *build = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
+        NSMutableString *result = [NSMutableString string];
+        if (ESIsStringWithAnyText(version)) {
+                [result appendString:version];
+        }
+        if (ESIsStringWithAnyText(build)) {
+                if (result.length) {
+                        [result appendFormat:@"(%@)", build];
+                } else {
+                        [result appendString:build];
+                }
+        }
+        return result;
 }
 
 + (BOOL)isUIViewControllerBasedStatusBarAppearance
