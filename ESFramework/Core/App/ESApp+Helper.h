@@ -66,12 +66,12 @@
 + (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;
 
 /**
- * Loads defaults from `rootPlistURL`, and register them.
+ * Loads defaults from `rootPlistURL`, then registers them.
  */
 + (BOOL)registerPreferencesDefaultsWithDefaultValues:(NSDictionary *)defaultValues forRootSettingsPlistAtURL:(NSURL *)rootPlistURL;
 
 /**
- * Loads and register main bundle's "Settings.bundle/Root.plist"
+ * Loads and registers main bundle's "Settings.bundle/Root.plist"
  */
 + (BOOL)registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:(NSDictionary *)defaultValues;
 
