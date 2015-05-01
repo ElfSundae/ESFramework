@@ -9,6 +9,7 @@
 #ifndef ESFramework_ESUIAdditions_h
 #define ESFramework_ESUIAdditions_h
 
+#import "UIDevice+ESInfo.h"
 #import "UIColor+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "UIImage+ESAdditions.h"

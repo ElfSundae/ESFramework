@@ -299,7 +299,12 @@ static int const kESOpenUDIDRedundancySlots = 100;
         
         // if openUDID was not retrieved from the local preferences, then let's try to get it from the frequency dictionary above
         //
+#if 0 // -Elf, 检查openUDID, 防止别的app篡改剪贴板里的openUDID
         if (openUDID==nil) {
+#else
+                if (openUDID==nil || openUDID.length != 40) {
+                        mostReliableOpenUDID = nil;
+#endif
                 if (mostReliableOpenUDID==nil) {
                         // this is the case where this app instance is likely to be the first one to use OpenUDID on this device
                         // we create the OpenUDID, legacy or semi-random (i.e. most certainly unique)
