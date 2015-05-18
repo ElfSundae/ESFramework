@@ -27,8 +27,8 @@ ES_CATEGORY_FIX(UIToolbar_ESAdditions)
 {
         UIBarButtonItem *item = [self itemWithTag:tag];
         if (item) {
-                NSMutableArray *newItems = [NSMutableArray arrayWithArray:self.items];
-                [newItems replaceObject:item withObject:newItems];
+                NSMutableArray *newItems = self.items.mutableCopy;
+                [newItems replaceObject:item withObject:newItem];
                 self.items = newItems;
         }
 }
