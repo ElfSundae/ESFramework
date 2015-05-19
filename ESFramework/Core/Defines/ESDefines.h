@@ -238,12 +238,12 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 #define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
 + (instancetype)sharedInstance \
 { \
-/**/    static id __##sharedInstanceName = nil; \
+/**/    static id sharedInstanceVariableName = nil; \
 /**/    static dispatch_once_t onceToken; \
-/**/    dispatch_once(&onceToken, ^{ __##sharedInstanceName = [[[self class] alloc] init]; }); \
-/**/    return __##sharedInstanceName; \
+/**/    dispatch_once(&onceToken, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
+/**/    return sharedInstanceVariableName; \
 }
-#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, gSharedInstance)
+#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
 
 /**
  * Force a category to be loaded when an app starts up.
