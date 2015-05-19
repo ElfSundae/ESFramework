@@ -112,6 +112,9 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
 #ifndef __IPHONE_8_1
 #define __IPHONE_8_1    80100
 #endif
+#ifndef __IPHONE_8_2
+#define __IPHONE_8_2     80200
+#endif
 
 #ifndef NSFoundationVersionNumber_iOS_7_1
 #define NSFoundationVersionNumber_iOS_7_1 1047.25
@@ -129,24 +132,24 @@ ES_EXTERN NSString *ESOSVersion(void);
 /**
  * Checks whether the device's OS version is at least the given version number.
  *
- * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
+ * @param versionNumber Any value of NSFoundationVersionNumber_xxx
  *
  * @code
- * return (floor(NSFoundationVersionNumber) >= versionNumber);
+ * return (NSFoundationVersionNumber >= NSFoundationVersionNumber_);
  * @endcode
  */
-ES_EXTERN BOOL ESOSVersionIsAtLeast(double versionNumber);
+ES_EXTERN BOOL ESOSVersionIsAtLeast(double NSFoundationVersionNumber_);
 
 /**
  * Checks whether the device's OS version is above the given version number.
  *
- * @param versionNumber Any value of NSFoundationVersionNumber_iOS_xxx
+ * @param versionNumber Any value of NSFoundationVersionNumber_xxx
  *
  * @code
- * return (floor(NSFoundationVersionNumber) > versionNumber);
+ * return (NSFoundationVersionNumber > NSFoundationVersionNumber_);
  * @endcode
  */
-ES_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
+ES_EXTERN BOOL ESOSVersionIsAbove(double NSFoundationVersionNumber_);
 
 /**
  * Checks whether the device's OS version is above iOS7.0.

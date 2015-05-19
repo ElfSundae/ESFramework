@@ -29,12 +29,12 @@ NSString *ESOSVersion(void)
 
 BOOL ESOSVersionIsAtLeast(double versionNumber)
 {
-        return (floor(NSFoundationVersionNumber) >= versionNumber);
+        return (NSFoundationVersionNumber >= versionNumber);
 }
 
 BOOL ESOSVersionIsAbove(double versionNumber)
 {
-        return (floor(NSFoundationVersionNumber) > versionNumber);
+        return (NSFoundationVersionNumber > versionNumber);
 }
 
 BOOL ESOSVersionIsAbove7(void)
