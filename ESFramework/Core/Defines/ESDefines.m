@@ -171,10 +171,10 @@ NSURL *NSURLWith(NSString *format, ...)
 
 UIImage *UIImageFromCache(NSString *filePath)
 {
-        if (ESIsStringWithAnyText(filePath)) {
-                return [UIImage imageNamed:filePath];
+        if (!ESIsStringWithAnyText(filePath)) {
+                return nil;
         }
-        return nil;
+        return [UIImage imageNamed:filePath];
 }
 
 UIImage *UIImageFrom(NSString *filePath)
@@ -188,6 +188,7 @@ UIImage *UIImageFrom(NSString *filePath)
                 filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filePath];
         }
         
+#if 0 //-Elf: imageWithContentsOfFile同样会自动寻找路径, 不需要自己计算
         NSFileManager *fm = [NSFileManager defaultManager];
         
         /* 分辨率倍数: "", "@2x", "@3x", 根据当前适配的屏幕分辨率获得 */
@@ -254,9 +255,11 @@ UIImage *UIImageFrom(NSString *filePath)
                         return [UIImage imageWithContentsOfFile:x2_device];
                 }
         }
-
         
         return nil;
+#else
+        return [UIImage imageWithContentsOfFile:filePath];
+#endif
 }
 
 NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step)
