@@ -17,15 +17,119 @@ static NSNumberFormatter *__sharedNumberFormatter = nil;
 
 + (void)load
 {
-        @autoreleasepool {
-                static dispatch_once_t onceToken;
-                dispatch_once(&onceToken, ^{
-                        __sharedNumberFormatter = [[NSNumberFormatter alloc] init];
-                });
-        }
+        __sharedNumberFormatter = [[NSNumberFormatter alloc] init];
 }
 
 @end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - 
+
+int ESIntValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+                return [obj intValue];
+        }
+        return 0;
+}
+
+unsigned int ESUIntValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]]) {
+                return [obj unsignedIntValue];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+                return [[__sharedNumberFormatter numberFromString:obj] unsignedIntValue];
+        }
+        return 0;
+}
+
+NSInteger ESIntegerValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+                return [obj integerValue];
+        }
+        return 0;
+}
+
+NSUInteger ESUIntegerValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]]) {
+                return [obj unsignedIntegerValue];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+                return [[__sharedNumberFormatter numberFromString:obj] unsignedIntegerValue];
+        }
+        return 0;
+}
+
+long ESLongValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]]) {
+                return [obj longValue];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+                return [[__sharedNumberFormatter numberFromString:obj] longValue];
+        }
+        return 0;
+}
+
+unsigned long ESULongValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]]) {
+                return [obj unsignedLongValue];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+                return [[__sharedNumberFormatter numberFromString:obj] unsignedLongValue];
+        }
+        return 0;
+}
+
+long long ESLongLongValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+                return [obj longLongValue];
+        }
+        return 0;
+}
+
+unsigned long long ESULongLongValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]]) {
+                return [obj unsignedLongLongValue];
+        } else if ([obj isKindOfClass:[NSString class]]) {
+                return [[__sharedNumberFormatter numberFromString:obj] unsignedLongLongValue];
+        }
+        return 0;
+}
+
+float ESFloatValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+                return [obj floatValue];
+        }
+        return 0.f;
+}
+
+double ESDoubleValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+                return [obj doubleValue];
+        }
+        return 0.0;
+}
+
+BOOL ESBoolValue(id obj) {
+        if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+                return [obj boolValue];
+        }
+        return NO;
+}
+
+NSString *ESStringValue(id obj) {
+        if ([obj isKindOfClass:[NSString class]]) {
+                return obj;
+        } else if ([obj isKindOfClass:[NSNumber class]]) {
+                return [(NSNumber *)obj stringValue];
+        }
+        return nil;
+}
+
+NSURL *ESURLValue(id obj) {
+        if ([obj isKindOfClass:[NSURL class]]) {
+                return obj;
+        } else if (ESIsStringWithAnyText(obj)) {
+                return [NSURL URLWithString:obj];
+        }
+        return nil;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,10 +240,6 @@ BOOL ESDoubleVal(double *var, id obj)
         return NO;
 }
 
-/**
- * If @obj is a NSString instance, returns YES on encountering one of "Y",
- * "y", "T", "t", or a digit 1-9. It ignores any trailing characters.
- */
 BOOL ESBoolVal(BOOL *var, id obj)
 {
         if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
@@ -168,12 +268,8 @@ BOOL ESURLVal(NSURL **var, id obj)
                 return YES;
         }
         
-        if ([obj isKindOfClass:[NSString class]]) {
-                NSString *str = (NSString *)obj;
-                if (![str isEqualToString:@""]) {
-                        *var = [NSURL URLWithString:str];
-                        return YES;
-                }
+        if (ESIsStringWithAnyText(obj)) {
+                *var = [NSURL URLWithString:(NSString *)obj];
         }
         return NO;
 }

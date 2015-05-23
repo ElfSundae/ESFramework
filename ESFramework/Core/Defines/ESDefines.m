@@ -520,8 +520,7 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                                    0 == strcmp(argType, @encode(short)) ||
                                    0 == strcmp(argType, @encode(unsigned short)) ||
                                    0 == strcmp(argType, @encode(int)) ||
-                                   0 == strcmp(argType, @encode(unsigned int)) ||
-                                   0 == strcmp(argType, @encode(BOOL))) {
+                                   0 == strcmp(argType, @encode(unsigned int))) {
                                 int arg = va_arg(argsList, int);
                                 [invocation setArgument:&arg atIndex:argCount++];
                         } else if ( 0 == strcmp(argType, @encode(long)) ||
