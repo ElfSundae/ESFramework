@@ -44,8 +44,8 @@
  */
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
 
-- (NSString *)append:(NSString *)format, ...;
-- (NSString *)appendPathComponent:(NSString *)format, ...;
+- (NSString *)append:(NSString *)format, ... NS_FORMAT_FUNCTION(1, 2);
+- (NSString *)appendPathComponent:(NSString *)format, ... NS_FORMAT_FUNCTION(1, 2);
 - (NSString *)appendPathExtension:(NSString *)extension;
 /**
  * Append URL query string from `queryDictionary`.

@@ -7,7 +7,6 @@
 //
 
 #import "ESDefines.h"
-#import <objc/runtime.h>
 
 ES_CATEGORY_FIX(ESDefines)
 
@@ -93,109 +92,94 @@ UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 
 
-NSBundle *ESBundleWithName(NSString *bundleName)
+NSMutableSet *ESCreateNonretainedMutableSet(void)
 {
-        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
-        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                return [NSBundle bundleWithPath:path];
+        return CFBridgingRelease(CFSetCreateMutable(NULL, 0, NULL));
+}
+
+NSMutableArray *ESCreateNonretainedMutableArray(void)
+{
+        return CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
+}
+
+NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
+{
+        return CFBridgingRelease(CFDictionaryCreateMutable(NULL, 0, NULL, NULL));
+}
+
+/// Store the weak object
+@interface _ESWeakObjectHolder : NSObject
+@property (nonatomic, weak) __weak id weakObject;
+@end
+@implementation _ESWeakObjectHolder
+@end
+
+id es_objc_getAssociatedObject(id target, const void *key)
+{
+        id object = objc_getAssociatedObject(target, key);
+        if ([object isKindOfClass:[_ESWeakObjectHolder class]]) {
+                object = [(_ESWeakObjectHolder *)object weakObject];
+        }
+        return object;
+}
+
+void es_objc_setAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy)
+{
+        if (OBJC_ASSOCIATION_WEAK == policy) {
+                _ESWeakObjectHolder *weakHolder = objc_getAssociatedObject(target, key);
+                if (!weakHolder) {
+                        weakHolder = [[_ESWeakObjectHolder alloc] init];
+                        objc_setAssociatedObject(target, key, weakHolder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                }
+                weakHolder.weakObject = value;
+        } else {
+                objc_setAssociatedObject(target, key, value, policy);
+        }
+}
+
+NSString *NSStringWith(NSString *format, ...)
+{
+        NSString *string = nil;
+        if (format) {
+                va_list args;
+                va_start(args, format);
+                string = [[NSString alloc] initWithFormat:format arguments:args];
+                va_end(args);
+        }
+        return string;
+}
+
+NSURL *NSURLWith(NSString *format, ...)
+{
+        NSString *string = nil;
+        if (format) {
+                va_list args;
+                va_start(args, format);
+                string = [[NSString alloc] initWithFormat:format arguments:args];
+                va_end(args);
+        }
+        if (string) {
+                if ([string hasPrefix:@"/"]) {
+                        return [NSURL fileURLWithPath:string];
+                } else {
+                        return [NSURL URLWithString:string];
+                }
         }
         return nil;
 }
 
-UIDeviceOrientation ESDeviceOrientation(void)
+
+UIImage *UIImageFromCache(NSString *filePath)
 {
-        UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
-        if (UIDeviceOrientationUnknown == orientation) {
-                orientation = UIDeviceOrientationPortrait;
+        if (ESIsStringWithAnyText(filePath)) {
+                return [UIImage imageNamed:filePath];
         }
-        return orientation;
+        return nil;
 }
 
-CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation)
+UIImage *UIImageFrom(NSString *filePath)
 {
-        if (UIInterfaceOrientationLandscapeLeft == orientation) {
-                return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
-        } else if (UIInterfaceOrientationLandscapeRight == orientation) {
-                return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
-        } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
-                return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
-        } else {
-                return CGAffineTransformIdentity;
-        }
-}
-
-BOOL ESIsPadUI(void)
-{
-        static BOOL _isPad;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _isPad = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
-        });
-        return _isPad;
-}
-
-BOOL ESIsPadDevice(void)
-{
-        static BOOL _isPadDevice;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _isPadDevice = ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
-        });
-        return _isPadDevice;
-}
-
-BOOL ESIsPhoneUI(void)
-{
-        static BOOL _isPhone;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _isPhone = ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
-        });
-        return _isPhone;
-}
-
-BOOL ESIsPhoneDevice(void)
-{
-        static BOOL _isPhoneDevice;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                NSString *model = [UIDevice currentDevice].model;
-                _isPhoneDevice = ([model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
-                                  [model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
-        });
-        return _isPhoneDevice;
-}
-
-BOOL ESIsRetinaScreen(void)
-{
-        return [UIScreen mainScreen].scale >= 2.0;
-}
-
-UIImage *UIImageFromCache(NSString *path, ...)
-{
-        NSString *filePath = nil;
-        if ([path isKindOfClass:[NSString class]]) {
-                va_list args;
-                va_start(args, path);
-                filePath = [[NSString alloc] initWithFormat:path arguments:args];
-                va_end(args);
-        }
-        if (!filePath) {
-                return nil;
-        }
-        return [UIImage imageNamed:filePath];
-}
-
-UIImage *UIImageFrom(NSString *path, ...)
-{
-        NSString *filePath = nil;
-        if ([path isKindOfClass:[NSString class]]) {
-                va_list args;
-                va_start(args, path);
-                filePath = [[NSString alloc] initWithFormat:path arguments:args];
-                va_end(args);
-        }
-        if (!filePath) {
+        if (!ESIsStringWithAnyText(filePath)) {
                 return nil;
         }
         
@@ -275,37 +259,6 @@ UIImage *UIImageFrom(NSString *path, ...)
         return nil;
 }
 
-NSString *NSStringWith(NSString *format, ...)
-{
-        NSString *string = nil;
-        if (format) {
-                va_list args;
-                va_start(args, format);
-                string = [[NSString alloc] initWithFormat:format arguments:args];
-                va_end(args);
-        }
-        return string;
-}
-
-NSURL *NSURLWith(NSString *format, ...)
-{
-        NSString *string = nil;
-        if (format) {
-                va_list args;
-                va_start(args, format);
-                string = [[NSString alloc] initWithFormat:format arguments:args];
-                va_end(args);
-        }
-        if (string) {
-                if ([string hasPrefix:@"/"]) {
-                        return [NSURL fileURLWithPath:string];
-                } else {
-                        return [NSURL URLWithString:string];
-                }
-        }
-        return nil;
-}
-
 NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step)
 {
         // !!: NSByteCountFormatter uses 1000 step length
@@ -338,54 +291,34 @@ NSString *NSStringFromBytesSize(unsigned long long bytesSize)
         return NSStringFromBytesSizeWithStep(bytesSize, 1024);
 }
 
-NSMutableSet *ESCreateNonretainedMutableSet(void)
-{
-        return CFBridgingRelease(CFSetCreateMutable(NULL, 0, NULL));
-}
-
-NSMutableArray *ESCreateNonretainedMutableArray(void)
-{
-        return CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
-}
-
-NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
-{
-        return CFBridgingRelease(CFDictionaryCreateMutable(NULL, 0, NULL, NULL));
-}
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Path
 
-NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...)
+NSBundle *ESBundleWithName(NSString *bundleName)
 {
-        NSBundle *b = bundle ?: [NSBundle mainBundle];
-        NSString *filePath = [b resourcePath];
-        if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                NSString *path = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
-                filePath = [filePath stringByAppendingPathComponent:path];
+        NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                return [NSBundle bundleWithPath:path];
         }
-        return filePath;
+        return nil;
 }
 
-NSString *ESPathForMainBundleResource(NSString *relativePath, ...)
+NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 {
-        NSString *filePath = [NSBundle mainBundle].resourcePath;
-        NSString *path = nil;
+        if (![bundle isKindOfClass:[NSBundle class]]) {
+                bundle = [NSBundle mainBundle];
+        }
+        NSString *path = bundle.resourcePath;
         if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                path = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
+                path = [path stringByAppendingPathComponent:relativePath];
         }
-        if (path) {
-                filePath = [filePath stringByAppendingPathComponent:path];
-        }
-        return filePath;
+        return path;
+}
+
+NSString *ESPathForMainBundleResource(NSString *relativePath)
+{
+        return ESPathForBundleResource([NSBundle mainBundle], relativePath);
 }
 
 NSString *ESPathForDocuments(void)
@@ -398,16 +331,9 @@ NSString *ESPathForDocuments(void)
         return docs;
 }
 
-NSString *ESPathForDocumentsResource(NSString *relativePath, ...)
+NSString *ESPathForDocumentsResource(NSString *relativePath)
 {
-        NSString *filePath = @"";
-        if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
-        }
-        return [ESPathForDocuments() stringByAppendingPathComponent:filePath];
+        return [ESPathForDocuments() stringByAppendingPathComponent:relativePath];
 }
 
 NSString *ESPathForLibrary(void)
@@ -420,16 +346,9 @@ NSString *ESPathForLibrary(void)
         return lib;
 }
 
-NSString *ESPathForLibraryResource(NSString *relativePath, ...)
+NSString *ESPathForLibraryResource(NSString *relativePath)
 {
-        NSString *filePath = @"";
-        if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
-        }
-        return [ESPathForLibrary() stringByAppendingPathComponent:filePath];
+        return [ESPathForLibrary() stringByAppendingPathComponent:relativePath];
 }
 
 NSString *ESPathForCaches(void)
@@ -442,16 +361,9 @@ NSString *ESPathForCaches(void)
         return caches;
 }
 
-NSString *ESPathForCachesResource(NSString *relativePath, ...)
+NSString *ESPathForCachesResource(NSString *relativePath)
 {
-        NSString *filePath = @"";
-        if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
-        }
-        return [ESPathForCaches() stringByAppendingPathComponent:filePath];
+        return [ESPathForCaches() stringByAppendingPathComponent:relativePath];
 }
 
 NSString *ESPathForTemporary(void)
@@ -459,47 +371,32 @@ NSString *ESPathForTemporary(void)
         return NSTemporaryDirectory();
 }
 
-NSString *ESPathForTemporaryResource(NSString *relativePath, ...)
+NSString *ESPathForTemporaryResource(NSString *relativePath)
 {
-        NSString *filePath = @"";
-        if (relativePath) {
-                va_list args;
-                va_start(args, relativePath);
-                filePath = [[NSString alloc] initWithFormat:relativePath arguments:args];
-                va_end(args);
-        }
-        return [ESPathForTemporary() stringByAppendingPathComponent:filePath];
+        return [ESPathForTemporary() stringByAppendingPathComponent:relativePath];
 }
 
-BOOL ESTouchDirectory(NSString *dir)
+BOOL ESTouchDirectory(NSString *directoryPath)
 {
-        if (!ESIsStringWithAnyText(dir)) {
-                return NO;
-        }
-        NSFileManager *fm = [NSFileManager defaultManager];
-        BOOL isDirectory = NO;
-        if (![fm fileExistsAtPath:dir isDirectory:&isDirectory] || !isDirectory) {
-                if (![fm createDirectoryAtPath:dir withIntermediateDirectories:YES attributes:nil error:NULL]) {
-                        return NO;
+        if (ESIsStringWithAnyText(directoryPath)) {
+                NSFileManager *fm = [NSFileManager defaultManager];
+                BOOL isDir = NO;
+                if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir] && isDir) {
+                        return YES;
+                }
+                if ([fm removeItemAtPath:directoryPath error:NULL]) {
+                        if ([fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
+                                return YES;
+                        }
                 }
         }
-        return YES;
+        return NO;
 }
 
-NSString *ESTouchFilePath(NSString *filePath, ...)
+BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
 {
-        NSString *path = @"";
-        if ([filePath isKindOfClass:[NSString class]]) {
-                va_list args;
-                va_start(args, filePath);
-                path = [[NSString alloc] initWithFormat:filePath arguments:args];
-                va_end(args);
-        }
-        NSString *dir = [path stringByDeletingLastPathComponent];
-        if (!ESTouchDirectory(dir)) {
-                return nil;
-        }
-        return path;
+        NSString *dir = [filePath stringByDeletingLastPathComponent];
+        return ESTouchDirectory(dir);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -693,135 +590,3 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
         }
         return YES;
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSObject+ESAssociatedObject
-@interface _ESWeakAssociatedObject : NSObject
-@property (nonatomic, weak) __weak id weakObject;
-@end
-@implementation _ESWeakAssociatedObject
-@end
-
-@implementation NSObject (ESAssociatedObject)
-
-- (id)getAssociatedObject:(const void *)key
-{
-        id obj = objc_getAssociatedObject(self, key);
-        if ([obj isKindOfClass:[_ESWeakAssociatedObject class]]) {
-                obj = [(_ESWeakAssociatedObject *)obj weakObject];
-        }
-        return obj;
-}
-+ (id)getAssociatedObject:(const void *)key
-{
-        id obj = objc_getAssociatedObject(self, key);
-        if ([obj isKindOfClass:[_ESWeakAssociatedObject class]]) {
-                obj = [(_ESWeakAssociatedObject *)obj weakObject];
-        }
-        return obj;
-}
-
-- (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key
-{
-        _ESWeakAssociatedObject *object = objc_getAssociatedObject(self, key);
-        if (!object) {
-                object = [[_ESWeakAssociatedObject alloc] init];
-                [self setAssociatedObject_nonatomic_retain:object key:key];
-        }
-        object.weakObject = weakObject;
-}
-+ (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key
-{
-        _ESWeakAssociatedObject *object = objc_getAssociatedObject(self, key);
-        if (!object) {
-                object = [[_ESWeakAssociatedObject alloc] init];
-                [self setAssociatedObject_nonatomic_retain:object key:key];
-        }
-        object.weakObject = weakObject;
-}
-
-- (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-+ (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-+ (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-- (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN);
-}
-+ (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_RETAIN);
-}
-- (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY);
-}
-+ (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key
-{
-        objc_setAssociatedObject(self, key, object, OBJC_ASSOCIATION_COPY);
-}
-
-- (void)removeAllAssociatedObjects
-{
-        objc_removeAssociatedObjects(self);
-}
-+ (void)removeAllAssociatedObjects
-{
-        objc_removeAssociatedObjects(self);
-}
-
-@end
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSUserDefaults+ESHelper
-
-@implementation NSUserDefaults (ESHelper)
-
-+ (id)objectForKey:(NSString *)key
-{
-        return [[self standardUserDefaults] objectForKey:key];
-}
-
-+ (void)setObject:(id)object forKey:(NSString *)key
-{
-        NSUserDefaults *ud = [self standardUserDefaults];
-        [ud setObject:object forKey:key];
-        [ud synchronize];
-}
-
-+ (void)setObjectAsynchrony:(id)object forKey:(NSString *)key
-{
-        ESDispatchOnDefaultQueue(^{
-                [self setObject:object forKey:key];
-        });
-}
-
-+ (void)removeObjectForKey:(NSString *)key
-{
-        NSUserDefaults *ud = [self standardUserDefaults];
-        [ud removeObjectForKey:key];
-        [ud synchronize];
-}
-
-+ (void)removeObjectAsynchronyForKey:(NSString *)key
-{
-        ESDispatchOnDefaultQueue(^{
-                [self removeObjectForKey:key];
-        });
-}
-@end

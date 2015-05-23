@@ -20,5 +20,6 @@
 #import "NSDictionary+ESAdditions.h"
 #import "NSOrderedSet+ESAdditions.h"
 #import "NSSet+ESAdditions.h"
+#import "NSUserDefaults+ESAdditions.h"
 
 #endif //ESFramework_ESFoundationAdditions_h

@@ -20,11 +20,11 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 - (ESUIAlertViewDidDismissBlock)didDismissBlock
 {
-        return [self getAssociatedObject:_didDismissBlockKey];
+        return es_objc_getAssociatedObject(self, _didDismissBlockKey);
 }
 - (void)setDidDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
 {
-        [self setAssociatedObject_nonatomic_copy:didDismissBlock key:_didDismissBlockKey];
+        es_objc_setAssociatedObject(self, _didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 //- (UILabel *)_esMessageLabel

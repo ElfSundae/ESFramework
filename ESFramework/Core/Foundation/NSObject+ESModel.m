@@ -81,21 +81,21 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 if (!shared) {
                         shared = [self modelInstance];
                 }
-                [self setAssociatedObject_nonatomic_retain:shared key:_es_modelSharedInstanceKey];
+                es_objc_setAssociatedObject(self, _es_modelSharedInstanceKey, shared, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         });
-        return [self getAssociatedObject:_es_modelSharedInstanceKey];
+        return es_objc_getAssociatedObject(self, _es_modelSharedInstanceKey);
 }
 
 + (void)setModelSharedInstance:(id)instance
 {
         if (nil == instance) {
-                [self setAssociatedObject_nonatomic_retain:nil key:_es_modelSharedInstanceKey];
+                es_objc_setAssociatedObject(self, _es_modelSharedInstanceKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 NSString *filePath = [self modelSharedInstanceFilePath];
                 if (filePath) {
                         [[NSFileManager defaultManager] removeItemAtPath:filePath error:NULL];
                 }
         } else if ([instance isKindOfClass:[self class]]) {
-                [self setAssociatedObject_nonatomic_retain:instance key:_es_modelSharedInstanceKey];
+                es_objc_setAssociatedObject(self, _es_modelSharedInstanceKey, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         } else {
                 printf("<Error> ESModelException: +setModelSharedInstance: parameter of class %s does not match, should be %s.",
                        [NSStringFromClass([instance class]) UTF8String],
@@ -115,7 +115,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (NSString *)modelSharedInstanceFilePath
 {
-        return ESPathForCachesResource(@"ESModel/%@.archive", NSStringFromClass(self));
+        return ESPathForCachesResource(NSStringWith(@"ESModel/%@.archive", NSStringFromClass(self)));
 }
 
 
@@ -143,8 +143,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 return NO;
         }
         
-        NSString *filePath = ESTouchFilePath(path);
-        if (!filePath) {
+        if (!ESTouchDirectoryAtFilePath(path)) {
                 return NO;
         }
         
@@ -158,7 +157,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (NSArray *)modelCodablePropertiesKeys
 {
-        NSArray *_propertyKeys = [self getAssociatedObject:_es_codablePropertiesKeys];
+        NSArray *_propertyKeys = es_objc_getAssociatedObject(self, _es_codablePropertiesKeys);
         if (!_propertyKeys) {
                 NSMutableArray *keys = [NSMutableArray array];
                 
@@ -256,7 +255,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 
                 // store keys
                 _propertyKeys = (NSArray *)keys;
-                [self setAssociatedObject_nonatomic_retain:_propertyKeys key:_es_codablePropertiesKeys];
+                es_objc_setAssociatedObject(self, _es_codablePropertiesKeys, _propertyKeys, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         return _propertyKeys;
 }

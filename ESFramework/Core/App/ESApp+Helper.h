@@ -114,6 +114,10 @@
 ///=============================================
 
 + (BOOL)canOpenURL:(NSURL *)url;
+
+/**
+ * After invoke +canOpenURL: then openURL.
+ */
 + (BOOL)openURL:(NSURL *)url;
 + (BOOL)openURLWithString:(NSString *)string;
 

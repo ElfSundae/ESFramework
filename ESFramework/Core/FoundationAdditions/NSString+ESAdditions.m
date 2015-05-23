@@ -73,23 +73,16 @@ ES_CATEGORY_FIX(NSString_ESAdditions)
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
-        ESWeak(self, weakSelf);
+        ESWeakSelf;
         ESDispatchOnDefaultQueue(^{
-                ESStrong(weakSelf, _self);
-                NSString *filePath = ESTouchFilePath(path);
-                if (!filePath) {
-                        if (block) {
-                                ESDispatchOnMainThreadAsynchrony(^{
-                                        block(NO);
-                                });
-                        }
-                        return;
+                ESStrongSelf;
+                BOOL result = NO;
+                if (ESTouchDirectoryAtFilePath(path)) {
+                        result = [_self writeToFile:path atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
                 }
-                
-                BOOL res = [self writeToFile:filePath atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
                 if (block) {
                         ESDispatchOnMainThreadAsynchrony(^{
-                                block(res);
+                                block(result);
                         });
                 }
         });

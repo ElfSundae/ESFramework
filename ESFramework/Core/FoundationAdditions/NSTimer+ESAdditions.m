@@ -17,11 +17,11 @@ static const void *_timerNameKey = &_timerNameKey;
 
 - (NSString *)name
 {
-        return [self getAssociatedObject:_timerNameKey];
+        return es_objc_getAssociatedObject(self, _timerNameKey);
 }
 - (void)setName:(NSString *)name
 {
-        [self setAssociatedObject_nonatomic_copy:name key:_timerNameKey];
+        es_objc_setAssociatedObject(self, _timerNameKey, name, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats

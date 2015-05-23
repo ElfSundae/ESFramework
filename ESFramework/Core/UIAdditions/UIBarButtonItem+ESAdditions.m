@@ -54,12 +54,12 @@ static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
 
 - (ESUIBarButtonItemHandler)handlerBlock
 {
-        return [self getAssociatedObject:_ESUIBarButtonItemHandlerKey];
+        return es_objc_getAssociatedObject(self, _ESUIBarButtonItemHandlerKey);
 }
 
 - (void)setHandlerBlock:(ESUIBarButtonItemHandler)handlerBlock
 {
-        [self setAssociatedObject_nonatomic_copy:handlerBlock key:_ESUIBarButtonItemHandlerKey];
+        es_objc_setAssociatedObject(self, _ESUIBarButtonItemHandlerKey, handlerBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
         if (handlerBlock) {
                 self.target = self;
                 self.action = @selector(_esBarButtonItemHandler:);

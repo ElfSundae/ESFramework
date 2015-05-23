@@ -165,16 +165,14 @@ ES_CATEGORY_FIX(NSDictionary_ESAdditions)
         ESWeakSelf;
         ESDispatchOnDefaultQueue(^{
                 ESStrongSelf;
-                NSString *filePath = ESTouchFilePath(path);
-                if (!filePath) {
-                        if (block) {
-                                block(NO);
-                        }
-                } else {
-                        BOOL res = [_self writeToFile:filePath atomically:useAuxiliaryFile];
-                        if (block) {
-                                block(res);
-                        }
+                BOOL result = NO;
+                if (ESTouchDirectoryAtFilePath(path)) {
+                        result = [_self writeToFile:path atomically:useAuxiliaryFile];
+                }
+                if (block) {
+                        ESDispatchOnMainThreadAsynchrony(^{
+                                block(result);
+                        });
                 }
         });
 }

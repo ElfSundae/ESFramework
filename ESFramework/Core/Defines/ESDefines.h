@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
+#import <objc/runtime.h>
 
 #if defined(__cplusplus)
 #define ES_EXTERN       extern "C" __attribute__((visibility ("default")))
@@ -35,12 +36,10 @@
 #define NSLogIf(condition, fmt, ...)
 #endif
 
-///=============================================
-/// @name Stopwatch
-///=============================================
-#pragma mark - Stopwatch
 
-// Calc the execution time.
+/**
+ * Log the execution time.
+ */
 #include <mach/mach_time.h>
 ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
 
@@ -59,45 +58,18 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
 #endif
 
 ///=============================================
-/// @name Weak Object
+/// @name Constants
 ///=============================================
-#pragma mark - Weak Object
+#pragma mark - Constants
 
-/**
- * @code
- * ESWeak(imageView, weakImageView);
- * [self testBlock:^(UIImage *image) {
- *         ESStrong(weakImageView, strongImageView);
- *         strongImageView.image = image;
- * }];
- *
- * // `ESWeak_(imageView)` will create a var named `weak_imageView`
- * ESWeak_(imageView);
- * [self testBlock:^(UIImage *image) {
- *         ESStrong_(imageView);
- * 	_imageView.image = image;
- * }];
- *
- * // weak `self` and strong `self`
- * ESWeakSelf;
- * [self testBlock:^(UIImage *image) {
- *         ESStrongSelf;
- *         _self.image = image;
- * }];
- * @endcode
- */
+#define ES_MINUTE (60)
+#define ES_HOUR   (3600)
+#define ES_DAY    (86400)
+#define ES_5_DAYS (432000)
+#define ES_WEEK   (604800)
+#define ES_MONTH  (2635200) /* 30.5 days */
+#define ES_YEAR   (31536000) /* 365 days */
 
-#define ESWeak(var, weakVar) __weak __typeof(&*var) weakVar = var
-#define ESStrong_DoNotCheckNil(weakVar, _var) __typeof(&*weakVar) _var = weakVar
-#define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
-
-#define ESWeak_(var) ESWeak(var, weak_##var);
-#define ESStrong_(var) ESStrong(weak_##var, _##var);
-
-/** defines a weak `self` named `__weakSelf` */
-#define ESWeakSelf      ESWeak(self, __weakSelf);
-/** defines a strong `self` named `_self` from `__weakSelf` */
-#define ESStrongSelf    ESStrong(__weakSelf, _self);
 
 ///=============================================
 /// @name SDK Compatibility
@@ -129,121 +101,27 @@ ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
  */
 ES_EXTERN NSString *ESOSVersion(void);
 
-/**
- * Checks whether the device's OS version is at least the given version number.
- *
- * @param versionNumber Any value of NSFoundationVersionNumber_xxx
- *
- * @code
- * return (NSFoundationVersionNumber >= NSFoundationVersionNumber_);
- * @endcode
- */
 ES_EXTERN BOOL ESOSVersionIsAtLeast(double NSFoundationVersionNumber_);
-
-/**
- * Checks whether the device's OS version is above the given version number.
- *
- * @param versionNumber Any value of NSFoundationVersionNumber_xxx
- *
- * @code
- * return (NSFoundationVersionNumber > NSFoundationVersionNumber_);
- * @endcode
- */
 ES_EXTERN BOOL ESOSVersionIsAbove(double NSFoundationVersionNumber_);
-
-/**
- * Checks whether the device's OS version is above iOS7.0.
- *
- * @code
- * return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
- * @endcode
- */
 ES_EXTERN BOOL ESOSVersionIsAbove7(void);
-
-/**
- * Checks whether the device's OS version is above iOS8.0.
- *
- * @code
- * return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
- * @endcode
- */
 ES_EXTERN BOOL ESOSVersionIsAbove8(void);
 
 ///=============================================
-/// @name Helper
+/// @name Helper Macros
 ///=============================================
-#pragma mark - Helper
+#pragma mark - Helper Macros
 
 /**
- * UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
+ * Make weak references to break "retain cycles".
  */
-ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
-ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
+#define ESWeak(var, weakVar) __weak __typeof(&*var) weakVar = var
+#define ESWeak_(var) ESWeak(var, weak_##var);
+#define ESWeakSelf      ESWeak(self, __weakSelf);
 
-/**
- * UIColorWithRGBAHex(0x7bffc8, 1.f);
- */
-ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
-ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
-
-/**
- * UIColorWithRGBHexString(@"#33AF00", 1.f);
- * UIColorWithRGBHexString(@"0x33AF00", 0.3f);
- * UIColorWithRGBHexString(@"33AF00", 0.9);
- * 接受6-8位十六进制，取最后6位。
- */
-ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
-
-
-/**
- * Singleton Example:
- *
- * @code
- *
- * @interface MyLocationManager : NSObject
- * ES_SINGLETON_DEC(sharedManager);
- * ES_SINGLETON_DEC(anotherManager);
- * @end
- *
- * @implementation MyLocationManager
- * ES_SINGLETON_IMP(sharedManager);
- * ES_SINGLETON_IMP_AS(anotherManager, gAnotherManager);
- * @end
- *
- * @interface SubclassManager : MyLocationManager
- * @end
- *
- * @implementation SubclassManager
- *  // Subclasses *MUST* give a different variable name for evey shared instance.
- *  // You can use `ES_SINGLETON_IMP_AS` to overwrite the sharedInstance methods.
- * ES_SINGLETON_IMP_AS(sharedManager, gSharedSubclassManager);
- * ES_SINGLETON_IMP_AS(anotherManager, gSharedAnotherManager);
- * @end
- *
- * @endcode
- */
-
-/**
- * Declare singleton `sharedInstance` methods.
- *
- * @param sharedInstance The shared instance's method name.
- */
-#define ES_SINGLETON_DEC(sharedInstance)        + (instancetype)sharedInstance;
-/**
- * Implement singleton `sharedInstance` methods.
- *
- * If you are subclassing a signleton class, make sure overwrite the `sharedInstance` method to
- * give a different variable name.
- */
-#define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
-+ (instancetype)sharedInstance \
-{ \
-/**/    static id sharedInstanceVariableName = nil; \
-/**/    static dispatch_once_t onceToken; \
-/**/    dispatch_once(&onceToken, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
-/**/    return sharedInstanceVariableName; \
-}
-#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
+#define ESStrong_DoNotCheckNil(weakVar, _var) __typeof(&*weakVar) _var = weakVar
+#define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
+#define ESStrong_(var) ESStrong(weak_##var, _##var);
+#define ESStrongSelf    ESStrong(__weakSelf, _self);
 
 /**
  * Force a category to be loaded when an app starts up.
@@ -267,22 +145,71 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 #define ES_CATEGORY_FIX(name) @interface _ES_CATEGORY_FIX_##name : NSObject @end \
 @implementation _ES_CATEGORY_FIX_##name @end
 
+/**
+ * Declare singleton `+sharedInstance` method.
+ */
+#define ES_SINGLETON_DEC(sharedInstance)        + (instancetype)sharedInstance;
+/**
+ * Implement singleton `+sharedInstance` method.
+ *
+ * If you are subclassing a signleton class, make sure overwrite the `+sharedInstance` method to
+ * provide a different variable name.
+ */
+#define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
++ (instancetype)sharedInstance \
+{ \
+/**/    static id sharedInstanceVariableName = nil; \
+/**/    static dispatch_once_t onceToken; \
+/**/    dispatch_once(&onceToken, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
+/**/    return sharedInstanceVariableName; \
+}
+#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
 
-#define CFReleaseSafely(_var)   if(_var){ CFRelease(_var); _var = NULL; }
 
-/** Bitmask */
+#define CFReleaseSafely(var)   if(var){ CFRelease(var); var = NULL; }
+
+
 #define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
 #define ESMaskSet(value, flag)          ((value) |= (flag));
 #define ESMaskUnset(value, flag)        ((value) &= ~(flag));
 
-/** Datetime constants */
-#define ES_MINUTE (60)
-#define ES_HOUR   (3600)
-#define ES_DAY    (86400)
-#define ES_5_DAYS (432000)
-#define ES_WEEK   (604800)
-#define ES_MONTH  (2635200) /* 30.5 days */
-#define ES_YEAR   (31536000) /* 365 days */
+/** 
+ * Localized string.
+ */
+#define ESLocalizedString(key)          NSLocalizedString(key,nil)
+#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
+/** 
+ * Shortcut for ESLocalizedString(key)
+ */
+#ifndef _e
+#define _e(key) ESLocalizedString(key)
+#endif
+
+
+///=============================================
+/// @name Helper Functions
+///=============================================
+#pragma mark - Functions
+/**
+ * UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
+ */
+ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
+
+/**
+ * UIColorWithRGBAHex(0x7bffc8, 1.f);
+ */
+ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
+ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
+
+/**
+ * UIColorWithRGBHexString(@"#33AF00", 1.f);
+ * UIColorWithRGBHexString(@"0x33AF00", 0.3f);
+ * UIColorWithRGBHexString(@"33AF00", 0.9);
+ * 接受6-8位十六进制，取最后6位。
+ */
+ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
+
 
 NS_INLINE BOOL ESIsStringWithAnyText(id object) {
         return ([object isKindOfClass:[NSString class]] && ![(NSString *)object isEqualToString:@""]);
@@ -300,15 +227,25 @@ NS_INLINE BOOL ESIsSetWithItems(id object) {
         return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
 }
 
+/**
+ * Creates a mutable set which does not retain references to the objects it contains.
+ */
+ES_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
+ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
+ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
-/** LocalizedString */
-#define ESLocalizedString(key)          NSLocalizedString(key,nil)
-#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
-/** Shortcut for ESLocalizedString(key) */
-#undef _e
-#define _e(key) ESLocalizedString(key)
-
-ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
+/**
+ * Specifies a "zeroing weak reference" to the associated object.
+ */
+#define OBJC_ASSOCIATION_WEAK (0100000)
+/**
+ * Returns the value associated with a given object for a given key.
+ */
+ES_EXTERN id es_objc_getAssociatedObject(id target, const void *key);
+/**
+ * Sets an associated value for a given object using a given key and association policy.
+ */
+ES_EXTERN void es_objc_setAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
 
 /**
  * Returns the current statusBar's height, in any orientation.
@@ -325,50 +262,76 @@ NS_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
         return [UIApplication sharedApplication].statusBarOrientation;
 }
 
-ES_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
-
-ES_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
-
 /**
- * Convert degrees to radians.
+ * Returns current device orientation.  this will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
  */
+NS_INLINE UIDeviceOrientation ESDeviceOrientation(void) {
+        return [UIDevice currentDevice].orientation;
+}
+
+NS_INLINE CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation) {
+        if (UIInterfaceOrientationLandscapeLeft == orientation) {
+                return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
+        } else if (UIInterfaceOrientationLandscapeRight == orientation) {
+                return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
+        } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
+                return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
+        } else {
+                return CGAffineTransformIdentity;
+        }
+}
+
 NS_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
         return (degrees * M_PI / 180.0);
 }
 
-/**
- * Convert radians to degrees.
- */
 NS_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
         return (radians * 180.0 / M_PI);
 }
 
-/**
- * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
- */
-ES_EXTERN BOOL ESIsPadUI(void);
-/**
- * Checks whether the device is a iPad/iPad Mini/iPad Air.
- */
-ES_EXTERN BOOL ESIsPadDevice(void);
+NS_INLINE BOOL ESIsPadUI(void) {
+        return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+}
+
+/// Checks whether the device is a iPad/iPad Mini/iPad Air.
+NS_INLINE BOOL ESIsPadDevice(void) {
+        return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
+}
+
+NS_INLINE BOOL ESIsPhoneUI(void) {
+        return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+}
+
+NS_INLINE BOOL ESIsPhoneDevice(void) {
+        return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
+                [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
+}
+
+NS_INLINE BOOL UIScreenIsRetina(void) {
+        return [UIScreen mainScreen].scale >= 2.0;
+}
+
+ES_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
+
+ES_EXTERN NSURL *NSURLWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /**
- * Checks whether UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone
+ * Formats a number of bytes in a human-readable format. e.g. @"12.34 Bytes", @"123 GB"
+ *
+ * **Note**: NSByteCountFormatter uses 1000 step length.
+ *
+ * Returns a string showing the size in Bytes, KBs, MBs, or GBs, with 1024 bytes step.
  */
-ES_EXTERN BOOL ESIsPhoneUI(void);
+ES_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
 /**
- * Checks whether the device is a iPhone/iPod Touch.
+ * With 1024b step.
  */
-ES_EXTERN BOOL ESIsPhoneDevice(void);
+ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
 
-/**
- * [UIScreen mainScreen].scale >= 2.0
- */
-ES_EXTERN BOOL ESIsRetinaScreen(void);
 
 /**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
- * App bundle could only includes `@2x` high resolution images, this method will
+ * App bundle could only include `@2x` high resolution images, this method will
  * return correct `scaled` image for normal resolution device such as iPad mini 1th.
  * 
  * + Standard: `<ImageName><device_modifier>.<filename_extension>`
@@ -378,58 +341,34 @@ ES_EXTERN BOOL ESIsRetinaScreen(void);
  *
  * @see Updating Your Image Resource Files https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8
  */
-ES_EXTERN UIImage *UIImageFromCache(NSString *path, ...);
+ES_EXTERN UIImage *UIImageFromCache(NSString *filePath);
 
 /**
- * Returns a new `UIImage` instance.
+ * Returns a new `UIImage` instance, using `[UIImage imageWithContentsOfFile:]` method.
  *
- * The `path` specification is the same as `UIImageFromCache(NSString *)`, as well as `+[UIImage imageNamed:]`.
+ * The `filePath` specification is the same as `UIImageFromCache(NSString *)`.
  */
-ES_EXTERN UIImage *UIImageFrom(NSString *path, ...);
+ES_EXTERN UIImage *UIImageFrom(NSString *filePath);
 
-ES_EXTERN NSString *NSStringWith(NSString *format, ...);
-ES_EXTERN NSURL *NSURLWith(NSString *format, ...);
 
-/**
- * Formats a number of bytes in a human-readable format. e.g. @"12.34 bytes", @"123 GB"
- * 
- * **Note**: NSByteCountFormatter uses 1000 step length.
- *
- * Returns a string showing the size in bytes, KBs, MBs, or GBs. Steps with 1024 bytes.
- */
-ES_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
-/**
- * With 1024 step.
- */
-ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
+ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 
-/**
- * Creates a mutable set which does not retain references to the objects it contains.
- */
-ES_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
-ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
-ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
-
-///=============================================
-/// @name Paths
-///=============================================
-#pragma mark - Path
-
-ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath, ...);
-ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
+ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
 ES_EXTERN NSString *ESPathForDocuments(void);
-ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
 ES_EXTERN NSString *ESPathForLibrary(void);
-ES_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
 ES_EXTERN NSString *ESPathForCaches(void);
-ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
 ES_EXTERN NSString *ESPathForTemporary(void);
-ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath, ...);
+ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 
-/// Creates the `dir`  if it doesn't exist
-ES_EXTERN BOOL ESTouchDirectory(NSString *dir);
-/// Creates directories if it doesn't exist, returns `nil` if failed.
-ES_EXTERN NSString *ESTouchFilePath(NSString *filePath, ...);
+/**
+ * Creates the `directoryPath`  if it doesn't exist.
+ */
+ES_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
+ES_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
 
 ///=============================================
 /// @name Dispatch & Block
@@ -446,13 +385,16 @@ ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
-/** After `delayTime`, dispatch `block` on the main thread. */
+/**
+ * After `delayTime`, dispatch `block` on the main thread.
+ */
 ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
 ///=============================================
 /// @name Invocation
 ///=============================================
 #pragma mark - Invocation
+
 /**
  * @code
  * + (void)load {
@@ -462,7 +404,6 @@ ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
  * }
  * @endcode
  */
-
 ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
 ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 
@@ -478,10 +419,10 @@ ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
 
 /**
- * Call a selector with unknown numbers of arguments.
+ * Invoke a selector.
  *
  * @code
- *  // trun off compiler warning if there is.
+ * // trun off compiler warning if there are some.
  * #pragma clang diagnostic push
  * #pragma clang diagnostic ignored "-Wundeclared-selector"
  *
@@ -497,81 +438,10 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
  * #pragma clang diagnostic pop
  * @endcode
  *
- * !!! Note: selector的返回值为BOOL时，请定义result类型为int. 
- * 如果取result时crash了，可以尝试定义result为void*, 执行完ESInvokeSelector后用__bridge关键字转换对象。
+ * **Note**: selector的返回值为BOOL时，请定义result类型为int.
+ * **Note**: 如果取result时crash了，可以尝试定义result为void*, 执行完ESInvokeSelector后用__bridge关键字转换对象。
  */
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 
-///=============================================
-/// @name NSObject(ESAssociatedObject)
-///=============================================
-#pragma mark - NSObject(ESAssociatedObject)
-/**
- * NSObject(ESAssociatedObject)
- * 
- * Get/Set associated objects. It's useful to add properties to a class's category.
- *
- * @code
- * @interface SomeClass (additions)
- * @property (nonatomic, weak) __weak id<SomeDelegate> delegate;
- * @property (nonatomic, strong) UIView *view;
- * @end
- *
- * // SomeClass+additions.m
- *
- * static char _delegateKey;
- * // OR
- * static const void *_viewKey = &_viewKey;
- *
- * @implementation SomeClass (additions)
- * - (id<SomeDelegate>)delegate
- * {
- *        return [self getAssociatedObject:&_delegateKey];
- * }
- * - (void)setDelegate:(id<SomeDelegate>)delegate
- * {
- *        [self setAssociatedObject_nonatomic_weak:delegate key:&_delegateKey];
- * }
- * - (UIView *)view
- * {
- *        return [self getAssociatedObject:_viewKey];
- * }
- * - (void)setView:(UIView *)view
- * {
- *        [self setAssociatedObject_nonatomic_retain:view key:_viewKey];
- * }
- * @end
- * @endcode
- *
- */
-@interface NSObject (ESAssociatedObject)
-- (id)getAssociatedObject:(const void *)key;
-+ (id)getAssociatedObject:(const void *)key;
-/// `OBJC_ASSOCIATION_ASSIGN` is not a `zeroing weak references`.
-- (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key;
-+ (void)setAssociatedObject_nonatomic_weak:(__weak id)weakObject key:(const void *)key;
-- (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
-+ (void)setAssociatedObject_nonatomic_retain:(id)object key:(const void *)key;
-- (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
-+ (void)setAssociatedObject_nonatomic_copy:(id)object key:(const void *)key;
-- (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key;
-+ (void)setAssociatedObject_atomic_retain:(id)object key:(const void *)key;
-- (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key;
-+ (void)setAssociatedObject_atomic_copy:(id)object key:(const void *)key;
-- (void)removeAllAssociatedObjects;
-+ (void)removeAllAssociatedObjects;
-@end
-
-///=============================================
-/// @name NSUserDefaults (ESHelper)
-///=============================================
-#pragma mark - NSUserDefaults (ESHelper)
-@interface NSUserDefaults (ESHelper)
-+ (id)objectForKey:(NSString *)key;
-+ (void)setObject:(id)object forKey:(NSString *)key;
-+ (void)setObjectAsynchrony:(id)object forKey:(NSString *)key;
-+ (void)removeObjectForKey:(NSString *)key;
-+ (void)removeObjectAsynchronyForKey:(NSString *)key;
-@end
 
 #endif // ESFramework_ESDefines_H

@@ -18,11 +18,11 @@ static const void *__es_HandlerKey = &__es_HandlerKey;
 
 - (ESUIGestureRecognizerHandler)__es_Handler
 {
-        return [self getAssociatedObject:__es_HandlerKey];
+        return es_objc_getAssociatedObject(self, __es_HandlerKey);
 }
 - (void)set__es_Handler:(ESUIGestureRecognizerHandler)handler
 {
-        [self setAssociatedObject_nonatomic_copy:handler key:__es_HandlerKey];
+        es_objc_setAssociatedObject(self, __es_HandlerKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (instancetype)initWithHandler:(ESUIGestureRecognizerHandler)handler

@@ -8,11 +8,13 @@
 
 #import "ESApp+Helper.h"
 #import "NSString+ESAdditions.h"
+#import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
 @import AddressBook;
 #import "ESApp+AppInfo.h"
 #import "ESApp+Subclassing.h"
+
 
 ES_CATEGORY_FIX(ESApp_Helper)
 
@@ -277,7 +279,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (BOOL)openURLWithString:(NSString *)string
 {
-        return [self openURL:NSURLWith(string)];
+        return [self openURL:[NSURL URLWithString:string]];
 }
 
 + (BOOL)canOpenPhoneCall
@@ -314,7 +316,8 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppReviewPageWithAppID:(NSString *)appID
 {
-        [self openURL:NSURLWith([ESITunesStoreHelper appStoreReviewLinkForAppID:appID])];
+        NSString *url = [ESITunesStoreHelper appStoreReviewLinkForAppID:appID];
+        [self openURLWithString:url];
 }
 
 + (void)openAppStore
@@ -324,7 +327,8 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppStoreWithAppID:(NSString *)appID
 {
-        [self openURL:NSURLWith([ESITunesStoreHelper appStoreLinkForAppID:appID])];
+        NSString *url = [ESITunesStoreHelper appStoreLinkForAppID:appID];
+        [self openURLWithString:url];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -118,6 +118,8 @@
 		E723C673197AF04A006B98A3 /* ESSpeexRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E723C674197AF04A006B98A3 /* ESSpeexRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */; };
 		E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E745B91F1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E745B9201B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */; };
 		E75C4C131AAD9B6B00CF905B /* MVConfig+AssetWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4BC71AAD9B6B00CF905B /* MVConfig+AssetWriter.m */; };
 		E75C4C141AAD9B6B00CF905B /* MVConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4BC81AAD9B6B00CF905B /* MVConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75C4C151AAD9B6B00CF905B /* MVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4BC91AAD9B6B00CF905B /* MVConfig.m */; };
@@ -464,6 +466,8 @@
 		E723C60019795179006B98A3 /* ESSpeexInternalPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexInternalPlayer.m; sourceTree = "<group>"; };
 		E723C671197AF04A006B98A3 /* ESSpeexRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexRecorder.h; sourceTree = "<group>"; };
 		E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexRecorder.m; sourceTree = "<group>"; };
+		E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
+		E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -1151,6 +1155,8 @@
 				E79703B21AE7FF3C00346055 /* NSOrderedSet+ESAdditions.m */,
 				E79703B51AE7FF3C00346055 /* NSSet+ESAdditions.h */,
 				E79703B61AE7FF3C00346055 /* NSSet+ESAdditions.m */,
+				E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */,
+				E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */,
 			);
 			path = FoundationAdditions;
 			sourceTree = "<group>";
@@ -1434,6 +1440,7 @@
 			files = (
 				E7F0ECBA1AE300F200AEE33C /* ESITunesStoreHelper.h in Headers */,
 				E79703C11AE7FF3C00346055 /* NSData+ESAdditions.h in Headers */,
+				E745B91F1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h in Headers */,
 				E79703C31AE7FF3C00346055 /* NSDate+ESAdditions.h in Headers */,
 				E7F0ED161AE5675200AEE33C /* NSObject+ESModel.h in Headers */,
 				E79703D01AE7FF3C00346055 /* NSString+ESAdditions.h in Headers */,
@@ -1863,6 +1870,7 @@
 				E71D1ECF1A6EF56200AD0DB2 /* ESApp+Helper.m in Sources */,
 				E79703FE1AE800B700346055 /* UIBarButtonItem+ESAdditions.m in Sources */,
 				E79703CF1AE7FF3C00346055 /* NSSet+ESAdditions.m in Sources */,
+				E745B9201B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m in Sources */,
 				E797040C1AE800B700346055 /* UINavigationController+ESAdditions.m in Sources */,
 				E79704141AE800B700346055 /* UIView+ESShortcut.m in Sources */,
 				E79704161AE800B700346055 /* UIViewController+ESAdditions.m in Sources */,

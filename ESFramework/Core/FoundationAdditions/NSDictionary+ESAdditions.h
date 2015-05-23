@@ -60,7 +60,7 @@
 
 /**
  * Asynchronously write file.
- * It will create directories automatically if not exists.
+ * It will create directories automatically if it is not exists.
  */
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
 

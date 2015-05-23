@@ -17,12 +17,12 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 - (ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        return [self getAssociatedObject:_didDismissBlockKey];
+        return es_objc_getAssociatedObject(self, _didDismissBlockKey);
 }
 
 - (void)setDidDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
 {
-        [self setAssociatedObject_nonatomic_copy:didDismissBlock key:_didDismissBlockKey];
+        es_objc_setAssociatedObject(self, _didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (instancetype)initWithTitle:(NSString *)title didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock

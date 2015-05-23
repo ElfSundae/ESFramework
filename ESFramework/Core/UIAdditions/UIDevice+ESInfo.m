@@ -208,7 +208,7 @@ ES_CATEGORY_FIX(UIDevice_ESInfo)
 
 + (BOOL)isRetinaScreen
 {
-        return ESIsRetinaScreen();
+        return UIScreenIsRetina();
 }
 
 + (BOOL)isIPhoneRetina35InchScreen
