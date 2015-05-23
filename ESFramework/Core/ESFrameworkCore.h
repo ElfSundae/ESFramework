@@ -12,6 +12,7 @@
 #define kESFrameworkCoreVersion @"0.5.1"
 
 #import "ESDefines.h"
+#import "ESApp.h"
 #import "ESFoundationAdditions.h"
 #import "ESUIAdditions.h"
 #import "ESOpenUDID.h"
@@ -24,6 +25,6 @@
 #import "NSObject+ESModel.h"
 #import "ESArrowButton.h"
 #import "UIDevice+ESInfo.h"
-#import "ESApp.h"
+
 
 #endif //ESFramework_ESFrameworkCore_h
