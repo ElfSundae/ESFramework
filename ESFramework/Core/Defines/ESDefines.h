@@ -145,6 +145,11 @@ ES_EXTERN BOOL ESOSVersionIsAbove8(void);
 #define ES_CATEGORY_FIX(name) @interface _ES_CATEGORY_FIX_##name : NSObject @end \
 @implementation _ES_CATEGORY_FIX_##name @end
 
+#define ES_IMPLEMENTATION_CATEGORY_FIX(class_name, category_name) \
+ES_CATEGORY_FIX(class_name##_##category_name)     \
+@implementation class_name (category_name)
+
+
 /**
  * Declare singleton `+sharedInstance` method.
  */

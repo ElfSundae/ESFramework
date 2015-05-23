@@ -6,13 +6,11 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+Subclassing.h"
+#import "ESApp.h"
 
-ES_CATEGORY_FIX(ESApp_Subclassing)
+ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Subclassing)
 
-@implementation ESApp (Subclassing)
-
-- (void)_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {
         
 }

@@ -103,11 +103,8 @@
 		E70493DF192720DC00C0EDAD /* ESMoviePlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493DD192720DC00C0EDAD /* ESMoviePlayerViewController.m */; };
 		E704F128199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */; };
 		E704F129199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */; };
-		E71D1EC61A6EF3EA00AD0DB2 /* ESApp+AppInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E71D1EC41A6EF3EA00AD0DB2 /* ESApp+AppInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E71D1EC71A6EF3EA00AD0DB2 /* ESApp+AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D1EC51A6EF3EA00AD0DB2 /* ESApp+AppInfo.m */; };
-		E71D1ECA1A6EF4CA00AD0DB2 /* ESApp+Subclassing.h in Headers */ = {isa = PBXBuildFile; fileRef = E71D1EC81A6EF4CA00AD0DB2 /* ESApp+Subclassing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E71D1ECB1A6EF4CA00AD0DB2 /* ESApp+Subclassing.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D1EC91A6EF4CA00AD0DB2 /* ESApp+Subclassing.m */; };
-		E71D1ECE1A6EF56200AD0DB2 /* ESApp+Helper.h in Headers */ = {isa = PBXBuildFile; fileRef = E71D1ECC1A6EF56200AD0DB2 /* ESApp+Helper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E71D1ECF1A6EF56200AD0DB2 /* ESApp+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D1ECD1A6EF56200AD0DB2 /* ESApp+Helper.m */; };
 		E723C3CE1977AF70006B98A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7522DF318EC427E0087B95E /* Foundation.framework */; };
 		E723C3F71977B0CD006B98A3 /* ESFrameworkSpeexKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +117,8 @@
 		E730A8471900CA5100D0BC32 /* ESFrameworkUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E7BCF75218F98F51006D920E /* ESFrameworkUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E745B91F1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E745B9201B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */; };
+		E745B9911B10A54C005F0CBE /* ESApp+UINotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E745B98F1B10A54C005F0CBE /* ESApp+UINotifications.m */; };
+		E745B9941B10A5A6005F0CBE /* ESApp+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E745B9921B10A5A6005F0CBE /* ESApp+Private.h */; };
 		E75C4C131AAD9B6B00CF905B /* MVConfig+AssetWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4BC71AAD9B6B00CF905B /* MVConfig+AssetWriter.m */; };
 		E75C4C141AAD9B6B00CF905B /* MVConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4BC81AAD9B6B00CF905B /* MVConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75C4C151AAD9B6B00CF905B /* MVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4BC91AAD9B6B00CF905B /* MVConfig.m */; };
@@ -205,7 +204,6 @@
 		E76FEB0D192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB0B192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m */; };
 		E76FEB11192C3101001461D1 /* ESRefreshControl.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEB0F192C3101001461D1 /* ESRefreshControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEB12192C3101001461D1 /* ESRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB10192C3101001461D1 /* ESRefreshControl.m */; };
-		E76FEB19192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEB17192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEB1A192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEB18192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m */; };
 		E772C42D1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E772C42E1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E772C42C1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m */; };
@@ -276,7 +274,6 @@
 		E79704151AE800B700346055 /* UIViewController+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E79703F71AE800B700346055 /* UIViewController+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E79704161AE800B700346055 /* UIViewController+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E79703F81AE800B700346055 /* UIViewController+ESAdditions.m */; };
 		E79704181AE800D900346055 /* ESUIAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E79704171AE800D900346055 /* ESUIAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E79D85BF192C45330000B57E /* ESTableViewController+DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E79D85BD192C45330000B57E /* ESTableViewController+DataSource.m */; };
 		E79D85C1192C48760000B57E /* ESTableViewDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = E79D85C0192C48760000B57E /* ESTableViewDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7A209A41AF308B3006BAA17 /* UIDevice+ESInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7A209A21AF308B3006BAA17 /* UIDevice+ESInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7A209A51AF308B3006BAA17 /* UIDevice+ESInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A209A31AF308B3006BAA17 /* UIDevice+ESInfo.m */; };
@@ -450,11 +447,8 @@
 		E70493DD192720DC00C0EDAD /* ESMoviePlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMoviePlayerViewController.m; sourceTree = "<group>"; };
 		E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESSpeexRecorderSettings+Private.h"; sourceTree = "<group>"; };
 		E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESSpeexRecorderSettings+Private.m"; sourceTree = "<group>"; };
-		E71D1EC41A6EF3EA00AD0DB2 /* ESApp+AppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+AppInfo.h"; sourceTree = "<group>"; };
 		E71D1EC51A6EF3EA00AD0DB2 /* ESApp+AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+AppInfo.m"; sourceTree = "<group>"; };
-		E71D1EC81A6EF4CA00AD0DB2 /* ESApp+Subclassing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+Subclassing.h"; sourceTree = "<group>"; };
 		E71D1EC91A6EF4CA00AD0DB2 /* ESApp+Subclassing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Subclassing.m"; sourceTree = "<group>"; };
-		E71D1ECC1A6EF56200AD0DB2 /* ESApp+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+Helper.h"; sourceTree = "<group>"; };
 		E71D1ECD1A6EF56200AD0DB2 /* ESApp+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
 		E723C3CD1977AF70006B98A3 /* ESFrameworkSpeexKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = ESFrameworkSpeexKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E723C3F31977B056006B98A3 /* ESFrameworkSpeexKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFrameworkSpeexKit.h; sourceTree = "<group>"; };
@@ -468,6 +462,8 @@
 		E723C672197AF04A006B98A3 /* ESSpeexRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexRecorder.m; sourceTree = "<group>"; };
 		E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
 		E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
+		E745B98F1B10A54C005F0CBE /* ESApp+UINotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UINotifications.m"; sourceTree = "<group>"; };
+		E745B9921B10A5A6005F0CBE /* ESApp+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+Private.h"; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -559,7 +555,6 @@
 		E76FEB0B192C2DA9001461D1 /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
 		E76FEB0F192C3101001461D1 /* ESRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESRefreshControl.h; sourceTree = "<group>"; };
 		E76FEB10192C3101001461D1 /* ESRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControl.m; sourceTree = "<group>"; };
-		E76FEB17192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+ESTableViewAdditions.h"; sourceTree = "<group>"; };
 		E76FEB18192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+ESTableViewAdditions.m"; sourceTree = "<group>"; };
 		E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexRecorderSettings.h; sourceTree = "<group>"; };
 		E772C42C1987FBA100CDAEE6 /* ESSpeexRecorderSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSpeexRecorderSettings.m; sourceTree = "<group>"; };
@@ -630,7 +625,6 @@
 		E79703F71AE800B700346055 /* UIViewController+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESAdditions.h"; sourceTree = "<group>"; };
 		E79703F81AE800B700346055 /* UIViewController+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESAdditions.m"; sourceTree = "<group>"; };
 		E79704171AE800D900346055 /* ESUIAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESUIAdditions.h; sourceTree = "<group>"; };
-		E79D85BD192C45330000B57E /* ESTableViewController+DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESTableViewController+DataSource.m"; sourceTree = "<group>"; };
 		E79D85C0192C48760000B57E /* ESTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewDataSource.h; sourceTree = "<group>"; };
 		E7A209A21AF308B3006BAA17 /* UIDevice+ESInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESInfo.h"; sourceTree = "<group>"; };
 		E7A209A31AF308B3006BAA17 /* UIDevice+ESInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESInfo.m"; sourceTree = "<group>"; };
@@ -763,11 +757,9 @@
 		E70493BB1927207B00C0EDAD /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				E79D85C0192C48760000B57E /* ESTableViewDataSource.h */,
 				E70493BC1927207B00C0EDAD /* ESTableViewController.h */,
 				E70493BD1927207B00C0EDAD /* ESTableViewController.m */,
-				E79D85BD192C45330000B57E /* ESTableViewController+DataSource.m */,
-				E79D85C0192C48760000B57E /* ESTableViewDataSource.h */,
-				E76FEB17192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h */,
 				E76FEB18192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m */,
 			);
 			path = TableView;
@@ -1352,11 +1344,10 @@
 			children = (
 				E7F5D9081916DC0700D11273 /* ESApp.h */,
 				E7F5D9091916DC0700D11273 /* ESApp.m */,
-				E71D1EC41A6EF3EA00AD0DB2 /* ESApp+AppInfo.h */,
+				E745B9921B10A5A6005F0CBE /* ESApp+Private.h */,
+				E745B98F1B10A54C005F0CBE /* ESApp+UINotifications.m */,
 				E71D1EC51A6EF3EA00AD0DB2 /* ESApp+AppInfo.m */,
-				E71D1EC81A6EF4CA00AD0DB2 /* ESApp+Subclassing.h */,
 				E71D1EC91A6EF4CA00AD0DB2 /* ESApp+Subclassing.m */,
-				E71D1ECC1A6EF56200AD0DB2 /* ESApp+Helper.h */,
 				E71D1ECD1A6EF56200AD0DB2 /* ESApp+Helper.m */,
 			);
 			path = App;
@@ -1456,7 +1447,6 @@
 				E76FEADC1929B178001461D1 /* ESArrowButton.h in Headers */,
 				E79703CE1AE7FF3C00346055 /* NSSet+ESAdditions.h in Headers */,
 				E79703D21AE7FF3C00346055 /* NSString+ESGTMHTML.h in Headers */,
-				E71D1ECE1A6EF56200AD0DB2 /* ESApp+Helper.h in Headers */,
 				E79704151AE800B700346055 /* UIViewController+ESAdditions.h in Headers */,
 				E79703CA1AE7FF3C00346055 /* NSOrderedSet+ESAdditions.h in Headers */,
 				E79704181AE800D900346055 /* ESUIAdditions.h in Headers */,
@@ -1469,14 +1459,13 @@
 				E79704011AE800B700346055 /* UIControl+ESAdditions.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
 				E7A209A41AF308B3006BAA17 /* UIDevice+ESInfo.h in Headers */,
-				E71D1EC61A6EF3EA00AD0DB2 /* ESApp+AppInfo.h in Headers */,
 				E79703FD1AE800B700346055 /* UIBarButtonItem+ESAdditions.h in Headers */,
 				E7F5D8F81916DB8900D11273 /* ESValue.h in Headers */,
 				E797040B1AE800B700346055 /* UINavigationController+ESAdditions.h in Headers */,
 				E79703FB1AE800B700346055 /* UIAlertView+ESBlock.h in Headers */,
 				E79704131AE800B700346055 /* UIView+ESShortcut.h in Headers */,
 				E7F0ED0C1AE560F400AEE33C /* ESOpenUDID.h in Headers */,
-				E71D1ECA1A6EF4CA00AD0DB2 /* ESApp+Subclassing.h in Headers */,
+				E745B9941B10A5A6005F0CBE /* ESApp+Private.h in Headers */,
 				E79704111AE800B700346055 /* UIView+ESAdditions.h in Headers */,
 				E7F5D8F61916DB8900D11273 /* ESHash.h in Headers */,
 				E7F5D9111916DC0700D11273 /* ESApp.h in Headers */,
@@ -1493,7 +1482,6 @@
 			files = (
 				E7DBC831192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h in Headers */,
 				E76FEAEB192A93DC001461D1 /* ESActivityLabel.h in Headers */,
-				E76FEB19192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.h in Headers */,
 				E70493D51927207B00C0EDAD /* ESWebView.h in Headers */,
 				E79D85C1192C48760000B57E /* ESTableViewDataSource.h in Headers */,
 				E70493CD1927207B00C0EDAD /* ESTableViewController.h in Headers */,
@@ -1892,6 +1880,7 @@
 				E79703631AE7F1A600346055 /* ESNetworkReachability.m in Sources */,
 				E79703FA1AE800B700346055 /* UIActionSheet+ESBlock.m in Sources */,
 				E79704101AE800B700346055 /* UIToolbar+ESAdditions.m in Sources */,
+				E745B9911B10A54C005F0CBE /* ESApp+UINotifications.m in Sources */,
 				E76FEADD1929B178001461D1 /* ESArrowButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1909,7 +1898,6 @@
 				E704935C1925B15100C0EDAD /* ESButton.m in Sources */,
 				E70493CE1927207B00C0EDAD /* ESTableViewController.m in Sources */,
 				E70493D61927207B00C0EDAD /* ESWebView.m in Sources */,
-				E79D85BF192C45330000B57E /* ESTableViewController+DataSource.m in Sources */,
 				E70493DA1927207B00C0EDAD /* ESStoreProductViewControllerManager.m in Sources */,
 				E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */,
 				E7DBC837192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m in Sources */,

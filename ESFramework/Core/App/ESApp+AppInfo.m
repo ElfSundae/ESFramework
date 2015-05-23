@@ -7,15 +7,11 @@
 //
 
 @import CoreFoundation;
-#import "ESApp+AppInfo.h"
-#import "ESApp+Helper.h"
-#import "ESApp+Subclassing.h"
+#import "ESApp.h"
 #import "UIDevice+ESInfo.h"
 #import "UIDevice+ESNetworkReachability.h"
 
-ES_CATEGORY_FIX(ESApp_AppInfo)
-
-@implementation ESApp (AppInfo)
+ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 
 + (NSBundle *)mainBundle
 {

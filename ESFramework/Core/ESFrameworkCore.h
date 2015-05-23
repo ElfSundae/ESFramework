@@ -9,7 +9,7 @@
 #ifndef ESFramework_ESFrameworkCore_h
 #define ESFramework_ESFrameworkCore_h
 
-#define kESFrameworkCoreVersion @"0.5.0"
+#define kESFrameworkCoreVersion @"0.5.1"
 
 #import "ESDefines.h"
 #import "ESFoundationAdditions.h"
@@ -25,8 +25,5 @@
 #import "ESArrowButton.h"
 #import "UIDevice+ESInfo.h"
 #import "ESApp.h"
-#import "ESApp+AppInfo.h"
-#import "ESApp+Subclassing.h"
-#import "ESApp+Helper.h"
 
 #endif //ESFramework_ESFrameworkCore_h

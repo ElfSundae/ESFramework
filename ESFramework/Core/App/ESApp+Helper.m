@@ -6,21 +6,17 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+Helper.h"
+#import "ESApp.h"
 #import "NSString+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
 @import AddressBook;
-#import "ESApp+AppInfo.h"
-#import "ESApp+Subclassing.h"
 
-
-ES_CATEGORY_FIX(ESApp_Helper)
 
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
-@implementation ESApp (Helper)
+ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
 
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion
 {
@@ -31,7 +27,7 @@ ES_CATEGORY_FIX(ESApp_Helper)
         dispatch_once(&onceToken, ^{
                 __previousVersion = [NSUserDefaults objectForKey:kESUserDefaultsKey_CheckFreshLaunchAppVersion];
                 NSString *current = [self appVersion];
-                if (__previousVersion && [__previousVersion compare:current] == NSOrderedSame) {
+                if ([__previousVersion isKindOfClass:[NSString class]] && [__previousVersion compare:current] == NSOrderedSame) {
                         __isFreshLaunch = NO;
                 } else {
                         __isFreshLaunch = YES;

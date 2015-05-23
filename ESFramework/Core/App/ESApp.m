@@ -7,20 +7,10 @@
 //
 
 #import "ESApp.h"
-#import "ESApp+AppInfo.h"
-#import "ESApp+Subclassing.h"
-#import "ESApp+Helper.h"
+#import "ESApp+Private.h"
 #import "NSString+ESAdditions.h"
 
 NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
-
-@interface ESApp ()
-{
-        ESHandlerBlock _esRemoteNotificationRegisterSuccessBlock;
-        ESHandlerBlock _esRemoteNotificationRegisterFailureBlock;
-}
-
-@end
 
 @implementation ESApp
 
@@ -55,38 +45,13 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         return _rootViewController ?: [[self class] rootViewController];
 }
 
-- (void)registerForRemoteNotificationTypes:(UIRemoteNotificationType)types success:(void (^)(NSString *deviceToken))success failure:(void (^)(NSError *error))failure
+- (instancetype)init
 {
-        if (![[UIApplication sharedApplication].delegate isKindOfClass:[self class]]) {
-                [NSException raise:@"ESAppException" format:@"To use -registerForRemoteNotificationTypes:success:failure: , your application delegate must be inherited from ESApp."];
+        self = [super init];
+        if (self) {
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_es_UIApplicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
         }
-        
-        if (0 == types) {
-                if (failure) {
-                        ESDispatchOnMainThreadAsynchrony(^{
-                                failure([NSError errorWithDomain:ESAppErrorDomain code:-10 userInfo:@{NSLocalizedDescriptionKey : @"UIRemoteNotificationTypes is none, which types you will register for?"}]);
-                        });
-                }
-                return;
-        }
-        
-        UIApplication *app = [UIApplication sharedApplication];
-        if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-                // iOS 8+
-                UIUserNotificationSettings *currentSettings = app.currentUserNotificationSettings;
-                UIUserNotificationType currentType = currentSettings.types;
-                UIUserNotificationType registerForTypes = (UIUserNotificationType)types;
-                if (currentType != registerForTypes) {
-                        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:registerForTypes
-                                                                                                 categories:nil];
-                        [app registerUserNotificationSettings:settings];
-                } else {
-                        [app registerForRemoteNotifications];
-                }
-                
-        } else {
-                [app registerForRemoteNotificationTypes:types];
-        }
+        return self;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -171,9 +136,18 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
          *     foo = bar;
          * }
          */
-        
         self.remoteNotification = userInfo;
-        [self _applicationDidReceiveRemoteNotification:self.remoteNotification];
+        [self applicationDidReceiveRemoteNotification:self.remoteNotification];
+}
+
+- (void)_es_UIApplicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
+{
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                if (ESIsDictionaryWithItems(self.remoteNotification)) {
+                        [self applicationDidReceiveRemoteNotification:self.remoteNotification];
+                }
+        });
 }
 
 @end
