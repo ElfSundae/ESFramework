@@ -106,11 +106,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#if __has_feature(objc_modules)
-@import SystemConfiguration;
-#else
 #import <SystemConfiguration/SystemConfiguration.h>
-#endif
 #import <netinet/in.h>
 
 #define USE_DDG_EXTENSIONS 1 // Use DDG's Extensions to test network criteria.

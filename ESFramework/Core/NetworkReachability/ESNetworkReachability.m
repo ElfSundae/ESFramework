@@ -106,12 +106,7 @@
 #import <ifaddrs.h>
 #import <netdb.h>
 
-#if __has_feature(objc_modules)
-@import CoreFoundation;
-#else
 #import <CoreFoundation/CoreFoundation.h>
-#endif
-
 
 #import "ESNetworkReachability.h"
 

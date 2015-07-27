@@ -6,15 +6,16 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-@import CoreTelephony;
-@import CoreGraphics;
-@import SystemConfiguration;
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <AdSupport/AdSupport.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #import "ESValue.h"
-@import AdSupport;
 #import "ESOpenUDID.h"
 #import "ESDefines.h"
 ES_CATEGORY_FIX(UIDevice_ESInfo)
@@ -115,11 +116,7 @@ ES_CATEGORY_FIX(UIDevice_ESInfo)
 
 + (NSString *)IDFA
 {
-        NSString *idfa = nil;
-        Class cls = NSClassFromString(@"ASIdentifierManager");
-        if (cls) {
-                idfa = [[[cls sharedManager] advertisingIdentifier] UUIDString];
-        }
+        NSString *idfa = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
         return idfa ?: @"";
 }
 

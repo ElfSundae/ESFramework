@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-@import CoreFoundation;
+#import <CoreFoundation/CoreFoundation.h>
 #import "ESApp.h"
 #import "UIDevice+ESInfo.h"
 #import "UIDevice+ESNetworkReachability.h"

@@ -11,8 +11,7 @@
 #import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
-@import AddressBook;
-
+#import <AddressBook/AddressBook.h>
 
 #define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
 
