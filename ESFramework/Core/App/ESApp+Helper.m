@@ -25,7 +25,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
                 __previousVersion = [NSUserDefaults objectForKey:kESUserDefaultsKey_CheckFreshLaunchAppVersion];
-                NSString *current = [self appVersion];
+                NSString *current = [ESApp sharedApp].appVersion;
                 if ([__previousVersion isKindOfClass:[NSString class]] && [__previousVersion compare:current] == NSOrderedSame) {
                         __isFreshLaunch = NO;
                 } else {

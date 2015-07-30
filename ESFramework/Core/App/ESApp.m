@@ -26,10 +26,10 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         static id __sharedApp = nil;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                if ([[UIApplication sharedApplication].delegate isKindOfClass:[self class]]) {
+                if ([[UIApplication sharedApplication].delegate isKindOfClass:[ESApp class]]) {
                         __sharedApp = [UIApplication sharedApplication].delegate;
                 } else {
-                        __sharedApp = [[self alloc] init];
+                        __sharedApp = [[ESApp alloc] init];
                 }
         });
         return __sharedApp;
@@ -64,19 +64,6 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
         
-        /* Setup root viewController */
-        //self.rootViewController = [self _setupRootViewController];
-        //self.window.rootViewController = self.rootViewController;
-        
-        /* Set the UserAgent for UIWebView */
-        NSString *ua = self.userAgentForWebView;
-        if (ua) {
-                [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua}];
-        }
-        
-        /* Set Cookie Accept Plicy to  NSHTTPCookieAcceptPolicyAlways */
-        //[[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-        
         /* Enable multitasking */
         [[self class] enableMultitasking];
 
@@ -85,9 +72,6 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
                 self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
         }
         
-        //[self _applicationDidFinishLaunching:application withOptions:launchOptions];
-        
-        //[self.window makeKeyAndVisible];
         return YES;
 }
 
@@ -144,10 +128,62 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
+                // callback remote notification handler
                 if (ESIsDictionaryWithItems(self.remoteNotification)) {
                         [self applicationDidReceiveRemoteNotification:self.remoteNotification];
                 }
+                
+                // fetch the default user agent of UIWebView
+                [ESApp _getDefaultWebViewUserAgent];
         });
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - WebView UserAgent
+
+static UIWebView *_esWebViewForFetchingUserAgent = nil;
+static _ESAppInternalWebViewDelegate *_esWebViewForFetchingUserAgentDelegate = nil;
+
+
++ (void)_getDefaultWebViewUserAgent
+{
+        if (_esWebViewForFetchingUserAgent != nil) {
+                return;
+        }
+        
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+        
+        ESDispatchOnHighQueue(^{
+                _ESAppInternalWebViewDelegate *delegate = [[_ESAppInternalWebViewDelegate alloc] init];
+                webView.delegate = delegate;
+                [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://0x123.com"]]];
+                _esWebViewForFetchingUserAgent = webView;
+                _esWebViewForFetchingUserAgentDelegate = delegate;
+        });
+}
+
++ (void)_setDefaultWebViewUserAgent:(NSString *)userAgent
+{
+        if (ESIsStringWithAnyText(userAgent)) {
+                [ESApp sharedApp]->_esWebViewDefaultUserAgent = userAgent;
+        }
+        
+        _esWebViewForFetchingUserAgent.delegate = nil;
+        [_esWebViewForFetchingUserAgent stopLoading];
+        _esWebViewForFetchingUserAgent = nil;
+        _esWebViewForFetchingUserAgentDelegate = nil;
+}
+
+@end
+
+
+@implementation _ESAppInternalWebViewDelegate
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+        [ESApp _setDefaultWebViewUserAgent:request.allHTTPHeaderFields[@"User-Agent"]];
+        return NO;
 }
 
 @end

@@ -25,7 +25,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Subclassing)
         return nil;
 }
 
-- (NSTimeZone *)serverTimeZone
+- (NSTimeZone *)timeZoneOfWebServer
 {
         return [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
 }

@@ -8,10 +8,15 @@
 
 #import "ESApp.h"
 
+@interface _ESAppInternalWebViewDelegate : NSObject  <UIWebViewDelegate>
+@end
+
 @interface ESApp ()
 {
         ESHandlerBlock _esRemoteNotificationRegisterSuccessBlock;
         ESHandlerBlock _esRemoteNotificationRegisterFailureBlock;
+        NSString *_esWebViewDefaultUserAgent;
 }
 
 @end
+

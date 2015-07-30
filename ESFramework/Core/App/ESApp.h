@@ -19,7 +19,6 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  * And ESApp has done the following things:
  *
  *      + Setup window
- *      + Set the UserAgent for UIWebView, see -userAgentForWebView;
  *      + Enable multitasking, see +enableMultitasking;
  *      + Save UIApplicationLaunchOptionsRemoteNotification value to self.remoteNotification
  *
@@ -29,6 +28,11 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 /**
  * Returns the application delegate if the `AppDelegate` is a subclass of `ESApp`, 
  * otherwise returns a shared `ESApp` instance.
+ * 
+ * You can subclass this method like:
+ * @code
+ * + (AppDelegate *)sharedApp;
+ * @endcode
  */
 + (instancetype)sharedApp;
 
@@ -79,7 +83,7 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *
  * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
  */
-- (NSTimeZone *)serverTimeZone;
+- (NSTimeZone *)timeZoneOfWebServer;
 
 #if 0 // Deprecated
 /**
@@ -101,34 +105,38 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 @interface ESApp (AppInfo)
 
 /**
- * Returns the NSBundle object that corresponds to the directory where the current application executable is located.
- */
-+ (NSBundle *)mainBundle;
-/**
- * A dictionary, constructed from the bundle's Info.plist file, that contains information about the receiver.
- */
-+ (NSDictionary *)infoDictionary;
-/**
  * Returns the value associated with the specified key in the main bundle's Info.plist file.
  */
 + (id)objectForInfoDictionaryKey:(NSString *)key;
 
 /**
+ * Returns the value associated with CFBundleIdentifier in the main bundle's Info.plist file,
+ * if the value is not found, it will return @""
+ */
+- (NSString *)appBundleIdentifier;
+
+/**
+ * Defatuls is executable name.
+ */
+- (NSString *)appName;
+
+/**
  * Returns the value associated with CFBundleDisplayName in the main bundle's Info.plist file,
  * if the value is not found, it will return the value of CFBundleName or @""
  */
-+ (NSString *)displayName;
+- (NSString *)appDisplayName;
+
 /**
  * Returns the value associated with CFBundleShortVersionString in the main bundle's Info.plist file,
  * if the value is not found, it will return the value of CFBundleVersion or @""
  */
-+ (NSString *)appVersion;
+- (NSString *)appVersion;
 
 /**
  * CFBundleShortVersionString + CFBundleVersion
  * e.g. "1.2.1(20150433.387)", "1.2.0", "2015988"
  */
-+ (NSString *)appVersionWithBuildVersion;
+- (NSString *)appVersionWithBuildVersion;
 
 /**
  * UIViewControllerBasedStatusBarAppearance (Boolean - iOS) specifies whether the status bar appearance
@@ -141,22 +149,16 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *
  * @see https://developer.apple.com/library/mac/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW29
  */
-+ (BOOL)isUIViewControllerBasedStatusBarAppearance;
-
-/**
- * Returns the value associated with CFBundleIdentifier in the main bundle's Info.plist file,
- * if the value is not found, it will return @""
- */
-+ (NSString *)bundleIdentifier;
+- (BOOL)isUIViewControllerBasedStatusBarAppearance;
 
 /**
  * e.g.
  *
  * @code
  * {
+ *     "app_name" = ESDemo;
  *     "app_channel" = "App Store";
- *     "app_identifier" = "com.0x123.xunleivip";
- *     "app_name" = "Thuner VIP";
+ *     "app_identifier" = "com.0x123.ESDemo";
  *     "app_version" = "1.0.0";
  *     carrier = "China Mobile";
  *     jailbroken = 1;
@@ -164,9 +166,9 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *     model = iPhone;
  *     name = "Elf Sundae's iPhone";
  *     network = WiFi;
- *     "open_udid" = c0f9e011b8a17a904e2b4fe9fdf15640300a7c34;
+ *     "open_udid" = cf7cff0aaeea94806e247bf4e47a8ff760e46047;
  *     os = iOS;
- *     "os_version" = "8.1.2";
+ *     "os_version" = "8.4";
  *     platform = "iPhone7,1";
  *     "screen_size" = 1242x2208;
  *     "timezone_gmt" = 8;
@@ -175,22 +177,33 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *
  */
 - (NSDictionary *)analyticsInformation;
+
 /**
- * Returns User Agent for UIWebView.
+ * Returns the User Agent for HTTP request.
  *
- * Default User Agent for UIWebView, it registered after app launched.
- * Subclass can return #nil to use the default user-agent for UIWebView.
+ * e.g. `ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
+ */
+- (NSString *)userAgent;
+
+/**
+ * The default user agent of UIWebview.
+ * The value will be fetched on a background thread, after application been actived, and it will cost about 100~300ms time.
  *
- * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_2 like Mac OS X) Mobile/12B440 ESFramework(iOS;8.1.2;com.0x123.ESDemo;1.0.0;App Store;c0f9e011b8a17a904e2b4fe9fdf15640300a7c34;1242x2208;zh_CN)`
+ * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H143 ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
+ */
++ (NSString *)defaultUserAgentOfWebView;
+
+/**
+ * Returns the User Agent for UIWebView.
+ *
+ * This User Agent for UIWebView, it registered via +[NSUserDefaults registerDefaults:]
+ * after app launched.
+ * Subclass can return nil to use the iOS default User Agent for UIWebView.
+ *
+ * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H143 ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
  */
 - (NSString *)userAgentForWebView;
 
-/**
- * Returns User Agent for HTTP request.
- *
- * e.g. `ESFramework(iOS;8.1.2;com.0x123.ESDemo;1.0.0;App Store;c0f9e011b8a17a904e2b4fe9fdf15640300a7c34;1242x2208;zh_CN)`
- */
-- (NSString *)userAgent;
 /**
  * Returns all URL Schemes that specified in the Info.plist.
  *
