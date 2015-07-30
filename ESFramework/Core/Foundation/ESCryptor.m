@@ -132,7 +132,7 @@
         return [ESCryptor encryptedData:self withAlgorithm:kCCAlgorithmAES
                                     key:key
                                      iv:iv
-                                options:(kCCOptionPKCS7Padding|(iv ? 0 : kCCOptionECBMode))
+                                options:(kCCOptionPKCS7Padding | (iv ? 0 : kCCOptionECBMode))
                                   error:NULL];
 }
 
