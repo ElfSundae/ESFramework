@@ -123,11 +123,6 @@ enum {
 };
 typedef	uint32_t ESNetworkReachabilityStatus;
 
-/**
- * @"WiFi", @"WWAN", @"None", @"Unknown".
- */
-extern NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status);
-
 #if 0
 enum {
 	
@@ -139,10 +134,10 @@ enum {
 };
 #endif
 
-
+/* [ESNetworkReachability key] */
 extern NSString *const ESNetworkReachabilityInternetConnection;
 extern NSString *const ESNetworkReachabilityLocalWiFiConnection;
-
+/* Notification */
 extern NSString *const ESNetworkReachabilityDidChangeNotification;
 
 

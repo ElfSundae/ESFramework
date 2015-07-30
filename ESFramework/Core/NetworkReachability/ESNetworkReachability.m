@@ -817,16 +817,3 @@ static const SCNetworkReachabilityFlags kOnDemandConnection = kSCNetworkReachabi
 #endif
 
 @end
-
-NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status)
-{
-        if (ESNetworkReachabilityStatusReachableViaWiFi == status) {
-                return @"WiFi";
-        } else if (ESNetworkReachabilityStatusReachableViaWWAN == status) {
-                return @"WWAN";
-        } else if (ESNetworkReachabilityStatusNotReachable == status) {
-                return @"None";
-        } else {
-                return @"Unknown";
-        }
-}

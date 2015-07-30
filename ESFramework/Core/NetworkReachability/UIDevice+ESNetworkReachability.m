@@ -8,6 +8,11 @@
 
 #import "UIDevice+ESNetworkReachability.h"
 
+NSString *const ESNetworkReachabilityStatusStringNotReachable = @"None";
+NSString *const ESNetworkReachabilityStatusStringReachableViaWWAN = @"WWAN";
+NSString *const ESNetworkReachabilityStatusStringReachableViaWiFi = @"WiFi";
+
+
 @implementation UIDevice (ESNetworkReachability)
 
 + (void)load
@@ -33,7 +38,16 @@
 
 + (NSString *)currentNetworkReachabilityStatusString
 {
-        return ESNetworkReachabilityStatusString([self currentNetworkReachabilityStatus]);
+        ESNetworkReachabilityStatus status = [self currentNetworkReachabilityStatus];
+        if (ESNetworkReachabilityStatusReachableViaWiFi == status) {
+                return ESNetworkReachabilityStatusStringReachableViaWiFi;
+        } else if (ESNetworkReachabilityStatusReachableViaWWAN == status) {
+                return ESNetworkReachabilityStatusStringReachableViaWWAN;
+        } else if (ESNetworkReachabilityStatusNotReachable == status) {
+                return ESNetworkReachabilityStatusStringNotReachable;
+        } else {
+                return @"Unknown";
+        }
 }
 
 @end
