@@ -123,6 +123,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
                  [UIScreen mainScreen].scale,
                  [UIDevice screenSizeString]];
                 [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
+                [ua appendFormat:@"; Network/%@", [UIDevice currentNetworkReachabilityStatusString]];
                 if (ESIsStringWithAnyText(self.appChannel)) {
                         [ua appendFormat:@"; Channel/%@", self.appChannel];
                 }
