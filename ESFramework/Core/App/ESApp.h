@@ -83,7 +83,7 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *
  * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
  */
-- (NSTimeZone *)timeZoneOfWebServer;
+- (NSTimeZone *)appWebServerTimeZone;
 
 #if 0 // Deprecated
 /**
