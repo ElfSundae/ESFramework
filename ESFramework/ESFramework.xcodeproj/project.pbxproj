@@ -306,8 +306,6 @@
 		E7DBC837192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DBC835192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m */; };
 		E7F0ECBA1AE300F200AEE33C /* ESITunesStoreHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F0ECBB1AE300F200AEE33C /* ESITunesStoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */; };
-		E7F0ED071AE513B900AEE33C /* ESCryptor.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ED051AE513B900AEE33C /* ESCryptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7F0ED081AE513B900AEE33C /* ESCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ED061AE513B900AEE33C /* ESCryptor.m */; };
 		E7F0ED0C1AE560F400AEE33C /* ESOpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F0ED0A1AE560F400AEE33C /* ESOpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7F0ED0D1AE560F400AEE33C /* ESOpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ED0B1AE560F400AEE33C /* ESOpenUDID.m */; };
 		E7F0ED151AE5675200AEE33C /* NSObject+ESModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0ED131AE5675200AEE33C /* NSObject+ESModel.m */; };
@@ -665,8 +663,6 @@
 		E7EDF3F718FBA5840067E849 /* UIKitRelease.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UIKitRelease.xcconfig; sourceTree = "<group>"; };
 		E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESITunesStoreHelper.h; sourceTree = "<group>"; };
 		E7F0ECB91AE300F200AEE33C /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
-		E7F0ED051AE513B900AEE33C /* ESCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCryptor.h; sourceTree = "<group>"; };
-		E7F0ED061AE513B900AEE33C /* ESCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCryptor.m; sourceTree = "<group>"; };
 		E7F0ED0A1AE560F400AEE33C /* ESOpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESOpenUDID.h; sourceTree = "<group>"; };
 		E7F0ED0B1AE560F400AEE33C /* ESOpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESOpenUDID.m; sourceTree = "<group>"; };
 		E7F0ED131AE5675200AEE33C /* NSObject+ESModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESModel.m"; sourceTree = "<group>"; };
@@ -1318,8 +1314,6 @@
 			children = (
 				E7F5D8F21916DB8900D11273 /* ESHash.h */,
 				E7F5D8F31916DB8900D11273 /* ESHash.m */,
-				E7F0ED051AE513B900AEE33C /* ESCryptor.h */,
-				E7F0ED061AE513B900AEE33C /* ESCryptor.m */,
 				E7F5D8F41916DB8900D11273 /* ESValue.h */,
 				E7F5D8F51916DB8900D11273 /* ESValue.m */,
 				E7F0ECB81AE300F200AEE33C /* ESITunesStoreHelper.h */,
@@ -1435,7 +1429,6 @@
 				E79703C31AE7FF3C00346055 /* NSDate+ESAdditions.h in Headers */,
 				E7F0ED161AE5675200AEE33C /* NSObject+ESModel.h in Headers */,
 				E79703D01AE7FF3C00346055 /* NSString+ESAdditions.h in Headers */,
-				E7F0ED071AE513B900AEE33C /* ESCryptor.h in Headers */,
 				E797040D1AE800B700346055 /* UITableView+ESAdditions.h in Headers */,
 				E79703C51AE7FF3C00346055 /* NSDictionary+ESAdditions.h in Headers */,
 				E79703BF1AE7FF3C00346055 /* NSArray+ESAdditions.h in Headers */,
@@ -1867,7 +1860,6 @@
 				E7F5D9121916DC0700D11273 /* ESApp.m in Sources */,
 				E797040E1AE800B700346055 /* UITableView+ESAdditions.m in Sources */,
 				E71D1EC71A6EF3EA00AD0DB2 /* ESApp+AppInfo.m in Sources */,
-				E7F0ED081AE513B900AEE33C /* ESCryptor.m in Sources */,
 				E7F5D8F71916DB8900D11273 /* ESHash.m in Sources */,
 				E79703D71AE7FF3C00346055 /* NSURL+ESAdditions.m in Sources */,
 				E797040A1AE800B700346055 /* UIImageView+ESAdditions.m in Sources */,
