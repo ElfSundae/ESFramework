@@ -77,7 +77,7 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *
  * @see +openAppStore +openAppReviewPage
  */
-- (NSString *)appID;
+- (NSString *)appStoreID;
 /**
  * Returns the timeZone used by your web server, used to convert datetime from server to local.
  *
@@ -345,7 +345,7 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 + (BOOL)canOpenURL:(NSURL *)url;
 
 /**
- * After invoke +canOpenURL: then openURL.
+ * After check +canOpenURL: , then openURL.
  */
 + (BOOL)openURL:(NSURL *)url;
 + (BOOL)openURLWithString:(NSString *)string;
@@ -361,16 +361,16 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
 /**
- * Open App Store, and goto this app's Review page. `-appID` must be implemented.
+ * Open App Store, and goto this app's Review page. `-appStoreID` must be implemented.
  */
-+ (void)openAppReviewPage;
++ (void)openAppStoreReviewPage;
 /**
  * Open App Store, and goto the Review page.
  */
-+ (void)openAppReviewPageWithAppID:(NSString *)appID;
++ (void)openAppStoreReviewPageWithAppID:(NSString *)appID;
 
 /**
- * Open App Store, and goto this app's download page. `-appID` must be implemented.
+ * Open App Store, and goto this app's download page. `-appStoreID` must be implemented.
  */
 + (void)openAppStore;
 

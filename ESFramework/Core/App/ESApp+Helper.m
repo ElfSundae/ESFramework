@@ -304,12 +304,12 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return NO;
 }
 
-+ (void)openAppReviewPage
++ (void)openAppStoreReviewPage
 {
-        [self openAppReviewPageWithAppID:[[self sharedApp] appID]];
+        [self openAppStoreReviewPageWithAppID:[[self sharedApp] appStoreID]];
 }
 
-+ (void)openAppReviewPageWithAppID:(NSString *)appID
++ (void)openAppStoreReviewPageWithAppID:(NSString *)appID
 {
         NSString *url = [ESITunesStoreHelper appStoreReviewLinkForAppID:appID];
         [self openURLWithString:url];
@@ -317,7 +317,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppStore
 {
-        [self openAppStoreWithAppID:[[self sharedApp] appID]];
+        [self openAppStoreWithAppID:[[self sharedApp] appStoreID]];
 }
 
 + (void)openAppStoreWithAppID:(NSString *)appID

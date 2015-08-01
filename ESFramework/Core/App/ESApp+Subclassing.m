@@ -20,7 +20,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Subclassing)
         return @"App Store";
 }
 
-- (NSString *)appID
+- (NSString *)appStoreID
 {
         return nil;
 }
