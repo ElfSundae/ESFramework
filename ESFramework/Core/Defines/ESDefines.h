@@ -260,15 +260,15 @@ ES_EXTERN NSString *ESUUID(void);
 /**
  * Specifies a "zeroing weak reference" to the associated object.
  */
-#define OBJC_ASSOCIATION_WEAK (0100000)
+ES_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 /**
  * Returns the value associated with a given object for a given key.
  */
-ES_EXTERN id es_objc_getAssociatedObject(id target, const void *key);
+ES_EXTERN id ESGetAssociatedObject(id target, const void *key);
 /**
  * Sets an associated value for a given object using a given key and association policy.
  */
-ES_EXTERN void es_objc_setAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
+ES_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
 
 /**
  * Returns the current statusBar's height, in any orientation.

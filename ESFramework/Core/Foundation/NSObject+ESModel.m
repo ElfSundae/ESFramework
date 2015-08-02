@@ -81,21 +81,21 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 if (!shared) {
                         shared = [self modelInstance];
                 }
-                es_objc_setAssociatedObject(self, _es_modelSharedInstanceKey, shared, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                ESSetAssociatedObject(self, _es_modelSharedInstanceKey, shared, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         });
-        return es_objc_getAssociatedObject(self, _es_modelSharedInstanceKey);
+        return ESGetAssociatedObject(self, _es_modelSharedInstanceKey);
 }
 
 + (void)setModelSharedInstance:(id)instance
 {
         if (nil == instance) {
-                es_objc_setAssociatedObject(self, _es_modelSharedInstanceKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                ESSetAssociatedObject(self, _es_modelSharedInstanceKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 NSString *filePath = [self modelSharedInstanceFilePath];
                 if (filePath) {
                         [[NSFileManager defaultManager] removeItemAtPath:filePath error:NULL];
                 }
         } else if ([instance isKindOfClass:[self class]]) {
-                es_objc_setAssociatedObject(self, _es_modelSharedInstanceKey, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                ESSetAssociatedObject(self, _es_modelSharedInstanceKey, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         } else {
                 printf("<Error> ESModelException: +setModelSharedInstance: parameter of class %s does not match, should be %s.",
                        [NSStringFromClass([instance class]) UTF8String],
@@ -157,7 +157,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (NSArray *)modelCodablePropertiesKeys
 {
-        NSArray *_propertyKeys = es_objc_getAssociatedObject(self, _es_codablePropertiesKeys);
+        NSArray *_propertyKeys = ESGetAssociatedObject(self, _es_codablePropertiesKeys);
         if (!_propertyKeys) {
                 NSMutableArray *keys = [NSMutableArray array];
                 
@@ -255,7 +255,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 
                 // store keys
                 _propertyKeys = (NSArray *)keys;
-                es_objc_setAssociatedObject(self, _es_codablePropertiesKeys, _propertyKeys, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                ESSetAssociatedObject(self, _es_codablePropertiesKeys, _propertyKeys, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         return _propertyKeys;
 }

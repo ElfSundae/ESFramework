@@ -176,7 +176,9 @@ NSString *ESUUID(void)
 @implementation _ESWeakObjectHolder
 @end
 
-id es_objc_getAssociatedObject(id target, const void *key)
+const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK = (0100000);
+
+id ESGetAssociatedObject(id target, const void *key)
 {
         id object = objc_getAssociatedObject(target, key);
         if ([object isKindOfClass:[_ESWeakObjectHolder class]]) {
@@ -185,7 +187,7 @@ id es_objc_getAssociatedObject(id target, const void *key)
         return object;
 }
 
-void es_objc_setAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy)
+void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy)
 {
         if (OBJC_ASSOCIATION_WEAK == policy) {
                 _ESWeakObjectHolder *weakHolder = objc_getAssociatedObject(target, key);

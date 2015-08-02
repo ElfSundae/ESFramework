@@ -48,7 +48,7 @@ static const void *__es_EventsKey = &__es_EventsKey;
 @implementation UIControl (__ESAdditionsInternal)
 - (NSMutableDictionary *)__es_Events
 {
-        NSMutableDictionary *dict = (NSMutableDictionary *)es_objc_getAssociatedObject(self, __es_EventsKey);
+        NSMutableDictionary *dict = (NSMutableDictionary *)ESGetAssociatedObject(self, __es_EventsKey);
         if (!dict) {
                 dict = [NSMutableDictionary dictionary];
                 [self set__es_Events:dict];
@@ -58,7 +58,7 @@ static const void *__es_EventsKey = &__es_EventsKey;
 
 - (void)set__es_Events:(NSMutableDictionary *)events
 {
-        es_objc_setAssociatedObject(self, __es_EventsKey, events, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        ESSetAssociatedObject(self, __es_EventsKey, events, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
