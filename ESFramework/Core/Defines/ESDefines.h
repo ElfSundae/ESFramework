@@ -253,6 +253,11 @@ ES_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
 ES_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
 
 /**
+ * Generate UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
+ */
+ES_EXTERN NSString *ESUUID(void);
+
+/**
  * Specifies a "zeroing weak reference" to the associated object.
  */
 #define OBJC_ASSOCIATION_WEAK (0100000)

@@ -189,21 +189,6 @@ ES_CATEGORY_FIX(NSString_ESAdditions)
         return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
 }
 
-
-+ (NSString *)newUUID
-{
-        CFUUIDRef theUUID = CFUUIDCreate(NULL);
-        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-        CFBridgingRelease(theUUID);
-        return CFBridgingRelease(string);
-}
-
-+ (NSString *)newUUIDWithMD5
-{
-        NSString *uuid = [self newUUID];
-        return [uuid es_md5HashString];
-}
-
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode
 {

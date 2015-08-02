@@ -161,6 +161,14 @@ NSString *ESRandomStringOfLength(NSUInteger length)
         }
 }
 
+NSString *ESUUID(void)
+{
+        CFUUIDRef theUUID = CFUUIDCreate(NULL);
+        CFStringRef string = CFUUIDCreateString(NULL, theUUID);
+        CFBridgingRelease(theUUID);
+        return CFBridgingRelease(string);
+}
+
 /// Store the weak object
 @interface _ESWeakObjectHolder : NSObject
 @property (nonatomic, weak) __weak id weakObject;

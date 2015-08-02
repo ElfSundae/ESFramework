@@ -80,15 +80,6 @@
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
 /**
- * 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
- */
-+ (NSString *)newUUID;
-/**
- * 16bits, e.g. @"1f3b3d5cb1c893ef0fabfdfced53c9e2"
- */
-+ (NSString *)newUUIDWithMD5;
-
-/**
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
  */
 - (NSString *)URLEncode;
