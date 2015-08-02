@@ -7,6 +7,7 @@
 //
 
 #import "ESDefines.h"
+#import <Security/Security.h>
 
 ES_CATEGORY_FIX(ESDefines)
 
@@ -105,6 +106,59 @@ NSMutableArray *ESCreateNonretainedMutableArray(void)
 NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
 {
         return CFBridgingRelease(CFDictionaryCreateMutable(NULL, 0, NULL, NULL));
+}
+
+u_int32_t ESRandomNumber(u_int32_t min, u_int32_t max /*upper_bound*/)
+{
+        if (min > max) {
+                u_int32_t t = min; min = max; max = t;
+        }
+        if (min == 0) {
+                return arc4random_uniform(max);
+        }
+        if (max < 2) {
+                return 0;
+        }
+        return arc4random_uniform(max - min + 1) + min;
+}
+
+NSData *ESRandomDataOfLength(NSUInteger length)
+{
+        NSMutableData *data = [NSMutableData dataWithLength:length];
+        int result = SecRandomCopyBytes(NULL, (size_t)length, data.mutableBytes);
+        if (0 != result) {
+                printf("%s: Unable to generate random data.\n", __PRETTY_FUNCTION__);
+        }
+        return data;
+}
+
+NSString *ESRandomStringOfLength(NSUInteger length)
+{
+        NSData *data = ESRandomDataOfLength(length);
+        NSString *string = nil;
+        // Base64
+        if ([data respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+                string = [data base64EncodedStringWithOptions:0];
+        } else {
+                string = [data base64Encoding];
+        }
+        // Remove "+/-"
+        string = [[string componentsSeparatedByCharactersInSet:
+                  [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
+                  componentsJoinedByString:@""];
+        // base64后的字符串长度是原串长度的大约135.1%， 去掉特殊字符后再检查字符串长度
+        if (string.length == length) {
+                return string;
+        } else if (string.length > length) {
+                return [string substringToIndex:length];
+        } else {
+                NSMutableString *result = string.mutableCopy;
+                for (NSUInteger i = string.length; i < length; i++) {
+                        NSUInteger loc = ESRandomNumber(0, (u_int32_t)string.length);
+                        [result appendFormat:@"%c", [string characterAtIndex:loc]];
+                }
+                return result;
+        }
 }
 
 /// Store the weak object

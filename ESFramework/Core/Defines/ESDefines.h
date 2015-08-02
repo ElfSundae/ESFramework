@@ -240,6 +240,19 @@ ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
 ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 /**
+ * Generate random number, (min, max]
+ */
+ES_EXTERN u_int32_t ESRandomNumber(u_int32_t min, u_int32_t max /*upper_bound*/);
+/**
+ * Generate random data using `SecRandomCopyBytes`
+ */
+ES_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
+/**
+ * Generate random string, contains 0-9a-zA-Z.
+ */
+ES_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
+
+/**
  * Specifies a "zeroing weak reference" to the associated object.
  */
 #define OBJC_ASSOCIATION_WEAK (0100000)
