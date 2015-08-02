@@ -18,11 +18,6 @@ ES_CATEGORY_FIX(NSDate_ESAdditions)
         return [[self date] timeIntervalSince1970];
 }
 
-+ (unsigned long long)timestamp
-{
-        return (unsigned long long)[self timeIntervalSince1970];
-}
-
 - (BOOL)isBefore:(NSDate *)aDate
 {
         return [self timeIntervalSinceDate:aDate] < 0;

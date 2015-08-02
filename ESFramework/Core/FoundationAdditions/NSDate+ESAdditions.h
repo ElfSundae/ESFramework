@@ -11,7 +11,6 @@
 @interface NSDate (ESAdditions)
 
 + (NSTimeInterval)timeIntervalSince1970;
-+ (unsigned long long)timestamp;
 
 - (BOOL)isBefore:(NSDate *)aDate;
 - (BOOL)isAfter:(NSDate *)aDate;
