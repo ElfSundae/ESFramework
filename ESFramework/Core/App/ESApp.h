@@ -80,8 +80,9 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 - (NSString *)appStoreID;
 /**
  * Returns the timeZone used by your web server, used to convert datetime from server to local.
+ * Default is "GMT"
  *
- * Default is `[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]`
+ * e.g. [NSTimeZone timeZoneWithName:@"Asia/Shanghai"]
  */
 - (NSTimeZone *)appWebServerTimeZone;
 
