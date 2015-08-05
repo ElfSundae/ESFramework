@@ -577,26 +577,34 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                 va_list argsList;
                 va_start(argsList, result);
                 while (argCount < totalArguments) {
+                        // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
                         char *argType = (char *)[signature getArgumentTypeAtIndex:argCount];
-                        //void *arg = NULL;
+
                         if (0 == strcmp(argType, @encode(id))) {
                                 id arg = va_arg(argsList, id);
                                 [invocation setArgument:&arg atIndex:argCount++];
                         } else if (0 == strcmp(argType, @encode(char)) ||
                                    0 == strcmp(argType, @encode(unsigned char)) ||
+                                   0 == strcmp(argType, @encode(BOOL)) ||
                                    0 == strcmp(argType, @encode(short)) ||
                                    0 == strcmp(argType, @encode(unsigned short)) ||
-                                   0 == strcmp(argType, @encode(int)) ||
-                                   0 == strcmp(argType, @encode(unsigned int))) {
+                                   0 == strcmp(argType, @encode(int))) {
                                 int arg = va_arg(argsList, int);
                                 [invocation setArgument:&arg atIndex:argCount++];
-                        } else if ( 0 == strcmp(argType, @encode(long)) ||
-                                   0 == strcmp(argType, @encode(unsigned long))) {
+                        } else if (0 == strcmp(argType, @encode(unsigned int))) {
+                                unsigned int arg = va_arg(argsList, unsigned int);
+                                [invocation setArgument:&arg atIndex:argCount++];
+                        } else if (0 == strcmp(argType, @encode(long))) {
                                 long arg = va_arg(argsList, long);
                                 [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(long long)) ||
-                                   0 == strcmp(argType, @encode(unsigned long long))) {
+                        } else if (0 == strcmp(argType, @encode(unsigned long))) {
+                                unsigned long arg = va_arg(argsList, unsigned long);
+                                [invocation setArgument:&arg atIndex:argCount++];
+                        } else if (0 == strcmp(argType, @encode(long long))) {
                                 long long arg = va_arg(argsList, long long);
+                                [invocation setArgument:&arg atIndex:argCount++];
+                        } else if (0 == strcmp(argType, @encode(unsigned long long))) {
+                                unsigned long long arg = va_arg(argsList, unsigned long long);
                                 [invocation setArgument:&arg atIndex:argCount++];
                         } else if (0 == strcmp(argType, @encode(float)) ||
                                    0 == strcmp(argType, @encode(double))) {
