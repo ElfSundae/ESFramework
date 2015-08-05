@@ -261,6 +261,12 @@ ES_EXTERN NSString *ESUUID(void);
  * Specifies a "zeroing weak reference" to the associated object.
  */
 ES_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
+
+/**
+ * Define a key for Associcated Object.
+ */
+#define ESDefineAssociatedObjectKey(name)       static const void * name##Key = & name##Key
+
 /**
  * Returns the value associated with a given object for a given key.
  */
