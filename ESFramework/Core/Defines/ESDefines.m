@@ -108,16 +108,10 @@ NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
         return CFBridgingRelease(CFDictionaryCreateMutable(NULL, 0, NULL, NULL));
 }
 
-u_int32_t ESRandomNumber(u_int32_t min, u_int32_t max /*upper_bound*/)
+uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 {
         if (min > max) {
-                u_int32_t t = min; min = max; max = t;
-        }
-        if (min == 0) {
-                return arc4random_uniform(max);
-        }
-        if (max < 2) {
-                return 0;
+                uint32_t t = min; min = max; max = t;
         }
         return arc4random_uniform(max - min + 1) + min;
 }
@@ -154,7 +148,7 @@ NSString *ESRandomStringOfLength(NSUInteger length)
         } else {
                 NSMutableString *result = string.mutableCopy;
                 for (NSUInteger i = string.length; i < length; i++) {
-                        NSUInteger loc = ESRandomNumber(0, (u_int32_t)string.length);
+                        NSUInteger loc = ESRandomNumber(0, (uint32_t)string.length);
                         [result appendFormat:@"%c", [string characterAtIndex:loc]];
                 }
                 return result;

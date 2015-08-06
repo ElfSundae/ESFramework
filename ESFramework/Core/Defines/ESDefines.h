@@ -240,9 +240,9 @@ ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
 ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 /**
- * Generate random number, (min, max]
+ * Generate random number between min and max.
  */
-ES_EXTERN u_int32_t ESRandomNumber(u_int32_t min, u_int32_t max /*upper_bound*/);
+ES_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);
 /**
  * Generate random data using `SecRandomCopyBytes`
  */
