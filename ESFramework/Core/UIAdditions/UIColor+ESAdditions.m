@@ -36,7 +36,7 @@ ES_CATEGORY_FIX(UIColor_ESAdditions)
 
 + (UIColor *)randomColor
 {
-        return [UIColor colorWithRed:(CGFloat)arc4random()/UINT_MAX green:(CGFloat)arc4random()/UINT_MAX blue:(CGFloat)arc4random()/UINT_MAX alpha:1.f];
+        return ESRandomColor();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

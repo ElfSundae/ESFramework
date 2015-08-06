@@ -251,6 +251,10 @@ ES_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
  * Generate random string, contains 0-9a-zA-Z.
  */
 ES_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
+/**
+ * Generate random color.
+ */
+ES_EXTERN UIColor *ESRandomColor(void);
 
 /**
  * Generate UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"

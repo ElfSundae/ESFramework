@@ -126,6 +126,14 @@ NSData *ESRandomDataOfLength(NSUInteger length)
         return data;
 }
 
+UIColor *ESRandomColor(void)
+{
+        return [UIColor colorWithRed:(CGFloat)arc4random()/UINT_MAX
+                               green:(CGFloat)arc4random()/UINT_MAX
+                                blue:(CGFloat)arc4random()/UINT_MAX
+                               alpha:1.f];
+}
+
 NSString *ESRandomStringOfLength(NSUInteger length)
 {
         NSData *data = ESRandomDataOfLength(length);
