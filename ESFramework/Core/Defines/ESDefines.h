@@ -26,20 +26,15 @@
 ///=============================================
 #pragma mark - Log
 
-#if !defined(NSLog)
+#if (!defined(NSLog) && !defined(NSLogIf))
 #if DEBUG
 #define NSLog(fmt, ...)                 NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
-#if !defined(NSLogIf)
 #define NSLogIf(condition, fmt, ...)    if((condition)) { NSLog(fmt, ##__VA_ARGS__); }
-#endif
 #else
 #define NSLog(fmt, ...)
-#if !defined(NSLogIf)
 #define NSLogIf(condition, fmt, ...)
 #endif
 #endif
-#endif
-
 
 /**
  * Log the execution time.
