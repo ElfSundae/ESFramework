@@ -19,7 +19,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, UINotifications)
         if (0 == types) {
                 if (failure) {
                         ESDispatchOnMainThreadAsynchrony(^{
-                                failure([NSError errorWithDomain:ESAppErrorDomain code:-10 userInfo:@{NSLocalizedDescriptionKey : @"UIRemoteNotificationTypes is none, which types you will register for?"}]);
+                                failure([NSError errorWithDomain:ESAppErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"Remote notification types is none."}]);
                         });
                 }
                 return;
@@ -35,8 +35,8 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, UINotifications)
                 UIUserNotificationType currentType = currentSettings.types;
                 UIUserNotificationType registerForTypes = (UIUserNotificationType)types;
                 if (currentType != registerForTypes) {
-                        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:registerForTypes
-                                                                                                 categories:nil];
+                        UIUserNotificationSettings *settings =
+                        [UIUserNotificationSettings settingsForTypes:registerForTypes categories:nil];
                         [app registerUserNotificationSettings:settings];
                 } else {
                         [app registerForRemoteNotifications];

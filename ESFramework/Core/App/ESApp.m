@@ -78,9 +78,9 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 // iOS8+
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
-        if (notificationSettings == UIUserNotificationTypeNone) {
+        if (notificationSettings.types == UIUserNotificationTypeNone) {
                 // failed
-                NSError *error = [NSError errorWithDomain:ESAppErrorDomain code:-11 userInfo:@{NSLocalizedDescriptionKey : @"Can not register user notification settings."}];
+                NSError *error = [NSError errorWithDomain:ESAppErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"Can not register user notification settings."}];
                 [self application:application didFailToRegisterForRemoteNotificationsWithError:error];
         } else {
                 [application registerForRemoteNotifications];
