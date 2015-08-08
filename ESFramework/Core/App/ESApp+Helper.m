@@ -13,7 +13,7 @@
 #import "UIAlertView+ESBlock.h"
 #import <AddressBook/AddressBook.h>
 
-#define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"es_check_fresh_launch_app_version"
+#define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"ESCheckFreshLaunchAppVersion"
 
 ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
 
