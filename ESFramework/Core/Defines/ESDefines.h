@@ -407,9 +407,6 @@ ES_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
 ///=============================================
 #pragma mark - Dispatch & Block
 
-typedef void (^ESBasicBlock)(void);
-typedef void (^ESHandlerBlock)(id sender);
-
 ES_EXTERN void ESDispatchOnMainThreadSynchrony(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);

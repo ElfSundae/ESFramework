@@ -274,6 +274,9 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (BOOL)openURLWithString:(NSString *)string
 {
+        if (!ESIsStringWithAnyText(string)) {
+                return NO;
+        }
         return [self openURL:[NSURL URLWithString:string]];
 }
 
@@ -281,6 +284,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 {
         return [self canOpenURL:[NSURL URLWithString:@"tel:"]];
 }
+
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn
 {
         if (![phoneNumber isKindOfClass:[NSString class]] || !phoneNumber.length) {
@@ -306,24 +310,12 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)openAppStoreReviewPage
 {
-        [self openAppStoreReviewPageWithAppID:[[self sharedApp] appStoreID]];
-}
-
-+ (void)openAppStoreReviewPageWithAppID:(NSString *)appID
-{
-        NSString *url = [ESITunesStoreHelper appStoreReviewLinkForAppID:appID];
-        [self openURLWithString:url];
+        [ESITunesStoreHelper openAppStoreReviewPageWithAppID:[[self sharedApp] appStoreID]];
 }
 
 + (void)openAppStore
 {
-        [self openAppStoreWithAppID:[[self sharedApp] appStoreID]];
-}
-
-+ (void)openAppStoreWithAppID:(NSString *)appID
-{
-        NSString *url = [ESITunesStoreHelper appStoreLinkForAppID:appID];
-        [self openURLWithString:url];
+        [ESITunesStoreHelper openAppStoreWithAppID:[[self sharedApp] appStoreID]];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -405,7 +397,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Authorization
 
-- (void)requestAddressBookAccessWithCompletion:(ESBasicBlock)completion failure:(ESBasicBlock)failure
+- (void)requestAddressBookAccessWithCompletion:(dispatch_block_t)completion failure:(dispatch_block_t)failure
 {
         if (!ABAddressBookRequestAccessWithCompletion) {
                 if (completion)

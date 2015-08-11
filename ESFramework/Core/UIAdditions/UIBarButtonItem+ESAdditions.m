@@ -25,17 +25,17 @@ ES_CATEGORY_FIX(UIBarButtonItem_ESAdditions)
         [super setTintColor:tintColor];
         self.arrowButton.tintColor = tintColor;
 }
-+ (instancetype)_arrowItemWithButtonStyle:(ESArrowButtonStyle)style handler:(ESHandlerBlock)handler
++ (instancetype)_arrowItemWithButtonStyle:(ESArrowButtonStyle)style handler:(ESUIBarButtonItemHandler)handler
 {
         ESArrowButton *button = [ESArrowButton button];
         ESBarButtonArrowItem *item = [[self alloc] initWithCustomView:button];
         button.arrowStyle = style;
         button.tintColor = ([[self appearance] tintColor] ?: item.tintColor);
-        ESWeakSelf;
+        ESWeak_(item);
         [button addEventHandler:^(id sender, UIControlEvents controlEvents) {
-                ESStrongSelf;
+                ESStrong_(item);
                 if (handler) {
-                        handler(_self);
+                        handler(_item);
                 }
         } forControlEvents:UIControlEventTouchUpInside];
         return item;

@@ -365,17 +365,12 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  * Open App Store, and goto this app's Review page. `-appStoreID` must be implemented.
  */
 + (void)openAppStoreReviewPage;
-/**
- * Open App Store, and goto the Review page.
- */
-+ (void)openAppStoreReviewPageWithAppID:(NSString *)appID;
 
 /**
  * Open App Store, and goto this app's download page. `-appStoreID` must be implemented.
  */
 + (void)openAppStore;
 
-+ (void)openAppStoreWithAppID:(NSString *)appID;
 
 #if 0 // deprecated
 ///=============================================
@@ -413,6 +408,6 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 /**
  * Request `AddressBook` authorization if needed. `completion` and `failure` will callback on the main thread.
  */
-- (void)requestAddressBookAccessWithCompletion:(ESBasicBlock)completion failure:(ESBasicBlock)failure;
+- (void)requestAddressBookAccessWithCompletion:(dispatch_block_t)completion failure:(dispatch_block_t)failure;
 
 @end

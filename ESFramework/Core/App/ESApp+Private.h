@@ -13,8 +13,8 @@
 
 @interface ESApp ()
 {
-        ESHandlerBlock _esRemoteNotificationRegisterSuccessBlock;
-        ESHandlerBlock _esRemoteNotificationRegisterFailureBlock;
+        void (^_esRemoteNotificationRegisterSuccessBlock)(NSString *deviceToken);
+        void (^_esRemoteNotificationRegisterFailureBlock)(NSError *error);
         NSString *_esWebViewDefaultUserAgent;
 }
 
