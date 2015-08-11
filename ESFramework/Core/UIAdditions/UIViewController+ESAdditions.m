@@ -9,8 +9,8 @@
 #import "UIViewController+ESAdditions.h"
 #import "ESApp.h"
 #import "ESDefines.h"
-ES_CATEGORY_FIX(UIViewController_ESAdditions)
 
+ES_CATEGORY_FIX(UIViewController_ESAdditions)
 
 @implementation UIViewController (ESAdditions)
 

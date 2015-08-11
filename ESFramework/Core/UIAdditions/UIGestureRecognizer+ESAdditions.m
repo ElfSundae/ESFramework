@@ -8,6 +8,8 @@
 
 #import "UIGestureRecognizer+ESAdditions.h"
 
+ES_CATEGORY_FIX(UIGestureRecognizer_ESAdditions)
+
 @interface UIGestureRecognizer (_ESAdditionsInternal)
 @property (nonatomic, copy) ESUIGestureRecognizerHandler __es_Handler;
 @end

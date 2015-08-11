@@ -8,6 +8,7 @@
 
 #import "UIImageView+ESAdditions.h"
 #import "ESDefines.h"
+
 ES_CATEGORY_FIX(UIImageView_ESAdditions)
 
 @implementation UIImageView (ESAdditions)

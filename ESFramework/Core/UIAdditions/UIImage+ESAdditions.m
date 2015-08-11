@@ -8,6 +8,7 @@
 
 #import "UIImage+ESAdditions.h"
 #import "ESDefines.h"
+
 ES_CATEGORY_FIX(UIImage_ESAdditions)
 
 @implementation UIImage (ESAdditions)

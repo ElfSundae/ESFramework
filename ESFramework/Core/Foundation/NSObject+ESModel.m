@@ -9,18 +9,41 @@
 #import "NSObject+ESModel.h"
 #import <objc/runtime.h>
 #import "NSDictionary+ESAdditions.h"
-#import "ESDefines.h"
 
 ES_CATEGORY_FIX(NSObject_ESModel)
 
-static const void *_es_codablePropertiesKeys = &_es_codablePropertiesKeys;
-static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
+ESDefineAssociatedObjectKey(ESModelSharedInstance);
+ESDefineAssociatedObjectKey(ESModelCodablePropertiesKeys);
 
 @implementation NSObject (ESModel)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Constructors
+
++ (instancetype)modelInstance
+{
+        return [[self alloc] init];
+}
+
++ (instancetype)modelWithContentsOfFile:(NSString *)filePath
+{
+        if (!ESIsStringWithAnyText(filePath)) {
+                return nil;
+        }
+        id object = nil;
+        @try {
+                object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        }
+        @catch (NSException *exception) {
+        }
+        
+        if ([object isKindOfClass:[self class]]) {
+                return object;
+        }
+        
+        return nil;
+}
 
 /// NSCoding
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
@@ -36,7 +59,13 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
         for (NSString *key in [[self class] modelCodablePropertiesKeys]) {
-                id value = [self valueForKey:key];
+                id value = nil;
+                @try {
+                        value = [self valueForKey:key];
+                }
+                @catch (NSException *exception) {
+                }
+                
                 if (value) {
                         [aCoder encodeObject:value forKey:key];
                 }
@@ -46,27 +75,16 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 - (void)setModelWithCoder:(NSCoder *)aDecoder
 {
         for (NSString *key in [[self class] modelCodablePropertiesKeys]) {
-                id value = [aDecoder decodeObjectForKey:key];
+                id value = nil;
+                @try {
+                        value = [aDecoder decodeObjectForKey:key];
+                }
+                @catch (NSException *exception) {
+                }
                 if (value) {
                         [self setValue:value forKey:key];
                 }
         }
-}
-
-+ (instancetype)modelInstance
-{
-        return [[self alloc] init];
-}
-
-+ (instancetype)modelWithContentsOfFile:(NSString *)filePath
-{
-        if (ESIsStringWithAnyText(filePath)) {
-                id object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-                if ([object isKindOfClass:[self class]]) {
-                        return object;
-                }
-        }
-        return nil;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -77,29 +95,27 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                id shared = [self modelWithContentsOfFile:[self modelSharedInstanceFilePath]];
+                id shared = [[self class] modelWithContentsOfFile:[self modelSharedInstanceFilePath]];
                 if (!shared) {
                         shared = [self modelInstance];
                 }
-                ESSetAssociatedObject(self, _es_modelSharedInstanceKey, shared, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                ESSetAssociatedObject(self, ESModelSharedInstanceKey, shared, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         });
-        return ESGetAssociatedObject(self, _es_modelSharedInstanceKey);
+        return ESGetAssociatedObject(self, ESModelSharedInstanceKey);
 }
 
 + (void)setModelSharedInstance:(id)instance
 {
-        if (nil == instance) {
-                ESSetAssociatedObject(self, _es_modelSharedInstanceKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        if ([instance isKindOfClass:[self class]]) {
+                ESSetAssociatedObject(self, ESModelSharedInstanceKey, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        } else if (!instance) {
+                ESSetAssociatedObject(self, ESModelSharedInstanceKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 NSString *filePath = [self modelSharedInstanceFilePath];
                 if (filePath) {
                         [[NSFileManager defaultManager] removeItemAtPath:filePath error:NULL];
                 }
-        } else if ([instance isKindOfClass:[self class]]) {
-                ESSetAssociatedObject(self, _es_modelSharedInstanceKey, instance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         } else {
-                printf("<Error> ESModelException: +setModelSharedInstance: parameter of class %s does not match, should be %s.",
-                       [NSStringFromClass([instance class]) UTF8String],
-                       [NSStringFromClass([self class]) UTF8String]);
+                printf("%s <Error> instance should be %s, but given %s.\n", __PRETTY_FUNCTION__, class_getName([self class]), class_getName([instance class]));
         }
 }
 
@@ -125,10 +141,8 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 - (void)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
 {
-        ESWeakSelf;
         ESDispatchOnDefaultQueue(^{
-                ESStrongSelf;
-                BOOL res = [_self modelWriteToFile:path atomically:useAuxiliaryFile];
+                BOOL res = [self modelWriteToFile:path atomically:useAuxiliaryFile];
                 if (block) {
                         ESDispatchOnMainThreadAsynchrony(^{
                                 block(res);
@@ -139,16 +153,17 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 - (BOOL)modelWriteToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile
 {
-        if (!path) {
-                return NO;
-        }
-        
         if (!ESTouchDirectoryAtFilePath(path)) {
                 return NO;
         }
         
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-        return [data writeToFile:path atomically:useAuxiliaryFile];
+        @try {
+                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+                return [data writeToFile:path atomically:useAuxiliaryFile];
+        }
+        @catch (NSException *exception) {
+                return NO;
+        }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -157,7 +172,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
 
 + (NSArray *)modelCodablePropertiesKeys
 {
-        NSArray *_propertyKeys = ESGetAssociatedObject(self, _es_codablePropertiesKeys);
+        NSArray *_propertyKeys = ESGetAssociatedObject(self, ESModelCodablePropertiesKeysKey);
         if (!_propertyKeys) {
                 NSMutableArray *keys = [NSMutableArray array];
                 
@@ -212,7 +227,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                                                 break;
                                                 
                                 }
-                                if (NO == isTypeCodable) {
+                                if (!isTypeCodable) {
                                         continue;
                                 }
                                 
@@ -255,7 +270,7 @@ static const void *_es_modelSharedInstanceKey = &_es_modelSharedInstanceKey;
                 
                 // store keys
                 _propertyKeys = (NSArray *)keys;
-                ESSetAssociatedObject(self, _es_codablePropertiesKeys, _propertyKeys, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                ESSetAssociatedObject(self, ESModelCodablePropertiesKeysKey, _propertyKeys, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }
         return _propertyKeys;
 }

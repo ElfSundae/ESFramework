@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESNetworkReachability.h"
 #import "ESDefines.h"
+#import "ESNetworkReachability.h"
 
-ES_EXTERN NSString *const ESNetworkReachabilityStatusStringNotReachable;
-ES_EXTERN NSString *const ESNetworkReachabilityStatusStringReachableViaWWAN;
-ES_EXTERN NSString *const ESNetworkReachabilityStatusStringReachableViaWiFi;
+#define ESNetworkReachabilityStatusStringNotReachable           @"None"
+#define ESNetworkReachabilityStatusStringReachableViaWWAN       @"WWAN"
+#define ESNetworkReachabilityStatusStringReachableViaWiFi       @"WiFi"
 
 /**
  * UIDevice has started monitoring network reachability status changes for

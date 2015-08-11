@@ -8,10 +8,7 @@
 
 #import "UIDevice+ESNetworkReachability.h"
 
-NSString *const ESNetworkReachabilityStatusStringNotReachable = @"None";
-NSString *const ESNetworkReachabilityStatusStringReachableViaWWAN = @"WWAN";
-NSString *const ESNetworkReachabilityStatusStringReachableViaWiFi = @"WiFi";
-
+ES_CATEGORY_FIX(UIDevice_ESNetworkReachability)
 
 @implementation UIDevice (ESNetworkReachability)
 
