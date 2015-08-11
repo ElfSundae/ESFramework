@@ -93,10 +93,6 @@
 		E70493631925B19200C0EDAD /* ESErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493611925B19200C0EDAD /* ESErrorView.m */; };
 		E70493CD1927207B00C0EDAD /* ESTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493BC1927207B00C0EDAD /* ESTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70493CE1927207B00C0EDAD /* ESTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493BD1927207B00C0EDAD /* ESTableViewController.m */; };
-		E70493D51927207B00C0EDAD /* ESWebView.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493C61927207B00C0EDAD /* ESWebView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E70493D61927207B00C0EDAD /* ESWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493C71927207B00C0EDAD /* ESWebView.m */; };
-		E70493D71927207B00C0EDAD /* ESWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493C81927207B00C0EDAD /* ESWebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E70493D81927207B00C0EDAD /* ESWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493C91927207B00C0EDAD /* ESWebViewController.m */; };
 		E70493D91927207B00C0EDAD /* ESStoreProductViewControllerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493CB1927207B00C0EDAD /* ESStoreProductViewControllerManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E70493DA1927207B00C0EDAD /* ESStoreProductViewControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E70493CC1927207B00C0EDAD /* ESStoreProductViewControllerManager.m */; };
 		E70493DE192720DC00C0EDAD /* ESMoviePlayerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E70493DC192720DC00C0EDAD /* ESMoviePlayerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -435,10 +431,6 @@
 		E70493611925B19200C0EDAD /* ESErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESErrorView.m; sourceTree = "<group>"; };
 		E70493BC1927207B00C0EDAD /* ESTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
 		E70493BD1927207B00C0EDAD /* ESTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESTableViewController.m; sourceTree = "<group>"; };
-		E70493C61927207B00C0EDAD /* ESWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESWebView.h; sourceTree = "<group>"; };
-		E70493C71927207B00C0EDAD /* ESWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESWebView.m; sourceTree = "<group>"; };
-		E70493C81927207B00C0EDAD /* ESWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESWebViewController.h; sourceTree = "<group>"; };
-		E70493C91927207B00C0EDAD /* ESWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESWebViewController.m; sourceTree = "<group>"; };
 		E70493CB1927207B00C0EDAD /* ESStoreProductViewControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESStoreProductViewControllerManager.h; sourceTree = "<group>"; };
 		E70493CC1927207B00C0EDAD /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
 		E70493DC192720DC00C0EDAD /* ESMoviePlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMoviePlayerViewController.h; sourceTree = "<group>"; };
@@ -761,17 +753,6 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		E70493C51927207B00C0EDAD /* WebView */ = {
-			isa = PBXGroup;
-			children = (
-				E70493C61927207B00C0EDAD /* ESWebView.h */,
-				E70493C71927207B00C0EDAD /* ESWebView.m */,
-				E70493C81927207B00C0EDAD /* ESWebViewController.h */,
-				E70493C91927207B00C0EDAD /* ESWebViewController.m */,
-			);
-			path = WebView;
-			sourceTree = "<group>";
-		};
 		E70493CA1927207B00C0EDAD /* StoreProduct */ = {
 			isa = PBXGroup;
 			children = (
@@ -855,7 +836,6 @@
 			isa = PBXGroup;
 			children = (
 				E70493BB1927207B00C0EDAD /* TableView */,
-				E70493C51927207B00C0EDAD /* WebView */,
 				E70493CA1927207B00C0EDAD /* StoreProduct */,
 				E70493DB192720A800C0EDAD /* Media */,
 			);
@@ -1475,12 +1455,10 @@
 			files = (
 				E7DBC831192E02ED00BAEEAD /* ESRefreshControlDefaultContentView.h in Headers */,
 				E76FEAEB192A93DC001461D1 /* ESActivityLabel.h in Headers */,
-				E70493D51927207B00C0EDAD /* ESWebView.h in Headers */,
 				E79D85C1192C48760000B57E /* ESTableViewDataSource.h in Headers */,
 				E70493CD1927207B00C0EDAD /* ESTableViewController.h in Headers */,
 				E76FEAFC192B59B8001461D1 /* ESStatusOverlayView.h in Headers */,
 				E793AB9D18FDDC3F00487E34 /* ESAnimations.h in Headers */,
-				E70493D71927207B00C0EDAD /* ESWebViewController.h in Headers */,
 				E704935B1925B15100C0EDAD /* ESButton.h in Headers */,
 				E76FEB11192C3101001461D1 /* ESRefreshControl.h in Headers */,
 				E70493571925B15100C0EDAD /* ESBadgeView.h in Headers */,
@@ -1889,11 +1867,9 @@
 				E76FEAF8192B0B7B001461D1 /* ESTextView.m in Sources */,
 				E704935C1925B15100C0EDAD /* ESButton.m in Sources */,
 				E70493CE1927207B00C0EDAD /* ESTableViewController.m in Sources */,
-				E70493D61927207B00C0EDAD /* ESWebView.m in Sources */,
 				E70493DA1927207B00C0EDAD /* ESStoreProductViewControllerManager.m in Sources */,
 				E793AB9E18FDDC3F00487E34 /* ESAnimations.m in Sources */,
 				E7DBC837192EA4E200BAEEAD /* UIScrollView+ESRefreshControl.m in Sources */,
-				E70493D81927207B00C0EDAD /* ESWebViewController.m in Sources */,
 				E76FEB1A192C349F001461D1 /* UITableViewCell+ESTableViewAdditions.m in Sources */,
 				E70493DF192720DC00C0EDAD /* ESMoviePlayerViewController.m in Sources */,
 				E704935E1925B15100C0EDAD /* UIProgressView+ESStyle.m in Sources */,
