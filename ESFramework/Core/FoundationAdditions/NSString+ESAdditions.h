@@ -32,11 +32,8 @@
 /**
  * Detect whether file exists for this path.
  */
-- (BOOL)fileExists __attribute__((deprecated));
-- (BOOL)fileExists:(BOOL *)isDirectory __attribute__((deprecated));
-
-- (BOOL)isFileExists;
-- (BOOL)isFileExists:(BOOL *)isDirectory;
+- (BOOL)fileExists;
+- (BOOL)fileExists:(BOOL *)isDirectory;
 
 /**
  * Asynchronously write string to file.

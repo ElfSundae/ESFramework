@@ -24,14 +24,14 @@ ES_CATEGORY_FIX(NSURL_ESAdditions)
                 (self.isFileURL && anotherURL.isFileURL && [self.path isEqualToString:anotherURL.path]));
 }
 
-- (BOOL)isFileExists:(BOOL *)isDirectory
+- (BOOL)fileExists:(BOOL *)isDirectory
 {
-        return (self.isFileURL && [self.path isFileExists:isDirectory]);
+        return (self.isFileURL && [self.path fileExists:isDirectory]);
 }
 
-- (BOOL)isFileExists
+- (BOOL)fileExists
 {
-        return (self.isFileURL && [self.path isFileExists]);
+        return (self.isFileURL && [self.path fileExists]);
 }
 
 @end

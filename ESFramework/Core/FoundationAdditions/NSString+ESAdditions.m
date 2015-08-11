@@ -50,24 +50,14 @@ ES_CATEGORY_FIX(NSString_ESAdditions)
         return [self isEqualToString:@""];
 }
 
-- (BOOL)isFileExists
+- (BOOL)fileExists
 {
         return [[NSFileManager defaultManager] fileExistsAtPath:self];
 }
 
-- (BOOL)isFileExists:(BOOL *)isDirectory
-{
-        return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
-}
-
-- (BOOL)fileExists
-{
-        return [self isFileExists];
-}
-
 - (BOOL)fileExists:(BOOL *)isDirectory
 {
-        return [self isFileExists:isDirectory];
+        return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
 }
 
 
