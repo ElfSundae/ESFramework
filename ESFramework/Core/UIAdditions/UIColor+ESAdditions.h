@@ -8,57 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-/**
- * @ref [BButton](https://github.com/jessesquires/BButton)
- */
 @interface UIColor (ESAdditions)
-/// @"rgb(239, 156, 255)"
-- (NSString *)rgbString;
-/// rgb(239, 156, 255, 0.5)
-- (NSString *)rgbaString;
-/// `#EF9CFF`
-- (NSString *)hexString;
-/// Returns a random color
-+ (UIColor *)randomColor;
 
-///=============================================
-/// @name Useful color
-///=============================================
-
+/// @"rgb(239,156,255)"
+- (NSString *)es_RGBString;
+/// @"rgba(239,156,255,0.5)"
+- (NSString *)es_RGBAString;
+/// @"#EF9CFF"
+- (NSString *)es_HexString;
+/// take groupTableViewBackgroundColor back on iOS6+
 + (UIColor *)es_groupTableViewBackgroundColor;
 
-///=============================================
-/// @name Flat UI Colors
-///=============================================
+// Utilities from [BButton](https://github.com/jessesquires/BButton)
+- (UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent;
+- (UIColor *)es_lightenColorWithValue:(CGFloat)value;
+- (UIColor *)es_darkenColorWithValue:(CGFloat)value;
+- (BOOL)es_isLightColor;
 
-+ (instancetype)alizarinColor;
-+ (instancetype)amethystColor;
-+ (instancetype)asbestosColor;
-+ (instancetype)belizeHoleColor;
-+ (instancetype)carrotColor;
-+ (instancetype)cloudsColor;
-+ (instancetype)concreteColor;
-+ (instancetype)emeraldColor;
-+ (instancetype)greenSeaColor;
-+ (instancetype)midnightBlueColor;
-+ (instancetype)nephritisColor;
-+ (instancetype)flatOrangeColor;
-+ (instancetype)peterRiverColor;
-+ (instancetype)pomegranateColor;
-+ (instancetype)pumpkinColor;
-+ (instancetype)silverColor;
-+ (instancetype)sunFlowerColor;
-+ (instancetype)turquoiseColor;
-+ (instancetype)wetAsphaltColor;
-+ (instancetype)wisteriaColor;
-
-
-///=============================================
-/// @name BButton
-///=============================================
-
-- (BOOL)isLightColor;
-- (UIColor *)desaturatedColorToPercentSaturation:(CGFloat)percent;
-- (UIColor *)lightenColorWithValue:(CGFloat)value;
-- (UIColor *)darkenColorWithValue:(CGFloat)value;
 @end

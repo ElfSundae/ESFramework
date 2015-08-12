@@ -10,9 +10,11 @@
 #define ESFramework_ESDefines_H
 
 #import <Foundation/Foundation.h>
-#import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import <Security/Security.h>
 #import <objc/runtime.h>
+#import <mach/mach_time.h>
 
 #if defined(__cplusplus)
 #define ES_EXTERN       extern "C" __attribute__((visibility ("default")))
@@ -39,18 +41,17 @@
 /**
  * Log the execution time.
  */
-#include <mach/mach_time.h>
-ES_EXTERN mach_timebase_info_data_t __es_timebase_info;
 
 #if DEBUG
-#define ES_STOPWATCH_BEGIN(stopwatch_begin_var)  \
-        uint64_t stopwatch_begin_var = mach_absolute_time();
-#define ES_STOPWATCH_END(stopwatch_begin_var) \
-        uint64_t end_##stopwatch_begin_var = mach_absolute_time() - stopwatch_begin_var; \
-        if (__es_timebase_info.denom == 0) { (void) mach_timebase_info(&__es_timebase_info); } \
-        end_##stopwatch_begin_var = end_##stopwatch_begin_var * __es_timebase_info.numer / __es_timebase_info.denom; \
-        double ms_end_##stopwatch_begin_var = (double)end_##stopwatch_begin_var / 1000000; \
-        printf("‼️STOPWATCH‼️[%s:%d] %s %fms\n", [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, __PRETTY_FUNCTION__, ms_end_##stopwatch_begin_var);
+#define ES_STOPWATCH_BEGIN(stopwatch_begin_var) uint64_t stopwatch_begin_var = mach_absolute_time();
+#define ES_STOPWATCH_END(stopwatch_begin_var)   do{ \
+uint64_t end = mach_absolute_time(); \
+mach_timebase_info_data_t timebaseInfo; \
+(void) mach_timebase_info(&timebaseInfo); \
+uint64_t elapsedNano = (end - stopwatch_begin_var) * timebaseInfo.numer / timebaseInfo.denom; \
+double_t elapsedMillisecond = (double_t)elapsedNano / 1000000.0; \
+printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String:__FILE__].lastPathComponent.UTF8String, __LINE__, __PRETTY_FUNCTION__, elapsedMillisecond); \
+} while(0)
 #else
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var)
 #define ES_STOPWATCH_END(stopwatch_begin_var)
@@ -113,14 +114,14 @@ ES_EXTERN BOOL ESOSVersionIsAbove8(void);
 /**
  * Make weak references to break "retain cycles".
  */
-#define ESWeak(var, weakVar) __weak __typeof(&*var) weakVar = var
-#define ESWeak_(var) ESWeak(var, weak_##var);
-#define ESWeakSelf      ESWeak(self, __weakSelf);
+#define ESWeak(var, weakVar)    __weak __typeof(&*var) weakVar = var
+#define ESWeak_(var)            ESWeak(var, weak_##var);
+#define ESWeakSelf              ESWeak(self, __weakSelf);
 
-#define ESStrong_DoNotCheckNil(weakVar, _var) __typeof(&*weakVar) _var = weakVar
-#define ESStrong(weakVar, _var) ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
-#define ESStrong_(var) ESStrong(weak_##var, _##var);
-#define ESStrongSelf    ESStrong(__weakSelf, _self);
+#define ESStrong_DoNotCheckNil(weakVar, _var)   __typeof(&*weakVar) _var = weakVar
+#define ESStrong(weakVar, _var)                 ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
+#define ESStrong_(var)                          ESStrong(weak_##var, _##var);
+#define ESStrongSelf                            ESStrong(__weakSelf, _self);
 
 /**
  * Force a category to be loaded when an app starts up.
@@ -141,11 +142,14 @@ ES_EXTERN BOOL ESOSVersionIsAbove8(void);
  * @end
  * @endcode
  */
-#define ES_CATEGORY_FIX(name) @interface _ES_CATEGORY_FIX_##name : NSObject @end \
-@implementation _ES_CATEGORY_FIX_##name @end
+#define ES_CATEGORY_FIX(name) \
+@interface _ES_CATEGORY_FIX_##name : NSObject \
+@end \
+@implementation _ES_CATEGORY_FIX_##name \
+@end
 
 #define ES_IMPLEMENTATION_CATEGORY_FIX(class_name, category_name) \
-ES_CATEGORY_FIX(class_name##_##category_name)     \
+ES_CATEGORY_FIX(class_name##_##category_name) \
 @implementation class_name (category_name)
 
 
@@ -180,7 +184,7 @@ ES_CATEGORY_FIX(class_name##_##category_name)     \
 /** 
  * Localized string.
  */
-#define ESLocalizedString(key)          NSLocalizedString(key,nil)
+#define ESLocalizedString(key)                  NSLocalizedString(key,nil)
 #define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
 /** 
  * Shortcut for ESLocalizedString(key)
@@ -216,7 +220,7 @@ ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 
 
 NS_INLINE BOOL ESIsStringWithAnyText(id object) {
-        return ([object isKindOfClass:[NSString class]] && ![(NSString *)object isEqualToString:@""]);
+        return ([object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0);
 }
 
 NS_INLINE BOOL ESIsArrayWithItems(id object) {

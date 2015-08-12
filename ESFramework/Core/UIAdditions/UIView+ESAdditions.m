@@ -8,7 +8,6 @@
 
 #import "UIView+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
-#import "UIColor+ESAdditions.h"
 #import "ESDefines.h"
 
 ES_CATEGORY_FIX(UIView_ESAdditions)
@@ -183,7 +182,7 @@ ES_CATEGORY_FIX(UIView_ESAdditions)
 
 - (void)enableDebugBorder
 {
-        [self enableDebugBorderWithColor:[UIColor randomColor]];
+        [self enableDebugBorderWithColor:ESRandomColor()];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

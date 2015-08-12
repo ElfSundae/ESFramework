@@ -47,7 +47,7 @@ ES_CATEGORY_FIX(NSString_ESAdditions)
 
 - (BOOL)isEmpty
 {
-        return [self isEqualToString:@""];
+        return (0 == self.length);
 }
 
 - (BOOL)fileExists
