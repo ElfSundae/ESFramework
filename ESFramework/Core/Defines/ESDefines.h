@@ -11,6 +11,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Availability.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <Security/Security.h>
 #import <objc/runtime.h>
@@ -76,16 +77,20 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 ///=============================================
 #pragma mark - SDK Compatibility
 
-#import <Availability.h>
-
 #ifndef __IPHONE_8_0
-#define __IPHONE_8_0    80000
+#define __IPHONE_8_0     80000
 #endif
 #ifndef __IPHONE_8_1
-#define __IPHONE_8_1    80100
+#define __IPHONE_8_1     80100
 #endif
 #ifndef __IPHONE_8_2
 #define __IPHONE_8_2     80200
+#endif
+#ifndef __IPHONE_8_3
+#define __IPHONE_8_3     80300
+#endif
+#ifndef __IPHONE_8_4
+#define __IPHONE_8_4     80400
 #endif
 
 #ifndef NSFoundationVersionNumber_iOS_7_1

@@ -16,12 +16,7 @@ ES_CATEGORY_FIX(ESDefines)
 
 NSString *ESOSVersion(void)
 {
-        static NSString *_deviceOSVersion = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                _deviceOSVersion = [[UIDevice currentDevice] systemVersion];
-        });
-        return _deviceOSVersion;
+        return [[UIDevice currentDevice] systemVersion];
 }
 
 BOOL ESOSVersionIsAtLeast(double versionNumber)
