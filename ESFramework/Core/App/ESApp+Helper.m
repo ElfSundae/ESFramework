@@ -225,19 +225,14 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return rootViewController;
 }
 
-//- (UIViewController *)rootViewControllerForPresenting
-//{
-//        return [[self class] rootViewControllerForPresenting];
-//}
-
-+ (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion
++ (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)(void))completion
 {
-        [[self rootViewControllerForPresenting] presentViewController:viewControllerToPresent animated:flag completion:completion];
+        [[self rootViewControllerForPresenting] presentViewController:viewControllerToPresent animated:animated completion:completion];
 }
 
-+ (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion
++ (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-        [[self rootViewController] dismissViewControllerAnimated:flag completion:completion];
+        [[self rootViewController] dismissViewControllerAnimated:animated completion:completion];
 }
 
 + (BOOL)isInForeground

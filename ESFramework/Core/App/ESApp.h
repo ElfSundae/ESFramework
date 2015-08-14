@@ -327,11 +327,11 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 /**
  * Presents a viewController.
  */
-+ (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion;
++ (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)(void))completion;
 /**
  * Dismiss all Modal ViewControllers.
  */
-+ (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion;
++ (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^)(void))completion;
 
 + (BOOL)isInForeground;
 
