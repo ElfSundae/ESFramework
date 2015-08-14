@@ -225,10 +225,10 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return rootViewController;
 }
 
-- (UIViewController *)rootViewControllerForPresenting
-{
-        return [[self class] rootViewControllerForPresenting];
-}
+//- (UIViewController *)rootViewControllerForPresenting
+//{
+//        return [[self class] rootViewControllerForPresenting];
+//}
 
 + (void)presentViewController:(UIViewController *)viewControllerToPresent animated: (BOOL)flag completion:(void (^)(void))completion
 {
@@ -245,10 +245,10 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         return ([UIApplication sharedApplication].applicationState == UIApplicationStateActive);
 }
 
-- (BOOL)isInForeground
-{
-        return [[self class] isInForeground];
-}
+//- (BOOL)isInForeground
+//{
+//        return [[self class] isInForeground];
+//}
 
 + (void)clearApplicationIconBadgeNumber
 {

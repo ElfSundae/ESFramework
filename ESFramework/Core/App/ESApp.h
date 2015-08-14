@@ -323,7 +323,6 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  * The real rootViewController for presenting modalViewController.
  */
 + (UIViewController *)rootViewControllerForPresenting;
-- (UIViewController *)rootViewControllerForPresenting;
 
 /**
  * Presents a viewController.
@@ -335,7 +334,6 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 + (void)dismissAllViewControllersAnimated: (BOOL)flag completion: (void (^)(void))completion;
 
 + (BOOL)isInForeground;
-- (BOOL)isInForeground;
 
 + (void)clearApplicationIconBadgeNumber;
 
