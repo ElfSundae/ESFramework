@@ -174,8 +174,6 @@
 		E75C4CED1AADAA2600CF905B /* MVRecorderHeaders.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75D55DC1AAD90E40079E891 /* ESDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = E75D55DA1AAD90E40079E891 /* ESDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75D55DD1AAD90E40079E891 /* ESDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = E75D55DB1AAD90E40079E891 /* ESDefines.m */; };
-		E75EEFCC1B7B41F300948211 /* UIColor+BootstrapButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E75EEFCA1B7B41F300948211 /* UIColor+BootstrapButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E75EEFCD1B7B41F300948211 /* UIColor+BootstrapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E75EEFCB1B7B41F300948211 /* UIColor+BootstrapButton.m */; };
 		E76FEADC1929B178001461D1 /* ESArrowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = E76FEADA1929B178001461D1 /* ESArrowButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E76FEADD1929B178001461D1 /* ESArrowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E76FEADB1929B178001461D1 /* ESArrowButton.m */; };
 		E772C42D1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -519,8 +517,6 @@
 		E75C4CEC1AADA9D300CF905B /* MVRecorderHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVRecorderHeaders.h; sourceTree = "<group>"; };
 		E75D55DA1AAD90E40079E891 /* ESDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ESDefines.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		E75D55DB1AAD90E40079E891 /* ESDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESDefines.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		E75EEFCA1B7B41F300948211 /* UIColor+BootstrapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BootstrapButton.h"; sourceTree = "<group>"; };
-		E75EEFCB1B7B41F300948211 /* UIColor+BootstrapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BootstrapButton.m"; sourceTree = "<group>"; };
 		E76FEADA1929B178001461D1 /* ESArrowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESArrowButton.h; sourceTree = "<group>"; };
 		E76FEADB1929B178001461D1 /* ESArrowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESArrowButton.m; sourceTree = "<group>"; };
 		E772C42B1987FBA100CDAEE6 /* ESSpeexRecorderSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSpeexRecorderSettings.h; sourceTree = "<group>"; };
@@ -1184,8 +1180,6 @@
 			children = (
 				E7B164681B7A7C5200F65648 /* ESButton.h */,
 				E7B164691B7A7C5200F65648 /* ESButton.m */,
-				E75EEFCA1B7B41F300948211 /* UIColor+BootstrapButton.h */,
-				E75EEFCB1B7B41F300948211 /* UIColor+BootstrapButton.m */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1445,7 +1439,6 @@
 				E7B164821B7A7C5200F65648 /* ESTableViewController.h in Headers */,
 				E7B164951B7A7C5200F65648 /* ESStatusOverlayView.h in Headers */,
 				E7B164801B7A7C5200F65648 /* ESStoreProductViewControllerManager.h in Headers */,
-				E75EEFCC1B7B41F300948211 /* UIColor+BootstrapButton.h in Headers */,
 				E7B164991B7A7C5200F65648 /* ESTextView.h in Headers */,
 				E7B1648E1B7A7C5200F65648 /* UIProgressView+ESStyle.h in Headers */,
 				E7B1648C1B7A7C5200F65648 /* ESErrorView.h in Headers */,
@@ -1850,7 +1843,6 @@
 				E7B1648D1B7A7C5200F65648 /* ESErrorView.m in Sources */,
 				E7B164961B7A7C5200F65648 /* ESStatusOverlayView.m in Sources */,
 				E7B1647F1B7A7C5200F65648 /* ESMoviePlayerViewController.m in Sources */,
-				E75EEFCD1B7B41F300948211 /* UIColor+BootstrapButton.m in Sources */,
 				E7B164981B7A7C5200F65648 /* UIViewController+ESStatusOverlayView.m in Sources */,
 				E7B164871B7A7C5200F65648 /* ESActivityLabel.m in Sources */,
 				E7B164911B7A7C5200F65648 /* ESRefreshControl.m in Sources */,

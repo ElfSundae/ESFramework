@@ -57,6 +57,86 @@ ES_CATEGORY_FIX(UIColor_ESAdditions)
         }
 }
 
++ (UIColor *)es_viewBackgroundColor
+{
+        return [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
+}
+
++ (UIColor *)es_redNavigationBarColor
+{
+        return [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000];
+}
+
++ (UIColor *)es_blueNavigationBarColor
+{
+        return [UIColor colorWithRed:0.054 green:0.433 blue:0.925 alpha:1.000];
+}
+
++ (UIColor *)es_blackNavigationBarColor
+{
+        
+        return [UIColor colorWithWhite:0.090 alpha:1.000];
+}
+
++ (UIColor *)es_lightBorderColor
+{
+        return [UIColor colorWithWhite:0.933 alpha:1.000];
+}
++ (UIColor *)es_defaultButtonColor
+{
+        return [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1.000];
+}
++ (UIColor *)es_primaryButtonColor
+{
+        return [UIColor colorWithRed:0.133 green:0.421 blue:0.668 alpha:1.000];
+}
++ (UIColor *)es_infoButtonColor
+{
+        return [UIColor colorWithRed:0.300 green:0.697 blue:0.839 alpha:1.000];
+}
++ (UIColor *)es_successButtonColor
+{
+        return [UIColor colorWithRed:0.302 green:0.678 blue:0.290 alpha:1.000];
+}
++ (UIColor *)es_warningButtonColor
+{
+        return [UIColor colorWithRed:0.919 green:0.612 blue:0.238 alpha:1.000];
+}
++ (UIColor *)es_dangerButtonColor
+{
+        return [UIColor colorWithRed:0.806 green:0.237 blue:0.241 alpha:1.000];
+}
++ (UIColor *)es_twitterColor
+{
+        return [UIColor colorWithRed:0.25f green:0.60f blue:1.00f alpha:1.00f];
+}
++ (UIColor *)es_facebookColor
+{
+        return [UIColor colorWithRed:0.23f green:0.35f blue:0.60f alpha:1.00f];
+}
+
++ (UIColor *)es_purpleColor
+{
+        return [UIColor colorWithRed:0.45f green:0.30f blue:0.75f alpha:1.00f];
+}
++ (UIColor *)es_redColor
+{
+        return [UIColor colorWithRed:0.861 green:0.000 blue:0.021 alpha:1.000];
+}
++ (UIColor *)es_orangeColor
+{
+        return [UIColor colorWithRed:0.991 green:0.509 blue:0.033 alpha:1.000];
+}
++ (UIColor *)es_yellowColor
+{
+        return [UIColor colorWithRed:0.927 green:0.728 blue:0.064 alpha:1.000];
+}
++ (UIColor *)es_oceanDarkColor
+{
+        return [UIColor colorWithRed:0.131 green:0.184 blue:0.246 alpha:1.000];
+}
+
+
 - (UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent
 {
         CGFloat h, s, b, a;
