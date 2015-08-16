@@ -74,7 +74,6 @@ ES_CATEGORY_FIX(UIColor_ESAdditions)
 
 + (UIColor *)es_blackNavigationBarColor
 {
-        
         return [UIColor colorWithWhite:0.090 alpha:1.000];
 }
 
@@ -96,7 +95,7 @@ ES_CATEGORY_FIX(UIColor_ESAdditions)
 }
 + (UIColor *)es_successButtonColor
 {
-        return [UIColor colorWithRed:0.302 green:0.678 blue:0.290 alpha:1.000];
+        return [UIColor colorWithRed:0.167 green:0.716 blue:0.032 alpha:1.000];
 }
 + (UIColor *)es_warningButtonColor
 {
