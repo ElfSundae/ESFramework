@@ -111,25 +111,25 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 + (id)objectForInfoDictionaryKey:(NSString *)key;
 
 /**
- * Returns the value associated with CFBundleIdentifier in the main bundle's Info.plist file,
- * if the value is not found, it will return @""
+ * Returns the value of CFBundleIdentifier in the main bundle's Info.plist file.
  */
 - (NSString *)appBundleIdentifier;
 
 /**
- * Defatuls is executable name.
- */
-- (NSString *)appName;
-
-/**
- * Returns the value associated with CFBundleDisplayName in the main bundle's Info.plist file,
- * if the value is not found, it will return the value of CFBundleName or @""
+ * Returns the value of CFBundleDisplayName in the main bundle's Info.plist file.
+ * If the value is not found, it will return the value of CFBundleName or @"".
  */
 - (NSString *)appDisplayName;
 
 /**
- * Returns the value associated with CFBundleShortVersionString in the main bundle's Info.plist file,
- * if the value is not found, it will return the value of CFBundleVersion or @""
+ * Returns the value of CFBundleExecutable in the main bundle's Info.plist file.
+ * If the value is not found, it will return the app process name.
+ */
+- (NSString *)appName;
+
+/**
+ * Returns the value of CFBundleShortVersionString in the main bundle's Info.plist file.
+ * If the value is not found, it will return the value of CFBundleVersion or @"1.0"
  */
 - (NSString *)appVersion;
 
@@ -188,7 +188,7 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 
 /**
  * The default user agent of UIWebview.
- * The value will be fetched on a background thread, after application been actived, and it will cost about 100~300ms time.
+ * The value will be fetched on a background thread after app launched, and it will cost about 100~300ms time.
  *
  * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H143 ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
  */

@@ -20,21 +20,21 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 
 - (NSString *)appBundleIdentifier
 {
-        return [self.class objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
+        return [[self class] objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
 }
 
 - (NSString *)appDisplayName
 {
-        NSString *result = [self.class objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        NSString *result = [[self class] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
         if (!result) {
-                result = [self.class objectForInfoDictionaryKey:@"CFBundleName"];
+                result = [[self class] objectForInfoDictionaryKey:@"CFBundleName"];
         }
         return result ?: @"";
 }
 
 - (NSString *)appName
 {
-        NSString *result = [self.class objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey];
+        NSString *result = [[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey];
         if (!result) {
                 result = [NSProcessInfo processInfo].processName;
         }
@@ -47,18 +47,18 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 - (NSString *)appVersion
 {
         // version for displaying
-        NSString *version = [self.class objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        NSString *version = [[self class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         if (!ESIsStringWithAnyText(version)) {
                 // build version
-                version = [self.class objectForInfoDictionaryKey:@"CFBundleVersion"];
+                version = [[self class] objectForInfoDictionaryKey:@"CFBundleVersion"];
         }
         return version ?: @"1.0";
 }
 
 - (NSString *)appVersionWithBuildVersion
 {
-        NSString *version = [self.class objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        NSString *build = [self.class objectForInfoDictionaryKey:@"CFBundleVersion"];
+        NSString *version = [[self class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        NSString *build = [[self class] objectForInfoDictionaryKey:@"CFBundleVersion"];
         NSMutableString *result = [NSMutableString string];
         if (ESIsStringWithAnyText(version)) {
                 [result appendString:version];
@@ -75,15 +75,8 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 
 - (BOOL)isUIViewControllerBasedStatusBarAppearance
 {
-        static BOOL __isUIViewControllerBasedStatusBarAppearance = YES;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                id setting = [self.class objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
-                if (setting) {
-                        __isUIViewControllerBasedStatusBarAppearance = [setting boolValue];
-                }
-        });
-        return __isUIViewControllerBasedStatusBarAppearance;
+        NSNumber *value = [[self class] objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
+        return value ? value.boolValue : YES;
 }
 
 - (NSDictionary *)analyticsInformation
@@ -111,30 +104,24 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 
 - (NSString *)userAgent
 {
-        static NSString *__gUserAgent = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                // 以 '; ' 间隔
-                NSMutableString *ua = [NSMutableString string];
-                [ua appendFormat:@"%@/%@", self.appName, self.appVersion];
-                [ua appendFormat:@" (%@; iOS %@; Scale/%0.2f; Screen/%@",
-                 [UIDevice model],
-                 [UIDevice systemVersion],
-                 [UIScreen mainScreen].scale,
-                 [UIDevice screenSizeString]];
-                [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
-                [ua appendFormat:@"; Network/%@", [UIDevice currentNetworkReachabilityStatusString]];
-                if (ESIsStringWithAnyText(self.appChannel)) {
-                        [ua appendFormat:@"; Channel/%@", self.appChannel];
-                }
-                if ([UIDevice openUDID]) {
-                        [ua appendFormat:@"; OpenUDID/%@", [UIDevice openUDID]];
-                }
-                [ua appendFormat:@")"];
-                
-                __gUserAgent = (NSString *)ua;
-        });
-        return __gUserAgent;
+        // 以 '; ' 间隔
+        NSMutableString *ua = [NSMutableString string];
+        [ua appendFormat:@"%@/%@", self.appName, self.appVersion];
+        [ua appendFormat:@" (%@; iOS %@; Scale/%0.2f; Screen/%@",
+         [UIDevice model],
+         [UIDevice systemVersion],
+         [UIScreen mainScreen].scale,
+         [UIDevice screenSizeString]];
+        [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
+        [ua appendFormat:@"; Network/%@", [UIDevice currentNetworkReachabilityStatusString]];
+        if (ESIsStringWithAnyText(self.appChannel)) {
+                [ua appendFormat:@"; Channel/%@", self.appChannel];
+        }
+        if ([UIDevice openUDID]) {
+                [ua appendFormat:@"; OpenUDID/%@", [UIDevice openUDID]];
+        }
+        [ua appendFormat:@")"];
+        return (NSString *)ua;
 }
 
 + (NSString *)defaultUserAgentOfWebView
@@ -144,34 +131,23 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 
 - (NSString *)userAgentForWebView
 {
-        static NSString *__gUserAgentForWebView = nil;
-        if (nil == __gUserAgentForWebView) {
-                NSMutableString *ua = [NSMutableString string];
-                NSString *defaultUA = [self.class defaultUserAgentOfWebView];
-                NSString *myUserAgent = self.userAgent;
-                if (defaultUA) {
-                        [ua appendString:defaultUA];
-                } else {
-                        [ua appendFormat:@"Mozilla/5.0 (%@; CPU %@ %@ like Mac OS X) AppleWebKit/%@ (KHTML, like Gecko) Mobile/%@",
-                         [UIDevice model],
-                         (ESIsPhoneDevice() ? @"iPhone OS" : @"OS"),
-                         [[UIDevice systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"],
-                         @"600.1.4",
-                         [UIDevice systemBuildIdentifier]];
-                }
-                if (myUserAgent) {
-                        [ua appendFormat:@" %@", myUserAgent];
-                }
-                
-                // 如果已经获取到默认的ua, 则静态化当前值
-                if (defaultUA) {
-                        __gUserAgentForWebView = (NSString *)ua;
-                } else {
-                        // 否则，每次都计算，直到defaultUA获取到
-                        return (NSString *)ua;
-                }
+        NSMutableString *ua = [NSMutableString string];
+        NSString *defaultUA = [[self class] defaultUserAgentOfWebView];
+        NSString *myUserAgent = self.userAgent;
+        if (defaultUA) {
+                [ua appendString:defaultUA];
+        } else {
+                [ua appendFormat:@"Mozilla/5.0 (%@; CPU %@ %@ like Mac OS X) AppleWebKit/%@ (KHTML, like Gecko) Mobile/%@",
+                 [UIDevice model],
+                 (ESIsPhoneDevice() ? @"iPhone OS" : @"OS"),
+                 [[UIDevice systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"],
+                 @"600.1.4",
+                 [UIDevice systemBuildIdentifier]];
         }
-        return __gUserAgentForWebView;
+        if (myUserAgent) {
+                [ua appendFormat:@" %@", myUserAgent];
+        }
+        return (NSString *)ua;
 }
 
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier
