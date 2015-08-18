@@ -30,8 +30,11 @@
 /// [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000]
 + (UIColor *)es_viewBackgroundColor;
 
+/// [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000]
 + (UIColor *)es_redNavigationBarColor;
+/// [UIColor colorWithRed:0.054 green:0.433 blue:0.925 alpha:1.000]
 + (UIColor *)es_blueNavigationBarColor;
+/// [UIColor colorWithWhite:0.090 alpha:1.000]
 + (UIColor *)es_blackNavigationBarColor;
 
 /// [UIColor colorWithWhite:0.933 alpha:1.000]
@@ -66,7 +69,7 @@
 /// [UIColor colorWithRed:0.131 green:0.184 blue:0.246 alpha:1.000]
 + (UIColor *)es_oceanDarkColor;
 
-// Utilities from [BButton](https://github.com/jessesquires/BButton)
+/// Utilities from [BButton](https://github.com/jessesquires/BButton)
 - (UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent;
 - (UIColor *)es_lightenColorWithValue:(CGFloat)value;
 - (UIColor *)es_darkenColorWithValue:(CGFloat)value;
