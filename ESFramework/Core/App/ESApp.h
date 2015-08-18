@@ -9,6 +9,7 @@
 #import "ESDefines.h"
 
 ES_EXTERN NSString *const ESAppErrorDomain;
+ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 
 /**
  * `ESApp` is designed as the delegate of UIApplication, also it can be used
@@ -160,7 +161,8 @@ ES_EXTERN NSString *const ESAppErrorDomain;
  *     "app_name" = ESDemo;
  *     "app_channel" = "App Store";
  *     "app_identifier" = "com.0x123.ESDemo";
- *     "app_version" = "1.0.0";
+ *     "app_version" = "1.0.2";
+ *     "app_previous_version" = "1.0.0";
  *     carrier = "China Mobile";
  *     jailbroken = 1;
  *     locale = "zh_CN";

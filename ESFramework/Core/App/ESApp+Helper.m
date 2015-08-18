@@ -13,7 +13,7 @@
 #import "UIAlertView+ESBlock.h"
 #import <AddressBook/AddressBook.h>
 
-#define kESUserDefaultsKey_CheckFreshLaunchAppVersion @"ESCheckFreshLaunchAppVersion"
+NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaunchAppVersion";
 
 ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
 
@@ -24,13 +24,16 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __previousVersion = [NSUserDefaults objectForKey:kESUserDefaultsKey_CheckFreshLaunchAppVersion];
+                __previousVersion = [NSUserDefaults objectForKey:ESCheckFreshLaunchAppVersionUserDefaultsKey];
+                if (!ESIsStringWithAnyText(__previousVersion)) {
+                        __previousVersion = nil;
+                }
                 NSString *current = [ESApp sharedApp].appVersion;
-                if ([__previousVersion isKindOfClass:[NSString class]] && [__previousVersion compare:current] == NSOrderedSame) {
+                if (__previousVersion && [__previousVersion isEqualToString:current]) {
                         __isFreshLaunch = NO;
                 } else {
                         __isFreshLaunch = YES;
-                        [NSUserDefaults setObject:current forKey:kESUserDefaultsKey_CheckFreshLaunchAppVersion];
+                        [NSUserDefaults setObjectAsynchrony:current forKey:ESCheckFreshLaunchAppVersionUserDefaultsKey];
                 }
         });
         
