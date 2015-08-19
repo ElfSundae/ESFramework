@@ -98,7 +98,10 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
         result[@"app_version"] = self.appVersion ?: @"";
         NSString *previousAppVersion = nil;
         if ([[self class] isFreshLaunch:&previousAppVersion]) {
-                result[@"app_previous_version"] = previousAppVersion;
+                result[@"app_fresh_launch"] = @(YES);
+                if (previousAppVersion) {
+                        result[@"app_previous_version"] = previousAppVersion;
+                }
         }
         result[@"app_identifier"] = self.appBundleIdentifier ?: @"";
         result[@"app_channel"] = self.appChannel ?: @"";
