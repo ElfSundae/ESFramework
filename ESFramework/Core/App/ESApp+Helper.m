@@ -28,7 +28,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
                 if (!ESIsStringWithAnyText(__previousVersion)) {
                         __previousVersion = nil;
                 }
-                NSString *current = [ESApp sharedApp].appVersion;
+                NSString *current = [ESApp appVersion];
                 if (__previousVersion && [__previousVersion isEqualToString:current]) {
                         __isFreshLaunch = NO;
                 } else {
@@ -41,6 +41,15 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
                 *previousAppVersion = __previousVersion;
         }
         return __isFreshLaunch;
+}
+
++ (void)deleteHTTPCookiesForURL:(NSURL *)URL
+{
+        NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+        NSArray *cookies = [cookieStorage cookiesForURL:URL];
+        for (NSHTTPCookie *c in cookies) {
+                [cookieStorage deleteCookie:c];
+        }
 }
 
 + (void)deleteAllHTTPCookies
@@ -186,20 +195,14 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (UIWindow *)keyWindow
 {
-        static UIWindow *__gKeyWindow = nil;
-        if (!__gKeyWindow) {
-                id delegate = [UIApplication sharedApplication].delegate;
-                if ([delegate respondsToSelector:@selector(window)]) {
-                        __gKeyWindow = (UIWindow *)[delegate valueForKey:@"window"];
+        id appDelegate = [UIApplication sharedApplication].delegate;
+        if ([appDelegate respondsToSelector:@selector(window)]) {
+                id window = [appDelegate valueForKey:@"window"];
+                if ([window isKindOfClass:[UIWindow class]]) {
+                        return window;
                 }
         }
-        
-        if (!__gKeyWindow) {
-                // maybe the #keyWindow just is a temporary keyWindow,
-                // so we do not save it to the #__gKeyWindow.
-                return [UIApplication sharedApplication].keyWindow;
-        }
-        return __gKeyWindow;
+        return [UIApplication sharedApplication].keyWindow;
 }
 
 - (UIWindow *)keyWindow
@@ -242,11 +245,6 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 {
         return ([UIApplication sharedApplication].applicationState == UIApplicationStateActive);
 }
-
-//- (BOOL)isInForeground
-//{
-//        return [[self class] isInForeground];
-//}
 
 + (void)clearApplicationIconBadgeNumber
 {

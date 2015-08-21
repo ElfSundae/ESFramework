@@ -18,47 +18,26 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
         return [[NSBundle mainBundle] objectForInfoDictionaryKey:key];
 }
 
-- (NSString *)appBundleIdentifier
++ (NSString *)appBundleIdentifier
 {
-        return [[self class] objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
+        return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
 }
 
-- (NSString *)appDisplayName
-{
-        NSString *result = [[self class] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-        if (!result) {
-                result = [[self class] objectForInfoDictionaryKey:@"CFBundleName"];
-        }
-        return result ?: @"";
-}
-
-- (NSString *)appName
-{
-        NSString *result = [[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey];
-        if (!result) {
-                result = [NSProcessInfo processInfo].processName;
-        }
-        if (!result) {
-                result = self.appDisplayName;
-        }
-        return result ?: self.appBundleIdentifier;
-}
-
-- (NSString *)appVersion
++ (NSString *)appVersion
 {
         // version for displaying
-        NSString *version = [[self class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         if (!ESIsStringWithAnyText(version)) {
                 // build version
-                version = [[self class] objectForInfoDictionaryKey:@"CFBundleVersion"];
+                version = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
         }
         return version ?: @"1.0";
 }
 
-- (NSString *)appVersionWithBuildVersion
++ (NSString *)appVersionWithBuildVersion
 {
-        NSString *version = [[self class] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        NSString *build = [[self class] objectForInfoDictionaryKey:@"CFBundleVersion"];
+        NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        NSString *build = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
         NSMutableString *result = [NSMutableString string];
         if (ESIsStringWithAnyText(version)) {
                 [result appendString:version];
@@ -73,11 +52,30 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
         return result;
 }
 
-- (BOOL)isUIViewControllerBasedStatusBarAppearance
++ (BOOL)isUIViewControllerBasedStatusBarAppearance
 {
-        NSNumber *value = [[self class] objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
+        NSNumber *value = [self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
         return value ? value.boolValue : YES;
 }
+
+- (NSString *)appName
+{
+        NSString *result = [[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey];
+        if (!result) {
+                result = [NSProcessInfo processInfo].processName;
+        }
+        return result ?: self.appDisplayName;
+}
+
+- (NSString *)appDisplayName
+{
+        NSString *result = [[self class] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+        if (!result) {
+                result = [[self class] objectForInfoDictionaryKey:@"CFBundleName"];
+        }
+        return result ?: @"";
+}
+
 
 - (NSDictionary *)analyticsInformation
 {
@@ -94,8 +92,8 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"] = [UIDevice currentLocaleIdentifier];
         result[@"network"] = [UIDevice currentNetworkReachabilityStatusString];
-        result[@"app_name"] = self.appName ?: @"";
-        result[@"app_version"] = self.appVersion ?: @"";
+        result[@"app_name"] = self.appName;
+        result[@"app_version"] = [[self class] appVersion];
         NSString *previousAppVersion = nil;
         if ([[self class] isFreshLaunch:&previousAppVersion]) {
                 result[@"app_fresh_launch"] = @(YES);
@@ -103,7 +101,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
                         result[@"app_previous_version"] = previousAppVersion;
                 }
         }
-        result[@"app_identifier"] = self.appBundleIdentifier ?: @"";
+        result[@"app_identifier"] = [[self class] appBundleIdentifier];
         result[@"app_channel"] = self.appChannel ?: @"";
         
         return (NSDictionary *)result;
@@ -113,7 +111,7 @@ ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
 {
         // 以 '; ' 间隔
         NSMutableString *ua = [NSMutableString string];
-        [ua appendFormat:@"%@/%@", self.appName, self.appVersion];
+        [ua appendFormat:@"%@/%@", self.appName, [[self class] appVersion]];
         [ua appendFormat:@" (%@; iOS %@; Scale/%0.2f; Screen/%@",
          [UIDevice model],
          [UIDevice systemVersion],

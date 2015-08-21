@@ -29,11 +29,6 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 /**
  * Returns the application delegate if the `AppDelegate` is a subclass of `ESApp`, 
  * otherwise returns a shared `ESApp` instance.
- * 
- * You can subclass this method like:
- * @code
- * + (AppDelegate *)sharedApp;
- * @endcode
  */
 + (instancetype)sharedApp;
 
@@ -114,31 +109,19 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 /**
  * Returns the value of CFBundleIdentifier in the main bundle's Info.plist file.
  */
-- (NSString *)appBundleIdentifier;
-
-/**
- * Returns the value of CFBundleDisplayName in the main bundle's Info.plist file.
- * If the value is not found, it will return the value of CFBundleName or @"".
- */
-- (NSString *)appDisplayName;
-
-/**
- * Returns the value of CFBundleExecutable in the main bundle's Info.plist file.
- * If the value is not found, it will return the app process name.
- */
-- (NSString *)appName;
++ (NSString *)appBundleIdentifier;
 
 /**
  * Returns the value of CFBundleShortVersionString in the main bundle's Info.plist file.
  * If the value is not found, it will return the value of CFBundleVersion or @"1.0"
  */
-- (NSString *)appVersion;
++ (NSString *)appVersion;
 
 /**
  * CFBundleShortVersionString + CFBundleVersion
  * e.g. "1.2.1(20150433.387)", "1.2.0", "2015988"
  */
-- (NSString *)appVersionWithBuildVersion;
++ (NSString *)appVersionWithBuildVersion;
 
 /**
  * UIViewControllerBasedStatusBarAppearance (Boolean - iOS) specifies whether the status bar appearance
@@ -151,7 +134,19 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  *
  * @see https://developer.apple.com/library/mac/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW29
  */
-- (BOOL)isUIViewControllerBasedStatusBarAppearance;
++ (BOOL)isUIViewControllerBasedStatusBarAppearance;
+
+/**
+ * Returns the value of CFBundleExecutable in the main bundle's Info.plist file.
+ * If the value is not found, it will return the app process name.
+ */
+- (NSString *)appName;
+
+/**
+ * Returns the value of CFBundleDisplayName in the main bundle's Info.plist file.
+ * If the value is not found, it will return the value of CFBundleName or @"".
+ */
+- (NSString *)appDisplayName;
 
 /**
  * e.g.
@@ -251,7 +246,12 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion;
 
 /**
- * Clean all HTTP Cookies.
+ * Delete all cookies which send to the given URL.
+ */
++ (void)deleteHTTPCookiesForURL:(NSURL *)URL;
+
+/**
+ * Delete all HTTP Cookies.
  */
 + (void)deleteAllHTTPCookies;
 

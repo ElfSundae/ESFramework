@@ -23,16 +23,20 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
 + (instancetype)sharedApp
 {
-        static id __sharedApp = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                if ([[UIApplication sharedApplication].delegate isKindOfClass:[ESApp class]]) {
-                        __sharedApp = [UIApplication sharedApplication].delegate;
-                } else {
-                        __sharedApp = [[ESApp alloc] init];
+        static id __gSharedApp = nil;
+        
+        id appDelegate = [UIApplication sharedApplication].delegate;
+        if ([appDelegate isKindOfClass:[self class]]) {
+                if (__gSharedApp) {
+                        __gSharedApp = nil;
                 }
-        });
-        return __sharedApp;
+                return appDelegate;
+        }
+        
+        if (!__gSharedApp) {
+                __gSharedApp = [[self alloc] init];
+        }
+        return __gSharedApp;
 }
 
 - (UIWindow *)window
