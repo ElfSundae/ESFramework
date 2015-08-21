@@ -14,30 +14,6 @@ ES_CATEGORY_FIX(ESDefines)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - SDK Compatibility
 
-NSString *ESOSVersion(void)
-{
-        return [[UIDevice currentDevice] systemVersion];
-}
-
-BOOL ESOSVersionIsAtLeast(double versionNumber)
-{
-        return (NSFoundationVersionNumber >= versionNumber);
-}
-
-BOOL ESOSVersionIsAbove(double versionNumber)
-{
-        return (NSFoundationVersionNumber > versionNumber);
-}
-
-BOOL ESOSVersionIsAbove7(void)
-{
-        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
-}
-
-BOOL ESOSVersionIsAbove8(void)
-{
-        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
-}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

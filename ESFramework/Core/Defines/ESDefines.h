@@ -45,14 +45,14 @@
 
 #if DEBUG
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var) uint64_t stopwatch_begin_var = mach_absolute_time();
-#define ES_STOPWATCH_END(stopwatch_begin_var)   do{ \
+#define ES_STOPWATCH_END(stopwatch_begin_var)   { \
 uint64_t end = mach_absolute_time(); \
 mach_timebase_info_data_t timebaseInfo; \
 (void) mach_timebase_info(&timebaseInfo); \
 uint64_t elapsedNano = (end - stopwatch_begin_var) * timebaseInfo.numer / timebaseInfo.denom; \
 double_t elapsedMillisecond = (double_t)elapsedNano / 1000000.0; \
 printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String:__FILE__].lastPathComponent.UTF8String, __LINE__, __PRETTY_FUNCTION__, elapsedMillisecond); \
-} while(0)
+}
 #else
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var)
 #define ES_STOPWATCH_END(stopwatch_begin_var)
@@ -77,6 +77,13 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 ///=============================================
 #pragma mark - SDK Compatibility
 
+#ifndef TARGET_OS_IOS
+#define TARGET_OS_IOS TARGET_OS_IPHONE
+#endif
+#ifndef TARGET_OS_WATCH
+#define TARGET_OS_WATCH 0
+#endif
+
 #ifndef __IPHONE_8_0
 #define __IPHONE_8_0     80000
 #endif
@@ -100,16 +107,25 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 #define NSFoundationVersionNumber_iOS_8_0 1140.11
 #endif
 
-/**
- * Returns the device's OS version.
- * e.g. @"6.1"
- */
-ES_EXTERN NSString *ESOSVersion(void);
+NS_INLINE NSString *ESOSVersion(void) {
+        return [[UIDevice currentDevice] systemVersion];
+}
 
-ES_EXTERN BOOL ESOSVersionIsAtLeast(double NSFoundationVersionNumber_);
-ES_EXTERN BOOL ESOSVersionIsAbove(double NSFoundationVersionNumber_);
-ES_EXTERN BOOL ESOSVersionIsAbove7(void);
-ES_EXTERN BOOL ESOSVersionIsAbove8(void);
+NS_INLINE BOOL ESOSVersionIsAtLeast(double versionNumber) {
+        return (NSFoundationVersionNumber >= versionNumber);
+}
+
+NS_INLINE BOOL ESOSVersionIsAbove(double versionNumber) {
+        return (NSFoundationVersionNumber > versionNumber);
+}
+
+NS_INLINE BOOL ESOSVersionIsAbove7(void) {
+        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+}
+
+NS_INLINE BOOL ESOSVersionIsAbove8(void) {
+        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
+}
 
 ///=============================================
 /// @name Helper Macros
@@ -292,8 +308,7 @@ ES_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_
  * Returns the current statusBar's height, in any orientation.
  */
 NS_INLINE CGFloat ESStatusBarHeight(void) {
-        CGRect frame = [UIApplication sharedApplication].statusBarFrame;
-        return fminf(frame.size.width, frame.size.height);
+        return fminf([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
 };
 
 /**
