@@ -9,7 +9,6 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import <AdSupport/AdSupport.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "UIDevice+ESInfo.h"
@@ -112,12 +111,6 @@ ES_CATEGORY_FIX(UIDevice_ESInfo)
 + (NSString *)openUDID
 {
         return [ESOpenUDID value];
-}
-
-+ (NSString *)IDFA
-{
-        NSString *idfa = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
-        return idfa ?: @"";
 }
 
 + (BOOL)isJailbroken
