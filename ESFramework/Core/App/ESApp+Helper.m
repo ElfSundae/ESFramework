@@ -13,9 +13,11 @@
 #import "UIAlertView+ESBlock.h"
 #import <AddressBook/AddressBook.h>
 
+ES_CATEGORY_FIX(ESApp_Helper)
+
 NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaunchAppVersion";
 
-ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Helper)
+@implementation ESApp (Helper)
 
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion
 {

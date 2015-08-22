@@ -13,6 +13,7 @@
 
 #import "ESDefines.h"
 
+#import "NSObject+ESAutoCoding.h"
 #import "NSString+ESAdditions.h"
 #import "NSString+ESGTMHTML.h"
 #import "NSURL+ESAdditions.h"
@@ -50,7 +51,6 @@
 #import "ESHash.h"
 #import "ESValue.h"
 #import "ESITunesStoreHelper.h"
-#import "NSObject+ESModel.h"
 
 #import "ESArrowButton.h"
 

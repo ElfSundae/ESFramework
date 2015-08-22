@@ -11,7 +11,9 @@
 #import "UIDevice+ESInfo.h"
 #import "UIDevice+ESNetworkReachability.h"
 
-ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, AppInfo)
+ES_CATEGORY_FIX(ESApp_AppInfo)
+
+@implementation ESApp (AppInfo)
 
 + (id)objectForInfoDictionaryKey:(NSString *)key
 {

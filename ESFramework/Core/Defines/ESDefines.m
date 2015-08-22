@@ -421,11 +421,8 @@ BOOL ESTouchDirectory(NSString *directoryPath)
                 if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir] && isDir) {
                         return YES;
                 }
-                if ([fm removeItemAtPath:directoryPath error:NULL]) {
-                        if ([fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]) {
-                                return YES;
-                        }
-                }
+                [fm removeItemAtPath:directoryPath error:NULL];
+                return [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL];
         }
         return NO;
 }

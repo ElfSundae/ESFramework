@@ -8,7 +8,9 @@
 
 #import "ESApp.h"
 
-ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, Subclassing)
+ES_CATEGORY_FIX(ESApp_Subclassing)
+
+@implementation ESApp (Subclassing)
 
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
 {

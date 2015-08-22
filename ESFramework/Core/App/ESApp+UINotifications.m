@@ -8,7 +8,9 @@
 
 #import "ESApp+Private.h"
 
-ES_IMPLEMENTATION_CATEGORY_FIX(ESApp, UINotifications)
+ES_CATEGORY_FIX(ESApp_UINotifications)
+
+@implementation ESApp (UINotifications)
 
 - (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types success:(void (^)(NSString *deviceToken))success failure:(void (^)(NSError *error))failure
 {

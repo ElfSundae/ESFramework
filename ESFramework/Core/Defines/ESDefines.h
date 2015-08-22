@@ -169,11 +169,6 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 @implementation _ES_CATEGORY_FIX_##name \
 @end
 
-#define ES_IMPLEMENTATION_CATEGORY_FIX(class_name, category_name) \
-ES_CATEGORY_FIX(class_name##_##category_name) \
-@implementation class_name (category_name)
-
-
 /**
  * Declare singleton `+sharedInstance` method.
  */
