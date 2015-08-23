@@ -9,6 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "ESDefines.h"
 
+ES_EXTERN NSNumberFormatter *ESSharedNumberFormatter(void);
+ES_EXTERN NSNumber *ESNumberFromString(NSString *string);
+
+/*!
+ * Get value from NSNumber or NSString safely.
+ */
+ES_EXTERN int ESIntValueWithDefault(id obj, int defaultValue);
+ES_EXTERN unsigned int ESUIntValueWithDefault(id obj, unsigned int defaultValue);
+ES_EXTERN NSInteger ESIntegerValueWithDefault(id obj, NSInteger defaultValue);
+ES_EXTERN NSUInteger ESUIntegerValueWithDefault(id obj, NSUInteger defaultValue);
+ES_EXTERN long ESLongValueWithDefault(id obj, long defaultValue);
+ES_EXTERN unsigned long ESULongValueWithDefault(id obj, unsigned long defaultValue);
+ES_EXTERN long long ESLongLongValueWithDefault(id obj, long long defaultValue);
+ES_EXTERN unsigned long long ESULongLongValueWithDefault(id obj, unsigned long long defaultValue);
+ES_EXTERN float ESFloatValueWithDefault(id obj, float defaultValue);
+ES_EXTERN double ESDoubleValueWithDefault(id obj, double defaultValue);
+ES_EXTERN BOOL ESBoolValueWithDefault(id obj, BOOL defaultValue);
+ES_EXTERN NSString *ESStringValueWithDefault(id obj, NSString *defaultValue);
+ES_EXTERN NSURL *ESURLValueWithDefault(id obj, NSURL *defaultValue);
+
 /*!
  * Get value from NSNumber or NSString safely.
  * 如果解析失败，返回对应类型的默认值， 0, 0.0, nil
