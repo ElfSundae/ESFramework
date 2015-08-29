@@ -107,7 +107,9 @@ ESDefineAssociatedObjectKey(es_codableProperties);
         ESDispatchOnDefaultQueue(^{
                 BOOL result = [self es_writeToFile:filePath atomically:useAuxiliaryFile];
                 if (completion) {
-                        completion(result);
+                        ESDispatchOnMainThreadAsynchrony(^{
+                                completion(result);
+                        });
                 }
         });
 }
@@ -125,7 +127,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
                 Class superClass = [self class];
                 while (superClass != [NSObject class]) {
                         unsigned int propertiesCount = 0;
-                        objc_property_t *properties = class_copyPropertyList(self, &propertiesCount);
+                        objc_property_t *properties = class_copyPropertyList(superClass, &propertiesCount);
                         
                         for (unsigned int i = 0; i < propertiesCount; ++i) {
                                 
