@@ -7,11 +7,11 @@
 //
 
 #import "ESApp.h"
+@import AddressBook;
 #import "NSString+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
-#import <AddressBook/AddressBook.h>
 
 ES_CATEGORY_FIX(ESApp_Helper)
 
@@ -316,81 +316,6 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
         [ESITunesStoreHelper openAppStoreWithAppID:[[self sharedApp] appStoreID]];
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - App Upgrade
-
-#if 0
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler
-{
-        if (![updateObject isKindOfClass:[ESAppUpdateObject class]] ||
-            !ESMaskIsSet(alertMask, updateObject.updateResult)) {
-                return;
-        }
-        
-        ESWeak(self, _self);
-        if (ESAppUpdateResultNone == updateObject.updateResult) {
-                UIAlertView *alert =
-                [UIAlertView alertViewWithTitle:updateObject.alertTitle
-                                        message:updateObject.alertMessage
-                              cancelButtonTitle:updateObject.alertCancelButtonTitle
-                                didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                        if (handler) {
-                                                handler(updateObject, NO);
-                                        }
-                                } otherButtonTitles:nil];
-                [alert show];
-        } else if (ESAppUpdateResultOptional == updateObject.updateResult) {
-                UIAlertView *alert =
-                [UIAlertView alertViewWithTitle:updateObject.alertTitle
-                                        message:updateObject.alertMessage
-                              cancelButtonTitle:updateObject.alertUpdateButtonTitle
-                                didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                        BOOL alertCanceld = (buttonIndex != alertView.cancelButtonIndex);
-                                        if ((!handler && !alertCanceld) ||
-                                            (handler && handler(updateObject, alertCanceld))) {
-                                                [[_self class] openURLWithString:updateObject.updateURL];
-                                        }
-                                } otherButtonTitles:updateObject.alertCancelButtonTitle, nil];
-                [alert show];
-        } else if (ESAppUpdateResultForced == updateObject.updateResult) {
-                UIAlertView *alert =
-                [UIAlertView alertViewWithTitle:updateObject.alertTitle
-                                        message:updateObject.alertMessage
-                              cancelButtonTitle:updateObject.alertUpdateButtonTitle
-                                didDismissBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                        if (!handler ||
-                                            (handler && handler(updateObject, NO))) {
-                                                [[_self class] openURL:NSURLWith(updateObject.updateURL)];
-                                                exit(0);
-                                        }
-                                } otherButtonTitles:nil];
-                [alert show];
-        }
-}
-
-- (void)showAppUpdateAlert:(ESAppUpdateAlertMask)alertMask
-{
-        [self showAppUpdateAlert:self.appUpdateSharedObject alertMask:alertMask];
-}
-
-- (void)checkForcedAppUpdateExists:(BOOL (^)(ESAppUpdateObject *))handler
-{
-        if ([[self class] isFreshLaunch:nil] ||
-            self.appUpdateSharedObject.updateResult != ESAppUpdateResultForced) {
-                if (handler) {
-                        handler(nil);
-                }
-                return;
-        }
-        
-        if (!handler ||
-            (handler && handler(self.appUpdateSharedObject))) {
-                [self showAppUpdateAlert:ESAppUpdateAlertMaskOnlyForced];
-        }
-        
-}
-#endif
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Authorization

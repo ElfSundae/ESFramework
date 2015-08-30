@@ -32,16 +32,4 @@ ES_CATEGORY_FIX(ESApp_Subclassing)
         
 }
 
-#if 0
-- (ESAppUpdateObject *)appUpdateSharedObject
-{
-        return [ESAppUpdateObject sharedObject];
-}
-
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask
-{
-        [self showAppUpdateAlert:updateObject alertMask:alertMask handler:nil];
-}
-#endif
-
 @end

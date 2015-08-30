@@ -92,19 +92,6 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  */
 - (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
 
-
-#if 0 // Deprecated
-/**
- * Your App Update datasource.
- */
-- (ESAppUpdateObject *)appUpdateSharedObject;
-/**
- * You can subclass this method to give a global handler, such as ***resetUser*** or ***cleanCaches*** inside handler,
- * do remember call `openURL` if `handler` return `NO`.
- */
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask;
-#endif
-
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -384,36 +371,6 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  * Open App Store, and goto this app's download page. `-appStoreID` must be implemented.
  */
 + (void)openAppStore;
-
-
-#if 0 // deprecated
-///=============================================
-/// @name App Update
-///=============================================
-
-/**
- * Shows an `UIAlertView` for app update, use `+openURL:` to open external App Store when "Update" button clicked.
- */
-- (void)showAppUpdateAlert:(ESAppUpdateObject *)updateObject alertMask:(ESAppUpdateAlertMask)alertMask handler:(BOOL (^)(ESAppUpdateObject *updateObject_, BOOL alertCanceld))handler;
-
-/**
- * Use `-appUpdateSharedObject`.
- */
-- (void)showAppUpdateAlert:(ESAppUpdateAlertMask)alertMask;
-
-/**
- * You may call this method when app launched.
- *
- * If it's not the first launching, and there's a forced update, then call `handler`, it `handler` is nil
- * or `handler` returns `YES`, it will `openURL:updateObject`
- *
- * If it's the first launching, or there's not a forced update, then `updateObject` will be passed `nil`,
- * cause the cache maybe incorrect.
- *
- * `appUpdateSharedObject` will be used to check.
- */
-- (void)checkForcedAppUpdateExists:(BOOL (^)(ESAppUpdateObject *updateObject))handler;
-#endif
 
 ///=============================================
 /// @name Authorization
