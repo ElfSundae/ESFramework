@@ -50,6 +50,16 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  */
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
 
+///=============================================
+/// @name UIApplicationDelegate methods which ESApp implemented
+///=============================================
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings NS_AVAILABLE_IOS(8_0);
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,12 +67,6 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 #pragma mark - Subclassing
 
 @interface ESApp (Subclassing)
-
-/**
- * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive.
- * The `self.remoteNotification` has been fill.
- */
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo;
 
 /**
  * @"App Store" as default.
@@ -81,6 +85,13 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  * e.g. [NSTimeZone timeZoneWithName:@"Asia/Shanghai"]
  */
 - (NSTimeZone *)appWebServerTimeZone;
+
+/**
+ * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive.
+ * The `self.remoteNotification` has been fill.
+ */
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
+
 
 #if 0 // Deprecated
 /**
@@ -221,10 +232,13 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 #pragma mark - UINotifications
 @interface ESApp (UINotifications)
 /**
- * If register succueed, handler's `sender` will be the device token (NSString type without blank characters.),
+ * categories is
  * otherwise `sender` will be a NSError object.
  */
-- (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types success:(void (^)(NSString *deviceToken))success failure:(void (^)(NSError *error))failure;
+- (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types
+                                     categories:(NSSet *)categories
+                                        success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
+                                        failure:(void (^)(NSError *error))failure;
 - (void)unregisterForRemoteNotifications;
 - (BOOL)isRegisteredForRemoteNotifications;
 - (UIRemoteNotificationType)enabledRemoteNotificationTypes;

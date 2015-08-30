@@ -12,16 +12,19 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
 
 @implementation ESApp (UINotifications)
 
-- (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types success:(void (^)(NSString *deviceToken))success failure:(void (^)(NSError *error))failure
+- (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types
+                                     categories:(NSSet *)categories
+                                        success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
+                                        failure:(void (^)(NSError *error))failure
 {
         if (![[UIApplication sharedApplication].delegate isKindOfClass:[self class]]) {
-                [NSException raise:@"ESAppException" format:@"To use -registerForRemoteNotificationTypes:success:failure: , your application delegate must be inherited from ESApp."];
+                [NSException raise:@"ESAppException" format:@"To use -registerForRemoteNotificationTypes:categories:success:failure: , the app delegate must be inherited from ESApp."];
         }
 
         if (0 == types) {
                 if (failure) {
                         ESDispatchOnMainThreadAsynchrony(^{
-                                failure([NSError errorWithDomain:ESAppErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"Remote notification types is none."}]);
+                                failure([NSError errorWithDomain:ESAppErrorDomain code:-1 userInfo:@{NSLocalizedDescriptionKey : @"Remote notification types is none."}]);
                         });
                 }
                 return;
@@ -33,17 +36,9 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
         UIApplication *app = [UIApplication sharedApplication];
         if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
                 // iOS 8+
-                UIUserNotificationSettings *currentSettings = app.currentUserNotificationSettings;
-                UIUserNotificationType currentType = currentSettings.types;
                 UIUserNotificationType registerForTypes = (UIUserNotificationType)types;
-                if (currentType != registerForTypes) {
-                        UIUserNotificationSettings *settings =
-                        [UIUserNotificationSettings settingsForTypes:registerForTypes categories:nil];
-                        [app registerUserNotificationSettings:settings];
-                } else {
-                        [app registerForRemoteNotifications];
-                }
-                
+                UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:registerForTypes categories:categories];
+                [app registerUserNotificationSettings:settings];                
         } else {
                 [app registerForRemoteNotificationTypes:types];
         }
@@ -56,6 +51,9 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
 
 - (BOOL)isRegisteredForRemoteNotifications
 {
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(isRegisteredForRemoteNotifications)]) {
+                return [UIApplication sharedApplication].isRegisteredForRemoteNotifications;
+        }
         return ([self enabledRemoteNotificationTypes] != 0);
 }
 

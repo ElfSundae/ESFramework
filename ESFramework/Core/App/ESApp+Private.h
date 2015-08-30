@@ -8,14 +8,12 @@
 
 #import "ESApp.h"
 
-@interface _ESAppInternalWebViewDelegate : NSObject  <UIWebViewDelegate>
-@end
-
 @interface ESApp ()
 {
-        void (^_esRemoteNotificationRegisterSuccessBlock)(NSString *deviceToken);
+        void (^_esRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString);
         void (^_esRemoteNotificationRegisterFailureBlock)(NSError *error);
         NSString *_esWebViewDefaultUserAgent;
+        NSDictionary *_remoteNotificationFromLaunch;
 }
 
 @end

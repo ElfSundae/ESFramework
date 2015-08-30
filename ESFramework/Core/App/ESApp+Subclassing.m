@@ -12,11 +12,6 @@ ES_CATEGORY_FIX(ESApp_Subclassing)
 
 @implementation ESApp (Subclassing)
 
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-        
-}
-
 - (NSString *)appChannel
 {
         return @"App Store";
@@ -30,6 +25,11 @@ ES_CATEGORY_FIX(ESApp_Subclassing)
 - (NSTimeZone *)appWebServerTimeZone
 {
         return [NSTimeZone timeZoneWithName:@"GMT"];
+}
+
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
+{
+        
 }
 
 #if 0

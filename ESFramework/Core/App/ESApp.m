@@ -12,6 +12,9 @@
 
 NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
+@interface _ESAppInternalWebViewDelegate : NSObject  <UIWebViewDelegate>
+@end
+
 @implementation ESApp
 
 + (void)load
@@ -73,7 +76,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
         /* Process launch options */
         if (launchOptions) {
-                self.remoteNotification = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+                _remoteNotificationFromLaunch = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
         }
         
         return YES;
@@ -93,10 +96,9 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-        NSString *token = [deviceToken description];
-        token = [token stringByDeletingCharactersInString:@"<> "];
+        NSString *tokenString = [[deviceToken description] stringByDeletingCharactersInString:@"<> "];
         if (_esRemoteNotificationRegisterSuccessBlock) {
-                _esRemoteNotificationRegisterSuccessBlock(token);
+                _esRemoteNotificationRegisterSuccessBlock(deviceToken, tokenString);
                 _esRemoteNotificationRegisterSuccessBlock = nil;
         }
 }
@@ -124,21 +126,21 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
          *     foo = bar;
          * }
          */
-        self.remoteNotification = userInfo;
-        [self applicationDidReceiveRemoteNotification:self.remoteNotification];
+        [self applicationDidReceiveRemoteNotification:userInfo isFromAppLaunch:NO];
 }
 
 - (void)_es_UIApplicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                // callback remote notification handler
-                if (ESIsDictionaryWithItems(self.remoteNotification)) {
-                        [self applicationDidReceiveRemoteNotification:self.remoteNotification];
-                }
-                
                 // fetch the default user agent of UIWebView
                 [ESApp _getDefaultWebViewUserAgent];
+
+                // callback remote notification handler
+                if (_remoteNotificationFromLaunch) {
+                        [self applicationDidReceiveRemoteNotification:_remoteNotificationFromLaunch isFromAppLaunch:YES];
+                        _remoteNotificationFromLaunch = nil;
+                }
         });
 }
 
@@ -148,7 +150,6 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
 static UIWebView *_esWebViewForFetchingUserAgent = nil;
 static _ESAppInternalWebViewDelegate *_esWebViewForFetchingUserAgentDelegate = nil;
-
 
 + (void)_getDefaultWebViewUserAgent
 {
