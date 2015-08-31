@@ -229,6 +229,7 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
                                      categories:(NSSet *)categories
                                         success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
                                         failure:(void (^)(NSError *error))failure;
+- (void)setCallbackForRemoteNotificationsRegistrationWithSuccess:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success failure:(void (^)(NSError *error))failure;
 - (void)unregisterForRemoteNotifications;
 - (BOOL)isRegisteredForRemoteNotifications;
 - (UIRemoteNotificationType)enabledRemoteNotificationTypes;

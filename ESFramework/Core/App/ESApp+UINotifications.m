@@ -63,6 +63,12 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Public
 
+- (void)setCallbackForRemoteNotificationsRegistrationWithSuccess:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success failure:(void (^)(NSError *error))failure
+{
+        _esRemoteNotificationRegisterSuccessBlock = success;
+        _esRemoteNotificationRegisterFailureBlock = failure;
+}
+
 - (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types
                                      categories:(NSSet *)categories
                                         success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
@@ -81,8 +87,7 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
         
         __ESAppHackAppDelegateUINotificationsMethods();
         
-        _esRemoteNotificationRegisterSuccessBlock = success;
-        _esRemoteNotificationRegisterFailureBlock = failure;
+        [self setCallbackForRemoteNotificationsRegistrationWithSuccess:success failure:failure];
         
         UIApplication *app = [UIApplication sharedApplication];
         if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
