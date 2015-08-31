@@ -12,7 +12,7 @@
 #import "NSError+ESAdditions.h"
 
 NSString *const ESApplicationDidReceiveRemoteNotificationNotification = @"ESApplicationDidReceiveRemoteNotificationNotification";
-NSString *const ESApplicationLaunchOptionsRemoteNotificationKey = @"ESApplicationLaunchOptionsRemoteNotificationKey";
+NSString *const ESApplicationLaunchRemoteNotificationKey = @"ESApplicationLaunchRemoteNotificationKey";
 NSString *const ESApplicationRemoteNotificationKey = @"ESApplicationRemoteNotificationKey";
 
 ES_CATEGORY_FIX(ESApp_UINotifications)

@@ -103,7 +103,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         
         [self applicationDidReceiveRemoteNotification:userInfo isFromAppLaunch:fromLaunch];
         
-        NSDictionary *notificationUserInfo = @{(fromLaunch ? ESApplicationLaunchOptionsRemoteNotificationKey : ESApplicationRemoteNotificationKey) : userInfo};
+        NSDictionary *notificationUserInfo = @{(fromLaunch ? ESApplicationLaunchRemoteNotificationKey : ESApplicationRemoteNotificationKey) : userInfo};
         [[NSNotificationCenter defaultCenter] postNotificationName:ESApplicationDidReceiveRemoteNotificationNotification object:[UIApplication sharedApplication] userInfo:notificationUserInfo];
 }
 

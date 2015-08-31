@@ -21,7 +21,7 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 /// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
 ES_EXTERN NSString *const ESApplicationDidReceiveRemoteNotificationNotification;
 /// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
-ES_EXTERN NSString *const ESApplicationLaunchOptionsRemoteNotificationKey;
+ES_EXTERN NSString *const ESApplicationLaunchRemoteNotificationKey;
 // Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
 ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 
