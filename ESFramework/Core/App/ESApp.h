@@ -9,7 +9,21 @@
 #import "ESDefines.h"
 
 ES_EXTERN NSString *const ESAppErrorDomain;
+typedef NS_ENUM(NSInteger, ESAppErrorCode) {
+        
+        ESAppErrorCodeRemoteNotificationTypesForRegisterIsNone  = 100,
+        // for iOS8+ only
+        ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = 101,
+};
+
 ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
+
+/// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
+ES_EXTERN NSString *const ESApplicationDidReceiveRemoteNotificationNotification;
+/// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
+ES_EXTERN NSString *const ESApplicationLaunchOptionsRemoteNotificationKey;
+// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
+ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 
 /**
  * `ESApp` is designed as the delegate of UIApplication, also it can be used
@@ -50,15 +64,8 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  */
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
 
-///=============================================
-/// @name UIApplicationDelegate methods which ESApp implemented
-///=============================================
-
+// It has setup self.window
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings NS_AVAILABLE_IOS(8_0);
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
 
 @end
 
@@ -85,12 +92,6 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
  * e.g. [NSTimeZone timeZoneWithName:@"Asia/Shanghai"]
  */
 - (NSTimeZone *)appWebServerTimeZone;
-
-/**
- * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive.
- * The `self.remoteNotification` has been fill.
- */
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
 
 @end
 
@@ -219,8 +220,10 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 #pragma mark - UINotifications
 @interface ESApp (UINotifications)
 /**
- * categories is
- * otherwise `sender` will be a NSError object.
+ * Note: success可能会延迟回调。例如：用户在系统设置里关闭了app的通知，调用register时会回调failure(error with ESAppErrorCodeCouldNotRegisterUserNotificationSettings),
+ * 如果用户在app运行期间去系统设置里打开了app的push通知，此时会回调success。
+ *
+ * @param categories is only for iOS8+, contains instances of UIUserNotificationCategory.
  */
 - (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types
                                      categories:(NSSet *)categories
@@ -229,6 +232,11 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 - (void)unregisterForRemoteNotifications;
 - (BOOL)isRegisteredForRemoteNotifications;
 - (UIRemoteNotificationType)enabledRemoteNotificationTypes;
+
+/**
+ * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive.
+ */
+- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
 
 @end
 

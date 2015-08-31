@@ -27,9 +27,4 @@ ES_CATEGORY_FIX(ESApp_Subclassing)
         return [NSTimeZone timeZoneWithName:@"GMT"];
 }
 
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
-{
-        
-}
-
 @end

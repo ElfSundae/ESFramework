@@ -97,7 +97,7 @@ static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 
 + (void)disableMultitasking
 {
-        ESDispatchOnMainThreadSynchrony(^{
+        ESDispatchOnMainThreadAsynchrony(^{
                 if (__es_gBackgroundTaskID) {
                         [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
                         __es_gBackgroundTaskID = UIBackgroundTaskInvalid;

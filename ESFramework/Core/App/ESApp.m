@@ -21,6 +21,8 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 {
         @autoreleasepool {
                 [self isFreshLaunch:nil];
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_es_UIApplicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_es_UIApplicationDidFinishLaunchingNotificationHandler:) name:UIApplicationDidFinishLaunchingNotification object:nil];
         }
 }
 
@@ -52,13 +54,57 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         return _rootViewController ?: [[self class] rootViewController];
 }
 
-- (instancetype)init
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private Methods
+
++ (void)_es_UIApplicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification
 {
-        self = [super init];
-        if (self) {
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_es_UIApplicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
-        }
-        return self;
+        __ESAppHackAppDelegateUINotificationsMethods();
+        
+        [ESApp sharedApp]->_remoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
+        
+        /* Enable multitasking */
+        [self enableMultitasking];
+}
+
++ (void)_es_UIApplicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
+{
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                // fetch the default user agent of UIWebView
+                [ESApp _getDefaultWebViewUserAgent];
+                
+                // callback remote notification handler
+                ESApp *app = [ESApp sharedApp];
+                if (app->_remoteNotificationFromLaunch) {
+                        [app _es_applicationDidReceiveRemoteNotification:app->_remoteNotificationFromLaunch isFromAppLaunch:YES];
+                        app->_remoteNotificationFromLaunch = nil;
+                }
+        });
+}
+
+- (void)_es_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
+{
+        /***************************************************************
+         * {
+         *     aps =     {
+         *         alert = "kfang (Enterprise)";
+         *         badge = 30;
+         *         sound = default;
+         *     };
+         *     custom =     {
+         *         key = value;
+         *     };
+         *     foo = bar;
+         * }
+         *
+         ****************************************************************/
+        
+        [self applicationDidReceiveRemoteNotification:userInfo isFromAppLaunch:fromLaunch];
+        
+        NSDictionary *notificationUserInfo = @{(fromLaunch ? ESApplicationLaunchOptionsRemoteNotificationKey : ESApplicationRemoteNotificationKey) : userInfo};
+        [[NSNotificationCenter defaultCenter] postNotificationName:ESApplicationDidReceiveRemoteNotificationNotification object:[UIApplication sharedApplication] userInfo:notificationUserInfo];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,77 +117,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.backgroundColor = [UIColor colorWithWhite:0.95f alpha:1.f];
         
-        /* Enable multitasking */
-        [[self class] enableMultitasking];
-
-        /* Process launch options */
-        if (launchOptions) {
-                _remoteNotificationFromLaunch = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
-        }
-        
         return YES;
-}
-
-// iOS8+
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-        if (notificationSettings.types == UIUserNotificationTypeNone) {
-                // failed
-                NSError *error = [NSError errorWithDomain:ESAppErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey : @"Can not register user notification settings."}];
-                [self application:application didFailToRegisterForRemoteNotificationsWithError:error];
-        } else {
-                [application registerForRemoteNotifications];
-        }
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-        NSString *tokenString = [[deviceToken description] stringByDeletingCharactersInString:@"<> "];
-        if (_esRemoteNotificationRegisterSuccessBlock) {
-                _esRemoteNotificationRegisterSuccessBlock(deviceToken, tokenString);
-                _esRemoteNotificationRegisterSuccessBlock = nil;
-        }
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-        if (_esRemoteNotificationRegisterFailureBlock) {
-                _esRemoteNotificationRegisterFailureBlock(error);
-                _esRemoteNotificationRegisterFailureBlock = nil;
-        }
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-        /*
-         * {
-         *     aps =     {
-         *         alert = "kfang (Enterprise)";
-         *         badge = 30;
-         *         sound = default;
-         *     };
-         *     custom =     {
-         *         key = value;
-         *     };
-         *     foo = bar;
-         * }
-         */
-        [self applicationDidReceiveRemoteNotification:userInfo isFromAppLaunch:NO];
-}
-
-- (void)_es_UIApplicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
-{
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                // fetch the default user agent of UIWebView
-                [ESApp _getDefaultWebViewUserAgent];
-
-                // callback remote notification handler
-                if (_remoteNotificationFromLaunch) {
-                        [self applicationDidReceiveRemoteNotification:_remoteNotificationFromLaunch isFromAppLaunch:YES];
-                        _remoteNotificationFromLaunch = nil;
-                }
-        });
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

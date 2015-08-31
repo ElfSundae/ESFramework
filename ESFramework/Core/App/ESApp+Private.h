@@ -16,5 +16,8 @@
         NSDictionary *_remoteNotificationFromLaunch;
 }
 
+- (void)_es_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
+
 @end
 
+ES_EXTERN void __ESAppHackAppDelegateUINotificationsMethods(void);
