@@ -9,11 +9,12 @@
 #ifndef ESFramework_ESFrameworkCore_H
 #define ESFramework_ESFrameworkCore_H
 
-#define kESFrameworkCoreVersion @"1.5.8"
+#define kESFrameworkCoreVersion @"1.5.9"
 
 #import "ESDefines.h"
 
 #import "NSObject+ESAutoCoding.h"
+#import "NSObject+ESAssociatedObjectHelper.h"
 #import "NSString+ESAdditions.h"
 #import "NSString+ESGTMHTML.h"
 #import "NSURL+ESAdditions.h"
