@@ -46,6 +46,20 @@
 //TODO: block里应该回调各种state, 只回调begin的单独写一个方法
 - (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
 
+- (NSArray *)allTapGestureRecognizers;
+- (NSArray *)allLongPressGestureRecognizers;
+- (NSArray *)allPanGestureRecognizers;
+- (NSArray *)allPinchGestureRecognizers;
+- (NSArray *)allSwipeGestureRecognizers;
+- (NSArray *)allRotationGestureRecognizers;
+
+- (void)removeAllTapGestureRecognizers;
+- (void)removeAllLongPressGestureRecognizers;
+- (void)removeAllPanGestureRecognizers;
+- (void)removeAllPinchGestureRecognizers;
+- (void)removeAllSwipeGestureRecognizers;
+- (void)removeAllRotationGestureRecognizers;
+
 /// Set layer.mask, rounds all corners with the same horizontal and vertical radius
 /// @see http://stackoverflow.com/a/5826745
 - (void)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius;

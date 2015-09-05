@@ -7,8 +7,9 @@
 //
 
 #import "UIView+ESAdditions.h"
-#import "UIGestureRecognizer+ESAdditions.h"
 #import "ESDefines.h"
+#import "UIGestureRecognizer+ESAdditions.h"
+#import "NSArray+ESAdditions.h"
 
 ES_CATEGORY_FIX(UIView_ESAdditions)
 
@@ -115,6 +116,80 @@ ES_CATEGORY_FIX(UIView_ESAdditions)
         return longPress;
 }
 
+- (NSArray *)allTapGestureRecognizers
+{
+        return [[self gestureRecognizers] matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isKindOfClass:[UITapGestureRecognizer class]];
+        }];
+}
+- (NSArray *)allLongPressGestureRecognizers
+{
+        return [[self gestureRecognizers] matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isKindOfClass:[UILongPressGestureRecognizer class]];
+        }];
+}
+- (NSArray *)allPanGestureRecognizers
+{
+        return [[self gestureRecognizers] matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isKindOfClass:[UIPanGestureRecognizer class]];
+        }];
+}
+- (NSArray *)allPinchGestureRecognizers
+{
+        return [[self gestureRecognizers] matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isKindOfClass:[UIPinchGestureRecognizer class]];
+        }];
+}
+- (NSArray *)allSwipeGestureRecognizers
+{
+        return [[self gestureRecognizers] matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isKindOfClass:[UISwipeGestureRecognizer class]];
+        }];
+}
+- (NSArray *)allRotationGestureRecognizers
+{
+        return [[self gestureRecognizers] matchesObjects:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+                return [obj isKindOfClass:[UIRotationGestureRecognizer class]];
+        }];
+}
+
+- (void)removeAllTapGestureRecognizers
+{
+        [[self allTapGestureRecognizers ] each:^(id obj, NSUInteger idx, BOOL *stop) {
+                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
+        } option:NSEnumerationConcurrent];
+}
+- (void)removeAllLongPressGestureRecognizers
+{
+        [[self allLongPressGestureRecognizers ] each:^(id obj, NSUInteger idx, BOOL *stop) {
+                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
+        } option:NSEnumerationConcurrent];
+}
+- (void)removeAllPanGestureRecognizers
+{
+        [[self allPanGestureRecognizers ] each:^(id obj, NSUInteger idx, BOOL *stop) {
+                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
+        } option:NSEnumerationConcurrent];
+}
+- (void)removeAllPinchGestureRecognizers
+{
+        [[self allPinchGestureRecognizers ] each:^(id obj, NSUInteger idx, BOOL *stop) {
+                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
+        } option:NSEnumerationConcurrent];
+}
+- (void)removeAllSwipeGestureRecognizers
+{
+        [[self allSwipeGestureRecognizers ] each:^(id obj, NSUInteger idx, BOOL *stop) {
+                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
+        } option:NSEnumerationConcurrent];
+}
+- (void)removeAllRotationGestureRecognizers
+{
+        [[self allRotationGestureRecognizers ] each:^(id obj, NSUInteger idx, BOOL *stop) {
+                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
+        } option:NSEnumerationConcurrent];
+}
+
 - (void)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
 {
         CAShapeLayer *maskLayer = [CAShapeLayer layer];
@@ -130,28 +205,28 @@ ES_CATEGORY_FIX(UIView_ESAdditions)
 
 - (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor
 {
-	self.layer.masksToBounds = YES;
-	self.layer.cornerRadius = cornerRadius;
-	self.layer.borderWidth = borderWidth;
-	self.layer.borderColor = [borderColor CGColor];
+        self.layer.masksToBounds = YES;
+        self.layer.cornerRadius = cornerRadius;
+        self.layer.borderWidth = borderWidth;
+        self.layer.borderColor = [borderColor CGColor];
 }
 
 - (void)setShadowOffset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
 {
-	self.layer.masksToBounds = NO;
-	self.layer.shadowOffset = offset;
-	self.layer.shadowRadius = radius;
-	self.layer.shadowOpacity = opacity;
+        self.layer.masksToBounds = NO;
+        self.layer.shadowOffset = offset;
+        self.layer.shadowRadius = radius;
+        self.layer.shadowOpacity = opacity;
 }
 
 - (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor
 {
-	CAGradientLayer *gradient = [CAGradientLayer layer];
+        CAGradientLayer *gradient = [CAGradientLayer layer];
         
-	gradient.frame = self.bounds;
-	gradient.colors = @[(id)[startColor CGColor], (id)[endColor CGColor]];
+        gradient.frame = self.bounds;
+        gradient.colors = @[(id)[startColor CGColor], (id)[endColor CGColor]];
         
-	[self.layer insertSublayer:gradient atIndex:0];
+        [self.layer insertSublayer:gradient atIndex:0];
 }
 
 - (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION
@@ -176,8 +251,8 @@ ES_CATEGORY_FIX(UIView_ESAdditions)
 
 - (void)enableDebugBorderWithColor:(UIColor *)color
 {
-	self.layer.borderColor = color.CGColor;
-	self.layer.borderWidth = 2.0;
+        self.layer.borderColor = color.CGColor;
+        self.layer.borderWidth = 2.0;
 }
 
 - (void)enableDebugBorder
@@ -187,21 +262,21 @@ ES_CATEGORY_FIX(UIView_ESAdditions)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark -
 
 - (NSUInteger)indexOfSuperview
 {
-	return [self.superview.subviews indexOfObject:self];
+        return [self.superview.subviews indexOfObject:self];
 }
 
 - (void)bringToFront
 {
-	[self.superview bringSubviewToFront:self];
+        [self.superview bringSubviewToFront:self];
 }
 
 - (void)sendToBack
 {
-	[self.superview sendSubviewToBack:self];
+        [self.superview sendSubviewToBack:self];
 }
 
 - (BOOL)isInFrontOfSuperview
