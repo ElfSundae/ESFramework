@@ -88,7 +88,7 @@
 /// @name View Hierarchy
 ///=============================================
 
-- (NSUInteger)indexOfSuperview;
+- (NSUInteger)indexOnSuperview;
 - (void)bringToFront;
 - (void)sendToBack;
 - (BOOL)isInFrontOfSuperview;
