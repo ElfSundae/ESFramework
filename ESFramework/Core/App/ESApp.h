@@ -237,7 +237,7 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 /**
  * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive.
  */
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
 
 @end
 

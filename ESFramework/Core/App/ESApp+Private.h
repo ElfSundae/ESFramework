@@ -16,7 +16,7 @@
         NSDictionary *_remoteNotificationFromLaunch;
 }
 
-- (void)_es_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
+- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
 
 @end
 

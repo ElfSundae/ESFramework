@@ -56,7 +56,7 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
 
 - (void)_esapp_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-        [self _es_applicationDidReceiveRemoteNotification:userInfo isFromAppLaunch:NO];
+        [self _es_application:application didReceiveRemoteNotification:userInfo isFromAppLaunch:NO];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,7 +124,7 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
         }
 }
 
-- (void)applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
 {
         // 留给子类实现
 }

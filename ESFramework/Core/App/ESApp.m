@@ -78,13 +78,13 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
                 // callback remote notification handler
                 ESApp *app = [ESApp sharedApp];
                 if (app->_remoteNotificationFromLaunch) {
-                        [app _es_applicationDidReceiveRemoteNotification:app->_remoteNotificationFromLaunch isFromAppLaunch:YES];
+                        [app _es_application:[UIApplication sharedApplication] didReceiveRemoteNotification:app->_remoteNotificationFromLaunch isFromAppLaunch:YES];
                         app->_remoteNotificationFromLaunch = nil;
                 }
         });
 }
 
-- (void)_es_applicationDidReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
+- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
 {
         /***************************************************************
          * {
@@ -101,7 +101,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
          *
          ****************************************************************/
         
-        [self applicationDidReceiveRemoteNotification:userInfo isFromAppLaunch:fromLaunch];
+        [self application:application didReceiveRemoteNotification:userInfo isFromAppLaunch:fromLaunch];
         
         NSDictionary *notificationUserInfo = @{(fromLaunch ? ESApplicationLaunchRemoteNotificationKey : ESApplicationRemoteNotificationKey) : userInfo};
         [[NSNotificationCenter defaultCenter] postNotificationName:ESApplicationDidReceiveRemoteNotificationNotification object:[UIApplication sharedApplication] userInfo:notificationUserInfo];
