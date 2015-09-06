@@ -59,7 +59,6 @@
 - (void)removeAllPinchGestureRecognizers;
 - (void)removeAllSwipeGestureRecognizers;
 - (void)removeAllRotationGestureRecognizers;
-- (void)removeAllGestureRecognizers;
 
 /// Set layer.mask, rounds all corners with the same horizontal and vertical radius
 /// @see http://stackoverflow.com/a/5826745

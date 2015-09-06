@@ -189,12 +189,6 @@ ES_CATEGORY_FIX(UIView_ESAdditions)
                 [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
         } option:NSEnumerationConcurrent];
 }
-- (void)removeAllGestureRecognizers
-{
-        [[self gestureRecognizers].copy each:^(id obj, NSUInteger idx, BOOL *stop) {
-                [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
-        } option:NSEnumerationConcurrent];
-}
 
 - (void)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
 {
