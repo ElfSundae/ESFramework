@@ -12,6 +12,7 @@
 #import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
+#import "ESApp+Private.h"
 
 ES_CATEGORY_FIX(ESApp_Helper)
 
@@ -79,35 +80,39 @@ NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaun
         }
 }
 
-static UIBackgroundTaskIdentifier __es_gBackgroundTaskID = 0;
 + (void)enableMultitasking
 {
-        if (!__es_gBackgroundTaskID || __es_gBackgroundTaskID == UIBackgroundTaskInvalid) {
-                __es_gBackgroundTaskID = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-                        ESDispatchOnMainThreadAsynchrony(^{
-                                if (UIBackgroundTaskInvalid != __es_gBackgroundTaskID) {
-                                        [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
-                                        __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
-                                }
-                                [[self class] enableMultitasking];
-                        });
-                }];
-        }
+        ESDispatchOnMainThreadSynchrony(^{
+                if (![self isMultitaskingEnabled]) {
+                     [ESApp sharedApp]->_esUIBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                             ESDispatchOnMainThreadSynchrony(^{
+                                     [self disableMultitasking];
+                                     [self enableMultitasking];
+                             });
+                     }];
+                }
+                
+        });
 }
 
 + (void)disableMultitasking
 {
-        ESDispatchOnMainThreadAsynchrony(^{
-                if (__es_gBackgroundTaskID) {
-                        [[UIApplication sharedApplication] endBackgroundTask:__es_gBackgroundTaskID];
-                        __es_gBackgroundTaskID = UIBackgroundTaskInvalid;
+        ESDispatchOnMainThreadSynchrony(^{
+                if ([self isMultitaskingEnabled]) {
+                        [[UIApplication sharedApplication] endBackgroundTask:[self backgroundTaskIdentifier]];
+                        [ESApp sharedApp]->_esUIBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
                 }
         });
 }
 
 + (BOOL)isMultitaskingEnabled
 {
-        return (__es_gBackgroundTaskID && __es_gBackgroundTaskID != UIBackgroundTaskInvalid);
+        return ([self backgroundTaskIdentifier] && [self backgroundTaskIdentifier] != UIBackgroundTaskInvalid);
+}
+
++ (UIBackgroundTaskIdentifier)backgroundTaskIdentifier
+{
+        return [ESApp sharedApp]->_esUIBackgroundTaskIdentifier;
 }
 
 + (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;

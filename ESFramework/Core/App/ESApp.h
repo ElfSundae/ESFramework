@@ -22,10 +22,10 @@ ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
 ES_EXTERN NSString *const ESApplicationDidReceiveRemoteNotificationNotification;
 /// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
 ES_EXTERN NSString *const ESApplicationLaunchRemoteNotificationKey;
-// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
+/// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
 ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 
-/**
+/*!
  * `ESApp` is designed as the delegate of UIApplication, also it can be used
  * as a global helper class.
  *
@@ -64,8 +64,12 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
  */
 @property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
 
-// It has setup self.window
+// UIApplicationDelegate methods that ESApp implemented
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
+//Sigleton
++ (id)alloc __attribute__((unavailable("alloc not available, call sharedApp instead.")));
++ (id)new __attribute__((unavailable("new not available, call sharedApp instead.")));
 
 @end
 
@@ -283,6 +287,8 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 + (void)disableMultitasking;
 
 + (BOOL)isMultitaskingEnabled;
+
++ (UIBackgroundTaskIdentifier)backgroundTaskIdentifier;
 
 /**
  * Preferences for iOS apps are displayed by the system-provided Settings app.

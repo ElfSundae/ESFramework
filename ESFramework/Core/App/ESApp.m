@@ -39,7 +39,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
         }
         
         if (!__gSharedApp) {
-                __gSharedApp = [[self alloc] init];
+                __gSharedApp = [[super alloc] init];
         }
         return __gSharedApp;
 }
@@ -62,7 +62,8 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 {
         __ESAppHackAppDelegateUINotificationsMethods();
         
-        [ESApp sharedApp]->_remoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
+        [ESApp sharedApp]->_esUIBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
+        [ESApp sharedApp]->_esRemoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
         
         /* Enable multitasking */
         [self enableMultitasking];
@@ -77,9 +78,9 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
                 
                 // callback remote notification handler
                 ESApp *app = [ESApp sharedApp];
-                if (app->_remoteNotificationFromLaunch) {
-                        [app _es_application:[UIApplication sharedApplication] didReceiveRemoteNotification:app->_remoteNotificationFromLaunch isFromAppLaunch:YES];
-                        app->_remoteNotificationFromLaunch = nil;
+                if (app->_esRemoteNotificationFromLaunch) {
+                        [app _es_application:[UIApplication sharedApplication] didReceiveRemoteNotification:app->_esRemoteNotificationFromLaunch isFromAppLaunch:YES];
+                        app->_esRemoteNotificationFromLaunch = nil;
                 }
         });
 }

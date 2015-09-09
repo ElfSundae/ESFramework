@@ -10,10 +10,12 @@
 
 @interface ESApp ()
 {
+@private
         void (^_esRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString);
         void (^_esRemoteNotificationRegisterFailureBlock)(NSError *error);
         NSString *_esWebViewDefaultUserAgent;
-        NSDictionary *_remoteNotificationFromLaunch;
+        NSDictionary *_esRemoteNotificationFromLaunch;
+        UIBackgroundTaskIdentifier _esUIBackgroundTaskIdentifier;
 }
 
 - (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
