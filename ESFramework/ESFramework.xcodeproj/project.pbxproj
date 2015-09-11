@@ -85,7 +85,7 @@
 /* Begin PBXBuildFile section */
 		E704F128199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */; };
 		E704F129199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */; };
-		E71A34C91BA3677700903551 /* ESApp+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E71A34C71BA3677700903551 /* ESApp+Private.h */; };
+		E71A34C91BA3677700903551 /* ESApp+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E71A34C71BA3677700903551 /* ESApp+Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E71A34CA1BA3677700903551 /* ESApp+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E71A34C81BA3677700903551 /* ESApp+Private.m */; };
 		E71A34CE1BA3692B00903551 /* ESApp+UIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E71A34CC1BA3692B00903551 /* ESApp+UIApplicationDelegate.m */; };
 		E71A34D21BA369ED00903551 /* ESApp+WebViewUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E71A34D01BA369ED00903551 /* ESApp+WebViewUserAgent.m */; };

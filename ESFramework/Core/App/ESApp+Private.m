@@ -12,9 +12,8 @@
 
 - (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)remoteNotification fromAppLaunch:(BOOL)fromLaunch
 {
-        if ([application.delegate conformsToProtocol:@protocol(ESAppDelegate)] &&
-            [(id<ESAppDelegate>)application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
-                [(id<ESAppDelegate>)application.delegate application:application didReceiveRemoteNotification:remoteNotification fromAppLaunch:fromLaunch];
+        if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
+                ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, remoteNotification, fromLaunch);
         }
         
         NSDictionary *notificationUserInfo = @{(fromLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey): remoteNotification};

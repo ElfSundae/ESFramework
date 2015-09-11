@@ -8,6 +8,9 @@
 
 #import "ESApp.h"
 
+/**
+ * Check and Hack AppDelegate's UINotifications methods.
+ */
 ES_EXTERN void __ESAppHackAppDelegateUINotificationsMethods(void);
 
 @interface ESApp ()
