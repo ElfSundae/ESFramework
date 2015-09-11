@@ -11,14 +11,16 @@
 @interface ESApp ()
 {
 @private
+        NSString *_esWebViewDefaultUserAgent;
+        UIBackgroundTaskIdentifier _esBackgroundTaskIdentifier;
+        
         void (^_esRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString);
         void (^_esRemoteNotificationRegisterFailureBlock)(NSError *error);
-        NSString *_esWebViewDefaultUserAgent;
+        NSString *_esRemoteNotificationsDeviceToken;
         NSDictionary *_esRemoteNotificationFromLaunch;
-        UIBackgroundTaskIdentifier _esUIBackgroundTaskIdentifier;
 }
 
-- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
+- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fromAppLaunch:(BOOL)fromLaunch;
 
 @end
 

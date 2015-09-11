@@ -11,9 +11,8 @@
 #import <objc/runtime.h>
 #import "NSError+ESAdditions.h"
 
-NSString *const ESApplicationDidReceiveRemoteNotificationNotification = @"ESApplicationDidReceiveRemoteNotificationNotification";
-NSString *const ESApplicationLaunchRemoteNotificationKey = @"ESApplicationLaunchRemoteNotificationKey";
-NSString *const ESApplicationRemoteNotificationKey = @"ESApplicationRemoteNotificationKey";
+NSString *const ESAppDidReceiveRemoteNotificationNotification = @"ESAppDidReceiveRemoteNotificationNotification";
+NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
 
 ES_CATEGORY_FIX(ESApp_UINotifications)
 
@@ -21,53 +20,7 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Swizzled UIApplicationDelegate Methods
-
-// iOS8+
-- (void)_esapp_application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-        if (notificationSettings.types == UIUserNotificationTypeNone) {
-                // failed
-                NSError *error = [NSError errorWithDomain:ESAppErrorDomain
-                                                     code:ESAppErrorCodeCouldNotRegisterUserNotificationSettings
-                                              description:@"Could not register UserNotificationSettings"];
-                [self _esapp_application:application didFailToRegisterForRemoteNotificationsWithError:error];
-        } else {
-                [application registerForRemoteNotifications];
-        }
-}
-
-- (void)_esapp_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-{
-        NSString *tokenString = [[deviceToken description] stringByDeletingCharactersInString:@"<> "];
-        if (_esRemoteNotificationRegisterSuccessBlock) {
-                _esRemoteNotificationRegisterSuccessBlock(deviceToken, tokenString);
-                _esRemoteNotificationRegisterSuccessBlock = nil;
-        }
-}
-
-- (void)_esapp_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
-{
-        if (_esRemoteNotificationRegisterFailureBlock) {
-                _esRemoteNotificationRegisterFailureBlock(error);
-                _esRemoteNotificationRegisterFailureBlock = nil;
-        }
-}
-
-- (void)_esapp_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
-        [self _es_application:application didReceiveRemoteNotification:userInfo isFromAppLaunch:NO];
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Public
-
-- (void)setCallbackForRemoteNotificationsRegistrationWithSuccess:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success failure:(void (^)(NSError *error))failure
-{
-        _esRemoteNotificationRegisterSuccessBlock = success;
-        _esRemoteNotificationRegisterFailureBlock = failure;
-}
 
 - (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types
                                      categories:(NSSet *)categories
@@ -78,14 +31,12 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
                 if (failure) {
                         ESDispatchOnMainThreadAsynchrony(^{
                                 failure([NSError errorWithDomain:ESAppErrorDomain
-                                                            code:ESAppErrorCodeRemoteNotificationTypesForRegisterIsNone
+                                                            code:ESAppErrorCodeRemoteNotificationTypesIsNone
                                                      description:@"UIRemoteNotificationTypes for register is none."]);
                         });
                 }
                 return;
         }
-        
-        __ESAppHackAppDelegateUINotificationsMethods();
         
         [self setCallbackForRemoteNotificationsRegistrationWithSuccess:success failure:failure];
         
@@ -98,6 +49,12 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
         } else {
                 [app registerForRemoteNotificationTypes:types];
         }
+}
+
+- (void)setCallbackForRemoteNotificationsRegistrationWithSuccess:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success failure:(void (^)(NSError *error))failure
+{
+        _esRemoteNotificationRegisterSuccessBlock = [success copy];
+        _esRemoteNotificationRegisterFailureBlock = [failure copy];
 }
 
 - (void)unregisterForRemoteNotifications
@@ -124,9 +81,56 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
         }
 }
 
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch
+- (NSString *)remoteNotificationsDeviceToken
 {
-        // 留给子类实现
+        return _esRemoteNotificationsDeviceToken;
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fromAppLaunch:(BOOL)fromLaunch
+{
+        // nop
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Swizzled UIApplicationDelegate Methods
+
+- (void)_es_application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+        if (UIUserNotificationTypeNone == notificationSettings.types) {
+                NSError *error = [NSError errorWithDomain:ESAppErrorDomain
+                                                     code:ESAppErrorCodeCouldNotRegisterUserNotificationSettings
+                                              description:@"Could not register UserNotificationSettings"];
+                // TODO: add notificationSetings to error's userInfo
+                [self _es_application:application didFailToRegisterForRemoteNotificationsWithError:error];
+        } else {
+                [application registerForRemoteNotifications];
+        }
+}
+
+- (void)_es_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+        NSString *tokenString = [[deviceToken description] stringByDeletingCharactersInString:@"<> "];
+        self->_esRemoteNotificationsDeviceToken = [tokenString copy];
+        
+        if (_esRemoteNotificationRegisterSuccessBlock) {
+                _esRemoteNotificationRegisterSuccessBlock(deviceToken, tokenString);
+                _esRemoteNotificationRegisterSuccessBlock = nil;
+        }
+        
+}
+
+- (void)_es_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+        if (_esRemoteNotificationRegisterFailureBlock) {
+                _esRemoteNotificationRegisterFailureBlock(error);
+                _esRemoteNotificationRegisterFailureBlock = nil;
+        }
+}
+
+- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+        [self _es_application:application didReceiveRemoteNotification:userInfo fromAppLaunch:NO];
 }
 
 @end
@@ -143,10 +147,9 @@ static SEL __gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken = NUL
 static SEL __gESOldMethod_didFailToRegisterForRemoteNotificationsWithError = NULL;
 static SEL __gESOldMethod_didReceiveRemoteNotification = NULL;
 
-
 static void _es_application_didRegisterUserNotificationSettings(id self, SEL _cmd, UIApplication *application, UIUserNotificationSettings *notificationSettings)
 {
-        [[ESApp sharedApp] _esapp_application:application didRegisterUserNotificationSettings:notificationSettings];
+        [[ESApp sharedApp] _es_application:application didRegisterUserNotificationSettings:notificationSettings];
         if (__gESOldMethod_didRegisterUserNotificationSettings) {
                 ESInvokeSelector(self, __gESOldMethod_didRegisterUserNotificationSettings, NULL, application, notificationSettings);
         }
@@ -154,7 +157,7 @@ static void _es_application_didRegisterUserNotificationSettings(id self, SEL _cm
 
 static void _es_application_didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication *application, NSData *deviceToken)
 {
-        [[ESApp sharedApp] _esapp_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+        [[ESApp sharedApp] _es_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
         if (__gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken) {
                 ESInvokeSelector(self, __gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken, NULL, application, deviceToken);
         }
@@ -162,7 +165,7 @@ static void _es_application_didRegisterForRemoteNotificationsWithDeviceToken(id 
 
 static void _es_application_didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication *application, NSError *error)
 {
-        [[ESApp sharedApp] _esapp_application:application didFailToRegisterForRemoteNotificationsWithError:error];
+        [[ESApp sharedApp] _es_application:application didFailToRegisterForRemoteNotificationsWithError:error];
         if (__gESOldMethod_didFailToRegisterForRemoteNotificationsWithError) {
                 ESInvokeSelector(self, __gESOldMethod_didFailToRegisterForRemoteNotificationsWithError, NULL, application, error);
         }
@@ -170,12 +173,11 @@ static void _es_application_didFailToRegisterForRemoteNotificationsWithError(id 
 
 static void _es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIApplication *application, NSDictionary *userInfo)
 {
-        [[ESApp sharedApp] _esapp_application:application didReceiveRemoteNotification:userInfo];
+        [[ESApp sharedApp] _es_application:application didReceiveRemoteNotification:userInfo];
         if (__gESOldMethod_didReceiveRemoteNotification) {
                 ESInvokeSelector(self, __gESOldMethod_didReceiveRemoteNotification, NULL, application, userInfo);
         }
 }
-
 
 /**
  * 检查AppDelegate是否实现了UINotifications的相关代理方法。
@@ -197,20 +199,20 @@ void __ESAppHackAppDelegateUINotificationsMethods(void)
         }
         __gHacked = YES;
         
-        BOOL isIOS8 = [[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)];
+        BOOL isIOS8 = [UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)];
         
         SEL oldMethod_didRegisterUserNotificationSettings = isIOS8 ? @selector(application:didRegisterUserNotificationSettings:) : NULL;
         SEL oldMethod_didRegisterForRemoteNotificationsWithDeviceToken = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
         SEL oldMethod_didFailToRegisterForRemoteNotificationsWithError = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
         SEL oldMethod_didReceiveRemoteNotification = @selector(application:didReceiveRemoteNotification:);
         
-        SEL newMethod_didRegisterUserNotificationSettings = isIOS8 ? NSSelectorFromString(@"_es_application:didRegisterUserNotificationSettings:") : NULL;
+        SEL newMethod_didRegisterUserNotificationSettings = isIOS8 ? NSSelectorFromString(@"_esapp_application:didRegisterUserNotificationSettings:") : NULL;
         IMP newMethod_didRegisterUserNotificationSettings_IMP = isIOS8 ? (IMP)_es_application_didRegisterUserNotificationSettings : NULL;
-        SEL newMethod_didRegisterForRemoteNotificationsWithDeviceToken = NSSelectorFromString(@"_es_application:didRegisterForRemoteNotificationsWithDeviceToken:");
+        SEL newMethod_didRegisterForRemoteNotificationsWithDeviceToken = NSSelectorFromString(@"_esapp_application:didRegisterForRemoteNotificationsWithDeviceToken:");
         IMP newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP = (IMP)_es_application_didRegisterForRemoteNotificationsWithDeviceToken;
-        SEL newMethod_didFailToRegisterForRemoteNotificationsWithError = NSSelectorFromString(@"_es_application:didFailToRegisterForRemoteNotificationsWithError:");
+        SEL newMethod_didFailToRegisterForRemoteNotificationsWithError = NSSelectorFromString(@"_esapp_application:didFailToRegisterForRemoteNotificationsWithError:");
         IMP newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP = (IMP)_es_application_didFailToRegisterForRemoteNotificationsWithError;
-        SEL newMethod_didReceiveRemoteNotification = NSSelectorFromString(@"_es_application:didReceiveRemoteNotification:");
+        SEL newMethod_didReceiveRemoteNotification = NSSelectorFromString(@"_esapp_application:didReceiveRemoteNotification:");
         IMP newMethod_didReceiveRemoteNotification_IMP = (IMP)_es_application_didReceiveRemoteNotification;
         
         if (oldMethod_didRegisterUserNotificationSettings /* iOS8+ */) {

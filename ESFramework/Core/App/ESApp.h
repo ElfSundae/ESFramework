@@ -11,19 +11,18 @@
 ES_EXTERN NSString *const ESAppErrorDomain;
 typedef NS_ENUM(NSInteger, ESAppErrorCode) {
         
-        ESAppErrorCodeRemoteNotificationTypesForRegisterIsNone  = 100,
+        ESAppErrorCodeRemoteNotificationTypesIsNone             = -10,
         // for iOS8+ only
-        ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = 101,
+        ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = -11,
 };
 
-ES_EXTERN NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey;
+/// The key for NSUserDefaults that stores app version string for checking fresh launch.
+ES_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
 
 /// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
-ES_EXTERN NSString *const ESApplicationDidReceiveRemoteNotificationNotification;
-/// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
-ES_EXTERN NSString *const ESApplicationLaunchRemoteNotificationKey;
-/// Key of userInfo for ESApplicationDidReceiveRemoteNotificationNotification
-ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
+ES_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
+/// Key of userInfo for ESAppDidReceiveRemoteNotificationNotification
+ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 
 /*!
  * `ESApp` is designed as the delegate of UIApplication, also it can be used
@@ -35,7 +34,6 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
  *
  *      + Setup window
  *      + Enable multitasking, see +enableMultitasking;
- *      + Save UIApplicationLaunchOptionsRemoteNotification value to self.remoteNotification
  *
  */
 @interface ESApp : UIResponder <UIApplicationDelegate>
@@ -55,19 +53,12 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
  */
 @property (nonatomic, strong) UIViewController *rootViewController;
 
-/**
- * Remote notification userInfo.
- */
-@property (nonatomic, strong) NSDictionary *remoteNotification;
-/**
- * The device token for the remote notification.
- */
-@property (nonatomic, copy) NSString *remoteNotificationsDeviceToken;
+/// @name UIApplicationDelegate
 
-// UIApplicationDelegate methods that ESApp implemented
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 
-//Sigleton
+/// @name Sigleton
+
 + (id)alloc __attribute__((unavailable("alloc not available, call sharedApp instead.")));
 + (id)new __attribute__((unavailable("new not available, call sharedApp instead.")));
 
@@ -80,7 +71,7 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 @interface ESApp (Subclassing)
 
 /**
- * @"App Store" as default.
+ * Returns the channel/store that app submitted, default is @"App Store".
  */
 - (NSString *)appChannel;
 /**
@@ -90,7 +81,7 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
  */
 - (NSString *)appStoreID;
 /**
- * Returns the timeZone used by your web server, used to convert datetime from server to local.
+ * Returns the timeZone used by your web/API server/backend, it used to convert datetime between server and local.
  * Default is "GMT"
  *
  * e.g. [NSTimeZone timeZoneWithName:@"Asia/Shanghai"]
@@ -237,11 +228,12 @@ ES_EXTERN NSString *const ESApplicationRemoteNotificationKey;
 - (void)unregisterForRemoteNotifications;
 - (BOOL)isRegisteredForRemoteNotifications;
 - (UIRemoteNotificationType)enabledRemoteNotificationTypes;
+- (NSString *)remoteNotificationsDeviceToken;
 
 /**
- * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive.
+ * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive if there is an APNS object.
  */
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo isFromAppLaunch:(BOOL)fromLaunch;
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fromAppLaunch:(BOOL)fromLaunch;
 
 @end
 

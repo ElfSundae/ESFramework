@@ -16,7 +16,7 @@
 
 ES_CATEGORY_FIX(ESApp_Helper)
 
-NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaunchAppVersion";
+NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUserDefaultsKey";
 
 @implementation ESApp (Helper)
 
@@ -27,7 +27,7 @@ NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaun
         
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                __previousVersion = [NSUserDefaults objectForKey:ESCheckFreshLaunchAppVersionUserDefaultsKey];
+                __previousVersion = [NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey];
                 if (!ESIsStringWithAnyText(__previousVersion)) {
                         __previousVersion = nil;
                 }
@@ -36,7 +36,7 @@ NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaun
                         __isFreshLaunch = NO;
                 } else {
                         __isFreshLaunch = YES;
-                        [NSUserDefaults setObjectAsynchrony:current forKey:ESCheckFreshLaunchAppVersionUserDefaultsKey];
+                        [NSUserDefaults setObjectAsynchrony:current forKey:ESAppCheckFreshLaunchUserDefaultsKey];
                 }
         });
         
@@ -84,7 +84,7 @@ NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaun
 {
         ESDispatchOnMainThreadSynchrony(^{
                 if (![self isMultitaskingEnabled]) {
-                     [ESApp sharedApp]->_esUIBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                     [ESApp sharedApp]->_esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
                              ESDispatchOnMainThreadSynchrony(^{
                                      [self disableMultitasking];
                                      [self enableMultitasking];
@@ -100,7 +100,7 @@ NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaun
         ESDispatchOnMainThreadSynchrony(^{
                 if ([self isMultitaskingEnabled]) {
                         [[UIApplication sharedApplication] endBackgroundTask:[self backgroundTaskIdentifier]];
-                        [ESApp sharedApp]->_esUIBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
+                        [ESApp sharedApp]->_esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
                 }
         });
 }
@@ -112,7 +112,7 @@ NSString *const ESCheckFreshLaunchAppVersionUserDefaultsKey = @"ESCheckFreshLaun
 
 + (UIBackgroundTaskIdentifier)backgroundTaskIdentifier
 {
-        return [ESApp sharedApp]->_esUIBackgroundTaskIdentifier;
+        return [ESApp sharedApp]->_esBackgroundTaskIdentifier;
 }
 
 + (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;
