@@ -27,6 +27,8 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
                                         success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
                                         failure:(void (^)(NSError *error))failure
 {
+        __ESAppHackAppDelegateUINotificationsMethods();
+        
         if (0 == types) {
                 if (failure) {
                         ESDispatchOnMainThreadAsynchrony(^{
@@ -84,11 +86,6 @@ ES_CATEGORY_FIX(ESApp_UINotifications)
 - (NSString *)remoteNotificationsDeviceToken
 {
         return _esRemoteNotificationsDeviceToken;
-}
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fromAppLaunch:(BOOL)fromLaunch
-{
-        // nop
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

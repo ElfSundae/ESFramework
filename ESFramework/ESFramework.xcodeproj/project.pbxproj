@@ -85,6 +85,10 @@
 /* Begin PBXBuildFile section */
 		E704F128199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */; };
 		E704F129199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */; };
+		E71A34C91BA3677700903551 /* ESApp+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E71A34C71BA3677700903551 /* ESApp+Private.h */; };
+		E71A34CA1BA3677700903551 /* ESApp+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E71A34C81BA3677700903551 /* ESApp+Private.m */; };
+		E71A34CE1BA3692B00903551 /* ESApp+UIApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E71A34CC1BA3692B00903551 /* ESApp+UIApplicationDelegate.m */; };
+		E71A34D21BA369ED00903551 /* ESApp+WebViewUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = E71A34D01BA369ED00903551 /* ESApp+WebViewUserAgent.m */; };
 		E71D1EC71A6EF3EA00AD0DB2 /* ESApp+AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D1EC51A6EF3EA00AD0DB2 /* ESApp+AppInfo.m */; };
 		E71D1ECB1A6EF4CA00AD0DB2 /* ESApp+Subclassing.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D1EC91A6EF4CA00AD0DB2 /* ESApp+Subclassing.m */; };
 		E71D1ECF1A6EF56200AD0DB2 /* ESApp+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D1ECD1A6EF56200AD0DB2 /* ESApp+Helper.m */; };
@@ -100,7 +104,6 @@
 		E745B91F1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E745B9201B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */; };
 		E745B9911B10A54C005F0CBE /* ESApp+UINotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = E745B98F1B10A54C005F0CBE /* ESApp+UINotifications.m */; };
-		E745B9941B10A5A6005F0CBE /* ESApp+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E745B9921B10A5A6005F0CBE /* ESApp+Private.h */; };
 		E75C4C131AAD9B6B00CF905B /* MVConfig+AssetWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4BC71AAD9B6B00CF905B /* MVConfig+AssetWriter.m */; };
 		E75C4C141AAD9B6B00CF905B /* MVConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E75C4BC81AAD9B6B00CF905B /* MVConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75C4C151AAD9B6B00CF905B /* MVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E75C4BC91AAD9B6B00CF905B /* MVConfig.m */; };
@@ -423,6 +426,10 @@
 /* Begin PBXFileReference section */
 		E704F126199027DB00B4F41E /* ESSpeexRecorderSettings+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESSpeexRecorderSettings+Private.h"; sourceTree = "<group>"; };
 		E704F127199027DB00B4F41E /* ESSpeexRecorderSettings+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESSpeexRecorderSettings+Private.m"; sourceTree = "<group>"; };
+		E71A34C71BA3677700903551 /* ESApp+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+Private.h"; sourceTree = "<group>"; };
+		E71A34C81BA3677700903551 /* ESApp+Private.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Private.m"; sourceTree = "<group>"; };
+		E71A34CC1BA3692B00903551 /* ESApp+UIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UIApplicationDelegate.m"; sourceTree = "<group>"; };
+		E71A34D01BA369ED00903551 /* ESApp+WebViewUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+WebViewUserAgent.m"; sourceTree = "<group>"; };
 		E71D1EC51A6EF3EA00AD0DB2 /* ESApp+AppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+AppInfo.m"; sourceTree = "<group>"; };
 		E71D1EC91A6EF4CA00AD0DB2 /* ESApp+Subclassing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Subclassing.m"; sourceTree = "<group>"; };
 		E71D1ECD1A6EF56200AD0DB2 /* ESApp+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
@@ -439,7 +446,6 @@
 		E745B91D1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
 		E745B91E1B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
 		E745B98F1B10A54C005F0CBE /* ESApp+UINotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "ESApp+UINotifications.m"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		E745B9921B10A5A6005F0CBE /* ESApp+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ESApp+Private.h"; sourceTree = "<group>"; };
 		E7522DF318EC427E0087B95E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7522E5718EC438B0087B95E /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		E7522E5818EC438B0087B95E /* Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
@@ -1302,7 +1308,10 @@
 			children = (
 				E7F5D9081916DC0700D11273 /* ESApp.h */,
 				E7F5D9091916DC0700D11273 /* ESApp.m */,
-				E745B9921B10A5A6005F0CBE /* ESApp+Private.h */,
+				E71A34C71BA3677700903551 /* ESApp+Private.h */,
+				E71A34C81BA3677700903551 /* ESApp+Private.m */,
+				E71A34CC1BA3692B00903551 /* ESApp+UIApplicationDelegate.m */,
+				E71A34D01BA369ED00903551 /* ESApp+WebViewUserAgent.m */,
 				E745B98F1B10A54C005F0CBE /* ESApp+UINotifications.m */,
 				E71D1EC51A6EF3EA00AD0DB2 /* ESApp+AppInfo.m */,
 				E71D1EC91A6EF4CA00AD0DB2 /* ESApp+Subclassing.m */,
@@ -1413,6 +1422,7 @@
 				E7DC2C681B99255C00E53611 /* NSObject+ESAssociatedObjectHelper.h in Headers */,
 				E79704071AE800B700346055 /* UIImagePickerController+ESFixOrientation.h in Headers */,
 				E79703D61AE7FF3C00346055 /* NSURL+ESAdditions.h in Headers */,
+				E71A34C91BA3677700903551 /* ESApp+Private.h in Headers */,
 				E79704091AE800B700346055 /* UIImageView+ESAdditions.h in Headers */,
 				E79704011AE800B700346055 /* UIControl+ESAdditions.h in Headers */,
 				E7FEF4F118FA64DE006E1682 /* ESFrameworkCore.h in Headers */,
@@ -1422,7 +1432,6 @@
 				E797040B1AE800B700346055 /* UINavigationController+ESAdditions.h in Headers */,
 				E79703FB1AE800B700346055 /* UIAlertView+ESBlock.h in Headers */,
 				E79704131AE800B700346055 /* UIView+ESShortcut.h in Headers */,
-				E745B9941B10A5A6005F0CBE /* ESApp+Private.h in Headers */,
 				E79704111AE800B700346055 /* UIView+ESAdditions.h in Headers */,
 				E7F5D8F61916DB8900D11273 /* ESHash.h in Headers */,
 				E7F5D9111916DC0700D11273 /* ESApp.h in Headers */,
@@ -1796,6 +1805,7 @@
 				E79703FC1AE800B700346055 /* UIAlertView+ESBlock.m in Sources */,
 				E75D55DD1AAD90E40079E891 /* ESDefines.m in Sources */,
 				E79704041AE800B700346055 /* UIGestureRecognizer+ESAdditions.m in Sources */,
+				E71A34CA1BA3677700903551 /* ESApp+Private.m in Sources */,
 				E79703CB1AE7FF3C00346055 /* NSOrderedSet+ESAdditions.m in Sources */,
 				E79703CD1AE7FF3C00346055 /* NSRegularExpression+ESAdditions.m in Sources */,
 				E79703C61AE7FF3C00346055 /* NSDictionary+ESAdditions.m in Sources */,
@@ -1814,11 +1824,13 @@
 				E79703CF1AE7FF3C00346055 /* NSSet+ESAdditions.m in Sources */,
 				E745B9201B0BFE8E005F0CBE /* NSUserDefaults+ESAdditions.m in Sources */,
 				E7B164A61B7A846E00F65648 /* UIDevice+ESNetworkReachability.m in Sources */,
+				E71A34CE1BA3692B00903551 /* ESApp+UIApplicationDelegate.m in Sources */,
 				E797040C1AE800B700346055 /* UINavigationController+ESAdditions.m in Sources */,
 				E79704141AE800B700346055 /* UIView+ESShortcut.m in Sources */,
 				E7B1649E1B7A83B000F65648 /* ESOpenUDID.m in Sources */,
 				E79704161AE800B700346055 /* UIViewController+ESAdditions.m in Sources */,
 				E7A209A51AF308B3006BAA17 /* UIDevice+ESInfo.m in Sources */,
+				E71A34D21BA369ED00903551 /* ESApp+WebViewUserAgent.m in Sources */,
 				E79704121AE800B700346055 /* UIView+ESAdditions.m in Sources */,
 				E7F5D9121916DC0700D11273 /* ESApp.m in Sources */,
 				E797040E1AE800B700346055 /* UITableView+ESAdditions.m in Sources */,

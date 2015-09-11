@@ -9,6 +9,7 @@
 #import "ESDefines.h"
 
 ES_EXTERN NSString *const ESAppErrorDomain;
+
 typedef NS_ENUM(NSInteger, ESAppErrorCode) {
         
         ESAppErrorCodeRemoteNotificationTypesIsNone             = -10,
@@ -20,9 +21,29 @@ typedef NS_ENUM(NSInteger, ESAppErrorCode) {
 ES_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
 
 /// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
+/// Key for userInfo: UIApplicationLaunchOptionsRemoteNotificationKey OR ESAppRemoteNotificationKey
 ES_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
 /// Key of userInfo for ESAppDidReceiveRemoteNotificationNotification
 ES_EXTERN NSString *const ESAppRemoteNotificationKey;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ESAppDelegate
+
+@protocol ESAppDelegate <NSObject>
+@optional
+/**
+ * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive if there is an APNS object in UIApplicationLaunchOptionsRemoteNotificationKey.
+ *
+ * 如果你的AppDelegate不是继承自ESApp，也可以实现此方法接收remoteNotification
+ */
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)remoteNotification fromAppLaunch:(BOOL)fromLaunch;
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ESApp
 
 /*!
  * `ESApp` is designed as the delegate of UIApplication, also it can be used
@@ -36,7 +57,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  *      + Enable multitasking, see +enableMultitasking;
  *
  */
-@interface ESApp : UIResponder <UIApplicationDelegate>
+@interface ESApp : UIResponder <ESAppDelegate>
 
 /**
  * Returns the application delegate if the `AppDelegate` is a subclass of `ESApp`, 
@@ -53,15 +74,19 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  */
 @property (nonatomic, strong) UIViewController *rootViewController;
 
-/// @name UIApplicationDelegate
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-
 /// @name Sigleton
 
 + (id)alloc __attribute__((unavailable("alloc not available, call sharedApp instead.")));
 + (id)new __attribute__((unavailable("new not available, call sharedApp instead.")));
 
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - UIApplicationDelegate
+
+@interface ESApp (UIApplicationDelegate) <UIApplicationDelegate>
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -213,6 +238,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UINotifications
+
 @interface ESApp (UINotifications)
 /**
  * Note: success可能会延迟回调。例如：用户在系统设置里关闭了app的通知，调用register时会回调failure(error with ESAppErrorCodeCouldNotRegisterUserNotificationSettings),
@@ -230,13 +256,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 - (UIRemoteNotificationType)enabledRemoteNotificationTypes;
 - (NSString *)remoteNotificationsDeviceToken;
 
-/**
- * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive if there is an APNS object.
- */
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fromAppLaunch:(BOOL)fromLaunch;
-
 @end
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
