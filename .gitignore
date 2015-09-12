@@ -1,6 +1,10 @@
-# Xcode
 .DS_Store
-*/build/*
+
+# Xcode
+build/
+DerivedData
+xcuserdata
+
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -9,17 +13,27 @@
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
-xcuserdata
-profile
-*.moved-aside
-DerivedData
-.idea/
-*.hmap
+*.xcworkspace
+!default.xcworkspace
+
 *.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+*.hmap
+*.ipa
 
-#CocoaPods
-Pods
+# CocoaPods
+#
+# We recommend against adding the Pods directory to your .gitignore. However
+# you should judge for yourself, the pros and cons are mentioned at:
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
+#
+Pods/
 
-docs/docset/*
-!docs/docset/README.md
-!docs/docset/publish
+# Carthage
+#
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
+
+Carthage/Build
