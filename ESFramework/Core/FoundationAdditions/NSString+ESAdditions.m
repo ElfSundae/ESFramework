@@ -196,38 +196,40 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
+        NSMutableString *queryString = self.mutableCopy;
+        
+        // remove Scheme
+        [queryString replaceRegex:@"^[^:/]*:/*" to:@"" caseInsensitive:YES];
+        
         // 搜索第一个 ?&# 的range
-        NSRange searchFirstMarkInRange;
-        // 在第一个"="前搜索, 因为self是一个不带"?"前缀的串,例如"test=xxx&abc=foo"
-        NSRange firstEqual = [self rangeOfString:@"="];
-        if (NSNotFound == firstEqual.location) {
-                searchFirstMarkInRange = NSMakeRange(0, self.length);
-        } else {
+        NSRange searchFirstMarkInRange = NSMakeRange(0, queryString.length);
+        // 在第一个"="前搜索, 因为query可能是一个不带"?"前缀的串,例如"test=xxx&abc=foo"，所以以等号来截取得到queryString
+        NSRange firstEqual = [queryString rangeOfString:@"="];
+        if (NSNotFound != firstEqual.location) {
                 searchFirstMarkInRange = NSMakeRange(0, firstEqual.location);
         }
+        
         // 搜索第一个 ?&#, 把这个mark之前的舍弃掉
-        NSRange firstMarkRange = [self rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?&#"]
-                                                       options:0
-                                                         range:searchFirstMarkInRange];
+        NSRange firstMarkRange = [queryString rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?&#"]
+                                                              options:0
+                                                                range:searchFirstMarkInRange];
         // 去掉mark之前的字符串,得到queryString
-        NSString *string = nil;
-        if (firstMarkRange.location == NSNotFound) {
-                string = self;
-        } else {
-                string = [self substringFromIndex:firstMarkRange.location + 1];
+        if (NSNotFound != firstMarkRange.location) {
+                [queryString deleteCharactersInRange:NSMakeRange(0, firstMarkRange.location + 1)];
         }
-        // 将queryString按 & 分割
-        NSArray *components = [string componentsSeparatedByString:@"&"];
+        
+        
+        // 将queryString按 & 或者 # 分割
+        NSArray *components = [queryString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"&#"]];
         
         for (NSString *str in components) {
                 NSArray *keyValue = [str componentsSeparatedByString:@"="];
-                const NSUInteger count = keyValue.count;
-                if (0 == count) {
+                if (0 == keyValue.count) {
                         continue;
                 }
                 
                 NSString *key = keyValue[0];
-                NSString *value = count > 1 ? [keyValue[1] URLDecode] : nil;
+                NSString *value = keyValue.count > 1 ? [keyValue[1] URLDecode] : nil;
                 
                 if ([key hasSuffix:@"[]"]) { // array
                         key = [[key substringToIndex:key.length - 2] URLDecode];
