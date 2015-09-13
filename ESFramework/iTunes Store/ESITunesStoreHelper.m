@@ -10,9 +10,6 @@
 #import "NSString+ESAdditions.h"
 #import "NSRegularExpression+ESAdditions.h"
 
-NSString *const ESITunesStoreCountryCodeChina           = @"cn";
-NSString *const ESITunesStoreCountryCodeUnitedStates    = @"us";
-
 @implementation ESITunesStoreHelper
 
 + (NSString *)itemIDFromURL:(NSURL *)URL

@@ -6,12 +6,8 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "ESDefines.h"
-
-// TODO: add all countries code
-ES_EXTERN NSString *const ESITunesStoreCountryCodeChina;        // "cn"
-ES_EXTERN NSString *const ESITunesStoreCountryCodeUnitedStates; // "us"
+#import "ESAppStoreTerritories.h"
 
 /**
  * @see https://linkmaker.itunes.apple.com

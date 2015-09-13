@@ -96,6 +96,8 @@
 		E75AE1621BA5FB14007F4561 /* ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAdditions.h; sourceTree = "<group>"; };
 		E75AE1641BA5FF30007F4561 /* ESITunesStoreHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESITunesStoreHelper.h; sourceTree = "<group>"; };
 		E75AE1651BA5FF30007F4561 /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
+		E75AE1661BA60631007F4561 /* ESAppStoreTerritories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAppStoreTerritories.h; sourceTree = "<group>"; };
+		E75AE1671BA60631007F4561 /* ESAppStoreTerritories.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESAppStoreTerritories.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -254,6 +256,8 @@
 		E75AE1631BA5FF30007F4561 /* iTunes Store */ = {
 			isa = PBXGroup;
 			children = (
+				E75AE1661BA60631007F4561 /* ESAppStoreTerritories.h */,
+				E75AE1671BA60631007F4561 /* ESAppStoreTerritories.m */,
 				E75AE1641BA5FF30007F4561 /* ESITunesStoreHelper.h */,
 				E75AE1651BA5FF30007F4561 /* ESITunesStoreHelper.m */,
 			);
