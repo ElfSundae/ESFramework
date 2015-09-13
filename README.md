@@ -4,7 +4,9 @@ An Effective & Swinging framework for iOS.
 
 ## Requirements
 
-* Minimum iOS Target: iOS 6.0
+* Xcode 5.0 or later
+* iOS deployment target >= 6.0
+* ARC
 
 ## Installation
 
@@ -24,6 +26,9 @@ pod "ESFramework"
 
 ## Usage
 
+## Contribute Notes
+
+* `pod install` then `open ESFramework.xcworkspace`
 
 ## License
 

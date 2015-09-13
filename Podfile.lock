@@ -1,0 +1,14 @@
+PODS:
+  - ESFramework (2.0.0)
+
+DEPENDENCIES:
+  - ESFramework (from `./`)
+
+EXTERNAL SOURCES:
+  ESFramework:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  ESFramework: a35d3015f2b147ee2e7db529e7bddc78f58f239d
+
+COCOAPODS: 0.38.2
