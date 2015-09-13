@@ -7,14 +7,26 @@
 //
 
 #import "ESHash.h"
-#import "NSData+ESAdditions.h"
-#import <CommonCrypto/CommonDigest.h>
-#import "ESDefines.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSData
 @implementation NSData (ESHash)
+
+- (NSString *)stringValue
+{
+        return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)hexStringValue
+{
+        NSMutableString *hexString = [NSMutableString string];
+        const unsigned char *p = self.bytes;
+        for (NSUInteger i = 0; i < self.length; ++i) {
+                [hexString appendFormat:@"%02x", *p++];
+        }
+        return hexString;
+}
 
 - (NSData *)es_md5HashData
 {
@@ -34,6 +46,7 @@
         CC_SHA1(self.bytes, (CC_LONG)self.length, buffer);
         return [NSData dataWithBytes:buffer length:CC_SHA1_DIGEST_LENGTH];
 }
+
 - (NSString *)es_sha1HashString
 {
         return [[self es_sha1HashData] hexStringValue];
