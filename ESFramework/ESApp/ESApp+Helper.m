@@ -8,11 +8,8 @@
 
 #import "ESApp.h"
 #import "ESApp+Private.h"
-@import AddressBook;
-#import "NSString+ESAdditions.h"
-#import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
-#import "UIAlertView+ESBlock.h"
+#import <AddressBook/AddressBook.h>
 
 static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
@@ -304,11 +301,13 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 - (void)requestAddressBookAccessWithCompletion:(dispatch_block_t)completion failure:(dispatch_block_t)failure
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
         if (!ABAddressBookRequestAccessWithCompletion) {
                 if (completion)
                         ESDispatchOnMainThreadAsynchrony(completion);
                 return;
         }
+#endif
         
         ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
         if (kABAuthorizationStatusAuthorized == status) {
@@ -320,7 +319,9 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
                 if (ABAddressBookCreateWithOptions) {
                         addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
                 } else {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
                         addressBook = ABAddressBookCreate();
+#endif
                 }
                 ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
                         if (addressBook) {
