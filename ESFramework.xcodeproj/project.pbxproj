@@ -198,10 +198,10 @@
 				E7143B721BA5C68E0001BE70 /* ESApp.m */,
 				E7143B6B1BA5C68E0001BE70 /* ESApp+Private.h */,
 				E7143B6C1BA5C68E0001BE70 /* ESApp+Private.m */,
+				E7143B6E1BA5C68E0001BE70 /* ESApp+UIApplicationDelegate.m */,
+				E7143B6D1BA5C68E0001BE70 /* ESApp+Subclassing.m */,
 				E7143B691BA5C68E0001BE70 /* ESApp+AppInfo.m */,
 				E7143B6A1BA5C68E0001BE70 /* ESApp+Helper.m */,
-				E7143B6D1BA5C68E0001BE70 /* ESApp+Subclassing.m */,
-				E7143B6E1BA5C68E0001BE70 /* ESApp+UIApplicationDelegate.m */,
 				E7143B6F1BA5C68E0001BE70 /* ESApp+UINotifications.m */,
 			);
 			path = ESApp;

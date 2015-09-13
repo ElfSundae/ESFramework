@@ -17,6 +17,9 @@ typedef NS_ENUM(NSInteger, ESAppErrorCode) {
         ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = -11,
 };
 
+/// The key of userInfo for ESAppErrorCodeCouldNotRegisterUserNotificationSettings
+ES_EXTERN NSString *const ESUserNotificationSettingsErrorKey;
+
 /// The key for NSUserDefaults that stores app version string for checking fresh launch.
 ES_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
 

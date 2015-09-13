@@ -11,6 +11,7 @@
 #import <objc/runtime.h>
 #import "NSError+ESAdditions.h"
 
+NSString *const ESUserNotificationSettingsErrorKey = @"ESUIUserNotificationSettingsErrorKey";
 NSString *const ESAppDidReceiveRemoteNotificationNotification = @"ESAppDidReceiveRemoteNotificationNotification";
 NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
 
@@ -99,8 +100,8 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
         if (UIUserNotificationTypeNone == notificationSettings.types) {
                 NSError *error = [NSError errorWithDomain:ESAppErrorDomain
                                                      code:ESAppErrorCodeCouldNotRegisterUserNotificationSettings
-                                              description:@"Could not register UserNotificationSettings"];
-                // TODO: add notificationSetings to error's userInfo
+                                                 userInfo:@{ NSLocalizedDescriptionKey: @"Could not register UserNotificationSettings.",
+                                                             ESUserNotificationSettingsErrorKey: notificationSettings}];
                 [self _es_application:application didFailToRegisterForRemoteNotificationsWithError:error];
         } else {
                 [application registerForRemoteNotifications];
