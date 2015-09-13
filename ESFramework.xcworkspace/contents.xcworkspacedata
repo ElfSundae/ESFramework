@@ -1,6 +1,320 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:ESFramework"
+      name = "ESFramework">
+      <FileRef
+         location = "group:ESFramework.h">
+      </FileRef>
+      <Group
+         location = "group:ESDefines"
+         name = "ESDefines">
+         <FileRef
+            location = "group:ESDefines.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESDefines.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Button"
+         name = "Button">
+         <FileRef
+            location = "group:ESArrowButton.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESArrowButton.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Crypto"
+         name = "Crypto">
+         <FileRef
+            location = "group:ESHash.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESHash.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:ESAdditions"
+         name = "ESAdditions">
+         <FileRef
+            location = "group:NSArray+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSArray+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSData+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSData+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSDate+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSDate+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSDictionary+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSDictionary+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSError+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSError+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSMutableString+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSOrderedSet+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSOrderedSet+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSRegularExpression+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSRegularExpression+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSSet+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSSet+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSString+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSString+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSString+ESGTMHTML.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSString+ESGTMHTML.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSTimer+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSTimer+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSURL+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSURL+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSUserDefaults+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSUserDefaults+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIActionSheet+ESBlock.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIActionSheet+ESBlock.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIAlertView+ESBlock.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIAlertView+ESBlock.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIBarButtonItem+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIBarButtonItem+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIColor+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIColor+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIControl+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIControl+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIDevice+ESInfo.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIDevice+ESInfo.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIDevice+ESNetworkReachability.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIDevice+ESNetworkReachability.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIGestureRecognizer+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIGestureRecognizer+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIImage+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIImage+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIImagePickerController+ESFixOrientation.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIImagePickerController+ESFixOrientation.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIImageView+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIImageView+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UINavigationController+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UINavigationController+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UITableView+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UITableView+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIToolbar+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIToolbar+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIView+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIView+ESAdditions.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIView+ESShortcut.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIView+ESShortcut.m">
+         </FileRef>
+         <FileRef
+            location = "group:UIViewController+ESAdditions.h">
+         </FileRef>
+         <FileRef
+            location = "group:UIViewController+ESAdditions.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:ESApp"
+         name = "ESApp">
+         <FileRef
+            location = "group:ESApp+AppInfo.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+Helper.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+Private.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+Private.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+Subclassing.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+UIApplicationDelegate.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+UINotifications.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp+WebViewUserAgent.m">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESApp.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Helpers"
+         name = "Helpers">
+         <FileRef
+            location = "group:ESValue.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESValue.m">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+ESAssociatedObjectHelper.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+ESAssociatedObjectHelper.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:iTunesStore"
+         name = "iTunesStore">
+         <FileRef
+            location = "group:ESITunesStoreHelper.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESITunesStoreHelper.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Model"
+         name = "Model">
+         <FileRef
+            location = "group:NSObject+ESAutoCoding.h">
+         </FileRef>
+         <FileRef
+            location = "group:NSObject+ESAutoCoding.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Networking"
+         name = "Networking">
+         <FileRef
+            location = "group:ESNetworkReachability.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESNetworkReachability.m">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:UDID"
+         name = "UDID">
+         <FileRef
+            location = "group:ESOpenUDID.h">
+         </FileRef>
+         <FileRef
+            location = "group:ESOpenUDID.m">
+         </FileRef>
+      </Group>
+   </Group>
    <FileRef
       location = "group:Example.xcodeproj">
    </FileRef>
