@@ -8,5 +8,5 @@
     * [MAObjCRuntime](https://github.com/mikeash/MAObjCRuntime)
     * [Yet another article about method swizzling](http://defagos.github.io/yet_another_article_about_method_swizzling)
 
-* Add all country codes to `ESITunesStoreHelper`
+* <del>Add all country codes to `ESITunesStoreHelper`</del>
 * `-[ESApp _es_application:didRegisterUserNotificationSettings:]` : add notificationSetings to error's userInfo
