@@ -9,7 +9,8 @@
 
 // Core
 #import "ESDefines.h"
-
+#import "ESValue.h"
+#import "NSObject+ESAssociatedObjectHelper.h"
 
 #import "NSObject+ESAutoCoding.h"
 #import "NSObject+ESAssociatedObjectHelper.h"
