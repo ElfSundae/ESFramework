@@ -2,7 +2,7 @@
 
 ---
 
-* `ESSwizzleClassMethod()` to be tested. It failed when injecting MobSMS SDK.
+* `ESSwizzleClassMethod()` to be fully tested. It failed when injecting MobSMS SDK.
 
     FYI:
     * [MAObjCRuntime](https://github.com/mikeash/MAObjCRuntime)
