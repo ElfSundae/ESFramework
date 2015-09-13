@@ -13,12 +13,12 @@
 #pragma mark - NSData
 @implementation NSData (ESHash)
 
-- (NSString *)stringValue
+- (NSString *)es_stringValue
 {
         return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)hexStringValue
+- (NSString *)es_hexStringValue
 {
         NSMutableString *hexString = [NSMutableString string];
         const unsigned char *p = self.bytes;
@@ -37,7 +37,7 @@
 
 - (NSString *)es_md5HashString
 {
-        return [[self es_md5HashData] hexStringValue];
+        return [[self es_md5HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha1HashData
@@ -49,7 +49,7 @@
 
 - (NSString *)es_sha1HashString
 {
-        return [[self es_sha1HashData] hexStringValue];
+        return [[self es_sha1HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha224HashData
@@ -60,7 +60,7 @@
 }
 - (NSString *)es_sha224HashString
 {
-        return [[self es_sha224HashData] hexStringValue];
+        return [[self es_sha224HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha256HashData
@@ -71,7 +71,7 @@
 }
 - (NSString *)es_sha256HashString
 {
-        return [[self es_sha256HashData] hexStringValue];
+        return [[self es_sha256HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha384HashData
@@ -82,7 +82,7 @@
 }
 - (NSString *)es_sha384HashString
 {
-        return [[self es_sha384HashData] hexStringValue];
+        return [[self es_sha384HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha512HashData
@@ -93,7 +93,7 @@
 }
 - (NSString *)es_sha512HashString
 {
-        return [[self es_sha512HashData] hexStringValue];
+        return [[self es_sha512HashData] es_hexStringValue];
 }
 
 - (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
@@ -132,7 +132,7 @@
 
 - (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
 {
-        return [[self es_HmacHashDataWithAlgorithm:algorithm key:key] hexStringValue];
+        return [[self es_HmacHashDataWithAlgorithm:algorithm key:key] es_hexStringValue];
 }
 
 - (NSData *)es_base64Encoded
@@ -164,7 +164,7 @@
                 return [[NSData alloc] initWithBase64EncodedData:self options:0];
         }
         
-        NSString *encodedStr = self.stringValue;
+        NSString *encodedStr = self.es_stringValue;
         return [[NSData alloc] initWithBase64Encoding:encodedStr];
 }
 
@@ -173,11 +173,11 @@
 {
         if ([self respondsToSelector:@selector(initWithBase64EncodedData:options:)]) {
                 NSData *data = [[NSData alloc] initWithBase64EncodedData:self options:0];
-                return data.stringValue;
+                return data.es_stringValue;
         }
         
         NSData *data = [self es_base64Decoded];
-        return data.stringValue;
+        return data.es_stringValue;
 }
 
 
@@ -274,7 +274,7 @@
 
 - (NSString *)es_base64DecodedString
 {
-        return [[self es_base64Decoded] stringValue];
+        return [[self es_base64Decoded] es_stringValue];
 }
 
 @end

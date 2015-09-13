@@ -24,12 +24,12 @@
 /**
  * Converts data to string with UTF-8 encoding.
  */
-- (NSString *)stringValue;
+- (NSString *)es_stringValue;
 
 /**
  * Converts data to Hex string with lower case.
  */
-- (NSString *)hexStringValue;
+- (NSString *)es_hexStringValue;
 
 ///=============================================
 /// @name MD5 Digest

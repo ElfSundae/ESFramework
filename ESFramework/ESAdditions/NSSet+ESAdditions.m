@@ -55,11 +55,11 @@
 {
         return [self objectsPassingTest:predicate];
 }
+
 - (NSSet *)matches:(BOOL (^)(id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
 {
         return [self objectsWithOptions:option passingTest:predicate];
 }
-
 
 @end
 

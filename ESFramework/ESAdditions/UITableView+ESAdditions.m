@@ -8,7 +8,6 @@
 
 #import "UITableView+ESAdditions.h"
 #import "UIView+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation UITableView (ESAdditions)
 

@@ -7,7 +7,6 @@
 //
 
 #import "NSRegularExpression+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation NSRegularExpression (ESAdditions)
 

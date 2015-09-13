@@ -7,8 +7,6 @@
 //
 
 #import "NSURL+ESAdditions.h"
-#import "NSString+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation NSURL (ESAdditions)
 - (NSDictionary *)queryDictionary

@@ -48,8 +48,6 @@
 		E7143B4F1BA5C68E0001BE70 /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E7143B501BA5C68E0001BE70 /* UIDevice+ESInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESInfo.h"; sourceTree = "<group>"; };
 		E7143B511BA5C68E0001BE70 /* UIDevice+ESInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESInfo.m"; sourceTree = "<group>"; };
-		E7143B521BA5C68E0001BE70 /* UIDevice+ESNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESNetworkReachability.h"; sourceTree = "<group>"; };
-		E7143B531BA5C68E0001BE70 /* UIDevice+ESNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESNetworkReachability.m"; sourceTree = "<group>"; };
 		E7143B541BA5C68E0001BE70 /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
 		E7143B551BA5C68E0001BE70 /* UIGestureRecognizer+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+ESAdditions.m"; sourceTree = "<group>"; };
 		E7143B561BA5C68E0001BE70 /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
@@ -97,6 +95,9 @@
 		E75AE15C1BA5E1B4007F4561 /* NSObject+ESAssociatedObjectHelper.m */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAssociatedObjectHelper.m"; sourceTree = "<group>"; tabWidth = 8; };
 		E75AE15D1BA5E9B6007F4561 /* ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
 		E75AE15E1BA5E9B6007F4561 /* ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
+		E75AE1601BA5F69B007F4561 /* UIDevice+ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESNetworkReachability.h"; sourceTree = "<group>"; };
+		E75AE1611BA5F69B007F4561 /* UIDevice+ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESNetworkReachability.m"; sourceTree = "<group>"; };
+		E75AE1621BA5FB14007F4561 /* ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAdditions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -137,67 +138,66 @@
 		E7143B2A1BA5C68E0001BE70 /* ESAdditions */ = {
 			isa = PBXGroup;
 			children = (
-				E7143B2B1BA5C68E0001BE70 /* NSArray+ESAdditions.h */,
-				E7143B2C1BA5C68E0001BE70 /* NSArray+ESAdditions.m */,
-				E7143B2D1BA5C68E0001BE70 /* NSData+ESAdditions.h */,
-				E7143B2E1BA5C68E0001BE70 /* NSData+ESAdditions.m */,
-				E7143B2F1BA5C68E0001BE70 /* NSDate+ESAdditions.h */,
-				E7143B301BA5C68E0001BE70 /* NSDate+ESAdditions.m */,
-				E7143B311BA5C68E0001BE70 /* NSDictionary+ESAdditions.h */,
-				E7143B321BA5C68E0001BE70 /* NSDictionary+ESAdditions.m */,
-				E7143B331BA5C68E0001BE70 /* NSError+ESAdditions.h */,
-				E7143B341BA5C68E0001BE70 /* NSError+ESAdditions.m */,
-				E7143B351BA5C68E0001BE70 /* NSMutableString+ESAdditions.m */,
-				E7143B361BA5C68E0001BE70 /* NSOrderedSet+ESAdditions.h */,
-				E7143B371BA5C68E0001BE70 /* NSOrderedSet+ESAdditions.m */,
+				E75AE1621BA5FB14007F4561 /* ESAdditions.h */,
 				E7143B381BA5C68E0001BE70 /* NSRegularExpression+ESAdditions.h */,
 				E7143B391BA5C68E0001BE70 /* NSRegularExpression+ESAdditions.m */,
-				E7143B3A1BA5C68E0001BE70 /* NSSet+ESAdditions.h */,
-				E7143B3B1BA5C68E0001BE70 /* NSSet+ESAdditions.m */,
-				E7143B3C1BA5C68E0001BE70 /* NSString+ESAdditions.h */,
-				E7143B3D1BA5C68E0001BE70 /* NSString+ESAdditions.m */,
 				E7143B3E1BA5C68E0001BE70 /* NSString+ESGTMHTML.h */,
 				E7143B3F1BA5C68E0001BE70 /* NSString+ESGTMHTML.m */,
-				E7143B401BA5C68E0001BE70 /* NSTimer+ESAdditions.h */,
-				E7143B411BA5C68E0001BE70 /* NSTimer+ESAdditions.m */,
+				E7143B3C1BA5C68E0001BE70 /* NSString+ESAdditions.h */,
+				E7143B3D1BA5C68E0001BE70 /* NSString+ESAdditions.m */,
+				E7143B351BA5C68E0001BE70 /* NSMutableString+ESAdditions.m */,
 				E7143B421BA5C68E0001BE70 /* NSURL+ESAdditions.h */,
 				E7143B431BA5C68E0001BE70 /* NSURL+ESAdditions.m */,
+				E7143B2D1BA5C68E0001BE70 /* NSData+ESAdditions.h */,
+				E7143B2E1BA5C68E0001BE70 /* NSData+ESAdditions.m */,
+				E7143B331BA5C68E0001BE70 /* NSError+ESAdditions.h */,
+				E7143B341BA5C68E0001BE70 /* NSError+ESAdditions.m */,
+				E7143B2F1BA5C68E0001BE70 /* NSDate+ESAdditions.h */,
+				E7143B301BA5C68E0001BE70 /* NSDate+ESAdditions.m */,
+				E7143B401BA5C68E0001BE70 /* NSTimer+ESAdditions.h */,
+				E7143B411BA5C68E0001BE70 /* NSTimer+ESAdditions.m */,
 				E7143B441BA5C68E0001BE70 /* NSUserDefaults+ESAdditions.h */,
 				E7143B451BA5C68E0001BE70 /* NSUserDefaults+ESAdditions.m */,
-				E7143B461BA5C68E0001BE70 /* UIActionSheet+ESBlock.h */,
-				E7143B471BA5C68E0001BE70 /* UIActionSheet+ESBlock.m */,
-				E7143B481BA5C68E0001BE70 /* UIAlertView+ESBlock.h */,
-				E7143B491BA5C68E0001BE70 /* UIAlertView+ESBlock.m */,
-				E7143B4A1BA5C68E0001BE70 /* UIBarButtonItem+ESAdditions.h */,
-				E7143B4B1BA5C68E0001BE70 /* UIBarButtonItem+ESAdditions.m */,
+				E7143B2B1BA5C68E0001BE70 /* NSArray+ESAdditions.h */,
+				E7143B2C1BA5C68E0001BE70 /* NSArray+ESAdditions.m */,
+				E7143B311BA5C68E0001BE70 /* NSDictionary+ESAdditions.h */,
+				E7143B321BA5C68E0001BE70 /* NSDictionary+ESAdditions.m */,
+				E7143B361BA5C68E0001BE70 /* NSOrderedSet+ESAdditions.h */,
+				E7143B371BA5C68E0001BE70 /* NSOrderedSet+ESAdditions.m */,
+				E7143B3A1BA5C68E0001BE70 /* NSSet+ESAdditions.h */,
+				E7143B3B1BA5C68E0001BE70 /* NSSet+ESAdditions.m */,
 				E7143B4C1BA5C68E0001BE70 /* UIColor+ESAdditions.h */,
 				E7143B4D1BA5C68E0001BE70 /* UIColor+ESAdditions.m */,
-				E7143B4E1BA5C68E0001BE70 /* UIControl+ESAdditions.h */,
-				E7143B4F1BA5C68E0001BE70 /* UIControl+ESAdditions.m */,
-				E7143B501BA5C68E0001BE70 /* UIDevice+ESInfo.h */,
-				E7143B511BA5C68E0001BE70 /* UIDevice+ESInfo.m */,
-				E7143B521BA5C68E0001BE70 /* UIDevice+ESNetworkReachability.h */,
-				E7143B531BA5C68E0001BE70 /* UIDevice+ESNetworkReachability.m */,
-				E7143B541BA5C68E0001BE70 /* UIGestureRecognizer+ESAdditions.h */,
-				E7143B551BA5C68E0001BE70 /* UIGestureRecognizer+ESAdditions.m */,
 				E7143B561BA5C68E0001BE70 /* UIImage+ESAdditions.h */,
 				E7143B571BA5C68E0001BE70 /* UIImage+ESAdditions.m */,
-				E7143B581BA5C68E0001BE70 /* UIImagePickerController+ESFixOrientation.h */,
-				E7143B591BA5C68E0001BE70 /* UIImagePickerController+ESFixOrientation.m */,
-				E7143B5A1BA5C68E0001BE70 /* UIImageView+ESAdditions.h */,
-				E7143B5B1BA5C68E0001BE70 /* UIImageView+ESAdditions.m */,
-				E7143B5C1BA5C68E0001BE70 /* UINavigationController+ESAdditions.h */,
-				E7143B5D1BA5C68E0001BE70 /* UINavigationController+ESAdditions.m */,
-				E7143B5E1BA5C68E0001BE70 /* UITableView+ESAdditions.h */,
-				E7143B5F1BA5C68E0001BE70 /* UITableView+ESAdditions.m */,
-				E7143B601BA5C68E0001BE70 /* UIToolbar+ESAdditions.h */,
-				E7143B611BA5C68E0001BE70 /* UIToolbar+ESAdditions.m */,
+				E7143B501BA5C68E0001BE70 /* UIDevice+ESInfo.h */,
+				E7143B511BA5C68E0001BE70 /* UIDevice+ESInfo.m */,
+				E7143B481BA5C68E0001BE70 /* UIAlertView+ESBlock.h */,
+				E7143B491BA5C68E0001BE70 /* UIAlertView+ESBlock.m */,
+				E7143B461BA5C68E0001BE70 /* UIActionSheet+ESBlock.h */,
+				E7143B471BA5C68E0001BE70 /* UIActionSheet+ESBlock.m */,
+				E7143B541BA5C68E0001BE70 /* UIGestureRecognizer+ESAdditions.h */,
+				E7143B551BA5C68E0001BE70 /* UIGestureRecognizer+ESAdditions.m */,
+				E7143B4E1BA5C68E0001BE70 /* UIControl+ESAdditions.h */,
+				E7143B4F1BA5C68E0001BE70 /* UIControl+ESAdditions.m */,
 				E7143B621BA5C68E0001BE70 /* UIView+ESAdditions.h */,
 				E7143B631BA5C68E0001BE70 /* UIView+ESAdditions.m */,
 				E7143B641BA5C68E0001BE70 /* UIView+ESShortcut.h */,
 				E7143B651BA5C68E0001BE70 /* UIView+ESShortcut.m */,
+				E7143B4A1BA5C68E0001BE70 /* UIBarButtonItem+ESAdditions.h */,
+				E7143B4B1BA5C68E0001BE70 /* UIBarButtonItem+ESAdditions.m */,
+				E7143B5A1BA5C68E0001BE70 /* UIImageView+ESAdditions.h */,
+				E7143B5B1BA5C68E0001BE70 /* UIImageView+ESAdditions.m */,
+				E7143B5E1BA5C68E0001BE70 /* UITableView+ESAdditions.h */,
+				E7143B5F1BA5C68E0001BE70 /* UITableView+ESAdditions.m */,
+				E7143B601BA5C68E0001BE70 /* UIToolbar+ESAdditions.h */,
+				E7143B611BA5C68E0001BE70 /* UIToolbar+ESAdditions.m */,
 				E7143B661BA5C68E0001BE70 /* UIViewController+ESAdditions.h */,
 				E7143B671BA5C68E0001BE70 /* UIViewController+ESAdditions.m */,
+				E7143B5C1BA5C68E0001BE70 /* UINavigationController+ESAdditions.h */,
+				E7143B5D1BA5C68E0001BE70 /* UINavigationController+ESAdditions.m */,
+				E7143B581BA5C68E0001BE70 /* UIImagePickerController+ESFixOrientation.h */,
+				E7143B591BA5C68E0001BE70 /* UIImagePickerController+ESFixOrientation.m */,
 			);
 			path = ESAdditions;
 			sourceTree = "<group>";
@@ -242,6 +242,8 @@
 			children = (
 				E7143B831BA5C68E0001BE70 /* ESNetworkReachability.h */,
 				E7143B841BA5C68E0001BE70 /* ESNetworkReachability.m */,
+				E75AE1601BA5F69B007F4561 /* UIDevice+ESNetworkReachability.h */,
+				E75AE1611BA5F69B007F4561 /* UIDevice+ESNetworkReachability.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";

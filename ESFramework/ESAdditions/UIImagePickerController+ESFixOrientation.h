@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ESDefines.h"
 
 /**
  * Fix Crash while presenting `UIImagePickerController` below iOS7.0

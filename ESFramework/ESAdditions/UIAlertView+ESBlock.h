@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESDefines.h"
 
 typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger buttonIndex);
 
@@ -56,10 +55,10 @@ typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger b
  * Invoked after dismissed.
  */
 @property (nonatomic, copy) ESUIAlertViewDidDismissBlock didDismissBlock;
+
 /**
  * Dismiss alert view without callback.
  */
 - (void)dismissWithAnimated:(BOOL)animated;
-
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "UIImageView+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation UIImageView (ESAdditions)
 

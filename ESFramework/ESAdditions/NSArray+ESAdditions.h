@@ -28,8 +28,8 @@
  * order of objects is not necessarily the order each block will
  * be called in.
  *
- * @see http://darkdust.net/writings/objective-c/nsarray-enumeration-performance
- * @see cn_zh: http://www.oschina.net/translate/nsarray-enumeration-performance
+ * @see NSArray enumeration performance examined: http://darkdust.net/writings/objective-c/nsarray-enumeration-performance
+ * @see NSArray 枚举性能研究: http://www.oschina.net/translate/nsarray-enumeration-performance
  *
  */
 - (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option;
@@ -63,8 +63,11 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSMutableArray
+
 @interface NSMutableArray (ESAdditions)
+
 - (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
 - (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 - (void)replaceObject:(id)object withObject:(id)anObject;
+
 @end

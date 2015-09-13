@@ -8,7 +8,6 @@
 
 #import "UIToolbar+ESAdditions.h"
 #import "NSArray+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation UIToolbar (ESAdditions)
 

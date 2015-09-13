@@ -7,7 +7,6 @@
 //
 
 #import "NSError+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation NSError (ESAdditions)
 

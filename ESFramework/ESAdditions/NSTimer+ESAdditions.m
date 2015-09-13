@@ -7,19 +7,19 @@
 //
 
 #import "NSTimer+ESAdditions.h"
-#import "ESDefines.h"
+#import "NSObject+ESAssociatedObjectHelper.h"
 
-static const void *_timerNameKey = &_timerNameKey;
+ESDefineAssociatedObjectKey(name);
 
 @implementation NSTimer (ESAdditions)
 
 - (NSString *)name
 {
-        return ESGetAssociatedObject(self, _timerNameKey);
+        return [self es_getAssociatedStringWithKey:nameKey defaultValue:nil];
 }
 - (void)setName:(NSString *)name
 {
-        ESSetAssociatedObject(self, _timerNameKey, name, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        [self es_setAssociatedStringWithKey:nameKey value:name];
 }
 
 + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)(NSTimer *timer))block repeats:(BOOL)inRepeats
