@@ -30,7 +30,22 @@ pod "ESFramework", "~> 2.0"
 
 ## Contribute Notes
 
-* `pod install --no-repo-update` then `open ESFramework.xcworkspace`
+* Get started
+
+```shell
+git clone -b develop https://github.com/ESFramework/ESFramework.git
+pod install --no-repo-update
+open ESFramework.xcworkspace
+```
+
+If you added/moved/removed files in ESFramework directory, clean `Pods` and run `pod install` before building.
+
+```shell
+rm -rf Pods
+pod install --no-repo-update
+```
+
+
 * Submit pull request to **develop** branch.
 
 ## License
