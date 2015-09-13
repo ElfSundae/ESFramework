@@ -73,7 +73,6 @@
 		E7143B6D1BA5C68E0001BE70 /* ESApp+Subclassing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Subclassing.m"; sourceTree = "<group>"; };
 		E7143B6E1BA5C68E0001BE70 /* ESApp+UIApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UIApplicationDelegate.m"; sourceTree = "<group>"; };
 		E7143B6F1BA5C68E0001BE70 /* ESApp+UINotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UINotifications.m"; sourceTree = "<group>"; };
-		E7143B701BA5C68E0001BE70 /* ESApp+WebViewUserAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ESApp+WebViewUserAgent.m"; sourceTree = "<group>"; };
 		E7143B711BA5C68E0001BE70 /* ESApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESApp.h; sourceTree = "<group>"; };
 		E7143B721BA5C68E0001BE70 /* ESApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESApp.m; sourceTree = "<group>"; };
 		E7143B761BA5C68E0001BE70 /* ESFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
@@ -195,16 +194,15 @@
 		E7143B681BA5C68E0001BE70 /* ESApp */ = {
 			isa = PBXGroup;
 			children = (
-				E7143B691BA5C68E0001BE70 /* ESApp+AppInfo.m */,
-				E7143B6A1BA5C68E0001BE70 /* ESApp+Helper.m */,
+				E7143B711BA5C68E0001BE70 /* ESApp.h */,
+				E7143B721BA5C68E0001BE70 /* ESApp.m */,
 				E7143B6B1BA5C68E0001BE70 /* ESApp+Private.h */,
 				E7143B6C1BA5C68E0001BE70 /* ESApp+Private.m */,
+				E7143B691BA5C68E0001BE70 /* ESApp+AppInfo.m */,
+				E7143B6A1BA5C68E0001BE70 /* ESApp+Helper.m */,
 				E7143B6D1BA5C68E0001BE70 /* ESApp+Subclassing.m */,
 				E7143B6E1BA5C68E0001BE70 /* ESApp+UIApplicationDelegate.m */,
 				E7143B6F1BA5C68E0001BE70 /* ESApp+UINotifications.m */,
-				E7143B701BA5C68E0001BE70 /* ESApp+WebViewUserAgent.m */,
-				E7143B711BA5C68E0001BE70 /* ESApp.h */,
-				E7143B721BA5C68E0001BE70 /* ESApp.m */,
 			);
 			path = ESApp;
 			sourceTree = "<group>";

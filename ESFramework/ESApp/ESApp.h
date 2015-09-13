@@ -13,7 +13,7 @@ ES_EXTERN NSString *const ESAppErrorDomain;
 typedef NS_ENUM(NSInteger, ESAppErrorCode) {
         
         ESAppErrorCodeRemoteNotificationTypesIsNone             = -10,
-        // for iOS8+ only
+        /// for iOS8+ only
         ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = -11,
 };
 
@@ -23,7 +23,8 @@ ES_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
 /// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
 /// Key for userInfo: UIApplicationLaunchOptionsRemoteNotificationKey OR ESAppRemoteNotificationKey
 ES_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
-/// Key of userInfo for ESAppDidReceiveRemoteNotificationNotification
+
+/// The key of userInfo for ESAppDidReceiveRemoteNotificationNotification
 ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,10 +33,11 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 
 @protocol ESAppDelegate <NSObject>
 @optional
+
 /**
  * Invoked when `-application:didReceiveRemoteNotification:` and the first applicationDidBecomeActive if there is an APNS object in UIApplicationLaunchOptionsRemoteNotificationKey.
  *
- * 如果你的AppDelegate不是继承自ESApp，也可以实现此方法接收remoteNotification
+ * If your app delegate is not a subclass of ESApp, you can also implement this delegate method to receive remote notifications.
  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)remoteNotification fromAppLaunch:(BOOL)fromLaunch;
 
@@ -46,35 +48,36 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 #pragma mark - ESApp
 
 /*!
- * `ESApp` is designed as the delegate of UIApplication, also it can be used
- * as a global helper class.
+ * `ESApp` is designed as the delegate of UIApplication, also it can be used as a global helper class.
  *
- * If your application delegate is a subclass of `ESApp`, the `-application:didFinishLaunchingWithOptions:` defines
- * in `<UIApplicationDelegate>` has been implemented.
- * And ESApp has done the following things:
+ * `ESApp` has done the following things when app launchs:
  *
- *      + Setup window
- *      + Enable multitasking, see +enableMultitasking;
+ *      + Setup window if your app delegate is a subclass of ESApp. You can call super in `-application:didFinishLaunchingWithOptions:`
+ *      + Enable app multitasking, see `+[ESApp enableMultitasking]`
  *
  */
 @interface ESApp : UIResponder <ESAppDelegate>
 
 /**
- * Returns the application delegate if the `AppDelegate` is a subclass of `ESApp`, 
- * otherwise returns a shared `ESApp` instance.
+ * Returns the app delegate if it is a subclass of `ESApp`,
+ * otherwise returns the `ESApp` singleton.
  */
 + (instancetype)sharedApp;
 
+/**
+ * Returns the keyWindow of app.
+ */
 @property (nonatomic, strong) UIWindow *window;
 
 /**
- * You can overwrite property `rootViewController` and @dynamic it 
- * in your app delegate implementation file, to specify a different type instead
- * `UIViewController`.
+ * Returns the root view controller for keyWindow.
+ *
+ * If your app delegate is a subclass of ESApp, you can overwrite this property and @dynamic it to
+ * specify a different class instead `UIViewController`.
  */
 @property (nonatomic, strong) UIViewController *rootViewController;
 
-/// @name Sigleton
+/// @name Singleton
 
 + (id)alloc __attribute__((unavailable("alloc not available, call sharedApp instead.")));
 + (id)new __attribute__((unavailable("new not available, call sharedApp instead.")));
@@ -99,12 +102,14 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  * Returns the channel/store that app submitted, default is @"App Store".
  */
 - (NSString *)appChannel;
+
 /**
  * App ID in App Store, used to generate App Store Download link and the review link.
  *
  * @see +openAppStore +openAppReviewPage
  */
 - (NSString *)appStoreID;
+
 /**
  * Returns the timeZone used by your web/API server/backend, it used to convert datetime between server and local.
  * Default is "GMT"
@@ -118,6 +123,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - AppInfo
+
 @interface ESApp (AppInfo)
 
 /**
@@ -261,6 +267,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Helper
+
 @interface ESApp (Helper)
 
 /**
@@ -293,6 +300,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  * App in background can continue running 10 mins on iOS6-, 3 mins on iOS7+.
  */
 + (void)enableMultitasking;
+
 /**
  * Disable multitasking.
  */
@@ -345,12 +353,12 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 + (void)dismissKeyboard;
 
 /**
- * The rootViewController of the keyWindow.
+ * Returns the root view controller of keyWindow.
  */
 + (UIViewController *)rootViewController;
 
 /**
- * The real rootViewController for presenting modalViewController.
+ * Returns the root view controller for presenting modal view controller.
  */
 + (UIViewController *)rootViewControllerForPresenting;
 
@@ -358,13 +366,20 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  * Presents a viewController.
  */
 + (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)(void))completion;
+
 /**
  * Dismiss all Modal ViewControllers.
  */
 + (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^)(void))completion;
 
+/**
+ * Checks if the application state is UIApplicationStateActive
+ */
 + (BOOL)isInForeground;
 
+/**
+ * Sets `applicationIconBadgeNumber` to zero.
+ */
 + (void)clearApplicationIconBadgeNumber;
 
 ///=============================================
@@ -374,28 +389,33 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 + (BOOL)canOpenURL:(NSURL *)url;
 
 /**
- * After check +canOpenURL: , then openURL.
+ * Opens URL after checking +canOpenURL:
  */
 + (BOOL)openURL:(NSURL *)url;
+
+/**
+ * Opens URL after checking +canOpenURL:
+ */
 + (BOOL)openURLWithString:(NSString *)string;
 
 /**
- * Checks whether current device can make a phone call.
+ * Checks whether the current device can make a phone call.
  */
 + (BOOL)canOpenPhoneCall;
+
 /**
- * Make a phone call to the given phone number.
+ * Makes a phone call to the given phone number.
  * If `shouldReturn` is YES, it will return back to this app after phone call.
  */
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
 /**
- * Open App Store, and goto this app's Review page. `-appStoreID` must be implemented.
+ * Opens App Store, and goto this app's Review page. `-appStoreID` must be implemented.
  */
 + (void)openAppStoreReviewPage;
 
 /**
- * Open App Store, and goto this app's download page. `-appStoreID` must be implemented.
+ * Opens App Store, and goto this app's download page. `-appStoreID` must be implemented.
  */
 + (void)openAppStore;
 

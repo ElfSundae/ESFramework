@@ -7,41 +7,20 @@
 //
 
 #import "ESApp.h"
+#import "ESApp+Private.h"
 @import AddressBook;
 #import "NSString+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"
 #import "ESITunesStoreHelper.h"
 #import "UIAlertView+ESBlock.h"
-#import "ESApp+Private.h"
 
-NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUserDefaultsKey";
+static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 @implementation ESApp (Helper)
 
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion
 {
-        static NSString *__previousVersion = nil;
-        static BOOL __isFreshLaunch = NO;
-        
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __previousVersion = [NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey];
-                if (!ESIsStringWithAnyText(__previousVersion)) {
-                        __previousVersion = nil;
-                }
-                NSString *current = [ESApp appVersion];
-                if (__previousVersion && [__previousVersion isEqualToString:current]) {
-                        __isFreshLaunch = NO;
-                } else {
-                        __isFreshLaunch = YES;
-                        [NSUserDefaults setObjectAsynchrony:current forKey:ESAppCheckFreshLaunchUserDefaultsKey];
-                }
-        });
-        
-        if (previousAppVersion) {
-                *previousAppVersion = __previousVersion;
-        }
-        return __isFreshLaunch;
+        return __ESCheckAppFreshLaunch(previousAppVersion);
 }
 
 + (void)deleteHTTPCookiesForURL:(NSURL *)URL
@@ -82,7 +61,7 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
 {
         ESDispatchOnMainThreadSynchrony(^{
                 if (![self isMultitaskingEnabled]) {
-                     [ESApp sharedApp]->_esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                     __esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
                              ESDispatchOnMainThreadSynchrony(^{
                                      [self disableMultitasking];
                                      [self enableMultitasking];
@@ -98,7 +77,7 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
         ESDispatchOnMainThreadSynchrony(^{
                 if ([self isMultitaskingEnabled]) {
                         [[UIApplication sharedApplication] endBackgroundTask:[self backgroundTaskIdentifier]];
-                        [ESApp sharedApp]->_esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
+                        __esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
                 }
         });
 }
@@ -110,7 +89,7 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
 
 + (UIBackgroundTaskIdentifier)backgroundTaskIdentifier
 {
-        return [ESApp sharedApp]->_esBackgroundTaskIdentifier;
+        return __esBackgroundTaskIdentifier;
 }
 
 + (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;

@@ -76,7 +76,6 @@
         return result ?: @"";
 }
 
-
 - (NSDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
@@ -131,7 +130,7 @@
 
 + (NSString *)defaultUserAgentOfWebView
 {
-        return [ESApp sharedApp]->_esWebViewDefaultUserAgent;
+        return __ESWebViewDefaultUserAgent();
 }
 
 - (NSString *)userAgentForWebView
