@@ -1,6 +1,6 @@
 # ESFramework
 
-An Effective & Swinging framework for iOS.
+An **E**ffective & **S**wing **Framework** for iOS.
 
 ## Requirements
 
@@ -10,26 +10,29 @@ An Effective & Swinging framework for iOS.
 
 ## Installation
 
-There are three ways to use ESFramework in your project:
+There are two ways to use ESFramework in your project:
 
-* Use [CocoaPods](http://cocoapods.org):
+* Use [CocoaPods](http://cocoapods.org) **(Recommended)**
 
 ```ruby
-pod "ESFramework"
+pod "ESFramework", "~> 2.0"
 ```
 
 * Copy `ESFramework` directory into your project.
-* Use [Carthage](https://github.com/Carthage/Carthage):
 
 ## Architecture
 
+*TODO*
 
 ## Usage
+
+*TODO*
 
 ## Contribute Notes
 
 * `pod install --no-repo-update` then `open ESFramework.xcworkspace`
+* Submit pull request to **develop** branch.
 
 ## License
 
-ESFramework is available under the MIT license. See the LICENSE file for more info.
+ESFramework is available under the MIT license. See the [LICENSE](LICENSE) file for more info.

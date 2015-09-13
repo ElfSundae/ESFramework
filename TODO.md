@@ -10,3 +10,7 @@
 
 * <del>Add all country codes to `ESITunesStoreHelper`</del>
 * <del>`-[ESApp _es_application:didRegisterUserNotificationSettings:]` : add notificationSetings to error's userInfo</del>
+* Installation via [Carthage](https://github.com/Carthage/Carthage)
+* Update readme to add Architecture.
+* Generate documentation.
+* Update readme to add travis CI.
