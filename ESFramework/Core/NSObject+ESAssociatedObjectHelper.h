@@ -39,5 +39,8 @@
 /// Note: the association policy is OBJC_ASSOCIATION_COPY_NONATOMIC
 - (void)es_setAssociatedURLWithKey:(const void *)key value:(NSURL *)value;
 
+- (__weak id)es_getAssociatedWeakObjectWithKey:(const void *)key defaultValue:(__weak id)defaultValue;
+/// Note: the association policy is OBJC_ASSOCIATION_WEAK
+- (void)es_setAssociatedWeakObjectWithKey:(const void *)key value:(__weak id)value;
 
 @end

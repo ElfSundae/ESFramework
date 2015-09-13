@@ -70,4 +70,14 @@
         ESSetAssociatedObject(self, key, value, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
+- (__weak id)es_getAssociatedWeakObjectWithKey:(const void *)key defaultValue:(__weak id)defaultValue
+{
+        return ESGetAssociatedObject(self, key) ?: defaultValue;
+}
+
+- (void)es_setAssociatedWeakObjectWithKey:(const void *)key value:(__weak id)value
+{
+        ESSetAssociatedObject(self, key, value, OBJC_ASSOCIATION_WEAK);
+}
+
 @end
