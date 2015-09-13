@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
 
   s.requires_arc      = true
   s.frameworks        = "Foundation", "CoreFoundation", "UIKit", "CoreGraphics", "Security", "SystemConfiguration", "CoreTelephony"
-  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
 
   s.source_files      = "ESFramework/**/*.{h,m}"
   s.private_header_files = "ESFramework/**/*Private.h"
