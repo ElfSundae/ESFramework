@@ -22,3 +22,12 @@
 
 // Additions
 #import "ESAdditions.h"
+
+// Model
+#import "NSObject+ESAutoCoding.h"
+
+// iTunes Store
+#import "ESITunesStoreHelper.h"
+
+// App
+#import "ESApp.h"

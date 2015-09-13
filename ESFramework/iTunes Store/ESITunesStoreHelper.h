@@ -37,25 +37,25 @@ ES_EXTERN NSString *const ESITunesStoreCountryCodeUnitedStates; // "us"
  * e.g. @"284882215", @"us": to @"https://itunes.apple.com/us/app/id284882215"
  * `storeCountryCode` can be nil.
  */
-+ (NSString *)appLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
++ (NSURL *)appLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
 
 /**
  * e.g. @"284882215", @"us": to @"itms-apps://itunes.apple.com/us/app/id284882215"
  * `storeCountryCode` can be nil.
  */
-+ (NSString *)appStoreLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
++ (NSURL *)appStoreLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
 
 /**
  * e.g. @"284882215" to @"itms-apps://itunes.apple.com/us/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=284882215"
  * `storeCountryCode` can be nil.
  */
-+ (NSString *)appStoreReviewLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
++ (NSURL *)appStoreReviewLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
 
 
 + (void)openAppStoreWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
 + (void)openAppStoreWithAppID:(NSString *)appID;
+
 + (void)openAppStoreReviewPageWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
 + (void)openAppStoreReviewPageWithAppID:(NSString *)appID;
-
 
 @end

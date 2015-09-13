@@ -9,12 +9,9 @@
 #import "ESITunesStoreHelper.h"
 #import "NSString+ESAdditions.h"
 #import "NSRegularExpression+ESAdditions.h"
-#import "ESApp.h"
-
 
 NSString *const ESITunesStoreCountryCodeChina           = @"cn";
 NSString *const ESITunesStoreCountryCodeUnitedStates    = @"us";
-
 
 @implementation ESITunesStoreHelper
 
@@ -33,54 +30,60 @@ NSString *const ESITunesStoreCountryCodeUnitedStates    = @"us";
 
 + (BOOL)isItemID:(NSString *)itemID
 {
-        return (ESIsStringWithAnyText(itemID) && [itemID isMatch:@"^\\d{8,}$"]); 
+        return (ESIsStringWithAnyText(itemID) && [itemID isMatch:@"^\\d{8,}$"]);
 }
 
-+ (NSString *)appLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
++ (NSURL *)appLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         if ([self isItemID:appID]) {
-                return NSStringWith(@"https://itunes.apple.com/%@app/id%@",
-                                    (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
+                return NSURLWith(@"https://itunes.apple.com/%@app/id%@",
+                                 (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
         }
         return nil;
 }
 
-+ (NSString *)appStoreLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
++ (NSURL *)appStoreLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         if ([self isItemID:appID]) {
-                return NSStringWith(@"itms-apps://itunes.apple.com/%@app/id%@",
-                                    (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
+                return NSURLWith(@"itms-apps://itunes.apple.com/%@app/id%@",
+                                 (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
         }
         return nil;
 }
 
-+ (NSString *)appStoreReviewLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
++ (NSURL *)appStoreReviewLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         if ([self isItemID:appID]) {
-                return NSStringWith(@"itms-apps://itunes.apple.com/%@WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
-                                    (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
+                return NSURLWith(@"itms-apps://itunes.apple.com/%@WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
+                                 (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
         }
         return nil;
 }
 
 + (void)openAppStoreWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
-        NSString *url = [self appStoreLinkForAppID:appID storeCountryCode:storeCountryCode];
-        [ESApp openURLWithString:url];
+        NSURL *url = [self appStoreLinkForAppID:appID storeCountryCode:storeCountryCode];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+        }
 }
+
 + (void)openAppStoreWithAppID:(NSString *)appID
 {
         [self openAppStoreWithAppID:appID storeCountryCode:nil];
 }
+
 + (void)openAppStoreReviewPageWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
-        NSString *url = [self appStoreReviewLinkForAppID:appID storeCountryCode:storeCountryCode];
-        [ESApp openURLWithString:url];
+        NSURL *url = [self appStoreReviewLinkForAppID:appID storeCountryCode:storeCountryCode];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+        }
 }
+
 + (void)openAppStoreReviewPageWithAppID:(NSString *)appID
 {
         [self openAppStoreReviewPageWithAppID:appID storeCountryCode:nil];
 }
-
 
 @end
