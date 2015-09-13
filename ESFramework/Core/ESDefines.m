@@ -491,8 +491,6 @@ void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
 
 void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
 {
-        //TODO: 此方法待测。在注入MobSMS时失败， 研究https://github.com/mikeash/MAObjCRuntime
-        // http://defagos.github.io/yet_another_article_about_method_swizzling/
         Method origMethod = class_getClassMethod(c, orig);
         Method newMethod = class_getClassMethod(c, new);
         if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
