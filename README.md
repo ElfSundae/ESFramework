@@ -26,6 +26,9 @@ pod "ESFramework"
 
 ## Usage
 
+## Contribute Notes
+
+* `pod install`
 
 ## License
 
