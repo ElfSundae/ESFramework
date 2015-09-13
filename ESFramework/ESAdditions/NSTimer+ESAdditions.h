@@ -10,7 +10,6 @@
 
 @interface NSTimer (ESAdditions)
 
-/// Associated property
 @property (nonatomic, copy) NSString *name;
 
 /**

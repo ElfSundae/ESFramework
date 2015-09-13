@@ -9,8 +9,6 @@
 #import "UIActionSheet+ESBlock.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(UIActionSheet_ESBlock)
-
 static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
 @implementation UIActionSheet (ESBlock)

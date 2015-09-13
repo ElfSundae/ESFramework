@@ -9,8 +9,6 @@
 #import "NSArray+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(NSArray_ESAdditions)
-
 @implementation NSArray (ESAdditions)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,4 +163,5 @@ ES_CATEGORY_FIX(NSArray_ESAdditions)
                 self[index] = anObject;
         }
 }
+
 @end

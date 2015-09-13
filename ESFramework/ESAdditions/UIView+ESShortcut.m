@@ -9,8 +9,6 @@
 #import "UIView+ESShortcut.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(UIView_ESShortcut)
-
 @implementation UIView (ESShortcut)
 
 - (CGPoint)origin

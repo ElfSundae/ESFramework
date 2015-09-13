@@ -14,15 +14,6 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
 @implementation ESApp
 
-+ (void)load
-{
-        @autoreleasepool {
-                [self isFreshLaunch:nil];
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_es_applicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
-                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_es_applicationDidFinishLaunchingNotificationHandler:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-        }
-}
-
 + (instancetype)sharedApp
 {
         static id __gSharedApp = nil;

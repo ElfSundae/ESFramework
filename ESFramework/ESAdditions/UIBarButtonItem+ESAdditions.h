@@ -45,23 +45,5 @@ typedef void (^ESUIBarButtonItemHandler)(UIBarButtonItem *barButtonItem);
  */
 + (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler;
 
-/**
- * ESArrowButton as `customView`.
- * 
- * TODO: rewrite ESArrowButton to fully support tintColor.
- */
-+ (instancetype)itemWithLeftArrow:(ESUIBarButtonItemHandler)handler;
-+ (instancetype)itemWithRightArrow:(ESUIBarButtonItemHandler)handler;
-
-@end
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#import "ESArrowButton.h"
-@interface ESBarButtonArrowItem : UIBarButtonItem
-/// #customView
-- (ESArrowButton *)arrowButton;
 @end
 

@@ -11,8 +11,6 @@
 #import "UIDevice+ESInfo.h"
 #import "UIDevice+ESNetworkReachability.h"
 
-ES_CATEGORY_FIX(ESApp_AppInfo)
-
 @implementation ESApp (AppInfo)
 
 + (id)objectForInfoDictionaryKey:(NSString *)key
@@ -78,7 +76,6 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
         return result ?: @"";
 }
 
-
 - (NSDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
@@ -133,7 +130,7 @@ ES_CATEGORY_FIX(ESApp_AppInfo)
 
 + (NSString *)defaultUserAgentOfWebView
 {
-        return [ESApp sharedApp]->_esWebViewDefaultUserAgent;
+        return __ESWebViewDefaultUserAgent();
 }
 
 - (NSString *)userAgentForWebView

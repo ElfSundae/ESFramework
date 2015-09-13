@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ESDefines.h"
 #import "NSString+ESGTMHTML.h"
 #import "NSRegularExpression+ESAdditions.h"
 
@@ -80,6 +80,7 @@
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
  */
 - (NSString *)URLEncode;
+
 /**
  * Replaces "+" to " ", then calls `-stringByReplacingPercentEscapesUsingEncoding:`
  */
@@ -198,6 +199,7 @@
 #pragma mark - NSMutableString
 
 @interface NSMutableString (ESAdditions)
+
 - (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options;
 - (void)replace:(NSString *)string to:(NSString *)replacement;
 - (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement;
@@ -208,4 +210,5 @@
  * `options` can be any value including `NSRegularExpressionSearch`.
  */
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
+
 @end

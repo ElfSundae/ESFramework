@@ -6,16 +6,41 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ESDefines.h"
 #import <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonDigest.h>
 
-/**
- * All returned hex string are lower case.
+/*!
+ * Make hash for NSData or NSString.
+ *
+ * @warning All returned hex strings are lower case.
  */
 @interface NSData (ESHash)
 
+///=============================================
+/// @name String Value
+///=============================================
+
+/**
+ * Converts data to string with UTF-8 encoding.
+ */
+- (NSString *)es_stringValue;
+
+/**
+ * Converts data to Hex string with lower case.
+ */
+- (NSString *)es_hexStringValue;
+
+///=============================================
+/// @name MD5 Digest
+///=============================================
+
 - (NSData *)es_md5HashData;
 - (NSString *)es_md5HashString;
+
+///=============================================
+/// @name SHA Digest
+///=============================================
 
 - (NSData *)es_sha1HashData;
 - (NSString *)es_sha1HashString;
@@ -28,8 +53,16 @@
 - (NSData *)es_sha512HashData;
 - (NSString *)es_sha512HashString;
 
+///=============================================
+/// @name Hmac Digest
+///=============================================
+
 - (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 - (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+
+///=============================================
+/// @name Base64
+///=============================================
 
 - (NSData *)es_base64Encoded;
 - (NSString *)es_base64EncodedString;
@@ -40,8 +73,16 @@
 
 @interface NSString (ESHash)
 
+///=============================================
+/// @name MD5 Digest
+///=============================================
+
 - (NSData *)es_md5HashData;
 - (NSString *)es_md5HashString;
+
+///=============================================
+/// @name SHA Digest
+///=============================================
 
 - (NSData *)es_sha1HashData;
 - (NSString *)es_sha1HashString;
@@ -54,8 +95,16 @@
 - (NSData *)es_sha512HashData;
 - (NSString *)es_sha512HashString;
 
+///=============================================
+/// @name Hmac Digest
+///=============================================
+
 - (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 - (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+
+///=============================================
+/// @name Base64
+///=============================================
 
 - (NSData *)es_base64Encoded;
 - (NSString *)es_base64EncodedString;

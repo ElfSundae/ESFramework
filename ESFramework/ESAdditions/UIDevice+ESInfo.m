@@ -6,19 +6,17 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
+#import "UIDevice+ESInfo.h"
+#import "ESDefines.h"
+#import "ESValue.h"
+#import "ESOpenUDID.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
-#import "UIDevice+ESInfo.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
-#import "ESValue.h"
-#import "ESOpenUDID.h"
-#import "ESDefines.h"
-
-ES_CATEGORY_FIX(UIDevice_ESInfo)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -225,6 +223,7 @@ ES_CATEGORY_FIX(UIDevice_ESInfo)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Locale
+
 + (NSTimeZone *)localTimeZone
 {
         return [NSTimeZone localTimeZone];
@@ -254,6 +253,5 @@ ES_CATEGORY_FIX(UIDevice_ESInfo)
 {
         return [[self currentLocale] localeIdentifier];
 }
-
 
 @end

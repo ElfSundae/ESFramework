@@ -12,6 +12,7 @@
  * @see NSArray(ESAdditions)
  */
 @interface NSSet (ESAdditions)
+
 - (BOOL)isEmpty;
 
 - (void)each:(void (^)(id obj, BOOL *stop))block;

@@ -7,27 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EE1FE9BE5B48A5F7A904AEE /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 500179CDC35508D8AF767977 /* libPods-Example.a */; };
 		E78975FA1BA4E8220034B065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975F91BA4E8220034B065 /* main.m */; };
 		E78975FD1BA4E8220034B065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975FC1BA4E8220034B065 /* AppDelegate.m */; };
-		E78976001BA4E8220034B065 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975FF1BA4E8220034B065 /* ViewController.m */; };
-		E78976031BA4E8220034B065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E78976011BA4E8220034B065 /* Main.storyboard */; };
 		E78976051BA4E8220034B065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78976041BA4E8220034B065 /* Images.xcassets */; };
 		E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78976061BA4E8220034B065 /* LaunchScreen.xib */; };
-		EE3280A378497E4175F1EF0A /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D87AC41817B89A94B0338132 /* libPods-Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2E9B1AE88A610A6285FB437E /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		500179CDC35508D8AF767977 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E3F7FBC22F76C6A4DCA00F /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		D87AC41817B89A94B0338132 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78975F41BA4E8220034B065 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78975F81BA4E8220034B065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78975F91BA4E8220034B065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E78975FB1BA4E8220034B065 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E78975FC1BA4E8220034B065 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E78975FE1BA4E8220034B065 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E78975FF1BA4E8220034B065 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E78976021BA4E8220034B065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E78976041BA4E8220034B065 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E78976071BA4E8220034B065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -37,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE3280A378497E4175F1EF0A /* libPods-Example.a in Frameworks */,
+				3EE1FE9BE5B48A5F7A904AEE /* libPods-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,7 +51,7 @@
 		8EBC3982AFE7BA830A5FE58D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D87AC41817B89A94B0338132 /* libPods-Example.a */,
+				500179CDC35508D8AF767977 /* libPods-Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,7 +64,9 @@
 				8C4E61A93726596AE6FCBF8F /* Pods */,
 				8EBC3982AFE7BA830A5FE58D /* Frameworks */,
 			);
+			indentWidth = 8;
 			sourceTree = "<group>";
+			tabWidth = 8;
 		};
 		E78975F51BA4E8220034B065 /* Products */ = {
 			isa = PBXGroup;
@@ -84,9 +81,6 @@
 			children = (
 				E78975FB1BA4E8220034B065 /* AppDelegate.h */,
 				E78975FC1BA4E8220034B065 /* AppDelegate.m */,
-				E78975FE1BA4E8220034B065 /* ViewController.h */,
-				E78975FF1BA4E8220034B065 /* ViewController.m */,
-				E78976011BA4E8220034B065 /* Main.storyboard */,
 				E78976041BA4E8220034B065 /* Images.xcassets */,
 				E78976061BA4E8220034B065 /* LaunchScreen.xib */,
 				E78975F71BA4E8220034B065 /* Supporting Files */,
@@ -162,7 +156,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78976031BA4E8220034B065 /* Main.storyboard in Resources */,
 				E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */,
 				E78976051BA4E8220034B065 /* Images.xcassets in Resources */,
 			);
@@ -208,7 +201,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78976001BA4E8220034B065 /* ViewController.m in Sources */,
 				E78975FD1BA4E8220034B065 /* AppDelegate.m in Sources */,
 				E78975FA1BA4E8220034B065 /* main.m in Sources */,
 			);
@@ -217,14 +209,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E78976011BA4E8220034B065 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E78976021BA4E8220034B065 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E78976061BA4E8220034B065 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -64,10 +64,11 @@
  */
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
 
-
 @end
 
 @interface NSMutableDictionary (ESAdditions)
+
 - (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate;
 - (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+
 @end

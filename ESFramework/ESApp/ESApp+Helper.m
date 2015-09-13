@@ -7,43 +7,17 @@
 //
 
 #import "ESApp.h"
-@import AddressBook;
-#import "NSString+ESAdditions.h"
-#import "NSUserDefaults+ESAdditions.h"
-#import "ESITunesStoreHelper.h"
-#import "UIAlertView+ESBlock.h"
 #import "ESApp+Private.h"
+#import "ESITunesStoreHelper.h"
+#import <AddressBook/AddressBook.h>
 
-ES_CATEGORY_FIX(ESApp_Helper)
-
-NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUserDefaultsKey";
+static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 @implementation ESApp (Helper)
 
 + (BOOL)isFreshLaunch:(NSString **)previousAppVersion
 {
-        static NSString *__previousVersion = nil;
-        static BOOL __isFreshLaunch = NO;
-        
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                __previousVersion = [NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey];
-                if (!ESIsStringWithAnyText(__previousVersion)) {
-                        __previousVersion = nil;
-                }
-                NSString *current = [ESApp appVersion];
-                if (__previousVersion && [__previousVersion isEqualToString:current]) {
-                        __isFreshLaunch = NO;
-                } else {
-                        __isFreshLaunch = YES;
-                        [NSUserDefaults setObjectAsynchrony:current forKey:ESAppCheckFreshLaunchUserDefaultsKey];
-                }
-        });
-        
-        if (previousAppVersion) {
-                *previousAppVersion = __previousVersion;
-        }
-        return __isFreshLaunch;
+        return __ESCheckAppFreshLaunch(previousAppVersion);
 }
 
 + (void)deleteHTTPCookiesForURL:(NSURL *)URL
@@ -84,7 +58,7 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
 {
         ESDispatchOnMainThreadSynchrony(^{
                 if (![self isMultitaskingEnabled]) {
-                     [ESApp sharedApp]->_esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                     __esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
                              ESDispatchOnMainThreadSynchrony(^{
                                      [self disableMultitasking];
                                      [self enableMultitasking];
@@ -100,7 +74,7 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
         ESDispatchOnMainThreadSynchrony(^{
                 if ([self isMultitaskingEnabled]) {
                         [[UIApplication sharedApplication] endBackgroundTask:[self backgroundTaskIdentifier]];
-                        [ESApp sharedApp]->_esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
+                        __esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
                 }
         });
 }
@@ -112,7 +86,7 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
 
 + (UIBackgroundTaskIdentifier)backgroundTaskIdentifier
 {
-        return [ESApp sharedApp]->_esBackgroundTaskIdentifier;
+        return __esBackgroundTaskIdentifier;
 }
 
 + (NSDictionary *)loadPreferencesDefaultsFromSettingsPlistAtURL:(NSURL *)plistURL;
@@ -327,11 +301,13 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
 
 - (void)requestAddressBookAccessWithCompletion:(dispatch_block_t)completion failure:(dispatch_block_t)failure
 {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
         if (!ABAddressBookRequestAccessWithCompletion) {
                 if (completion)
                         ESDispatchOnMainThreadAsynchrony(completion);
                 return;
         }
+#endif
         
         ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
         if (kABAuthorizationStatusAuthorized == status) {
@@ -343,7 +319,9 @@ NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUs
                 if (ABAddressBookCreateWithOptions) {
                         addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
                 } else {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
                         addressBook = ABAddressBookCreate();
+#endif
                 }
                 ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
                         if (addressBook) {

@@ -6,15 +6,22 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "ESDefines.h"
 
 ES_EXTERN NSNumberFormatter *ESSharedNumberFormatter(void);
 ES_EXTERN NSNumber *ESNumberFromString(NSString *string);
 
+
+///=============================================
+/// @name ESValueWithDefault
+///=============================================
+
 /*!
- * Get value from NSNumber or NSString safely.
+ * Gets value from NSNumber or NSString safely.
+ *
+ * If the given object is parsed failed, these functions will return the given defaultValue.
  */
+
 ES_EXTERN int ESIntValueWithDefault(id obj, int defaultValue);
 ES_EXTERN unsigned int ESUIntValueWithDefault(id obj, unsigned int defaultValue);
 ES_EXTERN NSInteger ESIntegerValueWithDefault(id obj, NSInteger defaultValue);
@@ -29,9 +36,16 @@ ES_EXTERN BOOL ESBoolValueWithDefault(id obj, BOOL defaultValue);
 ES_EXTERN NSString *ESStringValueWithDefault(id obj, NSString *defaultValue);
 ES_EXTERN NSURL *ESURLValueWithDefault(id obj, NSURL *defaultValue);
 
+///=============================================
+/// @name ESValue
+///=============================================
+
 /*!
- * Get value from NSNumber or NSString safely.
- * 如果解析失败，返回对应类型的默认值， 0, 0.0, nil
+ * Gets value from NSNumber or NSString safely.
+ *
+ * If the given object is parsed failed, these functions will return the default value for the
+ * return type. For example, the default value of `int` type is 0, the default value of `NSString` 
+ * or other NSObject instances is nil.
  */
 ES_EXTERN int ESIntValue(id obj);
 ES_EXTERN unsigned int ESUIntValue(id obj);
@@ -47,9 +61,15 @@ ES_EXTERN BOOL ESBoolValue(id obj);
 ES_EXTERN NSString *ESStringValue(id obj);
 ES_EXTERN NSURL *ESURLValue(id obj);
 
+///=============================================
+/// @name ESVal
+///=============================================
+
 /*!
- * Get value from NSNumber or NSString safely.
- * 如果解析失败，返回NO并且不改变var的原值
+ * Gets value from NSNumber or NSString safely.
+ *
+ * If the given object is parsed failed, these functions will return NO, and the old value stored in
+ * the parameter `var` will no changes.
  */
 ES_EXTERN BOOL ESIntVal(int *var, id obj);
 ES_EXTERN BOOL ESUIntVal(unsigned int *var, id obj);

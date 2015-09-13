@@ -7,16 +7,26 @@
 //
 
 #import "ESHash.h"
-#import "NSData+ESAdditions.h"
-#import <CommonCrypto/CommonDigest.h>
-#import "ESDefines.h"
-
-ES_CATEGORY_FIX(NSData_ESHash)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSData
 @implementation NSData (ESHash)
+
+- (NSString *)es_stringValue
+{
+        return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
+}
+
+- (NSString *)es_hexStringValue
+{
+        NSMutableString *hexString = [NSMutableString string];
+        const unsigned char *p = self.bytes;
+        for (NSUInteger i = 0; i < self.length; ++i) {
+                [hexString appendFormat:@"%02x", *p++];
+        }
+        return hexString;
+}
 
 - (NSData *)es_md5HashData
 {
@@ -27,7 +37,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 
 - (NSString *)es_md5HashString
 {
-        return [[self es_md5HashData] hexStringValue];
+        return [[self es_md5HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha1HashData
@@ -36,9 +46,10 @@ ES_CATEGORY_FIX(NSData_ESHash)
         CC_SHA1(self.bytes, (CC_LONG)self.length, buffer);
         return [NSData dataWithBytes:buffer length:CC_SHA1_DIGEST_LENGTH];
 }
+
 - (NSString *)es_sha1HashString
 {
-        return [[self es_sha1HashData] hexStringValue];
+        return [[self es_sha1HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha224HashData
@@ -49,7 +60,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 }
 - (NSString *)es_sha224HashString
 {
-        return [[self es_sha224HashData] hexStringValue];
+        return [[self es_sha224HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha256HashData
@@ -60,7 +71,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 }
 - (NSString *)es_sha256HashString
 {
-        return [[self es_sha256HashData] hexStringValue];
+        return [[self es_sha256HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha384HashData
@@ -71,7 +82,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 }
 - (NSString *)es_sha384HashString
 {
-        return [[self es_sha384HashData] hexStringValue];
+        return [[self es_sha384HashData] es_hexStringValue];
 }
 
 - (NSData *)es_sha512HashData
@@ -82,7 +93,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 }
 - (NSString *)es_sha512HashString
 {
-        return [[self es_sha512HashData] hexStringValue];
+        return [[self es_sha512HashData] es_hexStringValue];
 }
 
 - (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
@@ -121,7 +132,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 
 - (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
 {
-        return [[self es_HmacHashDataWithAlgorithm:algorithm key:key] hexStringValue];
+        return [[self es_HmacHashDataWithAlgorithm:algorithm key:key] es_hexStringValue];
 }
 
 - (NSData *)es_base64Encoded
@@ -153,7 +164,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
                 return [[NSData alloc] initWithBase64EncodedData:self options:0];
         }
         
-        NSString *encodedStr = self.stringValue;
+        NSString *encodedStr = self.es_stringValue;
         return [[NSData alloc] initWithBase64Encoding:encodedStr];
 }
 
@@ -162,11 +173,11 @@ ES_CATEGORY_FIX(NSData_ESHash)
 {
         if ([self respondsToSelector:@selector(initWithBase64EncodedData:options:)]) {
                 NSData *data = [[NSData alloc] initWithBase64EncodedData:self options:0];
-                return data.stringValue;
+                return data.es_stringValue;
         }
         
         NSData *data = [self es_base64Decoded];
-        return data.stringValue;
+        return data.es_stringValue;
 }
 
 
@@ -263,7 +274,7 @@ ES_CATEGORY_FIX(NSData_ESHash)
 
 - (NSString *)es_base64DecodedString
 {
-        return [[self es_base64Decoded] stringValue];
+        return [[self es_base64Decoded] es_stringValue];
 }
 
 @end

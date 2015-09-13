@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSRegularExpression (ESAdditions)
+
 + (instancetype)regex:(NSString *)pattern options:(NSRegularExpressionOptions)options error:(NSError **)error;
 + (instancetype)regex:(NSString *)pattern options:(NSRegularExpressionOptions)options;
 + (instancetype)regex:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;

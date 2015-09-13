@@ -8,8 +8,6 @@
 
 #import "ESApp.h"
 
-ES_CATEGORY_FIX(ESApp_Subclassing)
-
 @implementation ESApp (Subclassing)
 
 - (NSString *)appChannel

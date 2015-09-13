@@ -7,9 +7,6 @@
 //
 
 #import "NSError+ESAdditions.h"
-#import "ESDefines.h"
-
-ES_CATEGORY_FIX(NSError_ESAdditions)
 
 @implementation NSError (ESAdditions)
 

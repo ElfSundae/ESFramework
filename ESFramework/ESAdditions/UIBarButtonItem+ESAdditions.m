@@ -8,46 +8,6 @@
 
 #import "UIBarButtonItem+ESAdditions.h"
 #import "UIControl+ESAdditions.h"
-#import "ESDefines.h"
-
-ES_CATEGORY_FIX(UIBarButtonItem_ESAdditions)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ESBarButtonArrowItem
-@implementation ESBarButtonArrowItem
-
-- (ESArrowButton *)arrowButton
-{
-        return (ESArrowButton *)self.customView;
-}
-- (void)setTintColor:(UIColor *)tintColor
-{
-        [super setTintColor:tintColor];
-        self.arrowButton.tintColor = tintColor;
-}
-+ (instancetype)_arrowItemWithButtonStyle:(ESArrowButtonStyle)style handler:(ESUIBarButtonItemHandler)handler
-{
-        ESArrowButton *button = [ESArrowButton button];
-        ESBarButtonArrowItem *item = [[self alloc] initWithCustomView:button];
-        button.arrowStyle = style;
-        button.tintColor = ([[self appearance] tintColor] ?: item.tintColor);
-        ESWeak_(item);
-        [button addEventHandler:^(id sender, UIControlEvents controlEvents) {
-                ESStrong_(item);
-                if (handler) {
-                        handler(_item);
-                }
-        } forControlEvents:UIControlEventTouchUpInside];
-        return item;
-}
-
-@end
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
 
 static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
 
@@ -158,16 +118,6 @@ static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
 + (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
         return [self itemWithTitle:title style:UIBarButtonItemStyleDone handler:handler];
-}
-
-+ (instancetype)itemWithLeftArrow:(ESUIBarButtonItemHandler)handler
-{
-        return [ESBarButtonArrowItem _arrowItemWithButtonStyle:ESArrowButtonStyleLeft handler:handler];
-}
-
-+ (instancetype)itemWithRightArrow:(ESUIBarButtonItemHandler)handler
-{
-        return [ESBarButtonArrowItem _arrowItemWithButtonStyle:ESArrowButtonStyleRight handler:handler];
 }
 
 @end

@@ -9,8 +9,6 @@
 #import "UIColor+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(UIColor_ESAdditions)
-
 @implementation UIColor (ESAdditions)
 
 - (NSString *)es_RGBString

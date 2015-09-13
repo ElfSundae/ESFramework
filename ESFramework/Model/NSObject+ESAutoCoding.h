@@ -29,6 +29,10 @@ ES_CODING_IMPLEMENTATION \
 }
 
 /*!
+ * The ESAutoCoding category for NSObject makes it easiest for your models or other objects to
+ * support NSCoding or NSCopying. 
+ *
+ * ESAutoCoding inspired by [nicklockwood/AutoCoding](https://github.com/nicklockwood/AutoCoding)
  *
  * ### Supported Property Types
  * These types below will be automatically encoded.

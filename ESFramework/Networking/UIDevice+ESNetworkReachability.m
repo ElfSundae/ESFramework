@@ -8,8 +8,6 @@
 
 #import "UIDevice+ESNetworkReachability.h"
 
-ES_CATEGORY_FIX(UIDevice_ESNetworkReachability)
-
 @implementation UIDevice (ESNetworkReachability)
 
 + (void)load

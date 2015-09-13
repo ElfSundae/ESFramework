@@ -9,8 +9,6 @@
 #import "NSString+ESAdditions.h"
 #import "ESValue.h"
 
-ES_CATEGORY_FIX(NSMutableString_ESAdditions)
-
 @implementation NSMutableString (ESAdditions)
 
 - (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options

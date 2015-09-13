@@ -7,10 +7,6 @@
 //
 
 #import "UIViewController+ESAdditions.h"
-#import "ESApp.h"
-#import "ESDefines.h"
-
-ES_CATEGORY_FIX(UIViewController_ESAdditions)
 
 @implementation UIViewController (ESAdditions)
 
@@ -63,7 +59,6 @@ ES_CATEGORY_FIX(UIViewController_ESAdditions)
         if ([self isKindOfClass:[UITabBarController class]]) {
                 return [[(UITabBarController *)self selectedViewController] currentVisibleViewController];
         } else if ([self isKindOfClass:[UINavigationController class]]) {
-                //return [[(UINavigationController *)self topViewController] currentVisibleViewController];
                 return [(UINavigationController *)self topViewController];
         }
         return self;

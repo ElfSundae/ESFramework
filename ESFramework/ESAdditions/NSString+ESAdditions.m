@@ -7,11 +7,7 @@
 //
 
 #import "NSString+ESAdditions.h"
-#import "ESDefines.h"
-#import "ESHash.h"
 #import "NSDictionary+ESAdditions.h"
-
-ES_CATEGORY_FIX(NSString_ESAdditions)
 
 @implementation NSString (ESAdditions)
 

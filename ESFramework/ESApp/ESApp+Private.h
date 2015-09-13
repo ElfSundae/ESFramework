@@ -9,33 +9,21 @@
 #import "ESApp.h"
 
 /**
- * Check and Hack AppDelegate's UINotifications methods.
+ * Checks if the current app launch is a fresh launch.
+ */
+ES_EXTERN BOOL __ESCheckAppFreshLaunch(NSString **previousAppVersion);
+
+/**
+ * Returns the default user agent of UIWebView.
+ */
+ES_EXTERN NSString *__ESWebViewDefaultUserAgent(void);
+
+/**
+ * Hacks AppDelegate for accessing UINotifications methods.
  */
 ES_EXTERN void __ESAppHackAppDelegateUINotificationsMethods(void);
 
-@interface ESApp ()
-{
-@private
-        NSString *_esWebViewDefaultUserAgent;
-        UIBackgroundTaskIdentifier _esBackgroundTaskIdentifier;
-        
-        void (^_esRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString);
-        void (^_esRemoteNotificationRegisterFailureBlock)(NSError *error);
-        NSString *_esRemoteNotificationsDeviceToken;
-        NSDictionary *_esRemoteNotificationFromLaunch;
-}
-
-@end
-
-@interface ESApp (Private)
-- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)remoteNotification fromAppLaunch:(BOOL)fromLaunch;
-
-/// @name Notifications
-+ (void)_es_applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification;
-+ (void)_es_applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification;
-@end
-
-@interface ESApp (WebViewUserAgent)
-+ (void)_es_getDefaultWebViewUserAgent;
-+ (void)_es_setDefaultWebViewUserAgent:(NSString *)userAgent;
-@end
+/**
+ * Notify received remote notification via ESAppDidReceiveRemoteNotificationNotification.
+ */
+ES_EXTERN void __ESApplicationDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromAppLaunch);

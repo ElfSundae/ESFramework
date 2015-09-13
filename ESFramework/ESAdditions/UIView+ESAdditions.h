@@ -40,10 +40,12 @@
  * Add an UITapGestureRecognizer with block way.
  */
 - (UITapGestureRecognizer *)addTapGestureHandler:(void (^)(UITapGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
+
 /**
  * Add an UILongPressGestureRecognizer with block way.
+ *
+ * @warning `handler` will be invoked when the state of gesture recognizer becomes UIGestureRecognizerStateBegan.
  */
-//TODO: block里应该回调各种state, 只回调begin的单独写一个方法
 - (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
 
 - (NSArray *)allTapGestureRecognizers;

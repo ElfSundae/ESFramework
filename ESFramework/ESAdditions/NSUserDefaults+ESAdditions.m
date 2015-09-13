@@ -9,8 +9,6 @@
 #import "NSUserDefaults+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(NSUserDefaults_ESAdditions)
-
 @implementation NSUserDefaults (ESAdditions)
 
 + (id)objectForKey:(NSString *)defaultName

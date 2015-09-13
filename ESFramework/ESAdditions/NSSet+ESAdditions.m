@@ -9,8 +9,6 @@
 #import "NSSet+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(NSSet_ESAdditions)
-
 @implementation NSSet (ESAdditions)
 
 - (BOOL)isEmpty
@@ -57,11 +55,11 @@ ES_CATEGORY_FIX(NSSet_ESAdditions)
 {
         return [self objectsPassingTest:predicate];
 }
+
 - (NSSet *)matches:(BOOL (^)(id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
 {
         return [self objectsWithOptions:option passingTest:predicate];
 }
-
 
 @end
 

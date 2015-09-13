@@ -103,9 +103,6 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 #ifndef NSFoundationVersionNumber_iOS_7_1
 #define NSFoundationVersionNumber_iOS_7_1 1047.25
 #endif
-#ifndef NSFoundationVersionNumber_iOS_8_0
-#define NSFoundationVersionNumber_iOS_8_0 1140.11
-#endif
 
 NS_INLINE NSString *ESOSVersion(void) {
         return [[UIDevice currentDevice] systemVersion];
@@ -145,34 +142,10 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 #define ESStrongSelf                            ESStrong(__weakSelf, _self);
 
 /**
- * Force a category to be loaded when an app starts up.
- *
- * Add this macro before each category implementation, so we don't have to use
- * -all_load or -force_load to load object files from static libraries that only contain
- * categories and no classes.
- * See http://developer.apple.com/library/mac/#qa/qa2006/qa1490.html for more info.
- *
- * https://github.com/NimbusKit/basics#avoid-requiring-the--all_load-and--force_load-flags
- *
- * @code
- * // In the category .m file
- * ES_CATEGORY_FIX(NSString_ESAdditions)
- *
- * @implementation NSString (ESAdditions)
- * ...
- * @end
- * @endcode
- */
-#define ES_CATEGORY_FIX(name) \
-@interface _ES_CATEGORY_FIX_##name : NSObject \
-@end \
-@implementation _ES_CATEGORY_FIX_##name \
-@end
-
-/**
  * Declare singleton `+sharedInstance` method.
  */
 #define ES_SINGLETON_DEC(sharedInstance)        + (instancetype)sharedInstance;
+
 /**
  * Implement singleton `+sharedInstance` method.
  *
@@ -189,10 +162,14 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 }
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
 
-
+/**
+ * Safely release CF instance.
+ */
 #define CFReleaseSafely(var)   if(var){ CFRelease(var); var = NULL; }
 
-
+/**
+ * Bits-mask helper.
+ */
 #define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
 #define ESMaskSet(value, flag)          ((value) |= (flag));
 #define ESMaskUnset(value, flag)        ((value) &= ~(flag));
@@ -202,51 +179,65 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
  */
 #define ESLocalizedString(key)                  NSLocalizedString(key,nil)
 #define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
-/** 
- * Shortcut for ESLocalizedString(key)
- */
-#ifndef _e
-#define _e(key) ESLocalizedString(key)
-#endif
 
 
 ///=============================================
 /// @name Helper Functions
 ///=============================================
 #pragma mark - Functions
+
 /**
- * UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);
+ * Creates UIColor from RGB values.
+ *
+ * e.g. `UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);`
  */
 ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
 
 /**
- * UIColorWithRGBAHex(0x7bffc8, 1.f);
+ * Creates UIColor from RGB Hex number.
+ *
+ * e.g. `UIColorWithRGBAHex(0x7bffc8, 1.f);`
  */
 ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
 ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 
 /**
+ * Creates UIColor from the last six characters of a hex string.
+ *
+ * e.g.
+ * @code
  * UIColorWithRGBHexString(@"#33AF00", 1.f);
  * UIColorWithRGBHexString(@"0x33AF00", 0.3f);
  * UIColorWithRGBHexString(@"33AF00", 0.9);
- * 接受6-8位十六进制，取最后6位。
+ * @endcode
  */
 ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 
-
+/**
+ * Checks whether the given object is a non-empty string.
+ */
 NS_INLINE BOOL ESIsStringWithAnyText(id object) {
         return ([object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0);
 }
 
+/**
+ * Checks whether the given object is a non-empty array.
+ */
 NS_INLINE BOOL ESIsArrayWithItems(id object) {
         return ([object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0);
 }
 
+/**
+ * Checks whether the given object is a non-empty dictionary.
+ */
 NS_INLINE BOOL ESIsDictionaryWithItems(id object) {
         return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0);
 }
 
+/**
+ * Checks whether the given object is a non-empty set.
+ */
 NS_INLINE BOOL ESIsSetWithItems(id object) {
         return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
 }
@@ -255,28 +246,39 @@ NS_INLINE BOOL ESIsSetWithItems(id object) {
  * Creates a mutable set which does not retain references to the objects it contains.
  */
 ES_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
+
+/**
+ * Creates a mutable array which does not retain references to the objects it contains.
+ */
 ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
+
+/**
+ * Creates a mutable dictionary which does not retain references to the objects it contains.
+ */
 ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 /**
- * Generate random number between min and max.
+ * Generates a random number between min and max.
  */
 ES_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);
+
 /**
- * Generate random data using `SecRandomCopyBytes`
+ * Generates a random data using `SecRandomCopyBytes`.
  */
 ES_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
+
 /**
- * Generate random string, contains 0-9a-zA-Z.
+ * Generates a random string that contains 0-9a-zA-Z.
  */
 ES_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
+
 /**
- * Generate random color.
+ * Generates a random color.
  */
 ES_EXTERN UIColor *ESRandomColor(void);
 
 /**
- * Generate UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
+ * Generates an UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
  */
 ES_EXTERN NSString *ESUUID(void);
 
@@ -286,7 +288,7 @@ ES_EXTERN NSString *ESUUID(void);
 ES_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 
 /**
- * Define a key for Associcated Object.
+ * Defines a key for the Associcated Object.
  */
 #define ESDefineAssociatedObjectKey(name)       static const void * name##Key = & name##Key
 
@@ -294,6 +296,7 @@ ES_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
  * Returns the value associated with a given object for a given key.
  */
 ES_EXTERN id ESGetAssociatedObject(id target, const void *key);
+
 /**
  * Sets an associated value for a given object using a given key and association policy.
  */
@@ -314,12 +317,16 @@ NS_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
 }
 
 /**
- * Returns current device orientation.  this will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
+ * Returns current device orientation.
+ * This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
  */
 NS_INLINE UIDeviceOrientation ESDeviceOrientation(void) {
         return [UIDevice currentDevice].orientation;
 }
 
+/**
+ * Returns a recommended rotating transform for the given interface orientation.
+ */
 NS_INLINE CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation) {
         if (UIInterfaceOrientationLandscapeLeft == orientation) {
                 return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
@@ -332,65 +339,94 @@ NS_INLINE CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientati
         }
 }
 
+/**
+ * Converts degrees to radians.
+ */
 NS_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
         return (degrees * M_PI / 180.0);
 }
 
+/**
+ * Converts radians to degrees.
+ */
 NS_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
         return (radians * 180.0 / M_PI);
 }
 
+/**
+ * Checks whether the current User Interface is Pad type.
+ */
 NS_INLINE BOOL ESIsPadUI(void) {
         return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 }
 
-/// Checks whether the device is a iPad/iPad Mini/iPad Air.
+/**
+ * Checks whether the device is an iPad/iPad Mini/iPad Air.
+ */
 NS_INLINE BOOL ESIsPadDevice(void) {
         return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
 }
 
+/**
+ * Checks whether the current User Interface is Phone type.
+ */
 NS_INLINE BOOL ESIsPhoneUI(void) {
         return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
 }
 
+/**
+ * Checks whether the device is an iPhone/iPod Touch.
+ */
 NS_INLINE BOOL ESIsPhoneDevice(void) {
         return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
                 [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
 }
 
+/**
+ * Checks whether the device has retina screen.
+ */
 NS_INLINE BOOL UIScreenIsRetina(void) {
         return [UIScreen mainScreen].scale >= 2.0;
 }
 
+/**
+ * Creates NSString with the given format and arguments.
+ */
 ES_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
+/**
+ * Creates NSURL with the given format and arguments.
+ */
 ES_EXTERN NSURL *NSURLWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /**
- * Formats a number of bytes in a human-readable format. e.g. @"12.34 Bytes", @"123 GB"
- *
- * **Note**: NSByteCountFormatter uses 1000 step length.
- *
- * Returns a string showing the size in Bytes, KBs, MBs, or GBs, with 1024 bytes step.
+ * Formats a bytes number in a human-readable format. e.g. @"12.34 Bytes", @"123 GB".
+ * Returns a string that showing the size in Bytes, KBs, MBs, or GBs, with the given step length.
  */
 ES_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
+
 /**
- * With 1024b step.
+ * Formats a bytes number in a human-readable format with 1024b step length.
+ *
+ * @warning `NSByteCountFormatter` uses 1000 step length.
  */
 ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
 
-
 /**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
- * App bundle could only include `@2x` high resolution images, this method will
- * return correct `scaled` image for normal resolution device such as iPad mini 1th.
+ *
+ * Image files within App bundle can contain only high resolution images like `@2x`,`@3x`,
+ * this function can return the correct "down-scaled" image for the device which has normal 
+ * resolution such as iPad mini 1th.
  * 
+ * The naming conventions for each pair of image files is as follows:
+ *
  * + Standard: `<ImageName><device_modifier>.<filename_extension>`
  * + High resolution: `<ImageName>@2x<device_modifier>.<filename_extension>`
  *
- * The `<device_modifier>` portion is optional and contains either the string `~ipad` or `~iphone`
+ * The `<device_modifier>` portion is optional and contains either the string `~ipad` or `~iphone`.
  *
- * @see Updating Your Image Resource Files https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8
+ * @see [Updating Your Image Resource Files](https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8)
  */
 ES_EXTERN UIImage *UIImageFromCache(NSString *filePath);
 
@@ -401,9 +437,14 @@ ES_EXTERN UIImage *UIImageFromCache(NSString *filePath);
  */
 ES_EXTERN UIImage *UIImageFrom(NSString *filePath);
 
-
+/**
+ * Returns the bundle for the given name.
+ */
 ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 
+/**
+ * Returns a full file path for the Sandbox.
+ */
 ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
 ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
 ES_EXTERN NSString *ESPathForDocuments(void);
@@ -416,9 +457,13 @@ ES_EXTERN NSString *ESPathForTemporary(void);
 ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 
 /**
- * Creates the `directoryPath`  if it doesn't exist.
+ * Creates the directory at the given path if the directory does not exist.
  */
 ES_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
+
+/**
+ * Creates the directory at the given file path if the directory does not exist.
+ */
 ES_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
 
 ///=============================================
@@ -433,9 +478,6 @@ ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
-/**
- * After `delayTime`, dispatch `block` on the main thread.
- */
 ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
 ///=============================================
@@ -470,7 +512,7 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
  * Invoke a selector.
  *
  * @code
- * // trun off compiler warning if there are some.
+ * // trun off compiler warnings if there are some.
  * #pragma clang diagnostic push
  * #pragma clang diagnostic ignored "-Wundeclared-selector"
  *
@@ -486,10 +528,10 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
  * #pragma clang diagnostic pop
  * @endcode
  *
- * **Note**: selector的返回值为BOOL时，请定义result类型为char或者int.
- * **Note**: 如果取result时crash了，可以尝试定义result为void*, 执行完ESInvokeSelector后用__bridge关键字转换对象。
+ * @warning If the return type of selector is BOOL, please define the result as char type or int type.
+ * @warning If this code crashes when accessing the returned result, you may try to define the result as `void *` type, and then access it using `__bridge` keyword.
  */
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 
 
-#endif //ESFramework_ESDefines_H
+#endif /* ESFramework_ESDefines_H */

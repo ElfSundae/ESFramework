@@ -7,47 +7,143 @@
 //
 
 #import "ESApp+Private.h"
+#import "ESValue.h"
+#import "NSUserDefaults+ESAdditions.h"
 
-@implementation ESApp (Private)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - __ESAppInternalWebViewDelegateForFetchingUserAgent
 
-- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)remoteNotification fromAppLaunch:(BOOL)fromLaunch
+static UIWebView *__esInternalWebViewForFetchingUserAgent = nil;
+static NSString *__esWebViewDefaultUserAgent = nil;
+
+NSString *__ESWebViewDefaultUserAgent(void)
 {
-        if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
-                ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, remoteNotification, fromLaunch);
-        }
-        
-        NSDictionary *notificationUserInfo = @{(fromLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey): remoteNotification};
-        [[NSNotificationCenter defaultCenter] postNotificationName:ESAppDidReceiveRemoteNotificationNotification object:application userInfo:notificationUserInfo];
+        return __esWebViewDefaultUserAgent;
 }
 
-+ (void)_es_applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification
+@interface __ESAppInternalFetchWebViewUserAgent : NSObject <UIWebViewDelegate>
+@end
+
+@implementation __ESAppInternalFetchWebViewUserAgent
+
++ (void)fetchUserAgent
 {
-        // Initilization
-        [ESApp sharedApp]->_esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
-        if (notification.userInfo) {
-                [ESApp sharedApp]->_esRemoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (__esInternalWebViewForFetchingUserAgent || __esWebViewDefaultUserAgent) {
+                return;
         }
-        
-        // Hack AppDelegate for UINotifications methods
+        __esInternalWebViewForFetchingUserAgent = [[UIWebView alloc] initWithFrame:CGRectZero];
+        __esInternalWebViewForFetchingUserAgent.delegate = (id<UIWebViewDelegate>)self;
+        [__esInternalWebViewForFetchingUserAgent loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://0x123.com"]]];
+}
+
++ (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+        __esWebViewDefaultUserAgent = ESStringValue(request.allHTTPHeaderFields[@"User-Agent"]);
+        [webView stopLoading];
+        __esInternalWebViewForFetchingUserAgent = nil;
+        return NO;
+}
+
+@end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - __ESAppNotificationsHandler
+
+static NSDictionary *__esRemoteNotificationFromLaunch = nil;
+
+/*!
+ * Handler for receiving NSNotifications.
+ */
+@interface __ESAppNotificationsHandler : NSObject
+
++ (void)applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification;
++ (void)applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification;
+
+@end
+
+@implementation __ESAppNotificationsHandler
+
++ (void)applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification
+{
+        // Hack AppDelegate for accessing UINotifications methods
         __ESAppHackAppDelegateUINotificationsMethods();
-        
-        // Fetch the default user agent of UIWebView
-        [ESApp _es_getDefaultWebViewUserAgent];
+
+        // Get remote notification from app launch options
+        __esRemoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
         
         // Enable app background multitasking
-        [self enableMultitasking];
+        [ESApp enableMultitasking];
+        
+        // Fetch the default user agent of UIWebView
+        [__ESAppInternalFetchWebViewUserAgent fetchUserAgent];
+
 }
 
-+ (void)_es_applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
++ (void)applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
 {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-                // callback remote notification handler
-                if ([ESApp sharedApp]->_esRemoteNotificationFromLaunch) {
-                        [[ESApp sharedApp] _es_application:notification.object didReceiveRemoteNotification:[ESApp sharedApp]->_esRemoteNotificationFromLaunch fromAppLaunch:YES];
-                        [ESApp sharedApp]->_esRemoteNotificationFromLaunch = nil;
+                if (__esRemoteNotificationFromLaunch) {
+                        __ESApplicationDidReceiveRemoteNotification(notification.object, __esRemoteNotificationFromLaunch, YES);
+                        __esRemoteNotificationFromLaunch = nil;
                 }
         });
 }
 
 @end
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - ESApp (__Internal)
+
+@interface ESApp (__Internal)
+@end
+
+@implementation ESApp (__Internal)
+
++ (void)load
+{
+        @autoreleasepool {
+                __ESCheckAppFreshLaunch(NULL);
+                
+                [[NSNotificationCenter defaultCenter] addObserver:[__ESAppNotificationsHandler class] selector:@selector(applicationDidFinishLaunchingNotificationHandler:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+                [[NSNotificationCenter defaultCenter] addObserver:[__ESAppNotificationsHandler class] selector:@selector(applicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
+        }
+}
+
+@end
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Functions
+
+NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUserDefaultsKey";
+
+BOOL __ESCheckAppFreshLaunch(NSString **previousAppVersion)
+{
+        static NSString *__gPreviousVersion = nil;
+        static BOOL __gIsFreshLaunch = NO;
+        
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                __gPreviousVersion = ESStringValue([NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey]);
+                ESIsStringWithAnyText(__gPreviousVersion) || (__gPreviousVersion = nil);
+                NSString *currentVersion = [ESApp appVersion];
+                
+                if (__gPreviousVersion && [__gPreviousVersion isEqualToString:currentVersion]) {
+                        __gIsFreshLaunch = NO;
+                } else {
+                        __gIsFreshLaunch = YES;
+                        [NSUserDefaults setObjectAsynchrony:currentVersion forKey:ESAppCheckFreshLaunchUserDefaultsKey];
+                }
+        });
+        
+        if (previousAppVersion) {
+                *previousAppVersion = [__gPreviousVersion copy];
+        }
+        return __gIsFreshLaunch;
+}
+
