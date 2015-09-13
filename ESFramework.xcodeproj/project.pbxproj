@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E7143B251BA5C68E0001BE70 /* ESArrowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESArrowButton.h; sourceTree = "<group>"; };
-		E7143B261BA5C68E0001BE70 /* ESArrowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESArrowButton.m; sourceTree = "<group>"; };
 		E7143B2B1BA5C68E0001BE70 /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E7143B2C1BA5C68E0001BE70 /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E7143B2D1BA5C68E0001BE70 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -121,18 +119,8 @@
 				E7143B681BA5C68E0001BE70 /* ESApp */,
 				E7143B7C1BA5C68E0001BE70 /* iTunesStore */,
 				E7143B7F1BA5C68E0001BE70 /* Model */,
-				E7143B241BA5C68E0001BE70 /* Button */,
 			);
 			path = ESFramework;
-			sourceTree = "<group>";
-		};
-		E7143B241BA5C68E0001BE70 /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				E7143B251BA5C68E0001BE70 /* ESArrowButton.h */,
-				E7143B261BA5C68E0001BE70 /* ESArrowButton.m */,
-			);
-			path = Button;
 			sourceTree = "<group>";
 		};
 		E7143B2A1BA5C68E0001BE70 /* ESAdditions */ = {
