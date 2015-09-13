@@ -10,8 +10,6 @@
 #import "NSArray+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(UIToolbar_ESAdditions)
-
 @implementation UIToolbar (ESAdditions)
 
 - (UIBarButtonItem *)itemWithTag:(NSInteger)tag

@@ -11,8 +11,6 @@
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "NSArray+ESAdditions.h"
 
-ES_CATEGORY_FIX(UIView_ESAdditions)
-
 @implementation UIView (ESAdditions)
 
 - (UIView *)findFirstResponder

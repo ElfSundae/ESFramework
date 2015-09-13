@@ -9,8 +9,6 @@
 #import "UIImagePickerController+ESFixOrientation.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(UIImagePickerController_ESFixOrientation)
-
 @implementation UIImagePickerController (ESFixOrientation)
 
 + (void)load

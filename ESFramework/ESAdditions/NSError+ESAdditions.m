@@ -9,8 +9,6 @@
 #import "NSError+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(NSError_ESAdditions)
-
 @implementation NSError (ESAdditions)
 
 + (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description

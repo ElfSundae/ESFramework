@@ -14,8 +14,6 @@
 #import "UIAlertView+ESBlock.h"
 #import "ESApp+Private.h"
 
-ES_CATEGORY_FIX(ESApp_Helper)
-
 NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUserDefaultsKey";
 
 @implementation ESApp (Helper)

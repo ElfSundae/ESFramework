@@ -103,9 +103,6 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 #ifndef NSFoundationVersionNumber_iOS_7_1
 #define NSFoundationVersionNumber_iOS_7_1 1047.25
 #endif
-#ifndef NSFoundationVersionNumber_iOS_8_0
-#define NSFoundationVersionNumber_iOS_8_0 1140.11
-#endif
 
 NS_INLINE NSString *ESOSVersion(void) {
         return [[UIDevice currentDevice] systemVersion];
@@ -143,31 +140,6 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 #define ESStrong(weakVar, _var)                 ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
 #define ESStrong_(var)                          ESStrong(weak_##var, _##var);
 #define ESStrongSelf                            ESStrong(__weakSelf, _self);
-
-/**
- * Force a category to be loaded when an app starts up.
- *
- * Add this macro before each category implementation, so we don't have to use
- * -all_load or -force_load to load object files from static libraries that only contain
- * categories and no classes.
- * See http://developer.apple.com/library/mac/#qa/qa2006/qa1490.html for more info.
- *
- * https://github.com/NimbusKit/basics#avoid-requiring-the--all_load-and--force_load-flags
- *
- * @code
- * // In the category .m file
- * ES_CATEGORY_FIX(NSString_ESAdditions)
- *
- * @implementation NSString (ESAdditions)
- * ...
- * @end
- * @endcode
- */
-#define ES_CATEGORY_FIX(name) \
-@interface _ES_CATEGORY_FIX_##name : NSObject \
-@end \
-@implementation _ES_CATEGORY_FIX_##name \
-@end
 
 /**
  * Declare singleton `+sharedInstance` method.

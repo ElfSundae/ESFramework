@@ -9,8 +9,6 @@
 #import "NSRegularExpression+ESAdditions.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(NSRegularExpression_ESAdditions)
-
 @implementation NSRegularExpression (ESAdditions)
 
 + (instancetype)regex:(NSString *)pattern options:(NSRegularExpressionOptions)options error:(NSError **)error

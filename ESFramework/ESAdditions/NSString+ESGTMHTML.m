@@ -21,8 +21,6 @@
 #import "NSString+ESGTMHTML.h"
 #import "ESDefines.h"
 
-ES_CATEGORY_FIX(NSString_ESGTMHTML)
-
 // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
 // Ordered by uchar lowest to highest for bsearching
 static ESHTMLEscapeMap __es_gAsciiHTMLEscapeMap[] = {

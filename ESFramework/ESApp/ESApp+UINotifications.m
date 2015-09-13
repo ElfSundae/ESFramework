@@ -14,8 +14,6 @@
 NSString *const ESAppDidReceiveRemoteNotificationNotification = @"ESAppDidReceiveRemoteNotificationNotification";
 NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
 
-ES_CATEGORY_FIX(ESApp_UINotifications)
-
 @implementation ESApp (UINotifications)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

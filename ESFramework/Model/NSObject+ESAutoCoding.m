@@ -10,8 +10,6 @@
 #import "NSDictionary+ESAdditions.h"
 #import <objc/runtime.h>
 
-ES_CATEGORY_FIX(NSObject_ESAutoCoding)
-
 ESDefineAssociatedObjectKey(es_codableProperties);
 
 @implementation NSObject (ESAutoCoding)
