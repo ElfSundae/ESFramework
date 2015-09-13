@@ -132,7 +132,9 @@ NSString *ESUUID(void)
         return CFBridgingRelease(string);
 }
 
-/// Store the weak object
+/*!
+ * `_ESWeakObjectHolder` stores the weak object.
+ */
 @interface _ESWeakObjectHolder : NSObject
 @property (nonatomic, weak) __weak id weakObject;
 @end
