@@ -28,7 +28,7 @@ pod "ESFramework"
 
 ## Contribute Notes
 
-* `pod install`
+* `pod install` then `open ESFramework.xcworkspace`
 
 ## License
 
