@@ -6,12 +6,9 @@
 //  Copyright (c) 2015年 www.0x123.com. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ESFramework.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface AppDelegate : ESApp
 
 @end
 

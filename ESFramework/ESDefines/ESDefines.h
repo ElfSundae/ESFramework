@@ -492,4 +492,4 @@ ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 
 
-#endif //ESFramework_ESDefines_H
+#endif /* ESFramework_ESDefines_H */

@@ -1,17 +1,13 @@
 //
-//  ESFrameworkCore.h
+//  ESFramework.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-13.
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#ifndef ESFramework_ESFrameworkCore_H
-#define ESFramework_ESFrameworkCore_H
-
-#define kESFrameworkCoreVersion @"1.5.9"
-
 #import "ESDefines.h"
+
 
 #import "NSObject+ESAutoCoding.h"
 #import "NSObject+ESAssociatedObjectHelper.h"
@@ -57,4 +53,5 @@
 
 #import "ESApp.h"
 
-#endif //ESFramework_ESFrameworkCore_H
+
+ES_EXTERN NSString *ESFrameworkVersion;
