@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-
 // Core
 #import "ESDefines.h"
 #import "ESValue.h"
@@ -27,6 +26,7 @@
 #import "NSObject+ESAutoCoding.h"
 
 // iTunes Store
+#import "ESAppStoreTerritories.h"
 #import "ESITunesStoreHelper.h"
 
 // App
