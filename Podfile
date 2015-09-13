@@ -1,12 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-use_frameworks!
 platform :ios, '6.0'
 
 workspace 'ESFramework.xcworkspace'
 
 target 'Example', :exclusive => true do
     xcodeproj 'Example.xcodeproj'
+    link_with 'Example'
     pod "ESFramework", :path => "./"
 end
 

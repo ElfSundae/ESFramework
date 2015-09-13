@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESFramework.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  ESFramework: 4f975c8c962ff24cd7df4ef6d5f65bd1a5a463fa
+  ESFramework: a35d3015f2b147ee2e7db529e7bddc78f58f239d
 
 COCOAPODS: 0.38.2
