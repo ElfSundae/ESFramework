@@ -4,13 +4,15 @@ platform :ios, '6.0'
 
 workspace 'ESFramework.xcworkspace'
 
+xcodeproj 'Example.xcodeproj'
+
 target 'Example', :exclusive => true do
-    xcodeproj 'Example.xcodeproj'
     link_with 'Example'
     pod "ESFramework", :path => "./"
 end
 
 post_install do |installer|
+
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
 
