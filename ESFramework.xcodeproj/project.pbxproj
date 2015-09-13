@@ -9,8 +9,6 @@
 /* Begin PBXFileReference section */
 		E7143B251BA5C68E0001BE70 /* ESArrowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESArrowButton.h; sourceTree = "<group>"; };
 		E7143B261BA5C68E0001BE70 /* ESArrowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESArrowButton.m; sourceTree = "<group>"; };
-		E7143B281BA5C68E0001BE70 /* ESHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
-		E7143B291BA5C68E0001BE70 /* ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
 		E7143B2B1BA5C68E0001BE70 /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E7143B2C1BA5C68E0001BE70 /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E7143B2D1BA5C68E0001BE70 /* NSData+ESAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -97,6 +95,8 @@
 		E75AE15A1BA5DECC007F4561 /* ESValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
 		E75AE15B1BA5E1B4007F4561 /* NSObject+ESAssociatedObjectHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAssociatedObjectHelper.h"; sourceTree = "<group>"; };
 		E75AE15C1BA5E1B4007F4561 /* NSObject+ESAssociatedObjectHelper.m */ = {isa = PBXFileReference; indentWidth = 8; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAssociatedObjectHelper.m"; sourceTree = "<group>"; tabWidth = 8; };
+		E75AE15D1BA5E9B6007F4561 /* ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
+		E75AE15E1BA5E9B6007F4561 /* ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -114,14 +114,13 @@
 			children = (
 				E7143B761BA5C68E0001BE70 /* ESFramework.h */,
 				E75AE1561BA5DCB1007F4561 /* Core */,
-				E7143B271BA5C68E0001BE70 /* Crypto */,
+				E7143B851BA5C68E0001BE70 /* UDID */,
+				E7143B821BA5C68E0001BE70 /* Networking */,
 				E7143B2A1BA5C68E0001BE70 /* ESAdditions */,
 				E7143B681BA5C68E0001BE70 /* ESApp */,
 				E7143B7C1BA5C68E0001BE70 /* iTunesStore */,
 				E7143B7F1BA5C68E0001BE70 /* Model */,
-				E7143B821BA5C68E0001BE70 /* Networking */,
 				E7143B241BA5C68E0001BE70 /* Button */,
-				E7143B851BA5C68E0001BE70 /* UDID */,
 			);
 			path = ESFramework;
 			sourceTree = "<group>";
@@ -133,15 +132,6 @@
 				E7143B261BA5C68E0001BE70 /* ESArrowButton.m */,
 			);
 			path = Button;
-			sourceTree = "<group>";
-		};
-		E7143B271BA5C68E0001BE70 /* Crypto */ = {
-			isa = PBXGroup;
-			children = (
-				E7143B281BA5C68E0001BE70 /* ESHash.h */,
-				E7143B291BA5C68E0001BE70 /* ESHash.m */,
-			);
-			path = Crypto;
 			sourceTree = "<group>";
 		};
 		E7143B2A1BA5C68E0001BE70 /* ESAdditions */ = {
@@ -272,6 +262,8 @@
 				E75AE1581BA5DCD3007F4561 /* ESDefines.m */,
 				E75AE1591BA5DECC007F4561 /* ESValue.h */,
 				E75AE15A1BA5DECC007F4561 /* ESValue.m */,
+				E75AE15D1BA5E9B6007F4561 /* ESHash.h */,
+				E75AE15E1BA5E9B6007F4561 /* ESHash.m */,
 				E75AE15B1BA5E1B4007F4561 /* NSObject+ESAssociatedObjectHelper.h */,
 				E75AE15C1BA5E1B4007F4561 /* NSObject+ESAssociatedObjectHelper.m */,
 			);
