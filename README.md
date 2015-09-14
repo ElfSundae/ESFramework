@@ -1,5 +1,4 @@
 # ESFramework
----
 
 [![Build Status](https://travis-ci.org/ESFramework/ESFramework.svg)](https://travis-ci.org/ESFramework/ESFramework)
 
