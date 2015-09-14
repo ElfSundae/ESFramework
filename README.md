@@ -1,4 +1,7 @@
 # ESFramework
+---
+
+[![Build Status](https://travis-ci.org/ESFramework/ESFramework.svg)](https://travis-ci.org/ESFramework/ESFramework)
 
 An **E**ffective & **S**wing **Framework** for iOS.
 
