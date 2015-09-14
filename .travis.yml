@@ -6,8 +6,7 @@ before_install:
 
     - env
     - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-    - rm -rf Pods
-    - pod install
+    - pod install --no-repo-update
 
 script:
 
