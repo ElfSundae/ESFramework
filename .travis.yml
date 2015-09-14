@@ -1,0 +1,15 @@
+language: objective-c
+osx_image: xcode6.4
+xcode_workspace: ESFramework.xcworkspace
+xcode_scheme: ESFramework
+before_install:
+
+    - env
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - rm -rf Pods
+    - pod install
+
+script:
+
+    - pod lib lint --allow-warnings
+
