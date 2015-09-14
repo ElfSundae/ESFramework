@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3EE1FE9BE5B48A5F7A904AEE /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 500179CDC35508D8AF767977 /* libPods-Example.a */; };
+		E75AE19C1BA66474007F4561 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19B1BA66474007F4561 /* App.m */; };
+		E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19E1BA6655A007F4561 /* RootViewController.m */; };
 		E78975FA1BA4E8220034B065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975F91BA4E8220034B065 /* main.m */; };
-		E78975FD1BA4E8220034B065 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975FC1BA4E8220034B065 /* AppDelegate.m */; };
 		E78976051BA4E8220034B065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78976041BA4E8220034B065 /* Images.xcassets */; };
 		E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78976061BA4E8220034B065 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
@@ -18,11 +19,13 @@
 		2E9B1AE88A610A6285FB437E /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		500179CDC35508D8AF767977 /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E3F7FBC22F76C6A4DCA00F /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		E75AE19A1BA66474007F4561 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
+		E75AE19B1BA66474007F4561 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
+		E75AE19D1BA6655A007F4561 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		E75AE19E1BA6655A007F4561 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		E78975F41BA4E8220034B065 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78975F81BA4E8220034B065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78975F91BA4E8220034B065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E78975FB1BA4E8220034B065 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		E78975FC1BA4E8220034B065 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E78976041BA4E8220034B065 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E78976071BA4E8220034B065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,8 +82,10 @@
 		E78975F61BA4E8220034B065 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				E78975FB1BA4E8220034B065 /* AppDelegate.h */,
-				E78975FC1BA4E8220034B065 /* AppDelegate.m */,
+				E75AE19A1BA66474007F4561 /* App.h */,
+				E75AE19B1BA66474007F4561 /* App.m */,
+				E75AE19D1BA6655A007F4561 /* RootViewController.h */,
+				E75AE19E1BA6655A007F4561 /* RootViewController.m */,
 				E78976041BA4E8220034B065 /* Images.xcassets */,
 				E78976061BA4E8220034B065 /* LaunchScreen.xib */,
 				E78975F71BA4E8220034B065 /* Supporting Files */,
@@ -201,8 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E78975FD1BA4E8220034B065 /* AppDelegate.m in Sources */,
+				E75AE19C1BA66474007F4561 /* App.m in Sources */,
 				E78975FA1BA4E8220034B065 /* main.m in Sources */,
+				E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,11 +262,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public/ESFramework\"";
 			};
 			name = Debug;
 		};
@@ -294,10 +301,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "\"${PODS_ROOT}/Headers/Public/ESFramework\"";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
