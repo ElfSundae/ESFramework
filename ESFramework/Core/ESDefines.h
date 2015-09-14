@@ -180,6 +180,12 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 #define ESLocalizedString(key)                  NSLocalizedString(key,nil)
 #define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
 
+/**
+ * Shortcut for ESLocalizedString(key)
+ */
+#ifndef _e
+#define _e(key) ESLocalizedString(key)
+#endif
 
 ///=============================================
 /// @name Helper Functions
