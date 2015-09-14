@@ -12,5 +12,5 @@
 * <del>`-[ESApp _es_application:didRegisterUserNotificationSettings:]` : add notificationSetings to error's userInfo</del>
 * Installation via [Carthage](https://github.com/Carthage/Carthage)
 * Update readme to add Architecture.
-* Generate documentation.
-* Update readme to add travis CI.
+* <del>Generate documentation.</del> (Documentation has done by [CocoaDocs](http://cocoadocs.org/docsets/ESFramework))
+* <del>Update readme to add travis CI.</del>
