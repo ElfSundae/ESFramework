@@ -7,11 +7,9 @@
 //
 
 #import "ESFramework.h"
-#import "RootViewController.h"
 
-@interface App : UIResponder <UIApplicationDelegate>//ESApp <ESAppDelegate>
+@interface App : ESApp <ESAppDelegate>
 
-@property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UINavigationController *rootViewController;
 
 @end

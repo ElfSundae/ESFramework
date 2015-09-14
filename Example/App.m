@@ -9,18 +9,16 @@
 #import "App.h"
 
 @implementation App
-//@dynamic rootViewController;
+@dynamic rootViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//        [super application:application didFinishLaunchingWithOptions:launchOptions];
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.backgroundColor = [UIColor redColor];
+        [super application:application didFinishLaunchingWithOptions:launchOptions];
         
         self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
         self.window.rootViewController = self.rootViewController;
         
-        [self.window makeKeyWindow];
+        [self.window makeKeyAndVisible];
         return YES;
 }
 

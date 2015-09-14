@@ -7,7 +7,6 @@ workspace 'ESFramework.xcworkspace'
 xcodeproj 'Example.xcodeproj'
 
 target 'Example', :exclusive => true do
-    link_with 'Example'
     pod "ESFramework", :path => "./"
 end
 
