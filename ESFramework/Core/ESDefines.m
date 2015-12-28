@@ -285,8 +285,8 @@ NSString *ESPathForMainBundleResource(NSString *relativePath)
 NSString *ESPathForDocuments(void)
 {
         static NSString *docs = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceToken_DocumentsPath;
+        dispatch_once(&onceToken_DocumentsPath, ^{
                 docs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         });
         return docs;
@@ -300,8 +300,8 @@ NSString *ESPathForDocumentsResource(NSString *relativePath)
 NSString *ESPathForLibrary(void)
 {
         static NSString *lib = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceToken_LibraryPath;
+        dispatch_once(&onceToken_LibraryPath, ^{
                 lib = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
         });
         return lib;
@@ -315,8 +315,8 @@ NSString *ESPathForLibraryResource(NSString *relativePath)
 NSString *ESPathForCaches(void)
 {
         static NSString *caches = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceToken_CachesPath;
+        dispatch_once(&onceToken_CachesPath, ^{
                 caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
         });
         return caches;
