@@ -29,8 +29,8 @@
 + (NSDateFormatter *)RFC1123DateFormatter
 {
         static NSDateFormatter *__rfc1123DateFormatter = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceTokenRFC1123DateFormatter;
+        dispatch_once(&onceTokenRFC1123DateFormatter, ^{
                 __rfc1123DateFormatter = [[NSDateFormatter alloc] init];
                 __rfc1123DateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
                 __rfc1123DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];

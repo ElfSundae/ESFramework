@@ -272,8 +272,8 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
         if ([self canOpenURL:telURL]) {
                 if (shouldReturn) {
                         static UIWebView *__sharedPhoneCallWebView = nil;
-                        static dispatch_once_t onceToken;
-                        dispatch_once(&onceToken, ^{
+                        static dispatch_once_t onceTokenPhoneCallWebView;
+                        dispatch_once(&onceTokenPhoneCallWebView, ^{
                                 __sharedPhoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
                         });
                         [__sharedPhoneCallWebView loadRequest:[NSURLRequest requestWithURL:telURL]];

@@ -83,8 +83,8 @@ static NSDictionary *__esRemoteNotificationFromLaunch = nil;
 
 + (void)applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
 {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceTokenDidBecomeActiveNotificationHandler;
+        dispatch_once(&onceTokenDidBecomeActiveNotificationHandler, ^{
                 if (__esRemoteNotificationFromLaunch) {
                         __ESApplicationDidReceiveRemoteNotification(notification.object, __esRemoteNotificationFromLaunch, YES);
                         __esRemoteNotificationFromLaunch = nil;
@@ -127,8 +127,8 @@ BOOL __ESCheckAppFreshLaunch(NSString **previousAppVersion)
         static NSString *__gPreviousVersion = nil;
         static BOOL __gIsFreshLaunch = NO;
         
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceTokenCheckAppFreshLaunch;
+        dispatch_once(&onceTokenCheckAppFreshLaunch, ^{
                 __gPreviousVersion = ESStringValue([NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey]);
                 ESIsStringWithAnyText(__gPreviousVersion) || (__gPreviousVersion = nil);
                 NSString *currentVersion = [ESApp appVersion];
