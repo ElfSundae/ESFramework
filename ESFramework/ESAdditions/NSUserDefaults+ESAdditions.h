@@ -21,25 +21,25 @@
 /**
  * Sets the value of the specified default key in the `standardUserDefaults`.
  *
- * Note: after set value, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
+ * @note after set value, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
  */
 + (void)setObject:(id)value forKey:(NSString *)defaultName;
 /**
  * Sets the value of the specified default key in the `standardUserDefaults`, then asynchronously write to disk.
  *
- * Note: after set value, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
+ * @note after set value, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
  */
 + (void)setObjectAsynchrony:(id)value forKey:(NSString *)defaultName;
 /**
  * Removes the value of the standardUserDefaults key.
  *
- * Note: after removing, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
+ * @note after removing, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
  */
 + (void)removeObjectForKey:(NSString *)defaultName;
 /**
  * Removes the value of the standardUserDefaults key, then asynchronously write to disk.
  *
- * Note: after removing, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
+ * @note after removing, the `standardUserDefaults` will be synchronized to disk by invoking `-synchronize`.
  */
 + (void)removeObjectAsynchronyForKey:(NSString *)defaultName;
 

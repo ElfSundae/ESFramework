@@ -20,7 +20,7 @@ typedef void (^ESUIGestureRecognizerHandler)(UIGestureRecognizer *sender, UIGest
 + (instancetype)recognizerWithHandler:(ESUIGestureRecognizerHandler)handler;
 
 /**
- * !!!Note: This method is used to fix UITapGestureRecognizer issue on iOS5.
+ * @note This method is used to fix UITapGestureRecognizer issue on iOS5.
  * See http://stackoverflow.com/q/3344341/521946
  * On iOS6+, Apple has fixed this, see http://stackoverflow.com/a/20093084/521946
  *
