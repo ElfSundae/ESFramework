@@ -141,7 +141,7 @@ NSString *ESUUID(void)
 @implementation _ESWeakObjectHolder
 @end
 
-const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK = (0100000);
+const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK = (01407);
 
 id ESGetAssociatedObject(id target, const void *key)
 {
@@ -217,78 +217,7 @@ UIImage *UIImageFrom(NSString *filePath)
                 filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filePath];
         }
         
-#if 0 //-Elf: imageWithContentsOfFile同样会自动寻找路径, 不需要自己计算
-        NSFileManager *fm = [NSFileManager defaultManager];
-        
-        /* 分辨率倍数: "", "@2x", "@3x", 根据当前适配的屏幕分辨率获得 */
-        static NSString *__scaleExtension = nil;
-        /* 设备修饰符 */
-        static NSString *__deviceModifier = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-                int scale = (int)[UIScreen mainScreen].scale;
-                if (0 == scale) {
-                        __scaleExtension = @"";
-                } else {
-                        __scaleExtension = NSStringWith(@"@%dx", scale);
-                }
-                __deviceModifier = ESIsPadUI() ? @"~ipad" : @"~iphone";
-        });
-        
-        // 获取pathInfo
-        NSString *fileDir = [filePath stringByDeletingLastPathComponent];
-        NSString *fileFullName = [filePath lastPathComponent];
-        NSString *fileShortName = [fileFullName stringByDeletingPathExtension];
-        NSString *fileExtension = [fileFullName pathExtension];
-        
-        if ([fileExtension isEqualToString:@""]) {
-#if 0 //Elf: 不规范的命名放在最后面处理. 因为常见的使用方法是不写扩展名, 从而导致每次都检查文件存在性, 放到最后再检查以优化性能
-                // 如果没有扩展名, 检查是否存在没有扩展名的文件,如果有则直接使用
-                if ([fm fileExistsAtPath:filePath]) {
-                        return [UIImage imageWithContentsOfFile:filePath];
-                }
-#endif
-                
-                // 默认的扩展名是小写的png
-                fileExtension = @"png";
-        }
-        
-        NSString *retina = [fileDir stringByAppendingFormat:@"/%@%@.%@", fileShortName, __scaleExtension, fileExtension];
-        if ([fm fileExistsAtPath:retina]) {
-                return [UIImage imageWithContentsOfFile:retina];
-        }
-        
-        NSString *retina_device = [fileDir stringByAppendingFormat:@"/%@%@%@.%@", fileShortName, __scaleExtension, __deviceModifier, fileExtension];
-        if ([fm fileExistsAtPath:retina_device]) {
-                return [UIImage imageWithContentsOfFile:retina_device];
-        }
-
-        /* 处理不符合命名规范的情况 */
-        
-        // 文件没有扩展名但是这个文件确实存在,
-        // 或者有扩展名但是不符合命名规范,但是这个文件确实存在,
-        // 就直接加载这个图片
-        if ([fm fileExistsAtPath:filePath]) {
-                return [UIImage imageWithContentsOfFile:filePath];
-        }
-        
-        // 非高清屏手机上没有对应的图片,使用@2x图片
-        if ([__scaleExtension isEqualToString:@""]) {
-                NSString *x2 = [fileDir stringByAppendingFormat:@"/%@%@.%@", fileShortName, @"@2x", fileExtension];
-                if ([fm fileExistsAtPath:x2]) {
-                        return [UIImage imageWithContentsOfFile:x2];
-                }
-                
-                NSString *x2_device = [fileDir stringByAppendingFormat:@"/%@%@%@.%@", fileShortName, @"@2x", __deviceModifier, fileExtension];
-                if ([fm fileExistsAtPath:x2_device]) {
-                        return [UIImage imageWithContentsOfFile:x2_device];
-                }
-        }
-        
-        return nil;
-#else
         return [UIImage imageWithContentsOfFile:filePath];
-#endif
 }
 
 NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step)
