@@ -98,13 +98,7 @@ UIColor *ESRandomColor(void)
 NSString *ESRandomStringOfLength(NSUInteger length)
 {
         NSData *data = ESRandomDataOfLength(length);
-        NSString *string = nil;
-        // Base64
-        if ([data respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
-                string = [data base64EncodedStringWithOptions:0];
-        } else {
-                string = [data base64Encoding];
-        }
+        NSString *string = [data base64EncodedStringWithOptions:0];
         // Remove "+/-"
         string = [[string componentsSeparatedByCharactersInSet:
                   [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
@@ -222,7 +216,7 @@ UIImage *UIImageFrom(NSString *filePath)
 
 NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step)
 {
-        // !!: NSByteCountFormatter uses 1000 step length
+        //!!!: NSByteCountFormatter uses 1000 step length
         // if (NSClassFromString(@"NSByteCountFormatter")) {
         //         return [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
         // }
@@ -345,16 +339,15 @@ BOOL ESTouchDirectory(NSString *directoryPath)
                 if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir] && isDir) {
                         return YES;
                 }
-                [fm removeItemAtPath:directoryPath error:NULL];
-                return [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL];
+                return ([fm removeItemAtPath:directoryPath error:NULL] &&
+                        [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]);
         }
         return NO;
 }
 
 BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
 {
-        NSString *dir = [filePath stringByDeletingLastPathComponent];
-        return ESTouchDirectory(dir);
+        return ESTouchDirectory([filePath stringByDeletingLastPathComponent]);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
