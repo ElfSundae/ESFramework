@@ -7,8 +7,8 @@ An **E**ffective & **S**wing **Framework** for iOS.
 
 ## Requirements
 
-* Xcode 5.0 or later
-* iOS deployment target >= 6.0
+* Xcode 7.0 or later
+* iOS deployment target >= 7.0
 * ARC
 
 ## Installation
@@ -18,7 +18,7 @@ There are two ways to use ESFramework in your project:
 * Use [CocoaPods](http://cocoapods.org) **(Recommended)**
 
 ```ruby
-pod "ESFramework", "~> 2.0"
+pod "ESFramework", "~> 2.1"
 ```
 
 * Copy `ESFramework` directory into your project.
@@ -48,8 +48,8 @@ rm -rf Pods
 pod install --no-repo-update
 ```
 
-
 * Submit pull request to **develop** branch.
+* Set text indent of the `Pods` project to **use Spaces with 8 widths**.
 
 ## License
 
