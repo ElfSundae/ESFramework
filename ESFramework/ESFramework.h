@@ -12,9 +12,6 @@
 #import "ESHash.h"
 #import "NSObject+ESAssociatedObjectHelper.h"
 
-// UDID
-#import "ESOpenUDID.h"
-
 // Netwoking
 #import "ESNetworkReachability.h"
 #import "UIDevice+ESNetworkReachability.h"

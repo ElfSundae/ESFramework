@@ -80,8 +80,6 @@
 		E7143B811BA5C68E0001BE70 /* NSObject+ESAutoCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAutoCoding.m"; sourceTree = "<group>"; };
 		E7143B831BA5C68E0001BE70 /* ESNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
 		E7143B841BA5C68E0001BE70 /* ESNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
-		E7143B861BA5C68E0001BE70 /* ESOpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESOpenUDID.h; sourceTree = "<group>"; };
-		E7143B871BA5C68E0001BE70 /* ESOpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESOpenUDID.m; sourceTree = "<group>"; };
 		E75AE1571BA5DCD3007F4561 /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E75AE1581BA5DCD3007F4561 /* ESDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
 		E75AE1591BA5DECC007F4561 /* ESValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 			children = (
 				E7143B761BA5C68E0001BE70 /* ESFramework.h */,
 				E75AE1561BA5DCB1007F4561 /* Core */,
-				E7143B851BA5C68E0001BE70 /* UDID */,
 				E7143B821BA5C68E0001BE70 /* Networking */,
 				E7143B2A1BA5C68E0001BE70 /* ESAdditions */,
 				E7143B7F1BA5C68E0001BE70 /* Model */,
@@ -225,15 +222,6 @@
 				E75AE1611BA5F69B007F4561 /* UIDevice+ESNetworkReachability.m */,
 			);
 			path = Networking;
-			sourceTree = "<group>";
-		};
-		E7143B851BA5C68E0001BE70 /* UDID */ = {
-			isa = PBXGroup;
-			children = (
-				E7143B861BA5C68E0001BE70 /* ESOpenUDID.h */,
-				E7143B871BA5C68E0001BE70 /* ESOpenUDID.m */,
-			);
-			path = UDID;
 			sourceTree = "<group>";
 		};
 		E75AE1561BA5DCB1007F4561 /* Core */ = {

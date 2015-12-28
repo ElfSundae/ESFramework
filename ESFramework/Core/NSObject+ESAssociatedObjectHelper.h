@@ -16,31 +16,31 @@
 @interface NSObject (ESAssociatedObjectHelper)
 
 - (BOOL)es_getAssociatedBooleanWithKey:(const void *)key defaultValue:(BOOL)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
+/// @note the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
 - (void)es_setAssociatedBooleanWithKey:(const void *)key value:(BOOL)value;
 
 - (NSInteger)es_getAssociatedIntegerWithKey:(const void *)key defaultValue:(NSInteger)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
+/// @note the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
 - (void)es_setAssociatedIntegerWithKey:(const void *)key value:(NSInteger)value;
 
 - (NSUInteger)es_getAssociatedUIntegerWithKey:(const void *)key defaultValue:(NSUInteger)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
+/// @note the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
 - (void)es_setAssociatedUIntegerWithKey:(const void *)key value:(NSUInteger)value;
 
 - (double)es_getAssociatedDoubleWithKey:(const void *)key defaultValue:(double)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
+/// @note the association policy is OBJC_ASSOCIATION_RETAIN_NONATOMIC
 - (void)es_setAssociatedDoubleWithKey:(const void *)key value:(double)value;
 
 - (NSString *)es_getAssociatedStringWithKey:(const void *)key defaultValue:(NSString *)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_COPY_NONATOMIC
+/// @note the association policy is OBJC_ASSOCIATION_COPY_NONATOMIC
 - (void)es_setAssociatedStringWithKey:(const void *)key value:(NSString *)value;
 
 - (NSURL *)es_getAssociatedURLWithKey:(const void *)key defaultValue:(NSURL *)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_COPY_NONATOMIC
+/// @note the association policy is OBJC_ASSOCIATION_COPY_NONATOMIC
 - (void)es_setAssociatedURLWithKey:(const void *)key value:(NSURL *)value;
 
 - (__weak id)es_getAssociatedWeakObjectWithKey:(const void *)key defaultValue:(__weak id)defaultValue;
-/// Note: the association policy is OBJC_ASSOCIATION_WEAK
+/// @note the association policy is OBJC_ASSOCIATION_WEAK
 - (void)es_setAssociatedWeakObjectWithKey:(const void *)key value:(__weak id)value;
 
 @end

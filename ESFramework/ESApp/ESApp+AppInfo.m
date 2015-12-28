@@ -85,7 +85,6 @@
         result[@"name"] = [UIDevice name];
         result[@"platform"] = [UIDevice platform];
         result[@"carrier"] = [UIDevice carrierString];
-        result[@"open_udid"] = [UIDevice openUDID];
         result[@"jailbroken"] = @([UIDevice isJailbroken] ? 1 : 0);
         result[@"screen_size"] = [UIDevice screenSizeString];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
@@ -120,9 +119,6 @@
         [ua appendFormat:@"; Network/%@", [UIDevice currentNetworkReachabilityStatusString]];
         if (ESIsStringWithAnyText(self.appChannel)) {
                 [ua appendFormat:@"; Channel/%@", self.appChannel];
-        }
-        if ([UIDevice openUDID]) {
-                [ua appendFormat:@"; OpenUDID/%@", [UIDevice openUDID]];
         }
         [ua appendFormat:@")"];
         return (NSString *)ua;

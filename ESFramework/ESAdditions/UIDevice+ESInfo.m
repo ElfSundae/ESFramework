@@ -9,7 +9,6 @@
 #import "UIDevice+ESInfo.h"
 #import "ESDefines.h"
 #import "ESValue.h"
-#import "ESOpenUDID.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreGraphics/CoreGraphics.h>
@@ -99,16 +98,6 @@
         }
 #endif
         return ssid ?: @"";
-}
-
-+ (NSString *)deviceIdentifier
-{
-        return [self openUDID];
-}
-
-+ (NSString *)openUDID
-{
-        return [ESOpenUDID value];
 }
 
 + (BOOL)isJailbroken

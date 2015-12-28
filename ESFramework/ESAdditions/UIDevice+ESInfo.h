@@ -54,16 +54,6 @@
 + (NSString *)currentWiFiSSID;
 
 /**
- * Returns the device's UDID, a 40 hexadecimal numbers in lower-case, using **OpenUDID** library.
- * e.g. @"36acf6e5d9f3bf66d2084dbc2b2b07f895ea9848"
- *
- * @see [OpenUDID](https://github.com/ylechelle/OpenUDID)
- */
-//+ (NSString *)deviceIdentifier __attribute__((deprecated("use +openUDID instead.")));
-
-+ (NSString *)openUDID;
-
-/**
  * Detect whether this device has been jailbroken.
  */
 + (BOOL)isJailbroken;
