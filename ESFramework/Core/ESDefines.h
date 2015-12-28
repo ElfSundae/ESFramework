@@ -77,32 +77,20 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 ///=============================================
 #pragma mark - SDK Compatibility
 
-#ifndef TARGET_OS_IOS
-#define TARGET_OS_IOS TARGET_OS_IPHONE
+#ifndef __IPHONE_9_0
+#define __IPHONE_9_0     90000
 #endif
-#ifndef TARGET_OS_WATCH
-#define TARGET_OS_WATCH 0
+#ifndef __IPHONE_9_1
+#define __IPHONE_9_1     90100
 #endif
-
-#ifndef __IPHONE_8_0
-#define __IPHONE_8_0     80000
-#endif
-#ifndef __IPHONE_8_1
-#define __IPHONE_8_1     80100
-#endif
-#ifndef __IPHONE_8_2
-#define __IPHONE_8_2     80200
-#endif
-#ifndef __IPHONE_8_3
-#define __IPHONE_8_3     80300
-#endif
-#ifndef __IPHONE_8_4
-#define __IPHONE_8_4     80400
+#ifndef __IPHONE_9_2
+#define __IPHONE_9_2     90200
 #endif
 
-#ifndef NSFoundationVersionNumber_iOS_7_1
-#define NSFoundationVersionNumber_iOS_7_1 1047.25
+#ifndef NSFoundationVersionNumber_iOS_8_4
+#define NSFoundationVersionNumber_iOS_8_4 1144.17
 #endif
+
 
 NS_INLINE NSString *ESOSVersion(void) {
         return [[UIDevice currentDevice] systemVersion];
@@ -123,6 +111,11 @@ NS_INLINE BOOL ESOSVersionIsAbove7(void) {
 NS_INLINE BOOL ESOSVersionIsAbove8(void) {
         return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
 }
+
+NS_INLINE BOOL ESOSVersionIsAbove9(void) {
+        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_4);
+}
+
 
 ///=============================================
 /// @name Helper Macros
@@ -156,7 +149,7 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 + (instancetype)sharedInstance \
 { \
 /**/    static id sharedInstanceVariableName = nil; \
-/**/    static dispatch_once_t onceToken; \
+/**/    static dispatch_once_t onceToken_##sharedInstanceVariableName; \
 /**/    dispatch_once(&onceToken, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
 /**/    return sharedInstanceVariableName; \
 }
@@ -178,14 +171,10 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
  * Localized string.
  */
 #define ESLocalizedString(key)                  NSLocalizedString(key,nil)
-#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
-
-/**
- * Shortcut for ESLocalizedString(key)
- */
 #ifndef _e
-#define _e(key) ESLocalizedString(key)
+#define _e(key) NSLocalizedString(key,nil)
 #endif
+#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
 
 ///=============================================
 /// @name Helper Functions
