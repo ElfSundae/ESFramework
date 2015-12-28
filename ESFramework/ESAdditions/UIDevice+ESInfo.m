@@ -103,15 +103,12 @@
 + (BOOL)isJailbroken
 {
         static BOOL __isJailBroken = NO;
+#if !TARGET_IPHONE_SIMULATOR
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
                 NSArray *jbApps = @[@"/Application/Cydia.app",
-                                    @"/Application/limera1n.app",
-                                    @"/Application/greenpois0n.app",
-                                    @"/Application/blackra1n.app",
-                                    @"/Application/blacksn0w.app",
-                                    @"/Application/redsn0w.app",
-                                    @"/private/var/lib/apt/",
+                                    @"/private/var/lib/cydia",
+                                    @"/private/var/lib/apt",
                                     ];
                 for (NSString *path in jbApps) {
                         if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -123,7 +120,7 @@
                         __isJailBroken = YES;
                 }
         });
-        
+#endif
         return __isJailBroken;
 }
 
