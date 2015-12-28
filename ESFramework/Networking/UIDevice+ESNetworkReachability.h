@@ -13,6 +13,7 @@
 #define ESNetworkReachabilityStatusStringNotReachable           @"None"
 #define ESNetworkReachabilityStatusStringReachableViaWWAN       @"WWAN"
 #define ESNetworkReachabilityStatusStringReachableViaWiFi       @"WiFi"
+#define ESNetworkReachabilityStatusStringReachableUnknown       @"Unknown"
 
 /**
  * UIDevice has started monitoring network reachability status changes for

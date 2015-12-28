@@ -41,7 +41,7 @@
         } else if (ESNetworkReachabilityStatusNotReachable == status) {
                 return ESNetworkReachabilityStatusStringNotReachable;
         } else {
-                return @"Unknown";
+                return ESNetworkReachabilityStatusStringReachableUnknown;
         }
 }
 
