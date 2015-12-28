@@ -352,7 +352,7 @@ BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
 
 BOOL ESTouchDirectoryAtURL(NSURL *url)
 {
-        return ESTouchDirectory([url URLByDeletingLastPathComponent].path);
+        return ESTouchDirectoryAtFilePath(url.path);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
