@@ -11,8 +11,8 @@
 NSNumberFormatter *ESSharedNumberFormatter(void)
 {
         static NSNumberFormatter *__gSharedNumberFormatter = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        static dispatch_once_t onceTokenNumberFormatter;
+        dispatch_once(&onceTokenNumberFormatter, ^{
                 __gSharedNumberFormatter = [[NSNumberFormatter alloc] init];
         });
         return __gSharedNumberFormatter;
