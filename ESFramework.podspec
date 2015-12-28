@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ESFramework"
-  s.version           = "2.0.0"
+  s.version           = "2.1.0"
   s.license           = "MIT"
   s.summary           = "An Effective & Swing Framework for iOS."
   s.homepage          = "https://github.com/ESFramework/ESFramework"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.social_media_url  = "https://twitter.com/ElfSundae"
 
   s.platform              = :ios
-  s.ios.deployment_target = "6.0"
+  s.ios.deployment_target = "7.0"
 
   s.requires_arc      = true
   s.frameworks        = "Foundation", "CoreFoundation", "UIKit", "CoreGraphics", "Security", "SystemConfiguration", "CoreTelephony"
