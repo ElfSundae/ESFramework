@@ -150,7 +150,7 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 { \
 /**/    static id sharedInstanceVariableName = nil; \
 /**/    static dispatch_once_t onceToken_##sharedInstanceVariableName; \
-/**/    dispatch_once(&onceToken, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
+/**/    dispatch_once(&onceToken_##sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
 /**/    return sharedInstanceVariableName; \
 }
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
@@ -460,6 +460,10 @@ ES_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
  * Creates the directory at the given file path if the directory does not exist.
  */
 ES_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
+/**
+ * Creates the directory at the given file URL if the directory does not exist.
+ */
+ES_EXTERN BOOL ESTouchDirectoryAtURL(NSURL *url);
 
 ///=============================================
 /// @name Dispatch & Block
