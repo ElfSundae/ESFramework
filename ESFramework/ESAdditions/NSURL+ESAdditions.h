@@ -7,17 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+ESAdditions.h"
 
 @interface NSURL (ESAdditions)
+
+- (BOOL)isEqualToURL:(NSURL *)anotherURL;
+
 /**
  * Parse query string to dictionary.
  */
 - (NSDictionary *)queryDictionary;
-
-- (BOOL)isEqualToURL:(NSURL *)anotherURL;
-
-- (BOOL)fileExists;
-- (BOOL)fileExists:(BOOL *)isDirectory;
 
 @end

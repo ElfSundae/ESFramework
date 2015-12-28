@@ -7,6 +7,7 @@
 //
 
 #import "NSString+ESAdditions.h"
+#import "NSMutableString+ESAdditions.h"
 #import "ESValue.h"
 
 @implementation NSMutableString (ESAdditions)

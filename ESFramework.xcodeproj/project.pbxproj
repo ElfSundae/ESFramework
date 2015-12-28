@@ -95,6 +95,7 @@
 		E75AE1651BA5FF30007F4561 /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
 		E75AE1661BA60631007F4561 /* ESAppStoreTerritories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAppStoreTerritories.h; sourceTree = "<group>"; };
 		E75AE1671BA60631007F4561 /* ESAppStoreTerritories.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESAppStoreTerritories.m; sourceTree = "<group>"; };
+		E7D38A6B1C314BAE00682E9F /* NSMutableString+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+ESAdditions.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -131,6 +132,7 @@
 				E7143B3F1BA5C68E0001BE70 /* NSString+ESGTMHTML.m */,
 				E7143B3C1BA5C68E0001BE70 /* NSString+ESAdditions.h */,
 				E7143B3D1BA5C68E0001BE70 /* NSString+ESAdditions.m */,
+				E7D38A6B1C314BAE00682E9F /* NSMutableString+ESAdditions.h */,
 				E7143B351BA5C68E0001BE70 /* NSMutableString+ESAdditions.m */,
 				E7143B421BA5C68E0001BE70 /* NSURL+ESAdditions.h */,
 				E7143B431BA5C68E0001BE70 /* NSURL+ESAdditions.m */,

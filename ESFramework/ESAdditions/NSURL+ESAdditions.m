@@ -7,27 +7,18 @@
 //
 
 #import "NSURL+ESAdditions.h"
+#import "NSString+ESAdditions.h"
 
 @implementation NSURL (ESAdditions)
-- (NSDictionary *)queryDictionary
-{
-        return [self.absoluteString queryDictionary];
-}
 
 - (BOOL)isEqualToURL:(NSURL *)anotherURL
 {
-        return (([self.absoluteURL isEqual:anotherURL.absoluteURL]) ||
-                (self.isFileURL && anotherURL.isFileURL && [self.path isEqualToString:anotherURL.path]));
+        return [self.absoluteString isEqualToString:anotherURL.absoluteString];
 }
 
-- (BOOL)fileExists:(BOOL *)isDirectory
+- (NSDictionary *)queryDictionary
 {
-        return (self.isFileURL && [self.path fileExists:isDirectory]);
-}
-
-- (BOOL)fileExists
-{
-        return (self.isFileURL && [self.path fileExists]);
+        return [self.absoluteString queryDictionary];
 }
 
 @end

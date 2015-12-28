@@ -9,6 +9,7 @@
 #import "NSRegularExpression+ESAdditions.h"
 #import "NSString+ESGTMHTML.h"
 #import "NSString+ESAdditions.h"
+#import "NSMutableString+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
 #import "NSData+ESAdditions.h"
 #import "NSError+ESAdditions.h"

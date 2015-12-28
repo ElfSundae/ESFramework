@@ -7,16 +7,37 @@
 //
 
 #import "NSString+ESAdditions.h"
+#import "NSMutableString+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
+
+- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
+{
+    return (NSOrderedSame == [self caseInsensitiveCompare:aString]);
+}
+
+- (BOOL)isEmpty
+{
+    return (0 == self.length);
+}
+
+- (NSString *)trim
+{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (NSString *)trimWithCharactersInString:(NSString *)string
+{
+    return [self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
+}
 
 - (BOOL)contains:(NSString *)string
 {
         return [self contains:string options:0];
 }
 
-- (BOOL)containsStringCaseInsensitive:(NSString *)string
+- (BOOL)containsCaseInsensitive:(NSString *)string
 {
         return [self contains:string options:NSCaseInsensitiveSearch];
 }
@@ -26,115 +47,32 @@
         return (NSNotFound != [self rangeOfString:string options:options].location);
 }
 
-- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
-{
-        return (NSOrderedSame == [self caseInsensitiveCompare:aString]);
-}
-
-- (NSString *)trim
-{
-        return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-}
-
-- (NSString *)trimWithCharactersInString:(NSString *)string
-{
-        return [self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
-}
-
-- (BOOL)isEmpty
-{
-        return (0 == self.length);
-}
-
-- (BOOL)fileExists
-{
-        return [[NSFileManager defaultManager] fileExistsAtPath:self];
-}
-
-- (BOOL)fileExists:(BOOL *)isDirectory
-{
-        return [[NSFileManager defaultManager] fileExistsAtPath:self isDirectory:isDirectory];
-}
-
-
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
-{
-        ESWeakSelf;
-        ESDispatchOnDefaultQueue(^{
-                ESStrongSelf;
-                BOOL result = NO;
-                if (ESTouchDirectoryAtFilePath(path)) {
-                        result = [_self writeToFile:path atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:NULL];
-                }
-                if (block) {
-                        ESDispatchOnMainThreadAsynchrony(^{
-                                block(result);
-                        });
-                }
-        });
-}
-
-- (NSString *)append:(NSString *)format, ...
-{
-        NSString *str = @"";
-        if (format) {
-                va_list args;
-                va_start(args, format);
-                str = [[NSString alloc] initWithFormat:format arguments:args];
-                va_end(args);
-        }
-        return [self stringByAppendingString:str];
-}
-
-- (NSString *)appendPathComponent:(NSString *)format, ...
-{
-        NSString *str = @"";
-        if (format) {
-                va_list args;
-                va_start(args, format);
-                str = [[NSString alloc] initWithFormat:format arguments:args];
-                va_end(args);
-        }
-        return [self stringByAppendingPathComponent:str];
-}
-
-- (NSString *)appendPathExtension:(NSString *)extension
-{
-        return [self stringByAppendingPathExtension:extension];
-}
-
-- (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary
+- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
 {
         NSString *queryString = queryDictionary.queryString;
-        if (!ESIsStringWithAnyText(queryString)) {
-                return self;
+        if (ESIsStringWithAnyText(queryString)) {
+                NSString *trimed = [self trimWithCharactersInString:@"?&"];
+                return [trimed stringByAppendingFormat:@"%@%@", ([trimed contains:@"?"] ? @"&" : @"?"), queryString];
         }
-        
-        NSString *trimed = [self trimWithCharactersInString:@"?&"];
-        if ([self contains:@"?"]) {
-                return [trimed append:@"&%@", queryString];
-        } else {
-                return [trimed append:@"?%@", queryString];
-        }
+        return self;
 }
 
-- (NSString *)replace:(NSString *)string with:(NSString *)replacement
+- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement
 {
-        return [self replace:string with:replacement options:0];
+        return [self stringByReplacing:string with:replacement options:0];
 }
-- (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement
+- (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement
 {
-        return [self replace:string with:replacement options:NSCaseInsensitiveSearch];
+        return [self stringByReplacing:string with:replacement options:NSCaseInsensitiveSearch];
 }
-
-- (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options
+- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options
 {
         if (!replacement) {
                 replacement = @"";
         }
         return [self stringByReplacingOccurrencesOfString:string withString:replacement options:options range:NSMakeRange(0, self.length)];
 }
-- (NSString *)replaceInRange:(NSRange)range with:(NSString *)replacement
+- (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement
 {
         if (!replacement) {
                 replacement = @"";
@@ -144,25 +82,14 @@
 
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
-        NSMutableString *result = [NSMutableString stringWithString:self];
-        if (result.length > 0) {
-                [result replaceWithDictionary:dictionary options:options];
-        }
+        NSMutableString *result = self.mutableCopy;
+        [result replaceWithDictionary:dictionary options:options];
         return (NSString *)result;
 }
 
-- (NSString *)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
+- (NSString *)stringByReplacingRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
 {
-        return [self replace:pattern with:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
-}
-
-- (NSArray *)splitWith:(NSString *)separator
-{
-        return [self componentsSeparatedByString:separator];
-}
-- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator
-{
-        return [self componentsSeparatedByCharactersInSet:separator];
+        return [self stringByReplacing:pattern with:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
 }
 
 - (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters
@@ -173,6 +100,15 @@
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string
 {
         return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
+}
+
+- (NSArray *)splitWith:(NSString *)separator
+{
+        return [self componentsSeparatedByString:separator];
+}
+- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator
+{
+        return [self componentsSeparatedByCharactersInSet:separator];
 }
 
 static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
@@ -269,42 +205,29 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         return nil;
 }
 
-- (NSString *)stringByReplacingCamelcaseWith:(NSString *)replace
-{
-        NSString *string = [self replaceRegex:@"\\W" with:@"_" caseInsensitive:YES];
-        NSMutableString *result = [NSMutableString string];
-        for (NSUInteger i = 0; i < string.length; i++) {
-                NSString *aChar = [string substringWithRange:NSMakeRange(i, 1)];
-                if (![aChar isEqualToString:@"_"] && [aChar isEqualToString:[aChar uppercaseString]]) {
-                        if (i == 0) {
-                                [result appendString:[aChar lowercaseString]];
-                        } else {
-                                [result appendFormat:@"%@%@", replace, [aChar lowercaseString]];
-                        }
-                } else {
-                        [result appendString:[aChar lowercaseString]];
-                }
-        }
-        return result;
-}
-
-- (NSString *)stringByReplacingCamelcaseWithUnderscore
-{
-        return [self stringByReplacingCamelcaseWith:@"_"];
-}
-
-- (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options
-{
-        return [NSRegularExpression regex:self options:options];
-}
-- (NSRegularExpression *)regex
-{
-        return [self regexWithOptions:0];
-}
-- (NSRegularExpression *)regexCaseInsensitive
-{
-        return [self regexWithOptions:NSRegularExpressionCaseInsensitive];
-}
+//- (NSString *)stringByReplacingCamelcaseWith:(NSString *)replace
+//{
+//        NSString *string = [self stringByReplacingRegex:@"\\W" with:@"_" caseInsensitive:YES];
+//        NSMutableString *result = [NSMutableString string];
+//        for (NSUInteger i = 0; i < string.length; i++) {
+//                NSString *aChar = [string substringWithRange:NSMakeRange(i, 1)];
+//                if (![aChar isEqualToString:@"_"] && [aChar isEqualToString:[aChar uppercaseString]]) {
+//                        if (i == 0) {
+//                                [result appendString:[aChar lowercaseString]];
+//                        } else {
+//                                [result appendFormat:@"%@%@", replace, [aChar lowercaseString]];
+//                        }
+//                } else {
+//                        [result appendString:[aChar lowercaseString]];
+//                }
+//        }
+//        return result;
+//}
+//
+//- (NSString *)stringByReplacingCamelcaseWithUnderscore
+//{
+//        return [self stringByReplacingCamelcaseWith:@"_"];
+//}
 
 - (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
 {
@@ -321,6 +244,32 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
 {
         return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
+}
+
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
+{
+        ESDispatchOnDefaultQueue(^{
+                BOOL result = (ESTouchDirectoryAtFilePath(path) &&
+                               [self writeToFile:path atomically:useAuxiliaryFile encoding:enc error:NULL]);
+                ESDispatchOnMainThreadAsynchrony(^{
+                        if (completion) {
+                                completion(result);
+                        }
+                });
+        });
+}
+
+- (void)writeToURL:(NSURL *)url atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
+{
+       ESDispatchOnDefaultQueue(^{
+               BOOL result = (ESTouchDirectoryAtURL(url) &&
+                              [self writeToURL:url atomically:useAuxiliaryFile encoding:enc error:NULL]);
+               ESDispatchOnMainThreadAsynchrony(^{
+                       if (completion) {
+                               completion(result);
+                       }
+               });
+       });
 }
 
 @end

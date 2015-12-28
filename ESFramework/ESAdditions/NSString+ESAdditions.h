@@ -12,14 +12,12 @@
 
 @interface NSString (ESAdditions)
 
-- (BOOL)contains:(NSString*)string;
-- (BOOL)containsStringCaseInsensitive:(NSString *)string;
-- (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
-
 /**
  * Compare string ignoring case
  */
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
+
+- (BOOL)isEmpty;
 
 /**
  * Trims with whitespace and new line
@@ -27,23 +25,10 @@
 - (NSString *)trim;
 - (NSString *)trimWithCharactersInString:(NSString *)string;
 
-- (BOOL)isEmpty;
+- (BOOL)contains:(NSString*)string;
+- (BOOL)containsCaseInsensitive:(NSString *)string;
+- (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
-/**
- * Detect whether file exists for this path.
- */
-- (BOOL)fileExists;
-- (BOOL)fileExists:(BOOL *)isDirectory;
-
-/**
- * Asynchronously write string to file.
- * It will create directories automatically if not exists.
- */
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block;
-
-- (NSString *)append:(NSString *)format, ... NS_FORMAT_FUNCTION(1, 2);
-- (NSString *)appendPathComponent:(NSString *)format, ... NS_FORMAT_FUNCTION(1, 2);
-- (NSString *)appendPathExtension:(NSString *)extension;
 /**
  * Append URL query string from `queryDictionary`.
  * Supports 'array' params, like "?key[]=value1&key[]=value2".
@@ -51,15 +36,14 @@
  * In `queryDictionary`, the keys must be NSString/NSNumber, the values must be
  * NSString/NSNumber/NSArray with NSString,NSNumber.
  */
-- (NSString *)appendQueryDictionary:(NSDictionary *)queryDictionary;
+- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
 
 
-- (NSString *)replace:(NSString *)string with:(NSString *)replacement;
-- (NSString *)replaceCaseInsensitive:(NSString *)string with:(NSString *)replacement;
-- (NSString *)replace:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
-- (NSString *)replaceInRange:(NSRange)range with:(NSString *)replacement;
+- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement;
+- (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement;
+- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
+- (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement;
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
-
 /**
  * The `replacement` is treated as a template, with $0 being replaced by the 
  * contents of the matched range, $1 by the contents of the first capture group, 
@@ -68,13 +52,13 @@
  * the number of capture groups will be treated as ordinary characters, as will
  * a $ not followed by digits.  Backslash will escape both $ and itself.
  */
-- (NSString *)replaceRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
-
-- (NSArray *)splitWith:(NSString *)separator;
-- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
+- (NSString *)stringByReplacingRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
 
 - (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters;
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string;
+
+- (NSArray *)splitWith:(NSString *)separator;
+- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
 /**
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
@@ -160,55 +144,24 @@
  */
 - (NSString *)stringByDecodingHTMLEntities;
 
-/**
- * @"camelCase" to @"camel<replace>case"
- * @"CamelCase" to @"camel<replace>case"
- *
- * It will convert all "\W" to "_", and replace Uppercase to "_"+lowercase.
- */
-- (NSString *)stringByReplacingCamelcaseWith:(NSString *)replace;
-/**
- * @"camelCase" to @"camel_case"
- * @"CamelCase" to @"camel_case"
- *
- * @see -stringByReplacingCamelcaseWith:
- */
-- (NSString *)stringByReplacingCamelcaseWithUnderscore;
-
 ///=============================================
-/// @name NSRegularExpression Maker
+/// @name Match With Regular Expression
 ///=============================================
 
-- (NSRegularExpression *)regex;
-- (NSRegularExpression *)regexCaseInsensitive;
-- (NSRegularExpression *)regexWithOptions:(NSRegularExpressionOptions)options;
-
-/**
- * Regex
- */
 - (NSRange)match:(NSString *)pattern;
 - (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
 - (BOOL)isMatch:(NSString *)pattern;
 - (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
 
+///=============================================
+/// @name File Accessor
+///=============================================
 
-@end
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSMutableString
-
-@interface NSMutableString (ESAdditions)
-
-- (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options;
-- (void)replace:(NSString *)string to:(NSString *)replacement;
-- (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement;
-- (void)replaceInRange:(NSRange)range to:(NSString *)replacement;
-- (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
 /**
- * `dictionary` is NSString keyed, vlaued with NSString or NSNumber.
- * `options` can be any value including `NSRegularExpressionSearch`.
+ * Asynchronously write string to file.
+ * It will create directories automatically if not exists.
  */
-- (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion;
+- (void)writeToURL:(NSURL *)url atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion;
 
 @end
