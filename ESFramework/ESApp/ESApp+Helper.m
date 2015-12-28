@@ -301,28 +301,13 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 - (void)requestAddressBookAccessWithCompletion:(dispatch_block_t)completion failure:(dispatch_block_t)failure
 {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-        if (!ABAddressBookRequestAccessWithCompletion) {
-                if (completion)
-                        ESDispatchOnMainThreadAsynchrony(completion);
-                return;
-        }
-#endif
-        
         ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
         if (kABAuthorizationStatusAuthorized == status) {
                 if (completion)
                         ESDispatchOnMainThreadAsynchrony(completion);
                 
         } else if (kABAuthorizationStatusNotDetermined == status) {
-                ABAddressBookRef addressBook = NULL;
-                if (ABAddressBookCreateWithOptions) {
-                        addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-                } else {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-                        addressBook = ABAddressBookCreate();
-#endif
-                }
+                ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
                 ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
                         if (addressBook) {
                                 CFRelease(addressBook);

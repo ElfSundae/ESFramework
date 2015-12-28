@@ -137,49 +137,27 @@
 
 - (NSData *)es_base64Encoded
 {
-        // iOS 7+
-        if ([self respondsToSelector:@selector(base64EncodedDataWithOptions:)]) {
-                return [self base64EncodedDataWithOptions:0];
-        }
-        
-        // iOS 4+
-        NSString *encodingString = [self base64Encoding];
-        return [encodingString dataUsingEncoding:NSUTF8StringEncoding];
+        return [self base64EncodedDataWithOptions:0];
 }
 
 - (NSString *)es_base64EncodedString
 {
-        // iOS 7+
-        if ([self respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
-                return [self base64EncodedStringWithOptions:0];
-        }
-        
-        // iOS 4+
-        return [self base64Encoding];
+        return [self base64EncodedStringWithOptions:0];
 }
 
 - (NSData *)es_base64Decoded
 {
-        if ([self respondsToSelector:@selector(initWithBase64EncodedData:options:)]) {
-                return [[NSData alloc] initWithBase64EncodedData:self options:0];
-        }
-        
-        NSString *encodedStr = self.es_stringValue;
-        return [[NSData alloc] initWithBase64Encoding:encodedStr];
+        return [[NSData alloc] initWithBase64EncodedData:self options:0];
 }
-
 
 - (NSString *)es_base64DecodedString
 {
-        if ([self respondsToSelector:@selector(initWithBase64EncodedData:options:)]) {
-                NSData *data = [[NSData alloc] initWithBase64EncodedData:self options:0];
+        NSData *data = [[NSData alloc] initWithBase64EncodedData:self options:0];
+        if (data) {
                 return data.es_stringValue;
         }
-        
-        NSData *data = [self es_base64Decoded];
-        return data.es_stringValue;
+        return nil;
 }
-
 
 @end
 
@@ -266,10 +244,7 @@
 
 - (NSData *)es_base64Decoded
 {
-        if ([NSData instancesRespondToSelector:@selector(initWithBase64EncodedString:options:)]) {
-                return [[NSData alloc] initWithBase64EncodedString:self options:0];
-        }
-        return [[NSData alloc] initWithBase64Encoding:self];
+        return [[NSData alloc] initWithBase64EncodedString:self options:0];
 }
 
 - (NSString *)es_base64DecodedString
