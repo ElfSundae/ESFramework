@@ -11,10 +11,6 @@
 @interface NSURL (ESAdditions)
 
 - (BOOL)isEqualToURL:(NSURL *)anotherURL;
-
-/**
- * Parse query string to dictionary.
- */
 - (NSDictionary *)queryDictionary;
 
 @end

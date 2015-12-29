@@ -9,6 +9,7 @@
 #import "NSString+ESAdditions.h"
 #import "NSMutableString+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
+#import "ESValue.h"
 
 @implementation NSString (ESAdditions)
 
@@ -45,16 +46,6 @@
 - (BOOL)contains:(NSString *)string options:(NSStringCompareOptions)options
 {
         return (NSNotFound != [self rangeOfString:string options:options].location);
-}
-
-- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
-{
-        NSString *queryString = queryDictionary.queryString;
-        if (ESIsStringWithAnyText(queryString)) {
-                NSString *trimed = [self trimWithCharactersInString:@"?&"];
-                return [trimed stringByAppendingFormat:@"%@%@", ([trimed contains:@"?"] ? @"&" : @"?"), queryString];
-        }
-        return self;
 }
 
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement
@@ -117,7 +108,6 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)kESCharactersToBeEscaped, kCFStringEncodingUTF8);
         return CFBridgingRelease(encoded);
 }
-
 - (NSString *)URLDecode
 {
         NSString *decoded = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
@@ -126,57 +116,75 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 
 - (NSDictionary *)queryDictionary
 {
+        /**
+         * path=xxx
+         * http://path.com/test/?key=value
+         * tel:path?key=value
+         * //path#key=value&array[]=val&array[]
+         * path?key=value
+         * /path/?key
+         * path?key=value#fragment
+         */
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
-
         NSMutableString *queryString = self.mutableCopy;
         
-        // remove Scheme
-        [queryString replaceRegex:@"^[^:/]*:/*" to:@"" caseInsensitive:YES];
+        // 移除协议: http:// , file:/// , tel: , // .
+        [queryString replaceRegex:@"^[^:/]*[:/]+" to:@"" caseInsensitive:NO];
         
-        // 搜索第一个 ?&# 的range
-        NSRange searchFirstMarkInRange = NSMakeRange(0, queryString.length);
-        // 在第一个"="前搜索, 因为query可能是一个不带"?"前缀的串,例如"test=xxx&abc=foo"，所以以等号来截取得到queryString
-        NSRange firstEqual = [queryString rangeOfString:@"="];
-        if (NSNotFound != firstEqual.location) {
-                searchFirstMarkInRange = NSMakeRange(0, firstEqual.location);
-        }
-        
-        // 搜索第一个 ?&#, 把这个mark之前的舍弃掉
-        NSRange firstMarkRange = [queryString rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"?&#"]
-                                                              options:0
-                                                                range:searchFirstMarkInRange];
-        // 去掉mark之前的字符串,得到queryString
-        if (NSNotFound != firstMarkRange.location) {
-                [queryString deleteCharactersInRange:NSMakeRange(0, firstMarkRange.location + 1)];
-        }
-        
-        
-        // 将queryString按 & 或者 # 分割
-        NSArray *components = [queryString componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"&#"]];
-        
-        for (NSString *str in components) {
-                NSArray *keyValue = [str componentsSeparatedByString:@"="];
-                if (0 == keyValue.count) {
-                        continue;
+        NSRange firstEqualRange = [queryString rangeOfString:@"="];
+        if (firstEqualRange.location != NSNotFound) {
+                // # 可能当作锚点： # 位于 ? 的后面，
+                // # 也可能当作查询字符串的开始（例如http://twitter.com/#!/username,
+                // https://www.google.com/#newwindow=1&q=url).
+                NSRange fragmentStart = [queryString rangeOfString:@"#"];
+                if (fragmentStart.location != NSNotFound &&
+                    fragmentStart.location > firstEqualRange.location) {
+                        // 如果 # 是锚点，则忽略（移除）锚点后面的所有字符串
+                        NSRange fragmentRange = NSMakeRange(fragmentStart.location, queryString.length - fragmentStart.location);
+                        [queryString deleteCharactersInRange:fragmentRange];
                 }
                 
-                NSString *key = keyValue[0];
-                NSString *value = keyValue.count > 1 ? [keyValue[1] URLDecode] : nil;
+                // 移除 /?# 结尾的路径
+                [queryString replaceRegex:@"^[^?#]*[/?#]+" to:@"" caseInsensitive:NO];
                 
-                if ([key hasSuffix:@"[]"]) { // array
-                        key = [[key substringToIndex:key.length - 2] URLDecode];
-                        if (![result[key] isKindOfClass:[NSMutableArray class]]) {
-                                result[key] = [NSMutableArray array];
+                // 按 & 分割query字符串
+                NSArray *parts = [queryString splitWith:@"&"];
+                
+                for (NSString *query in parts) {
+                        NSArray *keyValue = [query splitWith:@"="];
+                        if (keyValue.count != 2) {
+                                continue;
                         }
-                        if (value) {
+                        NSString *key = [ESStringValue(keyValue[0]) URLDecode];
+                        NSString *value = [ESStringValue(keyValue[1]) URLDecode];
+                        if (key.isEmpty || value.isEmpty) {
+                                continue;
+                        }
+                        if ([key hasSuffix:@"[]"]) {
+                                key = [key substringToIndex:key.length - 2];
+                                if (key.isEmpty) {
+                                        continue;
+                                }
+                                if (!result[key] || ![result[key] isKindOfClass:[NSMutableArray class]]) {
+                                        result[key] = [NSMutableArray array];
+                                }
                                 [(NSMutableArray *)(result[key]) addObject:value];
+                        } else {
+                                result[key] = value;
                         }
-                } else {
-                        key = [key URLDecode];
-                        result[key] = value ?: [NSNull null];
                 }
         }
-        return (NSDictionary *)result;
+        return result;
+}
+
+- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
+{
+        NSString *queryString = queryDictionary.queryString;
+        if (ESIsStringWithAnyText(queryString)) {
+                NSString *trimed = [self trimWithCharactersInString:@"?&"];
+                return [trimed stringByAppendingFormat:@"%@%@", ([trimed contains:@"?"] ? @"&" : @"?"), queryString];
+        }
+        return self;
 }
 
 - (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
@@ -204,30 +212,6 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
         }
         return nil;
 }
-
-//- (NSString *)stringByReplacingCamelcaseWith:(NSString *)replace
-//{
-//        NSString *string = [self stringByReplacingRegex:@"\\W" with:@"_" caseInsensitive:YES];
-//        NSMutableString *result = [NSMutableString string];
-//        for (NSUInteger i = 0; i < string.length; i++) {
-//                NSString *aChar = [string substringWithRange:NSMakeRange(i, 1)];
-//                if (![aChar isEqualToString:@"_"] && [aChar isEqualToString:[aChar uppercaseString]]) {
-//                        if (i == 0) {
-//                                [result appendString:[aChar lowercaseString]];
-//                        } else {
-//                                [result appendFormat:@"%@%@", replace, [aChar lowercaseString]];
-//                        }
-//                } else {
-//                        [result appendString:[aChar lowercaseString]];
-//                }
-//        }
-//        return result;
-//}
-//
-//- (NSString *)stringByReplacingCamelcaseWithUnderscore
-//{
-//        return [self stringByReplacingCamelcaseWith:@"_"];
-//}
 
 - (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
 {

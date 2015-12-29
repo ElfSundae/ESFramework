@@ -29,16 +29,6 @@
 - (BOOL)containsCaseInsensitive:(NSString *)string;
 - (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
-/**
- * Append URL query string from `queryDictionary`.
- * Supports 'array' params, like "?key[]=value1&key[]=value2".
- *
- * In `queryDictionary`, the keys must be NSString/NSNumber, the values must be
- * NSString/NSNumber/NSArray with NSString,NSNumber.
- */
-- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
-
-
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement;
 - (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement;
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
@@ -60,6 +50,10 @@
 - (NSArray *)splitWith:(NSString *)separator;
 - (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
+///=============================================
+/// @name Encoding/Decoding URL
+///=============================================
+
 /**
  * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
  */
@@ -71,9 +65,23 @@
 - (NSString *)URLDecode;
 
 /**
- * Parse query string (http://foo.bar?key=value) to dictionary ({key:value}).
+ * Parse query string (http://foo.bar?key=value&arr[]=value&arr[]=value1) to dictionary { key:value, arr:[value, value1] }.
  */
 - (NSDictionary *)queryDictionary;
+
+/**
+ * Append URL query string from `queryDictionary`.
+ * Supports 'array' params, like "?key[]=value1&key[]=value2".
+ *
+ * In `queryDictionary`, the keys must be NSString/NSNumber, the values must be
+ * NSString/NSNumber/NSArray with NSString,NSNumber.
+ */
+- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
+
+
+///=============================================
+/// @name Encoding/Decoding HTML Entities
+///=============================================
 
 /**
  * Get a string where internal characters that need escaping for HTML are escaped,
