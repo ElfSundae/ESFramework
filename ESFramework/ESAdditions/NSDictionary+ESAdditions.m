@@ -8,6 +8,7 @@
 
 #import "NSDictionary+ESAdditions.h"
 #import "NSString+ESAdditions.h"
+#import "ESValue.h"
 
 @implementation NSDictionary (ESAdditions)
 
@@ -18,49 +19,29 @@
 
 - (NSString *)queryString
 {
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (NSString *key in [self keyEnumerator]) {
-                NSString *encodedKey = nil;
-                if ([key isKindOfClass:[NSString class]]) {
-                        encodedKey = [key URLEncode];
-                } else if ([key isKindOfClass:[NSNumber class]]) {
-                        encodedKey = [[(NSNumber *)key stringValue] URLEncode];
-                } else {
+        NSMutableArray *queryArray = [NSMutableArray array];
+        for (id key in self.keyEnumerator) {
+                NSString *encodedKey = [ESStringValue(key) URLEncode];
+                if (encodedKey.isEmpty) {
                         continue;
                 }
-                
                 id value = self[key];
                 
                 if ([value isKindOfClass:[NSArray class]]) {
-                        for (id arr_obj in (NSArray *)value) {
-                                NSString *arr_encoded_value = nil;
-                                if ([arr_obj isKindOfClass:[NSNumber class]]) {
-                                        arr_encoded_value = [[(NSNumber *)arr_obj stringValue] URLEncode];
-                                } else if ([arr_obj isKindOfClass:[NSString class]]) {
-                                        arr_encoded_value = [(NSString *)arr_obj URLEncode];
-                                } else {
-                                        continue;
-                                }
-                                [array addObject:[NSString stringWithFormat:@"%@[]=%@", encodedKey, arr_encoded_value]];
+                        for (id obj in (NSArray *)value) {
+                                NSString *encodedObj = [ESStringValue(obj) URLEncode];
+                                [queryArray addObject:[NSString stringWithFormat:@"%@[]=%@", encodedKey, encodedObj]];
                         }
-                        
                 } else {
-                        NSString *encodedValue = nil;
-                        if ([value isKindOfClass:[NSString class]]) {
-                                encodedValue = [(NSString *)value URLEncode];
-                        } else if ([value isKindOfClass:[NSNumber class]]) {
-                                encodedValue = [[(NSNumber *)value stringValue] URLEncode];
-                        } else {
-                                continue;
-                        }
-                        
-                        [array addObject:[NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue]];
+                        NSString *encodedValue = [ESStringValue(value) URLEncode];
+                        [queryArray addObject:[NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue]];
                 }
         }
         
-        if (array.count) {
-                return [array componentsJoinedByString:@"&"];
+        if (queryArray) {
+                return [queryArray componentsJoinedByString:@"&"];
         }
+        
         return @"";
 }
 
