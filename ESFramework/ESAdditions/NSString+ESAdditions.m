@@ -155,8 +155,8 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
                         if (keyValue.count != 2) {
                                 continue;
                         }
-                        NSString *key = [ESStringValue(keyValue[0]) URLDecode];
-                        NSString *value = [ESStringValue(keyValue[1]) URLDecode];
+                        NSString *key = [ESStringValueWithDefault(keyValue[0], @"") URLDecode];
+                        NSString *value = [ESStringValueWithDefault(keyValue[1], @"") URLDecode];
                         if (key.isEmpty || value.isEmpty) {
                                 continue;
                         }
@@ -179,12 +179,33 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
 {
+        NSMutableString *result = self.mutableCopy;
+        NSString *fragment = nil;
         NSString *queryString = queryDictionary.queryString;
+        
         if (ESIsStringWithAnyText(queryString)) {
-                NSString *trimed = [self trimWithCharactersInString:@"?&"];
-                return [trimed stringByAppendingFormat:@"%@%@", ([trimed contains:@"?"] ? @"&" : @"?"), queryString];
+                // 临时保存fragment, 在拼接queryString后再拼接fragment
+                NSRange fragmentStart = [result rangeOfString:@"#"];
+                if (fragmentStart.location != NSNotFound) {
+                        fragment = [self substringFromIndex:fragmentStart.location];
+                        NSRange fragmentRange = NSMakeRange(fragmentStart.location, result.length - fragmentStart.location);
+                        [result deleteCharactersInRange:fragmentRange];
+                }
+                // 去掉原串末尾的?或&， 方面后面拼接时添加连接符
+                if (result.length > 0) {
+                        NSString *lastChar = [result substringFromIndex:result.length - 1];
+                        if ([lastChar isEqualToString:@"?"] || [lastChar isEqualToString:@"&"]) {
+                                [result deleteCharactersInRange:NSMakeRange(result.length - 1, 1)];
+                        }
+                }
+                // 拼接
+                [result appendFormat:@"%@%@", ([result contains:@"?"] ? @"&" : @"?"), queryString];
         }
-        return self;
+        
+        if (fragment) {
+                [result appendString:fragment];
+        }
+        return (NSString *)result;
 }
 
 - (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
