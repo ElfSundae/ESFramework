@@ -16,9 +16,6 @@
                 ESSwizzleInstanceMethod(self, @selector(preferredStatusBarStyle), @selector(_es_preferredStatusBarStyle));
                 ESSwizzleInstanceMethod(self, @selector(preferredStatusBarUpdateAnimation), @selector(_es_preferredStatusBarUpdateAnimation));
                 ESSwizzleInstanceMethod(self, @selector(prefersStatusBarHidden), @selector(_es_prefersStatusBarHidden));
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-                ESSwizzleInstanceMethod(self, @selector(shouldAutorotateToInterfaceOrientation:), @selector(_es_shouldAutorotateToInterfaceOrientation:));
-#endif
                 ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_es_shouldAutorotate));
                 ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_es_supportedInterfaceOrientations));
                 ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_es_preferredInterfaceOrientationForPresentation)); 
@@ -47,13 +44,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Orientation
-
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-- (BOOL)_es_shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
-{
-        return [(UIViewController *)self.viewControllers.lastObject shouldAutorotateToInterfaceOrientation:toInterfaceOrientation];
-}
-#endif
 
 - (BOOL)_es_shouldAutorotate
 {

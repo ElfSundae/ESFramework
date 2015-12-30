@@ -29,14 +29,6 @@ static const void *__es_HandlerKey = &__es_HandlerKey;
 {
         self = [self initWithTarget:self action:@selector(_es_GRHandler:)];
         self.__es_Handler = handler;
-        
-        // Fix tap issue on iOS5
-        if (!ESOSVersionIsAtLeast(NSFoundationVersionNumber_iOS_6_0)) {
-                if ([self isKindOfClass:[UITapGestureRecognizer class]]) {
-                        self.delegate = (id<UIGestureRecognizerDelegate>)self;
-                }
-        }
-        
         return self;
 }
 
@@ -51,26 +43,6 @@ static const void *__es_HandlerKey = &__es_HandlerKey;
                 CGPoint location = [self locationInView:self.view];
                 self.__es_Handler(self, self.state, location);
         }
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Fix
-
-- (BOOL)es_shouldReceiveTouch:(UITouch *)touch
-{
-        if ([self isKindOfClass:[UITapGestureRecognizer class]] &&
-            [touch.view isKindOfClass:[UIControl class]]) {
-                // Fix iOS5: gesture issue
-                // http://stackoverflow.com/q/3344341/521946
-                return NO;
-        }
-        return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
-{
-        return [gestureRecognizer es_shouldReceiveTouch:touch];
 }
 
 @end

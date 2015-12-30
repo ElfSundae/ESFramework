@@ -25,31 +25,6 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
         ESSetAssociatedObject(self, _didDismissBlockKey, didDismissBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-//- (UILabel *)_esMessageLabel
-//{
-//        int i = 0;
-//        for (UIView *v in self.subviews) {
-//                if ([v isKindOfClass:[UILabel class]]) {
-//                        UILabel *label = (UILabel *)v;
-//                        if (!self.title || (self.title && i > 0)) {
-//                                return label;
-//                        }
-//                        i++;
-//                }
-//        }
-//        return nil;
-//}
-//
-//- (NSTextAlignment)messageAlignment
-//{
-//        return [self _esMessageLabel].textAlignment;
-//}
-//
-//- (void)setMessageAlignment:(NSTextAlignment)messageAlignment
-//{
-//        [self _esMessageLabel].textAlignment = messageAlignment;
-//}
-
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message dismissBlock:(ESUIAlertViewDidDismissBlock)dismissBlock
 {
         self = [self initWithTitle:title message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
