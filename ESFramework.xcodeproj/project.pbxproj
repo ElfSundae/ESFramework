@@ -114,6 +114,16 @@
 		E79A0FB81C33F2B10064B19D /* UIProgressView+ESStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+ESStyle.h"; sourceTree = "<group>"; };
 		E79A0FB91C33F2B10064B19D /* UIProgressView+ESStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+ESStyle.m"; sourceTree = "<group>"; };
 		E7D38A6B1C314BAE00682E9F /* NSMutableString+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+ESAdditions.h"; sourceTree = "<group>"; };
+		E7E2011B1C3411EC00A43350 /* ESMoviePlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMoviePlayerViewController.h; sourceTree = "<group>"; };
+		E7E2011C1C3411EC00A43350 /* ESMoviePlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESMoviePlayerViewController.m; sourceTree = "<group>"; };
+		E7E2011D1C3411EC00A43350 /* ESStoreProductViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStoreProductViewControllerManager.h; sourceTree = "<group>"; };
+		E7E2011E1C3411EC00A43350 /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
+		E7E2011F1C3411EC00A43350 /* ESTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
+		E7E201201C3411EC00A43350 /* ESTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESTableViewController.m; sourceTree = "<group>"; };
+		E7E201211C3411EC00A43350 /* ESTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESTableViewDataSource.h; sourceTree = "<group>"; };
+		E7E201221C3411EC00A43350 /* UITableViewCell+ESTableViewAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+ESTableViewAdditions.m"; sourceTree = "<group>"; };
+		E7E201241C34129100A43350 /* ESAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAnimation.h; sourceTree = "<group>"; };
+		E7E201251C34129100A43350 /* ESAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -136,7 +146,9 @@
 				E7143B7F1BA5C68E0001BE70 /* Model */,
 				E75AE1631BA5FF30007F4561 /* iTunes Store */,
 				E7143B681BA5C68E0001BE70 /* ESApp */,
+				E7E201231C34129100A43350 /* Animation */,
 				E79A0FA41C33F2B10064B19D /* View */,
+				E7E2011A1C3411EC00A43350 /* Controller */,
 			);
 			path = ESFramework;
 			sourceTree = "<group>";
@@ -310,6 +322,30 @@
 				E79A0FB71C33F2B10064B19D /* UIViewController+ESStatusOverlayView.m */,
 			);
 			path = StatusOverlay;
+			sourceTree = "<group>";
+		};
+		E7E2011A1C3411EC00A43350 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E7E2011B1C3411EC00A43350 /* ESMoviePlayerViewController.h */,
+				E7E2011C1C3411EC00A43350 /* ESMoviePlayerViewController.m */,
+				E7E2011D1C3411EC00A43350 /* ESStoreProductViewControllerManager.h */,
+				E7E2011E1C3411EC00A43350 /* ESStoreProductViewControllerManager.m */,
+				E7E2011F1C3411EC00A43350 /* ESTableViewController.h */,
+				E7E201201C3411EC00A43350 /* ESTableViewController.m */,
+				E7E201211C3411EC00A43350 /* ESTableViewDataSource.h */,
+				E7E201221C3411EC00A43350 /* UITableViewCell+ESTableViewAdditions.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E7E201231C34129100A43350 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E7E201241C34129100A43350 /* ESAnimation.h */,
+				E7E201251C34129100A43350 /* ESAnimation.m */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

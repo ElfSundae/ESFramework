@@ -40,3 +40,7 @@
 #import "ESStatusOverlayView.h"
 #import "UIViewController+ESStatusOverlayView.h"
 
+// Controller
+#import "ESMoviePlayerViewController.h"
+#import "ESStoreProductViewControllerManager.h"
+#import "ESTableViewController.h"
