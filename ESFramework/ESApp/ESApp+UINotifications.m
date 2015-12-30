@@ -25,7 +25,7 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Public
 
-- (void)registerForRemoteNotificationsWithTypes:(UIRemoteNotificationType)types
+- (void)registerForRemoteNotificationsWithTypes:(ESUserNotificationType)types
                                      categories:(NSSet *)categories
                                         success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
                                         failure:(void (^)(NSError *error))failure
@@ -52,7 +52,7 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
                 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:registerForTypes categories:categories];
                 [app registerUserNotificationSettings:settings];                
         } else {
-                [app registerForRemoteNotificationTypes:types];
+                [app registerForRemoteNotificationTypes:(UIRemoteNotificationType)types];
         }
 }
 
@@ -75,14 +75,14 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
         return ([self enabledRemoteNotificationTypes] != 0);
 }
 
-- (UIRemoteNotificationType)enabledRemoteNotificationTypes
+- (ESUserNotificationType)enabledRemoteNotificationTypes
 {
         UIApplication *app = [UIApplication sharedApplication];
         if ([app respondsToSelector:@selector(currentUserNotificationSettings)]) {
                 UIUserNotificationType currentType = app.currentUserNotificationSettings.types;
-                return (UIRemoteNotificationType)currentType;
+                return (ESUserNotificationType)currentType;
         } else {
-                return [app enabledRemoteNotificationTypes];
+                return (ESUserNotificationType)[app enabledRemoteNotificationTypes];
         }
 }
 
