@@ -94,6 +94,25 @@
 		E75AE1651BA5FF30007F4561 /* ESITunesStoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESITunesStoreHelper.m; sourceTree = "<group>"; };
 		E75AE1661BA60631007F4561 /* ESAppStoreTerritories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAppStoreTerritories.h; sourceTree = "<group>"; };
 		E75AE1671BA60631007F4561 /* ESAppStoreTerritories.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESAppStoreTerritories.m; sourceTree = "<group>"; };
+		E79A0FA51C33F2B10064B19D /* ESActivityLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESActivityLabel.h; sourceTree = "<group>"; };
+		E79A0FA61C33F2B10064B19D /* ESActivityLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESActivityLabel.m; sourceTree = "<group>"; };
+		E79A0FA71C33F2B10064B19D /* ESBadgeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESBadgeView.h; sourceTree = "<group>"; };
+		E79A0FA81C33F2B10064B19D /* ESBadgeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESBadgeView.m; sourceTree = "<group>"; };
+		E79A0FA91C33F2B10064B19D /* ESButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESButton.h; sourceTree = "<group>"; };
+		E79A0FAA1C33F2B10064B19D /* ESButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESButton.m; sourceTree = "<group>"; };
+		E79A0FAB1C33F2B10064B19D /* ESErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESErrorView.h; sourceTree = "<group>"; };
+		E79A0FAC1C33F2B10064B19D /* ESErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESErrorView.m; sourceTree = "<group>"; };
+		E79A0FAE1C33F2B10064B19D /* ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControl.h; sourceTree = "<group>"; };
+		E79A0FAF1C33F2B10064B19D /* ESRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControl.m; sourceTree = "<group>"; };
+		E79A0FB01C33F2B10064B19D /* ESRefreshControlDefaultContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControlDefaultContentView.h; sourceTree = "<group>"; };
+		E79A0FB11C33F2B10064B19D /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
+		E79A0FB21C33F2B10064B19D /* UIScrollView+ESRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ESRefreshControl.m"; sourceTree = "<group>"; };
+		E79A0FB41C33F2B10064B19D /* ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStatusOverlayView.h; sourceTree = "<group>"; };
+		E79A0FB51C33F2B10064B19D /* ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStatusOverlayView.m; sourceTree = "<group>"; };
+		E79A0FB61C33F2B10064B19D /* UIViewController+ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESStatusOverlayView.h"; sourceTree = "<group>"; };
+		E79A0FB71C33F2B10064B19D /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
+		E79A0FB81C33F2B10064B19D /* UIProgressView+ESStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+ESStyle.h"; sourceTree = "<group>"; };
+		E79A0FB91C33F2B10064B19D /* UIProgressView+ESStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+ESStyle.m"; sourceTree = "<group>"; };
 		E7D38A6B1C314BAE00682E9F /* NSMutableString+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+ESAdditions.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +136,7 @@
 				E7143B7F1BA5C68E0001BE70 /* Model */,
 				E75AE1631BA5FF30007F4561 /* iTunes Store */,
 				E7143B681BA5C68E0001BE70 /* ESApp */,
+				E79A0FA41C33F2B10064B19D /* View */,
 			);
 			path = ESFramework;
 			sourceTree = "<group>";
@@ -248,6 +268,48 @@
 				E75AE1651BA5FF30007F4561 /* ESITunesStoreHelper.m */,
 			);
 			path = "iTunes Store";
+			sourceTree = "<group>";
+		};
+		E79A0FA41C33F2B10064B19D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E79A0FA71C33F2B10064B19D /* ESBadgeView.h */,
+				E79A0FA81C33F2B10064B19D /* ESBadgeView.m */,
+				E79A0FA51C33F2B10064B19D /* ESActivityLabel.h */,
+				E79A0FA61C33F2B10064B19D /* ESActivityLabel.m */,
+				E79A0FA91C33F2B10064B19D /* ESButton.h */,
+				E79A0FAA1C33F2B10064B19D /* ESButton.m */,
+				E79A0FAB1C33F2B10064B19D /* ESErrorView.h */,
+				E79A0FAC1C33F2B10064B19D /* ESErrorView.m */,
+				E79A0FB81C33F2B10064B19D /* UIProgressView+ESStyle.h */,
+				E79A0FB91C33F2B10064B19D /* UIProgressView+ESStyle.m */,
+				E79A0FAD1C33F2B10064B19D /* RefreshControl */,
+				E79A0FB31C33F2B10064B19D /* StatusOverlay */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E79A0FAD1C33F2B10064B19D /* RefreshControl */ = {
+			isa = PBXGroup;
+			children = (
+				E79A0FAE1C33F2B10064B19D /* ESRefreshControl.h */,
+				E79A0FAF1C33F2B10064B19D /* ESRefreshControl.m */,
+				E79A0FB01C33F2B10064B19D /* ESRefreshControlDefaultContentView.h */,
+				E79A0FB11C33F2B10064B19D /* ESRefreshControlDefaultContentView.m */,
+				E79A0FB21C33F2B10064B19D /* UIScrollView+ESRefreshControl.m */,
+			);
+			path = RefreshControl;
+			sourceTree = "<group>";
+		};
+		E79A0FB31C33F2B10064B19D /* StatusOverlay */ = {
+			isa = PBXGroup;
+			children = (
+				E79A0FB41C33F2B10064B19D /* ESStatusOverlayView.h */,
+				E79A0FB51C33F2B10064B19D /* ESStatusOverlayView.m */,
+				E79A0FB61C33F2B10064B19D /* UIViewController+ESStatusOverlayView.h */,
+				E79A0FB71C33F2B10064B19D /* UIViewController+ESStatusOverlayView.m */,
+			);
+			path = StatusOverlay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
