@@ -59,7 +59,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  *      + Enable app multitasking, see `+[ESApp enableMultitasking]`
  *
  */
-@interface ESApp : UIResponder <ESAppDelegate>
+@interface ESApp : UIResponder <UIApplicationDelegate, ESAppDelegate>
 
 /**
  * Returns the app delegate if it is a subclass of `ESApp`,
@@ -85,14 +85,6 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 + (id)alloc __attribute__((unavailable("alloc not available, call sharedApp instead.")));
 + (id)new __attribute__((unavailable("new not available, call sharedApp instead.")));
 
-@end
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UIApplicationDelegate
-
-@interface ESApp (UIApplicationDelegate) <UIApplicationDelegate>
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -192,7 +184,6 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  *     model = iPhone;
  *     name = "Elf Sundae's iPhone";
  *     network = WiFi;
- *     "open_udid" = cf7cff0aaeea94806e247bf4e47a8ff760e46047;
  *     os = iOS;
  *     "os_version" = "8.4";
  *     platform = "iPhone7,1";
@@ -207,7 +198,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 /**
  * Returns the User Agent for HTTP request.
  *
- * e.g. `ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Network/WiFi; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
+ * e.g. `ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Network/WiFi; Channel/App Store)`
  */
 - (NSString *)userAgent;
 
@@ -421,14 +412,5 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  * Opens App Store, and goto this app's download page. `-appStoreID` must be implemented.
  */
 + (void)openAppStore;
-
-///=============================================
-/// @name Authorization
-///=============================================
-
-/**
- * Request `AddressBook` authorization if needed. `completion` and `failure` will callback on the main thread.
- */
-- (void)requestAddressBookAccessWithCompletion:(dispatch_block_t)completion failure:(dispatch_block_t)failure;
 
 @end
