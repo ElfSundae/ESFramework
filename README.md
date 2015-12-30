@@ -18,7 +18,7 @@ There are two ways to use ESFramework in your project:
 * Use [CocoaPods](http://cocoapods.org) **(Recommended)**
 
 ```ruby
-pod "ESFramework", "~> 2.1"
+pod "ESFramework", "~> 2.2"
 ```
 
 * Copy `ESFramework` directory into your project.
