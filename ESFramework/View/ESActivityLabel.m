@@ -122,7 +122,8 @@
         [super layoutSubviews];
         CGFloat spacing = 6.f;
         
-        CGSize textSize = [_label.text sizeWithFont:_label.font];
+        CGSize textSize = [_label.text sizeWithAttributes:@{NSFontAttributeName: _label.font}];
+        textSize = CGSizeMake(ceilf(textSize.width), ceilf(textSize.height));
         [_activityIndicatorView sizeToFit];
         CGFloat indicatorSize = MIN(_activityIndicatorView.height, textSize.height);
         

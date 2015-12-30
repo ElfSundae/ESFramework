@@ -24,6 +24,10 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
         
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+        
+        ESActivityLabel *label = [[ESActivityLabel alloc] initWithStyle:ESActivityLabelStyleGray text:@"test"];
+        label.center = self.view.center;
+        [self.view addSubview:label];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

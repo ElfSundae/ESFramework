@@ -64,12 +64,7 @@
 
 - (CGSize)_getTextSize
 {
-        CGSize stringSize;
-        if ([NSString instancesRespondToSelector:@selector(sizeWithAttributes:)]) {
-                stringSize = [self.text sizeWithAttributes:@{NSFontAttributeName: self.font}];
-        } else {
-                stringSize = [self.text sizeWithFont:self.font];
-        }
+        CGSize stringSize = [self.text sizeWithAttributes:@{NSFontAttributeName: self.font}];
         stringSize.width = ceilf(stringSize.width);
         stringSize.height = ceilf(stringSize.height);
         return stringSize;
@@ -304,13 +299,8 @@
                 CGPoint textPoint;
                 textPoint.x = (rect.size.width - textSize.width) / 2.f;
                 textPoint.y = (rect.size.height - textSize.height) / 2.f;
-                if ([self.text respondsToSelector:@selector(drawAtPoint:withAttributes:)]) {
-                        [self.text drawAtPoint:textPoint withAttributes:@{NSFontAttributeName: self.font,
-                                                                          NSForegroundColorAttributeName: self.textColor}];
-                } else {
-                        [self.textColor set];
-                        [self.text drawAtPoint:textPoint withFont:self.font];
-                }
+                [self.text drawAtPoint:textPoint withAttributes:@{NSFontAttributeName: self.font,
+                                                                  NSForegroundColorAttributeName: self.textColor}];
         }
 }
 
