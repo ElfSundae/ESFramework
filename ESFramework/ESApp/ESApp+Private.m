@@ -120,7 +120,7 @@ static NSDictionary *__esRemoteNotificationFromLaunch = nil;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Functions
 
-NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunchUserDefaultsKey";
+NSString *const ESAppCheckFreshLaunchUserDefaultsKey = @"ESAppCheckFreshLaunch";
 
 BOOL __ESCheckAppFreshLaunch(NSString **previousAppVersion)
 {

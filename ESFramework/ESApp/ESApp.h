@@ -59,12 +59,12 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 #pragma mark - ESApp
 
 /*!
- * `ESApp` is designed as the delegate of UIApplication, also it can be used as a global helper class.
+ * `ESApp` is designed as the delegate of UIApplication, it can be also used as a global helper class.
  *
  * `ESApp` has done the following things when app launchs:
  *
- *      + Setup window if your app delegate is a subclass of ESApp. You can call super in `-application:didFinishLaunchingWithOptions:`
- *      + Enable app multitasking, see `+[ESApp enableMultitasking]`
+ *      + You can call super in `-application:didFinishLaunchingWithOptions:` to setup self.window.
+ *      + Enable app multitasking, @see `+[ESApp enableMultitasking]`
  *
  */
 @interface ESApp : UIResponder <UIApplicationDelegate, ESAppDelegate>
