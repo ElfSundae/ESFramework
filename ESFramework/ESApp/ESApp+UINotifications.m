@@ -19,7 +19,7 @@ static void (^__esRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, N
 static void (^__esRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
 static NSString *__esRemoteNotificationsDeviceToken = nil;
 
-@implementation ESApp (UINotifications)
+@implementation ESApp (_UINotifications)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -8,7 +8,7 @@
 
 #import "ESApp.h"
 
-@implementation ESApp (Subclassing)
+@implementation ESApp (_Subclassing)
 
 - (NSString *)appChannel
 {

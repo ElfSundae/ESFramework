@@ -99,7 +99,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Subclassing
 
-@interface ESApp (Subclassing)
+@interface ESApp (_Subclassing)
 
 /**
  * Returns the channel/store that app submitted, default is @"App Store".
@@ -127,7 +127,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - AppInfo
 
-@interface ESApp (AppInfo)
+@interface ESApp (_AppInfo)
 
 /**
  * Returns the value associated with the specified key in the main bundle's Info.plist file.
@@ -247,7 +247,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - UINotifications
 
-@interface ESApp (UINotifications)
+@interface ESApp (_UINotifications)
 /**
  * @note success可能会延迟回调。例如：用户在系统设置里关闭了app的通知，调用register时会回调failure(error with ESAppErrorCodeCouldNotRegisterUserNotificationSettings),
  * 如果用户在app运行期间去系统设置里打开了app的push通知，此时会回调success。
@@ -270,7 +270,7 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Helper
 
-@interface ESApp (Helper)
+@interface ESApp (_Helper)
 
 /**
  * Checks whether the current launch is a **fresh launch** which means that
