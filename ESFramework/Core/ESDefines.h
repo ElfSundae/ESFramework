@@ -390,11 +390,6 @@ NS_INLINE BOOL UIScreenIsRetina(void) {
 ES_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /**
- * Creates NSURL with the given format and arguments.
- */
-ES_EXTERN NSURL *NSURLWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
-
-/**
  * Formats a bytes number in a human-readable format. e.g. @"12.34 Bytes", @"123 GB".
  * Returns a string that showing the size in Bytes, KBs, MBs, or GBs, with the given step length.
  */

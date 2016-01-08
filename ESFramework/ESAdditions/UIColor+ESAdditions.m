@@ -15,21 +15,21 @@
 {
         CGFloat r, g, b;
         [self getRed:&r green:&g blue:&b alpha:NULL];
-        return NSStringWith(@"rgb(%lu,%lu,%lu)", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f));
+        return [NSString stringWithFormat:@"rgb(%lu,%lu,%lu)", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f)];
 }
 
 - (NSString *)es_RGBAString
 {
         CGFloat r, g, b, a;
         [self getRed:&r green:&g blue:&b alpha:&a];
-        return NSStringWith(@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f), a);
+        return [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f), a];
 }
 
 - (NSString *)es_HexString
 {
         CGFloat r, g, b;
         [self getRed:&r green:&g blue:&b alpha:NULL];
-        return NSStringWith(@"#%02lX%02lX%02lX", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f));
+        return [NSString stringWithFormat:@"#%02lX%02lX%02lX", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f)];
 }
 
 + (UIColor *)es_groupTableViewBackgroundColor

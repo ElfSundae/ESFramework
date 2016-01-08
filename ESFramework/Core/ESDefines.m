@@ -172,26 +172,6 @@ NSString *NSStringWith(NSString *format, ...)
         return string;
 }
 
-NSURL *NSURLWith(NSString *format, ...)
-{
-        NSString *string = nil;
-        if (format) {
-                va_list args;
-                va_start(args, format);
-                string = [[NSString alloc] initWithFormat:format arguments:args];
-                va_end(args);
-        }
-        if (string) {
-                if ([string hasPrefix:@"/"]) {
-                        return [NSURL fileURLWithPath:string];
-                } else {
-                        return [NSURL URLWithString:string];
-                }
-        }
-        return nil;
-}
-
-
 UIImage *UIImageFromCache(NSString *filePath)
 {
         if (!ESIsStringWithAnyText(filePath)) {

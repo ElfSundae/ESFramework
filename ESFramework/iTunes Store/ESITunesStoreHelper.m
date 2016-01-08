@@ -33,8 +33,12 @@
 + (NSURL *)appLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         if ([self isItemID:appID]) {
-                return NSURLWith(@"https://itunes.apple.com/%@app/id%@",
-                                 (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
+                NSString *countryCodeString = (ESIsStringWithAnyText(storeCountryCode) ?
+                                               [storeCountryCode stringByAppendingString:@"/"] :
+                                               @"");
+                return [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/%@app/id%@",
+                                             countryCodeString,
+                                             appID]];
         }
         return nil;
 }
@@ -42,8 +46,12 @@
 + (NSURL *)appStoreLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         if ([self isItemID:appID]) {
-                return NSURLWith(@"itms-apps://itunes.apple.com/%@app/id%@",
-                                 (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
+                NSString *countryCodeString = (ESIsStringWithAnyText(storeCountryCode) ?
+                                               [storeCountryCode stringByAppendingString:@"/"] :
+                                               @"");
+                return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/%@app/id%@",
+                                             countryCodeString,
+                                             appID]];
         }
         return nil;
 }
@@ -51,8 +59,12 @@
 + (NSURL *)appStoreReviewLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         if ([self isItemID:appID]) {
-                return NSURLWith(@"itms-apps://itunes.apple.com/%@WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
-                                 (storeCountryCode.isEmpty ? @"" : NSStringWith(@"%@/", storeCountryCode)), appID);
+                NSString *countryCodeString = (ESIsStringWithAnyText(storeCountryCode) ?
+                                               [storeCountryCode stringByAppendingString:@"/"] :
+                                               @"");
+                return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/%@WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@",
+                                             countryCodeString,
+                                             appID]];
         }
         return nil;
 }
