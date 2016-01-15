@@ -228,7 +228,9 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 + (void)clearApplicationIconBadgeNumber
 {
-        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        if ([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
+                [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
