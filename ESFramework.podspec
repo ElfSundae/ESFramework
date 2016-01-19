@@ -24,20 +24,19 @@ Pod::Spec.new do |s|
     ss.dependency           "ESFramework/Core"
   end
 
+  s.subspec "App" do |ss|
+    ss.source_files         = "ESFramework/App/**/*.{h,m}"
+    ss.private_header_files = "ESFramework/App/**/*+Private.h"
+    ss.dependency             "ESFramework/Core"
+    ss.dependency             "ESFramework/Additions"
+  end
+
   s.subspec "StoreKit" do |ss|
     ss.source_files         = "ESFramework/StoreKit/**/*.{h,m}"
     ss.frameworks           = "StoreKit"
     ss.dependency           "ESFramework/Core"
     ss.dependency           "ESFramework/Additions"
     ss.dependency           "ESFramework/App"
-  end
-
-  s.subspec "App" do |ss|
-    ss.source_files         = "ESFramework/App/**/*.{h,m}"
-    ss.private_header_files = "ESFramework/App/**/*+Private.h"
-    ss.dependency             "ESFramework/Core"
-    ss.dependency             "ESFramework/Additions"
-    ss.dependency             "ESFramework/StoreKit"
   end
 
   s.subspec "UIKit" do |ss|

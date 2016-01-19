@@ -411,14 +411,4 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  */
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
-/**
- * Opens App Store, and goto this app's Review page. `-appStoreID` must be implemented.
- */
-+ (void)openAppStoreReviewPage;
-
-/**
- * Opens App Store, and goto this app's download page. `-appStoreID` must be implemented.
- */
-+ (void)openAppStore;
-
 @end

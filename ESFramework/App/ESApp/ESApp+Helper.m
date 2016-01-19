@@ -8,7 +8,6 @@
 
 #import "ESApp.h"
 #import "ESApp+Private.h"
-#import <ESFramework/ESStoreHelper.h>
 
 static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
@@ -284,16 +283,6 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
                 }
         }
         return NO;
-}
-
-+ (void)openAppStoreReviewPage
-{
-        [ESStoreHelper openAppStoreReviewPageWithAppID:[[self sharedApp] appStoreID]];
-}
-
-+ (void)openAppStore
-{
-        [ESStoreHelper openAppStoreWithAppID:[[self sharedApp] appStoreID]];
 }
 
 @end
