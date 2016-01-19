@@ -5,13 +5,13 @@
 
 An **E**ffective & **S**wing **Framework** for iOS.
 
-## Requirements
+# Requirements
 
 * Xcode 7.0 or later
 * iOS deployment target >= 7.0
 * ARC
 
-## Installation
+# Installation
 
 * Via [CocoaPods](http://cocoapods.org) **(Recommended)**
 
@@ -19,16 +19,23 @@ An **E**ffective & **S**wing **Framework** for iOS.
 pod "ESFramework", "~> 2.0"
 ```
 
-Subspecs:
+**Subspecs:**
 
 ```
+ESFramework/Core
+ESFramework/Additions
+ESFramework/App
+ESFramework/StoreKit
+ESFramework/UIKit
+ESFramework/UIKit/Animation
+ESFramework/UIKit/View
+ESFramework/UIKit/RefreshControl
+ESFramework/UIKit/Controller
 ```
 
 * Manually: copy `ESFramework` directory into your project.
 
-## Contribute Notes
-
-* Get started
+# Contribute Notes
 
 ```shell
 git clone -b develop https://github.com/ESFramework/ESFramework.git
@@ -45,9 +52,6 @@ rm -rf Pods
 pod install --no-repo-update
 ```
 
-* Submit pull request to **develop** branch.
-* Set text indent of the `Pods` project to **use Spaces with 8 widths**.
-
-## License
+# License
 
 ESFramework is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
