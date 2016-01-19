@@ -29,6 +29,7 @@ Pod::Spec.new do |s|
     ss.frameworks           = "StoreKit"
     ss.dependency           "ESFramework/Core"
     ss.dependency           "ESFramework/Additions"
+    ss.dependency           "ESFramework/App"
   end
 
   s.subspec "App" do |ss|
