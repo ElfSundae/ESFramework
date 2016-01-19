@@ -13,9 +13,7 @@ An **E**ffective & **S**wing **Framework** for iOS.
 
 ## Installation
 
-There are two ways to use ESFramework in your project:
-
-* Use [CocoaPods](http://cocoapods.org) **(Recommended)**
+* Via [CocoaPods](http://cocoapods.org) **(Recommended)**
 
 ```ruby
 pod "ESFramework", "~> 2.0"
@@ -23,13 +21,10 @@ pod "ESFramework", "~> 2.0"
 
 Subspecs:
 
-```ruby
-pod "ESFramework/Core", "~> 2.0"
-pod "ESFramework/Additions", "~> 2.0"
-pod "ESFramework/App", "~> 2.0"
+```
 ```
 
-* Copy `ESFramework` directory into your project.
+* Manually: copy `ESFramework` directory into your project.
 
 ## Contribute Notes
 
@@ -37,11 +32,13 @@ pod "ESFramework/App", "~> 2.0"
 
 ```shell
 git clone -b develop https://github.com/ESFramework/ESFramework.git
+cd ESFramework/Example
 pod install --no-repo-update
-open ESFramework.xcworkspace
+open ../ESFramework.xcworkspace
 ```
 
-If you added/moved/removed files in ESFramework directory, clean `Pods` and run `pod install` before building.
+If you added/moved/removed files in ESFramework directory,
+before rebuilding you must delete `Pods` directory then run `pod install`.
 
 ```shell
 rm -rf Pods
