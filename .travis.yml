@@ -11,5 +11,5 @@ before_install:
 
 script:
 
-    - pod lib lint --allow-warnings
+    - pod lib lint ../ESFramework.podspec --allow-warnings
 
