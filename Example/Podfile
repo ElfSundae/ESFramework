@@ -1,0 +1,6 @@
+platform :ios, '7.0'
+workspace '../ESFramework.xcworkspace'
+
+target 'Example', :exclusive => true do
+    pod "ESFramework", :path => "../ESFramework.podspec"
+end

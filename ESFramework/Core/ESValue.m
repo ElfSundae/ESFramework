@@ -18,9 +18,11 @@ NSNumberFormatter *ESSharedNumberFormatter(void)
         return __gSharedNumberFormatter;
 }
 
-NSNumber *ESNumberFromString(NSString *string)
+NSNumber *NSNumberFromString(NSString *string)
 {
-        return [ESSharedNumberFormatter() numberFromString:string];
+        return ([string isKindOfClass:[NSString class]] ?
+                [ESSharedNumberFormatter() numberFromString:string] :
+                nil);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +38,7 @@ int ESIntValueWithDefault(id obj, int defaultValue)
 unsigned int ESUIntValueWithDefault(id obj, unsigned int defaultValue)
 {
         return ([obj isKindOfClass:[NSNumber class]] ? [obj unsignedIntValue] :
-                ([obj isKindOfClass:[NSString class]] ? [ESNumberFromString(obj) unsignedIntValue] :
+                ([obj isKindOfClass:[NSString class]] ? [NSNumberFromString(obj) unsignedIntValue] :
                  defaultValue));
 }
 
@@ -49,21 +51,21 @@ NSInteger ESIntegerValueWithDefault(id obj, NSInteger defaultValue)
 NSUInteger ESUIntegerValueWithDefault(id obj, NSUInteger defaultValue)
 {
         return ([obj isKindOfClass:[NSNumber class]] ? [obj unsignedIntegerValue] :
-                ([obj isKindOfClass:[NSString class]] ? [ESNumberFromString(obj) unsignedIntegerValue] :
+                ([obj isKindOfClass:[NSString class]] ? [NSNumberFromString(obj) unsignedIntegerValue] :
                  defaultValue));
 }
 
 long ESLongValueWithDefault(id obj, long defaultValue)
 {
         return ([obj isKindOfClass:[NSNumber class]] ? [obj longValue] :
-                ([obj isKindOfClass:[NSString class]] ? [ESNumberFromString(obj) longValue] :
+                ([obj isKindOfClass:[NSString class]] ? [NSNumberFromString(obj) longValue] :
                  defaultValue));
 }
 
 unsigned long ESULongValueWithDefault(id obj, unsigned long defaultValue)
 {
         return ([obj isKindOfClass:[NSNumber class]] ? [obj longValue] :
-                ([obj isKindOfClass:[NSString class]] ? [ESNumberFromString(obj) longValue] :
+                ([obj isKindOfClass:[NSString class]] ? [NSNumberFromString(obj) longValue] :
                  defaultValue));
 }
 
@@ -76,7 +78,7 @@ long long ESLongLongValueWithDefault(id obj, long long defaultValue)
 unsigned long long ESULongLongValueWithDefault(id obj, unsigned long long defaultValue)
 {
         return ([obj isKindOfClass:[NSNumber class]] ? [obj unsignedLongLongValue] :
-                ([obj isKindOfClass:[NSString class]] ? [ESNumberFromString(obj) unsignedLongLongValue] :
+                ([obj isKindOfClass:[NSString class]] ? [NSNumberFromString(obj) unsignedLongLongValue] :
                  defaultValue));
 }
 
@@ -198,7 +200,7 @@ BOOL ESUIntVal(unsigned int *var, id obj)
                 *var = [obj unsignedIntValue];
                 return YES;
         } else if ([obj isKindOfClass:[NSString class]]) {
-                *var = [ESNumberFromString(obj) unsignedIntValue];
+                *var = [NSNumberFromString(obj) unsignedIntValue];
                 return YES;
         }
         return NO;
@@ -219,7 +221,7 @@ BOOL ESUIntegerVal(NSUInteger *var, id obj)
                 *var = [obj unsignedIntegerValue];
                 return YES;
         } else if ([obj isKindOfClass:[NSString class]]) {
-                *var = [ESNumberFromString(obj) unsignedIntegerValue];
+                *var = [NSNumberFromString(obj) unsignedIntegerValue];
                 return YES;
         }
         return NO;
@@ -231,7 +233,7 @@ BOOL ESLongVal(long *var, id obj)
                 *var = [obj longValue];
                 return YES;
         } else if ([obj isKindOfClass:[NSString class]]) {
-                *var = [ESNumberFromString(obj) longValue];
+                *var = [NSNumberFromString(obj) longValue];
                 return YES;
         }
         return NO;
@@ -243,7 +245,7 @@ BOOL ESULongVal(unsigned long *var, id obj)
                 *var = [obj unsignedLongValue];
                 return YES;
         } else if ([obj isKindOfClass:[NSString class]]) {
-                *var = [ESNumberFromString(obj) unsignedLongValue];
+                *var = [NSNumberFromString(obj) unsignedLongValue];
                 return YES;
         }
         return NO;
@@ -264,7 +266,7 @@ BOOL ESULongLongVal(unsigned long long *var, id obj)
                 *var = [obj unsignedLongLongValue];
                 return YES;
         } else if ([obj isKindOfClass:[NSString class]]) {
-                *var = [ESNumberFromString(obj) unsignedLongLongValue];
+                *var = [NSNumberFromString(obj) unsignedLongLongValue];
                 return YES;
         }
         return NO;

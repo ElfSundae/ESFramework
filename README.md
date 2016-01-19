@@ -21,15 +21,15 @@ There are two ways to use ESFramework in your project:
 pod "ESFramework", "~> 2.0"
 ```
 
+Subspecs:
+
+```ruby
+pod "ESFramework/Core", "~> 2.0"
+pod "ESFramework/Additions", "~> 2.0"
+pod "ESFramework/App", "~> 2.0"
+```
+
 * Copy `ESFramework` directory into your project.
-
-## Architecture
-
-*TODO*
-
-## Usage
-
-*TODO*
 
 ## Contribute Notes
 

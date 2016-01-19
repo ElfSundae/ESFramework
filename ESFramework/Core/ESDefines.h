@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#ifndef ESFramework_ESDefines_H
-#define ESFramework_ESDefines_H
+#ifndef ESFrameworkCore_ESDefines_H
+#define ESFrameworkCore_ESDefines_H
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>

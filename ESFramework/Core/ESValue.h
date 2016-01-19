@@ -8,8 +8,15 @@
 
 #import "ESDefines.h"
 
+/**
+ * A shared NSNumberFormatter instance.
+ */
 ES_EXTERN NSNumberFormatter *ESSharedNumberFormatter(void);
-ES_EXTERN NSNumber *ESNumberFromString(NSString *string);
+
+/**
+ * Convert NSString to NSNumber.
+ */
+ES_EXTERN NSNumber *NSNumberFromString(NSString *string);
 
 
 ///=============================================
