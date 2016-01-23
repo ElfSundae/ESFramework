@@ -8,5 +8,6 @@
 
 #import <ESFramework/ESDefines.h>
 #import <ESFramework/ESValue.h>
-#import <ESFramework/ESHash.h>
+#import <ESFramework/NSData+ESHash.h>
+#import <ESFramework/NSString+ESHash.h>
 #import <ESFramework/NSObject+ESAssociatedObjectHelper.h>

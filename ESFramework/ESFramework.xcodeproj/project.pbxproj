@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		E78835891C53204A00F67C63 /* NSData+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESHash.h"; sourceTree = "<group>"; };
+		E788358A1C53204A00F67C63 /* NSData+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESHash.m"; sourceTree = "<group>"; };
+		E788358D1C5321AC00F67C63 /* NSString+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ESHash.h"; sourceTree = "<group>"; };
+		E788358E1C5321AC00F67C63 /* NSString+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESHash.m"; sourceTree = "<group>"; };
 		E7A38B751C4DD82100972B01 /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E7A38B761C4DD82100972B01 /* ESDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
-		E7A38B771C4DD82100972B01 /* ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHash.h; sourceTree = "<group>"; };
-		E7A38B781C4DD82100972B01 /* ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHash.m; sourceTree = "<group>"; };
 		E7A38B791C4DD82100972B01 /* ESValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
 		E7A38B7A1C4DD82100972B01 /* ESValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
 		E7A38B7B1C4DD82100972B01 /* NSObject+ESAssociatedObjectHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAssociatedObjectHelper.h"; sourceTree = "<group>"; };
@@ -156,8 +158,10 @@
 				E7A38B761C4DD82100972B01 /* ESDefines.m */,
 				E7A38B791C4DD82100972B01 /* ESValue.h */,
 				E7A38B7A1C4DD82100972B01 /* ESValue.m */,
-				E7A38B771C4DD82100972B01 /* ESHash.h */,
-				E7A38B781C4DD82100972B01 /* ESHash.m */,
+				E78835891C53204A00F67C63 /* NSData+ESHash.h */,
+				E788358A1C53204A00F67C63 /* NSData+ESHash.m */,
+				E788358D1C5321AC00F67C63 /* NSString+ESHash.h */,
+				E788358E1C5321AC00F67C63 /* NSString+ESHash.m */,
 				E7A38B7B1C4DD82100972B01 /* NSObject+ESAssociatedObjectHelper.h */,
 				E7A38B7C1C4DD82100972B01 /* NSObject+ESAssociatedObjectHelper.m */,
 			);

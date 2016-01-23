@@ -1,44 +1,90 @@
-PODS:
-  - ESFramework (2.3.0):
-    - ESFramework/Additions (= 2.3.0)
-    - ESFramework/App (= 2.3.0)
-    - ESFramework/Core (= 2.3.0)
-    - ESFramework/StoreKit (= 2.3.0)
-    - ESFramework/UIKit (= 2.3.0)
-  - ESFramework/Additions (2.3.0):
-    - ESFramework/Core
-  - ESFramework/App (2.3.0):
-    - ESFramework/Additions
-    - ESFramework/Core
-    - ESFramework/StoreKit
-  - ESFramework/Core (2.3.0)
-  - ESFramework/StoreKit (2.3.0):
-    - ESFramework/Additions
-    - ESFramework/Core
-  - ESFramework/UIKit (2.3.0):
-    - ESFramework/UIKit/Animation (= 2.3.0)
-    - ESFramework/UIKit/Controller (= 2.3.0)
-    - ESFramework/UIKit/RefreshControl (= 2.3.0)
-    - ESFramework/UIKit/View (= 2.3.0)
-  - ESFramework/UIKit/Animation (2.3.0)
-  - ESFramework/UIKit/Controller (2.3.0):
-    - ESFramework/App
-    - ESFramework/UIKit/RefreshControl
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.3.0):
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.3.0):
-    - ESFramework/Additions
-    - ESFramework/Core
+>-
+  PODS:
+  - >-
+    ESFramework (2.3.0):
+    - >-
+      ESFramework/Additions (= 2.3.0)
+    - >-
+      ESFramework/App (= 2.3.0)
+    - >-
+      ESFramework/Core (= 2.3.0)
+    - >-
+      ESFramework/StoreKit (= 2.3.0)
+    - >-
+      ESFramework/UIKit (= 2.3.0)
+  - >-
+    ESFramework/Additions (2.3.0):
+    - >-
+      ESFramework/Core
+  - >-
+    ESFramework/App (2.3.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/Core
+  - >-
+    ESFramework/Core (2.3.0)
+  - >-
+    ESFramework/StoreKit (2.3.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/App
+    - >-
+      ESFramework/Core
+  - >-
+    ESFramework/UIKit (2.3.0):
+    - >-
+      ESFramework/UIKit/Animation (= 2.3.0)
+    - >-
+      ESFramework/UIKit/Controller (= 2.3.0)
+    - >-
+      ESFramework/UIKit/RefreshControl (= 2.3.0)
+    - >-
+      ESFramework/UIKit/View (= 2.3.0)
+  - >-
+    ESFramework/UIKit/Animation (2.3.0)
+  - >-
+    ESFramework/UIKit/Controller (2.3.0):
+    - >-
+      ESFramework/App
+    - >-
+      ESFramework/UIKit/RefreshControl
+    - >-
+      ESFramework/UIKit/View
+  - >-
+    ESFramework/UIKit/RefreshControl (2.3.0):
+    - >-
+      ESFramework/UIKit/View
+  - >-
+    ESFramework/UIKit/View (2.3.0):
+    - >-
+      ESFramework/Additions
+    - >-
+      ESFramework/Core
 
-DEPENDENCIES:
-  - ESFramework (from `../ESFramework.podspec`)
+>-
+  DEPENDENCIES:
+  - >-
+    ESFramework (from `../ESFramework.podspec`)
 
-EXTERNAL SOURCES:
-  ESFramework:
-    :path: "../ESFramework.podspec"
+>-
+  EXTERNAL SOURCES:
+  >-
+    ESFramework:
+    :path: >-
+      ../ESFramework.podspec
 
-SPEC CHECKSUMS:
-  ESFramework: b6ea5b93e97b34d487305bc700a2bd18e6c58991
+>-
+  SPEC CHECKSUMS:
+  >-
+    ESFramework: >-
+    9b8e2153b629e75ddc5c34712a3b21cee10e2f71
 
-COCOAPODS: 0.39.0
+>-
+  PODFILE CHECKSUM: >-
+  51b009191a84595141d61c1c6a983af95fa301fe
+
+>-
+  COCOAPODS: >-
+  1.0.0.beta.2
