@@ -88,11 +88,6 @@ ES_EXTERN NSString *const ESAppRemoteNotificationKey;
  */
 @property (nonatomic, strong) UIViewController *rootViewController;
 
-/// @name Singleton
-
-+ (id)alloc __attribute__((unavailable("alloc not available, call sharedApp instead.")));
-+ (id)new __attribute__((unavailable("new not available, call sharedApp instead.")));
-
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
