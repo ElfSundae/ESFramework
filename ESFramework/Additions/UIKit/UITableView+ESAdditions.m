@@ -71,4 +71,14 @@
         }
 }
 
+- (void)setVisibleCellsNeedDisplay
+{
+        [self.visibleCells makeObjectsPerformSelector:@selector(setNeedsDisplay)];
+}
+
+- (void)setVisibleCellsNeedLayout
+{
+        [self.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+}
+
 @end

@@ -15,6 +15,10 @@
 - (void)scrollToFirstRow:(BOOL)animated;
 - (void)scrollToLastRow:(BOOL)animated;
 - (void)scrollToFirstResponderAnimated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
+
 - (void)touchRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;
+
+- (void)setVisibleCellsNeedDisplay;
+- (void)setVisibleCellsNeedLayout;
 
 @end
