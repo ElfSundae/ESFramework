@@ -8,27 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, ESActivityLabelStyle) {
-        ESActivityLabelStyleGray,
-        ESActivityLabelStyleWhite,
-};
-
 /**
  * With a `UIActivityIndicatorView` and a `UILabel`.
  */
 @interface ESActivityLabel : UIView
 
-@property (nonatomic) ESActivityLabelStyle style;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, strong) UIColor *textColor;
-@property (nonatomic, strong) UIColor *indicatorColor;
-@property (nonatomic, strong) UIFont *font;
-
 @property (nonatomic, strong, readonly) UIActivityIndicatorView *activityIndicatorView;
-@property (nonatomic, strong, readonly) UILabel *label;
+@property (nonatomic, strong, readonly) UILabel *textLabel;
 
-- (instancetype)initWithFrame:(CGRect)frame style:(ESActivityLabelStyle)style text:(NSString *)text;
-- (instancetype)initWithStyle:(ESActivityLabelStyle)style text:(NSString *)text;
-- (instancetype)initWithStyle:(ESActivityLabelStyle)style;
+- (instancetype)initWithFrame:(CGRect)frame activityIndicatorViewStyle:(UIActivityIndicatorViewStyle)activityIndicatorViewStyle attributedText:(NSAttributedString *)attributedText;
 
++ (NSDictionary *)defaultTextAttributes;
 @end
