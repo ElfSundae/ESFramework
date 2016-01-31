@@ -39,7 +39,7 @@
 
 - (CGSize)sizeThatFits:(CGSize)size
 {
-        CGSize textSize = self.textLabel.attributedText.size;
+        CGSize textSize = [self.textLabel sizeThatFits:size];
         CGFloat height = textSize.height + 6.f;
         return CGSizeMake(size.width, height);
 }
@@ -49,8 +49,8 @@
         [super layoutSubviews];
         CGFloat spacing = 6.f;
         
-        CGSize textSize = self.textLabel.attributedText.size;
-        textSize = CGSizeMake(ceilf(textSize.width), ceilf(textSize.height));
+        [self.textLabel sizeToFit];
+        CGSize textSize = CGSizeMake(ceilf(self.textLabel.width), ceilf(self.textLabel.height));
         CGSize indicatorSize = self.activityIndicatorView.size;
         
         CGRect contentFrame = CGRectZero;
