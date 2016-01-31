@@ -9,29 +9,34 @@
 #import "UIViewController+ESStatusOverlayView.h"
 #import <ESFramework/ESDefines.h>
 
-static const void *_esStatusOverlayViewKey = &_esStatusOverlayViewKey;
+ESDefineAssociatedObjectKey(statusOverlayView);
 
 @implementation UIViewController (ESStatusOverlayView)
 
-- (ESStatusOverlayView *)statusOverlayView
+- (ESStatusOverlayView *)currentStatusOverlayView
 {
-        ESStatusOverlayView *v = ESGetAssociatedObject(self, _esStatusOverlayViewKey);
-        if (!v) {
-                v = [[ESStatusOverlayView alloc] initWithView:self.view];
-                [self setStatusOverlayView:v];
-        }
-        return v;
+        return ESGetAssociatedObject(self, statusOverlayViewKey);
 }
 
-- (void)setStatusOverlayView:(ESStatusOverlayView *)statusOverlayView
+- (ESStatusOverlayView *)statusOverlayView
 {
-        ESSetAssociatedObject(self, _esStatusOverlayViewKey, statusOverlayView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        ESStatusOverlayView *view = [self currentStatusOverlayView];
+        if (!view) {
+                view = [[ESStatusOverlayView alloc] initWithView:self.view];
+                [self setStatusOverlayView:view];
+        }
+        return view;
+}
+
+- (void)setStatusOverlayView:(ESStatusOverlayView *)view
+{
+        ESSetAssociatedObject(self, statusOverlayViewKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)isShowingStatusOverlayView
 {
-        ESStatusOverlayView *v = ESGetAssociatedObject(self, _esStatusOverlayViewKey);
-        return (v && !v.isHidden);
+        ESStatusOverlayView *view = [self currentStatusOverlayView];
+        return (view && !view.isHidden);
 }
 
 @end
