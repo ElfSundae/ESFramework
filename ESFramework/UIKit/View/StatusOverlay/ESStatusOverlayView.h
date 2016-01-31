@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ESActivityLabel.h"
 #import "ESErrorView.h"
-#import "ESButton.h"
 
 /**
  * `ESStatusOverlayView` is a view which overlay on a view, such as viewController's view,
@@ -24,6 +23,7 @@
  */
 @interface ESStatusOverlayView : UIView
 {
+@protected
         ESActivityLabel *_activityLabel;
         ESErrorView *_errorView;
 }
@@ -37,14 +37,11 @@
 
 - (instancetype)initWithView:(UIView *)view;
 
-- (void)showActivityWithText:(NSString *)text;
-- (void)showActivity;
+- (void)showActivityLabelWithText:(NSString *)text;
+- (void)showActivityLabel;
 - (void)showErrorViewWithImage:(UIImage *)image title:(NSString *)title subtitle:(NSString *)subtitle actionButton:(UIButton *)actionButton;
 - (void)showErrorView;
 
 - (void)hideAnimated:(BOOL)animated;
 
 @end
-
-
-

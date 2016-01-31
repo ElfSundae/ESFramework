@@ -10,8 +10,5 @@
 #import "ESStatusOverlayView.h"
 
 @interface UIViewController (ESStatusOverlayView)
-/// Lazy created.
 @property (nonatomic, strong) ESStatusOverlayView *statusOverlayView;
-- (ESStatusOverlayView *)currentStatusOverlayView;
-- (BOOL)isShowingStatusOverlayView;
 @end

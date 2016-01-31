@@ -13,30 +13,14 @@ ESDefineAssociatedObjectKey(statusOverlayView);
 
 @implementation UIViewController (ESStatusOverlayView)
 
-- (ESStatusOverlayView *)currentStatusOverlayView
-{
-        return ESGetAssociatedObject(self, statusOverlayViewKey);
-}
-
 - (ESStatusOverlayView *)statusOverlayView
 {
-        ESStatusOverlayView *view = [self currentStatusOverlayView];
-        if (!view) {
-                view = [[ESStatusOverlayView alloc] initWithView:self.view];
-                [self setStatusOverlayView:view];
-        }
-        return view;
+        return ESGetAssociatedObject(self, statusOverlayViewKey);
 }
 
 - (void)setStatusOverlayView:(ESStatusOverlayView *)view
 {
         ESSetAssociatedObject(self, statusOverlayViewKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (BOOL)isShowingStatusOverlayView
-{
-        ESStatusOverlayView *view = [self currentStatusOverlayView];
-        return (view && !view.isHidden);
 }
 
 @end

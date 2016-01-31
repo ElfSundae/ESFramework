@@ -9,11 +9,6 @@
 #import "ESStatusOverlayView.h"
 #import <ESFramework/UIView+ESShortcut.h>
 
-@interface ESStatusOverlayView()
-@property (nonatomic, strong, readwrite) ESActivityLabel *activityLabel;
-@property (nonatomic, strong, readwrite) ESErrorView *errorView;
-@end
-
 @implementation ESStatusOverlayView
 
 - (void)dealloc
@@ -45,7 +40,7 @@
 - (ESActivityLabel *)activityLabel
 {
         if (nil == _activityLabel) {
-                _activityLabel = [[ESActivityLabel alloc] initWithStyle:ESActivityLabelStyleGray];
+                _activityLabel = [[ESActivityLabel alloc] initWithFrame:self.bounds];
                 [self addSubview:_activityLabel];
         }
         return _activityLabel;
@@ -72,7 +67,6 @@
         } else {
                 [self.view addSubview:self];
         }
-        self.hidden = NO;
         self.alpha = 1.f;
 }
 
@@ -81,13 +75,23 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Public Methods
 
-- (void)showActivityWithText:(NSString *)text
+- (void)showActivityLabelWithText:(NSString *)text
 {
-        self.activityLabel.text = text;
-        [self showActivity];
+        NSAttributedString *string = nil;
+        if (text) {
+                if (self.activityLabel.textLabel.attributedText) {
+                        NSMutableAttributedString *mutableString = self.activityLabel.textLabel.attributedText.mutableCopy;
+                        [mutableString replaceCharactersInRange:NSMakeRange(0, mutableString.length) withString:text];
+                        string = (NSAttributedString *)mutableString;
+                } else {
+                        string = [[NSAttributedString alloc] initWithString:text attributes:[[self.activityLabel class] defaultTextAttributes]];
+                }
+        }
+        self.activityLabel.textLabel.attributedText = string;
+        [self showActivityLabel];
 }
 
-- (void)showActivity
+- (void)showActivityLabel
 {
         self.activityLabel.frame = self.bounds;
         if (_errorView) {
@@ -118,12 +122,14 @@
 
 - (void)hideAnimated:(BOOL)animated;
 {
-        [UIView animateWithDuration:(animated ? 0.3 : 0.0)
-                         animations:^{
-                                 self.alpha = 0.f;
-                         } completion:^(BOOL finished) {
-                                 [self removeFromSuperview];
-                         }];
+        if (!self.isHidden) {
+                [UIView animateWithDuration:(animated ? 0.25 : 0.0)
+                                 animations:^{
+                                         self.alpha = 0.f;
+                                 } completion:^(BOOL finished) {
+                                         [self removeFromSuperview];
+                                 }];
+        }
 }
 
 @end
