@@ -61,7 +61,7 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
         if ([newSuperview isKindOfClass:[UIScrollView class]]) {
                 // add refreshControl to an UIScrollView
                 self.scrollView = (UIScrollView *)newSuperview;
-        } else if (!newSuperview && self.superview == self.superview) { //TODO: self.superview == self.superview ???
+        } else if (!newSuperview && self.superview == self.scrollView) {
                 if (_isObserverScrollView) {
                         [self.superview removeObserver:self forKeyPath:@"contentOffset" context:_esRefreshControlKVOContext];
                         _isObserverScrollView = NO;
