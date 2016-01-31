@@ -9,6 +9,12 @@
 #import "ESStatusOverlayView.h"
 #import <ESFramework/UIView+ESShortcut.h>
 
+@interface ESStatusOverlayView ()
+{
+        BOOL _storedViewsScrollEnabled;
+}
+@end
+
 @implementation ESStatusOverlayView
 
 - (void)dealloc
@@ -55,13 +61,24 @@
         return _errorView;
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+        if ([newSuperview isKindOfClass:[UIScrollView class]]) {
+                _storedViewsScrollEnabled = [(UIScrollView *)newSuperview isScrollEnabled];
+                [(UIScrollView *)self.view setScrollEnabled:NO];
+        } else if (!newSuperview && self.superview == self.view && [self.view isKindOfClass:[UIScrollView class]]) {
+                [(UIScrollView *)self.view setScrollEnabled:_storedViewsScrollEnabled];
+        }
+}
+
+
 - (void)show
 {
         if (!self.view) {
                 [self removeFromSuperview];
                 return;
         }
-        
+
         if (self.superview) {
                 [self.superview bringSubviewToFront:self];
         } else {
@@ -69,7 +86,6 @@
         }
         self.alpha = 1.f;
 }
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
