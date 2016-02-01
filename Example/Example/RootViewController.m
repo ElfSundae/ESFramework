@@ -23,6 +23,18 @@
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
         
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+        
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithDoneStyle:@"done" handler:^(UIBarButtonItem *barButtonItem) {
+                if (self.statusOverlayView) {
+                        [self.statusOverlayView hideAnimated:YES];
+                        self.statusOverlayView = nil;
+                } else {
+                        self.statusOverlayView = [[ESStatusOverlayView alloc] initWithView:self.view];
+                        self.statusOverlayView.activityLabel.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+                        self.statusOverlayView.activityLabel.activityIndicatorView.color = [UIColor redColor];
+                        [self.statusOverlayView showActivityLabel];
+                }
+        }];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,6 +54,11 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
         cell.contentView.backgroundColor = ESRandomColor();
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
