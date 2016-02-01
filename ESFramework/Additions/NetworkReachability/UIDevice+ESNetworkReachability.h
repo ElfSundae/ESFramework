@@ -37,5 +37,6 @@ ES_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatu
 
 + (ESNetworkReachabilityStatus)currentNetworkReachabilityStatus;
 + (NSString *)currentNetworkReachabilityStatusString;
++ (BOOL)isInternetConnectionReachable;
 
 @end

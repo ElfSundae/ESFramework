@@ -36,6 +36,11 @@
         return ESNetworkReachabilityStatusString([self currentNetworkReachabilityStatus]);
 }
 
++ (BOOL)isInternetConnectionReachable
+{
+        return ([self currentNetworkReachabilityStatus] != ESNetworkReachabilityStatusNotReachable);
+}
+
 @end
 
 
