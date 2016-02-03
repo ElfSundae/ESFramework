@@ -132,7 +132,7 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 #define ESStrong_DoNotCheckNil(weakVar, var)    __typeof(&*weakVar) var = weakVar;
 #define ESStrong_(weakVar, var)                 ESStrong_DoNotCheckNil(weakVar, var); if (!var) return;
 #define ESStrong(var)                           ESStrong_(weak_##var, var);
-#define ESStrongSelf                            ESStrong(self);
+#define ESStrongSelf                            ESStrong_(weak_self, _self);
 
 /**
  * Declare singleton `+sharedInstance` method.
