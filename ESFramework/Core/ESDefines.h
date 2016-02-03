@@ -125,14 +125,14 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 /**
  * Make weak references to break "retain cycles".
  */
-#define ESWeak(var, weakVar)    __weak __typeof(&*var) weakVar = var
-#define ESWeak_(var)            ESWeak(var, weak_##var);
-#define ESWeakSelf              ESWeak(self, __weakSelf);
+#define ESWeak_(var, weakVar)                   __weak __typeof(&*var) weakVar = var;
+#define ESWeak(var)                             ESWeak_(var, weak_##var);
+#define ESWeakSelf                              ESWeak(self);
 
-#define ESStrong_DoNotCheckNil(weakVar, _var)   __typeof(&*weakVar) _var = weakVar
-#define ESStrong(weakVar, _var)                 ESStrong_DoNotCheckNil(weakVar, _var); if (!_var) return;
-#define ESStrong_(var)                          ESStrong(weak_##var, _##var);
-#define ESStrongSelf                            ESStrong(__weakSelf, _self);
+#define ESStrong_DoNotCheckNil(weakVar, var)    __typeof(&*weakVar) var = weakVar;
+#define ESStrong_(weakVar, var)                 ESStrong_DoNotCheckNil(weakVar, var); if (!var) return;
+#define ESStrong(var)                           ESStrong_(weak_##var, var);
+#define ESStrongSelf                            ESStrong(self);
 
 /**
  * Declare singleton `+sharedInstance` method.
