@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files         = "ESFramework/Core/**/*.{h,m}"
-    ss.frameworks           = "Foundation", "CoreFoundation", "UIKit", "CoreGraphics", "Security"
+    ss.frameworks           = "CoreGraphics"
   end
 
   s.subspec "Additions" do |ss|
