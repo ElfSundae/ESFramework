@@ -431,6 +431,8 @@ NSInvocation *ESInvocationWith(id target, SEL selector)
         return invocation;
 }
 
+static id __gNil = nil;
+
 BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 {
         NSInvocation *invocation = ESInvocationWith(target, selector);
@@ -515,9 +517,12 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
                         } else {
                                // assume it's a pointer
                                 void *arg = va_arg(argsList, void *);
-                                [invocation setArgument:arg atIndex:argCount++];
+                                if (arg) {
+                                        [invocation setArgument:arg atIndex:argCount++];
+                                } else {
+                                        [invocation setArgument:&__gNil atIndex:argCount++];
+                                }
                         }
-
                 }
                 va_end(argsList);
         }
