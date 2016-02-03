@@ -383,7 +383,7 @@ void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Selector
+#pragma mark - ObjC Runtime
 
 void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
 {
@@ -407,131 +407,149 @@ void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
         }
 }
 
-
-NSInvocation *ESInvocationWith(id target, SEL selector)
-{
-        if (!target || !selector) {
-                return nil;
-        }
-        
-        if (![target respondsToSelector:selector]) {
-                return nil;
-        }
-        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
-        if (!signature) {
-                return nil;
-        }
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
-        if (!invocation) {
-                return nil;
-        }
-        
-        [invocation setTarget:target];
-        [invocation setSelector:selector];
-        return invocation;
-}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Invocation
 
 static id __gNil = nil;
 
-BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
+@implementation NSInvocation (_ESHelper)
+
++ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector
 {
-        NSInvocation *invocation = ESInvocationWith(target, selector);
-        if (!invocation) {
-                return NO;
+        if (target && selector && [target respondsToSelector:selector]) {
+                NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+                if (signature) {
+                        NSInvocation *invocation = [self invocationWithMethodSignature:signature];
+                        if (invocation) {
+                                [invocation setTarget:target];
+                                [invocation setSelector:selector];
+                                return invocation;
+                        }
+                }
         }
+        return nil;
+}
 
-        NSMethodSignature *signature = invocation.methodSignature;
-        NSUInteger argCount = 2;
-        NSUInteger totalArguments = signature.numberOfArguments;
-        
-        if (argCount < totalArguments) {
-                va_list argsList;
-                va_start(argsList, result);
-                while (argCount < totalArguments) {
-                        // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
-                        char *argType = (char *)[signature getArgumentTypeAtIndex:argCount];
-
-                        if (0 == strcmp(argType, @encode(id))) {
-                                id arg = va_arg(argsList, id);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(char)) ||
-                                   0 == strcmp(argType, @encode(unsigned char)) ||
-                                   0 == strcmp(argType, @encode(BOOL)) ||
-                                   0 == strcmp(argType, @encode(short)) ||
-                                   0 == strcmp(argType, @encode(unsigned short)) ||
-                                   0 == strcmp(argType, @encode(int))) {
-                                int arg = va_arg(argsList, int);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(unsigned int))) {
-                                unsigned int arg = va_arg(argsList, unsigned int);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(long))) {
-                                long arg = va_arg(argsList, long);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(unsigned long))) {
-                                unsigned long arg = va_arg(argsList, unsigned long);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(long long))) {
-                                long long arg = va_arg(argsList, long long);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(unsigned long long))) {
-                                unsigned long long arg = va_arg(argsList, unsigned long long);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(float)) ||
-                                   0 == strcmp(argType, @encode(double))) {
-                                double arg = va_arg(argsList, double);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(long double))) {
-                                long double arg = va_arg(argsList, long double);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(Class))) {
-                                Class arg = va_arg(argsList, Class);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(SEL))) {
-                                SEL arg = va_arg(argsList, SEL);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(char *))) {
-                                char *arg = va_arg(argsList, char *);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(CGRect))) {
-                                CGRect arg = va_arg(argsList, CGRect);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(CGPoint))) {
-                                CGPoint arg = va_arg(argsList, CGPoint);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(CGSize))) {
-                                CGSize arg = va_arg(argsList, CGSize);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(CGAffineTransform))) {
-                                CGAffineTransform arg = va_arg(argsList, CGAffineTransform);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(NSRange))) {
-                                NSRange arg = va_arg(argsList, NSRange);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(UIOffset))) {
-                                UIOffset arg = va_arg(argsList, UIOffset);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else if (0 == strcmp(argType, @encode(UIEdgeInsets))) {
-                                UIEdgeInsets arg = va_arg(argsList, UIEdgeInsets);
-                                [invocation setArgument:&arg atIndex:argCount++];
-                        } else {
-                               // assume it's a pointer
-                                void *arg = va_arg(argsList, void *);
-                                if (arg) {
-                                        [invocation setArgument:arg atIndex:argCount++];
++ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments
+{
+        NSInvocation *invocation = [self invocationWithTarget:target selector:selector];
+        if (invocation && arguments) {
+                NSMethodSignature *signature = invocation.methodSignature;
+                NSUInteger argCount = 2;
+                NSUInteger totalArguments = signature.numberOfArguments;
+                
+                if (argCount < totalArguments) {
+                        while (argCount < totalArguments) {
+                                // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+                                const char *argType = [signature getArgumentTypeAtIndex:argCount];
+                                
+                                if (0 == strcmp(argType, @encode(id))) {
+                                        id arg = va_arg(arguments, id);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(char)) ||
+                                           0 == strcmp(argType, @encode(unsigned char)) ||
+                                           0 == strcmp(argType, @encode(BOOL)) ||
+                                           0 == strcmp(argType, @encode(short)) ||
+                                           0 == strcmp(argType, @encode(unsigned short)) ||
+                                           0 == strcmp(argType, @encode(int))) {
+                                        int arg = va_arg(arguments, int);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(unsigned int))) {
+                                        unsigned int arg = va_arg(arguments, unsigned int);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(long))) {
+                                        long arg = va_arg(arguments, long);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(unsigned long))) {
+                                        unsigned long arg = va_arg(arguments, unsigned long);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(long long))) {
+                                        long long arg = va_arg(arguments, long long);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(unsigned long long))) {
+                                        unsigned long long arg = va_arg(arguments, unsigned long long);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(float)) ||
+                                           0 == strcmp(argType, @encode(double))) {
+                                        double arg = va_arg(arguments, double);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(long double))) {
+                                        long double arg = va_arg(arguments, long double);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(Class))) {
+                                        Class arg = va_arg(arguments, Class);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(SEL))) {
+                                        SEL arg = va_arg(arguments, SEL);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(char *))) {
+                                        char *arg = va_arg(arguments, char *);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(CGRect))) {
+                                        CGRect arg = va_arg(arguments, CGRect);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(CGPoint))) {
+                                        CGPoint arg = va_arg(arguments, CGPoint);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(CGSize))) {
+                                        CGSize arg = va_arg(arguments, CGSize);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(CGAffineTransform))) {
+                                        CGAffineTransform arg = va_arg(arguments, CGAffineTransform);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(NSRange))) {
+                                        NSRange arg = va_arg(arguments, NSRange);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(UIOffset))) {
+                                        UIOffset arg = va_arg(arguments, UIOffset);
+                                        [invocation setArgument:&arg atIndex:argCount++];
+                                } else if (0 == strcmp(argType, @encode(UIEdgeInsets))) {
+                                        UIEdgeInsets arg = va_arg(arguments, UIEdgeInsets);
+                                        [invocation setArgument:&arg atIndex:argCount++];
                                 } else {
-                                        [invocation setArgument:&__gNil atIndex:argCount++];
+                                        // assume it's a pointer
+                                        void *arg = va_arg(arguments, void *);
+                                        if (arg) {
+                                                [invocation setArgument:arg atIndex:argCount++];
+                                        } else {
+                                                [invocation setArgument:&__gNil atIndex:argCount++];
+                                        }
                                 }
                         }
                 }
-                va_end(argsList);
         }
         
-        NSCAssert(argCount == totalArguments, @"Invocation arguments count mismatch: %lu expected, %lu sent.\n", (unsigned long)totalArguments, (unsigned long)argCount);
+        if (invocation) {
+                if (retainArguments && !invocation.argumentsRetained) {
+                        [invocation retainArguments];
+                }
+        }
+        
+        return invocation;
+}
+
++ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...
+{
+        va_list arguments;
+        va_start(arguments, retainArguments);
+        NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:retainArguments arguments:arguments];
+        va_end(arguments);
+        return invocation;
+}
+
+@end
+
+BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
+{
+        va_list arguments;
+        va_start(arguments, result);
+        NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:NO arguments:arguments];
+        va_end(arguments);
         
         [invocation invoke];
 
-        if (0 != strcmp(signature.methodReturnType, @encode(void))) {
+        if (0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
                 if (result) {
                         [invocation getReturnValue:result];
                 }

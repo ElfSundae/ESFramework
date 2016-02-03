@@ -475,32 +475,30 @@ ES_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
 ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
 ///=============================================
-/// @name Invocation
+/// @name ObjC Runtime
 ///=============================================
-#pragma mark - Invocation
+#pragma mark - ObjC Runtime
 
 /**
  * @code
  * + (void)load {
- *        @autoreleasepool {
- *                ESSwizzleInstanceMethod([self class], @selector(viewDidLoad), @selector(viewDidLoad_new));
- *        }
+ *      ESSwizzleInstanceMethod([self class], @selector(viewDidLoad), @selector(viewDidLoad_new));
  * }
  * @endcode
  */
 ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
 ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 
-/**
- * Constructs an NSInvocation for a class target or an instance target.
- *
- * @code
- * NSInvocation *invocation = ESInvocation(self, @selector(foo:));
- * NSInvocation *invocation = ESInvocation([self class], @selector(classMethod:));
- * @endcode
- *
- */
-ES_EXTERN NSInvocation *ESInvocationWith(id target, SEL selector);
+///=============================================
+/// @name Invocation
+///=============================================
+#pragma mark - Invocation
+
+@interface NSInvocation (_ESHelper)
++ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
++ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
++ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
+@end
 
 /**
  * Invoke a selector.
