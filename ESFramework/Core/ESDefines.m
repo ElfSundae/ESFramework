@@ -436,85 +436,64 @@ static id __gNil = nil;
         NSInvocation *invocation = [self invocationWithTarget:target selector:selector];
         if (invocation && arguments) {
                 NSMethodSignature *signature = invocation.methodSignature;
-                NSUInteger argCount = 2;
                 NSUInteger totalArguments = signature.numberOfArguments;
-                
-                if (argCount < totalArguments) {
-                        while (argCount < totalArguments) {
-                                // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
-                                const char *argType = [signature getArgumentTypeAtIndex:argCount];
-                                
-                                if (0 == strcmp(argType, @encode(id))) {
-                                        id arg = va_arg(arguments, id);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(char)) ||
-                                           0 == strcmp(argType, @encode(unsigned char)) ||
-                                           0 == strcmp(argType, @encode(BOOL)) ||
-                                           0 == strcmp(argType, @encode(short)) ||
-                                           0 == strcmp(argType, @encode(unsigned short)) ||
-                                           0 == strcmp(argType, @encode(int))) {
-                                        int arg = va_arg(arguments, int);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(unsigned int))) {
-                                        unsigned int arg = va_arg(arguments, unsigned int);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(long))) {
-                                        long arg = va_arg(arguments, long);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(unsigned long))) {
-                                        unsigned long arg = va_arg(arguments, unsigned long);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(long long))) {
-                                        long long arg = va_arg(arguments, long long);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(unsigned long long))) {
-                                        unsigned long long arg = va_arg(arguments, unsigned long long);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(float)) ||
-                                           0 == strcmp(argType, @encode(double))) {
-                                        double arg = va_arg(arguments, double);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(long double))) {
-                                        long double arg = va_arg(arguments, long double);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(Class))) {
-                                        Class arg = va_arg(arguments, Class);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(SEL))) {
-                                        SEL arg = va_arg(arguments, SEL);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(char *))) {
-                                        char *arg = va_arg(arguments, char *);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(CGRect))) {
-                                        CGRect arg = va_arg(arguments, CGRect);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(CGPoint))) {
-                                        CGPoint arg = va_arg(arguments, CGPoint);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(CGSize))) {
-                                        CGSize arg = va_arg(arguments, CGSize);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(CGAffineTransform))) {
-                                        CGAffineTransform arg = va_arg(arguments, CGAffineTransform);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(NSRange))) {
-                                        NSRange arg = va_arg(arguments, NSRange);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(UIOffset))) {
-                                        UIOffset arg = va_arg(arguments, UIOffset);
-                                        [invocation setArgument:&arg atIndex:argCount++];
-                                } else if (0 == strcmp(argType, @encode(UIEdgeInsets))) {
-                                        UIEdgeInsets arg = va_arg(arguments, UIEdgeInsets);
-                                        [invocation setArgument:&arg atIndex:argCount++];
+                NSUInteger argCount = 2;
+                for (; argCount < totalArguments; ++argCount) {
+                        // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+                        const char *argType = [signature getArgumentTypeAtIndex:argCount];
+                        
+#define CMP(objCType) (0 == strcmp(argType, objCType))
+#define STRPREFIX(prefix) (strlen(argType) >= strlen(prefix) && 0 == strncmp(prefix, argType, strlen(prefix)))
+                        
+#define SET_ARG(type) do {\
+type arg = va_arg(arguments, type); \
+[invocation setArgument:&arg atIndex:argCount]; \
+} while(0);
+                        
+#define IF_CMP(type) if (CMP(@encode(type))) { SET_ARG(type) }
+#define IF_CMP_AS(type, asType) if (CMP(@encode(type))) { SET_ARG(asType) }
+#define ELIF_CMP(type) else IF_CMP(type)
+#define ELIF_CMP_AS(type, asType) else IF_CMP_AS(type, asType)
+#define IF_PRE(type) if (STRPREFIX(type)) {}
+                        printf("%d %s\n", argCount, argType);
+                        
+                        IF_CMP_AS(char, int)
+                        ELIF_CMP_AS(unsigned char, int)
+                        ELIF_CMP_AS(short, int)
+                        ELIF_CMP_AS(unsigned short, int)
+                        ELIF_CMP_AS(BOOL, int)
+                        ELIF_CMP(int)
+                        ELIF_CMP(unsigned int)
+                        ELIF_CMP(long)
+                        ELIF_CMP(unsigned long)
+                        ELIF_CMP(long long)
+                        ELIF_CMP(unsigned long long)
+                        ELIF_CMP_AS(float, double)
+                        ELIF_CMP(double)
+                        ELIF_CMP(long double)
+                        ELIF_CMP(char *)
+                        ELIF_CMP(id)
+                        ELIF_CMP(Class)
+                        ELIF_CMP(SEL)
+                        ELIF_CMP(CGPoint)
+                        ELIF_CMP(CGSize)
+                        ELIF_CMP(CGVector)
+                        ELIF_CMP(CGRect)
+                        ELIF_CMP(CGAffineTransform)
+                        ELIF_CMP(NSRange)
+                        ELIF_CMP(UIEdgeInsets)
+                        ELIF_CMP(UIOffset)
+                        
+                        else {
+                                //TODO: output parameter
+                                //TODO: ^f int * double* etc.
+                                //TODO: argCount != arumentsCount
+                                // assume it's a pointer
+                                void *arg = va_arg(arguments, void *);
+                                if (arg) {
+                                        [invocation setArgument:arg atIndex:argCount];
                                 } else {
-                                        // assume it's a pointer
-                                        void *arg = va_arg(arguments, void *);
-                                        if (arg) {
-                                                [invocation setArgument:arg atIndex:argCount++];
-                                        } else {
-                                                [invocation setArgument:&__gNil atIndex:argCount++];
-                                        }
+                                        [invocation setArgument:&__gNil atIndex:argCount];
                                 }
                         }
                 }
@@ -551,6 +530,8 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 
         if (0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
                 if (result) {
+                        
+                        //TODO: void * to __bridge cast
                         [invocation getReturnValue:result];
                 }
         }
