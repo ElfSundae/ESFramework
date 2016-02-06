@@ -382,19 +382,6 @@ NS_INLINE BOOL UIScreenIsRetina(void) {
 FOUNDATION_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /**
- * Formats a bytes number in a human-readable format. e.g. @"12.34 Bytes", @"123 GB".
- * Returns a string that showing the size in Bytes, KBs, MBs, or GBs, with the given step length.
- */
-FOUNDATION_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
-
-/**
- * Formats a bytes number in a human-readable format with 1024b step length.
- *
- * @warning `NSByteCountFormatter` uses 1000 step length.
- */
-FOUNDATION_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
-
-/**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
  *
  * Image files within App bundle can contain only high resolution images like `@2x`,`@3x`,

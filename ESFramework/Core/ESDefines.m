@@ -195,38 +195,6 @@ UIImage *UIImageFrom(NSString *filePath)
         return [UIImage imageWithContentsOfFile:filePath];
 }
 
-NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step)
-{
-        //!!!: NSByteCountFormatter uses 1000 step length
-        // if (NSClassFromString(@"NSByteCountFormatter")) {
-        //         return [NSByteCountFormatter stringFromByteCount:fileSize countStyle:NSByteCountFormatterCountStyleFile];
-        // }
-        
-        static const NSString *sOrdersOfMagnitude[] = {
-                @"Bytes", @"KB", @"MB", @"GB", @"TB", @"PB"
-        };
-        static const NSUInteger sOrdersOfMagnitude_len = sizeof(sOrdersOfMagnitude) / sizeof(sOrdersOfMagnitude[0]);
-        
-        int multiplyFactor = 0;
-        long double convertedValue = (long double)bytesSize;
-        while (convertedValue > step && multiplyFactor < sOrdersOfMagnitude_len) {
-                convertedValue /= step;
-                ++multiplyFactor;
-        }
-        
-        const NSString *token = sOrdersOfMagnitude[multiplyFactor];
-        if (multiplyFactor > 0) {
-                return [NSString stringWithFormat:@"%.2Lf %@", convertedValue, token];
-        } else {
-                return [NSString stringWithFormat:@"%lld %@", bytesSize, token];
-        }
-}
-
-NSString *NSStringFromBytesSize(unsigned long long bytesSize)
-{
-        return NSStringFromBytesSizeWithStep(bytesSize, 1024);
-}
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Path

@@ -135,28 +135,22 @@
 
 + (unsigned long long)diskFreeSize
 {
-	unsigned long long bytes = 0;
-        NSDictionary *fileSystem = [[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL];
-        ESULongLongVal(&bytes, fileSystem[NSFileSystemFreeSize]);
-        return bytes;
+        return ESULongLongValue([[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][NSFileSystemFreeSize]);
 }
 
 + (NSString *)diskFreeSizeString
 {
-        return NSStringFromBytesSize([self diskFreeSize]);
+        return [NSByteCountFormatter stringFromByteCount:(long long)[self diskFreeSizeString] countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 + (unsigned long long)diskTotalSize
 {
-        unsigned long long bytes = 0;
-        NSDictionary *fileSystem = [[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL];
-        ESULongLongVal(&bytes, fileSystem[NSFileSystemSize]);
-        return bytes;
+        return ESULongLongValue([[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][NSFileSystemSize]);
 }
 
 + (NSString *)diskTotalSizeString
 {
-        return NSStringFromBytesSize([self diskTotalSize]);
+        return [NSByteCountFormatter stringFromByteCount:(long long)[self diskTotalSize] countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
