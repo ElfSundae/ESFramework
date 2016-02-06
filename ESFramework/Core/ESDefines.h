@@ -481,7 +481,7 @@ ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
 /**
  * @code
  * + (void)load {
- *      ESSwizzleInstanceMethod([self class], @selector(viewDidLoad), @selector(viewDidLoad_new));
+ *      ESSwizzleInstanceMethod(self, @selector(method:), @selector(method_new:));
  * }
  * @endcode
  */
@@ -497,32 +497,14 @@ ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
+- (void)es_getResult:(void *)result;
 @end
 
-/**
- * Invoke a selector.
- *
- * @code
- * // trun off compiler warnings if there are some.
- * #pragma clang diagnostic push
- * #pragma clang diagnostic ignored "-Wundeclared-selector"
- *
- *  ESInvokeSelector(self, NSSelectorFromString(@"test"), NULL);
- *
- *  NSInteger result = 0;
- *  ESInvokeSelector([Foo class], NSSelectorFromString(@"classMethod:"), &result, CGSizeMake(10, 20));
- *
- *  if (ESInvokeSelector(someObject, @selector(someSelector:::), NULL, arg1, arg2, arg3)) {
- *         // Invoked OK
- *  }
- *
- * #pragma clang diagnostic pop
- * @endcode
- *
- * @warning If the return type of selector is BOOL, please define the result as char type or int type.
- * @warning If this code crashes when accessing the returned result, you may try to define the result as `void *` type, and then access it using `__bridge` keyword.
- */
-ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
+@interface NSObject (_ESInvoke)
++ (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
+- (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
+@end
 
+ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...);
 
-#endif /* ESFramework_ESDefines_H */
+#endif /* ESFrameworkCore_ESDefines_H */

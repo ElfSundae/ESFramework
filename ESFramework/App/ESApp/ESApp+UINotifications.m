@@ -151,7 +151,7 @@ static void _es_application_didRegisterUserNotificationSettings(id self, SEL _cm
 {
         [[ESApp sharedApp] _es_application:application didRegisterUserNotificationSettings:notificationSettings];
         if (__gESOldMethod_didRegisterUserNotificationSettings) {
-                ESInvokeSelector(self, __gESOldMethod_didRegisterUserNotificationSettings, NULL, application, notificationSettings);
+                ESInvokeSelector(self, __gESOldMethod_didRegisterUserNotificationSettings, NO, NULL, application, notificationSettings);
         }
 }
 
@@ -159,7 +159,7 @@ static void _es_application_didRegisterForRemoteNotificationsWithDeviceToken(id 
 {
         [[ESApp sharedApp] _es_application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
         if (__gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken) {
-                ESInvokeSelector(self, __gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken, NULL, application, deviceToken);
+                ESInvokeSelector(self, __gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken, NO, NULL, application, deviceToken);
         }
 }
 
@@ -167,7 +167,7 @@ static void _es_application_didFailToRegisterForRemoteNotificationsWithError(id 
 {
         [[ESApp sharedApp] _es_application:application didFailToRegisterForRemoteNotificationsWithError:error];
         if (__gESOldMethod_didFailToRegisterForRemoteNotificationsWithError) {
-                ESInvokeSelector(self, __gESOldMethod_didFailToRegisterForRemoteNotificationsWithError, NULL, application, error);
+                ESInvokeSelector(self, __gESOldMethod_didFailToRegisterForRemoteNotificationsWithError, NO, NULL, application, error);
         }
 }
 
@@ -175,7 +175,7 @@ static void _es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIAp
 {
         [[ESApp sharedApp] _es_application:application didReceiveRemoteNotification:userInfo];
         if (__gESOldMethod_didReceiveRemoteNotification) {
-                ESInvokeSelector(self, __gESOldMethod_didReceiveRemoteNotification, NULL, application, userInfo);
+                ESInvokeSelector(self, __gESOldMethod_didReceiveRemoteNotification, NO, NULL, application, userInfo);
         }
 }
 
@@ -263,7 +263,7 @@ void __ESApplicationDidReceiveRemoteNotification(UIApplication *application, NSD
         }
         
         if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
-                ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, remoteNotification, fromAppLaunch);
+                ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NO, NULL, application, remoteNotification, fromAppLaunch);
         }
         
         NSDictionary *notificationUserInfo = @{(fromAppLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey): remoteNotification};

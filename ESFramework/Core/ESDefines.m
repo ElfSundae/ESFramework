@@ -52,7 +52,7 @@ UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - 
+#pragma mark -
 
 NSMutableSet *ESCreateNonretainedMutableSet(void)
 {
@@ -101,7 +101,7 @@ NSString *ESRandomStringOfLength(NSUInteger length)
         NSString *string = [data base64EncodedStringWithOptions:0];
         // Remove "+/-"
         string = [[string componentsSeparatedByCharactersInSet:
-                  [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
+                   [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
                   componentsJoinedByString:@""];
         // base64后的字符串长度是原串长度的大约135.1%， 去掉特殊字符后再检查字符串长度
         if (string.length == length) {
@@ -363,7 +363,7 @@ void ESDispatchOnDefaultQueue(dispatch_block_t block)
 }
 void ESDispatchOnHighQueue(dispatch_block_t block)
 {
-       ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_HIGH, block);
+        ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_HIGH, block);
 }
 void ESDispatchOnLowQueue(dispatch_block_t block)
 {
@@ -437,72 +437,93 @@ static id __gNil = nil;
         if (invocation && arguments) {
                 NSMethodSignature *signature = invocation.methodSignature;
                 NSUInteger totalArguments = signature.numberOfArguments;
-                NSUInteger argCount = 2;
-                for (; argCount < totalArguments; ++argCount) {
+                for (NSUInteger argIndex = 2; argIndex < totalArguments; ++argIndex) {
                         // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
-                        const char *argType = [signature getArgumentTypeAtIndex:argCount];
+                        const char *argType = [signature getArgumentTypeAtIndex:argIndex];
                         
-#define CMP(objCType) (0 == strcmp(argType, objCType))
-#define STRPREFIX(prefix) (strlen(argType) >= strlen(prefix) && 0 == strncmp(prefix, argType, strlen(prefix)))
-                        
-#define SET_ARG(type) do {\
+#define CMPString(str, str1)    (0 == strcmp(str, str1))
+#define CMPType(type)           (CMPString(@encode(type), argType))
+#define SetArgumentWithValue(type) do { \
 type arg = va_arg(arguments, type); \
-[invocation setArgument:&arg atIndex:argCount]; \
-} while(0);
+[invocation setArgument:&arg atIndex:argIndex]; \
+} while(0)
+#define SetArgumentWithPointer(type) do { \
+type arg = va_arg(arguments, type); \
+if (arg) [invocation setArgument:arg atIndex:argIndex]; \
+else [invocation setArgument:&__gNil atIndex:argIndex]; \
+} while(0)
                         
-#define IF_CMP(type) if (CMP(@encode(type))) { SET_ARG(type) }
-#define IF_CMP_AS(type, asType) if (CMP(@encode(type))) { SET_ARG(asType) }
-#define ELIF_CMP(type) else IF_CMP(type)
-#define ELIF_CMP_AS(type, asType) else IF_CMP_AS(type, asType)
-#define IF_PRE(type) if (STRPREFIX(type)) {}
-                        printf("%d %s\n", argCount, argType);
+#define IfTypeThenSetValueAs(type, asType)      if (CMPType(type)) { SetArgumentWithValue(asType); }
+#define IfTypeThenSetValue(type)                IfTypeThenSetValueAs(type, type)
+#define IfTypeThenSetPointer(type)              if (CMPType(type)) { SetArgumentWithPointer(type); }
                         
-                        IF_CMP_AS(char, int)
-                        ELIF_CMP_AS(unsigned char, int)
-                        ELIF_CMP_AS(short, int)
-                        ELIF_CMP_AS(unsigned short, int)
-                        ELIF_CMP_AS(BOOL, int)
-                        ELIF_CMP(int)
-                        ELIF_CMP(unsigned int)
-                        ELIF_CMP(long)
-                        ELIF_CMP(unsigned long)
-                        ELIF_CMP(long long)
-                        ELIF_CMP(unsigned long long)
-                        ELIF_CMP_AS(float, double)
-                        ELIF_CMP(double)
-                        ELIF_CMP(long double)
-                        ELIF_CMP(char *)
-                        ELIF_CMP(id)
-                        ELIF_CMP(Class)
-                        ELIF_CMP(SEL)
-                        ELIF_CMP(CGPoint)
-                        ELIF_CMP(CGSize)
-                        ELIF_CMP(CGVector)
-                        ELIF_CMP(CGRect)
-                        ELIF_CMP(CGAffineTransform)
-                        ELIF_CMP(NSRange)
-                        ELIF_CMP(UIEdgeInsets)
-                        ELIF_CMP(UIOffset)
+#define ElseIfTypeThenSetValueAs(type, asType)  else IfTypeThenSetValueAs(type, asType)
+#define ElseIfTypeThenSetValue(type)            else IfTypeThenSetValue(type)
+#define ElseIfTypeThenSetPointer(type)          else IfTypeThenSetPointer(type)
                         
-                        else {
-                                //TODO: output parameter
-                                //TODO: ^f int * double* etc.
-                                //TODO: argCount != arumentsCount
-                                // assume it's a pointer
-                                void *arg = va_arg(arguments, void *);
-                                if (arg) {
-                                        [invocation setArgument:arg atIndex:argCount];
-                                } else {
-                                        [invocation setArgument:&__gNil atIndex:argCount];
+                        IfTypeThenSetValueAs(char, int)
+                        ElseIfTypeThenSetValueAs(unsigned char, int)
+                        ElseIfTypeThenSetValueAs(short, int)
+                        ElseIfTypeThenSetValueAs(unsigned short, int)
+                        ElseIfTypeThenSetValueAs(BOOL, int)
+                        ElseIfTypeThenSetValue(int)
+                        ElseIfTypeThenSetValue(unsigned int)
+                        ElseIfTypeThenSetValue(long)
+                        ElseIfTypeThenSetValue(unsigned long)
+                        ElseIfTypeThenSetValue(long long)
+                        ElseIfTypeThenSetValue(unsigned long long)
+                        ElseIfTypeThenSetValueAs(float, double)
+                        ElseIfTypeThenSetValue(double)
+                        ElseIfTypeThenSetValue(long double)
+                        ElseIfTypeThenSetValue(char *)
+                        ElseIfTypeThenSetValue(Class)
+                        ElseIfTypeThenSetValue(SEL)
+                        ElseIfTypeThenSetValue(NSRange)
+                        ElseIfTypeThenSetValue(CGPoint)
+                        ElseIfTypeThenSetValue(CGSize)
+                        ElseIfTypeThenSetValue(CGVector)
+                        ElseIfTypeThenSetValue(CGRect)
+                        ElseIfTypeThenSetValue(CGAffineTransform)
+                        ElseIfTypeThenSetValue(UIEdgeInsets)
+                        ElseIfTypeThenSetValue(UIOffset)
+                        ElseIfTypeThenSetValue(CATransform3D)
+                        ElseIfTypeThenSetValue(id)
+                        else if (argType[0] == '^') {
+                                IfTypeThenSetValue(short *)
+                                ElseIfTypeThenSetValue(unsigned short *)
+                                ElseIfTypeThenSetValue(BOOL *)
+                                ElseIfTypeThenSetValue(int *)
+                                ElseIfTypeThenSetValue(unsigned int *)
+                                ElseIfTypeThenSetValue(long *)
+                                ElseIfTypeThenSetValue(unsigned long *)
+                                ElseIfTypeThenSetValue(long long *)
+                                ElseIfTypeThenSetValue(unsigned long long *)
+                                ElseIfTypeThenSetValue(float *)
+                                ElseIfTypeThenSetValue(double *)
+                                ElseIfTypeThenSetValue(long double *)
+                                ElseIfTypeThenSetValue(char **)
+                                ElseIfTypeThenSetValue(Class *)
+                                ElseIfTypeThenSetValue(SEL *)
+                                ElseIfTypeThenSetValue(NSRange *)
+                                ElseIfTypeThenSetValue(CGPoint *)
+                                ElseIfTypeThenSetValue(CGSize *)
+                                ElseIfTypeThenSetValue(CGVector *)
+                                ElseIfTypeThenSetValue(CGRect *)
+                                ElseIfTypeThenSetValue(CGAffineTransform *)
+                                ElseIfTypeThenSetValue(UIEdgeInsets *)
+                                ElseIfTypeThenSetValue(UIOffset *)
+                                ElseIfTypeThenSetValue(CATransform3D *)
+                                else if (CMPString(argType, "^@")) {
+                                        SetArgumentWithValue(void *);
                                 }
                         }
+                        
+                        SetArgumentWithPointer(void *);
                 }
         }
         
-        if (invocation) {
-                if (retainArguments && !invocation.argumentsRetained) {
-                        [invocation retainArguments];
-                }
+        if (invocation && retainArguments && !invocation.argumentsRetained) {
+                [invocation retainArguments];
         }
         
         return invocation;
@@ -517,23 +538,41 @@ type arg = va_arg(arguments, type); \
         return invocation;
 }
 
+- (void)es_getResult:(void *)result
+{
+        if (result && 0 != strcmp(self.methodSignature.methodReturnType, @encode(void))) {
+                [self getReturnValue:result];
+        }
+}
+
 @end
 
-BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
-{
-        va_list arguments;
-        va_start(arguments, result);
-        NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:NO arguments:arguments];
-        va_end(arguments);
-        
-        [invocation invoke];
+#define _ESInvokeSelector(target, selector, retainArguments, result) \
+va_list arguments;      \
+va_start(arguments, result);    \
+NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:retainArguments arguments:arguments];    \
+va_end(arguments);      \
+if (invocation) {       \
+[invocation invoke];    \
+[invocation es_getResult:result];       \
+return YES;     \
+}               \
+return NO;
 
-        if (0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
-                if (result) {
-                        
-                        //TODO: void * to __bridge cast
-                        [invocation getReturnValue:result];
-                }
-        }
-        return YES;
+@implementation NSObject (_ESInvoke)
+
++ (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...
+{
+        _ESInvokeSelector(self, selector, retainArguments, result);
+}
+- (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...
+{
+        _ESInvokeSelector(self, selector, retainArguments, result);
+}
+
+@end
+
+BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...)
+{
+        _ESInvokeSelector(target, selector, retainArguments, result);
 }

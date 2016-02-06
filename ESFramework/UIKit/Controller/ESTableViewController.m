@@ -126,9 +126,9 @@
         }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
-        ESInvokeSelector(cell, @selector(setCellIndexPath:), NULL, indexPath);
-        ESInvokeSelector(cell, @selector(setIsFirstRowInSection:), NULL, (0 == indexPath.row));
-        ESInvokeSelector(cell, @selector(setIsLastRowInSection:), NULL, isLastRowInSection);
+        ESInvokeSelector(cell, @selector(setCellIndexPath:), NO, NULL, indexPath);
+        ESInvokeSelector(cell, @selector(setIsFirstRowInSection:), NO, NULL, (0 == indexPath.row));
+        ESInvokeSelector(cell, @selector(setIsLastRowInSection:), NO, NULL, isLastRowInSection);
 #pragma clang diagnostic pop
         
         cell.cellData = cellData;
