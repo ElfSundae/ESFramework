@@ -14,7 +14,7 @@
 FOUNDATION_EXTERN NSNumberFormatter *ESSharedNumberFormatter(void);
 
 /**
- * Convert NSString to NSNumber.
+ * Convert NSString to NSNumber using `ESSharedNumberFormatter()`
  */
 FOUNDATION_EXTERN NSNumber *NSNumberFromString(NSString *string);
 
