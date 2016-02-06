@@ -39,6 +39,6 @@ EXTERNAL SOURCES:
     :path: "../ESFramework.podspec"
 
 SPEC CHECKSUMS:
-  ESFramework: 115aa1d45ecd4519cd00aae6a004ce2d13d0b9a0
+  ESFramework: dd18b6dc61e4539fe72ed27f51ce72ff9bb41c3f
 
 COCOAPODS: 0.39.0
