@@ -497,14 +497,48 @@ ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
-- (void)es_getResult:(void *)result;
+- (void)es_getReturnValue:(void *)returnValue;
 @end
 
 @interface NSObject (_ESInvoke)
-+ (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
+/**
+ * Invokes selector.
+ * @code
+ * NSArray *__autoreleasing result;
+ * BOOL outSucceed;
+ * NSError *__autoreleasing outError;
+ *
+ * if ([self invokeSelector:@selector(foo:succeed:error:) retainArguments:NO result:&result, @"bar", &outSucceed, &outError]) {
+ *         if (outSucceed) {
+ *                 NSLog(@"result: %@", result);
+ *         } else {
+ *                 NSLog(@"error: %@", outError);
+ *         }
+ * }
+ * @endcode
+ *
+ * @return YES if invoked successfully, otherwise NO.
+ */
 - (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
+
+/**
+ * Invokes selector.
+ * @see -[NSObject invokeSelector:retainArguments:result,...]
+ * @return YES if invoked successfully, otherwise NO.
+ */
++ (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
 @end
 
+/**
+ * Invokes selector.
+ * @code
+ * CGRect bounds;
+ * if (ESInvokeSelector([UIScreen mainScreen], @selector(bounds), NO, &bounds)) {
+ *     NSLog(@"%@", NSStringFromCGRect(bounds));
+ * }
+ * @endcode
+ * @return YES if invoked successfully, otherwise NO.
+ */
 ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...);
 
 #endif /* ESFrameworkCore_ESDefines_H */

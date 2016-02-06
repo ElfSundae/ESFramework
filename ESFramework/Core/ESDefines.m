@@ -437,7 +437,8 @@ static id __gNil = nil;
         if (invocation && arguments) {
                 NSMethodSignature *signature = invocation.methodSignature;
                 NSUInteger totalArguments = signature.numberOfArguments;
-                for (NSUInteger argIndex = 2; argIndex < totalArguments; ++argIndex) {
+                NSUInteger argIndex = 2;
+                for (; argIndex < totalArguments; ++argIndex) {
                         // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
                         const char *argType = [signature getArgumentTypeAtIndex:argIndex];
                         
@@ -515,10 +516,12 @@ else [invocation setArgument:&__gNil atIndex:argIndex]; \
                                 ElseIfTypeThenSetValue(CATransform3D *)
                                 else if (CMPString(argType, "^@")) {
                                         SetArgumentWithValue(void *);
+                                } else {
+                                        SetArgumentWithPointer(void *);
                                 }
+                        } else {
+                                SetArgumentWithPointer(void *);
                         }
-                        
-                        SetArgumentWithPointer(void *);
                 }
         }
         
@@ -538,10 +541,10 @@ else [invocation setArgument:&__gNil atIndex:argIndex]; \
         return invocation;
 }
 
-- (void)es_getResult:(void *)result
+- (void)es_getReturnValue:(void *)returnValue
 {
-        if (result && 0 != strcmp(self.methodSignature.methodReturnType, @encode(void))) {
-                [self getReturnValue:result];
+        if (returnValue && 0 != strcmp(self.methodSignature.methodReturnType, @encode(void))) {
+                [self getReturnValue:returnValue];
         }
 }
 
@@ -554,7 +557,7 @@ NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:se
 va_end(arguments);      \
 if (invocation) {       \
 [invocation invoke];    \
-[invocation es_getResult:result];       \
+[invocation es_getReturnValue:result];       \
 return YES;     \
 }               \
 return NO;
