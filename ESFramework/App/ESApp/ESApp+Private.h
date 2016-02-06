@@ -11,19 +11,19 @@
 /**
  * Checks if the current app launch is a fresh launch.
  */
-ES_EXTERN BOOL __ESCheckAppFreshLaunch(NSString **previousAppVersion);
+FOUNDATION_EXTERN BOOL __ESCheckAppFreshLaunch(NSString **previousAppVersion);
 
 /**
  * Returns the default user agent of UIWebView.
  */
-ES_EXTERN NSString *__ESWebViewDefaultUserAgent(void);
+FOUNDATION_EXTERN NSString *__ESWebViewDefaultUserAgent(void);
 
 /**
  * Hacks AppDelegate for accessing UINotifications methods.
  */
-ES_EXTERN void __ESAppHackAppDelegateUINotificationsMethods(void);
+FOUNDATION_EXTERN void __ESAppHackAppDelegateUINotificationsMethods(void);
 
 /**
  * Notify received remote notification via ESAppDidReceiveRemoteNotificationNotification.
  */
-ES_EXTERN void __ESApplicationDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromAppLaunch);
+FOUNDATION_EXTERN void __ESApplicationDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromAppLaunch);

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ESFramework/ESDefines.h>
 #import "ESNetworkReachability.h"
 
 #define ESNetworkReachabilityStatusStringNotReachable           @"None"
@@ -15,11 +14,11 @@
 #define ESNetworkReachabilityStatusStringReachableViaWiFi       @"WiFi"
 #define ESNetworkReachabilityStatusStringReachableUnknown       @"Unknown"
 
-ES_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status);
+FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status);
 
 /**
  * UIDevice has started monitoring network reachability status changes for
- * `sharedNetworkReachabilityForInternetConnection`. 
+ * `sharedNetworkReachabilityForInternetConnection`.
  * You can listen `ESNetworkReachabilityDidChangeNotification` to receive notification.
  * The `object` of notification will be a instance of `ESNetworkReachability`.
  *

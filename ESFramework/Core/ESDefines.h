@@ -16,13 +16,6 @@
 #import <objc/runtime.h>
 #import <mach/mach_time.h>
 
-#if defined(__cplusplus)
-#define ES_EXTERN       extern "C" __attribute__((visibility ("default")))
-#else
-#define ES_EXTERN       extern __attribute__((visibility ("default")))
-#endif
-
-
 ///=============================================
 /// @name Log
 ///=============================================
@@ -166,7 +159,7 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 #define ESMaskSet(value, flag)          ((value) |= (flag));
 #define ESMaskUnset(value, flag)        ((value) &= ~(flag));
 
-/** 
+/**
  * Localized string.
  */
 #define ESLocalizedString(key)                  NSLocalizedString(key,nil)
@@ -185,16 +178,16 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
  *
  * e.g. `UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);`
  */
-ES_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
-ES_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
+FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
 
 /**
  * Creates UIColor from RGB Hex number.
  *
  * e.g. `UIColorWithRGBAHex(0x7bffc8, 1.f);`
  */
-ES_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
-ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
+FOUNDATION_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 
 /**
  * Creates UIColor from the last six characters of a hex string.
@@ -206,7 +199,7 @@ ES_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
  * UIColorWithRGBHexString(@"33AF00", 0.9);
  * @endcode
  */
-ES_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
 
 /**
  * Checks whether the given object is a non-empty string.
@@ -239,47 +232,47 @@ NS_INLINE BOOL ESIsSetWithItems(id object) {
 /**
  * Creates a mutable set which does not retain references to the objects it contains.
  */
-ES_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
+FOUNDATION_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
 
 /**
  * Creates a mutable array which does not retain references to the objects it contains.
  */
-ES_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
+FOUNDATION_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
 
 /**
  * Creates a mutable dictionary which does not retain references to the objects it contains.
  */
-ES_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
+FOUNDATION_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 /**
  * Generates a random number between min and max.
  */
-ES_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);
+FOUNDATION_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);
 
 /**
  * Generates a random data using `SecRandomCopyBytes`.
  */
-ES_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
+FOUNDATION_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
 
 /**
  * Generates a random string that contains 0-9a-zA-Z.
  */
-ES_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
+FOUNDATION_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
 
 /**
  * Generates a random color.
  */
-ES_EXTERN UIColor *ESRandomColor(void);
+FOUNDATION_EXTERN UIColor *ESRandomColor(void);
 
 /**
  * Generates an UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
  */
-ES_EXTERN NSString *ESUUID(void);
+FOUNDATION_EXTERN NSString *ESUUID(void);
 
 /**
  * Specifies a "zeroing weak reference" to the associated object.
  */
-ES_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
+FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 
 /**
  * Defines a key for the Associcated Object.
@@ -289,12 +282,12 @@ ES_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 /**
  * Returns the value associated with a given object for a given key.
  */
-ES_EXTERN id ESGetAssociatedObject(id target, const void *key);
+FOUNDATION_EXTERN id ESGetAssociatedObject(id target, const void *key);
 
 /**
  * Sets an associated value for a given object using a given key and association policy.
  */
-ES_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
+FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
 
 /**
  * Returns the current statusBar's height, in any orientation.
@@ -386,28 +379,28 @@ NS_INLINE BOOL UIScreenIsRetina(void) {
 /**
  * Creates NSString with the given format and arguments.
  */
-ES_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
+FOUNDATION_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
 
 /**
  * Formats a bytes number in a human-readable format. e.g. @"12.34 Bytes", @"123 GB".
  * Returns a string that showing the size in Bytes, KBs, MBs, or GBs, with the given step length.
  */
-ES_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
+FOUNDATION_EXTERN NSString *NSStringFromBytesSizeWithStep(unsigned long long bytesSize, int step);
 
 /**
  * Formats a bytes number in a human-readable format with 1024b step length.
  *
  * @warning `NSByteCountFormatter` uses 1000 step length.
  */
-ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
+FOUNDATION_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
 
 /**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
  *
  * Image files within App bundle can contain only high resolution images like `@2x`,`@3x`,
- * this function can return the correct "down-scaled" image for the device which has normal 
+ * this function can return the correct "down-scaled" image for the device which has normal
  * resolution such as iPad mini 1th.
- * 
+ *
  * The naming conventions for each pair of image files is as follows:
  *
  * + Standard: `<ImageName><device_modifier>.<filename_extension>`
@@ -417,61 +410,61 @@ ES_EXTERN NSString *NSStringFromBytesSize(unsigned long long bytesSize);
  *
  * @see [Updating Your Image Resource Files](https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8)
  */
-ES_EXTERN UIImage *UIImageFromCache(NSString *filePath);
+FOUNDATION_EXTERN UIImage *UIImageFromCache(NSString *filePath);
 
 /**
  * Returns a new `UIImage` instance, using `[UIImage imageWithContentsOfFile:]` method.
  *
  * The `filePath` specification is the same as `UIImageFromCache(NSString *)`.
  */
-ES_EXTERN UIImage *UIImageFrom(NSString *filePath);
+FOUNDATION_EXTERN UIImage *UIImageFrom(NSString *filePath);
 
 /**
  * Returns the bundle for the given name.
  */
-ES_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
+FOUNDATION_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 
 /**
  * Returns a full file path for the Sandbox.
  */
-ES_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
-ES_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
-ES_EXTERN NSString *ESPathForDocuments(void);
-ES_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
-ES_EXTERN NSString *ESPathForLibrary(void);
-ES_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
-ES_EXTERN NSString *ESPathForCaches(void);
-ES_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
-ES_EXTERN NSString *ESPathForTemporary(void);
-ES_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESPathForDocuments(void);
+FOUNDATION_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESPathForLibrary(void);
+FOUNDATION_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESPathForCaches(void);
+FOUNDATION_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESPathForTemporary(void);
+FOUNDATION_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 
 /**
  * Creates the directory at the given path if the directory does not exist.
  */
-ES_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
+FOUNDATION_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
 
 /**
  * Creates the directory at the given file path if the directory does not exist.
  */
-ES_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
+FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
 /**
  * Creates the directory at the given file URL if the directory does not exist.
  */
-ES_EXTERN BOOL ESTouchDirectoryAtURL(NSURL *url);
+FOUNDATION_EXTERN BOOL ESTouchDirectoryAtURL(NSURL *url);
 
 ///=============================================
 /// @name Dispatch & Block
 ///=============================================
 #pragma mark - Dispatch & Block
 
-ES_EXTERN void ESDispatchOnMainThreadSynchrony(dispatch_block_t block);
-ES_EXTERN void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block);
-ES_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
-ES_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
-ES_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
-ES_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
-ES_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
-ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnMainThreadSynchrony(dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
+FOUNDATION_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
 ///=============================================
 /// @name ObjC Runtime
@@ -485,8 +478,8 @@ ES_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
  * }
  * @endcode
  */
-ES_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
-ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
+FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
+FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 
 ///=============================================
 /// @name Invocation
@@ -539,6 +532,6 @@ ES_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
  * @endcode
  * @return YES if invoked successfully, otherwise NO.
  */
-ES_EXTERN BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...);
+FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...);
 
 #endif /* ESFrameworkCore_ESDefines_H */

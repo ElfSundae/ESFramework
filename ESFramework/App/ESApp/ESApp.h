@@ -8,10 +8,10 @@
 
 #import <ESFramework/ESDefines.h>
 
-ES_EXTERN NSString *const ESAppErrorDomain;
+FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 
 typedef NS_ENUM(NSInteger, ESAppErrorCode) {
-        
+
         ESAppErrorCodeRemoteNotificationTypesIsNone             = -10,
         /// for iOS8+ only
         ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = -11,
@@ -26,17 +26,17 @@ typedef NS_OPTIONS(NSUInteger, ESUserNotificationType) {
 
 
 /// The key of userInfo for ESAppErrorCodeCouldNotRegisterUserNotificationSettings
-ES_EXTERN NSString *const ESUserNotificationSettingsErrorKey;
+FOUNDATION_EXTERN NSString *const ESUserNotificationSettingsErrorKey;
 
 /// The key for NSUserDefaults that stores app version string for checking fresh launch.
-ES_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
+FOUNDATION_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
 
 /// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
 /// Key for userInfo: UIApplicationLaunchOptionsRemoteNotificationKey OR ESAppRemoteNotificationKey
-ES_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
+FOUNDATION_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
 
 /// The key of userInfo for ESAppDidReceiveRemoteNotificationNotification
-ES_EXTERN NSString *const ESAppRemoteNotificationKey;
+FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

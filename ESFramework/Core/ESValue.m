@@ -7,6 +7,7 @@
 //
 
 #import "ESValue.h"
+#import "ESDefines.h"
 
 NSNumberFormatter *ESSharedNumberFormatter(void)
 {
