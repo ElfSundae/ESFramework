@@ -118,7 +118,7 @@
         
         self.moviePlayer.currentPlaybackTime = self.playbackTimeWhenAppResignActive;
         if (autoPlay) {
-                self.moviePlayer.currentPlaybackRate = 1.f;
+                self.moviePlayer.currentPlaybackRate = 1.;
         }
 }
 

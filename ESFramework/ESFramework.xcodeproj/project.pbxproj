@@ -11,8 +11,8 @@
 		E788358A1C53204A00F67C63 /* NSData+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESHash.m"; sourceTree = "<group>"; };
 		E788358D1C5321AC00F67C63 /* NSString+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ESHash.h"; sourceTree = "<group>"; };
 		E788358E1C5321AC00F67C63 /* NSString+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESHash.m"; sourceTree = "<group>"; };
-		E7A38B751C4DD82100972B01 /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
-		E7A38B761C4DD82100972B01 /* ESDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
+		E7A38B751C4DD82100972B01 /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ESDefines.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		E7A38B761C4DD82100972B01 /* ESDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESDefines.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7A38B791C4DD82100972B01 /* ESValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
 		E7A38B7A1C4DD82100972B01 /* ESValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
 		E7A38B7B1C4DD82100972B01 /* NSObject+ESAssociatedObjectHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAssociatedObjectHelper.h"; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		E7A38C741C4DE1E300972B01 /* ESApp+Subclassing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Subclassing.m"; sourceTree = "<group>"; };
 		E7A38C751C4DE1E300972B01 /* ESApp+UINotifications.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+UINotifications.m"; sourceTree = "<group>"; };
 		E7A38C761C4DE1E300972B01 /* ESApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESApp.h; sourceTree = "<group>"; };
-		E7A38C771C4DE1E300972B01 /* ESApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESApp.m; sourceTree = "<group>"; };
+		E7A38C771C4DE1E300972B01 /* ESApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESApp.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7A38C781C4DE20400972B01 /* ESFrameworkApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkApp.h; sourceTree = "<group>"; };
 		E7A38C7A1C4DE6F200972B01 /* NSObject+ESAutoCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAutoCoding.h"; sourceTree = "<group>"; };
 		E7A38C7B1C4DE6F200972B01 /* NSObject+ESAutoCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAutoCoding.m"; sourceTree = "<group>"; };
@@ -108,13 +108,13 @@
 		E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
 		E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESTableViewController.m; sourceTree = "<group>"; };
 		E7A38C981C4DFA1A00972B01 /* ESActivityLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESActivityLabel.h; sourceTree = "<group>"; };
-		E7A38C991C4DFA1A00972B01 /* ESActivityLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESActivityLabel.m; sourceTree = "<group>"; };
+		E7A38C991C4DFA1A00972B01 /* ESActivityLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESActivityLabel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESBadgeView.h; sourceTree = "<group>"; };
-		E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESBadgeView.m; sourceTree = "<group>"; };
-		E7A38C9C1C4DFA1A00972B01 /* ESButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESButton.h; sourceTree = "<group>"; };
-		E7A38C9D1C4DFA1A00972B01 /* ESButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESButton.m; sourceTree = "<group>"; };
+		E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESBadgeView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		E7A38C9C1C4DFA1A00972B01 /* ESButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ESButton.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		E7A38C9D1C4DFA1A00972B01 /* ESButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESButton.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7A38C9E1C4DFA1A00972B01 /* ESErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESErrorView.h; sourceTree = "<group>"; };
-		E7A38C9F1C4DFA1A00972B01 /* ESErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESErrorView.m; sourceTree = "<group>"; };
+		E7A38C9F1C4DFA1A00972B01 /* ESErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESErrorView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E7A38CAB1C4DFA1A00972B01 /* UIProgressView+ESStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+ESStyle.h"; sourceTree = "<group>"; };
 		E7A38CAC1C4DFA1A00972B01 /* UIProgressView+ESStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+ESStyle.m"; sourceTree = "<group>"; };
 		E7A38CAF1C4DFEE300972B01 /* ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControl.h; sourceTree = "<group>"; };

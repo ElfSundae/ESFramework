@@ -32,7 +32,7 @@
 + (instancetype)redDotWithSize:(CGFloat)size
 {
         ESBadgeView *badge = [[self alloc] initWithFrame:CGRectZero];
-        badge.frameWidth = 0.f;
+        badge.frameWidth = 0.;
         badge.showsShadow = NO;
         badge.shadowOffset = CGSizeZero;
         badge.minimumSize = CGSizeMake(size, size);
@@ -48,16 +48,16 @@
         self.contentScaleFactor = [UIScreen mainScreen].scale;
         self.backgroundColor = [UIColor clearColor];
         self.textColor = [UIColor whiteColor];
-        self.font = [UIFont boldSystemFontOfSize:14.f];
-        self.color = [UIColor colorWithRed:1.f green:0 blue:0.09 alpha:1.0f];
-        self.frameWidth = 1.f;
+        self.font = [UIFont boldSystemFontOfSize:14.];
+        self.color = [UIColor colorWithRed:1. green:0 blue:0.09 alpha:1.0];
+        self.frameWidth = 1.;
         self.frameColor = [UIColor whiteColor];
         self.isShining = YES;
-        self.cornerRoundness = 9.f;
+        self.cornerRoundness = 9.;
         self.showsShadow = YES;
-        self.shadowColor = [UIColor colorWithWhite:0 alpha:.7f];
-        self.shadowOffset = CGSizeMake(1.f, 1.f);
-        self.shadowBlur = 3.f;
+        self.shadowColor = [UIColor colorWithWhite:0 alpha:.7];
+        self.shadowOffset = CGSizeMake(1., 1.);
+        self.shadowBlur = 3.;
         _applyFlatStyleAutomatically = YES;
         self.contentEdgeInsets = UIEdgeInsetsMake(2, 7, 2, 7);
 }
@@ -284,12 +284,12 @@
         if (self.isFlatStyle || (self.applyFlatStyleAutomatically && ESOSVersionIsAbove7())) {
                 [self drawFlatStyleWithContext:context withRect:rect];
         } else {
-                self.cornerRoundness = 0.4f;
+                self.cornerRoundness = 0.4;
                 [self drawRoundedRectWithContext:context withRect:rect];
                 if (self.isShining) {
                         [self drawShineWithContext:context withRect:rect];
                 }
-                if (self.frameWidth > 0.f) {
+                if (self.frameWidth > 0.) {
                         [self drawFrameWithContext:context withRect:rect];
                 }
         }
@@ -297,8 +297,8 @@
         if (self.text.length > 0) {
                 CGSize textSize = [self _getTextSize];
                 CGPoint textPoint;
-                textPoint.x = (rect.size.width - textSize.width) / 2.f;
-                textPoint.y = (rect.size.height - textSize.height) / 2.f;
+                textPoint.x = (rect.size.width - textSize.width) / 2.;
+                textPoint.y = (rect.size.height - textSize.height) / 2.;
                 [self.text drawAtPoint:textPoint withAttributes:@{NSFontAttributeName: self.font,
                                                                   NSForegroundColorAttributeName: self.textColor}];
         }

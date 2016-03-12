@@ -15,21 +15,21 @@
 {
         CGFloat r, g, b;
         [self getRed:&r green:&g blue:&b alpha:NULL];
-        return [NSString stringWithFormat:@"rgb(%lu,%lu,%lu)", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f)];
+        return [NSString stringWithFormat:@"rgb(%lu,%lu,%lu)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.)];
 }
 
 - (NSString *)es_RGBAString
 {
         CGFloat r, g, b, a;
         [self getRed:&r green:&g blue:&b alpha:&a];
-        return [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f), a];
+        return [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.), a];
 }
 
 - (NSString *)es_HexString
 {
         CGFloat r, g, b;
         [self getRed:&r green:&g blue:&b alpha:NULL];
-        return [NSString stringWithFormat:@"#%02lX%02lX%02lX", lroundf(r * 255.f), lroundf(g * 255.f), lroundf(b * 255.f)];
+        return [NSString stringWithFormat:@"#%02lX%02lX%02lX", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.)];
 }
 
 + (UIColor *)es_groupTableViewBackgroundColor
@@ -38,13 +38,13 @@
                 static UIImage *__esGroupTableViewBackgroundImage = nil;
                 static dispatch_once_t onceToken;
                 dispatch_once(&onceToken, ^{
-                        UIGraphicsBeginImageContextWithOptions(CGSizeMake(7.f, 1.f), NO, 0.0);
+                        UIGraphicsBeginImageContextWithOptions(CGSizeMake(7., 1.), NO, 0.0);
                         CGContextRef c = UIGraphicsGetCurrentContext();
-                        [[UIColor colorWithRed:185/255.f green:192/255.f blue:202/255.f alpha:1.f] setFill];
+                        [[UIColor colorWithRed:185/255. green:192/255. blue:202/255. alpha:1.] setFill];
                         CGContextFillRect(c, CGRectMake(0, 0, 4, 1));
-                        [[UIColor colorWithRed:185/255.f green:193/255.f blue:200/255.f alpha:1.f] setFill];
+                        [[UIColor colorWithRed:185/255. green:193/255. blue:200/255. alpha:1.] setFill];
                         CGContextFillRect(c, CGRectMake(4, 0, 1, 1));
-                        [[UIColor colorWithRed:192/255.f green:200/255.f blue:207/255.f alpha:1.f] setFill];
+                        [[UIColor colorWithRed:192/255. green:200/255. blue:207/255. alpha:1.] setFill];
                         CGContextFillRect(c, CGRectMake(5, 0, 2, 1));
                         __esGroupTableViewBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
                         UIGraphicsEndImageContext();
@@ -105,16 +105,16 @@
 }
 + (UIColor *)es_twitterColor
 {
-        return [UIColor colorWithRed:0.25f green:0.60f blue:1.00f alpha:1.00f];
+        return [UIColor colorWithRed:0.25 green:0.60 blue:1.00 alpha:1.00];
 }
 + (UIColor *)es_facebookColor
 {
-        return [UIColor colorWithRed:0.23f green:0.35f blue:0.60f alpha:1.00f];
+        return [UIColor colorWithRed:0.23 green:0.35 blue:0.60 alpha:1.00];
 }
 
 + (UIColor *)es_purpleColor
 {
-        return [UIColor colorWithRed:0.45f green:0.30f blue:0.75f alpha:1.00f];
+        return [UIColor colorWithRed:0.45 green:0.30 blue:0.75 alpha:1.00];
 }
 + (UIColor *)es_redColor
 {
@@ -150,15 +150,15 @@
         CGFloat newComponents[4];
         
         if(isGreyscale) {
-                newComponents[0] = oldComponents[0] + value > 1.0f ? 1.0f : oldComponents[0] + value;
-                newComponents[1] = oldComponents[0] + value > 1.0f ? 1.0f : oldComponents[0] + value;
-                newComponents[2] = oldComponents[0] + value > 1.0f ? 1.0f : oldComponents[0] + value;
+                newComponents[0] = oldComponents[0] + value > 1.0 ? 1.0 : oldComponents[0] + value;
+                newComponents[1] = oldComponents[0] + value > 1.0 ? 1.0 : oldComponents[0] + value;
+                newComponents[2] = oldComponents[0] + value > 1.0 ? 1.0 : oldComponents[0] + value;
                 newComponents[3] = oldComponents[1];
         }
         else {
-                newComponents[0] = oldComponents[0] + value > 1.0f ? 1.0f : oldComponents[0] + value;
-                newComponents[1] = oldComponents[1] + value > 1.0f ? 1.0f : oldComponents[1] + value;
-                newComponents[2] = oldComponents[2] + value > 1.0f ? 1.0f : oldComponents[2] + value;
+                newComponents[0] = oldComponents[0] + value > 1.0 ? 1.0 : oldComponents[0] + value;
+                newComponents[1] = oldComponents[1] + value > 1.0 ? 1.0 : oldComponents[1] + value;
+                newComponents[2] = oldComponents[2] + value > 1.0 ? 1.0 : oldComponents[2] + value;
                 newComponents[3] = oldComponents[3];
         }
         
@@ -181,15 +181,15 @@
         CGFloat newComponents[4];
         
         if(isGreyscale) {
-                newComponents[0] = oldComponents[0] - value < 0.0f ? 0.0f : oldComponents[0] - value;
-                newComponents[1] = oldComponents[0] - value < 0.0f ? 0.0f : oldComponents[0] - value;
-                newComponents[2] = oldComponents[0] - value < 0.0f ? 0.0f : oldComponents[0] - value;
+                newComponents[0] = oldComponents[0] - value < 0.0 ? 0.0 : oldComponents[0] - value;
+                newComponents[1] = oldComponents[0] - value < 0.0 ? 0.0 : oldComponents[0] - value;
+                newComponents[2] = oldComponents[0] - value < 0.0 ? 0.0 : oldComponents[0] - value;
                 newComponents[3] = oldComponents[1];
         }
         else {
-                newComponents[0] = oldComponents[0] - value < 0.0f ? 0.0f : oldComponents[0] - value;
-                newComponents[1] = oldComponents[1] - value < 0.0f ? 0.0f : oldComponents[1] - value;
-                newComponents[2] = oldComponents[2] - value < 0.0f ? 0.0f : oldComponents[2] - value;
+                newComponents[0] = oldComponents[0] - value < 0.0 ? 0.0 : oldComponents[0] - value;
+                newComponents[1] = oldComponents[1] - value < 0.0 ? 0.0 : oldComponents[1] - value;
+                newComponents[2] = oldComponents[2] - value < 0.0 ? 0.0 : oldComponents[2] - value;
                 newComponents[3] = oldComponents[3];
         }
         
@@ -215,10 +215,10 @@
                 sum = components[0];
         }
         else {
-                sum = (components[0] + components[1] + components[2]) / 3.0f;
+                sum = (components[0] + components[1] + components[2]) / 3.0;
         }
         
-        return (sum >= 0.75f);
+        return (sum >= 0.75);
 }
 
 @end

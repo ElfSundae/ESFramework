@@ -49,8 +49,8 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
                 p.trackTintColor = trackColor;
                 p.progressTintColor = progressColor;
         } else {
-                p.trackImage = [UIImage imageWithColor:trackColor cornerRadius:4.f];
-                p.progressImage = [UIImage imageWithColor:progressColor cornerRadius:4.f];
+                p.trackImage = [UIImage imageWithColor:trackColor cornerRadius:4.];
+                p.progressImage = [UIImage imageWithColor:progressColor cornerRadius:4.];
         }
         return p;
 }

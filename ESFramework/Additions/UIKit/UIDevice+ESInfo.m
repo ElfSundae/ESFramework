@@ -180,22 +180,22 @@
 
 + (BOOL)isIPhoneRetina35InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 960.f));
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(640., 960.));
 }
 
 + (BOOL)isIPhoneRetina4InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(640.f, 1136.f));
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(640., 1136.));
 }
 
 + (BOOL)isIPhoneRetina47InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(750.f, 1334.f));
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(750., 1334.));
 }
 
 + (BOOL)isIPhoneRetina55InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(1242.f, 2208.f));
+        return CGSizeEqualToSize([self screenSize], CGSizeMake(1242., 2208.));
 }
 
 

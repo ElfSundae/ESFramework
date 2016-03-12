@@ -13,10 +13,10 @@
 
 + (UIImage *)imageWithColor:(UIColor *)color cornerRadius:(CGFloat)cornerRadius
 {
-        CGRect rect = CGRectMake(0.f, 0.f, cornerRadius*2.f+1.f, cornerRadius*2.f+1.f);
+        CGRect rect = CGRectMake(0., 0., cornerRadius*2.+1., cornerRadius*2.+1.);
         UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius];
-        path.lineWidth = 0.f;
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.f);
+        path.lineWidth = 0.;
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.);
         [color setFill];
         [path fill];
         [path stroke];
@@ -30,11 +30,11 @@
 - (UIImage *)resizableImageWithMinimumSize:(CGSize)size
 {
         CGRect rect = CGRectMake(0, 0, size.width, size.height);
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.f);
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.);
         [self drawInRect:rect];
         UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(size.height / 2.f, size.width / 2.f, size.height / 2.f, size.width/ 2.f)];
+        image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(size.height / 2., size.width / 2., size.height / 2., size.width/ 2.)];
         return image;
 }
 
@@ -59,7 +59,7 @@
                 return self;
         }
         
-        CGFloat scale = MAX(self.scale, 1.0f);
+        CGFloat scale = MAX(self.scale, 1.0);
         CGImageRef imageRef = self.CGImage;
         size_t width = CGImageGetWidth(imageRef)*scale;
         size_t height = CGImageGetHeight(imageRef)*scale;
@@ -88,7 +88,7 @@
 
 - (UIImage *)croppedImage:(CGRect)bounds
 {
-        CGFloat scale = MAX(self.scale, 1.0f);
+        CGFloat scale = MAX(self.scale, 1.0);
         CGRect scaledBounds = CGRectMake(bounds.origin.x * scale, bounds.origin.y * scale, bounds.size.width * scale, bounds.size.height * scale);
         CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], scaledBounds);
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef scale:self.scale orientation:UIImageOrientationUp];
@@ -139,7 +139,7 @@
                 transform:(CGAffineTransform)transform
            drawTransposed:(BOOL)transpose interpolationQuality:(CGInterpolationQuality)quality
 {
-        CGFloat scale = MAX(1.0f, self.scale);
+        CGFloat scale = MAX(1.0, self.scale);
         CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width*scale, newSize.height*scale));
         CGRect transposedRect = CGRectMake(0, 0, newRect.size.height, newRect.size.width);
         CGImageRef imageRef = self.CGImage;
@@ -320,7 +320,7 @@
         // If the image does not have an alpha layer, add one
         UIImage *image = [self imageWithAlpha];
         
-        CGFloat scale = MAX(self.scale,1.0f);
+        CGFloat scale = MAX(self.scale,1.0);
         NSUInteger scaledBorderSize = borderSize * scale;
         
         // Build a context that's the same dimensions as the new size

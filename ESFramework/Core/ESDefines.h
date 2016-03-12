@@ -176,7 +176,7 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 /**
  * Creates UIColor from RGB values.
  *
- * e.g. `UIColorWithRGBA(123.f, 255.f, 200.f, 1.f);`
+ * e.g. `UIColorWithRGBA(123., 255., 200., 1.);`
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
@@ -184,7 +184,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat bl
 /**
  * Creates UIColor from RGB Hex number.
  *
- * e.g. `UIColorWithRGBAHex(0x7bffc8, 1.f);`
+ * e.g. `UIColorWithRGBAHex(0x7bffc8, 1.);`
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
 FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
@@ -194,8 +194,8 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
  *
  * e.g.
  * @code
- * UIColorWithRGBHexString(@"#33AF00", 1.f);
- * UIColorWithRGBHexString(@"0x33AF00", 0.3f);
+ * UIColorWithRGBHexString(@"#33AF00", 1.);
+ * UIColorWithRGBHexString(@"0x33AF00", 0.3);
  * UIColorWithRGBHexString(@"33AF00", 0.9);
  * @endcode
  */

@@ -53,12 +53,12 @@
 /// [UIColor colorWithRed:0.805 green:0.235 blue:0.241 alpha:1.000]
 + (UIColor *)es_dangerButtonColor;
 
-/// [UIColor colorWithRed:0.25f green:0.60f blue:1.00f alpha:1.00f]
+/// [UIColor colorWithRed:0.25 green:0.60 blue:1.00 alpha:1.00]
 + (UIColor *)es_twitterColor;
-/// [UIColor colorWithRed:0.23f green:0.35f blue:0.60f alpha:1.00f]
+/// [UIColor colorWithRed:0.23 green:0.35 blue:0.60 alpha:1.00]
 + (UIColor *)es_facebookColor;
 
-/// [UIColor colorWithRed:0.45f green:0.30f blue:0.75f alpha:1.00f]
+/// [UIColor colorWithRed:0.45 green:0.30 blue:0.75 alpha:1.00]
 + (UIColor *)es_purpleColor;
 /// [UIColor colorWithRed:0.861 green:0.000 blue:0.021 alpha:1.000]
 + (UIColor *)es_redColor;

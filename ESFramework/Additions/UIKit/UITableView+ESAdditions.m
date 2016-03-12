@@ -18,11 +18,11 @@
 
 - (void)scrollToBottom:(BOOL)animated
 {
-        CGFloat offsetY = 0.f;
+        CGFloat offsetY = 0.;
         if (self.contentSize.height > self.bounds.size.height) {
                 offsetY = self.contentSize.height - self.bounds.size.height;
         }
-        [self setContentOffset:CGPointMake(0.f, offsetY) animated:animated];
+        [self setContentOffset:CGPointMake(0., offsetY) animated:animated];
 }
 
 - (void)scrollToFirstRow:(BOOL)animated

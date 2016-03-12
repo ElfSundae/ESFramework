@@ -30,7 +30,7 @@
                 _shapeLayer = [[CAShapeLayer alloc] init];
                 _shapeLayer.frame = CGRectZero;
                 _shapeLayer.fillColor = nil;
-                _shapeLayer.strokeColor = [UIColorWithRGB(99.f, 109.f, 125.f) CGColor];
+                _shapeLayer.strokeColor = [UIColorWithRGB(99., 109., 125.) CGColor];
                 _shapeLayer.strokeEnd = 0;
                 _shapeLayer.contentsScale = [UIScreen mainScreen].scale;
                 _shapeLayer.lineWidth = 2;
@@ -54,7 +54,7 @@
 //                _textLabel.textAlignment = NSTextAlignmentCenter;
 //                _textLabel.numberOfLines = 0;
 //                _textLabel.font = [UIFont systemFontOfSize:14.0];
-//                _textLabel.textColor = UIColorWithRGB(99.f, 109.f, 125.f);
+//                _textLabel.textColor = UIColorWithRGB(99., 109., 125.);
 //                [self addSubview:_textLabel];
 //        }
         return _textLabel;
@@ -65,15 +65,15 @@
         [super setFrame:frame];
         if (frame.size.width > 0 && frame.size.height > 0) {
                 CGRect activityFrame = self.activityIndicatorView.frame;
-                activityFrame.origin.x = floorf((frame.size.width - activityFrame.size.width) / 2.f);
-                activityFrame.origin.y = 15.f;
+                activityFrame.origin.x = floorf((frame.size.width - activityFrame.size.width) / 2.);
+                activityFrame.origin.y = 15.;
                 self.activityIndicatorView.frame = activityFrame;
                 
                 self.shapeLayer.frame = activityFrame;
                 //https://developer.apple.com/library/ios/documentation/2ddrawing/conceptual/drawingprintingios/BezierPaths/BezierPaths.html#//apple_ref/doc/uid/TP40010156-CH11-SW5
                 
-                UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(floorf(activityFrame.size.width / 2.f), floorf(activityFrame.size.height / 2.f))
-                                                                          radius:floorf(activityFrame.size.width / 2.f)
+                UIBezierPath *bezierPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(floorf(activityFrame.size.width / 2.), floorf(activityFrame.size.height / 2.))
+                                                                          radius:floorf(activityFrame.size.width / 2.)
                                                                       startAngle:ESDegreesToRadians(-45)
                                                                         endAngle:ESDegreesToRadians(315)
                                                                        clockwise:YES];
@@ -95,7 +95,7 @@
 
 - (CGFloat)refreshControlContentViewHeight:(ESRefreshControl *)refreshControl
 {
-        return 50.f;
+        return 50.;
 }
 
 - (void)refreshControl:(ESRefreshControl *)refreshControl stateChanged:(ESRefreshControlState)state from:(ESRefreshControlState)fromState
@@ -119,7 +119,7 @@
         if (progress < 0.8) {
                 progress = (progress * self.frame.size.height - self.shapeLayer.frame.origin.y) / self.frame.size.height;
         }
-        progress = fmaxf(0.f, (fminf(progress, 1.f)));
+        progress = fmaxf(0., (fminf(progress, 1.)));
 #endif
         //NSLog(@"%f %f %f-%f", pullProgress, progress, self.shapeLayer.strokeStart, self.shapeLayer.strokeEnd);
         [CATransaction begin];

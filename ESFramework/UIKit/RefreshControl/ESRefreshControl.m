@@ -11,7 +11,7 @@
 #import <ESFramework/UIView+ESShortcut.h>
 
 static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
-#define _esDefaultContentViewHeight 50.f
+#define _esDefaultContentViewHeight 50.
 #define _esAnimationDuration 0.25
 
 @interface ESRefreshControl ()
@@ -94,8 +94,8 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
         
         _scrollView = scrollView;
         if (_scrollView) {
-                self.frame = CGRectMake(0.f, 0.f, _scrollView.bounds.size.width, 0.f);
-                self.contentView.frame = CGRectMake(0.f, 0.f, self.width, self.contentViewHeight);
+                self.frame = CGRectMake(0., 0., _scrollView.bounds.size.width, 0.);
+                self.contentView.frame = CGRectMake(0., 0., self.width, self.contentViewHeight);
                 [self.contentView refreshControl:self stateChanged:self.state from:self.state];
         }
 }
@@ -121,11 +121,11 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 
 - (CGFloat)contentViewHeight
 {
-        if (0.f == _contentViewHeight) {
+        if (0. == _contentViewHeight) {
                 if ([self.contentView respondsToSelector:@selector(refreshControlContentViewHeight:)]) {
                         _contentViewHeight = [self.contentView refreshControlContentViewHeight:self];
                 }
-                if (0.f >= _contentViewHeight) {
+                if (0. >= _contentViewHeight) {
                         _contentViewHeight = _esDefaultContentViewHeight;
                 }
         }
@@ -156,7 +156,7 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 {
         if ([self.contentView respondsToSelector:@selector(refreshControl:pullProgressChanged:)]) {
                 // Ensure the value is between 0 and 1
-                progress = fmaxf(0.f, (fminf(progress, 1.f)));
+                progress = fmaxf(0., (fminf(progress, 1.)));
                 [self.contentView refreshControl:self pullProgressChanged:progress];
         }
 }
@@ -179,7 +179,7 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
                         // Set the final frame.
                         // If user drag scrollView very quickly, frame set in `contentOffset` KVO will not
                         // always be correct.
-                        CGRect frame = CGRectMake(0.f, -self.contentViewHeight, self.frame.size.width, self.contentViewHeight);
+                        CGRect frame = CGRectMake(0., -self.contentViewHeight, self.frame.size.width, self.contentViewHeight);
                         self.frame = frame;
                         
                         UIEdgeInsets contentInset = self.scrollView.contentInset;
@@ -208,7 +208,7 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
                         self.scrollView.scrollEnabled = YES;
                 }
                 
-                self.frame = CGRectMake(0.f, 0.f, self.frame.size.width, 0.f);
+                self.frame = CGRectMake(0., 0., self.frame.size.width, 0.);
                 UIEdgeInsets contentInset = self.scrollView.contentInset;
                 contentInset.top -= self.contentViewHeight;
                 self.scrollView.contentInset = contentInset;

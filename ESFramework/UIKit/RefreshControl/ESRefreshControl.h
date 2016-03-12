@@ -76,6 +76,6 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
 - (void)refreshControl:(ESRefreshControl *)refreshControl stateChanged:(ESRefreshControlState)state from:(ESRefreshControlState)fromState;
 
 @optional
-- (CGFloat)refreshControlContentViewHeight:(ESRefreshControl *)refreshControl; // 50.f as default
+- (CGFloat)refreshControlContentViewHeight:(ESRefreshControl *)refreshControl; // 50. as default
 - (void)refreshControl:(ESRefreshControl *)refreshControl pullProgressChanged:(CGFloat)pullProgress;
 @end

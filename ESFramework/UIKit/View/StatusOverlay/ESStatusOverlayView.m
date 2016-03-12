@@ -38,7 +38,7 @@
                         self.frame = CGRectMake(0, 0, _view.width, _view.height);
                         self.backgroundColor = _view.backgroundColor;
                 }
-                self.alpha = 0.f;
+                self.alpha = 0.;
         }
         return self;
 }
@@ -85,7 +85,7 @@
         } else {
                 [self.view addSubview:self];
         }
-        self.alpha = 1.f;
+        self.alpha = 1.;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,7 +142,7 @@
         if (!self.isHidden) {
                 [UIView animateWithDuration:(animated ? 0.25 : 0.0)
                                  animations:^{
-                                         self.alpha = 0.f;
+                                         self.alpha = 0.;
                                  } completion:^(BOOL finished) {
                                          [self removeFromSuperview];
                                  }];

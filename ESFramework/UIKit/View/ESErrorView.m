@@ -10,10 +10,10 @@
 #import <ESFramework/ESDefines.h>
 #import <ESFramework/UIView+ESShortcut.h>
 
-static const CGFloat kVPadding1 = 30.0f;
-static const CGFloat kVPadding2 = 10.0f;
-static const CGFloat kVPadding3 = 15.0f;
-static const CGFloat kHPadding  = 10.0f;
+static const CGFloat kVPadding1 = 30.0;
+static const CGFloat kVPadding2 = 10.0;
+static const CGFloat kVPadding3 = 15.0;
+static const CGFloat kHPadding  = 10.0;
 
 
 @implementation ESErrorView
@@ -29,14 +29,14 @@ static const CGFloat kHPadding  = 10.0f;
                 
                 self.titleLabel = [[UILabel alloc] init];
                 self.titleLabel.backgroundColor = [UIColor clearColor];
-                self.titleLabel.textColor = UIColorWithRGB(96.f, 103.f, 111.f);
+                self.titleLabel.textColor = UIColorWithRGB(96., 103., 111.);
                 self.titleLabel.font = [UIFont boldSystemFontOfSize:18];
                 self.titleLabel.textAlignment = NSTextAlignmentCenter;
                 [self addSubview:self.titleLabel];
                 
                 self.subtitleLabel = [[UILabel alloc] init];
                 self.subtitleLabel.backgroundColor = [UIColor clearColor];
-                self.subtitleLabel.textColor = UIColorWithRGB(96.f, 103.f, 111.f);
+                self.subtitleLabel.textColor = UIColorWithRGB(96., 103., 111.);
                 self.subtitleLabel.font = [UIFont boldSystemFontOfSize:14];
                 self.subtitleLabel.textAlignment = NSTextAlignmentCenter;
                 self.subtitleLabel.numberOfLines = 0;
@@ -123,29 +123,29 @@ static const CGFloat kHPadding  = 10.0f;
         
         
         CGFloat maxHeight = self.imageView.frame.size.height + self.titleLabel.frame.size.height + self.subtitleLabel.frame.size.height + kVPadding1 + kVPadding2;
-        BOOL canShowImage = (self.imageView.frame.size.height > 0.f) && (self.frame.size.height > maxHeight);
+        BOOL canShowImage = (self.imageView.frame.size.height > 0.) && (self.frame.size.height > maxHeight);
         
-        CGFloat totalHeight = 0.0f;
+        CGFloat totalHeight = 0.0;
         
         if (canShowImage) {
                 totalHeight += self.imageView.frame.size.height;
         }
         if (self.titleLabel.text.length) {
-                totalHeight += (totalHeight > 0.f ? kVPadding1 : 0.f) + self.titleLabel.frame.size.height;
+                totalHeight += (totalHeight > 0. ? kVPadding1 : 0.) + self.titleLabel.frame.size.height;
         }
         if (self.subtitleLabel.text.length) {
-                totalHeight += (totalHeight > 0.f ? kVPadding2 : 0.f) + self.subtitleLabel.frame.size.height;
+                totalHeight += (totalHeight > 0. ? kVPadding2 : 0.) + self.subtitleLabel.frame.size.height;
         }
         
         if (self.actionButton) {
-                totalHeight += (totalHeight > 0.f ? kVPadding3 : 0.f) + self.actionButton.frame.size.height;
+                totalHeight += (totalHeight > 0. ? kVPadding3 : 0.) + self.actionButton.frame.size.height;
         }
         
-        CGFloat top = floorf((self.frame.size.height - totalHeight) / 2.f);
+        CGFloat top = floorf((self.frame.size.height - totalHeight) / 2.);
         
         if (canShowImage) {
                 self.imageView.top = top;
-                self.imageView.left = floorf((self.size.width - self.imageView.size.width) / 2.f);
+                self.imageView.left = floorf((self.size.width - self.imageView.size.width) / 2.);
                 self.imageView.hidden = NO;
                 
                 top += self.imageView.height + kVPadding1;
@@ -154,19 +154,19 @@ static const CGFloat kHPadding  = 10.0f;
         }
         
         if (self.titleLabel.text.length) {
-                self.titleLabel.left = floorf((self.size.width - self.titleLabel.size.width) / 2.f);
+                self.titleLabel.left = floorf((self.size.width - self.titleLabel.size.width) / 2.);
                 self.titleLabel.top = top;
                 top += self.titleLabel.height + kVPadding2;
         }
         
         if (self.subtitleLabel.text.length) {
-                self.subtitleLabel.left = floorf((self.size.width - self.subtitleLabel.size.width) / 2.f);
+                self.subtitleLabel.left = floorf((self.size.width - self.subtitleLabel.size.width) / 2.);
                 self.subtitleLabel.top = top;
                 top += self.subtitleLabel.height + kVPadding3;
         }
         
         if (self.actionButton) {
-                self.actionButton.left = floorf((self.size.width - self.actionButton.size.width) / 2.f);
+                self.actionButton.left = floorf((self.size.width - self.actionButton.size.width) / 2.);
                 self.actionButton.top = top;
         }
         

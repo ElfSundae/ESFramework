@@ -10,8 +10,8 @@
 #import <ESFramework/ESDefines.h>
 #import <ESFramework/UIColor+ESAdditions.h>
 
-#define kDefaultButtonRoundedCornerRadius               @(6.f)
-#define kDefaultButtonRoundedCornerRadiusForFlatStyled  @(4.f)
+#define kDefaultButtonRoundedCornerRadius               @(6.)
+#define kDefaultButtonRoundedCornerRadiusForFlatStyled  @(4.)
 
 @interface ESButton ()
 @property (nonatomic) ESButtonStyle buttonStyle;
@@ -32,17 +32,17 @@ buttonFlatStyled = _buttonFlatStyled;
 - (void)_applyDefaultsForStyle:(ESButtonStyle)buttonStyle
 {
         _buttonStyle = buttonStyle;
-        // _borderWidth = 1.f;
+        // _borderWidth = 1.;
         UIEdgeInsets padding = UIEdgeInsetsZero;
         if (ESButtonStyleRoundedRect == self.buttonStyle) {
-                padding.top = padding.bottom = 0.f;
-                padding.left = padding.right = 10.f;
+                padding.top = padding.bottom = 0.;
+                padding.left = padding.right = 10.;
         } else if (ESButtonStyleSemiCircle == self.buttonStyle) {
-                padding.top = padding.bottom = 0.f;
-                padding.left = padding.right = 15.f;
+                padding.top = padding.bottom = 0.;
+                padding.left = padding.right = 15.;
         } else if (ESButtonStyleCircle == self.buttonStyle) {
-                padding.top = padding.bottom = 10.f;
-                padding.left = padding.right = 10.f;
+                padding.top = padding.bottom = 10.;
+                padding.left = padding.right = 10.;
         }
         _buttonPadding = padding;
         self.backgroundColor = [UIColor clearColor];
@@ -56,22 +56,22 @@ buttonFlatStyled = _buttonFlatStyled;
 {
         if (buttonColor.es_isLightColor) {
                 [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                [self setTitleShadowColor:[UIColor colorWithWhite:1.f alpha:0.6f] forState:UIControlStateNormal];
-                [self setTitleColor:[UIColor colorWithWhite:0.4f alpha:0.7f] forState:UIControlStateDisabled];
+                [self setTitleShadowColor:[UIColor colorWithWhite:1. alpha:0.6] forState:UIControlStateNormal];
+                [self setTitleColor:[UIColor colorWithWhite:0.4 alpha:0.7] forState:UIControlStateDisabled];
         } else {
                 [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                [self setTitleShadowColor:[UIColor colorWithWhite:0.f alpha:0.6f] forState:UIControlStateNormal];
-                [self setTitleColor:[UIColor colorWithWhite:1.f alpha:0.7f] forState:UIControlStateDisabled];
+                [self setTitleShadowColor:[UIColor colorWithWhite:0. alpha:0.6] forState:UIControlStateNormal];
+                [self setTitleColor:[UIColor colorWithWhite:1. alpha:0.7] forState:UIControlStateDisabled];
         }
 }
 
 - (void)_applyDefaultsTitleLabelAttributesForFlatStyled:(BOOL)isFlatStyled
 {
         if (isFlatStyled) {
-                self.titleLabel.shadowOffset = CGSizeMake(0.f, 0.f);
+                self.titleLabel.shadowOffset = CGSizeMake(0., 0.);
                 self.titleLabel.font = [UIFont systemFontOfSize:[UIFont buttonFontSize]];
         } else {
-                self.titleLabel.shadowOffset = CGSizeMake(0.f, -1.f);
+                self.titleLabel.shadowOffset = CGSizeMake(0., -1.);
                 self.titleLabel.font = [UIFont boldSystemFontOfSize:[UIFont buttonFontSize]];
         }
 }
@@ -219,12 +219,12 @@ buttonFlatStyled = _buttonFlatStyled;
                 return;
         }
         
-        CGFloat cornerRadius = 0.f;
+        CGFloat cornerRadius = 0.;
         if (ESButtonStyleRoundedRect == self.buttonStyle) {
                 cornerRadius = self.buttonRoundedCornerRadius.floatValue;
         } else if (ESButtonStyleSemiCircle == self.buttonStyle ||
                    ESButtonStyleCircle == self.buttonStyle) {
-                cornerRadius = self.bounds.size.width / 2.f;
+                cornerRadius = self.bounds.size.width / 2.;
         }
         
         
@@ -252,13 +252,13 @@ buttonFlatStyled = _buttonFlatStyled;
 
 - (void)_drawRoundedInRect:(CGRect)rect context:(CGContextRef *)context cornerRadius:(CGFloat)cornerRaius
 {
-        UIColor *border = [self.buttonColor es_darkenColorWithValue:0.06f];
+        UIColor *border = [self.buttonColor es_darkenColorWithValue:0.06];
         
-        UIColor *shadow = [self.buttonColor es_lightenColorWithValue:0.50f];
-        CGSize shadowOffset = CGSizeMake(0.0f, 1.0f);
-        CGFloat shadowBlurRadius = 2.0f;
+        UIColor *shadow = [self.buttonColor es_lightenColorWithValue:0.50];
+        CGSize shadowOffset = CGSizeMake(0.0, 1.0);
+        CGFloat shadowBlurRadius = 2.0;
         
-        UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.5f, 0.5f, rect.size.width-1.0f, rect.size.height-1.0f)
+        UIBezierPath *roundedRectanglePath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.5, 0.5, rect.size.width-1.0, rect.size.height-1.0)
                                                                         cornerRadius:cornerRaius];
         
         CGContextSaveGState(*context);
@@ -266,10 +266,10 @@ buttonFlatStyled = _buttonFlatStyled;
         [roundedRectanglePath addClip];
         
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        UIColor *topColor = (!self.enabled) ? [self.buttonColor es_darkenColorWithValue:0.12f] : [self.buttonColor es_lightenColorWithValue:0.12f];
+        UIColor *topColor = (!self.enabled) ? [self.buttonColor es_darkenColorWithValue:0.12] : [self.buttonColor es_lightenColorWithValue:0.12];
         
         NSArray *newGradientColors = [NSArray arrayWithObjects:(id)topColor.CGColor, (id)self.buttonColor.CGColor, nil];
-        CGFloat newGradientLocations[] = {0.0f, 1.0f};
+        CGFloat newGradientLocations[] = {0.0, 1.0};
         
         CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)newGradientColors, newGradientLocations);
         
@@ -277,8 +277,8 @@ buttonFlatStyled = _buttonFlatStyled;
         
         CGContextDrawLinearGradient(*context,
                                     gradient,
-                                    CGPointMake(0.0f, self.highlighted ? rect.size.height - 0.5f : 0.5f),
-                                    CGPointMake(0.0f, self.highlighted ? 0.5f : rect.size.height - 0.5f), 0.0f);
+                                    CGPointMake(0.0, self.highlighted ? rect.size.height - 0.5 : 0.5),
+                                    CGPointMake(0.0, self.highlighted ? 0.5 : rect.size.height - 0.5), 0.0);
         
         CGGradientRelease(gradient);
         
@@ -288,7 +288,7 @@ buttonFlatStyled = _buttonFlatStyled;
                 // Rounded Rectangle Inner Shadow
                 CGRect roundedRectangleBorderRect = CGRectInset([roundedRectanglePath bounds], -shadowBlurRadius, -shadowBlurRadius);
                 roundedRectangleBorderRect = CGRectOffset(roundedRectangleBorderRect, -shadowOffset.width, -shadowOffset.height);
-                roundedRectangleBorderRect = CGRectInset(CGRectUnion(roundedRectangleBorderRect, [roundedRectanglePath bounds]), -1.0f, -1.0f);
+                roundedRectangleBorderRect = CGRectInset(CGRectUnion(roundedRectangleBorderRect, [roundedRectanglePath bounds]), -1.0, -1.0);
                 
                 UIBezierPath *roundedRectangleNegativePath = [UIBezierPath bezierPathWithRect: roundedRectangleBorderRect];
                 [roundedRectangleNegativePath appendPath: roundedRectanglePath];
@@ -299,12 +299,12 @@ buttonFlatStyled = _buttonFlatStyled;
                 CGFloat xOffset = shadowOffset.width + round(roundedRectangleBorderRect.size.width);
                 CGFloat yOffset = shadowOffset.height;
                 CGContextSetShadowWithColor(*context,
-                                            CGSizeMake(xOffset + copysign(0.1f, xOffset), yOffset + copysign(0.1f, yOffset)),
+                                            CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
                                             shadowBlurRadius,
                                             shadow.CGColor);
                 
                 [roundedRectanglePath addClip];
-                CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(roundedRectangleBorderRect.size.width), 0.0f);
+                CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(roundedRectangleBorderRect.size.width), 0.0);
                 [roundedRectangleNegativePath applyTransform: transform];
                 [[UIColor grayColor] setFill];
                 [roundedRectangleNegativePath fill];
@@ -313,7 +313,7 @@ buttonFlatStyled = _buttonFlatStyled;
         }
         
         [border setStroke];
-        roundedRectanglePath.lineWidth = 1.0f;
+        roundedRectanglePath.lineWidth = 1.0;
         [roundedRectanglePath stroke];
 }
 
@@ -321,23 +321,23 @@ buttonFlatStyled = _buttonFlatStyled;
 {
         CGContextSaveGState(*context);
         
-        UIColor *fill = (!self.highlighted) ? self.buttonColor : [self.buttonColor es_darkenColorWithValue:0.06f];
+        UIColor *fill = (!self.highlighted) ? self.buttonColor : [self.buttonColor es_darkenColorWithValue:0.06];
         if (!self.enabled) {
-                fill = [fill es_desaturatedColorToPercentSaturation:0.60f];
+                fill = [fill es_desaturatedColorToPercentSaturation:0.60];
         }
         
         CGContextSetFillColorWithColor(*context, fill.CGColor);
         
-        UIColor *border = (!self.highlighted) ? [self.buttonColor es_darkenColorWithValue:0.06f] : [self.buttonColor es_darkenColorWithValue:0.12f];
+        UIColor *border = (!self.highlighted) ? [self.buttonColor es_darkenColorWithValue:0.06] : [self.buttonColor es_darkenColorWithValue:0.12];
         if (!self.enabled) {
-                border = [border es_desaturatedColorToPercentSaturation:0.60f];
+                border = [border es_desaturatedColorToPercentSaturation:0.60];
         }
         
         CGContextSetStrokeColorWithColor(*context, border.CGColor);
         
-        CGContextSetLineWidth(*context, 1.0f);
+        CGContextSetLineWidth(*context, 1.0);
         
-        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.5f, 0.5f, rect.size.width-1.0f, rect.size.height-1.0f)
+        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.5, 0.5, rect.size.width-1.0, rect.size.height-1.0)
                                                         cornerRadius:cornerRaius];
         
         CGContextAddPath(*context, path.CGPath);

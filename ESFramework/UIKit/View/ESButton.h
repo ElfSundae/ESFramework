@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, ESButtonStyle) {
 @property (nonatomic, strong) UIColor *buttonColor UI_APPEARANCE_SELECTOR;
 /**
  * Corner radius for ESButtonStyleRoundedRect, NSNumber with CGFloat.
- * Default is 4.f if buttonFlatStyled is YES or 6.f if buttonFlatStyled is NO.
+ * Default is 4. if buttonFlatStyled is YES or 6. if buttonFlatStyled is NO.
  */
 @property (nonatomic, strong) NSNumber *buttonRoundedCornerRadius UI_APPEARANCE_SELECTOR;
 
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, ESButtonStyle) {
 
 // TODO: support setting borderWidth and borderColor
 /**
- * Default is 1.f
+ * Default is 1.
  */
 //@property (nonatomic) CGFloat borderWidth;
 /**

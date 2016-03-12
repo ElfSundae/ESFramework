@@ -15,12 +15,12 @@
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {
-        return [UIColor colorWithRed:red/255.f green:green/255.f blue:blue/255.f alpha:alpha];
+        return [UIColor colorWithRed:red/255. green:green/255. blue:blue/255. alpha:alpha];
 }
 
 UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
 {
-        return UIColorWithRGBA(red, green, blue, 1.f);
+        return UIColorWithRGBA(red, green, blue, 1.);
 }
 
 UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha)
@@ -30,7 +30,7 @@ UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha)
 
 UIColor *UIColorWithRGBHex(NSInteger rgbValue)
 {
-        return UIColorWithRGBAHex(rgbValue, 1.f);
+        return UIColorWithRGBAHex(rgbValue, 1.);
 }
 
 UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
@@ -93,7 +93,7 @@ UIColor *ESRandomColor(void)
         return [UIColor colorWithRed:(CGFloat)arc4random()/UINT_MAX
                                green:(CGFloat)arc4random()/UINT_MAX
                                 blue:(CGFloat)arc4random()/UINT_MAX
-                               alpha:1.f];
+                               alpha:1.];
 }
 
 NSString *ESRandomStringOfLength(NSUInteger length)

@@ -159,7 +159,7 @@ unsigned long long ESULongLongValue(id obj)
 
 float ESFloatValue(id obj)
 {
-        return ESFloatValueWithDefault(obj, 0.f);
+        return ESFloatValueWithDefault(obj, 0.);
 }
 
 double ESDoubleValue(id obj)
