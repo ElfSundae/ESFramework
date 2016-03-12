@@ -27,9 +27,14 @@
 - (void)removeAllSubviews;
 
 /**
- * Search in supviews or subviews to find a `UIView` instance which is kind of `class_`.
+ * Searches in superviews recursively to find the view which its class is the given viewClass.
  */
-- (UIView *)findViewWithClass:(Class)class_ shouldSearchInSuperview:(BOOL)shouldSearchInSuperview;
+- (UIView *)findViewWithClassInSuperviews:(Class)viewClass;
+
+/**
+ * Searches in subviews recursively to find the view which its class is the given viewClass.
+ */
+- (UIView *)findViewWithClassInSubviews:(Class)viewClass;
 
 /**
  * Returns `UIViewController` which manages this view.

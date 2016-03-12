@@ -44,26 +44,34 @@
         }
 }
 
-- (UIView *)findViewWithClass:(Class)class_ shouldSearchInSuperview:(BOOL)shouldSearchInSuperview
+- (UIView *)findViewWithClassInSuperviews:(Class)viewClass
 {
-        if ([self isKindOfClass:class_]) {
-                return self;
-        }
-        if (shouldSearchInSuperview) {
-                if (self.superview) {
-                        return [self.superview findViewWithClass:class_ shouldSearchInSuperview:YES];
-                }
+        if ([self.superview isKindOfClass:viewClass]) {
+                return self.superview;
+        } else if (self.superview) {
+                return [self.superview findViewWithClassInSuperviews:viewClass];
         } else {
-                for (UIView *v in self.subviews) {
-                        UIView *child = [v findViewWithClass:class_ shouldSearchInSuperview:NO];
-                        if (child) {
-                                return child;
+                return nil;
+        }
+}
+
+- (UIView *)findViewWithClassInSubviews:(Class)viewClass
+{
+        UIView *foundView = nil;
+        for (UIView *view in self.subviews) {
+                if ([view isKindOfClass:viewClass]) {
+                        foundView = view;
+                        break;
+                } else {
+                        UIView *subview = [self findViewWithClassInSubviews:viewClass];
+                        if (subview) {
+                                foundView = subview;
+                                break;
                         }
                 }
         }
-        return nil;
+        return foundView;
 }
-
 
 - (UIViewController *)viewController
 {
