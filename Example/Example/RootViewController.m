@@ -15,27 +15,22 @@
         [super viewDidLoad];
         
         self.title = @"ESFramework Example";
-        
         UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
         [infoButton addEventHandler:^(id sender, UIControlEvents controlEvent) {
                 [UIAlertView showWithTitle:@"About" message:@"ESFramework\nhttp://0x123.com" cancelButtonTitle:ESLocalizedString(@"OK")];
         } forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
         
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithDoneStyle:@"Done" handler:^(UIBarButtonItem *barButtonItem) {
-                if (self.statusOverlayView) {
-                        [self.statusOverlayView hideAnimated:YES];
-                        self.statusOverlayView = nil;
-                } else {
-                        self.statusOverlayView = [[ESStatusOverlayView alloc] initWithView:self.view];
-                        self.statusOverlayView.activityLabel.activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-                        self.statusOverlayView.activityLabel.activityIndicatorView.color = [UIColor redColor];
-                        [self.statusOverlayView showActivityLabel];
-                }
-        }];
-        
         self.tableView.rowHeight = 60;
         [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+        ESWeakSelf;
+        self.tableView.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
+                ESDispatchAfter(1, ^{
+                        ESStrongSelf;
+                        [_self.tableView reloadData];
+                        [refreshControl endRefreshing];
+                });
+        }];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
