@@ -17,7 +17,7 @@ An **E**ffective & **S**wing **Framework** for iOS.
 * Via [CocoaPods](http://cocoapods.org) **(Recommended)**
 
 ```ruby
-pod "ESFramework", "~> 2.0"
+pod "ESFramework", "~> 2.4"
 ```
 
 **Subspecs:**
@@ -28,7 +28,6 @@ ESFramework/Additions
 ESFramework/App
 ESFramework/StoreKit
 ESFramework/UIKit
-ESFramework/UIKit/Animation
 ESFramework/UIKit/View
 ESFramework/UIKit/RefreshControl
 ESFramework/UIKit/Controller
