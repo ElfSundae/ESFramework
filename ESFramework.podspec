@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ESFramework"
-  s.version           = "2.3.5"
+  s.version           = "2.4.0"
   s.license           = "MIT"
   s.summary           = "An Effective & Swing Framework for iOS."
   s.homepage          = "https://github.com/ESFramework/ESFramework"
@@ -43,18 +43,17 @@ Pod::Spec.new do |s|
     ss.source_files         = "ESFramework/UIKit/ESFrameworkUIKit.h"
     ss.frameworks           = "QuartzCore"
 
-    ss.subspec "Animation" do |sss|
-      sss.source_files      = "ESFramework/UIKit/Animation/**/*.{h,m}"
-    end
     ss.subspec "View" do |sss|
       sss.source_files      = "ESFramework/UIKit/View/**/*.{h,m}"
       sss.dependency          "ESFramework/Core"
       sss.dependency          "ESFramework/Additions"
     end
+
     ss.subspec "RefreshControl" do |sss|
       sss.source_files      = "ESFramework/UIKit/RefreshControl/**/*.{h,m}"
       sss.dependency          "ESFramework/UIKit/View"
     end
+
     ss.subspec "Controller" do |sss|
       sss.source_files      = "ESFramework/UIKit/Controller/**/*.{h,m}"
       sss.frameworks        = "MediaPlayer"
@@ -63,5 +62,4 @@ Pod::Spec.new do |s|
       sss.dependency          "ESFramework/UIKit/RefreshControl"
     end
   end
-
 end
