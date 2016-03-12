@@ -22,31 +22,6 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
 
 /**
  * Pull-To-Refresh control.
- *
- * @warning To be safely, you may set `refreshControl` to `nil` in container's dealloc method.
- *
- * @code
- * - (void)dealloc
- * {
- *         if (_tableView.refreshControl) {
- *                 _tableView.refreshControl = nil;
- *         }
- *         _tableView.dataSource = nil;
- *         _tableView.delegate = nil;
- *         _tableView = nil;
- * }
- * @endcode
- *
- * @code
- * - (void)dealloc
- * {
- *         if (_webView.scrollView.refreshControl) {
- *                 _webView.scrollView.refreshControl = nil;
- *         }
- *         _webView.delegate = nil;
- * }
- * @endcode
- *
  */
 @interface ESRefreshControl : UIView
 
@@ -56,7 +31,7 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
 @property (nonatomic, copy) ESRefreshControlUpdatedScrollViewBlock didUpdateScrollViewsContentInsetBlock;
 @property (nonatomic, copy) ESRefreshControlStateBlock textForStateBlock;
 
-+ (instancetype)controlWithStartRefreshingBlock:(ESRefreshControlBlock)block;
++ (instancetype)refreshControlWithDidStartRefreshingBlock:(ESRefreshControlBlock)block;
 
 /**
  * Call this method when you start refreshing, the `UIRefreshControl` will expand.
