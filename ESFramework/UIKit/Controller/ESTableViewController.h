@@ -7,48 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESTableViewDataSource.h"
 #import <ESFramework/ESRefreshControl.h>
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - ESTableViewController
-
 /**
- * `UIViewController` coontains a `UITableView`
+ * `ESTableViewController` is a replacement of `UITableViewController`.
+ *
+ * `ESTableViewController` adds the table view as a subview of self.view.
  */
-@interface ESTableViewController : UIViewController <ESTableViewDataSource, UITableViewDelegate>
+@interface ESTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
         UITableView *_tableView;
 }
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, readonly) UITableViewStyle tableViewStyle;
-
-/**
- * Defaults to YES. If YES, any selection is cleared in `viewWillAppear:`
- */
-@property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
-
-/**
- * Designed initializtion method.
- */
 - (instancetype)initWithStyle:(UITableViewStyle)style;
 
-@end
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UITableViewCell
-@interface UITableViewCell (ESTableViewAdditions)
-
-/**
- * These property will be configured in -tableView:cellForRowAtIndexPath:
- */
-@property (nonatomic, strong) id cellData;
-@property (nonatomic, strong, readonly) NSIndexPath *cellIndexPath;
-@property (nonatomic, readonly) BOOL isFirstRowInSection;
-@property (nonatomic, readonly) BOOL isLastRowInSection;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, readonly) UITableViewStyle tableViewStyle;
+@property (nonatomic, strong) ESRefreshControl *refreshControl;
+@property (nonatomic) BOOL clearsSelectionOnViewWillAppear;
 
 @end

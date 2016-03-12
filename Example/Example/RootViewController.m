@@ -14,7 +14,7 @@
 {
         [super viewDidLoad];
         
-        self.title = NSStringWith(@"ESFramework %@", [ESApp sharedApp].appDisplayName);
+        self.title = @"ESFramework Example";
         
         UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
         [infoButton addEventHandler:^(id sender, UIControlEvents controlEvent) {
@@ -22,9 +22,7 @@
         } forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
         
-        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-        
-        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithDoneStyle:@"done" handler:^(UIBarButtonItem *barButtonItem) {
+        self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithDoneStyle:@"Done" handler:^(UIBarButtonItem *barButtonItem) {
                 if (self.statusOverlayView) {
                         [self.statusOverlayView hideAnimated:YES];
                         self.statusOverlayView = nil;
@@ -35,6 +33,9 @@
                         [self.statusOverlayView showActivityLabel];
                 }
         }];
+        
+        self.tableView.rowHeight = 60;
+        [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -43,17 +44,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-        return ESRandomNumber(100, 1000);
+        return ESRandomNumber(5, 60);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        return [tableView dequeueReusableCellWithIdentifier:@"cellID"];
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-        cell.contentView.backgroundColor = ESRandomColor();
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
+        cell.textLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"section %ld row %ld", indexPath.section, indexPath.row]
+                                                                        attributes:@{NSForegroundColorAttributeName: ESRandomColor(),
+                                                                                     NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
+        return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

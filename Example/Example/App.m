@@ -14,9 +14,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
         [super application:application didFinishLaunchingWithOptions:launchOptions];
-        
-        self.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
-        self.window.rootViewController = self.rootViewController;
+
+        self.window.rootViewController = self.rootViewController =
+        [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
         
         NSLog(@"%@", [ESApp sharedApp].analyticsInformation);
         NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:ESAppStoreCountryCodeChina]);

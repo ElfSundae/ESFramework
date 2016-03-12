@@ -109,8 +109,6 @@
 		E7A38C921C4DFA1A00972B01 /* ESMoviePlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESMoviePlayerViewController.m; sourceTree = "<group>"; };
 		E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
 		E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESTableViewController.m; sourceTree = "<group>"; };
-		E7A38C951C4DFA1A00972B01 /* ESTableViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESTableViewDataSource.h; sourceTree = "<group>"; };
-		E7A38C961C4DFA1A00972B01 /* UITableViewCell+ESTableViewAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+ESTableViewAdditions.m"; sourceTree = "<group>"; };
 		E7A38C981C4DFA1A00972B01 /* ESActivityLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESActivityLabel.h; sourceTree = "<group>"; };
 		E7A38C991C4DFA1A00972B01 /* ESActivityLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESActivityLabel.m; sourceTree = "<group>"; };
 		E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESBadgeView.h; sourceTree = "<group>"; };
@@ -340,10 +338,8 @@
 				E7A38CBE1C4E043800972B01 /* ESFrameworkUIControllers.h */,
 				E7A38C911C4DFA1A00972B01 /* ESMoviePlayerViewController.h */,
 				E7A38C921C4DFA1A00972B01 /* ESMoviePlayerViewController.m */,
-				E7A38C951C4DFA1A00972B01 /* ESTableViewDataSource.h */,
 				E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */,
 				E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */,
-				E7A38C961C4DFA1A00972B01 /* UITableViewCell+ESTableViewAdditions.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
