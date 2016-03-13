@@ -32,32 +32,29 @@
         return [NSString stringWithFormat:@"#%02lX%02lX%02lX", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.)];
 }
 
-+ (UIColor *)es_groupTableViewBackgroundColor
++ (UIColor *)es_iOS6GroupTableViewBackgroundColor
 {
-        if (ESOSVersionIsAtLeast(NSFoundationVersionNumber_iOS_6_0)) {
-                static UIImage *__esGroupTableViewBackgroundImage = nil;
-                static dispatch_once_t onceToken;
-                dispatch_once(&onceToken, ^{
-                        UIGraphicsBeginImageContextWithOptions(CGSizeMake(7., 1.), NO, 0.0);
-                        CGContextRef c = UIGraphicsGetCurrentContext();
-                        [[UIColor colorWithRed:185/255. green:192/255. blue:202/255. alpha:1.] setFill];
-                        CGContextFillRect(c, CGRectMake(0, 0, 4, 1));
-                        [[UIColor colorWithRed:185/255. green:193/255. blue:200/255. alpha:1.] setFill];
-                        CGContextFillRect(c, CGRectMake(4, 0, 1, 1));
-                        [[UIColor colorWithRed:192/255. green:200/255. blue:207/255. alpha:1.] setFill];
-                        CGContextFillRect(c, CGRectMake(5, 0, 2, 1));
-                        __esGroupTableViewBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
-                        UIGraphicsEndImageContext();
-                });
-                return [UIColor colorWithPatternImage:__esGroupTableViewBackgroundImage];
-        } else {
-                return [UIColor groupTableViewBackgroundColor];
-        }
+        static UIImage *__esGroupTableViewBackgroundImage = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                UIGraphicsBeginImageContextWithOptions(CGSizeMake(7., 1.), NO, 0.0);
+                CGContextRef c = UIGraphicsGetCurrentContext();
+                [[UIColor colorWithRed:185./255. green:192./255. blue:202./255. alpha:1.] setFill];
+                CGContextFillRect(c, CGRectMake(0, 0, 4, 1));
+                [[UIColor colorWithRed:185./255. green:193./255. blue:200./255. alpha:1.] setFill];
+                CGContextFillRect(c, CGRectMake(4, 0, 1, 1));
+                [[UIColor colorWithRed:192./255. green:200./255. blue:207./255. alpha:1.] setFill];
+                CGContextFillRect(c, CGRectMake(5, 0, 2, 1));
+                __esGroupTableViewBackgroundImage = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+        });
+        return [UIColor colorWithPatternImage:__esGroupTableViewBackgroundImage];
 }
 
 + (UIColor *)es_viewBackgroundColor
 {
-        return [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
+        // 0.937255 0.937255 0.956863 1
+        return [UIColor groupTableViewBackgroundColor];
 }
 
 + (UIColor *)es_redNavigationBarColor

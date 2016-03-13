@@ -25,9 +25,9 @@
 /// @"#EF9CFF"
 - (NSString *)es_HexString;
 
-/// take groupTableViewBackgroundColor back on iOS6+
-+ (UIColor *)es_groupTableViewBackgroundColor;
-/// [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000]
+/// groupTableViewBackgroundColor below iOS 7
++ (UIColor *)es_iOS6GroupTableViewBackgroundColor;
+/// groupTableViewBackgroundColor above iOS 7
 + (UIColor *)es_viewBackgroundColor;
 
 /// [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000]
