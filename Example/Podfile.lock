@@ -1,31 +1,31 @@
 PODS:
-  - ESFramework (2.4.0):
-    - ESFramework/Additions (= 2.4.0)
-    - ESFramework/App (= 2.4.0)
-    - ESFramework/Core (= 2.4.0)
-    - ESFramework/StoreKit (= 2.4.0)
-    - ESFramework/UIKit (= 2.4.0)
-  - ESFramework/Additions (2.4.0):
+  - ESFramework (2.4.1):
+    - ESFramework/Additions (= 2.4.1)
+    - ESFramework/App (= 2.4.1)
+    - ESFramework/Core (= 2.4.1)
+    - ESFramework/StoreKit (= 2.4.1)
+    - ESFramework/UIKit (= 2.4.1)
+  - ESFramework/Additions (2.4.1):
     - ESFramework/Core
-  - ESFramework/App (2.4.0):
+  - ESFramework/App (2.4.1):
     - ESFramework/Additions
     - ESFramework/Core
-  - ESFramework/Core (2.4.0)
-  - ESFramework/StoreKit (2.4.0):
+  - ESFramework/Core (2.4.1)
+  - ESFramework/StoreKit (2.4.1):
     - ESFramework/Additions
     - ESFramework/App
     - ESFramework/Core
-  - ESFramework/UIKit (2.4.0):
-    - ESFramework/UIKit/Controller (= 2.4.0)
-    - ESFramework/UIKit/RefreshControl (= 2.4.0)
-    - ESFramework/UIKit/View (= 2.4.0)
-  - ESFramework/UIKit/Controller (2.4.0):
+  - ESFramework/UIKit (2.4.1):
+    - ESFramework/UIKit/Controller (= 2.4.1)
+    - ESFramework/UIKit/RefreshControl (= 2.4.1)
+    - ESFramework/UIKit/View (= 2.4.1)
+  - ESFramework/UIKit/Controller (2.4.1):
     - ESFramework/App
     - ESFramework/UIKit/RefreshControl
     - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.4.0):
+  - ESFramework/UIKit/RefreshControl (2.4.1):
     - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.4.0):
+  - ESFramework/UIKit/View (2.4.1):
     - ESFramework/Additions
     - ESFramework/Core
 
@@ -37,6 +37,6 @@ EXTERNAL SOURCES:
     :path: "../ESFramework.podspec"
 
 SPEC CHECKSUMS:
-  ESFramework: ff5a0094bd7c4a46c95e56d766051bfd6a3a488d
+  ESFramework: 159812f95a7b080f940189abf172528914c3c851
 
 COCOAPODS: 0.39.0
