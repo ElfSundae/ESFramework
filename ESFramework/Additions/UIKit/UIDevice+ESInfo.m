@@ -16,6 +16,9 @@
 #import <ESFramework/ESValue.h>
 #import <sys/sysctl.h>
 #import <mach/mach.h>
+#include <ifaddrs.h>
+#include <arpa/inet.h>
+#include <net/if.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,6 +234,67 @@
 + (NSString *)currentLocaleIdentifier
 {
         return [[self currentLocale] localeIdentifier];
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Network Interfaces
+
++ (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback
+{
+        NSMutableDictionary *result = [NSMutableDictionary dictionary];
+        
+        struct ifaddrs *interfaces = NULL;
+        const struct ifaddrs *cursor = NULL;
+        if ((getifaddrs(&interfaces) == 0)) {
+                for (cursor = interfaces; cursor != NULL; cursor = cursor->ifa_next) {
+                        if (!(cursor->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */ ) {
+                                continue; // deeply nested code harder to read
+                        }
+                        if (!includesLoopback && strcmp(cursor->ifa_name, "lo0") == 0) {
+                                continue; // skip Loopback address
+                        }
+                        
+                        NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
+                        NSString *family = nil;
+                        NSString *ip = nil;
+                        if (cursor->ifa_addr->sa_family == AF_INET) {
+                                char ipBuffer[INET_ADDRSTRLEN];
+                                struct sockaddr_in *addr = (struct sockaddr_in *)cursor->ifa_addr;
+                                if (inet_ntop(AF_INET, &addr->sin_addr, ipBuffer, sizeof(ipBuffer))) {
+                                        family = kESNetworkInterfaceFamilyIPv4;
+                                        ip = [NSString stringWithUTF8String:ipBuffer];
+                                }
+                        } else if (cursor->ifa_addr->sa_family == AF_INET6) {
+                                char ipBuffer[INET6_ADDRSTRLEN];
+                                struct sockaddr_in6 *addr = (struct sockaddr_in6 *)cursor->ifa_addr;
+                                if (inet_ntop(AF_INET6, &addr->sin6_addr, ipBuffer, sizeof(ipBuffer))) {
+                                        family = kESNetworkInterfaceFamilyIPv6;
+                                        ip = [NSString stringWithUTF8String:ipBuffer];
+                                }
+                        }
+                        
+                        if (name && family && ip) {
+                                if (!result[family]) {
+                                        result[family] = [NSMutableDictionary dictionary];
+                                }
+                                result[family][name] = ip;
+                        }
+                }
+                
+                freeifaddrs(interfaces);
+        }
+        return result;
+}
+
++ (NSString *)localIPv4Address
+{
+        return [self getNetworkInterfacesIncludesLoopback:NO][kESNetworkInterfaceFamilyIPv4][kESNetworkInterfaceNameWiFi];
+}
+
++ (NSString *)localIPv6Address
+{
+        return [self getNetworkInterfacesIncludesLoopback:NO][kESNetworkInterfaceFamilyIPv6][kESNetworkInterfaceNameWiFi];
 }
 
 @end
