@@ -25,7 +25,7 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Public
 
-- (void)registerForRemoteNotificationsWithTypes:(ESUserNotificationType)types
+- (void)registerForRemoteNotificationsWithTypes:(UIUserNotificationType)types
                                      categories:(NSSet *)categories
                                         success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
                                         failure:(void (^)(NSError *error))failure
@@ -48,7 +48,7 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
         UIApplication *app = [UIApplication sharedApplication];
         if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
                 // iOS 8+
-                UIUserNotificationType registerForTypes = (UIUserNotificationType)types;
+                UIUserNotificationType registerForTypes = types;
                 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:registerForTypes categories:categories];
                 [app registerUserNotificationSettings:settings];                
         } else {
@@ -75,14 +75,14 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
         return ([self enabledRemoteNotificationTypes] != 0);
 }
 
-- (ESUserNotificationType)enabledRemoteNotificationTypes
+- (UIUserNotificationType)enabledRemoteNotificationTypes
 {
         UIApplication *app = [UIApplication sharedApplication];
         if ([app respondsToSelector:@selector(currentUserNotificationSettings)]) {
                 UIUserNotificationType currentType = app.currentUserNotificationSettings.types;
-                return (ESUserNotificationType)currentType;
+                return currentType;
         } else {
-                return (ESUserNotificationType)[app enabledRemoteNotificationTypes];
+                return (UIUserNotificationType)[app enabledRemoteNotificationTypes];
         }
 }
 

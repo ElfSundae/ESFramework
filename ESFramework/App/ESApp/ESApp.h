@@ -17,14 +17,6 @@ typedef NS_ENUM(NSInteger, ESAppErrorCode) {
         ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = -11,
 };
 
-typedef NS_OPTIONS(NSUInteger, ESUserNotificationType) {
-        ESUserNotificationTypeNone      = 0,
-        ESUserNotificationTypeBadge     = 1 << 0,
-        ESUserNotificationTypeSound     = 1 << 1,
-        ESUserNotificationTypeAlert     = 1 << 2,
-};
-
-
 /// The key of userInfo for ESAppErrorCodeCouldNotRegisterUserNotificationSettings
 FOUNDATION_EXTERN NSString *const ESUserNotificationSettingsErrorKey;
 
@@ -249,14 +241,14 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
  *
  * @param categories is only for iOS8+, contains instances of UIUserNotificationCategory.
  */
-- (void)registerForRemoteNotificationsWithTypes:(ESUserNotificationType)types
+- (void)registerForRemoteNotificationsWithTypes:(UIUserNotificationType)types
                                      categories:(NSSet *)categories
                                         success:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success
                                         failure:(void (^)(NSError *error))failure;
 - (void)setCallbackForRemoteNotificationsRegistrationWithSuccess:(void (^)(NSData *deviceToken, NSString *deviceTokenString))success failure:(void (^)(NSError *error))failure;
 - (void)unregisterForRemoteNotifications;
 - (BOOL)isRegisteredForRemoteNotifications;
-- (ESUserNotificationType)enabledRemoteNotificationTypes;
+- (UIUserNotificationType)enabledRemoteNotificationTypes;
 - (NSString *)remoteNotificationsDeviceToken;
 
 @end
