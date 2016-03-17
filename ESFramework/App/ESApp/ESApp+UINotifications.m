@@ -48,8 +48,7 @@ static NSString *__esRemoteNotificationsDeviceToken = nil;
         UIApplication *app = [UIApplication sharedApplication];
         if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
                 // iOS 8+
-                UIUserNotificationType registerForTypes = types;
-                UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:registerForTypes categories:categories];
+                UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
                 [app registerUserNotificationSettings:settings];                
         } else {
                 [app registerForRemoteNotificationTypes:(UIRemoteNotificationType)types];
