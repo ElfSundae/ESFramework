@@ -79,28 +79,28 @@
 - (NSDictionary *)analyticsInformation
 {
         NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        result[@"os"] = [UIDevice systemName];
-        result[@"os_version"] = [UIDevice systemVersion];
-        result[@"model"] = [UIDevice model];
-        result[@"name"] = [UIDevice name];
-        result[@"platform"] = [UIDevice platform];
-        result[@"carrier"] = [UIDevice carrierString];
-        result[@"jailbroken"] = @([UIDevice isJailbroken] ? 1 : 0);
-        result[@"screen_size"] = [UIDevice screenSizeString];
+        result[@"os"]           = [UIDevice systemName];
+        result[@"os_version"]   = [UIDevice systemVersion];
+        result[@"model"]        = [UIDevice model];
+        result[@"name"]         = [UIDevice name];
+        result[@"platform"]     = [UIDevice platform];
+        result[@"carrier"]      = [UIDevice carrierString];
+        result[@"jailbroken"]   = @([UIDevice isJailbroken] ? 1 : 0);
+        result[@"screen_size"]  = [UIDevice screenSizeString];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
-        result[@"locale"] = [UIDevice currentLocaleIdentifier];
-        result[@"network"] = [UIDevice currentNetworkReachabilityStatusString];
-        result[@"app_name"] = self.appName;
-        result[@"app_version"] = [[self class] appVersion];
-        NSString *previousAppVersion = nil;
+        result[@"locale"]       = [UIDevice currentLocaleIdentifier];
+        result[@"network"]      = [UIDevice currentNetworkReachabilityStatusString];
+        result[@"app_name"]     = self.appName;
+        result[@"app_identifier"] = [[self class] appBundleIdentifier];
+        result[@"app_version"]  = [[self class] appVersion];
+        result[@"app_channel"]  = self.appChannel ?: @"";
+        NSString *__autoreleasing previousAppVersion = nil;
         if ([[self class] isFreshLaunch:&previousAppVersion]) {
                 result[@"app_fresh_launch"] = @(YES);
                 if (previousAppVersion) {
                         result[@"app_previous_version"] = previousAppVersion;
                 }
         }
-        result[@"app_identifier"] = [[self class] appBundleIdentifier];
-        result[@"app_channel"] = self.appChannel ?: @"";
         
         return (NSDictionary *)result;
 }
