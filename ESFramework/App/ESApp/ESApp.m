@@ -46,7 +46,7 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 {
         /* Setup window */
         self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.];
+        self.window.backgroundColor = [UIColor whiteColor];
         
         return YES;
 }
