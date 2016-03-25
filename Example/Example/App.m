@@ -19,7 +19,7 @@
         [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
         
         NSLog(@"%@", [ESApp sharedApp].analyticsInformation);
-        NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:ESAppStoreCountryCodeChina]);
+        NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:nil]);
         
         [self.window makeKeyAndVisible];
         return YES;

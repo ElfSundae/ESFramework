@@ -7,8 +7,9 @@
 //
 
 #import "NSDictionary+ESAdditions.h"
-#import "NSString+ESAdditions.h"
 #import <ESFramework/ESValue.h>
+#import <ESFramework/NSString+ESAdditions.h>
+#import <ESFramework/NSArray+ESAdditions.h>
 
 @implementation NSDictionary (ESAdditions)
 
@@ -156,6 +157,47 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - NSMutableDictionary
 @implementation NSMutableDictionary (ESAdditions)
+
+- (BOOL)es_setValue:(id)value forKeyPath:(NSString *)keyPath
+{
+        if (![keyPath isKindOfClass:[NSString class]]) {
+                return NO;
+        }
+        if (![keyPath contains:@"."]) {
+                self[keyPath] = value;
+                return YES;
+        }
+        NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+        if (keys.count < 2) {
+                return NO;
+        }
+        
+        NSUInteger maxIndex = keys.count - 1;
+        __block NSMutableString *currentKeyPath = [NSMutableString string];
+        __block NSMutableDictionary *mutableCopy = self.mutableCopy;
+        [keys each:^(id subKey, NSUInteger idx, BOOL *stop) {
+                [currentKeyPath appendFormat:@"%@%@", (currentKeyPath.length > 0 ? @"." : @""), subKey];
+                if (idx == maxIndex) {
+                        [mutableCopy setValue:value forKeyPath:currentKeyPath];
+                        return;
+                }
+                id currentValue = [mutableCopy valueForKeyPath:currentKeyPath];
+                if (!currentValue) {
+                        [mutableCopy setValue:[NSMutableDictionary dictionary] forKeyPath:currentKeyPath];
+                } else if ([currentValue isKindOfClass:[NSDictionary class]] &&
+                           ![currentValue isKindOfClass:[NSMutableDictionary class]]) {
+                        [mutableCopy setValue:[currentValue mutableCopy] forKeyPath:currentKeyPath];
+                } else if (![currentValue isKindOfClass:[NSDictionary class]]) {
+                        mutableCopy = nil;
+                        *stop = YES;
+                }
+        }];
+        if (mutableCopy) {
+                [self setDictionary:mutableCopy];
+                return YES;
+        }
+        return NO;
+}
 
 - (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate
 {

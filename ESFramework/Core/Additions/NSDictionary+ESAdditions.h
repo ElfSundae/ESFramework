@@ -68,6 +68,13 @@
 
 @interface NSMutableDictionary (ESAdditions)
 
+/**
+ * Set the value for the derived property identified by a given key path.
+ *
+ * @param keyPath A key path of the form relationship.property (with one or more relationships); for example “department.name” or “department.manager.lastName”.
+ */
+- (BOOL)es_setValue:(id)value forKeyPath:(NSString *)keyPath;
+
 - (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate;
 - (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option;
 
