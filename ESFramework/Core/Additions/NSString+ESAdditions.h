@@ -7,8 +7,8 @@
 //
 
 #import <ESFramework/ESDefines.h>
-#import "NSString+ESGTMHTML.h"
-#import "NSRegularExpression+ESAdditions.h"
+#import <ESFramework/NSString+ESGTMHTML.h>
+#import <ESFramework/NSRegularExpression+ESAdditions.h>
 
 @interface NSString (ESAdditions)
 

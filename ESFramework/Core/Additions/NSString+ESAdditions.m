@@ -257,9 +257,7 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
                 BOOL result = (ESTouchDirectoryAtFilePath(path) &&
                                [self writeToFile:path atomically:useAuxiliaryFile encoding:enc error:NULL]);
                 ESDispatchOnMainThreadAsynchrony(^{
-                        if (completion) {
-                                completion(result);
-                        }
+                        if (completion) completion(result);
                 });
         });
 }
@@ -270,9 +268,7 @@ static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
                BOOL result = (ESTouchDirectoryAtURL(url) &&
                               [self writeToURL:url atomically:useAuxiliaryFile encoding:enc error:NULL]);
                ESDispatchOnMainThreadAsynchrony(^{
-                       if (completion) {
-                               completion(result);
-                       }
+                       if (completion) completion(result);
                });
        });
 }

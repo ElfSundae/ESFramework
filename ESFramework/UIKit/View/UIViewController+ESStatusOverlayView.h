@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESStatusOverlayView.h"
+#import <ESFramework/ESStatusOverlayView.h>
 
 @interface UIViewController (ESStatusOverlayView)
 @property (nonatomic, strong) ESStatusOverlayView *statusOverlayView;

@@ -7,10 +7,17 @@
 //
 
 #import "ESStoreHelper.h"
+#import <ESFramework/ESValue.h>
 #import <ESFramework/NSString+ESAdditions.h>
 #import <ESFramework/NSRegularExpression+ESAdditions.h>
 
 @implementation ESStoreHelper
+
++ (BOOL)isItemID:(id)itemID
+{
+        NSString *string = ESStringValue(itemID);
+        return (string && [string isMatch:@"^\\d{8,}$"]);
+}
 
 + (NSString *)itemIDFromURL:(NSURL *)URL
 {
@@ -23,11 +30,6 @@
                 }
         }
         return nil;
-}
-
-+ (BOOL)isItemID:(NSString *)itemID
-{
-        return (ESIsStringWithAnyText(itemID) && [itemID isMatch:@"^\\d{8,}$"]);
 }
 
 + (NSURL *)appLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
@@ -69,30 +71,26 @@
         return nil;
 }
 
-+ (void)openAppStoreWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
++ (BOOL)openAppStoreWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         NSURL *url = [self appStoreLinkForAppID:appID storeCountryCode:storeCountryCode];
-        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-                [[UIApplication sharedApplication] openURL:url];
-        }
+        return [[UIApplication sharedApplication] openURL:url];
 }
 
-+ (void)openAppStoreWithAppID:(NSString *)appID
++ (BOOL)openAppStoreWithAppID:(NSString *)appID
 {
-        [self openAppStoreWithAppID:appID storeCountryCode:nil];
+        return [self openAppStoreWithAppID:appID storeCountryCode:nil];
 }
 
-+ (void)openAppStoreReviewPageWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
++ (BOOL)openAppStoreReviewPageWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode
 {
         NSURL *url = [self appStoreReviewLinkForAppID:appID storeCountryCode:storeCountryCode];
-        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-                [[UIApplication sharedApplication] openURL:url];
-        }
+        return [[UIApplication sharedApplication] openURL:url];
 }
 
-+ (void)openAppStoreReviewPageWithAppID:(NSString *)appID
++ (BOOL)openAppStoreReviewPageWithAppID:(NSString *)appID
 {
-        [self openAppStoreReviewPageWithAppID:appID storeCountryCode:nil];
+        return [self openAppStoreReviewPageWithAppID:appID storeCountryCode:nil];
 }
 
 @end

@@ -138,20 +138,14 @@
         return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile withBlock:(void (^)(BOOL result))block
+- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile completion:(void (^)(BOOL result))completion
 {
-        ESWeakSelf;
         ESDispatchOnDefaultQueue(^{
-                ESStrongSelf;
-                BOOL result = NO;
-                if (ESTouchDirectoryAtFilePath(path)) {
-                        result = [_self writeToFile:path atomically:useAuxiliaryFile];
-                }
-                if (block) {
-                        ESDispatchOnMainThreadAsynchrony(^{
-                                block(result);
-                        });
-                }
+                BOOL result = (ESTouchDirectoryAtFilePath(path) &&
+                               [self writeToFile:path atomically:useAuxiliaryFile]);
+                ESDispatchOnMainThreadAsynchrony(^{
+                        if (completion) completion(result);
+                });
         });
 }
 

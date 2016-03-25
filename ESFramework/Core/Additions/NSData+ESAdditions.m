@@ -17,9 +17,7 @@
                 BOOL result = (ESTouchDirectoryAtFilePath(path) &&
                                [self writeToFile:path atomically:useAuxiliaryFile]);
                 ESDispatchOnMainThreadAsynchrony(^{
-                        if (completion) {
-                                completion(result);
-                        }
+                        if (completion) completion(result);
                 });
         });
 }

@@ -104,11 +104,9 @@ ESDefineAssociatedObjectKey(es_codableProperties);
 {
         ESDispatchOnDefaultQueue(^{
                 BOOL result = [self es_writeToFile:filePath atomically:useAuxiliaryFile];
-                if (completion) {
-                        ESDispatchOnMainThreadAsynchrony(^{
-                                completion(result);
-                        });
-                }
+                ESDispatchOnMainThreadAsynchrony(^{
+                        if (completion) completion(result);
+                });
         });
 }
 

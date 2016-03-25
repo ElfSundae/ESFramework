@@ -51,9 +51,7 @@ NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status)
                         return ESNetworkReachabilityStatusStringReachableViaWiFi;
                 case ESNetworkReachabilityStatusReachableViaWWAN:
                         return ESNetworkReachabilityStatusStringReachableViaWWAN;
-                case ESNetworkReachabilityStatusNotReachable:
-                        return ESNetworkReachabilityStatusStringNotReachable;
                 default:
-                        return ESNetworkReachabilityStatusStringReachableUnknown;
+                        return ESNetworkReachabilityStatusStringNotReachable;
         }
 }

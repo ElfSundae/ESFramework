@@ -12,7 +12,6 @@
 #define ESNetworkReachabilityStatusStringNotReachable           @"None"
 #define ESNetworkReachabilityStatusStringReachableViaWWAN       @"WWAN"
 #define ESNetworkReachabilityStatusStringReachableViaWiFi       @"WiFi"
-#define ESNetworkReachabilityStatusStringReachableUnknown       @"Unknown"
 
 FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status);
 
@@ -26,7 +25,7 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
  * [[NSNotificationCenter defaultCenter] addObserver:self
  *                                          selector:@selector(networkReachabilityDidChange:)
  *                                              name:ESNetworkReachabilityDidChangeNotification
- *                                            object:[UIDevice sharedNetworkReachabilityForInternetConnection]];
+ *                                            object:nil];
  *
  * @code
  */

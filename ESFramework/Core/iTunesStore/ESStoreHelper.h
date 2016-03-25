@@ -7,12 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ESAppStoreTerritories.h"
+#import <ESFramework/ESAppStoreTerritories.h>
 
 /**
  * @see https://linkmaker.itunes.apple.com
  */
 @interface ESStoreHelper : NSObject
+
+/**
+ * Returns the given itemID whether matches "^\d{8,}$".
+ */
++ (BOOL)isItemID:(id)itemID;
 
 /**
  * Returns the iTunes item identifier(ID) from the iTunes Store URL, returns `nil` if parsing failed.
@@ -23,11 +28,6 @@
  * Supports all type iTunes links like Apps, Books, Music, Music Videos, Audio Book, Podcast, Movie, etc.
  */
 + (NSString *)itemIDFromURL:(NSURL *)URL;
-
-/**
- * Item ID matches "^\d{8,}$".
- */
-+ (BOOL)isItemID:(NSString *)itemID;
 
 /**
  * e.g. @"284882215", @"us": to @"https://itunes.apple.com/us/app/id284882215"
@@ -48,10 +48,10 @@
 + (NSURL *)appStoreReviewLinkForAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
 
 
-+ (void)openAppStoreWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
-+ (void)openAppStoreWithAppID:(NSString *)appID;
++ (BOOL)openAppStoreWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
++ (BOOL)openAppStoreWithAppID:(NSString *)appID;
 
-+ (void)openAppStoreReviewPageWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
-+ (void)openAppStoreReviewPageWithAppID:(NSString *)appID;
++ (BOOL)openAppStoreReviewPageWithAppID:(NSString *)appID storeCountryCode:(NSString *)storeCountryCode;
++ (BOOL)openAppStoreReviewPageWithAppID:(NSString *)appID;
 
 @end

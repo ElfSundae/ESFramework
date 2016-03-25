@@ -14,5 +14,7 @@
 #import <ESFramework/UIProgressView+ESStyle.h>
 #import <ESFramework/ESStatusOverlayView.h>
 #import <ESFramework/UIViewController+ESStatusOverlayView.h>
-#import <ESFramework/ESMoviePlayerViewController.h>
+
 #import <ESFramework/ESTableViewController.h>
+#import <ESFramework/ESMoviePlayerViewController.h>
+#import <ESFramework/ESStoreProductViewControllerManager.h>

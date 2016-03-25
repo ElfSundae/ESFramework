@@ -10,8 +10,8 @@
 #define ESFrameworkCore_ESDefines_H
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <UIKit/UIKit.h>
 #import <Availability.h>
 #import <objc/runtime.h>
 #import <mach/mach_time.h>

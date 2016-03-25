@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESActivityLabel.h"
-#import "ESErrorView.h"
+#import <ESFramework/ESActivityLabel.h>
+#import <ESFramework/ESErrorView.h>
 
 /**
  * `ESStatusOverlayView` is a view which overlay on a view, such as viewController's view,

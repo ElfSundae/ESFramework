@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ESFramework"
-  s.version           = "2.4.3"
+  s.version           = "2.4.4"
   s.license           = "MIT"
   s.summary           = "An Effective & Swing Framework for iOS."
   s.homepage          = "https://github.com/ElfSundae/ESFramework"
@@ -15,51 +15,13 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files         = "ESFramework/Core/**/*.{h,m}"
-    ss.frameworks           = "CoreGraphics", "Security"
-  end
-
-  s.subspec "Additions" do |ss|
-    ss.source_files         = "ESFramework/Additions/**/*.{h,m}"
-    ss.frameworks           = "CoreTelephony", "SystemConfiguration"
-    ss.dependency           "ESFramework/Core"
-  end
-
-  s.subspec "App" do |ss|
-    ss.source_files         = "ESFramework/App/**/*.{h,m}"
-    ss.private_header_files = "ESFramework/App/**/*+Private.h"
-    ss.dependency             "ESFramework/Core"
-    ss.dependency             "ESFramework/Additions"
-  end
-
-  s.subspec "StoreKit" do |ss|
-    ss.source_files         = "ESFramework/StoreKit/**/*.{h,m}"
-    ss.frameworks           = "StoreKit"
-    ss.dependency           "ESFramework/Core"
-    ss.dependency           "ESFramework/Additions"
-    ss.dependency           "ESFramework/App"
+    ss.private_header_files = "ESFramework/Core/**/*+Private.h"
+    ss.frameworks           = "Security", "CoreTelephony", "SystemConfiguration"
   end
 
   s.subspec "UIKit" do |ss|
-    ss.source_files         = "ESFramework/UIKit/ESFrameworkUIKit.h"
-    ss.frameworks           = "QuartzCore"
-
-    ss.subspec "View" do |sss|
-      sss.source_files      = "ESFramework/UIKit/View/**/*.{h,m}"
-      sss.dependency          "ESFramework/Core"
-      sss.dependency          "ESFramework/Additions"
-    end
-
-    ss.subspec "RefreshControl" do |sss|
-      sss.source_files      = "ESFramework/UIKit/RefreshControl/**/*.{h,m}"
-      sss.dependency          "ESFramework/UIKit/View"
-    end
-
-    ss.subspec "Controller" do |sss|
-      sss.source_files      = "ESFramework/UIKit/Controller/**/*.{h,m}"
-      sss.frameworks        = "MediaPlayer"
-      sss.dependency          "ESFramework/App"
-      sss.dependency          "ESFramework/UIKit/View"
-      sss.dependency          "ESFramework/UIKit/RefreshControl"
-    end
+    ss.source_files         = "ESFramework/UIKit/**/*.{h,m}"
+    ss.frameworks           = "QuartzCore", "StoreKit", "MediaPlayer"
+    ss.dependency           "ESFramework/Core"
   end
 end

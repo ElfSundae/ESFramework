@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp.h"
+#import <ESFramework/ESApp.h>
 
 /**
  * Checks if the current app launch is a fresh launch.

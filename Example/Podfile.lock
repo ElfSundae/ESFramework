@@ -1,32 +1,9 @@
 PODS:
-  - ESFramework (2.4.3):
-    - ESFramework/Additions (= 2.4.3)
-    - ESFramework/App (= 2.4.3)
-    - ESFramework/Core (= 2.4.3)
-    - ESFramework/StoreKit (= 2.4.3)
-    - ESFramework/UIKit (= 2.4.3)
-  - ESFramework/Additions (2.4.3):
-    - ESFramework/Core
-  - ESFramework/App (2.4.3):
-    - ESFramework/Additions
-    - ESFramework/Core
-  - ESFramework/Core (2.4.3)
-  - ESFramework/StoreKit (2.4.3):
-    - ESFramework/Additions
-    - ESFramework/App
-    - ESFramework/Core
-  - ESFramework/UIKit (2.4.3):
-    - ESFramework/UIKit/Controller (= 2.4.3)
-    - ESFramework/UIKit/RefreshControl (= 2.4.3)
-    - ESFramework/UIKit/View (= 2.4.3)
-  - ESFramework/UIKit/Controller (2.4.3):
-    - ESFramework/App
-    - ESFramework/UIKit/RefreshControl
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/RefreshControl (2.4.3):
-    - ESFramework/UIKit/View
-  - ESFramework/UIKit/View (2.4.3):
-    - ESFramework/Additions
+  - ESFramework (2.4.4):
+    - ESFramework/Core (= 2.4.4)
+    - ESFramework/UIKit (= 2.4.4)
+  - ESFramework/Core (2.4.4)
+  - ESFramework/UIKit (2.4.4):
     - ESFramework/Core
 
 DEPENDENCIES:
@@ -37,6 +14,6 @@ EXTERNAL SOURCES:
     :path: "../ESFramework.podspec"
 
 SPEC CHECKSUMS:
-  ESFramework: 2824ff7e1a70b3cb8bc30f865cc49f3ee2172f59
+  ESFramework: 2a7cde1313bc1be1f5b53b6b94b2ba859de82d5b
 
 COCOAPODS: 0.39.0
