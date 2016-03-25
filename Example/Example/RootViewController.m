@@ -45,7 +45,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
-        cell.textLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"section %ld row %ld", indexPath.section, indexPath.row]
+        cell.textLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"section %@ row %@", @(indexPath.section), @(indexPath.row)]
                                                                         attributes:@{NSForegroundColorAttributeName: ESRandomColor(),
                                                                                      NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
         return cell;
