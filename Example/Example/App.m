@@ -7,6 +7,7 @@
 //
 
 #import "App.h"
+#import "RootViewController.h"
 
 @implementation App
 @dynamic rootViewController;
