@@ -133,8 +133,8 @@
         result.width = (stringSize.width + self.frameWidth + self.contentEdgeInsets.left + self.contentEdgeInsets.right);
         result.height = (stringSize.height + self.frameWidth + self.contentEdgeInsets.top + self.contentEdgeInsets.bottom);
         
-        result.width = fmaxf(result.width, self.minimumSize.width);
-        result.height = fmaxf(result.height, self.minimumSize.height);
+        result.width = fmax(result.width, self.minimumSize.width);
+        result.height = fmax(result.height, self.minimumSize.height);
         
         return result;
 }

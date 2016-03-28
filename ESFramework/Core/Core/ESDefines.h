@@ -293,7 +293,7 @@ FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id valu
  * Returns the current statusBar's height, in any orientation.
  */
 NS_INLINE CGFloat ESStatusBarHeight(void) {
-        return fminf([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
+        return fmin([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
 };
 
 /**

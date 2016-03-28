@@ -156,7 +156,7 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 {
         if ([self.contentView respondsToSelector:@selector(refreshControl:pullProgressChanged:)]) {
                 // Ensure the value is between 0 and 1
-                progress = fmaxf(0., (fminf(progress, 1.)));
+                progress = fmax(0., (fmin(progress, 1.)));
                 [self.contentView refreshControl:self pullProgressChanged:progress];
         }
 }

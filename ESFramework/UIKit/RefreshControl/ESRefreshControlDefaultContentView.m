@@ -119,7 +119,7 @@
         if (progress < 0.8) {
                 progress = (progress * self.frame.size.height - self.shapeLayer.frame.origin.y) / self.frame.size.height;
         }
-        progress = fmaxf(0., (fminf(progress, 1.)));
+        progress = fmax(0., (fmin(progress, 1.)));
 #endif
         //NSLog(@"%f %f %f-%f", pullProgress, progress, self.shapeLayer.strokeStart, self.shapeLayer.strokeEnd);
         [CATransaction begin];

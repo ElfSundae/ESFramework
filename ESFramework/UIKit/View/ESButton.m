@@ -91,7 +91,7 @@ buttonFlatStyled = _buttonFlatStyled;
         result.height += self.buttonPadding.top + self.buttonPadding.bottom;
         result.width += self.buttonPadding.left + self.buttonPadding.right;
         if (ESButtonStyleCircle == self.buttonStyle) {
-                result.width = result.height = fmaxf(result.width, result.height);
+                result.width = result.height = fmax(result.width, result.height);
         }
         return result;
 }
