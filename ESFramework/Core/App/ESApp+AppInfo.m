@@ -85,15 +85,18 @@
         result[@"name"]         = [UIDevice name];
         result[@"platform"]     = [UIDevice platform];
         result[@"carrier"]      = [UIDevice carrierString];
-        result[@"jailbroken"]   = @([UIDevice isJailbroken] ? 1 : 0);
-        result[@"screen_size"]  = [UIDevice screenSizeString];
+        result[@"jailbroken"]   = [UIDevice isJailbroken] ? @1 : @0;
+        result[@"screen_size"]  = ESStringFromSize([UIDevice screenSizeInPoints]);
+        result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
         result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
         result[@"locale"]       = [UIDevice currentLocaleIdentifier];
         result[@"network"]      = [UIDevice currentNetworkReachabilityStatusString];
         result[@"app_name"]     = self.appName;
         result[@"app_identifier"] = [[self class] appBundleIdentifier];
         result[@"app_version"]  = [[self class] appVersion];
-        result[@"app_channel"]  = self.appChannel ?: @"";
+        if (self.appChannel) {
+                result[@"app_channel"]  = self.appChannel;
+        }
         NSString *__autoreleasing previousAppVersion = nil;
         if ([[self class] isFreshLaunch:&previousAppVersion]) {
                 result[@"app_fresh_launch"] = @(YES);
@@ -114,10 +117,10 @@
          [UIDevice model],
          [UIDevice systemVersion],
          [UIScreen mainScreen].scale,
-         [UIDevice screenSizeString]];
+         ESStringFromSize([UIDevice screenSizeInPoints])];
         [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
         [ua appendFormat:@"; Network/%@", [UIDevice currentNetworkReachabilityStatusString]];
-        if (ESIsStringWithAnyText(self.appChannel)) {
+        if (self.appChannel) {
                 [ua appendFormat:@"; Channel/%@", self.appChannel];
         }
         [ua appendFormat:@")"];

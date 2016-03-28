@@ -88,15 +88,16 @@
 ///=============================================
 /// @name Screen
 ///=============================================
+
 /**
  * The width and height in pixels.
- * e.g. 640x960
  */
-+ (CGSize)screenSize;
++ (CGSize)screenSizeInPixels;
+
 /**
- * e.g. @"640x960", the `width` is always littler than `height`.
+ * The width and height in points
  */
-+ (NSString *)screenSizeString;
++ (CGSize)screenSizeInPoints;
 
 + (BOOL)isRetinaScreen;
 // iPhone 4/4S, 640x960

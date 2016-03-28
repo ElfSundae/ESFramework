@@ -164,20 +164,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Screen
 
-+ (CGSize)screenSize
++ (CGSize)screenSizeInPixels
 {
         return [[UIScreen mainScreen] currentMode].size;
 }
 
-+ (NSString *)screenSizeString
++ (CGSize)screenSizeInPoints
 {
-        CGSize size = [self screenSize];
-        if (size.width > size.height) {
-                CGFloat t = size.width;
-                size.width = size.height;
-                size.height = t;
-        }
-        return [NSString stringWithFormat:@"%dx%d", (int)size.width, (int)size.height];
+        return [UIScreen mainScreen].bounds.size;
 }
 
 + (BOOL)isRetinaScreen
@@ -187,22 +181,22 @@
 
 + (BOOL)isIPhoneRetina35InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(640., 960.));
+        return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 960.));
 }
 
 + (BOOL)isIPhoneRetina4InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(640., 1136.));
+        return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 1136.));
 }
 
 + (BOOL)isIPhoneRetina47InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(750., 1334.));
+        return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(750., 1334.));
 }
 
 + (BOOL)isIPhoneRetina55InchScreen
 {
-        return CGSizeEqualToSize([self screenSize], CGSizeMake(1242., 2208.));
+        return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(1242., 2208.));
 }
 
 
