@@ -377,6 +377,13 @@ NS_INLINE BOOL UIScreenIsRetina(void) {
 }
 
 /**
+ * Returns NSString from CGSize with format `(int)width+"x"+(int)heigth`.
+ *
+ * @note The height in returned string is always bigger than the width.
+ */
+FOUNDATION_EXTERN NSString *ESStringFromSize(CGSize size);
+
+/**
  * Creates NSString with the given format and arguments.
  */
 FOUNDATION_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);

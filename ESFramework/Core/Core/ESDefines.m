@@ -161,6 +161,16 @@ void ESSetAssociatedObject(id target, const void *key, id value, objc_Associatio
         }
 }
 
+NSString *ESStringFromSize(CGSize size)
+{
+        if (size.height < size.width) {
+                CGFloat t = size.width;
+                size.width = size.height;
+                size.height = t;
+        }
+        return [NSString stringWithFormat:@"%dx%d", (int)size.width, (int)size.height];
+}
+
 NSString *NSStringWith(NSString *format, ...)
 {
         NSString *string = nil;
