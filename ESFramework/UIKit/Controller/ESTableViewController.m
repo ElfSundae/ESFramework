@@ -11,11 +11,6 @@
 
 @implementation ESTableViewController
 
-- (void)dealloc
-{
-        _tableView.refreshControl = nil;
-}
-
 - (instancetype)init
 {
         return [self initWithStyle:UITableViewStylePlain];

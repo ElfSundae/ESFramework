@@ -26,10 +26,10 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
 @interface ESRefreshControl : UIView
 
 @property (nonatomic, readonly) ESRefreshControlState state;
-@property (nonatomic, readonly, weak) __weak UIScrollView *scrollView;
 @property (nonatomic, copy) ESRefreshControlBlock didStartRefreshingBlock;
 @property (nonatomic, copy) ESRefreshControlUpdatedScrollViewBlock didUpdateScrollViewsContentInsetBlock;
 @property (nonatomic, copy) ESRefreshControlStateBlock textForStateBlock;
+- (UIScrollView *)scrollView;
 
 + (instancetype)refreshControlWithDidStartRefreshingBlock:(ESRefreshControlBlock)block;
 

@@ -16,23 +16,16 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 
 @interface ESRefreshControl ()
 {
-        BOOL _isObserverScrollView;
+        BOOL _hasObserveredSuperView;
+        __weak UIScrollView *_storedScrollView;
 }
 
-@property (nonatomic, readwrite, weak) __weak UIScrollView *scrollView;
-@property (nonatomic, readwrite) ESRefreshControlState state;
+@property (nonatomic) ESRefreshControlState state;
 @property (nonatomic) CGFloat contentViewHeight;
 @end
 
 @implementation ESRefreshControl
 @synthesize contentView = _contentView;
-
-- (void)dealloc
-{
-        if (_scrollView && _isObserverScrollView) {
-                [_scrollView removeObserver:self forKeyPath:@"contentOffset" context:_esRefreshControlKVOContext];
-        }
-}
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -58,46 +51,49 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
-        if ([newSuperview isKindOfClass:[UIScrollView class]]) {
-                // add refreshControl to an UIScrollView
-                self.scrollView = (UIScrollView *)newSuperview;
-        } else if (!newSuperview && self.superview == self.scrollView) {
-                if (_isObserverScrollView) {
-                        [self.superview removeObserver:self forKeyPath:@"contentOffset" context:_esRefreshControlKVOContext];
-                        _isObserverScrollView = NO;
+        if (newSuperview) {
+                if ([newSuperview isKindOfClass:[UIScrollView class]]) {
+                        [self _removeScrollViewObserver];
+                        _storedScrollView = (UIScrollView *)newSuperview;
+                        self.frame = CGRectMake(0, 0, newSuperview.bounds.size.width, 0);
+                        self.contentView.frame = CGRectMake(0, 0, self.width, self.contentViewHeight);
+                        [self.contentView refreshControl:self stateChanged:self.state from:self.state];
+                } else {
+                        [NSException raise:@"ESRefreshControlException" format:@"ESRefreshControl can only be added to UIScrollView."];
                 }
+        } else if (self.superview) {
+                [self _removeScrollViewObserver];
         }
 }
 
 - (void)didMoveToWindow
 {
-        if (self.scrollView && !_isObserverScrollView) {
+        if (_storedScrollView && !_hasObserveredSuperView) {
                 // It's the first shown
-                [self.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:_esRefreshControlKVOContext];
-                _isObserverScrollView = YES;
+                [_storedScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:_esRefreshControlKVOContext];
+                _hasObserveredSuperView = YES;
         }
 }
 
+- (void)_removeScrollViewObserver
+{
+        if (_hasObserveredSuperView) {
+                [self.scrollView removeObserver:self forKeyPath:@"contentOffset" context:_esRefreshControlKVOContext];
+                _hasObserveredSuperView = NO;
+                _storedScrollView = nil;
+                if (self.scrollView && self.isRefreshing) {
+                        [self endRefreshing];
+                }
+        }
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Properties
 
-- (void)setScrollView:(UIScrollView *)scrollView
+- (UIScrollView *)scrollView
 {
-        if (_scrollView) {
-                if (_isObserverScrollView) {
-                        [_scrollView removeObserver:self forKeyPath:@"contentOffset" context:_esRefreshControlKVOContext];
-                        _isObserverScrollView = NO;
-                }
-        }
-        
-        _scrollView = scrollView;
-        if (_scrollView) {
-                self.frame = CGRectMake(0., 0., _scrollView.bounds.size.width, 0.);
-                self.contentView.frame = CGRectMake(0., 0., self.width, self.contentViewHeight);
-                [self.contentView refreshControl:self stateChanged:self.state from:self.state];
-        }
+        return (UIScrollView *)self.superview;
 }
 
 - (UIView<ESRefreshControlContentViewDelegate> *)contentView
