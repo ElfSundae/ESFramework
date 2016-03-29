@@ -2,5 +2,5 @@ platform :ios, '7.0'
 workspace '../ESFramework.xcworkspace'
 
 target 'Example' do
-    pod "ESFramework", :path => "../ESFramework.podspec"
+    pod "ESFramework", :path => "../"
 end
