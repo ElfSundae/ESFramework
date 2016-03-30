@@ -533,10 +533,10 @@ else [invocation setArgument:&__gNil atIndex:argIndex]; \
 
 @end
 
-#define _ESInvokeSelector(target, selector, retainArguments, result) \
+#define _ESInvokeSelector(target, selector, result) \
 va_list arguments;      \
 va_start(arguments, result);    \
-NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:retainArguments arguments:arguments];    \
+NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:NO arguments:arguments];    \
 va_end(arguments);      \
 if (invocation) {       \
 [invocation invoke];    \
@@ -547,18 +547,18 @@ return NO;
 
 @implementation NSObject (_ESInvoke)
 
-+ (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...
++ (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...
 {
-        _ESInvokeSelector(self, selector, retainArguments, result);
+        _ESInvokeSelector(self, selector, result);
 }
-- (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...
+- (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...
 {
-        _ESInvokeSelector(self, selector, retainArguments, result);
+        _ESInvokeSelector(self, selector, result);
 }
 
 @end
 
-BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...)
+BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 {
-        _ESInvokeSelector(target, selector, retainArguments, result);
+        _ESInvokeSelector(target, selector, result);
 }

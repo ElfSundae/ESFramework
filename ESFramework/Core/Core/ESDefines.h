@@ -506,26 +506,26 @@ FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
  *
  * @return YES if invoked successfully, otherwise NO.
  */
-- (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
+- (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...;
 
 /**
  * Invokes selector.
  * @see -[NSObject invokeSelector:retainArguments:result,...]
  * @return YES if invoked successfully, otherwise NO.
  */
-+ (BOOL)invokeSelector:(SEL)selector retainArguments:(BOOL)retainArguments result:(void *)result, ...;
++ (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...;
 @end
 
 /**
  * Invokes selector.
  * @code
  * CGRect bounds;
- * if (ESInvokeSelector([UIScreen mainScreen], @selector(bounds), NO, &bounds)) {
+ * if (ESInvokeSelector([UIScreen mainScreen], @selector(bounds), &bounds)) {
  *     NSLog(@"%@", NSStringFromCGRect(bounds));
  * }
  * @endcode
  * @return YES if invoked successfully, otherwise NO.
  */
-FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, BOOL retainArguments, void *result, ...);
+FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 
 #endif /* ESFrameworkCore_ESDefines_H */
