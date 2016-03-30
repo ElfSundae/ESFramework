@@ -469,7 +469,10 @@ else [invocation setArgument:&__gNil atIndex:argIndex]; \
                         ElseIfTypeThenSetValue(UIOffset)
                         ElseIfTypeThenSetValue(CATransform3D)
                         ElseIfTypeThenSetValue(id)
-                        else if (argType[0] == '^') {
+                        else if (CMPString(argType, "@?")) {
+                                // block
+                                SetArgumentWithValue(id);
+                        } else if (argType[0] == '^') {
                                 IfTypeThenSetValue(short *)
                                 ElseIfTypeThenSetValue(unsigned short *)
                                 ElseIfTypeThenSetValue(BOOL *)
