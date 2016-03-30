@@ -377,6 +377,7 @@ void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
 
 void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
 {
+        c = object_getClass((id)c);
         Method origMethod = class_getClassMethod(c, orig);
         Method newMethod = class_getClassMethod(c, new);
         if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
