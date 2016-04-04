@@ -78,7 +78,11 @@ static NSDictionary *__esRemoteNotificationFromLaunch = nil;
         
         // Fetch the default user agent of UIWebView
         [__ESAppInternalFetchWebViewUserAgent fetchUserAgent];
-
+        
+        // Pre request push token, for self.analyticsInformation
+        if ([ESApp sharedApp].isRegisteredForRemoteNotifications) {
+                [[ESApp sharedApp] registerForRemoteNotificationsWithTypes:[[ESApp sharedApp] enabledRemoteNotificationTypes] categories:nil success:nil failure:nil];
+        }
 }
 
 + (void)applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
