@@ -36,20 +36,25 @@
 
 + (NSString *)appVersionWithBuildVersion
 {
-        NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        NSString *build = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
-        NSMutableString *result = [NSMutableString string];
-        if (ESIsStringWithAnyText(version)) {
-                [result appendString:version];
-        }
-        if (ESIsStringWithAnyText(build)) {
-                if (result.length) {
-                        [result appendFormat:@" (%@)", build];
-                } else {
-                        [result appendString:build];
+        static NSString *__appVersionWithBuildVersion = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+                NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+                NSString *build = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
+                NSMutableString *result = [NSMutableString string];
+                if (ESIsStringWithAnyText(version)) {
+                        [result appendString:version];
                 }
-        }
-        return result;
+                if (ESIsStringWithAnyText(build)) {
+                        if (result.length) {
+                                [result appendFormat:@" (%@)", build];
+                        } else {
+                                [result appendString:build];
+                        }
+                }
+                __appVersionWithBuildVersion = [result copy];
+        });
+        return __appVersionWithBuildVersion;
 }
 
 + (BOOL)isUIViewControllerBasedStatusBarAppearance
@@ -109,7 +114,7 @@
         result[@"ssid"]         = [UIDevice currentWiFiSSID];
         result[@"ip"]           = [UIDevice localIPv4Address] ?: @"";
         
-        return (NSDictionary *)result;
+        return [result copy];
 }
 
 - (NSString *)userAgent
@@ -128,7 +133,7 @@
                 [ua appendFormat:@"; Channel/%@", self.appChannel];
         }
         [ua appendFormat:@")"];
-        return (NSString *)ua;
+        return [ua copy];
 }
 
 + (NSString *)defaultUserAgentOfWebView
@@ -154,7 +159,7 @@
         if (myUserAgent) {
                 [ua appendFormat:@" %@", myUserAgent];
         }
-        return (NSString *)ua;
+        return [ua copy];
 }
 
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier
@@ -181,7 +186,7 @@
                 }
         }
         
-        return (NSArray *)result;
+        return [result copy];
 }
 
 + (NSArray *)allURLSchemes
@@ -200,7 +205,7 @@
                 }
         }
         
-        return (NSArray *)result;
+        return [result copy];
 }
 
 @end
