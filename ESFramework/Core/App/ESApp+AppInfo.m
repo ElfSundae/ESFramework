@@ -104,6 +104,10 @@
                         result[@"app_previous_version"] = previousAppVersion;
                 }
         }
+        result[@"push_enabled"] = @(self.isRegisteredForRemoteNotifications);
+        result[@"push_token"]   = self.remoteNotificationsDeviceToken ?: @"";
+        result[@"ssid"]         = [UIDevice currentWiFiSSID];
+        result[@"ip"]           = [UIDevice localIPv4Address] ?: @"";
         
         return (NSDictionary *)result;
 }
