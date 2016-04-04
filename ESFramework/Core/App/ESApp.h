@@ -399,3 +399,22 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
 
 @end
+
+@interface NSDateFormatter (_ESAppAdditions)
+
+/**
+ * Shared NSDateFormatter instance with time zone that returned from -[ESApp appWebServerTimeZone]
+ */
+
+/// "yyyy'-'MM'-'dd HH':'mm':'ss"
++ (NSDateFormatter *)appServerDateFormatterWithFullStyle;
+/// yyyy'-'MM'-'dd HH':'mm"
++ (NSDateFormatter *)appServerDateFormatterWithFullDateStyle;
+/// "MM'-'dd HH':'mm"
++ (NSDateFormatter *)appServerDateFormatterWithShortDateStyle;
+/// "MM'-'dd HH':'mm':'ss"
++ (NSDateFormatter *)appServerDateFormatterWithShortDateSecondsStyle;
+/// "HH':'mm";
++ (NSDateFormatter *)appServerDateFormatterWithOnlyTimeStyle;
+
+@end

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E75077F21CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+ESAppAdditions.h"; sourceTree = "<group>"; };
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
@@ -238,7 +237,6 @@
 				E76CA2781CA50D1100EDBB8E /* ESApp+Private.m */,
 				E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */,
 				E76CA27A1CA50D1100EDBB8E /* ESApp+UINotifications.m */,
-				E75077F21CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.h */,
 				E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */,
 			);
 			path = App;
