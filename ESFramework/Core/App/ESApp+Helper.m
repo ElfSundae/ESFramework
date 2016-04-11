@@ -13,7 +13,7 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 @implementation ESApp (_Helper)
 
-+ (BOOL)isFreshLaunch:(NSString **)previousAppVersion
++ (BOOL)isFreshLaunch:(NSString *__autoreleasing *)previousAppVersion
 {
         return __ESCheckAppFreshLaunch(previousAppVersion);
 }

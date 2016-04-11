@@ -265,7 +265,7 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
  *
  * @param previousAppVersion return the previous app version, it may be the same as the current app version if it's not a fresh launch.
  */
-+ (BOOL)isFreshLaunch:(NSString **)previousAppVersion;
++ (BOOL)isFreshLaunch:(NSString *__autoreleasing *)previousAppVersion;
 
 /**
  * Delete all cookies which send to the given URL.
