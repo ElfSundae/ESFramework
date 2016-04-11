@@ -230,11 +230,11 @@
 			isa = PBXGroup;
 			children = (
 				E76CA27B1CA50D1100EDBB8E /* ESApp.h */,
-				E76CA2771CA50D1100EDBB8E /* ESApp+Private.h */,
 				E76CA27C1CA50D1100EDBB8E /* ESApp.m */,
+				E76CA2771CA50D1100EDBB8E /* ESApp+Private.h */,
+				E76CA2781CA50D1100EDBB8E /* ESApp+Private.m */,
 				E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */,
 				E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */,
-				E76CA2781CA50D1100EDBB8E /* ESApp+Private.m */,
 				E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */,
 				E76CA27A1CA50D1100EDBB8E /* ESApp+UINotifications.m */,
 				E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */,
