@@ -70,6 +70,11 @@ NSString *__ESWebViewDefaultUserAgent(void)
         
         // Fetch the default user agent of UIWebView
         [__ESAppInternalFetchWebViewUserAgent fetchUserAgent];
+        
+        // Pre-request push token, for self.analyticsInformation
+        if ([ESApp sharedApp].isRegisteredForRemoteNotifications) {
+                [[ESApp sharedApp] registerForRemoteNotificationsWithTypes:[[ESApp sharedApp] enabledRemoteNotificationTypes] categories:nil success:nil failure:nil];
+        }
 }
 @end
 
@@ -121,11 +126,6 @@ static NSDictionary *__esRemoteNotificationFromLaunch = nil;
 
 - (BOOL)_es_application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        // Pre-request push token, for self.analyticsInformation
-        if ([ESApp sharedApp].isRegisteredForRemoteNotifications) {
-                [[ESApp sharedApp] registerForRemoteNotificationsWithTypes:[[ESApp sharedApp] enabledRemoteNotificationTypes] categories:nil success:nil failure:nil];
-        }
-
         return YES;
 }
 
