@@ -8,7 +8,7 @@
 
 #import "ESApp.h"
 
-@implementation NSDateFormatter (ESAppAdditions)
+@implementation NSDateFormatter (_ESAppAdditions)
 
 + (NSDateFormatter *)appServerDateFormatterWithFullStyle
 {

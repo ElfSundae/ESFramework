@@ -8,6 +8,7 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 #import "ESApp+Private.h"
+#import "ESValue.h"
 #import "UIDevice+ESInfo.h"
 #import "UIDevice+ESNetworkReachability.h"
 
@@ -59,8 +60,7 @@
 
 + (BOOL)isUIViewControllerBasedStatusBarAppearance
 {
-        NSNumber *value = [self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
-        return value ? value.boolValue : YES;
+        return ESBoolValueWithDefault([self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"], YES);
 }
 
 - (NSString *)appName
@@ -109,8 +109,6 @@
                         result[@"app_previous_version"] = previousAppVersion;
                 }
         }
-        result[@"push_enabled"] = @(self.isRegisteredForRemoteNotifications);
-        result[@"push_token"]   = self.remoteNotificationsDeviceToken ?: @"";
         result[@"ssid"]         = [UIDevice currentWiFiSSID];
         result[@"ip"]           = [UIDevice localIPv4Address] ?: @"";
         
@@ -138,7 +136,7 @@
 
 + (NSString *)defaultUserAgentOfWebView
 {
-        return __ESWebViewDefaultUserAgent();
+        return ESWebViewDefaultUserAgent();
 }
 
 - (NSString *)userAgentForWebView

@@ -6,30 +6,18 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp.h"
 #import "ESApp+Private.h"
-#import "NSString+ESAdditions.h"
-
-NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
 @implementation ESApp
 
++ (void)load
+{
+        [self isFreshLaunch:NULL];
+}
+
 + (instancetype)sharedApp
 {
-        static id __gSharedApp = nil;
-        
-        id appDelegate = [UIApplication sharedApplication].delegate;
-        if ([appDelegate isKindOfClass:[self class]]) {
-                if (__gSharedApp) {
-                        __gSharedApp = nil;
-                }
-                return appDelegate;
-        }
-        
-        if (!__gSharedApp) {
-                __gSharedApp = [[super alloc] init];
-        }
-        return __gSharedApp;
+        return ESSharedApp();
 }
 
 - (UIWindow *)window
@@ -44,10 +32,10 @@ NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        /* Setup window */
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.backgroundColor = [UIColor whiteColor];
-        
+        if (self == application.delegate) {
+                self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+                self.window.backgroundColor = [UIColor whiteColor];
+        }
         return YES;
 }
 

@@ -34,7 +34,7 @@ ES_SINGLETON_IMP(sharedManager);
         if (!itemID || ![[self class] storeProductViewControllerExists]) {
                 if (willAppear) willAppear();
                 if (shouldOpenURLWhenFailure) {
-                        [ESApp openURL:iTunesURL];
+                        [[UIApplication sharedApplication] openURL:iTunesURL];
                 }
                 return NO;
         }
@@ -68,7 +68,7 @@ ES_SINGLETON_IMP(sharedManager);
                 } else {
                         _self.presentingStoreProductViewController = NO;
                         if (shouldOpenURLWhenFailure) {
-                                [ESApp openURL:iTunesURL];
+                                [[UIApplication sharedApplication] openURL:iTunesURL];
                         }
                 }
         }];
