@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ESFramework"
-  s.version           = "2.4.10"
+  s.version           = "2.4.11"
   s.license           = "MIT"
   s.summary           = "An Effective & Swing Framework for iOS."
   s.homepage          = "https://github.com/ElfSundae/ESFramework"
@@ -8,8 +8,7 @@ Pod::Spec.new do |s|
   s.source            = { :git => "https://github.com/ElfSundae/ESFramework.git", :tag => s.version, :submodules => true }
   s.social_media_url  = "https://twitter.com/ElfSundae"
 
-  s.platform              = :ios
-  s.ios.deployment_target = "7.0"
+  s.platform              = :ios, "7.0"
   s.requires_arc          = true
   s.source_files          = "ESFramework/ESFramework.h"
 
