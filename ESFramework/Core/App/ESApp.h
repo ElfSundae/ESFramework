@@ -207,7 +207,7 @@
 
 @interface ESApp (_UINotifications)
 /**
- * @note success可能会延迟回调。例如：用户在系统设置里关闭了app的通知，调用register时会回调failure(error with ESAppErrorCodeCouldNotRegisterUserNotificationSettings),
+ * @note success可能会延迟回调。例如：用户在系统设置里关闭了app的通知，调用register时会回调failure,
  * 如果用户在app运行期间去系统设置里打开了app的push通知，此时会回调success。
  *
  * @param categories is only for iOS8+, contains instances of UIUserNotificationCategory.
