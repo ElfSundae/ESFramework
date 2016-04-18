@@ -17,7 +17,7 @@
 
 + (instancetype)sharedApp
 {
-        return ESSharedApp();
+        return _ESSharedApp();
 }
 
 - (UIWindow *)window

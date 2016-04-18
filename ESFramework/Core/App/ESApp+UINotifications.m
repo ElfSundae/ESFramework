@@ -11,6 +11,9 @@
 #import <objc/runtime.h>
 #import "NSError+ESAdditions.h"
 
+NSString *const ESAppDidReceiveRemoteNotificationNotification = @"ESAppDidReceiveRemoteNotificationNotification";
+NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
+
 static NSString *__gRemoteNotificationsDeviceToken = nil;
 static void (^__gRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString) = nil;
 static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
@@ -69,6 +72,20 @@ static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
 
 @end
 
+void _ESDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromLaunch)
+{
+        if (![remoteNotification isKindOfClass:[NSDictionary class]]) {
+                return;
+        }
+        if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
+                ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, remoteNotification, fromLaunch);
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:ESAppDidReceiveRemoteNotificationNotification
+                                                            object:application
+                                                          userInfo:@{ (fromLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey) : remoteNotification}];
+}
+
 /**
  * 记录原始的实现方法（其实是交换后的 _es_... 方法，在交换后的方法里调用“本身”会调用到原始方法），如果有则说明是交换过的，需要调用交换前的方法。
  */
@@ -115,10 +132,7 @@ static void _es_application_didFailToRegisterForRemoteNotificationsWithError(id 
 
 static void _es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIApplication *application, NSDictionary *userInfo)
 {
-        if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
-                ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, userInfo, NO);
-        }
-        
+        _ESDidReceiveRemoteNotification(application, userInfo, NO);
         if (__gESOldMethod_didReceiveRemoteNotification) {
                 ESInvokeSelector(self, __gESOldMethod_didReceiveRemoteNotification, NULL, application, userInfo);
         }
@@ -132,7 +146,7 @@ static void _es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIAp
  * 交换这两个方法并在新增的方法中调用原始的实现。
  * 如果AppDelegate没有实现原始方法，添加新的实现方法并在处理完后不调用原始方法。
  */
-void ESAppHackAppDelegateForUINotifications(void)
+void _ESAppHackAppDelegateForUINotifications(void)
 {
         Class AppDelegateClass = [[UIApplication sharedApplication].delegate class];
         if (!AppDelegateClass) {

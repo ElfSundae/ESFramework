@@ -12,7 +12,7 @@
 
 static ESApp *__gSharedApp = nil;
 
-ESApp *ESSharedApp(void)
+ESApp *_ESSharedApp(void)
 {
         return __gSharedApp;
 }
@@ -24,7 +24,7 @@ ESApp *ESSharedApp(void)
 static UIWebView *__gWebViewForFetchingUserAgent = nil;
 static NSString *__gWebViewDefaultUserAgent = nil;
 
-NSString *ESWebViewDefaultUserAgent(void)
+NSString *_ESWebViewDefaultUserAgent(void)
 {
         return __gWebViewDefaultUserAgent;
 }
@@ -79,10 +79,7 @@ static NSDictionary *__gRemoteNotificationFromLaunch = nil;
         
         DISPATCH_ONCE_BEGIN
         if (__gRemoteNotificationFromLaunch) {
-                UIApplication *application = [UIApplication sharedApplication];
-                if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
-                        ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, __gRemoteNotificationFromLaunch, YES);
-                }
+                _ESDidReceiveRemoteNotification([UIApplication sharedApplication], __gRemoteNotificationFromLaunch, YES);
                 __gRemoteNotificationFromLaunch = nil;
         }
         DISPATCH_ONCE_END
@@ -114,7 +111,7 @@ static NSDictionary *__gRemoteNotificationFromLaunch = nil;
                 __gSharedApp = [[ESApp alloc] init];
         }
         
-        ESAppHackAppDelegateForUINotifications();
+        _ESAppHackAppDelegateForUINotifications();
         
         [[NSNotificationCenter defaultCenter] addObserver:__gSharedApp selector:@selector(_es_applicationDidFinishLaunchingNotificationHandler:) name:UIApplicationDidFinishLaunchingNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:__gSharedApp selector:@selector(_es_applicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
