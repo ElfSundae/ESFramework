@@ -8,28 +8,6 @@
 
 #import <ESFramework/ESDefines.h>
 
-FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
-
-typedef NS_ENUM(NSInteger, ESAppErrorCode) {
-
-        ESAppErrorCodeRemoteNotificationTypesIsNone             = -10,
-        /// for iOS8+ only
-        ESAppErrorCodeCouldNotRegisterUserNotificationSettings  = -11,
-};
-
-/// The key of userInfo for ESAppErrorCodeCouldNotRegisterUserNotificationSettings
-FOUNDATION_EXTERN NSString *const ESUserNotificationSettingsErrorKey;
-
-/// The key for NSUserDefaults that stores app version string for checking fresh launch.
-FOUNDATION_EXTERN NSString *const ESAppCheckFreshLaunchUserDefaultsKey;
-
-/// Posted when received remote notification on app launch or within -application:didReceiveRemoteNotification:
-/// Key for userInfo: UIApplicationLaunchOptionsRemoteNotificationKey OR ESAppRemoteNotificationKey
-FOUNDATION_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
-
-/// The key of userInfo for ESAppDidReceiveRemoteNotificationNotification
-FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESAppDelegate
@@ -50,20 +28,13 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESApp
 
-/*!
- * `ESApp` is designed as the delegate of UIApplication, it can be also used as a global helper class.
- *
- * `ESApp` has done the following things when app launchs:
- *
- *      + You can call super in `-application:didFinishLaunchingWithOptions:` to setup self.window.
- *      + Enable app multitasking, @see `+[ESApp enableMultitasking]`
- *
+/**
+ * `ESApp` is designed as the delegate of UIApplication, it can also be used as a global helper class.
  */
 @interface ESApp : UIResponder <UIApplicationDelegate, ESAppDelegate>
 
 /**
- * Returns the app delegate if it is a subclass of `ESApp`,
- * otherwise returns the `ESApp` singleton.
+ * Returns the shared ESApp instance.
  */
 + (instancetype)sharedApp;
 
@@ -73,7 +44,7 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 @property (nonatomic, strong) UIWindow *window;
 
 /**
- * Returns the root view controller for keyWindow.
+ * Returns the root view controller of keyWindow.
  *
  * If your app delegate is a subclass of ESApp, you can overwrite this property and @dynamic it to
  * specify a different class instead `UIViewController`.
@@ -374,18 +345,6 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 ///=============================================
 /// @name Open URL
 ///=============================================
-
-+ (BOOL)canOpenURL:(NSURL *)url;
-
-/**
- * Opens URL after checking +canOpenURL:
- */
-+ (BOOL)openURL:(NSURL *)url;
-
-/**
- * Opens URL after checking +canOpenURL:
- */
-+ (BOOL)openURLWithString:(NSString *)string;
 
 /**
  * Checks whether the current device can make a phone call.

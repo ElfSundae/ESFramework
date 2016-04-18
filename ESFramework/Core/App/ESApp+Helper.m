@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp.h"
 #import "ESApp+Private.h"
+#import "ESValue.h"
+#import "NSUserDefaults+ESAdditions.h"
 
 static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
@@ -15,7 +16,28 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 + (BOOL)isFreshLaunch:(NSString *__autoreleasing *)previousAppVersion
 {
-        return __ESCheckAppFreshLaunch(previousAppVersion);
+#define ESAppCheckFreshLaunchUserDefaultsKey @"ESAppCheckFreshLaunch"
+        static NSString *__gPreviousVersion = nil;
+        static BOOL __gIsFreshLaunch = NO;
+        
+        static dispatch_once_t onceTokenCheckAppFreshLaunch;
+        dispatch_once(&onceTokenCheckAppFreshLaunch, ^{
+                __gPreviousVersion = ESStringValue([NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey]);
+                ESIsStringWithAnyText(__gPreviousVersion) || (__gPreviousVersion = nil);
+                NSString *currentVersion = [ESApp appVersion];
+                
+                if (__gPreviousVersion && [__gPreviousVersion isEqualToString:currentVersion]) {
+                        __gIsFreshLaunch = NO;
+                } else {
+                        __gIsFreshLaunch = YES;
+                        [NSUserDefaults setObjectAsynchrony:currentVersion forKey:ESAppCheckFreshLaunchUserDefaultsKey];
+                }
+        });
+        
+        if (previousAppVersion) {
+                *previousAppVersion = [__gPreviousVersion copy];
+        }
+        return __gIsFreshLaunch;
 }
 
 + (void)deleteHTTPCookiesForURL:(NSURL *)URL
@@ -40,14 +62,12 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
         SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");
         if ([[UIApplication sharedApplication] respondsToSelector:memoryWarningSel]) {
                 printf("Simulate low memory warning\n");
-                // Supress the warning. -Wundeclared-selector was used while ARC is enabled.
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                 [[UIApplication sharedApplication] performSelector:memoryWarningSel];
 #pragma clang diagnostic pop
         } else {
                 printf("UIApplication no longer responds \"_performMemoryWarning\" selector.\n");
-                // UIApplication no loger responds to _performMemoryWarning
                 exit(1);
         }
 }
@@ -57,7 +77,7 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
         ESDispatchOnMainThreadSynchrony(^{
                 if (![self isMultitaskingEnabled]) {
                      __esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-                             ESDispatchOnMainThreadSynchrony(^{
+                             ESDispatchOnMainThreadAsynchrony(^{
                                      [self disableMultitasking];
                                      [self enableMultitasking];
                              });
@@ -136,7 +156,7 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
                 }
         }
         
-        return result;
+        return [result copy];
 }
 
 
@@ -203,7 +223,7 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 {
         UIViewController *rootViewController = [self rootViewController];
         
-        while ([rootViewController.presentedViewController isKindOfClass:[UIViewController class]]) {
+        while (rootViewController.presentedViewController) {
                 rootViewController = rootViewController.presentedViewController;
         }
         
@@ -236,50 +256,24 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - OpenURL
 
-+ (BOOL)canOpenURL:(NSURL *)url
-{
-        return [[UIApplication sharedApplication] canOpenURL:url];
-}
-
-+ (BOOL)openURL:(NSURL *)url
-{
-        if ([self canOpenURL:url]) {
-                return [[UIApplication sharedApplication] openURL:url];
-        }
-        return NO;
-}
-
-+ (BOOL)openURLWithString:(NSString *)string
-{
-        if (!ESIsStringWithAnyText(string)) {
-                return NO;
-        }
-        return [self openURL:[NSURL URLWithString:string]];
-}
-
 + (BOOL)canOpenPhoneCall
 {
-        return [self canOpenURL:[NSURL URLWithString:@"tel:"]];
+        return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:"]];
 }
 
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn
 {
-        if (![phoneNumber isKindOfClass:[NSString class]] || !phoneNumber.length) {
-                return NO;
-        }
-        
-        NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", (phoneNumber ?: @"")]];
-        if ([self canOpenURL:telURL]) {
-                if (shouldReturn) {
-                        static UIWebView *__sharedPhoneCallWebView = nil;
-                        static dispatch_once_t onceTokenPhoneCallWebView;
-                        dispatch_once(&onceTokenPhoneCallWebView, ^{
-                                __sharedPhoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-                        });
-                        [__sharedPhoneCallWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
-                        return YES;
-                } else {
-                        [self openURL:telURL];
+        phoneNumber = ESStringValue(phoneNumber);
+        if (phoneNumber) {
+                NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]];
+                if ([self canOpenPhoneCall]) {
+                        if (shouldReturn) {
+                                UIWebView *phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+                                [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
+                                return YES;
+                        } else {
+                                return [[UIApplication sharedApplication] openURL:telURL];
+                        }
                 }
         }
         return NO;

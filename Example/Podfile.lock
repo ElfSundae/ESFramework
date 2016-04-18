@@ -1,9 +1,9 @@
 PODS:
-  - ESFramework (2.4.10):
-    - ESFramework/Core (= 2.4.10)
-    - ESFramework/UIKit (= 2.4.10)
-  - ESFramework/Core (2.4.10)
-  - ESFramework/UIKit (2.4.10):
+  - ESFramework (2.4.11):
+    - ESFramework/Core (= 2.4.11)
+    - ESFramework/UIKit (= 2.4.11)
+  - ESFramework/Core (2.4.11)
+  - ESFramework/UIKit (2.4.11):
     - ESFramework/Core
 
 DEPENDENCIES:
@@ -14,6 +14,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ESFramework: 9d7d9ddfb59d4edba0d97b653ad28e942a3e9e4c
+  ESFramework: 233004606fcb46ed9302d4cf35a57751ffcc881b
 
 COCOAPODS: 0.39.0

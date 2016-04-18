@@ -9,44 +9,19 @@
 #import <ESFramework/ESApp.h>
 
 /**
- * Checks if the current app launch is a fresh launch.
+ * Returns the shared ESApp instance.
  */
-FOUNDATION_EXTERN BOOL __ESCheckAppFreshLaunch(NSString *__autoreleasing *previousAppVersion);
+FOUNDATION_EXTERN ESApp *ESSharedApp(void);
 
 /**
  * Returns the default user agent of UIWebView.
  */
-FOUNDATION_EXTERN NSString *__ESWebViewDefaultUserAgent(void);
+FOUNDATION_EXTERN NSString *ESWebViewDefaultUserAgent(void);
 
 /**
- * Notify received remote notification via ESAppDidReceiveRemoteNotificationNotification.
+ * Hack AppDelegate for UINotifications methods.
  */
-FOUNDATION_EXTERN void __ESApplicationDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromAppLaunch);
+FOUNDATION_EXTERN void ESAppHackAppDelegateForUINotifications(void);
 
-@interface ESApp ()
-{
-        void (^__esRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString);
-        void (^__esRemoteNotificationRegisterFailureBlock)(NSError *error);
-        NSString *__esRemoteNotificationsDeviceToken;
-}
-
-@end
-
-@interface ESApp (__Internal)
-- (BOOL)_es_application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-@end
-
-@interface ESApp (_UINotificationsPrivate)
-- (void)_es_application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings;
-- (void)_es_application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
-- (void)_es_application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-- (void)_es_application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo;
-@end
-
-/**
- * Handler for receiving NSNotifications.
- */
-@interface __ESAppNotificationsHandler : NSObject
-+ (void)applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification;
-+ (void)applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification;
+@interface ESApp (_Private)
 @end
