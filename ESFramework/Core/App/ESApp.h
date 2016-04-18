@@ -8,6 +8,13 @@
 
 #import <ESFramework/ESDefines.h>
 
+/**
+ * Posts when received remote notifications.
+ * Keys for userInfo: UIApplicationLaunchOptionsRemoteNotificationKey or ESAppRemoteNotificationKey
+ */
+FOUNDATION_EXTERN NSString *const ESAppDidReceiveRemoteNotificationNotification;
+FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESAppDelegate

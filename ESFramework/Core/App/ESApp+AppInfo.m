@@ -136,7 +136,7 @@
 
 + (NSString *)defaultUserAgentOfWebView
 {
-        return ESWebViewDefaultUserAgent();
+        return _ESWebViewDefaultUserAgent();
 }
 
 - (NSString *)userAgentForWebView
