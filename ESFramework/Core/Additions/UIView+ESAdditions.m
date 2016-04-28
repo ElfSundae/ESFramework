@@ -38,10 +38,7 @@
 
 - (void)removeAllSubviews
 {
-        UIView *childView = nil;
-        while ((childView = self.subviews.lastObject)) {
-                [childView removeFromSuperview];
-        }
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 - (UIView *)findViewWithClassInSuperviews:(Class)viewClass
@@ -63,7 +60,7 @@
                         foundView = view;
                         break;
                 } else {
-                        UIView *subview = [self findViewWithClassInSubviews:viewClass];
+                        UIView *subview = [view findViewWithClassInSubviews:viewClass];
                         if (subview) {
                                 foundView = subview;
                                 break;

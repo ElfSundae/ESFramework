@@ -7,7 +7,7 @@
 //
 
 #import "NSDate+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation NSDate (ESAdditions)
 

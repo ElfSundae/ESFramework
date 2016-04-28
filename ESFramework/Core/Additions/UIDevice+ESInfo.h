@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 #define kESNetworkInterfaceFamilyIPv4           @"IPv4"
 #define kESNetworkInterfaceFamilyIPv6           @"IPv6"

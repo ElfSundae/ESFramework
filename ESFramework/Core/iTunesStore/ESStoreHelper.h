@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <ESFramework/ESAppStoreTerritories.h>
+#import "ESAppStoreTerritories.h"
 
 /**
  * @see https://linkmaker.itunes.apple.com

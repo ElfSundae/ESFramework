@@ -7,7 +7,7 @@
 //
 
 #import "ESRefreshControl.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 static const void *_esRefreshControlKey = &_esRefreshControlKey;
 

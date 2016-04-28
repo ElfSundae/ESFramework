@@ -7,9 +7,9 @@
 //
 
 #import "NSDictionary+ESAdditions.h"
-#import <ESFramework/ESValue.h>
-#import <ESFramework/NSString+ESAdditions.h>
-#import <ESFramework/NSArray+ESAdditions.h>
+#import "ESValue.h"
+#import "NSString+ESAdditions.h"
+#import "NSArray+ESAdditions.h"
 
 @implementation NSDictionary (ESAdditions)
 

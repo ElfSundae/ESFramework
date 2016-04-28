@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ESFramework/ESRefreshControl.h>
+#import "ESRefreshControl.h"
 
 /**
  * `ESTableViewController` is a replacement of `UITableViewController`.

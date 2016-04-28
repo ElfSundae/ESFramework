@@ -32,7 +32,10 @@ static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
                 UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
                 [app registerUserNotificationSettings:settings];
         } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
                 [app registerForRemoteNotificationTypes:(UIRemoteNotificationType)types];
+#pragma clang diagnostic pop
         }
 }
 
@@ -61,7 +64,10 @@ static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
         if ([app respondsToSelector:@selector(currentUserNotificationSettings)]) {
                 return app.currentUserNotificationSettings.types;
         } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
                 return (UIUserNotificationType)[app enabledRemoteNotificationTypes];
+#pragma clang diagnostic pop
         }
 }
 

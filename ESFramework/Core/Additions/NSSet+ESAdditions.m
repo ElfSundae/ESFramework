@@ -7,7 +7,7 @@
 //
 
 #import "NSSet+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation NSSet (ESAdditions)
 

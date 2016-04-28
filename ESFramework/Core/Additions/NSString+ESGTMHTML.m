@@ -19,7 +19,7 @@
 
 //#import "GTMDefines.h"
 #import "NSString+ESGTMHTML.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
 // Ordered by uchar lowest to highest for bsearching

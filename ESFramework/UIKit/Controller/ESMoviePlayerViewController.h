@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+
 /**
  * A wrapper of `MPMoviePlayerViewController`, prevents MoviePlayer from dismissing when the
  * application enters background, and provides some features.
@@ -40,3 +43,5 @@
 @property (nonatomic, readonly) MPMoviePlaybackState playbackStateBeforeAppResignActive;
 
 @end
+
+#pragma clang diagnostic pop

@@ -8,7 +8,7 @@
 
 #import "ESStoreProductViewControllerManager.h"
 #import "ESStoreHelper.h"
-#import <ESFramework/ESApp.h>
+#import "ESApp.h"
 
 @interface ESStoreProductViewControllerManager ()
 @property (nonatomic, getter=isPresentingStoreProductViewController) BOOL presentingStoreProductViewController;

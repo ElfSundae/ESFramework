@@ -12,8 +12,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
-#import <ESFramework/ESDefines.h>
-#import <ESFramework/ESValue.h>
+#import "ESDefines.h"
+#import "ESValue.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #include <ifaddrs.h>
@@ -89,10 +89,13 @@
 {
         NSString *ssid = nil;
 #if !TARGET_IPHONE_SIMULATOR
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
         NSArray *interfaces = CFBridgingRelease(CNCopySupportedInterfaces());
         for (NSString *name in interfaces) {
                 CFStringRef interface = (__bridge CFStringRef)name; // @"en0"
                 NSDictionary *info = CFBridgingRelease(CNCopyCurrentNetworkInfo(interface));
+#pragma clang diagnostic pop
                 if (info[@"SSID"]) {
                         ssid = info[@"SSID"];
                         break;
@@ -122,9 +125,12 @@
                                 break;
                         }
                 }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
                 if (!__isJailBroken && 0 == system("ls")) {
                         __isJailBroken = YES;
                 }
+#pragma clang diagnostic pop
         });
 #endif
         return __isJailBroken;

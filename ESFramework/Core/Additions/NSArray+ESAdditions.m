@@ -7,7 +7,7 @@
 //
 
 #import "NSArray+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation NSArray (ESAdditions)
 

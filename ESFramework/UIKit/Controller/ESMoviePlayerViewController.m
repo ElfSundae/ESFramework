@@ -7,7 +7,10 @@
 //
 
 #import "ESMoviePlayerViewController.h"
-#import <ESFramework/ESApp.h>
+#import "ESApp.h"
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 
 @interface ESMoviePlayerViewController ()
 @property (nonatomic) NSTimeInterval playbackTimeWhenAppResignActive;
@@ -146,3 +149,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
