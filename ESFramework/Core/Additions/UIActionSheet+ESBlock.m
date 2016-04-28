@@ -11,6 +11,8 @@
 
 static const void *_didDismissBlockKey = &_didDismissBlockKey;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 @implementation UIActionSheet (ESBlock)
 
 - (ESUIActionSheetDidDismissBlock)didDismissBlock
@@ -36,6 +38,7 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
                 self.didDismissBlock(self, buttonIndex);
         }
 }
+#pragma clang diagnostic pop
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

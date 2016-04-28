@@ -94,7 +94,7 @@ static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
 
 + (instancetype)itemWithTitle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
-        return [self itemWithTitle:title style:UIBarButtonItemStyleBordered handler:handler];
+        return [self itemWithTitle:title style:UIBarButtonItemStylePlain handler:handler];
 }
 
 + (instancetype)itemWithTitle:(NSString *)title tintColor:(UIColor *)tintColor style:(UIBarButtonItemStyle)style handler:(ESUIBarButtonItemHandler)handler
@@ -106,13 +106,13 @@ static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
 
 + (instancetype)itemWithTitle:(NSString *)title tintColor:(UIColor *)tintColor handler:(ESUIBarButtonItemHandler)handler
 {
-        return [self itemWithTitle:title tintColor:tintColor style:UIBarButtonItemStyleBordered handler:handler];
+        return [self itemWithTitle:title tintColor:tintColor style:UIBarButtonItemStylePlain handler:handler];
 }
 
 
 + (instancetype)itemWithRedStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
-        return [self itemWithTitle:title tintColor:UIColorWithRGBHex(0xfa140e) style:UIBarButtonItemStyleBordered handler:handler];
+        return [self itemWithTitle:title tintColor:UIColorWithRGBHex(0xfa140e) style:UIBarButtonItemStylePlain handler:handler];
 }
 
 + (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler

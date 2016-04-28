@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
 typedef void (^ESUIActionSheetDidDismissBlock)(UIActionSheet *actionSheet, NSInteger buttonIndex);
+#pragma clang diagnostic pop
 
 /**
  * `UIActionSheet` with blocks.

@@ -25,7 +25,7 @@ typedef void (^ESUIBarButtonItemHandler)(UIBarButtonItem *barButtonItem);
 + (instancetype)itemWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem handler:(ESUIBarButtonItemHandler)handler;
 
 /**
- * With `UIBarButtonItemStyleBordered` style.
+ * With `UIBarButtonItemStylePlain` style.
  */
 + (instancetype)itemWithTitle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler;
 
