@@ -38,10 +38,7 @@
 
 - (void)removeAllSubviews
 {
-        UIView *childView = nil;
-        while ((childView = self.subviews.lastObject)) {
-                [childView removeFromSuperview];
-        }
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 - (UIView *)findViewWithClassInSuperviews:(Class)viewClass
