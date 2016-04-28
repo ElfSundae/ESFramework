@@ -60,7 +60,7 @@
                         foundView = view;
                         break;
                 } else {
-                        UIView *subview = [self findViewWithClassInSubviews:viewClass];
+                        UIView *subview = [view findViewWithClassInSubviews:viewClass];
                         if (subview) {
                                 foundView = subview;
                                 break;
