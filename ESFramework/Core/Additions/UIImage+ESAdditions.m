@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation UIImage (ESAdditions)
 

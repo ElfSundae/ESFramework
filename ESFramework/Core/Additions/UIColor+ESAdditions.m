@@ -7,7 +7,7 @@
 //
 
 #import "UIColor+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation UIColor (ESAdditions)
 

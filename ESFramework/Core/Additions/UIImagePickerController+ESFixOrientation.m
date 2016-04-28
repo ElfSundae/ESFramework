@@ -7,7 +7,7 @@
 //
 
 #import "UIImagePickerController+ESFixOrientation.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation UIImagePickerController (ESFixOrientation)
 

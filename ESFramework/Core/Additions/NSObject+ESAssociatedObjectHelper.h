@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESDefines.h>
-#import <ESFramework/ESValue.h>
+#import "ESDefines.h"
+#import "ESValue.h"
 
 /*!
  * The helper additions for NSObject which allows you to easily get or set the associated objects

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESDefines.h>
-#import <ESFramework/NSString+ESGTMHTML.h>
-#import <ESFramework/NSRegularExpression+ESAdditions.h>
+#import "ESDefines.h"
+#import "NSString+ESGTMHTML.h"
+#import "NSRegularExpression+ESAdditions.h"
 
 @interface NSString (ESAdditions)
 

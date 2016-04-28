@@ -7,7 +7,7 @@
 //
 
 #import "ESTableViewController.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation ESTableViewController
 

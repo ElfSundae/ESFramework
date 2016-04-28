@@ -7,9 +7,9 @@
 //
 
 #import "UIProgressView+ESStyle.h"
-#import <ESFramework/ESDefines.h>
-#import <ESFramework/ESValue.h>
-#import <ESFramework/UIImage+ESAdditions.h>
+#import "ESDefines.h"
+#import "ESValue.h"
+#import "UIImage+ESAdditions.h"
 
 static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
 

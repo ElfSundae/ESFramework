@@ -7,7 +7,7 @@
 //
 
 #import "UINavigationController+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation UINavigationController (ESAdditions)
 

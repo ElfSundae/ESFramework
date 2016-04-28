@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 typedef void (^ESUIBarButtonItemHandler)(UIBarButtonItem *barButtonItem);
 

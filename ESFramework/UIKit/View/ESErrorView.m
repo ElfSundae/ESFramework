@@ -7,8 +7,8 @@
 //
 
 #import "ESErrorView.h"
-#import <ESFramework/ESDefines.h>
-#import <ESFramework/UIView+ESShortcut.h>
+#import "ESDefines.h"
+#import "UIView+ESShortcut.h"
 
 static const CGFloat kVPadding1 = 30.0;
 static const CGFloat kVPadding2 = 10.0;

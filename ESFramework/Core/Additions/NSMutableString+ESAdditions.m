@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESValue.h>
+#import "ESValue.h"
 #import "NSString+ESAdditions.h"
 #import "NSMutableString+ESAdditions.h"
 

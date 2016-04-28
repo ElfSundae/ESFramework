@@ -7,7 +7,7 @@
 //
 
 #import "NSUserDefaults+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation NSUserDefaults (ESAdditions)
 

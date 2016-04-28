@@ -7,7 +7,7 @@
 //
 
 #import "NSData+ESAdditions.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 @implementation NSData (ESAdditions)
 

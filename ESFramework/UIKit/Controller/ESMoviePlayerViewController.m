@@ -7,7 +7,7 @@
 //
 
 #import "ESMoviePlayerViewController.h"
-#import <ESFramework/ESApp.h>
+#import "ESApp.h"
 
 @interface ESMoviePlayerViewController ()
 @property (nonatomic) NSTimeInterval playbackTimeWhenAppResignActive;

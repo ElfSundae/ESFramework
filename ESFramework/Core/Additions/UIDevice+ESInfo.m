@@ -12,8 +12,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
-#import <ESFramework/ESDefines.h>
-#import <ESFramework/ESValue.h>
+#import "ESDefines.h"
+#import "ESValue.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #include <ifaddrs.h>

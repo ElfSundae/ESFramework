@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertView+ESBlock.h"
-#import <ESFramework/ESDefines.h>
+#import "ESDefines.h"
 
 static const void *_didDismissBlockKey = &_didDismissBlockKey;
 

@@ -7,9 +7,9 @@
 //
 
 #import "ESStoreHelper.h"
-#import <ESFramework/ESValue.h>
-#import <ESFramework/NSString+ESAdditions.h>
-#import <ESFramework/NSRegularExpression+ESAdditions.h>
+#import "ESValue.h"
+#import "NSString+ESAdditions.h"
+#import "NSRegularExpression+ESAdditions.h"
 
 @implementation ESStoreHelper
 
