@@ -55,12 +55,16 @@
 ///=============================================
 
 /**
- * Add percent escapes for characters for @":/?#[]@!$&'()*+,;="
+ * Returns a string in which all non-alphanumeric characters except -_.~ have been replaced
+ * with a percent (%) sign followed by two hex digits, 
+ * it conforms to [RFC 3986](http://www.faqs.org/rfcs/rfc3986.html)
  */
 - (NSString *)URLEncode;
 
 /**
- * Replaces "+" to " ", then calls `-stringByReplacingPercentEscapesUsingEncoding:`
+ * Decodes URL-encoded string.
+ *
+ * Decodes any %## encoding in the given string. Plus symbols ('+') are decoded to a space character.
  */
 - (NSString *)URLDecode;
 

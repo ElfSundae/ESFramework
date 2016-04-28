@@ -102,16 +102,38 @@
         return [self componentsSeparatedByCharactersInSet:separator];
 }
 
-static NSString *const kESCharactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
 - (NSString *)URLEncode
 {
-        CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)kESCharactersToBeEscaped, kCFStringEncodingUTF8);
-        return CFBridgingRelease(encoded);
+        if ([self respondsToSelector:@selector(stringByAddingPercentEncodingWithAllowedCharacters:)]) {
+                static NSCharacterSet *__allowedCharacters = nil;
+                static dispatch_once_t onceToken;
+                dispatch_once(&onceToken, ^{
+                        NSMutableCharacterSet *charset = [NSMutableCharacterSet alphanumericCharacterSet];
+                        [charset addCharactersInString:@"-_.~"];
+                        __allowedCharacters = [charset copy];
+                });
+                return [self stringByAddingPercentEncodingWithAllowedCharacters:__allowedCharacters];
+        } else {
+                static NSString *const __charactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+                CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)__charactersToBeEscaped, kCFStringEncodingUTF8);
+#pragma clang diagnostic pop
+                return CFBridgingRelease(encoded);
+        }
 }
+
 - (NSString *)URLDecode
 {
         NSString *decoded = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-        return [decoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        if ([decoded respondsToSelector:@selector(stringByRemovingPercentEncoding)]) {
+                return [decoded stringByRemovingPercentEncoding];
+        } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated"
+                return [decoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#pragma clang diagnostic pop
+        }
 }
 
 - (NSDictionary *)queryDictionary
