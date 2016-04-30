@@ -28,10 +28,7 @@ An **E**ffective & **S**wing **Framework** for iOS.
 
 * **Manually:**
 
-  + Add `ESFramework` directory into your project, except `ESFramework.xcodeproj` file.
-  + Regex replace angle brackets in project to fix "header file not found".  
-    The regular expression is from `#import\s+[<"]ESFramework/([^>"]+)[>"]` to `#import "$1"`.  
-    [![replace-angle-brackets](https://raw.githubusercontent.com/ElfSundae/ESFramework/master/screenshots/replace-angle-brackets.png)](https://raw.githubusercontent.com/ElfSundae/ESFramework/master/screenshots/replace-angle-brackets.png)
+  Add `ESFramework` folder to your project, except `ESFramework.xcodeproj` file.
 
 
 ## Contribute Notes
