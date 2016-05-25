@@ -14,8 +14,8 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "ESDefines.h"
 #import "ESValue.h"
-#import <sys/sysctl.h>
-#import <mach/mach.h>
+#include <sys/sysctl.h>
+#include <mach/mach.h>
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>

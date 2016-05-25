@@ -7,7 +7,7 @@
 //
 
 #import "ESDefines.h"
-#import <CommonCrypto/CommonHMAC.h>
+#include <CommonCrypto/CommonHMAC.h>
 
 @interface NSData (ESHash)
 
