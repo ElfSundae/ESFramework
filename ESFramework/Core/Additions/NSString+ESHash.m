@@ -8,7 +8,7 @@
 
 #import "NSString+ESHash.h"
 #import "NSData+ESHash.h"
-#include <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (ESHash)
 

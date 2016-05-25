@@ -12,9 +12,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
-#include <Availability.h>
-#include <objc/runtime.h>
-#include <mach/mach_time.h>
+#import <Availability.h>
+#import <objc/runtime.h>
+#import <mach/mach_time.h>
 
 ///=============================================
 /// @name Log
