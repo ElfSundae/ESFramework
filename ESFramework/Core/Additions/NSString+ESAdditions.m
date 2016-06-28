@@ -75,7 +75,7 @@
 {
         NSMutableString *result = self.mutableCopy;
         [result replaceWithDictionary:dictionary options:options];
-        return (NSString *)result;
+        return [result copy];
 }
 
 - (NSString *)stringByReplacingRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
@@ -227,7 +227,7 @@
         if (fragment) {
                 [result appendString:fragment];
         }
-        return (NSString *)result;
+        return [result copy];
 }
 
 - (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
