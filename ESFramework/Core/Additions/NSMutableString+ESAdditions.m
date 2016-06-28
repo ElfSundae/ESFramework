@@ -14,10 +14,11 @@
 
 - (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options
 {
-        if (!replacement) {
-                replacement = @"";
+        if (![string isKindOfClass:[NSString class]]) {
+                return;
         }
-        [self replaceOccurrencesOfString:string withString:replacement options:options range:NSMakeRange(0, self.length)];
+        
+        [self replaceOccurrencesOfString:string withString:replacement ?: @"" options:options range:NSMakeRange(0, self.length)];
 }
 
 - (void)replace:(NSString *)string to:(NSString *)replacement
@@ -45,15 +46,9 @@
 
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
-        for (NSString *key in dictionary) {
-                NSString *replace = nil;
-                if (ESStringVal(&replace, key) && replace.length > 0) {
-                        NSString *value;
-                        if (ESStringVal(&value, dictionary[key])) {
-                                [self replace:key to:value options:options];
-                        }  
-                }
-        }
+        [dictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                [self replace:ESStringValue(key) to:ESStringValue(obj) options:options];
+        }];
 }
 
 @end
