@@ -60,6 +60,7 @@
 
 - (NSData *)es_base64Encoded;
 - (NSString *)es_base64EncodedString;
+- (NSString *)es_base64EncodedURLSafeString;
 - (NSData *)es_base64Decoded;
 - (NSString *)es_base64DecodedString;
 

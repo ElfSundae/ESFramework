@@ -9,6 +9,7 @@
 #import "NSString+ESHash.h"
 #import "NSData+ESHash.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "NSString+ESAdditions.h"
 
 @implementation NSString (ESHash)
 
@@ -87,6 +88,11 @@
         return [[self dataUsingEncoding:NSUTF8StringEncoding] es_base64EncodedString];
 }
 
+- (NSString *)es_base64EncodedURLSafeString
+{
+        return [[self es_base64EncodedString] URLSafeBase64String];
+}
+
 - (NSData *)es_base64Decoded
 {
         return [[NSData alloc] initWithBase64EncodedString:self options:0];
@@ -95,6 +101,11 @@
 - (NSString *)es_base64DecodedString
 {
         return [[self es_base64Decoded] es_stringValue];
+}
+
+- (NSString *)es_base64DecodedStringFromURLSafeString
+{
+        return [[self base64StringFromURLSafeString] es_base64DecodedString];
 }
 
 @end

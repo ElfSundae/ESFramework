@@ -82,6 +82,21 @@
  */
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
 
+///=============================================
+/// @name URL-safe Base64
+///=============================================
+
+/**
+ * Returns an URL-safe string from Base64 encoded string.
+ * It will replace '+' to '-' , '/' to '_', and remove '='.
+ */
+- (NSString *)URLSafeBase64String;
+
+/**
+ * Returns the original Base64 encoded string from an URL-safe string.
+ * It will replace '-' to '+', '_' to '/', and add '='.
+ */
+- (NSString *)base64StringFromURLSafeString;
 
 ///=============================================
 /// @name Encoding/Decoding HTML Entities
