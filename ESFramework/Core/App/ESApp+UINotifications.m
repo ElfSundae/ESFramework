@@ -102,8 +102,18 @@ static SEL __gESOldMethod_didReceiveRemoteNotification = NULL;
 
 static void _es_application_didRegisterUserNotificationSettings(id self, SEL _cmd, UIApplication *application, UIUserNotificationSettings *notificationSettings)
 {
-        [application registerForRemoteNotifications];
-        
+        if (UIUserNotificationTypeNone == notificationSettings.types) {
+                if (__gRemoteNotificationRegisterFailureBlock) {
+                        NSError *error = [NSError errorWithDomain:@"ESAppErrorDomain"
+                                                             code:-1
+                                                      description:@"Could not register user notification settings: types is 0."];
+                        __gRemoteNotificationRegisterFailureBlock(error);
+                        __gRemoteNotificationRegisterFailureBlock = nil;
+                }
+        } else {
+                [application registerForRemoteNotifications];
+        }
+
         if (__gESOldMethod_didRegisterUserNotificationSettings) {
                 ESInvokeSelector(self, __gESOldMethod_didRegisterUserNotificationSettings, NULL, application, notificationSettings);
         }
