@@ -134,9 +134,9 @@
 				E76CA22F1CA50D1100EDBB8E /* Core */,
 				E7A38C8B1C4DF9C800972B01 /* UIKit */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E76CA22F1CA50D1100EDBB8E /* Core */ = {
 			isa = PBXGroup;
@@ -148,10 +148,10 @@
 				E76CA2741CA50D1100EDBB8E /* App */,
 				E76CA28F1CA51C5300EDBB8E /* iTunesStore */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = Core;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E76CA2301CA50D1100EDBB8E /* Additions */ = {
 			isa = PBXGroup;
@@ -285,10 +285,10 @@
 				E7A38C971C4DFA1A00972B01 /* View */,
 				E7A38C901C4DFA1A00972B01 /* Controller */,
 			);
-			indentWidth = 8;
+			indentWidth = 4;
 			path = UIKit;
 			sourceTree = "<group>";
-			tabWidth = 8;
+			tabWidth = 4;
 		};
 		E7A38C901C4DFA1A00972B01 /* Controller */ = {
 			isa = PBXGroup;
