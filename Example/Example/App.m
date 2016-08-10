@@ -14,21 +14,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-        [super application:application didFinishLaunchingWithOptions:launchOptions];
+    [super application:application didFinishLaunchingWithOptions:launchOptions];
 
-        self.window.rootViewController = self.rootViewController =
-        [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
-        
-        NSLog(@"%@", [ESApp sharedApp].analyticsInformation);
-        NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:nil]);
-        
-        [self.window makeKeyAndVisible];
-        return YES;
+    self.window.rootViewController =
+        self.rootViewController =
+            [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
+
+    NSLog(@"%@", [ESApp sharedApp].analyticsInformation);
+    NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:nil]);
+
+    [self.window makeKeyAndVisible];
+    return YES;
 }
 
 - (NSString *)appStoreID
 {
-        return @"12345678";
+    return @"12345678";
 }
 
 @end
