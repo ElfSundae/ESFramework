@@ -14,41 +14,41 @@
 
 - (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options
 {
-        if (![string isKindOfClass:[NSString class]]) {
-                return;
-        }
-        
-        [self replaceOccurrencesOfString:string withString:replacement ?: @"" options:options range:NSMakeRange(0, self.length)];
+    if (![string isKindOfClass:[NSString class]]) {
+        return;
+    }
+
+    [self replaceOccurrencesOfString:string withString:replacement ?: @"" options:options range:NSMakeRange(0, self.length)];
 }
 
 - (void)replace:(NSString *)string to:(NSString *)replacement
 {
-        [self replace:string to:replacement options:0];
+    [self replace:string to:replacement options:0];
 }
 
 - (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement
 {
-        [self replace:string to:replacement options:NSCaseInsensitiveSearch];
+    [self replace:string to:replacement options:NSCaseInsensitiveSearch];
 }
 
 - (void)replaceInRange:(NSRange)range to:(NSString *)replacement
 {
-        if (!replacement) {
-                replacement = @"";
-        }
-        [self replaceCharactersInRange:range withString:replacement];
+    if (!replacement) {
+        replacement = @"";
+    }
+    [self replaceCharactersInRange:range withString:replacement];
 }
 
 - (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
 {
-        [self replace:pattern to:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
+    [self replace:pattern to:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
 }
 
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
-        [dictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-                [self replace:ESStringValue(key) to:ESStringValue(obj) options:options];
-        }];
+    [dictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
+        [self replace:ESStringValue(key) to:ESStringValue(obj) options:options];
+    }];
 }
 
 @end

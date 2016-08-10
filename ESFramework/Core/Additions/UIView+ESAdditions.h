@@ -81,18 +81,18 @@
 /// insert `CAGradientLayer` at index 0.
 - (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
 /// insert `CAGradientLayer` at index 0.
-- (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)setBackgroundGradientColor:(UIColor *)startColor, ...NS_REQUIRES_NIL_TERMINATION;
 
-///=============================================
+/// =============================================
 /// @name Debug Border
-///=============================================
+/// =============================================
 
 - (void)enableDebugBorder;
 - (void)enableDebugBorderWithColor:(UIColor *)color;
 
-///=============================================
+/// =============================================
 /// @name View Hierarchy
-///=============================================
+/// =============================================
 
 - (NSUInteger)indexOnSuperview;
 - (void)bringToFront;

@@ -15,19 +15,19 @@ static const void *_esRefreshControlKey = &_esRefreshControlKey;
 
 - (ESRefreshControl *)refreshControl
 {
-        return ESGetAssociatedObject(self, _esRefreshControlKey);
+    return ESGetAssociatedObject(self, _esRefreshControlKey);
 }
 
 - (void)setRefreshControl:(ESRefreshControl *)refreshControl
 {
-        ESRefreshControl *control = [self refreshControl];
-        if (control) {
-                [control removeFromSuperview];
-        }
-        if (refreshControl) {
-                [self addSubview:refreshControl];
-        }
-        ESSetAssociatedObject(self, _esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    ESRefreshControl *control = [self refreshControl];
+    if (control) {
+        [control removeFromSuperview];
+    }
+    if (refreshControl) {
+        [self addSubview:refreshControl];
+    }
+    ESSetAssociatedObject(self, _esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

@@ -21,11 +21,11 @@
  */
 @interface ESStoreProductViewControllerManager : NSObject <SKStoreProductViewControllerDelegate>
 
-ES_SINGLETON_DEC(sharedManager);
+    ES_SINGLETON_DEC(sharedManager);
 
 + (BOOL)storeProductViewControllerExists;
 
-@property (nonatomic, getter=isPresentingStoreProductViewController, readonly) BOOL presentingStoreProductViewController;
+@property (nonatomic, getter = isPresentingStoreProductViewController, readonly) BOOL presentingStoreProductViewController;
 
 /**
  * Prensents the SKStoreProductViewController via iTunes URL.

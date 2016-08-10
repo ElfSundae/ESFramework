@@ -9,27 +9,27 @@
 #import "ESDefines.h"
 
 #define ES_CODING_IMPLEMENTATION \
-- (id)initWithCoder:(NSCoder *)aDecoder { \
+    - (id)initWithCoder: (NSCoder *)aDecoder { \
         return [self initWithCoder_es:aDecoder]; \
-} \
-- (void)encodeWithCoder:(NSCoder *)aCoder { \
+    } \
+    - (void)encodeWithCoder:(NSCoder *)aCoder { \
         [self es_encodeWithCoder:aCoder]; \
-}
+    }
 
 #define ES_SECURECODING_IMPLEMENTATION \
-ES_CODING_IMPLEMENTATION \
-+ (BOOL)supportsSecureCoding { \
+    ES_CODING_IMPLEMENTATION \
+    + (BOOL)supportsSecureCoding { \
         return YES; \
-}
+    }
 
 #define ES_COPYING_IMPLEMENTATION \
-- (id)copyWithZone:(NSZone *)zone { \
+    - (id)copyWithZone: (NSZone *)zone { \
         return [self es_copyWithZone:zone]; \
-}
+    }
 
 /*!
  * The ESAutoCoding category for NSObject makes it easiest for your models or other objects to
- * support NSCoding or NSCopying. 
+ * support NSCoding or NSCopying.
  *
  * ESAutoCoding inspired by [nicklockwood/AutoCoding](https://github.com/nicklockwood/AutoCoding)
  *

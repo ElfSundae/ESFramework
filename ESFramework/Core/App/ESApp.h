@@ -310,9 +310,9 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
  */
 + (BOOL)registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:(NSDictionary *)defaultValues;
 
-///=============================================
+/// =============================================
 /// @name UI
-///=============================================
+/// =============================================
 
 + (UIWindow *)keyWindow;
 - (UIWindow *)keyWindow;
@@ -349,9 +349,9 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
  */
 + (void)clearApplicationIconBadgeNumber;
 
-///=============================================
+/// =============================================
 /// @name Open URL
-///=============================================
+/// =============================================
 
 /**
  * Checks whether the current device can make a phone call.

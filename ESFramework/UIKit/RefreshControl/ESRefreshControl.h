@@ -11,9 +11,9 @@
 @protocol ESRefreshControlContentViewDelegate;
 
 typedef NS_ENUM(NSUInteger, ESRefreshControlState) {
-        ESRefreshControlStateNormal = 0,
-        ESRefreshControlStateTriggered,
-        ESRefreshControlStateRefreshing,
+    ESRefreshControlStateNormal = 0,
+    ESRefreshControlStateTriggered,
+    ESRefreshControlStateRefreshing,
 };
 
 typedef void (^ESRefreshControlBlock)(ESRefreshControl *refreshControl);
@@ -47,8 +47,8 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
 - (BOOL)isRefreshing;
 
 
-/** 
- * The content view displayed when the `scrollView` is pulling down. 
+/**
+ * The content view displayed when the `scrollView` is pulling down.
  */
 @property (nonatomic, strong) UIView<ESRefreshControlContentViewDelegate> *contentView;
 /**

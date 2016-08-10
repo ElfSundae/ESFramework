@@ -28,7 +28,7 @@
 - (UIImage *)imageWithAlpha;
 
 
-/** 
+/**
  * Returns a copy of this image that is cropped to the given bounds.
  * The bounds will be adjusted using CGRectIntegral.
  * This method ignores the image's imageOrientation setting.
@@ -73,7 +73,7 @@
 
 
 /**
- * Helper method. 
+ * Helper method.
  * Returns an affine transform that takes into account the image orientation when drawing a scaled image
  */
 - (CGAffineTransform)transformForOrientation:(CGSize)newSize;

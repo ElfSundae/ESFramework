@@ -13,8 +13,8 @@
 /**
  * `ESStatusOverlayView` is a view which overlay on a view, such as viewController's view,
  * UITableView, UIScrollView or UIWebView, to show some information about status.
- * 
- * e.g. 
+ *
+ * e.g.
  *
  * * shows loading status while loading data.
  * * shows network error while HTTP request failed.
@@ -23,9 +23,9 @@
  */
 @interface ESStatusOverlayView : UIView
 {
-@protected
-        ESActivityLabel *_activityLabel;
-        ESErrorView *_errorView;
+    @protected
+    ESActivityLabel *_activityLabel;
+    ESErrorView *_errorView;
 }
 
 /**

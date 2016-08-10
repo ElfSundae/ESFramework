@@ -16,7 +16,7 @@
  */
 @interface ESTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-        UITableView *_tableView;
+    UITableView *_tableView;
 }
 
 - (instancetype)initWithStyle:(UITableViewStyle)style;

@@ -12,17 +12,17 @@
 
 - (NSString *)appChannel
 {
-        return @"App Store";
+    return @"App Store";
 }
 
 - (NSString *)appStoreID
 {
-        return nil;
+    return nil;
 }
 
 - (NSTimeZone *)appWebServerTimeZone
 {
-        return [NSTimeZone timeZoneWithName:@"GMT"];
+    return [NSTimeZone timeZoneWithName:@"GMT"];
 }
 
 @end

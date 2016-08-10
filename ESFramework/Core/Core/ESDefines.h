@@ -16,15 +16,15 @@
 #import <objc/runtime.h>
 #import <mach/mach_time.h>
 
-///=============================================
+/// =============================================
 /// @name Log
-///=============================================
+/// =============================================
 #pragma mark - Log
 
 #if (!defined(NSLog) && !defined(NSLogIf))
 #if DEBUG
-#define NSLog(fmt, ...)                 NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
-#define NSLogIf(condition, fmt, ...)    if((condition)) { NSLog(fmt, ##__VA_ARGS__); }
+#define NSLog(fmt, ...)                 NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ## __VA_ARGS__)
+#define NSLogIf(condition, fmt, ...)    if ((condition)) { NSLog(fmt, ## __VA_ARGS__); }
 #else
 #define NSLog(fmt, ...)
 #define NSLogIf(condition, fmt, ...)
@@ -38,21 +38,21 @@
 #if DEBUG
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var) uint64_t stopwatch_begin_var = mach_absolute_time();
 #define ES_STOPWATCH_END(stopwatch_begin_var)   { \
-uint64_t end = mach_absolute_time(); \
-mach_timebase_info_data_t timebaseInfo; \
-(void) mach_timebase_info(&timebaseInfo); \
-uint64_t elapsedNano = (end - stopwatch_begin_var) * timebaseInfo.numer / timebaseInfo.denom; \
-double_t elapsedMillisecond = (double_t)elapsedNano / 1000000.0; \
-printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String:__FILE__].lastPathComponent.UTF8String, __LINE__, __PRETTY_FUNCTION__, elapsedMillisecond); \
+        uint64_t end = mach_absolute_time(); \
+        mach_timebase_info_data_t timebaseInfo; \
+        (void) mach_timebase_info(&timebaseInfo); \
+        uint64_t elapsedNano = (end - stopwatch_begin_var) * timebaseInfo.numer / timebaseInfo.denom; \
+        double_t elapsedMillisecond = (double_t)elapsedNano / 1000000.0; \
+        printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String:__FILE__].lastPathComponent.UTF8String, __LINE__, __PRETTY_FUNCTION__, elapsedMillisecond); \
 }
 #else
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var)
 #define ES_STOPWATCH_END(stopwatch_begin_var)
 #endif
 
-///=============================================
+/// =============================================
 /// @name Constants
-///=============================================
+/// =============================================
 #pragma mark - Constants
 
 #define ES_MINUTE (60)
@@ -64,9 +64,9 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 #define ES_YEAR   (31536000) /* 365 days */
 
 
-///=============================================
+/// =============================================
 /// @name SDK Compatibility
-///=============================================
+/// =============================================
 #pragma mark - SDK Compatibility
 
 #ifndef __IPHONE_9_0
@@ -85,45 +85,45 @@ printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String
 
 
 NS_INLINE NSString *ESOSVersion(void) {
-        return [[UIDevice currentDevice] systemVersion];
+    return [[UIDevice currentDevice] systemVersion];
 }
 
 NS_INLINE BOOL ESOSVersionIsAtLeast(double versionNumber) {
-        return (NSFoundationVersionNumber >= versionNumber);
+    return (NSFoundationVersionNumber >= versionNumber);
 }
 
 NS_INLINE BOOL ESOSVersionIsAbove(double versionNumber) {
-        return (NSFoundationVersionNumber > versionNumber);
+    return (NSFoundationVersionNumber > versionNumber);
 }
 
 NS_INLINE BOOL ESOSVersionIsAbove7(void) {
-        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
 }
 
 NS_INLINE BOOL ESOSVersionIsAbove8(void) {
-        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
 }
 
 NS_INLINE BOOL ESOSVersionIsAbove9(void) {
-        return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_4);
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_4);
 }
 
 
-///=============================================
+/// =============================================
 /// @name Helper Macros
-///=============================================
+/// =============================================
 #pragma mark - Helper Macros
 
 /**
  * Make weak references to break "retain cycles".
  */
 #define ESWeak_(var, weakVar)                   __weak __typeof(&*var) weakVar = var;
-#define ESWeak(var)                             ESWeak_(var, weak_##var);
+#define ESWeak(var)                             ESWeak_(var, weak_ ## var);
 #define ESWeakSelf                              ESWeak(self);
 
 #define ESStrong_DoNotCheckNil(weakVar, var)    __typeof(&*weakVar) var = weakVar;
 #define ESStrong_(weakVar, var)                 ESStrong_DoNotCheckNil(weakVar, var); if (!var) return;
-#define ESStrong(var)                           ESStrong_(weak_##var, _##var);
+#define ESStrong(var)                           ESStrong_(weak_ ## var, _ ## var);
 #define ESStrongSelf                            ESStrong(self);
 
 /**
@@ -138,19 +138,19 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
  * provide a different variable name.
  */
 #define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
-+ (instancetype)sharedInstance \
-{ \
-/**/    static id sharedInstanceVariableName = nil; \
-/**/    static dispatch_once_t onceToken_##sharedInstanceVariableName; \
-/**/    dispatch_once(&onceToken_##sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
-/**/    return sharedInstanceVariableName; \
-}
+    + (instancetype)sharedInstance \
+    { \
+        /**/ static id sharedInstanceVariableName = nil; \
+        /**/ static dispatch_once_t onceToken_ ## sharedInstanceVariableName; \
+        /**/ dispatch_once(&onceToken_ ## sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
+        /**/ return sharedInstanceVariableName; \
+    }
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
 
 /**
  * Safely release CF instance.
  */
-#define CFReleaseSafely(var)   if(var){ CFRelease(var); var = NULL; }
+#define CFReleaseSafely(var)   if (var) { CFRelease(var); var = NULL; }
 
 /**
  * Bits-mask helper.
@@ -162,15 +162,15 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 /**
  * Localized string.
  */
-#define ESLocalizedString(key)                  NSLocalizedString(key,nil)
+#define ESLocalizedString(key)                  NSLocalizedString(key, nil)
 #ifndef _e
-#define _e(key) NSLocalizedString(key,nil)
+#define _e(key) NSLocalizedString(key, nil)
 #endif
-#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat:NSLocalizedString(key,nil),##__VA_ARGS__]
+#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat : NSLocalizedString(key, nil), ## __VA_ARGS__]
 
-///=============================================
+/// =============================================
 /// @name Helper Functions
-///=============================================
+/// =============================================
 #pragma mark - Functions
 
 /**
@@ -205,28 +205,28 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat
  * Checks whether the given object is a non-empty string.
  */
 NS_INLINE BOOL ESIsStringWithAnyText(id object) {
-        return ([object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0);
+    return ([object isKindOfClass:[NSString class]] && [(NSString *) object length] > 0);
 }
 
 /**
  * Checks whether the given object is a non-empty array.
  */
 NS_INLINE BOOL ESIsArrayWithItems(id object) {
-        return ([object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0);
+    return ([object isKindOfClass:[NSArray class]] && [(NSArray *) object count] > 0);
 }
 
 /**
  * Checks whether the given object is a non-empty dictionary.
  */
 NS_INLINE BOOL ESIsDictionaryWithItems(id object) {
-        return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0);
+    return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *) object count] > 0);
 }
 
 /**
  * Checks whether the given object is a non-empty set.
  */
 NS_INLINE BOOL ESIsSetWithItems(id object) {
-        return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
+    return ([object isKindOfClass:[NSSet class]] && [(NSSet *) object count] > 0);
 }
 
 /**
@@ -277,7 +277,7 @@ FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 /**
  * Defines a key for the Associcated Object.
  */
-#define ESDefineAssociatedObjectKey(name)       static const void * name##Key = & name##Key
+#define ESDefineAssociatedObjectKey(name)       static const void * name ## Key = &name ## Key
 
 /**
  * Returns the value associated with a given object for a given key.
@@ -293,14 +293,14 @@ FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id valu
  * Returns the current statusBar's height, in any orientation.
  */
 NS_INLINE CGFloat ESStatusBarHeight(void) {
-        return fmin([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
+    return fmin([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
 };
 
 /**
  * Returns the application's current interface orientation.
  */
 NS_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
-        return [UIApplication sharedApplication].statusBarOrientation;
+    return [UIApplication sharedApplication].statusBarOrientation;
 }
 
 /**
@@ -308,72 +308,72 @@ NS_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
  * This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
  */
 NS_INLINE UIDeviceOrientation ESDeviceOrientation(void) {
-        return [UIDevice currentDevice].orientation;
+    return [UIDevice currentDevice].orientation;
 }
 
 /**
  * Returns a recommended rotating transform for the given interface orientation.
  */
 NS_INLINE CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation) {
-        if (UIInterfaceOrientationLandscapeLeft == orientation) {
-                return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
-        } else if (UIInterfaceOrientationLandscapeRight == orientation) {
-                return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
-        } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
-                return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
-        } else {
-                return CGAffineTransformIdentity;
-        }
+    if (UIInterfaceOrientationLandscapeLeft == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
+    } else if (UIInterfaceOrientationLandscapeRight == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
+    } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
+    } else {
+        return CGAffineTransformIdentity;
+    }
 }
 
 /**
  * Converts degrees to radians.
  */
 NS_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
-        return (degrees * M_PI / 180.0);
+    return (degrees * M_PI / 180.0);
 }
 
 /**
  * Converts radians to degrees.
  */
 NS_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
-        return (radians * 180.0 / M_PI);
+    return (radians * 180.0 / M_PI);
 }
 
 /**
  * Checks whether the current User Interface is Pad type.
  */
 NS_INLINE BOOL ESIsPadUI(void) {
-        return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
 }
 
 /**
  * Checks whether the device is an iPad/iPad Mini/iPad Air.
  */
 NS_INLINE BOOL ESIsPadDevice(void) {
-        return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
+    return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
 }
 
 /**
  * Checks whether the current User Interface is Phone type.
  */
 NS_INLINE BOOL ESIsPhoneUI(void) {
-        return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
 }
 
 /**
  * Checks whether the device is an iPhone/iPod Touch.
  */
 NS_INLINE BOOL ESIsPhoneDevice(void) {
-        return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
-                [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
+    return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
+            [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
 }
 
 /**
  * Checks whether the device has retina screen.
  */
 NS_INLINE BOOL UIScreenIsRetina(void) {
-        return [UIScreen mainScreen].scale >= 2.0;
+    return [UIScreen mainScreen].scale >= 2.0;
 }
 
 /**
@@ -386,7 +386,7 @@ FOUNDATION_EXTERN NSString *ESStringFromSize(CGSize size);
 /**
  * Creates NSString with the given format and arguments.
  */
-FOUNDATION_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1,2);
+FOUNDATION_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 
 /**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
@@ -446,9 +446,9 @@ FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
  */
 FOUNDATION_EXTERN BOOL ESTouchDirectoryAtURL(NSURL *url);
 
-///=============================================
+/// =============================================
 /// @name Dispatch & Block
-///=============================================
+/// =============================================
 #pragma mark - Dispatch & Block
 
 FOUNDATION_EXTERN void ESDispatchOnMainThreadSynchrony(dispatch_block_t block);
@@ -460,9 +460,9 @@ FOUNDATION_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
 FOUNDATION_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
 FOUNDATION_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
 
-///=============================================
+/// =============================================
 /// @name ObjC Runtime
-///=============================================
+/// =============================================
 #pragma mark - ObjC Runtime
 
 /**
@@ -475,9 +475,9 @@ FOUNDATION_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_
 FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
 FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 
-///=============================================
+/// =============================================
 /// @name Invocation
-///=============================================
+/// =============================================
 #pragma mark - Invocation
 
 @interface NSInvocation (_ESHelper)

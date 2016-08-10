@@ -13,52 +13,52 @@
 
 - (BOOL)isEmpty
 {
-        return (0 == self.count);
+    return (0 == self.count);
 }
 
 - (void)each:(void (^)(id obj, BOOL *stop))block
 {
-        [self enumerateObjectsUsingBlock:block];
+    [self enumerateObjectsUsingBlock:block];
 }
 - (void)each:(void (^)(id obj, BOOL *stop))block option:(NSEnumerationOptions)option
 {
-        [self enumerateObjectsWithOptions:option usingBlock:block];
+    [self enumerateObjectsWithOptions:option usingBlock:block];
 }
 
 - (id)match:(BOOL (^)(id obj))predicate
 {
-        NSParameterAssert(predicate);
-        NSSet *set = [self matches:^BOOL(id obj_, BOOL *stop) {
-                if (predicate(obj_)) {
-                        *stop = YES;
-                        return YES;
-                }
-                return NO;
-        }];
-        return [set anyObject];
+    NSParameterAssert(predicate);
+    NSSet *set = [self matches:^BOOL (id obj_, BOOL *stop) {
+        if (predicate(obj_)) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    return [set anyObject];
 }
 
 - (id)match:(BOOL (^)(id obj))predicate option:(NSEnumerationOptions)option
 {
-        NSParameterAssert(predicate);
-        NSSet *set = [self matches:^BOOL(id obj_, BOOL *stop) {
-                if (predicate(obj_)) {
-                        *stop = YES;
-                        return YES;
-                }
-                return NO;
-        } option:option];
-        return [set anyObject];
+    NSParameterAssert(predicate);
+    NSSet *set = [self matches:^BOOL (id obj_, BOOL *stop) {
+        if (predicate(obj_)) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    } option:option];
+    return [set anyObject];
 }
 
 - (NSSet *)matches:(BOOL (^)(id obj, BOOL *stop))predicate
 {
-        return [self objectsPassingTest:predicate];
+    return [self objectsPassingTest:predicate];
 }
 
 - (NSSet *)matches:(BOOL (^)(id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
 {
-        return [self objectsWithOptions:option passingTest:predicate];
+    return [self objectsWithOptions:option passingTest:predicate];
 }
 
 @end
@@ -71,13 +71,13 @@
 
 - (void)matchWith:(BOOL (^)(id obj, BOOL *stop))predicate
 {
-        NSParameterAssert(predicate);
-        [self setSet:[self matches:predicate]];
+    NSParameterAssert(predicate);
+    [self setSet:[self matches:predicate]];
 }
 - (void)matchWith:(BOOL (^)(id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
 {
-        NSParameterAssert(predicate);
-        [self setSet:[self matches:predicate option:option]];
+    NSParameterAssert(predicate);
+    [self setSet:[self matches:predicate option:option]];
 }
 
 @end

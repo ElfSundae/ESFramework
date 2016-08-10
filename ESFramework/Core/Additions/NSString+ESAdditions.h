@@ -35,9 +35,9 @@
 - (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement;
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
 /**
- * The `replacement` is treated as a template, with $0 being replaced by the 
- * contents of the matched range, $1 by the contents of the first capture group, 
- * and so on. 
+ * The `replacement` is treated as a template, with $0 being replaced by the
+ * contents of the matched range, $1 by the contents of the first capture group,
+ * and so on.
  * Additional digits beyond the maximum required to represent
  * the number of capture groups will be treated as ordinary characters, as will
  * a $ not followed by digits.  Backslash will escape both $ and itself.
@@ -50,13 +50,13 @@
 - (NSArray *)splitWith:(NSString *)separator;
 - (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
-///=============================================
+/// =============================================
 /// @name Encoding/Decoding URL
-///=============================================
+/// =============================================
 
 /**
  * Returns a string in which all non-alphanumeric characters except -_.~ have been replaced
- * with a percent (%) sign followed by two hex digits, 
+ * with a percent (%) sign followed by two hex digits,
  * it conforms to [RFC 3986](http://www.faqs.org/rfcs/rfc3986.html)
  */
 - (NSString *)URLEncode;
@@ -82,9 +82,9 @@
  */
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
 
-///=============================================
+/// =============================================
 /// @name URL-safe Base64
-///=============================================
+/// =============================================
 
 /**
  * Returns an URL-safe string from Base64 encoded string.
@@ -98,9 +98,9 @@
  */
 - (NSString *)base64StringFromURLSafeString;
 
-///=============================================
+/// =============================================
 /// @name Encoding/Decoding HTML Entities
-///=============================================
+/// =============================================
 
 /**
  * Get a string where internal characters that need escaping for HTML are escaped,
@@ -113,18 +113,18 @@
  * // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
  * // This is table A.2.2 Special Characters
  * static ESHTMLEscapeMap gUnicodeHTMLEscapeMap[] = {
- * 	// C0 Controls and Basic Latin
- * 	{ @"&quot;", 34 },
- * 	{ @"&amp;", 38 },
- * 	{ @"&apos;", 39 },
- * 	{ @"&lt;", 60 },
- * 	{ @"&gt;", 62 },
+ *      // C0 Controls and Basic Latin
+ *      { @"&quot;", 34 },
+ *      { @"&amp;", 38 },
+ *      { @"&apos;", 39 },
+ *      { @"&lt;", 60 },
+ *      { @"&gt;", 62 },
  *
- * 	// Latin Extended-A
- * 	{ @"&OElig;", 338 },
- * 	{ @"&oelig;", 339 },
+ *      // Latin Extended-A
+ *      { @"&OElig;", 338 },
+ *      { @"&oelig;", 339 },
  *
- * 	//....
+ *      //....
  * };
  * @endcode
  *
@@ -171,18 +171,18 @@
  */
 - (NSString *)stringByDecodingHTMLEntities;
 
-///=============================================
+/// =============================================
 /// @name Match With Regular Expression
-///=============================================
+/// =============================================
 
 - (NSRange)match:(NSString *)pattern;
 - (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
 - (BOOL)isMatch:(NSString *)pattern;
 - (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
 
-///=============================================
+/// =============================================
 /// @name File Accessor
-///=============================================
+/// =============================================
 
 /**
  * Asynchronously write string to file.

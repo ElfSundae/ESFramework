@@ -13,22 +13,22 @@
 
 - (UIBarButtonItem *)itemWithTag:(NSInteger)tag
 {
-        for (UIBarButtonItem *item in self.items) {
-                if (item.tag == tag) {
-                        return item;
-                }
+    for (UIBarButtonItem *item in self.items) {
+        if (item.tag == tag) {
+            return item;
         }
-        return nil;
+    }
+    return nil;
 }
 
 - (void)replaceItemWithTag:(NSInteger)tag withItem:(UIBarButtonItem *)newItem
 {
-        UIBarButtonItem *item = [self itemWithTag:tag];
-        if (item) {
-                NSMutableArray *newItems = self.items.mutableCopy;
-                [newItems replaceObject:item withObject:newItem];
-                self.items = newItems;
-        }
+    UIBarButtonItem *item = [self itemWithTag:tag];
+    if (item) {
+        NSMutableArray *newItems = self.items.mutableCopy;
+        [newItems replaceObject:item withObject:newItem];
+        self.items = newItems;
+    }
 }
 
 

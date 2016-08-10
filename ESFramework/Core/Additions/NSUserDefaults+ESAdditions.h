@@ -10,9 +10,9 @@
 
 @interface NSUserDefaults (ESAdditions)
 
-///=============================================
+/// =============================================
 /// @name Quick methods for standardUserDefaults
-///=============================================
+/// =============================================
 
 /**
  * Returns the object associated with the first occurrence of the `standardUserDefaults`.
@@ -43,9 +43,9 @@
  */
 + (void)removeObjectAsynchronyForKey:(NSString *)defaultName;
 
-///=============================================
+/// =============================================
 /// @name NSRegistrationDomain
-///=============================================
+/// =============================================
 
 /**
  * Returns the dictionary for the registration domain (NSRegistrationDomain).
@@ -76,8 +76,8 @@
 /**
  * Sets the dictionary for the registration domain (NSRegistrationDomain).
  *
- * @warning This method will replace the whole entried of the registration domain (NSRegistrationDomain), 
- * including the values which system generated, such as "AppleLanguages", "NSLanguages", etc. 
+ * @warning This method will replace the whole entried of the registration domain (NSRegistrationDomain),
+ * including the values which system generated, such as "AppleLanguages", "NSLanguages", etc.
  * So use it carefully.
  */
 + (void)replaceRegisteredDefaults:(NSDictionary *)registrationDictionary;

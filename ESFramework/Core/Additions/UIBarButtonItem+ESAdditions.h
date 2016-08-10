@@ -46,4 +46,3 @@ typedef void (^ESUIBarButtonItemHandler)(UIBarButtonItem *barButtonItem);
 + (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler;
 
 @end
-

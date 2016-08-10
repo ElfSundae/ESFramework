@@ -12,14 +12,14 @@
  * `UINavigationController`'s statusBar behavior, orientation behavior is preferred by it's lastViewController's behavior,
  * including:
  *
- * 	- (UIStatusBarStyle)preferredStatusBarStyle;
- * 	- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation;
- * 	- (BOOL)prefersStatusBarHidden;
+ *      - (UIStatusBarStyle)preferredStatusBarStyle;
+ *      - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation;
+ *      - (BOOL)prefersStatusBarHidden;
  *
- * 	- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
- * 	- (BOOL)shouldAutorotate;
- * 	- (NSUInteger)supportedInterfaceOrientations;
- * 	- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation;
+ *      - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
+ *      - (BOOL)shouldAutorotate;
+ *      - (NSUInteger)supportedInterfaceOrientations;
+ *      - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation;
  *
  */
 @interface UINavigationController (ESAdditions)

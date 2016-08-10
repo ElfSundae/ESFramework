@@ -19,9 +19,9 @@ FOUNDATION_EXTERN NSNumberFormatter *ESSharedNumberFormatter(void);
 FOUNDATION_EXTERN NSNumber *NSNumberFromString(NSString *string);
 
 
-///=============================================
+/// =============================================
 /// @name ESValueWithDefault
-///=============================================
+/// =============================================
 
 /*!
  * Gets value from NSNumber or NSString safely.
@@ -43,9 +43,9 @@ FOUNDATION_EXTERN BOOL ESBoolValueWithDefault(id obj, BOOL defaultValue);
 FOUNDATION_EXTERN NSString *ESStringValueWithDefault(id obj, NSString *defaultValue);
 FOUNDATION_EXTERN NSURL *ESURLValueWithDefault(id obj, NSURL *defaultValue);
 
-///=============================================
+/// =============================================
 /// @name ESValue
-///=============================================
+/// =============================================
 
 /*!
  * Gets value from NSNumber or NSString safely.
@@ -68,9 +68,9 @@ FOUNDATION_EXTERN BOOL ESBoolValue(id obj);
 FOUNDATION_EXTERN NSString *ESStringValue(id obj);
 FOUNDATION_EXTERN NSURL *ESURLValue(id obj);
 
-///=============================================
+/// =============================================
 /// @name ESVal
-///=============================================
+/// =============================================
 
 /*!
  * Gets value from NSNumber or NSString safely.

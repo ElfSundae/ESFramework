@@ -12,35 +12,35 @@
 
 + (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description
 {
-        NSDictionary *userInfo = nil;
-        if ([description isKindOfClass:[NSString class]]) {
-                userInfo = @{ NSLocalizedDescriptionKey: description };
-        }
-        return [self errorWithDomain:domain code:code userInfo:userInfo];
+    NSDictionary *userInfo = nil;
+    if ([description isKindOfClass:[NSString class]]) {
+        userInfo = @{ NSLocalizedDescriptionKey: description };
+    }
+    return [self errorWithDomain:domain code:code userInfo:userInfo];
 }
 
 + (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason
 {
-        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-        if ([description isKindOfClass:[NSString class]]) {
-                userInfo[NSLocalizedDescriptionKey] = description;
-        }
-        if ([failureReason isKindOfClass:[NSString class]]) {
-                userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
-        }
-        NSDictionary *info = (userInfo.count) ? (NSDictionary *)userInfo : nil;
-        return [self errorWithDomain:domain code:code userInfo:info];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    if ([description isKindOfClass:[NSString class]]) {
+        userInfo[NSLocalizedDescriptionKey] = description;
+    }
+    if ([failureReason isKindOfClass:[NSString class]]) {
+        userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
+    }
+    NSDictionary *info = (userInfo.count) ? (NSDictionary *)userInfo : nil;
+    return [self errorWithDomain:domain code:code userInfo:info];
 }
 
 - (BOOL)isLocalNetworkError
 {
-        return ([self.domain isEqualToString:NSURLErrorDomain] &&
-                (NSURLErrorTimedOut == self.code ||
-                 NSURLErrorCannotFindHost == self.code ||
-                 NSURLErrorCannotConnectToHost == self.code ||
-                 NSURLErrorNetworkConnectionLost == self.code ||
-                 NSURLErrorDNSLookupFailed == self.code ||
-                 NSURLErrorNotConnectedToInternet == self.code));
+    return ([self.domain isEqualToString:NSURLErrorDomain] &&
+            (NSURLErrorTimedOut == self.code ||
+             NSURLErrorCannotFindHost == self.code ||
+             NSURLErrorCannotConnectToHost == self.code ||
+             NSURLErrorNetworkConnectionLost == self.code ||
+             NSURLErrorDNSLookupFailed == self.code ||
+             NSURLErrorNotConnectedToInternet == self.code));
 }
 
 @end

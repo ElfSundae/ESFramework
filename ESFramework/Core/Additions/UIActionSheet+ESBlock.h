@@ -20,13 +20,13 @@ typedef void (^ESUIActionSheetDidDismissBlock)(UIActionSheet *actionSheet, NSInt
 
 @property (nonatomic, copy) ESUIActionSheetDidDismissBlock didDismissBlock;
 
-///=============================================
+/// =============================================
 /// @name Initialization
-///=============================================
+/// =============================================
 
 + (instancetype)actionSheetWithTitle:(NSString *)title
                    cancelButtonTitle:(NSString *)cancelButtonTitle
                      didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
-                   otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
+                   otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION;
 
 @end

@@ -18,30 +18,30 @@ typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger b
  */
 @interface UIAlertView (ESBlock) <UIAlertViewDelegate>
 
-///=============================================
+/// =============================================
 /// @name Initialization
-///=============================================
+/// =============================================
 
 + (instancetype)alertViewWithTitle:(NSString *)title
                            message:(NSString *)message
                  cancelButtonTitle:(NSString *)cancelButtonTitle
-                      didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
-                 otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
+                   didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
+                 otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION;
 
-///=============================================
+/// =============================================
 /// @name Customization
-///=============================================
+/// =============================================
 
 /**
  * Set message alignment.
  *
  * @warning It's not work on iOS 7.0+
  */
-//@property (nonatomic) NSTextAlignment messageAlignment __attribute__((deprecated("It is not work on iOS 7+")));
+// @property (nonatomic) NSTextAlignment messageAlignment __attribute__((deprecated("It is not work on iOS 7+")));
 
-///=============================================
+/// =============================================
 /// @name Helper Methods
-///=============================================
+/// =============================================
 
 /**
  * Shows a alertView with a cancel button, the cancel button title is localized "OK" string.
@@ -50,9 +50,9 @@ typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger b
 
 + (void)showWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle;
 
-///=============================================
+/// =============================================
 /// @name Dismiss
-///=============================================
+/// =============================================
 
 /**
  * Invoked after dismissed.

@@ -15,17 +15,17 @@
  *
  * Example:
  *
- * 	ESWeak(self, weakSelf);
- * 	ESErrorView *errorView = [[ESErrorView alloc] initWithFrame:self.view.bounds
- * 	                                                      title:@"Network Error"
- * 	                                                   subtitle:@"Please check the Internet connection."
- * 	                                                      image:UIImageFrom(@"network_error")];
- * 	errorView.actionButton = [errorView buttonWithTitle:_(@"Refresh")];
+ *      ESWeak(self, weakSelf);
+ *      ESErrorView *errorView = [[ESErrorView alloc] initWithFrame:self.view.bounds
+ *                                                            title:@"Network Error"
+ *                                                         subtitle:@"Please check the Internet connection."
+ *                                                            image:UIImageFrom(@"network_error")];
+ *      errorView.actionButton = [errorView buttonWithTitle:_(@"Refresh")];
  *      [errorView.actionButton sizeToFit];
- * 	[errorView.actionButton addEventHandler:^(id sender, UIControlEvents controlEvents) {
- * 	        [weakSelf reloadData];
- * 	} forControlEvents:UIControlEventTouchUpInside];
- * 	[self.view addSubview:errorView];
+ *      [errorView.actionButton addEventHandler:^(id sender, UIControlEvents controlEvents) {
+ *              [weakSelf reloadData];
+ *      } forControlEvents:UIControlEventTouchUpInside];
+ *      [self.view addSubview:errorView];
  *
  *
  */

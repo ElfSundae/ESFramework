@@ -15,12 +15,12 @@ ESDefineAssociatedObjectKey(statusOverlayView);
 
 - (ESStatusOverlayView *)statusOverlayView
 {
-        return ESGetAssociatedObject(self, statusOverlayViewKey);
+    return ESGetAssociatedObject(self, statusOverlayViewKey);
 }
 
 - (void)setStatusOverlayView:(ESStatusOverlayView *)view
 {
-        ESSetAssociatedObject(self, statusOverlayViewKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    ESSetAssociatedObject(self, statusOverlayViewKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

@@ -13,14 +13,14 @@
 
 + (void)load
 {
-        @autoreleasepool {
-                ESSwizzleInstanceMethod(self, @selector(preferredStatusBarStyle), @selector(_es_preferredStatusBarStyle));
-                ESSwizzleInstanceMethod(self, @selector(preferredStatusBarUpdateAnimation), @selector(_es_preferredStatusBarUpdateAnimation));
-                ESSwizzleInstanceMethod(self, @selector(prefersStatusBarHidden), @selector(_es_prefersStatusBarHidden));
-                ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_es_shouldAutorotate));
-                ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_es_supportedInterfaceOrientations));
-                ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_es_preferredInterfaceOrientationForPresentation)); 
-        }
+    @autoreleasepool {
+        ESSwizzleInstanceMethod(self, @selector(preferredStatusBarStyle), @selector(_es_preferredStatusBarStyle));
+        ESSwizzleInstanceMethod(self, @selector(preferredStatusBarUpdateAnimation), @selector(_es_preferredStatusBarUpdateAnimation));
+        ESSwizzleInstanceMethod(self, @selector(prefersStatusBarHidden), @selector(_es_prefersStatusBarHidden));
+        ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_es_shouldAutorotate));
+        ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_es_supportedInterfaceOrientations));
+        ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_es_preferredInterfaceOrientationForPresentation));
+    }
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,17 +29,17 @@
 
 - (UIStatusBarStyle)_es_preferredStatusBarStyle
 {
-        return ((UIViewController *)self.viewControllers.lastObject).preferredStatusBarStyle;
+    return ((UIViewController *)self.viewControllers.lastObject).preferredStatusBarStyle;
 }
 
 - (UIStatusBarAnimation)_es_preferredStatusBarUpdateAnimation
 {
-        return ((UIViewController *)self.viewControllers.lastObject).preferredStatusBarUpdateAnimation;
+    return ((UIViewController *)self.viewControllers.lastObject).preferredStatusBarUpdateAnimation;
 }
 
 - (BOOL)_es_prefersStatusBarHidden
 {
-        return ((UIViewController *)self.viewControllers.lastObject).prefersStatusBarHidden;
+    return ((UIViewController *)self.viewControllers.lastObject).prefersStatusBarHidden;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,17 +48,17 @@
 
 - (BOOL)_es_shouldAutorotate
 {
-        return [(UIViewController *)self.viewControllers.lastObject shouldAutorotate];
+    return [(UIViewController *) self.viewControllers.lastObject shouldAutorotate];
 }
 
 - (NSUInteger)_es_supportedInterfaceOrientations
 {
-        return [(UIViewController *)self.viewControllers.lastObject supportedInterfaceOrientations];
+    return [(UIViewController *) self.viewControllers.lastObject supportedInterfaceOrientations];
 }
 
 - (UIInterfaceOrientation)_es_preferredInterfaceOrientationForPresentation
 {
-        return [(UIViewController *)self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
+    return [(UIViewController *) self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
 }
 
 

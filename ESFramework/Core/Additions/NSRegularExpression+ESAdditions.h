@@ -22,4 +22,3 @@
 - (NSUInteger)replaceMatchesInString:(NSMutableString *)string withTemplate:(NSString *)templ;
 
 @end
-

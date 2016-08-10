@@ -12,33 +12,33 @@
 
 + (void)load
 {
-        @autoreleasepool {
-                [[self sharedNetworkReachabilityForInternetConnection] startNotifier];
-        }
+    @autoreleasepool {
+        [[self sharedNetworkReachabilityForInternetConnection] startNotifier];
+    }
 }
 
 + (ESNetworkReachability *)sharedNetworkReachabilityForInternetConnection
 {
-        static ESNetworkReachability *__sharedNetworkReachabilityForInternetConnection = nil;
-        if (nil == __sharedNetworkReachabilityForInternetConnection) {
-                __sharedNetworkReachabilityForInternetConnection = [ESNetworkReachability reachabilityForInternetConnection];
-        }
-        return __sharedNetworkReachabilityForInternetConnection;
+    static ESNetworkReachability *__sharedNetworkReachabilityForInternetConnection = nil;
+    if (nil == __sharedNetworkReachabilityForInternetConnection) {
+        __sharedNetworkReachabilityForInternetConnection = [ESNetworkReachability reachabilityForInternetConnection];
+    }
+    return __sharedNetworkReachabilityForInternetConnection;
 }
 
 + (ESNetworkReachabilityStatus)currentNetworkReachabilityStatus
 {
-        return [self sharedNetworkReachabilityForInternetConnection].currentReachabilityStatus;
+    return [self sharedNetworkReachabilityForInternetConnection].currentReachabilityStatus;
 }
 
 + (NSString *)currentNetworkReachabilityStatusString
 {
-        return ESNetworkReachabilityStatusString([self currentNetworkReachabilityStatus]);
+    return ESNetworkReachabilityStatusString([self currentNetworkReachabilityStatus]);
 }
 
 + (BOOL)isInternetConnectionReachable
 {
-        return ([self currentNetworkReachabilityStatus] != ESNetworkReachabilityStatusNotReachable);
+    return ([self currentNetworkReachabilityStatus] != ESNetworkReachabilityStatusNotReachable);
 }
 
 @end
@@ -46,12 +46,14 @@
 
 NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status)
 {
-        switch (status) {
-                case ESNetworkReachabilityStatusReachableViaWiFi:
-                        return ESNetworkReachabilityStatusStringReachableViaWiFi;
-                case ESNetworkReachabilityStatusReachableViaWWAN:
-                        return ESNetworkReachabilityStatusStringReachableViaWWAN;
-                default:
-                        return ESNetworkReachabilityStatusStringNotReachable;
-        }
+    switch (status) {
+        case ESNetworkReachabilityStatusReachableViaWiFi:
+            return ESNetworkReachabilityStatusStringReachableViaWiFi;
+
+        case ESNetworkReachabilityStatusReachableViaWWAN:
+            return ESNetworkReachabilityStatusStringReachableViaWWAN;
+
+        default:
+            return ESNetworkReachabilityStatusStringNotReachable;
+    }
 }

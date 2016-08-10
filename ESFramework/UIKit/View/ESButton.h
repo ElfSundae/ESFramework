@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, ESButtonStyle) {
-        ESButtonStyleRoundedRect,
-        ESButtonStyleSemiCircle,
-        ESButtonStyleCircle
+    ESButtonStyleRoundedRect,
+    ESButtonStyleSemiCircle,
+    ESButtonStyleCircle
 };
 
 /*!
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, ESButtonStyle) {
 
 /**
  * Used to calc size when -sizeToFit is called.
- * 
+ *
  * Default value for ESButtonStyleRoundedRect is {0, 10, 0, 10}
  * Default value for ESButtonStyleSemiCircle is {0, 15, 0, 15}
  * Default value for ESButtonStyleCircle is {10, 10, 10, 10}
@@ -52,12 +52,12 @@ typedef NS_ENUM(NSInteger, ESButtonStyle) {
 /**
  * Default is 1.
  */
-//@property (nonatomic) CGFloat borderWidth;
+// @property (nonatomic) CGFloat borderWidth;
 /**
  * Default is nil.
- * If the borderWidth is bigger than 0 and the borderColor is nil, ESButton will automatically 
+ * If the borderWidth is bigger than 0 and the borderColor is nil, ESButton will automatically
  * generate a borderColor from buttonColor.
  */
-//@property (nonatomic) CGFloat borderColor;
+// @property (nonatomic) CGFloat borderColor;
 
 @end

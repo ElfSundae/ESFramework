@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface UIProgressView (ESStyle)
-///=============================================
+/// =============================================
 /// @name Flat style
-///=============================================
+/// =============================================
 
 + (instancetype)flatProgressView;
 + (instancetype)flatProgressViewWithTrackColor:(UIColor *)trackColor progressColor:(UIColor *)progressColor;
 
-///=============================================
+/// =============================================
 /// @name Resizable
-///=============================================
+/// =============================================
 
 - (void)resizedHeight:(CGFloat)newHeight;
 

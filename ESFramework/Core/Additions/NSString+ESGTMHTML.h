@@ -20,8 +20,8 @@
 #import <Foundation/Foundation.h>
 
 typedef struct {
-        __unsafe_unretained NSString *escapeSequence;
-        unichar uchar;
+    __unsafe_unretained NSString *escapeSequence;
+    unichar uchar;
 } ESHTMLEscapeMap;
 
 
