@@ -7,7 +7,6 @@
 //
 
 #import "ESDefines.h"
-#import <CommonCrypto/CommonHMAC.h>
 
 @interface NSData (ESHash)
 
@@ -51,8 +50,8 @@
 /// @name Hmac Digest
 /// =============================================
 
-- (NSData *)es_HmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
-- (NSString *)es_HmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSData *)es_HmacHashDataWithAlgorithm:(uint32_t /* CCHmacAlgorithm */)algorithm key:(id)key;
+- (NSString *)es_HmacHashStringWithAlgorithm:(uint32_t /* CCHmacAlgorithm */)algorithm key:(id)key;
 
 /// =============================================
 /// @name Base64

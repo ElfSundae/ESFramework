@@ -10,6 +10,7 @@
 #import "NSData+ESHash.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "NSString+ESAdditions.h"
+#import <CommonCrypto/CommonHMAC.h>
 
 @implementation NSString (ESHash)
 
