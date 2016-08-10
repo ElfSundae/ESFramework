@@ -44,7 +44,7 @@
 
 #if DEBUG
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var) uint64_t stopwatch_begin_var = mach_absolute_time();
-#define ES_STOPWATCH_END(stopwatch_begin_var)   { \
+#define ES_STOPWATCH_END(stopwatch_begin_var) { \
         uint64_t end = mach_absolute_time(); \
         mach_timebase_info_data_t timebaseInfo; \
         (void) mach_timebase_info(&timebaseInfo); \
@@ -62,13 +62,13 @@
 /// =============================================
 #pragma mark - Constants
 
-#define ES_MINUTE (60)
-#define ES_HOUR   (3600)
-#define ES_DAY    (86400)
-#define ES_5_DAYS (432000)
-#define ES_WEEK   (604800)
-#define ES_MONTH  (2635200) /* 30.5 days */
-#define ES_YEAR   (31536000) /* 365 days */
+#define ES_MINUTE   (60)
+#define ES_HOUR     (3600)
+#define ES_DAY      (86400)
+#define ES_5_DAYS   (432000)
+#define ES_WEEK     (604800)
+#define ES_MONTH    (2635200) /* 30.5 days */
+#define ES_YEAR     (31536000) /* 365 days */
 
 
 /// =============================================
@@ -76,14 +76,12 @@
 /// =============================================
 #pragma mark - SDK Compatibility
 
-#ifndef __IPHONE_9_0
-#define __IPHONE_9_0     90000
-#endif
-#ifndef __IPHONE_9_1
-#define __IPHONE_9_1     90100
-#endif
 #ifndef __IPHONE_9_2
-#define __IPHONE_9_2     90200
+#define __IPHONE_9_2      90200
+#endif
+
+#ifndef __IPHONE_9_3
+#define __IPHONE_9_3      90300
 #endif
 
 #ifndef NSFoundationVersionNumber_iOS_8_4
@@ -147,17 +145,17 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 #define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
     + (instancetype)sharedInstance \
     { \
-        /**/ static id sharedInstanceVariableName = nil; \
-        /**/ static dispatch_once_t onceToken_##sharedInstanceVariableName; \
-        /**/ dispatch_once(&onceToken_##sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
-        /**/ return sharedInstanceVariableName; \
+        static id sharedInstanceVariableName = nil; \
+        static dispatch_once_t onceToken_##sharedInstanceVariableName; \
+        dispatch_once(&onceToken_##sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
+        return sharedInstanceVariableName; \
     }
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
 
 /**
  * Safely release CF instance.
  */
-#define CFReleaseSafely(var)   if (var) { CFRelease(var); var = NULL; }
+#define CFReleaseSafely(var) if (var) { CFRelease(var); var = NULL; }
 
 /**
  * Bits-mask helper.
@@ -169,11 +167,11 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 /**
  * Localized string.
  */
-#define ESLocalizedString(key)                  NSLocalizedString(key, nil)
+#define ESLocalizedString(key) NSLocalizedString(key, nil)
 #ifndef _e
 #define _e(key) NSLocalizedString(key, nil)
 #endif
-#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat : NSLocalizedString(key, nil), ##__VA_ARGS__]
+#define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat : NSLocalizedString(key, nil), ##__VA_ARGS__]
 
 /// =============================================
 /// @name Helper Functions
@@ -284,7 +282,7 @@ FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 /**
  * Defines a key for the Associcated Object.
  */
-#define ESDefineAssociatedObjectKey(name)       static const void * name##Key = &name##Key
+#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key
 
 /**
  * Returns the value associated with a given object for a given key.
