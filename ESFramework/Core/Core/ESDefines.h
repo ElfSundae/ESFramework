@@ -21,12 +21,19 @@
 /// =============================================
 #pragma mark - Log
 
-#if (!defined(NSLog) && !defined(NSLogIf))
+#if (!defined(NSLog))
 #if DEBUG
-#define NSLog(fmt, ...)                 NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ## __VA_ARGS__)
-#define NSLogIf(condition, fmt, ...)    if ((condition)) { NSLog(fmt, ## __VA_ARGS__); }
+#define NSLog(fmt, ...) NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
 #define NSLog(fmt, ...)
+#endif
+#endif
+
+
+#if (!defined(NSLogIf))
+#if DEBUG
+#define NSLogIf(condition, fmt, ...) if ((condition)) { NSLog(fmt, ##__VA_ARGS__); }
+#else
 #define NSLogIf(condition, fmt, ...)
 #endif
 #endif
@@ -118,12 +125,12 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
  * Make weak references to break "retain cycles".
  */
 #define ESWeak_(var, weakVar)                   __weak __typeof(&*var) weakVar = var;
-#define ESWeak(var)                             ESWeak_(var, weak_ ## var);
+#define ESWeak(var)                             ESWeak_(var, weak_##var);
 #define ESWeakSelf                              ESWeak(self);
 
 #define ESStrong_DoNotCheckNil(weakVar, var)    __typeof(&*weakVar) var = weakVar;
 #define ESStrong_(weakVar, var)                 ESStrong_DoNotCheckNil(weakVar, var); if (!var) return;
-#define ESStrong(var)                           ESStrong_(weak_ ## var, _ ## var);
+#define ESStrong(var)                           ESStrong_(weak_##var, _##var);
 #define ESStrongSelf                            ESStrong(self);
 
 /**
@@ -141,8 +148,8 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
     + (instancetype)sharedInstance \
     { \
         /**/ static id sharedInstanceVariableName = nil; \
-        /**/ static dispatch_once_t onceToken_ ## sharedInstanceVariableName; \
-        /**/ dispatch_once(&onceToken_ ## sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
+        /**/ static dispatch_once_t onceToken_##sharedInstanceVariableName; \
+        /**/ dispatch_once(&onceToken_##sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
         /**/ return sharedInstanceVariableName; \
     }
 #define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
@@ -166,7 +173,7 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
 #ifndef _e
 #define _e(key) NSLocalizedString(key, nil)
 #endif
-#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat : NSLocalizedString(key, nil), ## __VA_ARGS__]
+#define ESLocalizedStringWithFormat(key, ...)   [NSString stringWithFormat : NSLocalizedString(key, nil), ##__VA_ARGS__]
 
 /// =============================================
 /// @name Helper Functions
@@ -277,7 +284,7 @@ FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 /**
  * Defines a key for the Associcated Object.
  */
-#define ESDefineAssociatedObjectKey(name)       static const void * name ## Key = &name ## Key
+#define ESDefineAssociatedObjectKey(name)       static const void * name##Key = &name##Key
 
 /**
  * Returns the value associated with a given object for a given key.
