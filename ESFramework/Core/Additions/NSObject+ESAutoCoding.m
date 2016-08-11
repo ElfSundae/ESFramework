@@ -17,21 +17,25 @@ ESDefineAssociatedObjectKey(es_codableProperties);
 - (id)initWithCoder_es:(NSCoder *)aDecoder
 {
     self = [self init];
+    if (!self) {
+        return nil;
+    }
 
-    BOOL secureSupported = [[self class] respondsToSelector:@selector(supportsSecureCoding)] && [[self class] supportsSecureCoding];
+    BOOL secureSupported = ([[self class] respondsToSelector:@selector(supportsSecureCoding)] &&
+                            [[self class] supportsSecureCoding]);
     BOOL secureAvailable = [aDecoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)];
-    [[[self class] es_codableProperties] each:^(id key, id obj, BOOL *stop) {
-        Class propertyClass = (Class)obj;
+
+    NSDictionary *properties = [[self class] es_codableProperties];
+
+    for (NSString *key in properties) {
+        Class propertyClass = properties[key];
+
         id value = nil;
-        @try {
-            if (secureAvailable) {
-                value = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
-            } else {
-                value = [aDecoder decodeObjectForKey:key];
-            }
-        } @catch (NSException *exception) {
-            printf("%s Exception: %s\n", __PRETTY_FUNCTION__, exception.description.UTF8String);
-            value = nil;
+
+        if (secureAvailable) {
+            value = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
+        } else {
+            value = [aDecoder decodeObjectForKey:key];
         }
 
         if (value) {
@@ -39,20 +43,15 @@ ESDefineAssociatedObjectKey(es_codableProperties);
                 [self setValue:value forKey:key];
             }
         }
-    } option:NSEnumerationConcurrent];
+    }
 
     return self;
 }
 
 - (void)es_encodeWithCoder:(NSCoder *)aCoder
 {
-    for (NSString *key in [[self class] es_codableProperties].allKeys) {
-        id value = nil;
-        @try {
-            value = [self valueForKey:key];
-        } @catch (NSException *exception) {
-            value = nil;
-        }
+    for (NSString *key in [[self class] es_codableProperties]) {
+        id value = [self valueForKey:key];
 
         if (value) {
             [aCoder encodeObject:value forKey:key];
@@ -63,22 +62,22 @@ ESDefineAssociatedObjectKey(es_codableProperties);
 - (id)es_copyWithZone:(NSZone *)zone
 {
     id copy = [[[self class] alloc] init];
-    for (NSString *key in [[self class] es_codableProperties].allKeys) {
-        @try {
-            [copy setValue:[self valueForKey:key] forKey:key];
-        } @catch (NSException *exception) {
-            continue;
-        }
+
+    for (NSString *key in [[self class] es_codableProperties]) {
+        [copy setValue:[self valueForKey:key] forKey:key];
     }
+
     return copy;
 }
 
 + (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
 {
     id object = nil;
+
     @try {
         object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    } @catch (NSException *exception)   {
+    } @catch (NSException *exception) {
+
     }
 
     return [object isKindOfClass:[self class]] ? object : nil;
@@ -92,20 +91,12 @@ ESDefineAssociatedObjectKey(es_codableProperties);
             if (data) {
                 return [data writeToFile:filePath atomically:useAuxiliaryFile];
             }
-        } @catch (NSException *exception)   {
+        } @catch (NSException *exception) {
+
         }
     }
-    return NO;
-}
 
-- (void)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile completion:(void (^)(BOOL result))completion
-{
-    ESDispatchOnDefaultQueue(^{
-        BOOL result = [self es_writeToFile:filePath atomically:useAuxiliaryFile];
-        ESDispatchOnMainThreadAsynchrony(^{
-            if (completion) completion(result);
-        });
-    });
+    return NO;
 }
 
 + (NSDictionary *)es_codableProperties
@@ -131,6 +122,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
                 // get codable property class
                 // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
                 char *propertyTypeEncoding = property_copyAttributeValue(property, "T");
+
                 switch (propertyTypeEncoding[0]) {
                     case '@': {
                         if (strlen(propertyTypeEncoding) >= 3) {

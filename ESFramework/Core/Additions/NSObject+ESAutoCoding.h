@@ -66,7 +66,6 @@
 
 + (instancetype)es_objectWithContentsOfFile:(NSString *)filePath;
 - (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
-- (void)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile completion:(void (^)(BOOL result))completion;
 
 /// @{ property_name : property_class }
 + (NSDictionary *)es_codableProperties;
