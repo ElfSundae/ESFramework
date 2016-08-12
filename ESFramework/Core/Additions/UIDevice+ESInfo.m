@@ -153,7 +153,7 @@
 
 + (NSString *)diskFreeSizeString
 {
-    return [NSByteCountFormatter stringFromByteCount:(long long)[self diskFreeSizeString] countStyle:NSByteCountFormatterCountStyleFile];
+    return [NSByteCountFormatter stringFromByteCount:(long long)[self diskFreeSize] countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 + (unsigned long long)diskTotalSize
