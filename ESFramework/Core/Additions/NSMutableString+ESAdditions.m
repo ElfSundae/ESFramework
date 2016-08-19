@@ -46,9 +46,9 @@
 
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
-    [dictionary enumerateKeysAndObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(id _Nonnull key, id _Nonnull obj, BOOL * _Nonnull stop) {
-        [self replace:ESStringValue(key) to:ESStringValue(obj) options:options];
-    }];
+    for (id key in dictionary) {
+        [self replace:ESStringValue(key) to:ESStringValue(dictionary[key]) options:options];
+    }
 }
 
 @end
