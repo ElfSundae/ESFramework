@@ -30,6 +30,7 @@
 {
     return ([[UIDevice currentDevice] name] ?: @"");
 }
+
 + (NSString *)systemName
 {
     NSString *name = [[UIDevice currentDevice] systemName];
@@ -38,10 +39,12 @@
     }
     return name;
 }
+
 + (NSString *)systemVersion
 {
     return [[UIDevice currentDevice] systemVersion];
 }
+
 + (NSString *)systemBuildIdentifier
 {
     static NSString *__gBuildIdentifier = nil;
@@ -60,6 +63,7 @@
     });
     return __gBuildIdentifier;
 }
+
 + (NSString *)model
 {
     return [[UIDevice currentDevice] model];
