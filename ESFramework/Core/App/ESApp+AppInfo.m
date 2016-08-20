@@ -108,8 +108,9 @@
     // 以 '; ' 间隔
     NSMutableString *ua = [NSMutableString string];
     [ua appendFormat:@"%@/%@", self.appName, [[self class] appVersion]];
-    [ua appendFormat:@" (%@; iOS %@; Scale/%0.2f; Screen/%@",
+    [ua appendFormat:@" (%@; %@ %@; Scale/%0.2f; Screen/%@",
      [UIDevice model],
+     [UIDevice systemName],
      [UIDevice systemVersion],
      [UIScreen mainScreen].scale,
      ESStringFromSize([UIDevice screenSizeInPoints])];
