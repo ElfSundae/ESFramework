@@ -26,59 +26,37 @@
 
 + (NSString *)appVersion
 {
-    // version for displaying
-    NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    if (!ESIsStringWithAnyText(version)) {
-        // build version
-        version = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
-    }
+    NSString *version = ESStringValueWithDefault([self objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
+                                                 [self objectForInfoDictionaryKey:@"CFBundleVersion"]);
     return version ?: @"1.0";
+}
+
++ (NSString *)appBuildVersion
+{
+    return ESStringValueWithDefault([self objectForInfoDictionaryKey:@"CFBundleVersion"], @"1");
 }
 
 + (NSString *)appVersionWithBuildVersion
 {
-    static NSString *__appVersionWithBuildVersion = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *version = [self objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        NSString *build = [self objectForInfoDictionaryKey:@"CFBundleVersion"];
-        NSMutableString *result = [NSMutableString string];
-        if (ESIsStringWithAnyText(version)) {
-            [result appendString:version];
-        }
-        if (ESIsStringWithAnyText(build)) {
-            if (result.length) {
-                [result appendFormat:@" (%@)", build];
-            } else {
-                [result appendString:build];
-            }
-        }
-        __appVersionWithBuildVersion = [result copy];
-    });
-    return __appVersionWithBuildVersion;
+    return [NSString stringWithFormat:@"%@ (%@)", [self appVersion], [self appBuildVersion]];
 }
 
 + (BOOL)isUIViewControllerBasedStatusBarAppearance
 {
-    return ESBoolValueWithDefault([self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"], YES);
+    return ESBoolValueWithDefault([self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"],
+                                  YES);
 }
 
 - (NSString *)appName
 {
-    NSString *result = [[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey];
-    if (!result) {
-        result = [NSProcessInfo processInfo].processName;
-    }
-    return result ?: self.appDisplayName;
+    return ESStringValueWithDefault([[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey],
+                                    [NSProcessInfo processInfo].processName);
 }
 
 - (NSString *)appDisplayName
 {
-    NSString *result = [[self class] objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    if (!result) {
-        result = [[self class] objectForInfoDictionaryKey:@"CFBundleName"];
-    }
-    return result ?: @"";
+    return ESStringValueWithDefault([[self class] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
+                                    [[self class] objectForInfoDictionaryKey:@"CFBundleName"]);
 }
 
 - (NSDictionary *)analyticsInformation
@@ -89,19 +67,18 @@
     result[@"model"]        = [UIDevice model];
     result[@"name"]         = [UIDevice name];
     result[@"platform"]     = [UIDevice platform];
-    result[@"carrier"]      = [UIDevice carrierString];
     result[@"jailbroken"]   = [UIDevice isJailbroken] ? @1 : @0;
     result[@"screen_size"]  = ESStringFromSize([UIDevice screenSizeInPoints]);
     result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
     result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
     result[@"locale"]       = [UIDevice currentLocaleIdentifier];
     result[@"network"]      = [UIDevice currentNetworkReachabilityStatusString];
+
     result[@"app_name"]     = self.appName;
     result[@"app_identifier"] = [[self class] appBundleIdentifier];
     result[@"app_version"]  = [[self class] appVersion];
-    if (self.appChannel) {
-        result[@"app_channel"]  = self.appChannel;
-    }
+    result[@"app_channel"]  = self.appChannel ?: @"";
+
     NSString *__autoreleasing previousAppVersion = nil;
     if ([[self class] isFreshLaunch:&previousAppVersion]) {
         result[@"app_fresh_launch"] = @(YES);
@@ -109,8 +86,19 @@
             result[@"app_previous_version"] = previousAppVersion;
         }
     }
-    result[@"ssid"]         = [UIDevice currentWiFiSSID];
-    result[@"ip"]           = [UIDevice localIPv4Address] ?: @"";
+
+    NSString *carrier = [UIDevice carrierString];
+    if (carrier) {
+        result[@"carrier"] = carrier;
+    }
+    NSString *ssid = [UIDevice currentWiFiSSID];
+    if (ssid) {
+        result[@"ssid"] = ssid;
+    }
+    NSString *ip = [UIDevice localIPv4Address] ?: [UIDevice localIPv6Address];
+    if (ip) {
+        result[@"ip"] = ip;
+    }
 
     return [result copy];
 }

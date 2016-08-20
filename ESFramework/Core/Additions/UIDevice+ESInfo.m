@@ -81,8 +81,7 @@
 {
     CTTelephonyNetworkInfo *netInfo = [[CTTelephonyNetworkInfo alloc] init];
     CTCarrier *carrier_t = [netInfo subscriberCellularProvider];
-    NSString *carrier = [carrier_t carrierName];
-    return carrier ?: @"";
+    return [carrier_t carrierName];
 }
 
 + (NSString *)currentWiFiSSID
@@ -102,7 +101,7 @@
         }
     }
 #endif
-    return ssid ?: @"";
+    return ssid;
 }
 
 + (BOOL)isJailbroken

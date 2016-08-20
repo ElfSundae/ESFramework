@@ -111,6 +111,12 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 + (NSString *)appVersion;
 
 /**
+ * Returns the value of CFBundleVersion in the main bundle's Info.plist file.
+ * If the value is not found, @"1" will be returned.
+ */
++ (NSString *)appBuildVersion;
+
+/**
  * CFBundleShortVersionString + CFBundleVersion
  * e.g. "1.2.1(20150433.387)", "1.2.0", "2015988"
  */
