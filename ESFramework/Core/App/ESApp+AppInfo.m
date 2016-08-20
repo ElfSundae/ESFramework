@@ -12,7 +12,14 @@
 #import "UIDevice+ESInfo.h"
 #import "UIDevice+ESNetworkReachability.h"
 
+static NSDate *__gAppLaunchDate = nil;
+
 @implementation ESApp (_AppInfo)
+
++ (void)load
+{
+    __gAppLaunchDate = [NSDate date];
+}
 
 + (id)objectForInfoDictionaryKey:(NSString *)key
 {
@@ -47,6 +54,16 @@
                                   YES);
 }
 
++ (NSDate *)appLaunchDate
+{
+    return __gAppLaunchDate ?: (__gAppLaunchDate = [NSDate date]);
+}
+
++ (NSTimeInterval)appLaunchDuration
+{
+    return fabs([[self appLaunchDate] timeIntervalSinceNow]);
+}
+
 - (NSString *)appName
 {
     return ESStringValueWithDefault([[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey],
@@ -77,6 +94,7 @@
     result[@"app_name"]     = self.appName;
     result[@"app_identifier"] = [[self class] appBundleIdentifier];
     result[@"app_version"]  = [[self class] appVersion];
+    result[@"app_launch"]   = [NSString stringWithFormat:@"%.2f", [[self class] appLaunchDuration]];
     result[@"app_channel"]  = self.appChannel ?: @"";
 
     NSString *__autoreleasing previousAppVersion = nil;

@@ -136,6 +136,16 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
 + (BOOL)isUIViewControllerBasedStatusBarAppearance;
 
 /**
+ * The date when the app launched.
+ */
++ (NSDate *)appLaunchDate;
+
+/**
+ * The time duration after app launched.
+ */
++ (NSTimeInterval)appLaunchDuration;
+
+/**
  * Returns the value of CFBundleExecutable in the main bundle's Info.plist file.
  * If the value is not found, it will return the app process name.
  */
