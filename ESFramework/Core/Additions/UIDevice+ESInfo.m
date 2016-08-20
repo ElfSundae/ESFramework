@@ -32,7 +32,11 @@
 }
 + (NSString *)systemName
 {
-    return [[UIDevice currentDevice] systemName];
+    NSString *name = [[UIDevice currentDevice] systemName];
+    if ([name isEqualToString:@"iPhone OS"]) {
+        name = @"iOS";
+    }
+    return name;
 }
 + (NSString *)systemVersion
 {
