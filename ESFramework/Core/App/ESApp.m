@@ -10,11 +10,6 @@
 
 @implementation ESApp
 
-+ (void)load
-{
-    [self isFreshLaunch:NULL];
-}
-
 + (instancetype)sharedApp
 {
     return _ESSharedApp();
