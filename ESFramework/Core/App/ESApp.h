@@ -162,22 +162,28 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
  *
  * @code
  * {
- *     "app_name" = ESDemo;
- *     "app_channel" = "App Store";
- *     "app_identifier" = "com.0x123.ESDemo";
- *     "app_version" = "1.0.2";
- *     "app_previous_version" = "1.0.0";
- *     carrier = "China Mobile";
- *     jailbroken = 1;
- *     locale = "zh_CN";
- *     model = iPhone;
- *     name = "Elf Sundae's iPhone";
- *     network = WiFi;
- *     os = iOS;
- *     "os_version" = "8.4";
- *     platform = "iPhone7,1";
- *     "screen_size" = 1242x2208;
- *     "timezone_gmt" = 8;
+ *     "os": "iOS",
+ *     "os_version": "9.3.3",
+ *     "model": "iPhone",
+ *     "platform": "iPhone7,1",
+ *     "name": "Elf Sundae's iPhone",
+ *     "jailbroken": 1,
+ *     "screen_size": "414x736",
+ *     "screen_scale": "3.00",
+ *     "timezone_gmt": 8,
+ *     "locale": "zh_CN",
+ *     "carrier": "China Mobile",
+ *     "network": "WiFi",
+ *     "ssid": "0x123.com",
+ *     "local_ip": "192.168.3.101",
+ *     "app_name": "Example",
+ *     "app_identifier": "com.0x123.ESFramework.Example",
+ *     "app_version": "1.3",
+ *     "app_build_version": 23,
+ *     "app_channel": "App Store",
+ *     "app_launch": "0.35",
+ *     "app_fresh_launch": 1,
+ *     "app_previous_version": "1.0"
  * }
  * @endcode
  *

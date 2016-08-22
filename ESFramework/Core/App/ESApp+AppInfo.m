@@ -79,23 +79,37 @@ static NSDate *__gAppLaunchDate = nil;
 - (NSDictionary *)analyticsInformation
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    result[@"os"]           = [UIDevice systemName];
-    result[@"os_version"]   = [UIDevice systemVersion];
-    result[@"model"]        = [UIDevice model];
-    result[@"name"]         = [UIDevice name];
-    result[@"platform"]     = [UIDevice platform];
-    result[@"jailbroken"]   = [UIDevice isJailbroken] ? @1 : @0;
-    result[@"screen_size"]  = ESStringFromSize([UIDevice screenSizeInPoints]);
+
+    result[@"os"] = [UIDevice systemName];
+    result[@"os_version"] = [UIDevice systemVersion];
+    result[@"model"] = [UIDevice model];
+    result[@"platform"] = [UIDevice platform];
+    result[@"name"] = [UIDevice name];
+    result[@"jailbroken"] = [UIDevice isJailbroken] ? @1 : @0;
+    result[@"screen_size"] = ESStringFromSize([UIDevice screenSizeInPoints]);
     result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
     result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
-    result[@"locale"]       = [UIDevice currentLocaleIdentifier];
-    result[@"network"]      = [UIDevice currentNetworkReachabilityStatusString];
+    result[@"locale"] = [UIDevice currentLocaleIdentifier];
+    NSString *carrier = [UIDevice carrierString];
+    if (carrier) {
+        result[@"carrier"] = carrier;
+    }
+    result[@"network"] = [UIDevice currentNetworkReachabilityStatusString];
+    NSString *ssid = [UIDevice currentWiFiSSID];
+    if (ssid) {
+        result[@"ssid"] = ssid;
+    }
+    NSString *localIP = [UIDevice localIPv4Address] ?: [UIDevice localIPv6Address];
+    if (localIP) {
+        result[@"local_ip"] = localIP;
+    }
 
-    result[@"app_name"]     = self.appName;
+    result[@"app_name"] = self.appName;
     result[@"app_identifier"] = [[self class] appBundleIdentifier];
-    result[@"app_version"]  = [[self class] appVersion];
-    result[@"app_launch"]   = [NSString stringWithFormat:@"%.2f", [[self class] appLaunchDuration]];
-    result[@"app_channel"]  = self.appChannel ?: @"";
+    result[@"app_version"] = [[self class] appVersion];
+    result[@"app_build_version"] = [[self class] appBuildVersion];
+    result[@"app_channel"] = self.appChannel ?: @"";
+    result[@"app_launch"] = [NSString stringWithFormat:@"%.2f", [[self class] appLaunchDuration]];
 
     NSString *__autoreleasing previousAppVersion = nil;
     if ([[self class] isFreshLaunch:&previousAppVersion]) {
@@ -103,19 +117,6 @@ static NSDate *__gAppLaunchDate = nil;
         if (previousAppVersion) {
             result[@"app_previous_version"] = previousAppVersion;
         }
-    }
-
-    NSString *carrier = [UIDevice carrierString];
-    if (carrier) {
-        result[@"carrier"] = carrier;
-    }
-    NSString *ssid = [UIDevice currentWiFiSSID];
-    if (ssid) {
-        result[@"ssid"] = ssid;
-    }
-    NSString *ip = [UIDevice localIPv4Address] ?: [UIDevice localIPv6Address];
-    if (ip) {
-        result[@"ip"] = ip;
     }
 
     return [result copy];
