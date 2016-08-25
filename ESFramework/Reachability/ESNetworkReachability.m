@@ -15,7 +15,7 @@
 
 #import "ESNetworkReachability.h"
 
-NSString *const ESNetworkReachabilityDidChangeNotification = @"ESNetworkReachabilityDidChangeNotification";
+NSString *const ESNetworkReachabilityStatusDidChangeNotification = @"ESNetworkReachabilityStatusDidChangeNotification";
 
 static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info);
 
@@ -208,7 +208,7 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     self.status = [[self class] statusForReachabilityFlags:flags];
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:ESNetworkReachabilityDidChangeNotification object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:ESNetworkReachabilityStatusDidChangeNotification object:self];
     });
 }
 

@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, ESNetworkReachabilityStatus) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXTERN NSString *const ESNetworkReachabilityDidChangeNotification;
+FOUNDATION_EXTERN NSString *const ESNetworkReachabilityStatusDidChangeNotification;
 
 FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabilityStatus status);
 
