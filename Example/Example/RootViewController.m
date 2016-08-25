@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import <ESFramework/ESFrameworkCore.h>
+#import <ESFramework/ESFramework.h>
 
 @implementation RootViewController
 
