@@ -45,6 +45,6 @@
 #import "UINavigationController+ESAdditions.h"
 #import "UIImagePickerController+ESFixOrientation.h"
 
-#import "UIDevice+ESNetworkReachability.h"
 #import "ESApp.h"
+#import "ESNetworkReachability.h"
 #import "ESStoreHelper.h"
