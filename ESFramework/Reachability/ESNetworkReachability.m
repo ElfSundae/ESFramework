@@ -21,6 +21,7 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 @interface ESNetworkReachability ()
 @property (nonatomic, assign) ESNetworkReachabilityStatus status;
+@property (nonatomic, copy) void (^statusChangedBlock)(ESNetworkReachability *reachability, ESNetworkReachabilityStatus status);
 @property (nonatomic, assign, readonly) SCNetworkReachabilityRef networkReachability;
 @property (nonatomic, strong) dispatch_queue_t networkReachabilityQueue;
 @end
@@ -208,6 +209,10 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     self.status = [[self class] statusForReachabilityFlags:flags];
 
     dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.statusChangedBlock) {
+            self.statusChangedBlock(self, self.status);
+        }
+
         [[NSNotificationCenter defaultCenter] postNotificationName:ESNetworkReachabilityStatusDidChangeNotification object:self];
     });
 }

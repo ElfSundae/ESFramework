@@ -83,6 +83,11 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
 @property (nonatomic, assign, readonly) ESNetworkReachabilityStatus status;
 
 /**
+ * The block callback when the status changes.
+ */
+- (void)setStatusChangedBlock:(nullable void (^)(ESNetworkReachability *reachability, ESNetworkReachabilityStatus status))block;
+
+/**
  * The current network reachability status.
  */
 - (NSString *)statusString;
