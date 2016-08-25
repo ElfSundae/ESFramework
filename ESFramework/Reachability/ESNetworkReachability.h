@@ -80,7 +80,7 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
 @property (nonatomic, copy, nullable) NSString *identifier;
 
 /**
- * The current network reachability status.
+ * The current network reachability status. KVO observers on the main thread.
  */
 @property (nonatomic, assign, readonly) ESNetworkReachabilityStatus status;
 
