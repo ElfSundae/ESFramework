@@ -69,15 +69,15 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     return __gDefaultReachability;
 }
 
-+ (instancetype)reachabilityWithDomain:(NSString *)domain
++ (instancetype)reachabilityWithHostName:(NSString *)hostName
 {
-    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [domain UTF8String]);
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [hostName UTF8String]);
 
     ESNetworkReachability *instance = [[self alloc] initWithReachability:reachability];
 
     CFRelease(reachability);
 
-    instance.identifier = domain;
+    instance.identifier = hostName;
 
     return instance;
 }

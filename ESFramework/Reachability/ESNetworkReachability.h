@@ -45,9 +45,11 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
 - (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability NS_DESIGNATED_INITIALIZER;
 
 /**
- * Creates and returns an instance for the specified domain (host name).
+ * Creates and returns an instance for the specified host.
+ *
+ * @param hostName Host domain or IP address
  */
-+ (instancetype)reachabilityWithDomain:(NSString *)domain;
++ (instancetype)reachabilityWithHostName:(NSString *)hostName;
 
 /**
  * Creates and returns an instance for the specified socket address.
