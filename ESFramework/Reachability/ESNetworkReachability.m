@@ -20,6 +20,7 @@ NSString *const ESNetworkReachabilityDidChangeNotification = @"ESNetworkReachabi
 static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void *info);
 
 @interface ESNetworkReachability ()
+@property (nonatomic, assign) ESNetworkReachabilityStatus status;
 @property (nonatomic, assign, readonly) SCNetworkReachabilityRef networkReachability;
 @property (nonatomic, strong) dispatch_queue_t networkReachabilityQueue;
 @end
@@ -44,6 +45,8 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
         NSString *queueName = [NSString stringWithFormat:@"com.0x123.ESNetworkReachability.%@", [NSUUID UUID].UUIDString];
         self.networkReachabilityQueue = dispatch_queue_create([queueName cStringUsingEncoding:NSASCIIStringEncoding], NULL);
+
+        self.status = [self currentReachabilityStatus];
     }
 
     return self;
@@ -120,31 +123,15 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     return [self reachabilityWithAddress:&localWifiAddress];
 }
 
-- (ESNetworkReachabilityStatus)status
-{
-    return [[self class] statusForReachabilityFlags:self.currentReachabilityFlags];
-}
-
 - (NSString *)statusString
 {
     return ESNetworkReachabilityStatusString(self.status);
 }
 
-- (SCNetworkReachabilityFlags)currentReachabilityFlags
-{
-    if (self.networkReachability) {
-        SCNetworkReachabilityFlags flags;
-        if (SCNetworkReachabilityGetFlags(self.networkReachability, &flags)) {
-            return flags;
-        }
-    }
-
-    return 0;
-}
-
 - (BOOL)isReachable
 {
-    return (ESNetworkReachabilityStatusNotReachable != self.status);
+    return (ESNetworkReachabilityStatusReachableViaWWAN == self.status ||
+            ESNetworkReachabilityStatusReachableViaWiFi == self.status);
 }
 
 - (BOOL)isReachableViaWWAN
@@ -199,8 +186,27 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Private
 
+- (SCNetworkReachabilityFlags)currentReachabilityFlags
+{
+    if (self.networkReachability) {
+        SCNetworkReachabilityFlags flags;
+        if (SCNetworkReachabilityGetFlags(self.networkReachability, &flags)) {
+            return flags;
+        }
+    }
+
+    return 0;
+}
+
+- (ESNetworkReachabilityStatus)currentReachabilityStatus
+{
+    return [[self class] statusForReachabilityFlags:[self currentReachabilityFlags]];
+}
+
 - (void)networkReachabilityStatusChanged:(SCNetworkReachabilityFlags)flags
 {
+    self.status = [[self class] statusForReachabilityFlags:flags];
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:ESNetworkReachabilityDidChangeNotification object:self];
     });

@@ -80,17 +80,12 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
 /**
  * The current network reachability status.
  */
-- (ESNetworkReachabilityStatus)status;
+@property (nonatomic, assign, readonly) ESNetworkReachabilityStatus status;
 
 /**
  * The current network reachability status.
  */
 - (NSString *)statusString;
-
-/**
- * The current network reachability flags.
- */
-- (SCNetworkReachabilityFlags)currentReachabilityFlags;
 
 /**
  * Determines whether the network is currently reachable.
@@ -116,6 +111,11 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
  * Stops monitoring for changes in network reachability status.
  */
 - (void)stopMonitoring;
+
+/**
+ * The current network reachability flags.
+ */
+- (SCNetworkReachabilityFlags)currentReachabilityFlags;
 
 @end
 
