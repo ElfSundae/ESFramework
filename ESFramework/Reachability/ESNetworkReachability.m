@@ -120,14 +120,14 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     return [self reachabilityWithAddress:&localWifiAddress];
 }
 
-- (ESNetworkReachabilityStatus)currentReachabilityStatus
+- (ESNetworkReachabilityStatus)status
 {
     return [[self class] statusForReachabilityFlags:self.currentReachabilityFlags];
 }
 
-- (NSString *)currentReachabilityStatusString
+- (NSString *)statusString
 {
-    return ESNetworkReachabilityStatusString(self.currentReachabilityStatus);
+    return ESNetworkReachabilityStatusString(self.status);
 }
 
 - (SCNetworkReachabilityFlags)currentReachabilityFlags
@@ -144,17 +144,17 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 - (BOOL)isReachable
 {
-    return (ESNetworkReachabilityStatusNotReachable != self.currentReachabilityStatus);
+    return (ESNetworkReachabilityStatusNotReachable != self.status);
 }
 
 - (BOOL)isReachableViaWWAN
 {
-    return (ESNetworkReachabilityStatusReachableViaWWAN == self.currentReachabilityStatus);
+    return (ESNetworkReachabilityStatusReachableViaWWAN == self.status);
 }
 
 - (BOOL)isReachableViaWiFi
 {
-    return (ESNetworkReachabilityStatusReachableViaWiFi == self.currentReachabilityStatus);
+    return (ESNetworkReachabilityStatusReachableViaWiFi == self.status);
 }
 
 - (BOOL)startMonitoring
@@ -191,7 +191,7 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
             self,
             self.identifier,
             [[self class] networkReachabilityFlagsString:self.currentReachabilityFlags],
-            self.currentReachabilityStatusString
+            self.statusString
     ];
 }
 

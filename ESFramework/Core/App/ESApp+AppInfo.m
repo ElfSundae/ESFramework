@@ -98,7 +98,7 @@ static NSDate *__gAppLaunchDate = nil;
     if (carrier) {
         result[@"carrier"] = carrier;
     }
-    result[@"network"] = [[ESNetworkReachability defaultReachability] currentReachabilityStatusString];
+    result[@"network"] = [[ESNetworkReachability defaultReachability] statusString];
     NSString *ssid = [UIDevice currentWiFiSSID];
     if (ssid) {
         result[@"ssid"] = ssid;
@@ -138,7 +138,7 @@ static NSDate *__gAppLaunchDate = nil;
      [UIScreen mainScreen].scale,
      ESStringFromSize([UIDevice screenSizeInPoints])];
     [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
-    [ua appendFormat:@"; Network/%@", [[ESNetworkReachability defaultReachability] currentReachabilityStatusString]];
+    [ua appendFormat:@"; Network/%@", [[ESNetworkReachability defaultReachability] statusString]];
     if (self.appChannel) {
         [ua appendFormat:@"; Channel/%@", self.appChannel];
     }

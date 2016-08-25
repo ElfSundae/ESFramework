@@ -80,12 +80,12 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
 /**
  * The current network reachability status.
  */
-- (ESNetworkReachabilityStatus)currentReachabilityStatus;
+- (ESNetworkReachabilityStatus)status;
 
 /**
  * The current network reachability status.
  */
-- (NSString *)currentReachabilityStatusString;
+- (NSString *)statusString;
 
 /**
  * The current network reachability flags.
