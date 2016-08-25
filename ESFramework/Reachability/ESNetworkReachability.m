@@ -71,7 +71,7 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 + (instancetype)reachabilityWithDomain:(NSString *)domain
 {
-    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [domain UTF8String]);
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(kCFAllocatorDefault, [domain UTF8String]);
 
     ESNetworkReachability *instance = [[self alloc] initWithReachability:reachability];
 
@@ -84,7 +84,7 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 + (instancetype)reachabilityWithAddress:(const void *)address
 {
-    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(NULL, (const struct sockaddr *)address);
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)address);
 
     ESNetworkReachability *instance = [[self alloc] initWithReachability:reachability];
 
