@@ -8,21 +8,9 @@
 
 #import "App.h"
 #import "RootViewController.h"
-#import <ESFramework/ESFramework.h>
-#import <arpa/inet.h>
-#import <netdb.h>
-#import <net/if.h>
-#import <ifaddrs.h>
-#import <unistd.h>
-#import <dlfcn.h>
-#import <notify.h>
-@implementation App
-{
-    ESNetworkReachability *baidu;
-    ESNetworkReachability *test;
-}
-@dynamic rootViewController;
 
+@implementation App
+@dynamic rootViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -35,30 +23,8 @@
     NSLog(@"%@", [ESApp sharedApp].analyticsInformation);
     NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:nil]);
 
-    NSLog(@"%@", [ESNetworkReachability defaultReachability].statusString);
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ESNetworkReachabilityDidChangeNotification:) name:ESNetworkReachabilityStatusDidChangeNotification object:nil];
-
-    baidu = [ESNetworkReachability reachabilityWithDomain:@"www.baidu.com"];
-    NSLog(@"%@", baidu.statusString);
-
-    [baidu startMonitoring];
-
-
-    //    NSString *interface = @"220.181.57.218";
-    //
-    //    test = [ESNetworkReachability reachabilityForLocalWiFi];
-    //    NSLog(@"%@", test);
-    //    [test startMonitoring];
-
-
     [self.window makeKeyAndVisible];
     return YES;
-}
-
-- (void)ESNetworkReachabilityDidChangeNotification:(NSNotification *)note
-{
-    NSLog(@"%@", note.object);
 }
 
 - (NSString *)appStoreID
