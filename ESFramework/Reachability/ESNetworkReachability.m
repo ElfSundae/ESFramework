@@ -73,6 +73,8 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
     CFRelease(reachability);
 
+    instance.identifier = domain;
+
     return instance;
 }
 
@@ -83,6 +85,8 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     ESNetworkReachability *instance = [[self alloc] initWithReachability:reachability];
 
     CFRelease(reachability);
+
+    instance.identifier = [self IPForSocketAddress:(const struct sockaddr *)address];
 
     return instance;
 }
@@ -182,9 +186,10 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: %p, flags: %@, status: %@>",
+    return [NSString stringWithFormat:@"<%@: %p, identifier: %@, flags: %@, status: %@>",
             NSStringFromClass([self class]),
             self,
+            self.identifier,
             [[self class] networkReachabilityFlagsString:self.currentReachabilityFlags],
             self.currentReachabilityStatusString
     ];
@@ -246,6 +251,25 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     else {
         return ESNetworkReachabilityStatusReachableViaWiFi;
     }
+}
+
++ (NSString *)IPForSocketAddress:(const struct sockaddr *)address
+{
+    if (AF_INET == address->sa_family) {
+        struct sockaddr_in *addr = (struct sockaddr_in *)address;
+        char ipBuffer[INET_ADDRSTRLEN];
+        if (inet_ntop(AF_INET, &addr->sin_addr, ipBuffer, sizeof(ipBuffer))) {
+            return [NSString stringWithUTF8String:ipBuffer];
+        }
+    } else if (AF_INET6 == address->sa_family) {
+        struct sockaddr_in6 *addr = (struct sockaddr_in6 *)address;
+        char ipBuffer[INET6_ADDRSTRLEN];
+        if (inet_ntop(AF_INET6, &addr->sin6_addr, ipBuffer, sizeof(ipBuffer))) {
+            return [NSString stringWithUTF8String:ipBuffer];
+        }
+    }
+
+    return nil;
 }
 
 @end

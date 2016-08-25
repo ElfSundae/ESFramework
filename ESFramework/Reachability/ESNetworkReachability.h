@@ -54,7 +54,7 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
  *
  * @param address The socket address, `const struct sockaddr_in *` for IPv4, and `const struct sockaddr_in6 *` for IPv6.
  */
-+ (instancetype)reachabilityWithAddress:(const void * /* const struct sockaddr* */)address;
++ (instancetype)reachabilityWithAddress:(const void *)address;
 
 /**
  * Creates and returns an instance for the default socket address (0.0.0.0), it supports both IPv4 and IPv6.
@@ -69,6 +69,13 @@ FOUNDATION_EXTERN NSString *ESNetworkReachabilityStatusString(ESNetworkReachabil
  * @note ONLY apps that have a specific requirement should be monitoring IN_LINKLOCALNETNUM.  For the overwhelming majority of apps, monitoring this address is unnecessary and potentially harmful.
  */
 + (instancetype)reachabilityForLocalWiFi;
+
+/**
+ * The identifier for this instance.
+ *
+ * It will be the domain or the address which currently monitors.
+ */
+@property (nonatomic, copy, nullable) NSString *identifier;
 
 /**
  * The current network reachability status.
