@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ESFramework"
-  s.version           = "2.5.0"
+  s.version           = "2.5.1"
   s.license           = "MIT"
   s.summary           = "An Effective & Swingy Framework for iOS."
   s.homepage          = "https://github.com/ElfSundae/ESFramework"
@@ -8,30 +8,28 @@ Pod::Spec.new do |s|
   s.source            = { :git => "https://github.com/ElfSundae/ESFramework.git", :tag => s.version, :submodules => true }
   s.social_media_url  = "https://twitter.com/ElfSundae"
 
-  s.requires_arc          = true
-  s.source_files          = "ESFramework/ESFramework.h"
-
-  s.ios.deployment_target = '7.0'
+  s.requires_arc            = true
+  s.ios.deployment_target   = "7.0"
+  s.source_files            = "ESFramework/ESFramework.h"
 
   s.subspec "Reachability" do |ss|
-    ss.ios.deployment_target  = '7.0'
-    ss.osx.deployment_target  = '10.9'
+    ss.ios.deployment_target  = "7.0"
+    ss.osx.deployment_target  = "10.9"
 
     ss.source_files           = "ESFramework/Reachability/*.{h,m}"
     ss.frameworks             = "SystemConfiguration"
   end
 
   s.subspec "Core" do |ss|
-    ss.dependency 'ESFramework/Reachability'
-
+    ss.dependency             "ESFramework/Reachability"
     ss.source_files           = "ESFramework/Core/**/*.{h,m}"
     ss.private_header_files   = "ESFramework/Core/**/*+Private.h"
-    ss.frameworks             = "Security", "CoreTelephony"
+    ss.frameworks             = "Security", "CoreTelephony", "SystemConfiguration"
   end
 
   s.subspec "UIKit" do |ss|
+    ss.dependency             "ESFramework/Core"
     ss.source_files           = "ESFramework/UIKit/**/*.{h,m}"
     ss.frameworks             = "QuartzCore", "StoreKit", "MediaPlayer"
-    ss.dependency           "ESFramework/Core"
   end
 end
