@@ -21,6 +21,7 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 @interface ESNetworkReachability ()
 @property (nonatomic, assign, readonly) SCNetworkReachabilityRef networkReachability;
+@property (nonatomic, strong) dispatch_queue_t networkReachabilityQueue;
 @end
 
 @implementation ESNetworkReachability
@@ -40,6 +41,9 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
     self = [super init];
     if (self) {
         _networkReachability = CFRetain(reachability);
+
+        NSString *queueName = [NSString stringWithFormat:@"com.0x123.ESNetworkReachability.%@", [NSUUID UUID].UUIDString];
+        self.networkReachabilityQueue = dispatch_queue_create([queueName cStringUsingEncoding:NSASCIIStringEncoding], NULL);
     }
 
     return self;
@@ -157,8 +161,10 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
         SCNetworkReachabilityContext context = {0, (__bridge void *)self, NULL, NULL, NULL};
 
         if (SCNetworkReachabilitySetCallback(self.networkReachability, ESNetworkReachabilityCallback, &context)) {
-            if (SCNetworkReachabilityScheduleWithRunLoop(self.networkReachability, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode)) {
+            if (SCNetworkReachabilitySetDispatchQueue(self.networkReachability, self.networkReachabilityQueue)) {
                 return YES;
+            } else {
+                SCNetworkReachabilitySetCallback(self.networkReachability, NULL, NULL);
             }
         }
     }
@@ -169,13 +175,16 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 - (void)stopMonitoring
 {
     if (self.networkReachability) {
-        SCNetworkReachabilityUnscheduleFromRunLoop(self.networkReachability, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+        SCNetworkReachabilitySetCallback(self.networkReachability, NULL, NULL);
+        SCNetworkReachabilitySetDispatchQueue(self.networkReachability, NULL);
     }
 }
 
 - (NSString *)description
 {
-    return [[super description] stringByAppendingFormat:@" reachablility flags: %@ , status: %@",
+    return [NSString stringWithFormat:@"<%@: %p, flags: %@, status: %@>",
+            NSStringFromClass([self class]),
+            self,
             [[self class] networkReachabilityFlagsString:self.currentReachabilityFlags],
             self.currentReachabilityStatusString
     ];
