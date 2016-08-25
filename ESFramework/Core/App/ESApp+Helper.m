@@ -178,7 +178,7 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
     }
 
     if (values.count) {
-        [[NSUserDefaults standardUserDefaults] registerDefaults:values];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:[values copy]];
         [[NSUserDefaults standardUserDefaults] synchronize];
         return YES;
     }

@@ -433,7 +433,7 @@ static int es_EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
                                  buffer2,
                                  buffer2Length);
     }
-    return finalString;
+    return [finalString copy];
 }
 
 - (NSString *)es_gtm_stringByEscapingForHTML {
@@ -511,7 +511,7 @@ static int es_EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
             }
         }
     } while ((subrange = [self rangeOfString:@"&" options:NSBackwardsSearch range:range]).length != 0);
-    return finalString;
+    return [finalString copy];
 } // gtm_stringByUnescapingHTML
 
 

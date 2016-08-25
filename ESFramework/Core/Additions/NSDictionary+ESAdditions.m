@@ -194,7 +194,7 @@
         }
     }];
     if (mutableCopy) {
-        [self setDictionary:mutableCopy];
+        [self setDictionary:[mutableCopy copy]];
         return YES;
     }
     return NO;

@@ -295,7 +295,7 @@
 
         freeifaddrs(interfaces);
     }
-    return result;
+    return [result copy];
 }
 
 + (NSString *)localIPv4Address

@@ -25,7 +25,7 @@
     for (NSUInteger i = 0; i < self.length; ++i) {
         [hexString appendFormat:@"%02x", *p++];
     }
-    return hexString;
+    return [hexString copy];
 }
 
 - (NSData *)es_md5HashData

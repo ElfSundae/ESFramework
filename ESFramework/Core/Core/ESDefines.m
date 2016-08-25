@@ -85,7 +85,7 @@ NSData *ESRandomDataOfLength(NSUInteger length)
     if (0 != result) {
         printf("%s: Unable to generate random data.\n", __PRETTY_FUNCTION__);
     }
-    return data;
+    return [data copy];
 }
 
 UIColor *ESRandomColor(void)
@@ -115,7 +115,7 @@ NSString *ESRandomStringOfLength(NSUInteger length)
             NSUInteger loc = ESRandomNumber(0, (uint32_t)string.length);
             [result appendFormat:@"%c", [string characterAtIndex:loc]];
         }
-        return result;
+        return [result copy];
     }
 }
 

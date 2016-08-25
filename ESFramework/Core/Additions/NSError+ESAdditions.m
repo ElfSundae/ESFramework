@@ -28,7 +28,7 @@
     if ([failureReason isKindOfClass:[NSString class]]) {
         userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
     }
-    NSDictionary *info = (userInfo.count) ? (NSDictionary *)userInfo : nil;
+    NSDictionary *info = (userInfo.count) ? [userInfo copy] : nil;
     return [self errorWithDomain:domain code:code userInfo:info];
 }
 

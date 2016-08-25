@@ -61,7 +61,7 @@
     }
     NSMutableDictionary *registered = [self registeredDefaults].mutableCopy;
     [registered removeObjectForKey:defaultName];
-    [self replaceRegisteredDefaults:registered];
+    [self replaceRegisteredDefaults:[registered copy]];
 }
 
 + (void)unregisterDefaultsForKeys:(NSArray *)defaultNames
@@ -71,7 +71,7 @@
     }
     NSMutableDictionary *registered = [self registeredDefaults].mutableCopy;
     [registered removeObjectsForKeys:defaultNames];
-    [self replaceRegisteredDefaults:registered];
+    [self replaceRegisteredDefaults:[registered copy]];
 }
 
 + (void)replaceRegisteredObject:(id)value forKey:(NSString *)defaultName
@@ -85,7 +85,7 @@
     } else {
         [registered removeObjectForKey:defaultName];
     }
-    [self replaceRegisteredDefaults:registered];
+    [self replaceRegisteredDefaults:[registered copy]];
 }
 
 + (void)replaceRegisteredDefaults:(NSDictionary *)registrationDictionary

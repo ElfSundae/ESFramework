@@ -55,7 +55,7 @@ ES_SINGLETON_IMP(sharedManager);
 
     ESWeakSelf;
     SKStoreProductViewController *productController = [[SKStoreProductViewController alloc] init];
-    [productController loadProductWithParameters:params completionBlock:^(BOOL result, NSError *error) {
+    [productController loadProductWithParameters:[params copy] completionBlock:^(BOOL result, NSError *error) {
         if (willAppear) {
             willAppear();
         }

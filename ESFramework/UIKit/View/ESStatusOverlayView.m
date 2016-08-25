@@ -104,7 +104,7 @@
             string = [[NSAttributedString alloc] initWithString:text attributes:[[self.activityLabel class] defaultTextAttributes]];
         }
     }
-    self.activityLabel.textLabel.attributedText = string;
+    self.activityLabel.textLabel.attributedText = [string copy];
     [self showActivityLabel];
 }
 

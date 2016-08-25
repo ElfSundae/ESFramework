@@ -128,7 +128,7 @@ static NSDate *__gAppLaunchDate = nil;
 
 - (NSString *)userAgent
 {
-    // 以 '; ' 间隔
+    // Split with '; '
     NSMutableString *ua = [NSMutableString string];
     [ua appendFormat:@"%@/%@", self.appName, [[self class] appVersion]];
     [ua appendFormat:@" (%@; %@ %@; Scale/%0.2f; Screen/%@",

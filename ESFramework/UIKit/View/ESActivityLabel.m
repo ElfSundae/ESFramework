@@ -74,7 +74,7 @@
 
     return @{ NSForegroundColorAttributeName: UIColorWithRGB(99., 109., 125.),
               NSFontAttributeName: [UIFont systemFontOfSize:17.],
-              NSParagraphStyleAttributeName: paragraphStyle};
+              NSParagraphStyleAttributeName: [paragraphStyle copy]};
 }
 
 @end

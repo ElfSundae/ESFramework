@@ -203,7 +203,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
             superClass = [superClass superclass];
         }
 
-        cached = [NSDictionary dictionaryWithDictionary:codableProperties];
+        cached = [codableProperties copy];
     }
 
     ESSetAssociatedObject([self class], es_codablePropertiesKey, cached, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -223,7 +223,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
         [description appendFormat:@"%@ = %@\n", key, obj];
     }];
     [description appendString:@">"];
-    return description;
+    return [description copy];
 }
 
 @end

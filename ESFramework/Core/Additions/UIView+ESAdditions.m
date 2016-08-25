@@ -245,7 +245,7 @@
 
         CAGradientLayer *gradient = [CAGradientLayer layer];
         gradient.frame = self.bounds;
-        gradient.colors = colors;
+        gradient.colors = [colors copy];
 
         [self.layer insertSublayer:gradient atIndex:0];
     }
