@@ -206,9 +206,9 @@ static void ESNetworkReachabilityCallback(SCNetworkReachabilityRef target, SCNet
 
 - (void)networkReachabilityStatusChanged:(SCNetworkReachabilityFlags)flags
 {
-    self.status = [[self class] statusForReachabilityFlags:flags];
-
     dispatch_async(dispatch_get_main_queue(), ^{
+        self.status = [[self class] statusForReachabilityFlags:flags];
+
         if (self.statusChangedBlock) {
             self.statusChangedBlock(self, self.status);
         }
