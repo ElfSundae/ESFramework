@@ -8,6 +8,8 @@
 
 /* Begin PBXFileReference section */
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
+		E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
+		E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2341CA50D1100EDBB8E /* NSData+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -86,8 +88,6 @@
 		E76CA2801CA50D1100EDBB8E /* ESDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
 		E76CA2821CA50D1100EDBB8E /* ESValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
 		E76CA2831CA50D1100EDBB8E /* ESValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
-		E76CA2881CA50D1100EDBB8E /* ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
-		E76CA2891CA50D1100EDBB8E /* ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
 		E76CA28C1CA50D3600EDBB8E /* ESFrameworkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkCore.h; sourceTree = "<group>"; };
 		E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAutoCoding.h"; sourceTree = "<group>"; };
 		E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAutoCoding.m"; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
+				E75B9F6A1D6E8EA2005C2EDA /* Reachability */,
 				E76CA22F1CA50D1100EDBB8E /* Core */,
 				E7A38C8B1C4DF9C800972B01 /* UIKit */,
 			);
@@ -136,13 +137,21 @@
 			sourceTree = "<group>";
 			tabWidth = 4;
 		};
+		E75B9F6A1D6E8EA2005C2EDA /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */,
+				E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		E76CA22F1CA50D1100EDBB8E /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				E76CA28C1CA50D3600EDBB8E /* ESFrameworkCore.h */,
 				E76CA27E1CA50D1100EDBB8E /* Core */,
 				E76CA2301CA50D1100EDBB8E /* Additions */,
-				E76CA2871CA50D1100EDBB8E /* NetworkReachability */,
 				E76CA2741CA50D1100EDBB8E /* App */,
 				E76CA28F1CA51C5300EDBB8E /* iTunesStore */,
 			);
@@ -251,15 +260,6 @@
 				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		E76CA2871CA50D1100EDBB8E /* NetworkReachability */ = {
-			isa = PBXGroup;
-			children = (
-				E76CA2881CA50D1100EDBB8E /* ESNetworkReachability.h */,
-				E76CA2891CA50D1100EDBB8E /* ESNetworkReachability.m */,
-			);
-			path = NetworkReachability;
 			sourceTree = "<group>";
 		};
 		E76CA28F1CA51C5300EDBB8E /* iTunesStore */ = {
