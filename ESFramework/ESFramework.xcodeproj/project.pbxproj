@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
 		E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
@@ -325,6 +326,7 @@
 			children = (
 				E7A38CAF1C4DFEE300972B01 /* ESRefreshControl.h */,
 				E7A38CB01C4DFEE300972B01 /* ESRefreshControl.m */,
+				E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */,
 				E7A38CB31C4DFEE300972B01 /* UIScrollView+ESRefreshControl.m */,
 				E7A38CBC1C4E035600972B01 /* ESRefreshControlDefaultContentView.h */,
 				E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */,

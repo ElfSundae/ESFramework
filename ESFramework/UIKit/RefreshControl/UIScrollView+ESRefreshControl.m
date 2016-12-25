@@ -6,21 +6,21 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESRefreshControl.h"
+#import "UIScrollView+ESRefreshControl.h"
 #import "ESDefines.h"
 
 static const void *_esRefreshControlKey = &_esRefreshControlKey;
 
 @implementation UIScrollView (ESRefreshControl)
 
-- (ESRefreshControl *)refreshControl
+- (ESRefreshControl *)es_refreshControl
 {
     return ESGetAssociatedObject(self, _esRefreshControlKey);
 }
 
-- (void)setRefreshControl:(ESRefreshControl *)refreshControl
+- (void)setEs_refreshControl:(ESRefreshControl *)refreshControl
 {
-    ESRefreshControl *control = [self refreshControl];
+    ESRefreshControl *control = [self es_refreshControl];
     if (control) {
         [control removeFromSuperview];
     }

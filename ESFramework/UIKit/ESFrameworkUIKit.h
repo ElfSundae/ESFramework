@@ -7,6 +7,7 @@
 //
 
 #import "ESRefreshControl.h"
+#import "UIScrollView+ESRefreshControl.h"
 #import "ESBadgeView.h"
 #import "ESActivityLabel.h"
 #import "ESButton.h"
