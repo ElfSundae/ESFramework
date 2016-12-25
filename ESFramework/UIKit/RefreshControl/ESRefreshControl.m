@@ -44,7 +44,7 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 
 + (instancetype)refreshControlWithDidStartRefreshingBlock:(ESRefreshControlBlock)block
 {
-    ESRefreshControl *control = [[ESRefreshControl alloc] init];
+    ESRefreshControl *control = [[self alloc] init];
     control.didStartRefreshingBlock = block;
     return control;
 }
