@@ -68,12 +68,12 @@
 
 - (ESRefreshControl *)refreshControl
 {
-    return _tableView.refreshControl;
+    return _tableView.es_refreshControl;
 }
 
 - (void)setRefreshControl:(ESRefreshControl *)refreshControl
 {
-    _tableView.refreshControl = refreshControl;
+    _tableView.es_refreshControl = refreshControl;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
