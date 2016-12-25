@@ -12,8 +12,7 @@
 
 @class ESRefreshControlDefaultContentView;
 
-@interface ESRefreshControlDefaultContentView : UIView
-    <ESRefreshControlContentViewDelegate>
+@interface ESRefreshControlDefaultContentView : UIView <ESRefreshControlContentViewDelegate>
 
 // `strokeColor`, `lineWidth` can be set.
 @property (nonatomic, strong, readonly) CAShapeLayer *shapeLayer;
