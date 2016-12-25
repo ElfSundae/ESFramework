@@ -25,7 +25,7 @@
     self.tableView.rowHeight = 60;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     ESWeakSelf;
-    self.tableView.refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
+    self.tableView.es_refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
         ESDispatchAfter(1, ^{
             ESStrongSelf;
             [_self.tableView reloadData];
