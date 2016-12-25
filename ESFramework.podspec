@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
     ss.source_files           = "ESFramework/Core/**/*.{h,m}"
     ss.private_header_files   = "ESFramework/Core/**/*+Private.h"
     ss.frameworks             = "Security", "CoreTelephony", "SystemConfiguration"
+    s.weak_frameworks         = "UserNotifications"
   end
 
   s.subspec "UIKit" do |ss|
