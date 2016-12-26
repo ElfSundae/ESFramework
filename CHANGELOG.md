@@ -1,3 +1,4 @@
+# CHANGELOG
 
 ## 2.6.0
 - Rename method `-[UIScrollView refreshControl]` to `es_refreshControl` [1907d6d](https://github.com/ElfSundae/ESFramework/commit/1907d6dfa707b61849a55ef4616bd119958538bc)
