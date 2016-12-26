@@ -57,6 +57,9 @@ static void es_didFailToRegisterForRemoteNotificationsWithError(NSError *error)
 
                 [app registerForRemoteNotifications];
             } else {
+                error = error ?: [NSError errorWithDomain:ESAppErrorDomain
+                                                     code:0
+                                              description:@"Failed to request user authorization for notifications."];
                 es_didFailToRegisterForRemoteNotificationsWithError(error);
             }
         }];
@@ -128,7 +131,10 @@ static void es_application_didRegisterUserNotificationSettings(id self, SEL _cmd
     if (notificationSettings.types != UIUserNotificationTypeNone) {
         [application registerForRemoteNotifications];
     } else {
-        es_didFailToRegisterForRemoteNotificationsWithError([NSError errorWithDomain:@"ESAppErrorDomain" code:-1 description:@"Could not register user notification settings."]);
+        NSError *error = [NSError errorWithDomain:ESAppErrorDomain
+                                             code:0
+                                      description:@"Failed to register user notification settings."];
+        es_didFailToRegisterForRemoteNotificationsWithError(error);
     }
 }
 
