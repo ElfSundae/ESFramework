@@ -15,6 +15,7 @@ NSString *const ESAppDidReceiveRemoteNotificationNotification = @"ESAppDidReceiv
 NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
 
 static NSString *__gRemoteNotificationsDeviceToken = nil;
+
 static void (^__gRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString) = nil;
 static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
 
