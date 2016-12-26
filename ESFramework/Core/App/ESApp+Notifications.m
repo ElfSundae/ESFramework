@@ -8,8 +8,8 @@
 
 #import "ESApp+Private.h"
 #import "NSString+ESAdditions.h"
-#import <objc/runtime.h>
 #import "NSError+ESAdditions.h"
+#import <UserNotifications/UserNotifications.h>
 
 NSString *const ESAppDidReceiveRemoteNotificationNotification = @"ESAppDidReceiveRemoteNotificationNotification";
 NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
@@ -17,16 +17,6 @@ NSString *const ESAppRemoteNotificationKey = @"ESAppRemoteNotificationKey";
 static NSString *__gRemoteNotificationsDeviceToken = nil;
 static void (^__gRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString) = nil;
 static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
-
-/**
- * [UNUserNotificationCenter currentNotificationCenter]
- */
-static id currentUserNotificationCenter(void)
-{
-    Class cls = NSClassFromString(@"UNUserNotificationCenter");
-
-    return cls ? [cls performSelector:NSSelectorFromString(@"currentNotificationCenter")] : nil;
-}
 
 @implementation ESApp (_Notifications)
 
@@ -38,9 +28,25 @@ static id currentUserNotificationCenter(void)
     [self setCallbackForRemoteNotificationsRegistrationWithSuccess:success failure:failure];
 
     UIApplication *app = [UIApplication sharedApplication];
-    if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
-        [app registerUserNotificationSettings:settings];
+
+    if ([UNUserNotificationCenter class]) {
+        [[UNUserNotificationCenter currentNotificationCenter]
+         requestAuthorizationWithOptions:(UNAuthorizationOptions)types
+                       completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) {
+                if ([categories.anyObject isKindOfClass:[UNNotificationCategory class]]) {
+                    [[UNUserNotificationCenter currentNotificationCenter] setNotificationCategories:categories];
+                }
+
+                [app registerForRemoteNotifications];
+            } else if (__gRemoteNotificationRegisterFailureBlock) {
+                __gRemoteNotificationRegisterFailureBlock(error);
+                __gRemoteNotificationRegisterFailureBlock = nil;
+            }
+        }];
+    } else if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        categories = [categories.anyObject isKindOfClass:[UIUserNotificationCategory class]] ? categories : nil;
+        [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:types categories:categories]];
     } else {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
@@ -65,6 +71,7 @@ static id currentUserNotificationCenter(void)
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(isRegisteredForRemoteNotifications)]) {
         return [UIApplication sharedApplication].isRegisteredForRemoteNotifications;
     }
+
     return ([self enabledRemoteNotificationTypes] != 0);
 }
 
@@ -179,64 +186,64 @@ void _ESAppHackAppDelegateForUINotifications(void)
         return;
     }
 
-#define DISPATCH_ONCE_BEGIN     static dispatch_once_t onceToken; dispatch_once(&onceToken, ^{
-#define DISPATCH_ONCE_END       });
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
 
-    DISPATCH_ONCE_BEGIN
-    BOOL isIOS8 = [UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)];
+        BOOL isIOS8 = [UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)];
 
-    SEL oldMethod_didRegisterUserNotificationSettings = isIOS8 ? @selector(application:didRegisterUserNotificationSettings:) : NULL;
-    SEL oldMethod_didRegisterForRemoteNotificationsWithDeviceToken = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
-    SEL oldMethod_didFailToRegisterForRemoteNotificationsWithError = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
-    SEL oldMethod_didReceiveRemoteNotification = @selector(application:didReceiveRemoteNotification:);
+        SEL oldMethod_didRegisterUserNotificationSettings = isIOS8 ? @selector(application:didRegisterUserNotificationSettings:) : NULL;
+        SEL oldMethod_didRegisterForRemoteNotificationsWithDeviceToken = @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:);
+        SEL oldMethod_didFailToRegisterForRemoteNotificationsWithError = @selector(application:didFailToRegisterForRemoteNotificationsWithError:);
+        SEL oldMethod_didReceiveRemoteNotification = @selector(application:didReceiveRemoteNotification:);
 
-    SEL newMethod_didRegisterUserNotificationSettings = isIOS8 ? NSSelectorFromString(@"_esapp_application:didRegisterUserNotificationSettings:") : NULL;
-    IMP newMethod_didRegisterUserNotificationSettings_IMP = isIOS8 ? (IMP)_es_application_didRegisterUserNotificationSettings : NULL;
-    SEL newMethod_didRegisterForRemoteNotificationsWithDeviceToken = NSSelectorFromString(@"_esapp_application:didRegisterForRemoteNotificationsWithDeviceToken:");
-    IMP newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP = (IMP)_es_application_didRegisterForRemoteNotificationsWithDeviceToken;
-    SEL newMethod_didFailToRegisterForRemoteNotificationsWithError = NSSelectorFromString(@"_esapp_application:didFailToRegisterForRemoteNotificationsWithError:");
-    IMP newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP = (IMP)_es_application_didFailToRegisterForRemoteNotificationsWithError;
-    SEL newMethod_didReceiveRemoteNotification = NSSelectorFromString(@"_esapp_application:didReceiveRemoteNotification:");
-    IMP newMethod_didReceiveRemoteNotification_IMP = (IMP)_es_application_didReceiveRemoteNotification;
+        SEL newMethod_didRegisterUserNotificationSettings = isIOS8 ? NSSelectorFromString(@"_esapp_application:didRegisterUserNotificationSettings:") : NULL;
+        IMP newMethod_didRegisterUserNotificationSettings_IMP = isIOS8 ? (IMP)_es_application_didRegisterUserNotificationSettings : NULL;
+        SEL newMethod_didRegisterForRemoteNotificationsWithDeviceToken = NSSelectorFromString(@"_esapp_application:didRegisterForRemoteNotificationsWithDeviceToken:");
+        IMP newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP = (IMP)_es_application_didRegisterForRemoteNotificationsWithDeviceToken;
+        SEL newMethod_didFailToRegisterForRemoteNotificationsWithError = NSSelectorFromString(@"_esapp_application:didFailToRegisterForRemoteNotificationsWithError:");
+        IMP newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP = (IMP)_es_application_didFailToRegisterForRemoteNotificationsWithError;
+        SEL newMethod_didReceiveRemoteNotification = NSSelectorFromString(@"_esapp_application:didReceiveRemoteNotification:");
+        IMP newMethod_didReceiveRemoteNotification_IMP = (IMP)_es_application_didReceiveRemoteNotification;
 
-    if (oldMethod_didRegisterUserNotificationSettings /* iOS8+ */) {
-        if ([AppDelegateClass instancesRespondToSelector:oldMethod_didRegisterUserNotificationSettings]) {
-            /* 如果原来的appDelegate实现了这些代理方法，就记录下并在ESApp处理完后调用它 */
-            if (class_addMethod(AppDelegateClass, newMethod_didRegisterUserNotificationSettings, newMethod_didRegisterUserNotificationSettings_IMP, "v@:@@")) {
-                __gESOldMethod_didRegisterUserNotificationSettings = newMethod_didRegisterUserNotificationSettings;
-                ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didRegisterUserNotificationSettings, newMethod_didRegisterUserNotificationSettings);
+        if (oldMethod_didRegisterUserNotificationSettings /* iOS8+ */) {
+            if ([AppDelegateClass instancesRespondToSelector:oldMethod_didRegisterUserNotificationSettings]) {
+                /* 如果原来的appDelegate实现了这些代理方法，就记录下并在ESApp处理完后调用它 */
+                if (class_addMethod(AppDelegateClass, newMethod_didRegisterUserNotificationSettings, newMethod_didRegisterUserNotificationSettings_IMP, "v@:@@")) {
+                    __gESOldMethod_didRegisterUserNotificationSettings = newMethod_didRegisterUserNotificationSettings;
+                    ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didRegisterUserNotificationSettings, newMethod_didRegisterUserNotificationSettings);
+                }
+            } else {
+                /* 如果没实现，则直接实现UIApplicationDelegate的方法为新IMP */
+                class_addMethod(AppDelegateClass, oldMethod_didRegisterUserNotificationSettings, newMethod_didRegisterUserNotificationSettings_IMP, "v@:@@");
+            }
+        }
+
+        if ([AppDelegateClass instancesRespondToSelector:oldMethod_didRegisterForRemoteNotificationsWithDeviceToken]) {
+            if (class_addMethod(AppDelegateClass, newMethod_didRegisterForRemoteNotificationsWithDeviceToken, newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP, "v@:@@")) {
+                __gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken = newMethod_didRegisterForRemoteNotificationsWithDeviceToken;
+                ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didRegisterForRemoteNotificationsWithDeviceToken, newMethod_didRegisterForRemoteNotificationsWithDeviceToken);
             }
         } else {
-            /* 如果没实现，则直接实现UIApplicationDelegate的方法为新IMP */
-            class_addMethod(AppDelegateClass, oldMethod_didRegisterUserNotificationSettings, newMethod_didRegisterUserNotificationSettings_IMP, "v@:@@");
+            class_addMethod(AppDelegateClass, oldMethod_didRegisterForRemoteNotificationsWithDeviceToken, newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP, "v@:@@");
         }
-    }
 
-    if ([AppDelegateClass instancesRespondToSelector:oldMethod_didRegisterForRemoteNotificationsWithDeviceToken]) {
-        if (class_addMethod(AppDelegateClass, newMethod_didRegisterForRemoteNotificationsWithDeviceToken, newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP, "v@:@@")) {
-            __gESOldMethod_didRegisterForRemoteNotificationsWithDeviceToken = newMethod_didRegisterForRemoteNotificationsWithDeviceToken;
-            ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didRegisterForRemoteNotificationsWithDeviceToken, newMethod_didRegisterForRemoteNotificationsWithDeviceToken);
+        if ([AppDelegateClass instancesRespondToSelector:oldMethod_didFailToRegisterForRemoteNotificationsWithError]) {
+            if (class_addMethod(AppDelegateClass, newMethod_didFailToRegisterForRemoteNotificationsWithError, newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP, "v@:@@")) {
+                __gESOldMethod_didFailToRegisterForRemoteNotificationsWithError = newMethod_didFailToRegisterForRemoteNotificationsWithError;
+                ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didFailToRegisterForRemoteNotificationsWithError, newMethod_didFailToRegisterForRemoteNotificationsWithError);
+            }
+        } else {
+            class_addMethod(AppDelegateClass, oldMethod_didFailToRegisterForRemoteNotificationsWithError, newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP, "v@:@@");
         }
-    } else {
-        class_addMethod(AppDelegateClass, oldMethod_didRegisterForRemoteNotificationsWithDeviceToken, newMethod_didRegisterForRemoteNotificationsWithDeviceToken_IMP, "v@:@@");
-    }
 
-    if ([AppDelegateClass instancesRespondToSelector:oldMethod_didFailToRegisterForRemoteNotificationsWithError]) {
-        if (class_addMethod(AppDelegateClass, newMethod_didFailToRegisterForRemoteNotificationsWithError, newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP, "v@:@@")) {
-            __gESOldMethod_didFailToRegisterForRemoteNotificationsWithError = newMethod_didFailToRegisterForRemoteNotificationsWithError;
-            ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didFailToRegisterForRemoteNotificationsWithError, newMethod_didFailToRegisterForRemoteNotificationsWithError);
+        if ([AppDelegateClass instancesRespondToSelector:oldMethod_didReceiveRemoteNotification]) {
+            if (class_addMethod(AppDelegateClass, newMethod_didReceiveRemoteNotification, newMethod_didReceiveRemoteNotification_IMP, "v@:@@")) {
+                __gESOldMethod_didReceiveRemoteNotification = newMethod_didReceiveRemoteNotification;
+                ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didReceiveRemoteNotification, newMethod_didReceiveRemoteNotification);
+            }
+        } else {
+            class_addMethod(AppDelegateClass, oldMethod_didReceiveRemoteNotification, newMethod_didReceiveRemoteNotification_IMP, "v@:@@");
         }
-    } else {
-        class_addMethod(AppDelegateClass, oldMethod_didFailToRegisterForRemoteNotificationsWithError, newMethod_didFailToRegisterForRemoteNotificationsWithError_IMP, "v@:@@");
-    }
 
-    if ([AppDelegateClass instancesRespondToSelector:oldMethod_didReceiveRemoteNotification]) {
-        if (class_addMethod(AppDelegateClass, newMethod_didReceiveRemoteNotification, newMethod_didReceiveRemoteNotification_IMP, "v@:@@")) {
-            __gESOldMethod_didReceiveRemoteNotification = newMethod_didReceiveRemoteNotification;
-            ESSwizzleInstanceMethod(AppDelegateClass, oldMethod_didReceiveRemoteNotification, newMethod_didReceiveRemoteNotification);
-        }
-    } else {
-        class_addMethod(AppDelegateClass, oldMethod_didReceiveRemoteNotification, newMethod_didReceiveRemoteNotification_IMP, "v@:@@");
-    }
-    DISPATCH_ONCE_END
+    });
 }
