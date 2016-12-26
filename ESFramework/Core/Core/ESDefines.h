@@ -100,6 +100,9 @@ NS_INLINE BOOL ESOSVersionIsAbove9(void) {
     return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_x_Max);
 }
 
+NS_INLINE BOOL ESOSVersionIsAbove10(void) {
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_9_x_Max);
+}
 
 /// =============================================
 /// @name Helper Macros
