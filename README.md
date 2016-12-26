@@ -1,5 +1,4 @@
-ESFramework
----
+# ESFramework
 
 [![Build Status](https://travis-ci.org/ElfSundae/ESFramework.svg)](https://travis-ci.org/ElfSundae/ESFramework)
 [![Pod Version](http://img.shields.io/cocoapods/v/ESFramework.svg)](http://cocoadocs.org/docsets/ESFramework)
@@ -8,37 +7,27 @@ An **E**ffective & **S**wingy **Framework** for iOS.
 
 ## Requirements
 
-* Xcode 7.0 or later
-* iOS deployment target >= 7.0
-* ARC
+- Xcode 7.0 or later
+- iOS deployment target >= 7.0
+- ARC
 
 ## Installation
 
-* Via [CocoaPods](http://cocoapods.org) **(Recommended)**
+- Via [CocoaPods](http://cocoapods.org) (Recommended):
 
-  ```
-  pod "ESFramework", "~> 2.4"
-  ```
-  **Subspecs:**
+    ```
+    pod "ESFramework", "~> 2.6"
+    ```
 
-  ```
-  ESFramework/Core
-  ESFramework/UIKit
-  ```
+    Subspecs:
 
-* **Manually:**
+    ```
+    ESFramework/Core
+    ESFramework/UIKit
+    ```
 
+- Manually:
   Add `ESFramework` folder to your project, except `ESFramework.xcodeproj` file.
-
-
-## Contribute Notes
-
-```shell
-git clone -b develop https://github.com/ESFramework/ESFramework.git
-cd ESFramework/Example
-pod install --no-repo-update
-open ../ESFramework.xcworkspace
-```
 
 ## License
 
