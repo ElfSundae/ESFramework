@@ -111,7 +111,7 @@ static NSDictionary *__gRemoteNotificationFromLaunch = nil;
         __gSharedApp = [[ESApp alloc] init];
     }
 
-    _ESAppHackAppDelegateForUINotifications();
+    es_hackAppDelegateForNotifications(delegate);
 
     [[NSNotificationCenter defaultCenter] addObserver:__gSharedApp selector:@selector(_es_applicationDidFinishLaunchingNotificationHandler:) name:UIApplicationDidFinishLaunchingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:__gSharedApp selector:@selector(_es_applicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];

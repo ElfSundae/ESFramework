@@ -8,6 +8,9 @@
 
 #import "ESApp.h"
 
+@interface ESApp (_Private)
+@end
+
 /**
  * Returns the shared ESApp instance.
  */
@@ -19,14 +22,11 @@ FOUNDATION_EXTERN ESApp *_ESSharedApp(void);
 FOUNDATION_EXTERN NSString *_ESWebViewDefaultUserAgent(void);
 
 /**
- * Hack AppDelegate for UINotifications methods.
+ * Hack UIApplicationDelegate instance for swizzling notification methods.
  */
-FOUNDATION_EXTERN void _ESAppHackAppDelegateForUINotifications(void);
+FOUNDATION_EXTERN void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate);
 
 /**
  * Invoke ESAppDelegate's method and post notification.
  */
 FOUNDATION_EXTERN void _ESDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromLaunch);
-
-@interface ESApp (_Private)
-@end
