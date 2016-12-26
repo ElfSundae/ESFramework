@@ -8,6 +8,8 @@
 
 /* Begin PBXFileReference section */
 		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
+		E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESWebViewUserAgentFetcher.h; sourceTree = "<group>"; };
+		E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _ESWebViewUserAgentFetcher.m; sourceTree = "<group>"; };
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
 		E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
@@ -79,8 +81,7 @@
 		E76CA2731CA50D1100EDBB8E /* UIViewController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+AppInfo.m"; sourceTree = "<group>"; };
 		E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
-		E76CA2771CA50D1100EDBB8E /* ESApp+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESApp+Private.h"; sourceTree = "<group>"; };
-		E76CA2781CA50D1100EDBB8E /* ESApp+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Private.m"; sourceTree = "<group>"; };
+		E76CA2771CA50D1100EDBB8E /* _ESApp_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESApp_Private.h; sourceTree = "<group>"; };
 		E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Subclassing.m"; sourceTree = "<group>"; };
 		E76CA27A1CA50D1100EDBB8E /* ESApp+Notifications.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Notifications.m"; sourceTree = "<group>"; };
 		E76CA27B1CA50D1100EDBB8E /* ESApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESApp.h; sourceTree = "<group>"; };
@@ -240,14 +241,15 @@
 			isa = PBXGroup;
 			children = (
 				E76CA27B1CA50D1100EDBB8E /* ESApp.h */,
+				E76CA2771CA50D1100EDBB8E /* _ESApp_Private.h */,
 				E76CA27C1CA50D1100EDBB8E /* ESApp.m */,
-				E76CA2771CA50D1100EDBB8E /* ESApp+Private.h */,
-				E76CA2781CA50D1100EDBB8E /* ESApp+Private.m */,
+				E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */,
 				E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */,
 				E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */,
-				E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */,
 				E76CA27A1CA50D1100EDBB8E /* ESApp+Notifications.m */,
 				E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */,
+				E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */,
+				E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */,
 			);
 			path = App;
 			sourceTree = "<group>";

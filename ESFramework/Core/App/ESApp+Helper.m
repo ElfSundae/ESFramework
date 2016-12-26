@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+Private.h"
+#import "_ESApp_Private.h"
 #import "ESValue.h"
 #import "NSUserDefaults+ESAdditions.h"
 

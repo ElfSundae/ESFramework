@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESApp+Private.h"
+#import "_ESApp_Private.h"
 
 static ESApp *__gSharedApp = nil;
 static NSDictionary *__gRemoteNotificationFromLaunch = nil;

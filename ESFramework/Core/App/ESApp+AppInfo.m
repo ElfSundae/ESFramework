@@ -7,10 +7,11 @@
 //
 
 #import <CoreFoundation/CoreFoundation.h>
-#import "ESApp+Private.h"
+#import "ESApp.h"
 #import "ESValue.h"
 #import "UIDevice+ESInfo.h"
 #import "ESNetworkReachability.h"
+#import "_ESWebViewUserAgentFetcher.h"
 
 static NSDate *__gAppLaunchDate = nil;
 
@@ -148,7 +149,7 @@ static NSDate *__gAppLaunchDate = nil;
 
 + (NSString *)defaultUserAgentOfWebView
 {
-    return _ESWebViewDefaultUserAgent();
+    return [_ESWebViewUserAgentFetcher defaultUserAgent];
 }
 
 - (NSString *)userAgentForWebView
