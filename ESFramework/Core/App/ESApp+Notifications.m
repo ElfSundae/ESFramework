@@ -18,6 +18,16 @@ static NSString *__gRemoteNotificationsDeviceToken = nil;
 static void (^__gRemoteNotificationRegisterSuccessBlock)(NSData *deviceToken, NSString *deviceTokenString) = nil;
 static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
 
+/**
+ * [UNUserNotificationCenter currentNotificationCenter]
+ */
+static id currentUserNotificationCenter(void)
+{
+    Class cls = NSClassFromString(@"UNUserNotificationCenter");
+
+    return cls ? [cls performSelector:NSSelectorFromString(@"currentNotificationCenter")] : nil;
+}
+
 @implementation ESApp (_Notifications)
 
 - (void)registerForRemoteNotificationsWithTypes:(UIUserNotificationType)types
