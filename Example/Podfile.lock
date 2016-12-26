@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ESFramework: e92297229b6dbc56ebec3cd74eabd81c4b5ec430
+  ESFramework: fb152162c2cf32c41fef1fb71301034277a745fc
 
 PODFILE CHECKSUM: 5dc5bd98d32e99b5d4a5d98355cb9d9315cf32df
 
