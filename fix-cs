@@ -2,4 +2,4 @@
 
 cd "$(dirname "$0")"
 
-find ./ESFramework -name "*.[mh]" -print0 | xargs -0 /usr/local/bin/uncrustify -c .uncrustify.cfg -l OC --no-backup
+find ./ESFramework -name "*.[hm]" -print0 | xargs -0 /usr/local/bin/uncrustify -c .uncrustify.cfg -l OC --no-backup
