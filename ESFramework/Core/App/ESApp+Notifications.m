@@ -125,6 +125,7 @@ static void es_application_didRegisterUserNotificationSettings(id self, SEL _cmd
 static void es_application_didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication *application, NSData *deviceToken)
 {
     NSString *tokenString = [[deviceToken description] stringByDeletingCharactersInString:@"<> "];
+
     __gRemoteNotificationsDeviceToken = [tokenString copy];
 
     if (__gRemoteNotificationRegisterSuccessBlock) {

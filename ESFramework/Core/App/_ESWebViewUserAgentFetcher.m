@@ -38,7 +38,7 @@ static NSString *__gDefaultUserAgent = nil;
 {
     __gDefaultUserAgent = ESStringValue(request.allHTTPHeaderFields[@"User-Agent"]);
     __gWebView = nil;
-    
+
     return NO;
 }
 
