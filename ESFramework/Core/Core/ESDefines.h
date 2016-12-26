@@ -97,7 +97,7 @@ NS_INLINE BOOL ESOSVersionIsAbove8(void) {
 }
 
 NS_INLINE BOOL ESOSVersionIsAbove9(void) {
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_4);
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_x_Max);
 }
 
 
