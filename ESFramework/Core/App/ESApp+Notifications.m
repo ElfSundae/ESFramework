@@ -95,20 +95,6 @@ static void (^__gRemoteNotificationRegisterFailureBlock)(NSError *error) = nil;
 
 @end
 
-void _ESDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromLaunch)
-{
-    if (![remoteNotification isKindOfClass:[NSDictionary class]]) {
-        return;
-    }
-    if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
-        ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, remoteNotification, fromLaunch);
-    }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:ESAppDidReceiveRemoteNotificationNotification
-                                                        object:application
-                                                      userInfo:@{ (fromLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey): remoteNotification}];
-}
-
 /**
  * 记录原始的实现方法（其实是交换后的 _es_... 方法，在交换后的方法里调用“本身”会调用到原始方法），如果有则说明是交换过的，需要调用交换前的方法。
  */
@@ -165,7 +151,8 @@ static void es_application_didFailToRegisterForRemoteNotificationsWithError(id s
 
 static void es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIApplication *application, NSDictionary *userInfo)
 {
-    _ESDidReceiveRemoteNotification(application, userInfo, NO);
+    es_didReceiveRemoteNotification(userInfo, NO);
+
     if (__original_didReceiveRemoteNotification) {
         ESInvokeSelector(self, __original_didReceiveRemoteNotification, NULL, application, userInfo);
     }
@@ -239,4 +226,21 @@ void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate)
             &__original_didReceiveRemoteNotification
             );
     });
+}
+
+void es_didReceiveRemoteNotification(NSDictionary *remoteNotification, BOOL fromLaunch)
+{
+    if (![remoteNotification isKindOfClass:[NSDictionary class]]) {
+        return;
+    }
+
+    UIApplication *application = [UIApplication sharedApplication];
+
+    if ([application.delegate respondsToSelector:@selector(application:didReceiveRemoteNotification:fromAppLaunch:)]) {
+        ESInvokeSelector(application.delegate, @selector(application:didReceiveRemoteNotification:fromAppLaunch:), NULL, application, remoteNotification, fromLaunch);
+    }
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:ESAppDidReceiveRemoteNotificationNotification
+                                                        object:application
+                                                      userInfo:@{(fromLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey): remoteNotification}];
 }

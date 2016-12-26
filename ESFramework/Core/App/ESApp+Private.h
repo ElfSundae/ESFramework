@@ -12,21 +12,16 @@
 @end
 
 /**
- * Returns the shared ESApp instance.
- */
-FOUNDATION_EXTERN ESApp *_ESSharedApp(void);
-
-/**
- * Returns the default user agent of UIWebView.
- */
-FOUNDATION_EXTERN NSString *_ESWebViewDefaultUserAgent(void);
-
-/**
  * Hack UIApplicationDelegate instance for swizzling notification methods.
  */
 FOUNDATION_EXTERN void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate);
 
 /**
- * Invoke ESAppDelegate's method and post notification.
+ * Invoke ESAppDelegate's method and post ESAppDidReceiveRemoteNotificationNotification notification.
  */
-FOUNDATION_EXTERN void _ESDidReceiveRemoteNotification(UIApplication *application, NSDictionary *remoteNotification, BOOL fromLaunch);
+FOUNDATION_EXTERN void es_didReceiveRemoteNotification(NSDictionary *remoteNotification, BOOL fromLaunch);
+
+/**
+ * Returns the default user agent of UIWebView.
+ */
+FOUNDATION_EXTERN NSString *_ESWebViewDefaultUserAgent(void);

@@ -58,6 +58,11 @@ FOUNDATION_EXTERN NSString *const ESAppRemoteNotificationKey;
  */
 @property (nonatomic, strong) UIViewController *rootViewController;
 
+/**
+ * UIApplicationDelegate implementation.
+ */
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -10,13 +10,6 @@
 #import "ESValue.h"
 #import "NSUserDefaults+ESAdditions.h"
 
-static ESApp *__gSharedApp = nil;
-
-ESApp *_ESSharedApp(void)
-{
-    return __gSharedApp;
-}
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - _ESAppFetchWebViewUserAgent
@@ -62,59 +55,5 @@ NSString *_ESWebViewDefaultUserAgent(void)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ESApp (_Private)
 
-static NSDictionary *__gRemoteNotificationFromLaunch = nil;
-
 @implementation ESApp (_Private)
-
-- (void)_es_applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification
-{
-    __gRemoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
-    [[self class] enableMultitasking];
-}
-
-- (void)_es_applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification
-{
-#define DISPATCH_ONCE_BEGIN     static dispatch_once_t onceToken; dispatch_once(&onceToken, ^ {
-#define DISPATCH_ONCE_END       });
-
-    DISPATCH_ONCE_BEGIN
-    if (__gRemoteNotificationFromLaunch) {
-        _ESDidReceiveRemoteNotification([UIApplication sharedApplication], __gRemoteNotificationFromLaunch, YES);
-        __gRemoteNotificationFromLaunch = nil;
-    }
-    DISPATCH_ONCE_END
-}
-
-@end
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UIApplication (_ESAppHacking)
-
-@interface UIApplication (_ESAppHacking)
-@end
-
-@implementation UIApplication (_ESAppHacking)
-
-+ (void)load
-{
-    ESSwizzleInstanceMethod(self, @selector(setDelegate:), @selector(_ESAppHacking_setDelegate:));
-}
-
-- (void)_ESAppHacking_setDelegate:(id<UIApplicationDelegate>)delegate
-{
-    [self _ESAppHacking_setDelegate:delegate];
-
-    if ([delegate isKindOfClass:[ESApp class]]) {
-        __gSharedApp = (ESApp *)delegate;
-    } else {
-        __gSharedApp = [[ESApp alloc] init];
-    }
-
-    es_hackAppDelegateForNotifications(delegate);
-
-    [[NSNotificationCenter defaultCenter] addObserver:__gSharedApp selector:@selector(_es_applicationDidFinishLaunchingNotificationHandler:) name:UIApplicationDidFinishLaunchingNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:__gSharedApp selector:@selector(_es_applicationDidBecomeActiveNotificationHandler:) name:UIApplicationDidBecomeActiveNotification object:nil];
-}
-
 @end
