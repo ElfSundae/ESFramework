@@ -8,6 +8,8 @@
 
 #import "_ESApp_Private.h"
 
+NSString *const ESAppErrorDomain = @"ESAppErrorDomain";
+
 static ESApp *__gSharedApp = nil;
 static NSDictionary *__gRemoteNotificationFromLaunch = nil;
 
