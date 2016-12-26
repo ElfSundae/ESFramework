@@ -1,12 +1,12 @@
 PODS:
-  - ESFramework (2.5.1):
-    - ESFramework/Core (= 2.5.1)
-    - ESFramework/Reachability (= 2.5.1)
-    - ESFramework/UIKit (= 2.5.1)
-  - ESFramework/Core (2.5.1):
+  - ESFramework (2.6.0):
+    - ESFramework/Core (= 2.6.0)
+    - ESFramework/Reachability (= 2.6.0)
+    - ESFramework/UIKit (= 2.6.0)
+  - ESFramework/Core (2.6.0):
     - ESFramework/Reachability
-  - ESFramework/Reachability (2.5.1)
-  - ESFramework/UIKit (2.5.1):
+  - ESFramework/Reachability (2.6.0)
+  - ESFramework/UIKit (2.6.0):
     - ESFramework/Core
 
 DEPENDENCIES:
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ESFramework: fb152162c2cf32c41fef1fb71301034277a745fc
+  ESFramework: e3e4a5cb85cb468277a0da9b1c9c3842fc61e9a8
 
 PODFILE CHECKSUM: 5dc5bd98d32e99b5d4a5d98355cb9d9315cf32df
 

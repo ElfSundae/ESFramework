@@ -1,5 +1,5 @@
 PODS:
-  - ESFramework/Reachability (2.5.1)
+  - ESFramework/Reachability (2.6.0)
 
 DEPENDENCIES:
   - ESFramework/Reachability (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ESFramework: 98b304e5e172cdb3c9a56f68c92a60b723c44bc2
+  ESFramework: e3e4a5cb85cb468277a0da9b1c9c3842fc61e9a8
 
 PODFILE CHECKSUM: caff0b71c8b4002eb99f5a53b1e5056f76414300
 
