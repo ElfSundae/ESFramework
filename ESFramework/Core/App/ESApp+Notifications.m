@@ -117,7 +117,7 @@ static SEL __original_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
 static SEL __original_didFailToRegisterForRemoteNotificationsWithError = NULL;
 static SEL __original_didReceiveRemoteNotification = NULL;
 
-static void _es_application_didRegisterUserNotificationSettings(id self, SEL _cmd, UIApplication *application, UIUserNotificationSettings *notificationSettings)
+static void es_application_didRegisterUserNotificationSettings(id self, SEL _cmd, UIApplication *application, UIUserNotificationSettings *notificationSettings)
 {
     if (UIUserNotificationTypeNone == notificationSettings.types) {
         if (__gRemoteNotificationRegisterFailureBlock) {
@@ -136,7 +136,7 @@ static void _es_application_didRegisterUserNotificationSettings(id self, SEL _cm
     }
 }
 
-static void _es_application_didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication *application, NSData *deviceToken)
+static void es_application_didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication *application, NSData *deviceToken)
 {
     NSString *tokenString = [[deviceToken description] stringByDeletingCharactersInString:@"<> "];
     __gRemoteNotificationsDeviceToken = [tokenString copy];
@@ -151,7 +151,7 @@ static void _es_application_didRegisterForRemoteNotificationsWithDeviceToken(id 
     }
 }
 
-static void _es_application_didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication *application, NSError *error)
+static void es_application_didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication *application, NSError *error)
 {
     if (__gRemoteNotificationRegisterFailureBlock) {
         __gRemoteNotificationRegisterFailureBlock(error);
@@ -163,7 +163,7 @@ static void _es_application_didFailToRegisterForRemoteNotificationsWithError(id 
     }
 }
 
-static void _es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIApplication *application, NSDictionary *userInfo)
+static void es_application_didReceiveRemoteNotification(id self, SEL _cmd, UIApplication *application, NSDictionary *userInfo)
 {
     _ESDidReceiveRemoteNotification(application, userInfo, NO);
     if (__original_didReceiveRemoteNotification) {
@@ -209,7 +209,7 @@ void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate)
             es_swizzleImplementation(
                 [delegate class],
                 @selector(application:didRegisterUserNotificationSettings:),
-                (IMP)_es_application_didRegisterUserNotificationSettings,
+                (IMP)es_application_didRegisterUserNotificationSettings,
                 "v@:@@",
                 &__original_didRegisterUserNotificationSettings
                 );
@@ -218,7 +218,7 @@ void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate)
         es_swizzleImplementation(
             [delegate class],
             @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:),
-            (IMP)_es_application_didRegisterForRemoteNotificationsWithDeviceToken,
+            (IMP)es_application_didRegisterForRemoteNotificationsWithDeviceToken,
             "v@:@@",
             &__original_didRegisterForRemoteNotificationsWithDeviceToken
             );
@@ -226,7 +226,7 @@ void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate)
         es_swizzleImplementation(
             [delegate class],
             @selector(application:didFailToRegisterForRemoteNotificationsWithError:),
-            (IMP)_es_application_didFailToRegisterForRemoteNotificationsWithError,
+            (IMP)es_application_didFailToRegisterForRemoteNotificationsWithError,
             "v@:@@",
             &__original_didFailToRegisterForRemoteNotificationsWithError
             );
@@ -234,7 +234,7 @@ void es_hackAppDelegateForNotifications(id<UIApplicationDelegate> delegate)
         es_swizzleImplementation(
             [delegate class],
             @selector(application:didReceiveRemoteNotification:),
-            (IMP)_es_application_didReceiveRemoteNotification,
+            (IMP)es_application_didReceiveRemoteNotification,
             "v@:@@",
             &__original_didReceiveRemoteNotification
             );
