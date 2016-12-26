@@ -9,6 +9,10 @@
 #import "ESMoviePlayerViewController.h"
 #import "ESApp.h"
 
+#ifndef __IPHONE_8_4
+#define __IPHONE_8_4      80400
+#endif
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
 
