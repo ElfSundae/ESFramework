@@ -103,6 +103,8 @@
 		E76CA2971CA51DB300EDBB8E /* ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStatusOverlayView.m; sourceTree = "<group>"; };
 		E76CA2981CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESStatusOverlayView.h"; sourceTree = "<group>"; };
 		E76CA2991CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
+		E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
+		E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A38BC41C4DD82100972B01 /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
 		E7A38C8C1C4DF9D500972B01 /* ESFrameworkUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUIKit.h; sourceTree = "<group>"; };
 		E7A38C911C4DFA1A00972B01 /* ESMoviePlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMoviePlayerViewController.h; sourceTree = "<group>"; };
@@ -211,6 +213,8 @@
 				E76CA2571CA50D1100EDBB8E /* UIAlertView+ESBlock.m */,
 				E76CA2541CA50D1100EDBB8E /* UIActionSheet+ESBlock.h */,
 				E76CA2551CA50D1100EDBB8E /* UIActionSheet+ESBlock.m */,
+				E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */,
+				E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */,
 				E76CA2601CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.h */,
 				E76CA2611CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.m */,
 				E76CA25C1CA50D1100EDBB8E /* UIControl+ESAdditions.h */,
