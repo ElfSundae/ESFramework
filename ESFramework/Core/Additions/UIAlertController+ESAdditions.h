@@ -30,6 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
 - (void)addSecureTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
 
+- (void)showAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 - (void)show;
 
 @end

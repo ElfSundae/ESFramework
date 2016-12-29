@@ -103,9 +103,14 @@
     }];
 }
 
+- (void)showAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
+    [[ESApp rootViewControllerForPresenting] presentViewController:self animated:animated completion:completion];
+}
+
 - (void)show
 {
-    [[ESApp rootViewControllerForPresenting] presentViewController:self animated:YES completion:nil];
+    [self showAnimated:YES completion:nil];
 }
 
 @end
