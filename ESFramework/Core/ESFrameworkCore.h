@@ -33,6 +33,7 @@
 #import "UIDevice+ESInfo.h"
 #import "UIAlertView+ESBlock.h"
 #import "UIActionSheet+ESBlock.h"
+#import "UIAlertController+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "UIControl+ESAdditions.h"
 #import "UIView+ESAdditions.h"
