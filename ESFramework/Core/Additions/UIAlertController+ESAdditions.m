@@ -80,6 +80,28 @@
     return [self addActionWithTitle:title style:UIAlertActionStyleDestructive handler:handler];
 }
 
+- (void)addTextFieldWithPlaceholder:(NSString *)placeholder configurationHandler:(void (^)(UITextField * _Nonnull))configurationHandler
+{
+    [self addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = placeholder;
+
+        if (configurationHandler) {
+            configurationHandler(textField);
+        }
+    }];
+}
+
+- (void)addSecureTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler
+{
+    [self addTextFieldWithPlaceholder:placeholder configurationHandler:^(UITextField * _Nonnull textField) {
+        textField.secureTextEntry = YES;
+
+        if (configurationHandler) {
+            configurationHandler(textField);
+        }
+    }];
+}
+
 - (void)show
 {
     [[ESApp rootViewControllerForPresenting] presentViewController:self animated:YES completion:nil];

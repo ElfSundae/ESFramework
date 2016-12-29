@@ -27,6 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIAlertAction *)addCancelButtonWithTitle:(nullable NSString *)title;
 - (UIAlertAction *)addDestructiveButtonTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
+- (void)addTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
+- (void)addSecureTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
+
 - (void)show;
 
 @end
