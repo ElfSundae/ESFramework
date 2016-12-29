@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIAlertController (ESAdditions)
 
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
-+ (instancetype)actionSheetWithTitle:(nullable NSString *)title;
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title;
 
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
-+ (instancetype)alertWithTitle:(nullable NSString *)title;
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
++ (instancetype)alertWithTitle:(nullable NSString *)title;
 
 - (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
