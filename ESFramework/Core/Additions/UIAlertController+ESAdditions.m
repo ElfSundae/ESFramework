@@ -21,6 +21,17 @@
     return [self actionSheetWithTitle:title message:nil];
 }
 
++ (instancetype)actionSheetWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
+{
+    UIAlertController *alert = [self actionSheetWithTitle:title message:message];
+
+    if (cancelButtonTitle) {
+        [alert addCancelButtonWithTitle:cancelButtonTitle];
+    }
+
+    return alert;
+}
+
 + (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message
 {
     return [self alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -29,6 +40,17 @@
 + (instancetype)alertWithTitle:(NSString *)title
 {
     return [self alertWithTitle:title message:nil];
+}
+
++ (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
+{
+    UIAlertController *alert = [self alertWithTitle:title message:message];
+
+    if (cancelButtonTitle) {
+        [alert addCancelButtonWithTitle:cancelButtonTitle];
+    }
+
+    return alert;
 }
 
 - (UIAlertAction *)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction * _Nonnull))handler
