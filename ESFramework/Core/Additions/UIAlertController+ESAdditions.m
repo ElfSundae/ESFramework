@@ -105,12 +105,30 @@
 
 - (void)showAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-    [[ESApp rootViewControllerForPresenting] presentViewController:self animated:animated completion:completion];
+    [ESApp presentViewController:self animated:animated completion:completion];
 }
 
 - (void)show
 {
     [self showAnimated:YES completion:nil];
+}
+
+- (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion
+{
+    [self.presentingViewController dismissViewControllerAnimated:animated completion:completion];
+}
+
+- (void)dismiss
+{
+    [self dismissAnimated:YES completion:nil];
+}
+
++ (instancetype)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
+{
+    UIAlertController *alert = [self alertWithTitle:title message:message cancelButtonTitle:cancelButtonTitle];
+    [alert show];
+
+    return alert;
 }
 
 @end

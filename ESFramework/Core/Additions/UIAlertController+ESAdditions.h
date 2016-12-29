@@ -33,6 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)showAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 - (void)show;
 
+- (void)dismissAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+- (void)dismiss;
+
++ (instancetype)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
+
 @end
 
 NS_ASSUME_NONNULL_END
