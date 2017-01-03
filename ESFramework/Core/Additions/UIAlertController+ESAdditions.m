@@ -103,6 +103,25 @@
     }];
 }
 
+- (UIAlertAction *)defaultAction
+{
+    if ([self respondsToSelector:NSSelectorFromString(@"preferredAction")]) {
+        return self.preferredAction;
+    } else if ([self respondsToSelector:NSSelectorFromString(@"_defaultAlertAction")]) {
+        return [self valueForKeyPath:@"_defaultAlertAction"];
+    }
+    return nil;
+}
+
+- (void)setDefaultAction:(UIAlertAction *)defaultAction
+{
+    if ([self respondsToSelector:NSSelectorFromString(@"preferredAction")]) {
+        self.preferredAction = defaultAction;
+    } else if ([self respondsToSelector:NSSelectorFromString(@"_defaultAlertAction")]) {
+        [self setValue:defaultAction forKeyPath:@"_defaultAlertAction"];
+    }
+}
+
 - (void)showAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
     [ESApp presentViewController:self animated:animated completion:completion];

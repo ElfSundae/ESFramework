@@ -30,6 +30,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
 - (void)addSecureTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
 
+/**
+ * The preferred action for the user to take from an alert.
+ *
+ * @see -[UIAlertController preferredAction]
+ */
+@property (nonatomic, strong, nullable) UIAlertAction *defaultAction;
+
 - (void)showAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 - (void)show;
 
