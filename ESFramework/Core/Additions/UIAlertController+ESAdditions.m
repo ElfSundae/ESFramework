@@ -66,6 +66,7 @@
 - (UIAlertAction *)addActionWithTitle:(NSString *)title style:(UIAlertActionStyle)style handler:(void (^)(UIAlertAction * _Nonnull))handler
 {
     UIAlertAction *action = [UIAlertAction actionWithTitle:title style:style handler:handler];
+
     [self addAction:action];
 
     return action;
@@ -160,6 +161,7 @@
 + (instancetype)showAlertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
 {
     UIAlertController *alert = [self alertWithTitle:title message:message cancelButtonTitle:cancelButtonTitle];
+
     [alert show];
 
     return alert;
