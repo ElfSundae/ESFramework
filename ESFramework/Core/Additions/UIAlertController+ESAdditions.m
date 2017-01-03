@@ -105,20 +105,25 @@
 
 - (UIAlertAction *)defaultAction
 {
-    if ([self respondsToSelector:NSSelectorFromString(@"preferredAction")]) {
-        return self.preferredAction;
-    } else if ([self respondsToSelector:NSSelectorFromString(@"_defaultAlertAction")]) {
-        return [self valueForKeyPath:@"_defaultAlertAction"];
+    if (UIAlertControllerStyleAlert == self.preferredStyle) {
+        if ([self respondsToSelector:NSSelectorFromString(@"preferredAction")]) {
+            return self.preferredAction;
+        } else if ([self respondsToSelector:NSSelectorFromString(@"_defaultAlertAction")]) {
+            return [self valueForKeyPath:@"_defaultAlertAction"];
+        }
     }
+
     return nil;
 }
 
 - (void)setDefaultAction:(UIAlertAction *)defaultAction
 {
-    if ([self respondsToSelector:NSSelectorFromString(@"preferredAction")]) {
-        self.preferredAction = defaultAction;
-    } else if ([self respondsToSelector:NSSelectorFromString(@"_defaultAlertAction")]) {
-        [self setValue:defaultAction forKeyPath:@"_defaultAlertAction"];
+    if (UIAlertControllerStyleAlert == self.preferredStyle) {
+        if ([self respondsToSelector:NSSelectorFromString(@"preferredAction")]) {
+            self.preferredAction = defaultAction;
+        } else if ([self respondsToSelector:NSSelectorFromString(@"_defaultAlertAction")]) {
+            [self setValue:defaultAction forKeyPath:@"_defaultAlertAction"];
+        }
     }
 }
 
