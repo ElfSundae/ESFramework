@@ -13,14 +13,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIAlertController (ESAdditions)
 
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
-+ (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title;
 + (instancetype)actionSheet;
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
-+ (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 + (instancetype)alertWithTitle:(nullable NSString *)title;
 + (instancetype)alert;
++ (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
++ (instancetype)alertWithTitle:(nullable NSString *)title cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 
 - (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
