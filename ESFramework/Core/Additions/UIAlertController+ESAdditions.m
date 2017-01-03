@@ -21,6 +21,11 @@
     return [self actionSheetWithTitle:title message:nil];
 }
 
++ (instancetype)actionSheet
+{
+    return [self actionSheetWithTitle:nil];
+}
+
 + (instancetype)actionSheetWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
 {
     UIAlertController *alert = [self actionSheetWithTitle:title message:message];
@@ -40,6 +45,11 @@
 + (instancetype)alertWithTitle:(NSString *)title
 {
     return [self alertWithTitle:title message:nil];
+}
+
++ (instancetype)alert
+{
+    return [self alertWithTitle:nil];
 }
 
 + (instancetype)alertWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle
