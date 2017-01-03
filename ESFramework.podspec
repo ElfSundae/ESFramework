@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name              = "ESFramework"
-  s.version           = "2.6.1"
+  s.version           = "2.6.2"
   s.license           = "MIT"
   s.summary           = "An Effective & Swingy Framework for iOS."
   s.homepage          = "https://github.com/ElfSundae/ESFramework"
