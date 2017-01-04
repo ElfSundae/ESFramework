@@ -10,6 +10,8 @@
 		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
 		E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESWebViewUserAgentFetcher.h; sourceTree = "<group>"; };
 		E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _ESWebViewUserAgentFetcher.m; sourceTree = "<group>"; };
+		E74717C51E1CE601009D30FF /* UITabBarController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ESAdditions.h"; sourceTree = "<group>"; };
+		E74717C61E1CE601009D30FF /* UITabBarController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ESAdditions.m"; sourceTree = "<group>"; };
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
 		E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
@@ -237,6 +239,8 @@
 				E76CA2691CA50D1100EDBB8E /* UINavigationController+ESAdditions.m */,
 				E76CA2641CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.h */,
 				E76CA2651CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.m */,
+				E74717C51E1CE601009D30FF /* UITabBarController+ESAdditions.h */,
+				E74717C61E1CE601009D30FF /* UITabBarController+ESAdditions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
