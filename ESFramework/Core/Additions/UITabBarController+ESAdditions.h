@@ -15,4 +15,8 @@
  */
 - (void)setBadgeValue:(NSString *)badgeValue forTabBarItemAtIndex:(NSUInteger)index;
 
+- (BOOL)pushViewController:(UIViewController *)viewController atTabIndex:(NSUInteger)tabIndex fromRoot:(BOOL)fromRoot popCurrentViewControllerToRoot:(BOOL)popCurrentToRoot animated:(BOOL)animated;
+
+- (BOOL)pushViewController:(UIViewController *)viewController atTabIndex:(NSUInteger)tabIndex fromRoot:(BOOL)fromRoot;
+
 @end
