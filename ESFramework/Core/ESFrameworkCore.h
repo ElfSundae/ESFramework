@@ -45,6 +45,7 @@
 #import "UIViewController+ESAdditions.h"
 #import "UINavigationController+ESAdditions.h"
 #import "UIImagePickerController+ESFixOrientation.h"
+#import "UITabBarController+ESAdditions.h"
 
 #import "ESApp.h"
 #import "ESStoreHelper.h"
