@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source            = { :git => "https://github.com/ElfSundae/ESFramework.git", :tag => s.version, :submodules => true }
   s.social_media_url  = "https://twitter.com/ElfSundae"
 
-  s.platform              = :ios, "7.0"
+  s.platform              = :ios, "8.0"
   s.requires_arc          = true
   s.source_files          = "ESFramework/ESFramework.h"
 
