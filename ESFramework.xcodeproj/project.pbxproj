@@ -134,10 +134,7 @@
 		E7143A5C1BA5B3560001BE70 = {
 			isa = PBXGroup;
 			children = (
-				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
-				E75B9F6A1D6E8EA2005C2EDA /* Reachability */,
-				E76CA22F1CA50D1100EDBB8E /* Core */,
-				E7A38C8B1C4DF9C800972B01 /* UIKit */,
+				E770462F225DF4BF00F84D6D /* ESFramework */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -282,6 +279,17 @@
 				E76CA2931CA51C5300EDBB8E /* ESStoreHelper.m */,
 			);
 			path = iTunesStore;
+			sourceTree = "<group>";
+		};
+		E770462F225DF4BF00F84D6D /* ESFramework */ = {
+			isa = PBXGroup;
+			children = (
+				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
+				E75B9F6A1D6E8EA2005C2EDA /* Reachability */,
+				E76CA22F1CA50D1100EDBB8E /* Core */,
+				E7A38C8B1C4DF9C800972B01 /* UIKit */,
+			);
+			path = ESFramework;
 			sourceTree = "<group>";
 		};
 		E7A38C8B1C4DF9C800972B01 /* UIKit */ = {
