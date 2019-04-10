@@ -10,7 +10,7 @@
 #import "ESApp.h"
 #import "ESValue.h"
 #import "UIDevice+ESInfo.h"
-#import "ESNetworkReachability.h"
+#import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "_ESWebViewUserAgentFetcher.h"
 
 static NSDate *__gAppLaunchDate = nil;
@@ -22,7 +22,7 @@ static NSDate *__gAppLaunchDate = nil;
     __gAppLaunchDate = [NSDate date];
 
     @autoreleasepool {
-        [[ESNetworkReachability defaultReachability] startMonitoring];
+        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     }
 }
 
@@ -99,7 +99,7 @@ static NSDate *__gAppLaunchDate = nil;
     if (carrier) {
         result[@"carrier"] = carrier;
     }
-    result[@"network"] = [[ESNetworkReachability defaultReachability] statusString];
+    result[@"network"] = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString;
     NSString *ssid = [UIDevice currentWiFiSSID];
     if (ssid) {
         result[@"ssid"] = ssid;
@@ -139,7 +139,7 @@ static NSDate *__gAppLaunchDate = nil;
      [UIScreen mainScreen].scale,
      ESStringFromSize([UIDevice screenSizeInPoints])];
     [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
-    [ua appendFormat:@"; Network/%@", [[ESNetworkReachability defaultReachability] statusString]];
+    [ua appendFormat:@"; Network/%@", [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString];
     if (self.appChannel) {
         [ua appendFormat:@"; Channel/%@", self.appChannel];
     }

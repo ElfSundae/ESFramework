@@ -11,16 +11,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target   = "9.0"
   s.source_files            = "ESFramework/ESFramework.h"
 
-  s.subspec "Reachability" do |ss|
-    ss.ios.deployment_target  = "9.0"
-    ss.osx.deployment_target  = "10.9"
-
-    ss.source_files           = "ESFramework/Reachability/*.{h,m}"
-    ss.frameworks             = "SystemConfiguration"
-  end
-
   s.subspec "Core" do |ss|
-    ss.dependency             "ESFramework/Reachability"
+    ss.dependency             "AFNetworking/Reachability"
     ss.source_files           = "ESFramework/Core/**/*.{h,m}"
     ss.private_header_files   = "ESFramework/Core/**/_*.h"
     ss.frameworks             = "Security", "CoreTelephony", "SystemConfiguration"

@@ -47,5 +47,7 @@
 #import "UIImagePickerController+ESFixOrientation.h"
 #import "UITabBarController+ESAdditions.h"
 
+#import "AFNetworkReachabilityManager+ESAdditions.h"
+
 #import "ESApp.h"
 #import "ESStoreHelper.h"

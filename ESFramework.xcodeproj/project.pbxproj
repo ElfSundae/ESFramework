@@ -13,8 +13,6 @@
 		E74717C51E1CE601009D30FF /* UITabBarController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ESAdditions.h"; sourceTree = "<group>"; };
 		E74717C61E1CE601009D30FF /* UITabBarController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ESAdditions.m"; sourceTree = "<group>"; };
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
-		E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkReachability.h; sourceTree = "<group>"; };
-		E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkReachability.m; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2341CA50D1100EDBB8E /* NSData+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
@@ -105,6 +103,8 @@
 		E76CA2971CA51DB300EDBB8E /* ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStatusOverlayView.m; sourceTree = "<group>"; };
 		E76CA2981CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESStatusOverlayView.h"; sourceTree = "<group>"; };
 		E76CA2991CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
+		E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFNetworkReachabilityManager+ESAdditions.h"; sourceTree = "<group>"; };
+		E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFNetworkReachabilityManager+ESAdditions.m"; sourceTree = "<group>"; };
 		E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
 		E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A38BC41C4DD82100972B01 /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
@@ -139,15 +139,6 @@
 			indentWidth = 4;
 			sourceTree = "<group>";
 			tabWidth = 4;
-		};
-		E75B9F6A1D6E8EA2005C2EDA /* Reachability */ = {
-			isa = PBXGroup;
-			children = (
-				E75B9F6B1D6E8EA2005C2EDA /* ESNetworkReachability.h */,
-				E75B9F6C1D6E8EA2005C2EDA /* ESNetworkReachability.m */,
-			);
-			path = Reachability;
-			sourceTree = "<group>";
 		};
 		E76CA22F1CA50D1100EDBB8E /* Core */ = {
 			isa = PBXGroup;
@@ -238,6 +229,8 @@
 				E76CA2651CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.m */,
 				E74717C51E1CE601009D30FF /* UITabBarController+ESAdditions.h */,
 				E74717C61E1CE601009D30FF /* UITabBarController+ESAdditions.m */,
+				E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */,
+				E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -285,7 +278,6 @@
 			isa = PBXGroup;
 			children = (
 				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
-				E75B9F6A1D6E8EA2005C2EDA /* Reachability */,
 				E76CA22F1CA50D1100EDBB8E /* Core */,
 				E7A38C8B1C4DF9C800972B01 /* UIKit */,
 			);

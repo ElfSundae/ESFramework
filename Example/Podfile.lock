@@ -1,23 +1,27 @@
 PODS:
+  - AFNetworking/Reachability (3.2.1)
   - ESFramework (2.6.2):
     - ESFramework/Core (= 2.6.2)
-    - ESFramework/Reachability (= 2.6.2)
     - ESFramework/UIKit (= 2.6.2)
   - ESFramework/Core (2.6.2):
-    - ESFramework/Reachability
-  - ESFramework/Reachability (2.6.2)
+    - AFNetworking/Reachability
   - ESFramework/UIKit (2.6.2):
     - ESFramework/Core
 
 DEPENDENCIES:
   - ESFramework (from `../`)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+
 EXTERNAL SOURCES:
   ESFramework:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ESFramework: c10643f5e00410537826294b502a0d986d30e826
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  ESFramework: aa0e506150ccde5e6cf0d9155a81a62c7bd40def
 
 PODFILE CHECKSUM: 1b7c5ae1d128577aadf29c35cc84c1473afa7019
 
