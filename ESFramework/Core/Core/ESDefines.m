@@ -20,7 +20,7 @@ NSString *ESOSVersion(void)
 
 BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
 {
-    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){majorVersion, 0, 0}];
+    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion, 0, 0}];
 }
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
