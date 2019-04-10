@@ -133,10 +133,6 @@
             }
         }
         
-        if (!__isJailBroken && [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]]) {
-            __isJailBroken = YES;
-        }
-        
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
         if (!__isJailBroken && 0 == popen("ls","r")) {
