@@ -148,25 +148,37 @@ FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
 /**
  * Creates UIColor from RGB values.
  *
- * e.g. `UIColorWithRGBA(123., 255., 200., 1.);`
+ * e.g. `UIColorWithRGBA(123, 255, 200, 0.8);`
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+
+/**
+ * Creates UIColor from RGB values.
+ *
+ * e.g. `UIColorWithRGB(123, 255, 200);`
+ */
 FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
 
 /**
  * Creates UIColor from RGB Hex number.
  *
- * e.g. `UIColorWithRGBAHex(0x7bffc8, 1.);`
+ * e.g. `UIColorWithRGBAHex(0x7bffc8, 0.8);`
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
+
+/**
+ * Creates UIColor from RGB Hex number.
+ *
+ * e.g. `UIColorWithRGBHex(0x7bffc8);`
+ */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 
 /**
- * Creates UIColor from the last six characters of a hex string.
+ * Creates UIColor from the last six characters on which a hex string.
  *
  * e.g.
  * @code
- * UIColorWithRGBHexString(@"#33AF00", 1.);
+ * UIColorWithRGBHexString(@"#33AF00", 1);
  * UIColorWithRGBHexString(@"0x33AF00", 0.3);
  * UIColorWithRGBHexString(@"33AF00", 0.9);
  * @endcode
