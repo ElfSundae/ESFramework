@@ -76,19 +76,6 @@
 /// =============================================
 #pragma mark - SDK Compatibility
 
-#ifndef NSFoundationVersionNumber_iOS_6_1
-#define NSFoundationVersionNumber_iOS_6_1  993.00
-#endif
-#ifndef NSFoundationVersionNumber_iOS_7_1
-#define NSFoundationVersionNumber_iOS_7_1 1047.25
-#endif
-#ifndef NSFoundationVersionNumber_iOS_8_x_Max
-#define NSFoundationVersionNumber_iOS_8_x_Max 1199
-#endif
-#ifndef NSFoundationVersionNumber_iOS_9_x_Max
-#define NSFoundationVersionNumber_iOS_9_x_Max 1299
-#endif
-
 NS_INLINE NSString *ESOSVersion(void) {
     return [[UIDevice currentDevice] systemVersion];
 }
