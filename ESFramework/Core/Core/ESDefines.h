@@ -70,40 +70,6 @@
 #define ES_MONTH    (2635200) /* 30.5 days */
 #define ES_YEAR     (31536000) /* 365 days */
 
-
-/// =============================================
-/// @name SDK Compatibility
-/// =============================================
-#pragma mark - SDK Compatibility
-
-NS_INLINE NSString *ESOSVersion(void) {
-    return [[UIDevice currentDevice] systemVersion];
-}
-
-NS_INLINE BOOL ESOSVersionIsAtLeast(double versionNumber) {
-    return (NSFoundationVersionNumber >= versionNumber);
-}
-
-NS_INLINE BOOL ESOSVersionIsAbove(double versionNumber) {
-    return (NSFoundationVersionNumber > versionNumber);
-}
-
-NS_INLINE BOOL ESOSVersionIsAbove7(void) {
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
-}
-
-NS_INLINE BOOL ESOSVersionIsAbove8(void) {
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
-}
-
-NS_INLINE BOOL ESOSVersionIsAbove9(void) {
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_x_Max);
-}
-
-NS_INLINE BOOL ESOSVersionIsAbove10(void) {
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_9_x_Max);
-}
-
 /// =============================================
 /// @name Helper Macros
 /// =============================================
@@ -129,8 +95,8 @@ NS_INLINE BOOL ESOSVersionIsAbove10(void) {
 /**
  * Implement singleton `+sharedInstance` method.
  *
- * If you are subclassing a signleton class, make sure overwrite the `+sharedInstance` method to
- * provide a different variable name.
+ * @warning If you are subclassing a signleton class, make sure overwrite the `+sharedInstance` method to
+ * provide a different local variable name.
  */
 #define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
     + (instancetype)sharedInstance \
@@ -164,9 +130,22 @@ NS_INLINE BOOL ESOSVersionIsAbove10(void) {
 #define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat : NSLocalizedString(key, nil), ##__VA_ARGS__]
 
 /// =============================================
+/// @name SDK Compatibility
+/// =============================================
+#pragma mark - SDK Compatibility
+
+FOUNDATION_EXTERN NSString *ESOSVersion(void);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(double versionNumber);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAbove7(void);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAbove8(void);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAbove9(void);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAbove10(void);
+
+/// =============================================
 /// @name Helper Functions
 /// =============================================
-#pragma mark - Functions
+#pragma mark - Helper Functions
 
 /**
  * Creates UIColor from RGB values.
@@ -199,30 +178,22 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat
 /**
  * Checks whether the given object is a non-empty string.
  */
-NS_INLINE BOOL ESIsStringWithAnyText(id object) {
-    return ([object isKindOfClass:[NSString class]] && [(NSString *) object length] > 0);
-}
+FOUNDATION_EXTERN BOOL ESIsStringWithAnyText(id object);
 
 /**
  * Checks whether the given object is a non-empty array.
  */
-NS_INLINE BOOL ESIsArrayWithItems(id object) {
-    return ([object isKindOfClass:[NSArray class]] && [(NSArray *) object count] > 0);
-}
+FOUNDATION_EXTERN BOOL ESIsArrayWithItems(id object);
 
 /**
  * Checks whether the given object is a non-empty dictionary.
  */
-NS_INLINE BOOL ESIsDictionaryWithItems(id object) {
-    return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *) object count] > 0);
-}
+FOUNDATION_EXTERN BOOL ESIsDictionaryWithItems(id object);
 
 /**
  * Checks whether the given object is a non-empty set.
  */
-NS_INLINE BOOL ESIsSetWithItems(id object) {
-    return ([object isKindOfClass:[NSSet class]] && [(NSSet *) object count] > 0);
-}
+FOUNDATION_EXTERN BOOL ESIsSetWithItems(id object);
 
 /**
  * Creates a mutable set which does not retain references to the objects it contains.
@@ -287,89 +258,58 @@ FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id valu
 /**
  * Returns the current statusBar's height, in any orientation.
  */
-NS_INLINE CGFloat ESStatusBarHeight(void) {
-    return fmin([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
-};
+FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
 
 /**
  * Returns the application's current interface orientation.
  */
-NS_INLINE UIInterfaceOrientation ESInterfaceOrientation(void) {
-    return [UIApplication sharedApplication].statusBarOrientation;
-}
+FOUNDATION_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
 
 /**
- * Returns current device orientation.
+ * Returns the current device orientation.
  * This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
  */
-NS_INLINE UIDeviceOrientation ESDeviceOrientation(void) {
-    return [UIDevice currentDevice].orientation;
-}
+FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
 
 /**
  * Returns a recommended rotating transform for the given interface orientation.
  */
-NS_INLINE CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation) {
-    if (UIInterfaceOrientationLandscapeLeft == orientation) {
-        return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
-    } else if (UIInterfaceOrientationLandscapeRight == orientation) {
-        return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
-    } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
-        return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
-    } else {
-        return CGAffineTransformIdentity;
-    }
-}
+FOUNDATION_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
 
 /**
  * Converts degrees to radians.
  */
-NS_INLINE CGFloat ESDegreesToRadians(CGFloat degrees) {
-    return (degrees * M_PI / 180.0);
-}
+FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
 
 /**
  * Converts radians to degrees.
  */
-NS_INLINE CGFloat ESRadiansToDegrees(CGFloat radians) {
-    return (radians * 180.0 / M_PI);
-}
+FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
 
 /**
  * Checks whether the current User Interface is Pad type.
  */
-NS_INLINE BOOL ESIsPadUI(void) {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
-}
+FOUNDATION_EXTERN BOOL ESIsPadUI(void);
 
 /**
  * Checks whether the device is an iPad/iPad Mini/iPad Air.
  */
-NS_INLINE BOOL ESIsPadDevice(void) {
-    return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
-}
+FOUNDATION_EXTERN BOOL ESIsPadDevice(void);
 
 /**
  * Checks whether the current User Interface is Phone type.
  */
-NS_INLINE BOOL ESIsPhoneUI(void) {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
-}
+FOUNDATION_EXTERN BOOL ESIsPhoneUI(void);
 
 /**
  * Checks whether the device is an iPhone/iPod Touch.
  */
-NS_INLINE BOOL ESIsPhoneDevice(void) {
-    return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
-            [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
-}
+FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 
 /**
  * Checks whether the device has retina screen.
  */
-NS_INLINE BOOL UIScreenIsRetina(void) {
-    return [UIScreen mainScreen].scale >= 2.0;
-}
+FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
 
 /**
  * Returns NSString from CGSize with format `(int)width+"x"+(int)heigth`.

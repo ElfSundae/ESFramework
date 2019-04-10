@@ -11,7 +11,46 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UIColor
+#pragma mark - SDK Compatibility
+
+NSString *ESOSVersion(void)
+{
+    return [[UIDevice currentDevice] systemVersion];
+}
+
+BOOL ESOSVersionIsAtLeast(double versionNumber)
+{
+    return (NSFoundationVersionNumber >= versionNumber);
+}
+
+BOOL ESOSVersionIsAbove(double versionNumber)
+{
+    return (NSFoundationVersionNumber > versionNumber);
+}
+
+BOOL ESOSVersionIsAbove7(void)
+{
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
+}
+
+BOOL ESOSVersionIsAbove8(void)
+{
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
+}
+
+BOOL ESOSVersionIsAbove9(void)
+{
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_x_Max);
+}
+
+BOOL ESOSVersionIsAbove10(void)
+{
+    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_9_x_Max);
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Helper Functions
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {
@@ -51,9 +90,25 @@ UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
     return UIColorWithRGBAHex(rgbValue, alpha);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
+BOOL ESIsStringWithAnyText(id object)
+{
+    return ([object isKindOfClass:[NSString class]] && [(NSString *) object length] > 0);
+}
+
+BOOL ESIsArrayWithItems(id object)
+{
+    return ([object isKindOfClass:[NSArray class]] && [(NSArray *) object count] > 0);
+}
+
+BOOL ESIsDictionaryWithItems(id object)
+{
+    return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *) object count] > 0);
+}
+
+BOOL ESIsSetWithItems(id object)
+{
+    return ([object isKindOfClass:[NSSet class]] && [(NSSet *) object count] > 0);
+}
 
 NSMutableSet *ESCreateNonretainedMutableSet(void)
 {
@@ -161,6 +216,70 @@ void ESSetAssociatedObject(id target, const void *key, id value, objc_Associatio
     }
 }
 
+CGFloat ESStatusBarHeight(void)
+{
+    return fmin([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
+};
+
+UIInterfaceOrientation ESInterfaceOrientation(void)
+{
+    return [UIApplication sharedApplication].statusBarOrientation;
+}
+
+UIDeviceOrientation ESDeviceOrientation(void)
+{
+    return [UIDevice currentDevice].orientation;
+}
+
+CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation)
+{
+    if (UIInterfaceOrientationLandscapeLeft == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
+    } else if (UIInterfaceOrientationLandscapeRight == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
+    } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
+    } else {
+        return CGAffineTransformIdentity;
+    }
+}
+
+CGFloat ESDegreesToRadians(CGFloat degrees)
+{
+    return (degrees * M_PI / 180.0);
+}
+
+CGFloat ESRadiansToDegrees(CGFloat radians)
+{
+    return (radians * 180.0 / M_PI);
+}
+
+BOOL ESIsPadUI(void)
+{
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+}
+
+BOOL ESIsPadDevice(void)
+{
+    return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
+}
+
+BOOL ESIsPhoneUI(void)
+{
+    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+}
+
+BOOL ESIsPhoneDevice(void)
+{
+    return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
+            [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
+}
+
+BOOL UIScreenIsRetina(void)
+{
+    return [UIScreen mainScreen].scale >= 2.0;
+}
+
 NSString *ESStringFromSize(CGSize size)
 {
     if (size.height < size.width) {
@@ -203,10 +322,6 @@ UIImage *UIImageFrom(NSString *filePath)
 
     return [UIImage imageWithContentsOfFile:filePath];
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Path
 
 NSBundle *ESBundleWithName(NSString *bundleName)
 {
@@ -315,7 +430,7 @@ BOOL ESTouchDirectoryAtURL(NSURL *url)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Dispatch
+#pragma mark - Dispatch & Block
 
 void ESDispatchOnMainThreadSynchrony(dispatch_block_t block)
 {
