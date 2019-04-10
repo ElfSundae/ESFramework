@@ -1,12 +1,12 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode10.2
 xcode_workspace: ESFramework.xcworkspace
 xcode_scheme: Example
 before_install:
 
     - env
     - cd Example
-    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - gem install cocoapods
     - pod install --no-repo-update
 
 script:
