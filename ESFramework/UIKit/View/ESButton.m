@@ -144,7 +144,7 @@ buttonFlatStyled = _buttonFlatStyled;
     if (_buttonFlatStyled) {
         return _buttonFlatStyled;
     }
-    if (ESOSVersionIsAbove7()) {
+    if (ESOSVersionIsAtLeast(7)) {
         return @(YES);
     } else {
         return @(NO);

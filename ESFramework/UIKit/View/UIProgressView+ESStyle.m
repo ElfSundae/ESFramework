@@ -45,7 +45,7 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
 + (instancetype)flatProgressViewWithTrackColor:(UIColor *)trackColor progressColor:(UIColor *)progressColor
 {
     UIProgressView *p = [[self alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    if (ESOSVersionIsAbove7()) {
+    if (ESOSVersionIsAtLeast(7)) {
         p.trackTintColor = trackColor;
         p.progressTintColor = progressColor;
     } else {
@@ -57,7 +57,7 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
 
 + (instancetype)flatProgressView
 {
-    if (ESOSVersionIsAbove7()) {
+    if (ESOSVersionIsAtLeast(7)) {
         return [[self alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     } else {
         return [self flatProgressViewWithTrackColor:UIColorWithRGBHex(0xb6b6b6) progressColor:UIColorWithRGBHex(0x1374ff)];

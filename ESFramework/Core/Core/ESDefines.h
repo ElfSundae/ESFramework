@@ -130,22 +130,20 @@
 #define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat : NSLocalizedString(key, nil), ##__VA_ARGS__]
 
 /// =============================================
-/// @name SDK Compatibility
-/// =============================================
-#pragma mark - SDK Compatibility
-
-FOUNDATION_EXTERN NSString *ESOSVersion(void);
-FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(double versionNumber);
-FOUNDATION_EXTERN BOOL ESOSVersionIsAbove(double versionNumber);
-FOUNDATION_EXTERN BOOL ESOSVersionIsAbove7(void);
-FOUNDATION_EXTERN BOOL ESOSVersionIsAbove8(void);
-FOUNDATION_EXTERN BOOL ESOSVersionIsAbove9(void);
-FOUNDATION_EXTERN BOOL ESOSVersionIsAbove10(void);
-
-/// =============================================
 /// @name Helper Functions
 /// =============================================
 #pragma mark - Helper Functions
+
+/**
+ * The current version of the operating system.
+ */
+FOUNDATION_EXTERN NSString *ESOSVersion(void);
+
+/**
+ * Returns a Boolean value indicating whether the version of the operating system
+ * on which the process is executing is the same or later than the given version.
+ */
+FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
 
 /**
  * Creates UIColor from RGB values.

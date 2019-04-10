@@ -11,46 +11,17 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - SDK Compatibility
+#pragma mark - Helper Functions
 
 NSString *ESOSVersion(void)
 {
     return [[UIDevice currentDevice] systemVersion];
 }
 
-BOOL ESOSVersionIsAtLeast(double versionNumber)
+BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
 {
-    return (NSFoundationVersionNumber >= versionNumber);
+    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){majorVersion, 0, 0}];
 }
-
-BOOL ESOSVersionIsAbove(double versionNumber)
-{
-    return (NSFoundationVersionNumber > versionNumber);
-}
-
-BOOL ESOSVersionIsAbove7(void)
-{
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_6_1);
-}
-
-BOOL ESOSVersionIsAbove8(void)
-{
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_7_1);
-}
-
-BOOL ESOSVersionIsAbove9(void)
-{
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_8_x_Max);
-}
-
-BOOL ESOSVersionIsAbove10(void)
-{
-    return ESOSVersionIsAbove(NSFoundationVersionNumber_iOS_9_x_Max);
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Helper Functions
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {

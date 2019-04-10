@@ -281,7 +281,7 @@
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
-    if (self.isFlatStyle || (self.applyFlatStyleAutomatically && ESOSVersionIsAbove7())) {
+    if (self.isFlatStyle || (self.applyFlatStyleAutomatically && ESOSVersionIsAtLeast(7))) {
         [self drawFlatStyleWithContext:context withRect:rect];
     } else {
         self.cornerRoundness = 0.4;
