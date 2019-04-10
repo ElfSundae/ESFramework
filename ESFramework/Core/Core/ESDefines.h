@@ -246,26 +246,6 @@ FOUNDATION_EXTERN UIColor *ESRandomColor(void);
 FOUNDATION_EXTERN NSString *ESUUID(void);
 
 /**
- * Specifies a "zeroing weak reference" to the associated object.
- */
-FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
-
-/**
- * Defines a key for the Associcated Object.
- */
-#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key
-
-/**
- * Returns the value associated with a given object for a given key.
- */
-FOUNDATION_EXTERN id ESGetAssociatedObject(id target, const void *key);
-
-/**
- * Sets an associated value for a given object using a given key and association policy.
- */
-FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
-
-/**
  * Returns the current statusBar's height, in any orientation.
  */
 FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
@@ -409,6 +389,26 @@ FOUNDATION_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_
 /// @name ObjC Runtime
 /// =============================================
 #pragma mark - ObjC Runtime
+
+/**
+ * Specifies a "zeroing weak reference" to the associated object.
+ */
+FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
+
+/**
+ * Defines a key for the Associcated Object.
+ */
+#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key
+
+/**
+ * Returns the value associated with a given object for a given key.
+ */
+FOUNDATION_EXTERN id ESGetAssociatedObject(id target, const void *key);
+
+/**
+ * Sets an associated value for a given object using a given key and association policy.
+ */
+FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
 
 /**
  * @code
