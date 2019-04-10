@@ -4,16 +4,16 @@ Pod::Spec.new do |s|
   s.license           = "MIT"
   s.summary           = "An Effective & Swingy Framework for iOS."
   s.homepage          = "https://github.com/ElfSundae/ESFramework"
-  s.authors           = { "Elf Sundae" => "http://0x123.com" }
+  s.authors           = { "Elf Sundae" => "https://0x123.com" }
   s.source            = { :git => "https://github.com/ElfSundae/ESFramework.git", :tag => s.version, :submodules => true }
   s.social_media_url  = "https://twitter.com/ElfSundae"
 
   s.requires_arc            = true
-  s.ios.deployment_target   = "7.0"
+  s.ios.deployment_target   = "9.0"
   s.source_files            = "ESFramework/ESFramework.h"
 
   s.subspec "Reachability" do |ss|
-    ss.ios.deployment_target  = "7.0"
+    ss.ios.deployment_target  = "9.0"
     ss.osx.deployment_target  = "10.9"
 
     ss.source_files           = "ESFramework/Reachability/*.{h,m}"
