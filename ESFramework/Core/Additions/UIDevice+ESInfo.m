@@ -132,10 +132,10 @@
                 break;
             }
         }
-        
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated"
-        if (!__isJailBroken && 0 == popen("ls","r")) {
+        if (!__isJailBroken && 0 == popen("ls", "r")) {
             __isJailBroken = YES;
         }
 #pragma clang diagnostic pop
