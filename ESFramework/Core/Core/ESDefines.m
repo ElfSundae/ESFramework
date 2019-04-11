@@ -217,18 +217,6 @@ BOOL UIScreenIsRetina(void)
     return [UIScreen mainScreen].scale >= 2.0;
 }
 
-NSString *NSStringWith(NSString *format, ...)
-{
-    NSString *string = nil;
-    if (format) {
-        va_list args;
-        va_start(args, format);
-        string = [[NSString alloc] initWithFormat:format arguments:args];
-        va_end(args);
-    }
-    return string;
-}
-
 UIImage *UIImageFromCache(NSString *filePath)
 {
     if (!ESIsStringWithAnyText(filePath)) {

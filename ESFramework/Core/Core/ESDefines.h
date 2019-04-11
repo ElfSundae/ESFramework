@@ -302,11 +302,6 @@ FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
 
 /**
- * Creates NSString with the given format and arguments.
- */
-FOUNDATION_EXTERN NSString *NSStringWith(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
-
-/**
  * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
  *
  * Image files within App bundle can contain only high resolution images like `@2x`,`@3x`,
