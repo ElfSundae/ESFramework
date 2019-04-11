@@ -231,7 +231,7 @@
     [self.layer insertSublayer:gradient atIndex:0];
 }
 
-- (void)setBackgroundGradientColor:(UIColor *)startColor, ...NS_REQUIRES_NIL_TERMINATION
+- (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION
 {
     if (startColor) {
         NSMutableArray *colors = [NSMutableArray array];

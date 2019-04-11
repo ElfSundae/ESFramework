@@ -57,7 +57,7 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
                            message:(NSString *)message
                  cancelButtonTitle:(NSString *)cancelButtonTitle
                    didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
-                 otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION
+                 otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
 {
     UIAlertView *alertView = [[self alloc] initWithTitle:title message:message dismissBlock:didDismissBlock];
     if (otherButtonTitles) {

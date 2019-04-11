@@ -127,7 +127,7 @@
 #ifndef _e
 #define _e(key) NSLocalizedString(key, nil)
 #endif
-#define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat : NSLocalizedString(key, nil), ##__VA_ARGS__]
+#define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat:NSLocalizedString(key, nil), ##__VA_ARGS__]
 
 /// =============================================
 /// @name Helper Functions

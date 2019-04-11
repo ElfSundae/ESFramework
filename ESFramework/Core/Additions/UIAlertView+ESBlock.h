@@ -26,7 +26,7 @@ typedef void (^ESUIAlertViewDidDismissBlock)(UIAlertView *alertView, NSInteger b
                            message:(NSString *)message
                  cancelButtonTitle:(NSString *)cancelButtonTitle
                    didDismissBlock:(ESUIAlertViewDidDismissBlock)didDismissBlock
-                 otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION;
+                 otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 
 /// =============================================
 /// @name Customization

@@ -46,7 +46,7 @@ static const void *_didDismissBlockKey = &_didDismissBlockKey;
 + (instancetype)actionSheetWithTitle:(NSString *)title
                    cancelButtonTitle:(NSString *)cancelButtonTitle
                      didDismissBlock:(ESUIActionSheetDidDismissBlock)didDismissBlock
-                   otherButtonTitles:(NSString *)otherButtonTitles, ...NS_REQUIRES_NIL_TERMINATION
+                   otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION
 {
     UIActionSheet *actionSheet = [[self alloc] initWithTitle:title didDismissBlock:didDismissBlock];
     if (otherButtonTitles) {
