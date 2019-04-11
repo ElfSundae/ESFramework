@@ -370,7 +370,8 @@ static int es_EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
 
 - (NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
                                              ofSize:(NSUInteger)size
-                                    escapingUnicode:(BOOL)escapeUnicode {
+                                    escapingUnicode:(BOOL)escapeUnicode
+{
     NSUInteger length = [self length];
     if (!length) {
         return self;
@@ -436,19 +437,22 @@ static int es_EscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
     return [finalString copy];
 }
 
-- (NSString *)es_gtm_stringByEscapingForHTML {
+- (NSString *)es_gtm_stringByEscapingForHTML
+{
     return [self es_gtm_stringByEscapingHTMLUsingTable:__es_gUnicodeHTMLEscapeMap
                                                 ofSize:sizeof(__es_gUnicodeHTMLEscapeMap)
                                        escapingUnicode:NO];
 } // gtm_stringByEscapingHTML
 
-- (NSString *)es_gtm_stringByEscapingForAsciiHTML {
+- (NSString *)es_gtm_stringByEscapingForAsciiHTML
+{
     return [self es_gtm_stringByEscapingHTMLUsingTable:__es_gAsciiHTMLEscapeMap
                                                 ofSize:sizeof(__es_gAsciiHTMLEscapeMap)
                                        escapingUnicode:YES];
 } // gtm_stringByEscapingAsciiHTML
 
-- (NSString *)es_gtm_stringByUnescapingFromHTML {
+- (NSString *)es_gtm_stringByUnescapingFromHTML
+{
     NSRange range = NSMakeRange(0, [self length]);
     NSRange subrange = [self rangeOfString:@"&" options:NSBackwardsSearch range:range];
 
