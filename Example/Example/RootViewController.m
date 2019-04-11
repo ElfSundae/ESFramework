@@ -19,9 +19,10 @@
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     [infoButton addEventHandler:^(id sender, UIControlEvents controlEvent) {
         [UIAlertController showAlertWithTitle:@"About"
-                                  message:@"ESFramework\nhttp://0x123.com"
-                        cancelButtonTitle:ESLocalizedString(@"OK")];
-    } forControlEvents:UIControlEventTouchUpInside];
+                                      message:@"ESFramework\nhttp://0x123.com"
+                            cancelButtonTitle:ESLocalizedString(@"OK")];
+    }
+               forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 
     self.tableView.rowHeight = 60;
