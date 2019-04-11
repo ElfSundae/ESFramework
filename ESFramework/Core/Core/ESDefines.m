@@ -155,7 +155,7 @@ NSString *ESUUID(void)
 
 CGFloat ESStatusBarHeight(void)
 {
-    return fmin([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height);
+    return fmin(CGRectGetWidth(UIApplication.sharedApplication.statusBarFrame), CGRectGetHeight(UIApplication.sharedApplication.statusBarFrame));
 };
 
 UIInterfaceOrientation ESInterfaceOrientation(void)
