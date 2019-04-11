@@ -256,5 +256,5 @@ void es_didReceiveRemoteNotification(NSDictionary *remoteNotification, BOOL from
     NSString *userInfoKey = (fromLaunch ? UIApplicationLaunchOptionsRemoteNotificationKey : ESAppRemoteNotificationKey);
     [[NSNotificationCenter defaultCenter] postNotificationName:ESAppDidReceiveRemoteNotificationNotification
                                                         object:application
-                                                      userInfo:@{userInfoKey: remoteNotification}];
+                                                      userInfo:@{ userInfoKey: remoteNotification }];
 }

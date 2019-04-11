@@ -118,13 +118,14 @@
 #if !TARGET_IPHONE_SIMULATOR
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSArray *jbApps = @[@"/Application/Cydia.app",
-                            @"/Library/MobileSubstrate/MobileSubstrate.dylib",
-                            @"/bin/bash",
-                            @"/usr/sbin/sshd",
-                            @"/etc/apt",
-                            @"/private/var/lib/cydia",
-                            @"/private/var/lib/apt",
+        NSArray *jbApps = @[
+            @"/Application/Cydia.app",
+            @"/Library/MobileSubstrate/MobileSubstrate.dylib",
+            @"/bin/bash",
+            @"/usr/sbin/sshd",
+            @"/etc/apt",
+            @"/private/var/lib/cydia",
+            @"/private/var/lib/apt",
         ];
         for (NSString *path in jbApps) {
             if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {

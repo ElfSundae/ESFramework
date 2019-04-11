@@ -237,11 +237,9 @@
     static NSDictionary *replacement = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replacement = @{
-            @"+": @"-",
-            @"/": @"_",
-            @"=": @""
-        };
+        replacement = @{ @"+": @"-",
+                         @"/": @"_",
+                         @"=": @"" };
     });
 
     return [self stringByReplacingWithDictionary:replacement options:0];
@@ -252,10 +250,8 @@
     static NSDictionary *replacement = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        replacement = @{
-            @"-": @"+",
-            @"_": @"/"
-        };
+        replacement = @{ @"-": @"+",
+                         @"_": @"/" };
     });
 
     NSMutableString *result = self.mutableCopy;

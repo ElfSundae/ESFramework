@@ -64,7 +64,7 @@
 
 - (CGSize)_getTextSize
 {
-    CGSize stringSize = [self.text sizeWithAttributes:@{NSFontAttributeName: self.font}];
+    CGSize stringSize = [self.text sizeWithAttributes:@{ NSFontAttributeName: self.font }];
     stringSize.width = ceilf(stringSize.width);
     stringSize.height = ceilf(stringSize.height);
     return stringSize;
@@ -299,8 +299,8 @@
         CGPoint textPoint;
         textPoint.x = (rect.size.width - textSize.width) / 2.;
         textPoint.y = (rect.size.height - textSize.height) / 2.;
-        [self.text drawAtPoint:textPoint withAttributes:@{NSFontAttributeName: self.font,
-                                                          NSForegroundColorAttributeName: self.textColor}];
+        [self.text drawAtPoint:textPoint withAttributes:@{ NSFontAttributeName: self.font,
+                                                           NSForegroundColorAttributeName: self.textColor }];
     }
 }
 

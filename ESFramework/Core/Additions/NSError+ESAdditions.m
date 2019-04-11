@@ -14,7 +14,7 @@
 {
     NSDictionary *userInfo = nil;
     if ([description isKindOfClass:[NSString class]]) {
-        userInfo = @{NSLocalizedDescriptionKey: description};
+        userInfo = @{ NSLocalizedDescriptionKey: description };
     }
     return [self errorWithDomain:domain code:code userInfo:userInfo];
 }

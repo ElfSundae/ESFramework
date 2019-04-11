@@ -226,7 +226,7 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
 
     gradient.frame = self.bounds;
-    gradient.colors = @[(id)[startColor CGColor], (id)[endColor CGColor]];
+    gradient.colors = @[ (id)[startColor CGColor], (id)[endColor CGColor] ];
 
     [self.layer insertSublayer:gradient atIndex:0];
 }
