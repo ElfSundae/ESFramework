@@ -18,7 +18,9 @@
     self.title = @"ESFramework Example";
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     [infoButton addEventHandler:^(id sender, UIControlEvents controlEvent) {
-        [UIAlertView showWithTitle:@"About" message:@"ESFramework\nhttp://0x123.com" cancelButtonTitle:ESLocalizedString(@"OK")];
+        [UIAlertController showAlertWithTitle:@"About"
+                                  message:@"ESFramework\nhttp://0x123.com"
+                        cancelButtonTitle:ESLocalizedString(@"OK")];
     } forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 

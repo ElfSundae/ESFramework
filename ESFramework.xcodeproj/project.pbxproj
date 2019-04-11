@@ -47,10 +47,6 @@
 		E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2521CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2531CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2541CA50D1100EDBB8E /* UIActionSheet+ESBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+ESBlock.h"; sourceTree = "<group>"; };
-		E76CA2551CA50D1100EDBB8E /* UIActionSheet+ESBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+ESBlock.m"; sourceTree = "<group>"; };
-		E76CA2561CA50D1100EDBB8E /* UIAlertView+ESBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+ESBlock.h"; sourceTree = "<group>"; };
-		E76CA2571CA50D1100EDBB8E /* UIAlertView+ESBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+ESBlock.m"; sourceTree = "<group>"; };
 		E76CA2581CA50D1100EDBB8E /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2591CA50D1100EDBB8E /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA25A1CA50D1100EDBB8E /* UIColor+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESAdditions.h"; sourceTree = "<group>"; };
@@ -199,10 +195,6 @@
 				E76CA2631CA50D1100EDBB8E /* UIImage+ESAdditions.m */,
 				E76CA25E1CA50D1100EDBB8E /* UIDevice+ESInfo.h */,
 				E76CA25F1CA50D1100EDBB8E /* UIDevice+ESInfo.m */,
-				E76CA2561CA50D1100EDBB8E /* UIAlertView+ESBlock.h */,
-				E76CA2571CA50D1100EDBB8E /* UIAlertView+ESBlock.m */,
-				E76CA2541CA50D1100EDBB8E /* UIActionSheet+ESBlock.h */,
-				E76CA2551CA50D1100EDBB8E /* UIActionSheet+ESBlock.m */,
 				E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */,
 				E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */,
 				E76CA2601CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.h */,
