@@ -178,14 +178,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Screen
 
-+ (CGSize)screenSizeInPixels
-{
-    return [[UIScreen mainScreen] currentMode].size;
-}
-
 + (CGSize)screenSizeInPoints
 {
     return [UIScreen mainScreen].bounds.size;
+}
+
++ (CGSize)screenSizeInPixels
+{
+    return [[UIScreen mainScreen] currentMode].size;
 }
 
 + (BOOL)isRetinaScreen

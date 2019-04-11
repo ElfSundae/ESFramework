@@ -90,14 +90,14 @@
 /// =============================================
 
 /**
- * The width and height in pixels.
- */
-+ (CGSize)screenSizeInPixels;
-
-/**
  * The width and height in points
  */
 + (CGSize)screenSizeInPoints;
+
+/**
+ * The width and height in pixels.
+ */
++ (CGSize)screenSizeInPixels;
 
 + (BOOL)isRetinaScreen;
 // iPhone 4/4S, 640x960
