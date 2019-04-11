@@ -6,6 +6,7 @@
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
+- Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`
 
 ## 2.6.2
 

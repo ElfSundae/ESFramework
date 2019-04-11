@@ -322,7 +322,7 @@
 - (void)writeToURL:(NSURL *)url atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
 {
     ESDispatchOnDefaultQueue(^{
-        BOOL result = (ESTouchDirectoryAtURL(url) &&
+        BOOL result = (ESTouchDirectoryAtFileURL(url) &&
                        [self writeToURL:url atomically:useAuxiliaryFile encoding:enc error:NULL]);
         ESDispatchOnMainThreadAsynchrony(^{
             if (completion) completion(result);

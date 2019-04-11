@@ -307,17 +307,53 @@ FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
 FOUNDATION_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
 
 /**
- * Returns a full file path for the Sandbox.
+ * Returns the full path relatived to the given bundle's resourcePath and the given relativePath.
  */
 FOUNDATION_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
+
+/**
+ * Returns the full path for the resource path of the main bundle.
+ */
 FOUNDATION_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
+
+/**
+ * Returns the path of the Documents directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForDocuments(void);
+
+/**
+ * Returns the path relatived to the Documents directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
+
+/**
+ * Returns the path of the Library directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForLibrary(void);
+
+/**
+ * Returns the path relatived to the Library directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
+
+/**
+ * Returns the path of the Caches directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForCaches(void);
+
+/**
+ * Returns the path relatived to the Caches directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
+
+/**
+ * Returns the path of the temporary directory (tmp).
+ */
 FOUNDATION_EXTERN NSString *ESPathForTemporary(void);
+
+/**
+ * Returns the path relatived to the temporary directory.
+ */
 FOUNDATION_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
 
 /**
@@ -329,10 +365,11 @@ FOUNDATION_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
  * Creates the directory at the given file path if the directory does not exist.
  */
 FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
+
 /**
  * Creates the directory at the given file URL if the directory does not exist.
  */
-FOUNDATION_EXTERN BOOL ESTouchDirectoryAtURL(NSURL *url);
+FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFileURL(NSURL *url);
 
 /// =============================================
 /// @name Dispatch & Block

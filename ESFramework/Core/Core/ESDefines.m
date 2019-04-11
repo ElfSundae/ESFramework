@@ -248,7 +248,7 @@ NSString *ESPathForDocuments(void)
     static NSString *docs = nil;
     static dispatch_once_t onceToken_DocumentsPath;
     dispatch_once(&onceToken_DocumentsPath, ^{
-        docs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        docs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
     });
     return docs;
 }
@@ -263,7 +263,7 @@ NSString *ESPathForLibrary(void)
     static NSString *lib = nil;
     static dispatch_once_t onceToken_LibraryPath;
     dispatch_once(&onceToken_LibraryPath, ^{
-        lib = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
+        lib = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject;
     });
     return lib;
 }
@@ -278,7 +278,7 @@ NSString *ESPathForCaches(void)
     static NSString *caches = nil;
     static dispatch_once_t onceToken_CachesPath;
     dispatch_once(&onceToken_CachesPath, ^{
-        caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+        caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
     });
     return caches;
 }
@@ -300,16 +300,18 @@ NSString *ESPathForTemporaryResource(NSString *relativePath)
 
 BOOL ESTouchDirectory(NSString *directoryPath)
 {
-    if (ESIsStringWithAnyText(directoryPath)) {
-        NSFileManager *fm = [NSFileManager defaultManager];
-        BOOL isDir = NO;
-        if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir] && isDir) {
-            return YES;
-        }
-        return ([fm removeItemAtPath:directoryPath error:NULL] &&
-                [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]);
+    if (!ESIsStringWithAnyText(directoryPath)) {
+        return NO;
     }
-    return NO;
+    
+    NSFileManager *fm = [NSFileManager defaultManager];
+    BOOL isDir = NO;
+    if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir] && isDir) {
+        return YES;
+    }
+    
+    return ([fm removeItemAtPath:directoryPath error:NULL] &&
+            [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]);    
 }
 
 BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
@@ -317,7 +319,7 @@ BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
     return ESTouchDirectory([filePath stringByDeletingLastPathComponent]);
 }
 
-BOOL ESTouchDirectoryAtURL(NSURL *url)
+BOOL ESTouchDirectoryAtFileURL(NSURL *url)
 {
     return ESTouchDirectoryAtFilePath(url.path);
 }
