@@ -303,15 +303,15 @@ BOOL ESTouchDirectory(NSString *directoryPath)
     if (!ESIsStringWithAnyText(directoryPath)) {
         return NO;
     }
-    
+
     NSFileManager *fm = [NSFileManager defaultManager];
     BOOL isDir = NO;
     if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir] && isDir) {
         return YES;
     }
-    
+
     return ([fm removeItemAtPath:directoryPath error:NULL] &&
-            [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]);    
+            [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]);
 }
 
 BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
