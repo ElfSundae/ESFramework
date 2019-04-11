@@ -72,9 +72,9 @@
     NSMutableParagraphStyle *paragraphStyle = [NSParagraphStyle defaultParagraphStyle].mutableCopy;
     paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
 
-    return @{ NSForegroundColorAttributeName: UIColorWithRGB(99., 109., 125.),
-              NSFontAttributeName: [UIFont systemFontOfSize:17.],
-              NSParagraphStyleAttributeName: [paragraphStyle copy]};
+    return @{NSForegroundColorAttributeName: UIColorWithRGB(99., 109., 125.),
+             NSFontAttributeName: [UIFont systemFontOfSize:17.],
+             NSParagraphStyleAttributeName: [paragraphStyle copy]};
 }
 
 @end
