@@ -1,13 +1,22 @@
 # CHANGELOG
 
+## Unreleased
+
+- Updated iOS deployment target to 9.0
+- Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`
+- Removed `ESOSVersionIsAbove*`, `ESStringFromSize` functions
+
 ## 2.6.2
+
 - Add `-[UIAlertController defaultAction]` to access the preferred alert action.
 - Add `UIAlertController` creation methods that without any parameters.
 
 ## 2.6.1
+
 - Add `UIAlertController` additions.
 
 ## 2.6.0
+
 - Rename method `-[UIScrollView refreshControl]` to `es_refreshControl` [1907d6d](https://github.com/ElfSundae/ESFramework/commit/1907d6dfa707b61849a55ef4616bd119958538bc)
 - Add `UNUserNotificationCenter` support for `-[ESApp registerForRemoteNotificationsWithTypes:...]`, make it compatible with iOS 10.
 - Minor refactor ESApp private methods.
