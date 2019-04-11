@@ -217,16 +217,6 @@ BOOL UIScreenIsRetina(void)
     return [UIScreen mainScreen].scale >= 2.0;
 }
 
-NSString *ESStringFromSize(CGSize size)
-{
-    if (size.height < size.width) {
-        CGFloat t = size.width;
-        size.width = size.height;
-        size.height = t;
-    }
-    return [NSString stringWithFormat:@"%dx%d", (int)size.width, (int)size.height];
-}
-
 NSString *NSStringWith(NSString *format, ...)
 {
     NSString *string = nil;

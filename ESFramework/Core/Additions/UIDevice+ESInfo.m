@@ -188,6 +188,13 @@
     return [[UIScreen mainScreen] currentMode].size;
 }
 
++ (NSString *)screenSizeString:(CGSize)size
+{
+    return [NSString stringWithFormat:@"%dx%d",
+            (int)fmin(size.width, size.height),
+            (int)fmax(size.width, size.height)];
+}
+
 + (BOOL)isRetinaScreen
 {
     return UIScreenIsRetina();

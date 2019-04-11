@@ -99,6 +99,11 @@
  */
 + (CGSize)screenSizeInPixels;
 
+/**
+ * Convert a screen size to string, e.g. "320x480".
+ */
++ (NSString *)screenSizeString:(CGSize)size;
+
 + (BOOL)isRetinaScreen;
 // iPhone 4/4S, 640x960
 + (BOOL)isIPhoneRetina35InchScreen;
