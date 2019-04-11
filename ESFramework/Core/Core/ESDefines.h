@@ -302,24 +302,6 @@ FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
 
 /**
- * Returns an `UIImage` instance using `+[UIImage imageNamed:]` method.
- *
- * Image files within App bundle can contain only high resolution images like `@2x`,`@3x`,
- * this function can return the correct "down-scaled" image for the device which has normal
- * resolution such as iPad mini 1th.
- *
- * The naming conventions for each pair of image files is as follows:
- *
- * + Standard: `<ImageName><device_modifier>.<filename_extension>`
- * + High resolution: `<ImageName>@2x<device_modifier>.<filename_extension>`
- *
- * The `<device_modifier>` portion is optional and contains either the string `~ipad` or `~iphone`.
- *
- * @see [Updating Your Image Resource Files](https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/SupportingHiResScreensInViews/SupportingHiResScreensInViews.html#//apple_ref/doc/uid/TP40010156-CH15-SW8)
- */
-FOUNDATION_EXTERN UIImage *UIImageFromCache(NSString *filePath);
-
-/**
  * Returns a new `UIImage` instance, using `[UIImage imageWithContentsOfFile:]` method.
  *
  * The `filePath` specification is the same as `UIImageFromCache(NSString *)`.

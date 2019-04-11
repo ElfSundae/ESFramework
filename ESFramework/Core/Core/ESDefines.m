@@ -217,14 +217,6 @@ BOOL UIScreenIsRetina(void)
     return [UIScreen mainScreen].scale >= 2.0;
 }
 
-UIImage *UIImageFromCache(NSString *filePath)
-{
-    if (!ESIsStringWithAnyText(filePath)) {
-        return nil;
-    }
-    return [UIImage imageNamed:filePath];
-}
-
 UIImage *UIImageFrom(NSString *filePath)
 {
     if (!ESIsStringWithAnyText(filePath)) {
