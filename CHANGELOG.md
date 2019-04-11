@@ -4,7 +4,7 @@
 
 - Updated iOS deployment target to 9.0
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`
-- Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()` functions
+- Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
 
 ## 2.6.2

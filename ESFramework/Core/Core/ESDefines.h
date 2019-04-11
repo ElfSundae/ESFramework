@@ -302,13 +302,6 @@ FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
 
 /**
- * Returns a new `UIImage` instance, using `[UIImage imageWithContentsOfFile:]` method.
- *
- * The `filePath` specification is the same as `UIImageFromCache(NSString *)`.
- */
-FOUNDATION_EXTERN UIImage *UIImageFrom(NSString *filePath);
-
-/**
  * Returns the bundle for the given name.
  */
 FOUNDATION_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);

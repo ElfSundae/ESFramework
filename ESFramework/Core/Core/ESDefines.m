@@ -217,19 +217,6 @@ BOOL UIScreenIsRetina(void)
     return [UIScreen mainScreen].scale >= 2.0;
 }
 
-UIImage *UIImageFrom(NSString *filePath)
-{
-    if (!ESIsStringWithAnyText(filePath)) {
-        return nil;
-    }
-
-    if (![filePath isAbsolutePath]) {
-        filePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:filePath];
-    }
-
-    return [UIImage imageWithContentsOfFile:filePath];
-}
-
 NSBundle *ESBundleWithName(NSString *bundleName)
 {
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
