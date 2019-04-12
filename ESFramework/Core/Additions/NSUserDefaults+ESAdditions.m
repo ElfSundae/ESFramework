@@ -25,9 +25,6 @@
 + (void)setObjectAsynchrony:(id)value forKey:(NSString *)defaultName
 {
     [[self standardUserDefaults] setObject:value forKey:defaultName];
-    ESDispatchOnDefaultQueue(^{
-        [[self standardUserDefaults] synchronize];
-    });
 }
 
 + (void)removeObjectForKey:(NSString *)defaultName
@@ -39,9 +36,6 @@
 + (void)removeObjectAsynchronyForKey:(NSString *)defaultName
 {
     [[self standardUserDefaults] removeObjectForKey:defaultName];
-    ESDispatchOnDefaultQueue(^{
-        [[self standardUserDefaults] synchronize];
-    });
 }
 
 + (NSDictionary *)registeredDefaults;
