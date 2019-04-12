@@ -65,10 +65,10 @@
 {
     if ([newSuperview isKindOfClass:[UIScrollView class]]) {
         _storedViewsScrollEnabled = [(UIScrollView *) newSuperview isScrollEnabled];
-        [(UIScrollView *) self.view setScrollEnabled:NO];
+        [(UIScrollView *)self.view setScrollEnabled:NO];
         // TODO: addSubView到scrollView时，frame不能是scrollView的bounds，要不然有可能看不见. 检查contentOffset
     } else if (!newSuperview && self.superview == self.view && [self.view isKindOfClass:[UIScrollView class]]) {
-        [(UIScrollView *) self.view setScrollEnabled:_storedViewsScrollEnabled];
+        [(UIScrollView *)self.view setScrollEnabled:_storedViewsScrollEnabled];
     }
 }
 

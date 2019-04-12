@@ -47,7 +47,7 @@
 #define ES_STOPWATCH_END(stopwatch_begin_var) { \
         uint64_t end = mach_absolute_time(); \
         mach_timebase_info_data_t timebaseInfo; \
-        (void) mach_timebase_info(&timebaseInfo); \
+        (void)mach_timebase_info(&timebaseInfo); \
         uint64_t elapsedNano = (end - stopwatch_begin_var) * timebaseInfo.numer / timebaseInfo.denom; \
         double_t elapsedMillisecond = (double_t)elapsedNano / 1000000.0; \
         printf("‼️STOPWATCH‼️ [%s:%d] %s %fms\n", [NSString stringWithUTF8String:__FILE__].lastPathComponent.UTF8String, __LINE__, __PRETTY_FUNCTION__, elapsedMillisecond); \

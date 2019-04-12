@@ -48,17 +48,17 @@
 
 - (BOOL)_es_shouldAutorotate
 {
-    return [(UIViewController *) self.viewControllers.lastObject shouldAutorotate];
+    return [(UIViewController *)self.viewControllers.lastObject shouldAutorotate];
 }
 
 - (NSUInteger)_es_supportedInterfaceOrientations
 {
-    return [(UIViewController *) self.viewControllers.lastObject supportedInterfaceOrientations];
+    return [(UIViewController *)self.viewControllers.lastObject supportedInterfaceOrientations];
 }
 
 - (UIInterfaceOrientation)_es_preferredInterfaceOrientationForPresentation
 {
-    return [(UIViewController *) self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
+    return [(UIViewController *)self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
 }
 
 
