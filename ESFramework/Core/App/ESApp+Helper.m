@@ -11,6 +11,7 @@
 #import "NSUserDefaults+ESAdditions.h"
 
 static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
+#define kMultitaskingBackgroundTaskIdentifier @"ESAppMultitasking"
 
 @implementation ESApp (_Helper)
 
@@ -80,27 +81,22 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 + (void)enableMultitasking
 {
-    ESDispatchOnMainThreadSynchrony(^{
-        if (![self isMultitaskingEnabled]) {
-            __esBackgroundTaskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-                ESDispatchOnMainThreadAsynchrony(^{
-                    [self disableMultitasking];
-                    [self enableMultitasking];
-                });
-            }];
-        }
-
-    });
+    if ([self isMultitaskingEnabled]) {
+        return;
+    }
+    
+    __esBackgroundTaskIdentifier = [UIApplication.sharedApplication beginBackgroundTaskWithName:kMultitaskingBackgroundTaskIdentifier expirationHandler:^{
+        [self disableMultitasking];
+        [self enableMultitasking];
+    }];
 }
 
 + (void)disableMultitasking
 {
-    ESDispatchOnMainThreadSynchrony(^{
-        if ([self isMultitaskingEnabled]) {
-            [[UIApplication sharedApplication] endBackgroundTask:[self backgroundTaskIdentifier]];
-            __esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
-        }
-    });
+    if ([self isMultitaskingEnabled]) {
+        [UIApplication.sharedApplication endBackgroundTask:[self backgroundTaskIdentifier]];
+        __esBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
+    }
 }
 
 + (BOOL)isMultitaskingEnabled

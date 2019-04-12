@@ -372,18 +372,20 @@ FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
 FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFileURL(NSURL *url);
 
 /// =============================================
-/// @name Dispatch & Block
+/// @name GCD
 /// =============================================
-#pragma mark - Dispatch & Block
+#pragma mark - GCD
 
-FOUNDATION_EXTERN void ESDispatchOnMainThreadSynchrony(dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchOnDefaultQueue(dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchOnHighQueue(dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchOnLowQueue(dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchOnBackgroundQueue(dispatch_block_t block);
-FOUNDATION_EXTERN void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block);
+FOUNDATION_EXTERN void es_dispatch_async_main(dispatch_block_t block);
+FOUNDATION_EXTERN void es_dispatch_sync_main(dispatch_block_t block);
+
+FOUNDATION_EXTERN void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block);
+FOUNDATION_EXTERN void es_dispatch_async_high(dispatch_block_t block);
+FOUNDATION_EXTERN void es_dispatch_async_default(dispatch_block_t block);
+FOUNDATION_EXTERN void es_dispatch_async_low(dispatch_block_t block);
+FOUNDATION_EXTERN void es_dispatch_async_background(dispatch_block_t block);
+
+FOUNDATION_EXTERN void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block);
 
 /// =============================================
 /// @name ObjC Runtime

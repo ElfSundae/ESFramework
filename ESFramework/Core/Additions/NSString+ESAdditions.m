@@ -310,23 +310,27 @@
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
 {
-    ESDispatchOnDefaultQueue(^{
+    es_dispatch_async_default(^{
         BOOL result = (ESTouchDirectoryAtFilePath(path) &&
                        [self writeToFile:path atomically:useAuxiliaryFile encoding:enc error:NULL]);
-        ESDispatchOnMainThreadAsynchrony(^{
-            if (completion) completion(result);
-        });
+        if (completion) {
+            es_dispatch_async_main(^{
+                completion(result);
+            });
+        }
     });
 }
 
 - (void)writeToURL:(NSURL *)url atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
 {
-    ESDispatchOnDefaultQueue(^{
+    es_dispatch_async_default(^{
         BOOL result = (ESTouchDirectoryAtFileURL(url) &&
                        [self writeToURL:url atomically:useAuxiliaryFile encoding:enc error:NULL]);
-        ESDispatchOnMainThreadAsynchrony(^{
-            if (completion) completion(result);
-        });
+        if (completion) {
+            es_dispatch_async_main(^{
+                completion(result);
+            });
+        }
     });
 }
 

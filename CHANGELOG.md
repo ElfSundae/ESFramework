@@ -2,11 +2,21 @@
 
 ## Unreleased
 
-- Updated iOS deployment target to 9.0
-- Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`
-- Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions
-- Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
-- Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`
+- Updated iOS deployment target to 9.0.
+- Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
+- Renamed GCD dispatch functions:
+    + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
+    + `ESDispatchOnMainThreadSynchrony` => `es_dispatch_sync_main`
+    + `ESDispatchOnGlobalQueue` => `es_dispatch_async_global_queue`
+    + `ESDispatchOnHighQueue` => `es_dispatch_async_high`
+    + `ESDispatchOnDefaultQueue` => `es_dispatch_async_default`
+    + `ESDispatchOnLowQueue` => `es_dispatch_async_low`
+    + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
+    + `ESDispatchAfter` => `es_dispatch_after`
+- Make the main queue dispatching functions safer.
+- Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
+- Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
+- Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
 
 ## 2.6.2
 

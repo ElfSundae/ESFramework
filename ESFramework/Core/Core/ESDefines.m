@@ -326,17 +326,9 @@ BOOL ESTouchDirectoryAtFileURL(NSURL *url)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Dispatch & Block
+#pragma mark - GCD
 
-void ESDispatchOnMainThreadSynchrony(dispatch_block_t block)
-{
-    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {
-        block();
-    } else {
-        dispatch_sync(dispatch_get_main_queue(), block);
-    }
-}
-void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block)
+void es_dispatch_async_main(dispatch_block_t block)
 {
     if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {
         block();
@@ -345,33 +337,43 @@ void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block)
     }
 }
 
-void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
+void es_dispatch_sync_main(dispatch_block_t block)
+{
+    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {
+        block();
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), block);
+    }
+}
+
+void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block)
 {
     dispatch_async(dispatch_get_global_queue(priority, 0), block);
 }
 
-void ESDispatchOnDefaultQueue(dispatch_block_t block)
+void es_dispatch_async_high(dispatch_block_t block)
 {
-    ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_DEFAULT, block);
-}
-void ESDispatchOnHighQueue(dispatch_block_t block)
-{
-    ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_HIGH, block);
-}
-void ESDispatchOnLowQueue(dispatch_block_t block)
-{
-    ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_LOW, block);
-}
-void ESDispatchOnBackgroundQueue(dispatch_block_t block)
-{
-    ESDispatchOnGlobalQueue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block);
+    es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, block);
 }
 
-void ESDispatchAfter(NSTimeInterval delayTime, dispatch_block_t block)
+void es_dispatch_async_default(dispatch_block_t block)
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)),
-                   dispatch_get_main_queue(),
-                   block);
+    es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, block);
+}
+
+void es_dispatch_async_low(dispatch_block_t block)
+{
+    es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, block);
+}
+
+void es_dispatch_async_background(dispatch_block_t block)
+{
+    es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block);
+}
+
+void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block)
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), block);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

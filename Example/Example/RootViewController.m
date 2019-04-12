@@ -29,7 +29,7 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
     ESWeakSelf;
     self.tableView.es_refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
-        ESDispatchAfter(1, ^{
+        es_dispatch_after(1, ^{
             ESStrongSelf;
             [_self.tableView reloadData];
             [refreshControl endRefreshing];

@@ -13,12 +13,14 @@
 
 - (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile completion:(void (^)(BOOL result))completion
 {
-    ESDispatchOnDefaultQueue(^{
+    es_dispatch_async_default(^{
         BOOL result = (ESTouchDirectoryAtFilePath(path) &&
                        [self writeToFile:path atomically:useAuxiliaryFile]);
-        ESDispatchOnMainThreadAsynchrony(^{
-            if (completion) completion(result);
-        });
+        if (completion) {
+            es_dispatch_async_main(^{
+                completion(result);
+            });
+        }
     });
 }
 
