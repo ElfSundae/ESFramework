@@ -26,7 +26,7 @@ FOUNDATION_EXTERN NSNumber *NSNumberFromString(NSString *string);
 /*!
  * Gets value from NSNumber or NSString safely.
  *
- * If the given object is parsed failed, these functions will return the given defaultValue.
+ * If the given object is parsed failed, these functions will return the given default value.
  */
 
 FOUNDATION_EXTERN int ESIntValueWithDefault(id obj, int defaultValue);
