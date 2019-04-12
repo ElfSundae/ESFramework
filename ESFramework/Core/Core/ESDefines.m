@@ -330,7 +330,7 @@ BOOL ESTouchDirectoryAtFileURL(NSURL *url)
 
 void ESDispatchOnMainThreadSynchrony(dispatch_block_t block)
 {
-    if ([NSThread isMainThread]) {
+    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {
         block();
     } else {
         dispatch_sync(dispatch_get_main_queue(), block);
@@ -338,7 +338,11 @@ void ESDispatchOnMainThreadSynchrony(dispatch_block_t block)
 }
 void ESDispatchOnMainThreadAsynchrony(dispatch_block_t block)
 {
-    dispatch_async(dispatch_get_main_queue(), block);
+    if (dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue())) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
 }
 
 void ESDispatchOnGlobalQueue(dispatch_queue_priority_t priority, dispatch_block_t block)
