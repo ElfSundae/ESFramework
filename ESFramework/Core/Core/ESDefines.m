@@ -396,7 +396,7 @@ id ESGetAssociatedObject(id target, const void *key)
 {
     id object = objc_getAssociatedObject(target, key);
     if ([object isKindOfClass:[_ESWeakObjectHolder class]]) {
-        object = [(_ESWeakObjectHolder *) object weakObject];
+        object = [(_ESWeakObjectHolder *)object weakObject];
     }
     return object;
 }
