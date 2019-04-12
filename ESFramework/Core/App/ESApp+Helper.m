@@ -84,7 +84,7 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
     if ([self isMultitaskingEnabled]) {
         return;
     }
-    
+
     __esBackgroundTaskIdentifier = [UIApplication.sharedApplication beginBackgroundTaskWithName:kMultitaskingBackgroundTaskIdentifier expirationHandler:^{
         [self disableMultitasking];
         [self enableMultitasking];
