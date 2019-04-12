@@ -158,37 +158,37 @@
 - (void)removeAllTapGestureRecognizers
 {
     [[self allTapGestureRecognizers] each:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[(UIGestureRecognizer *) obj view] removeGestureRecognizer:obj];
+        [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
     } option:NSEnumerationConcurrent];
 }
 - (void)removeAllLongPressGestureRecognizers
 {
     [[self allLongPressGestureRecognizers] each:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[(UIGestureRecognizer *) obj view] removeGestureRecognizer:obj];
+        [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
     } option:NSEnumerationConcurrent];
 }
 - (void)removeAllPanGestureRecognizers
 {
     [[self allPanGestureRecognizers] each:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[(UIGestureRecognizer *) obj view] removeGestureRecognizer:obj];
+        [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
     } option:NSEnumerationConcurrent];
 }
 - (void)removeAllPinchGestureRecognizers
 {
     [[self allPinchGestureRecognizers] each:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[(UIGestureRecognizer *) obj view] removeGestureRecognizer:obj];
+        [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
     } option:NSEnumerationConcurrent];
 }
 - (void)removeAllSwipeGestureRecognizers
 {
     [[self allSwipeGestureRecognizers] each:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[(UIGestureRecognizer *) obj view] removeGestureRecognizer:obj];
+        [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
     } option:NSEnumerationConcurrent];
 }
 - (void)removeAllRotationGestureRecognizers
 {
     [[self allRotationGestureRecognizers] each:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[(UIGestureRecognizer *) obj view] removeGestureRecognizer:obj];
+        [[(UIGestureRecognizer *)obj view] removeGestureRecognizer:obj];
     } option:NSEnumerationConcurrent];
 }
 

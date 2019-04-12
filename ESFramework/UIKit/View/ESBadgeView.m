@@ -73,7 +73,7 @@
 - (void)setText:(NSString *)text
 {
     if ([text isKindOfClass:[NSNumber class]]) {
-        _text = [(NSNumber *) text stringValue];
+        _text = [(NSNumber *)text stringValue];
     } else {
         _text = text;
     }

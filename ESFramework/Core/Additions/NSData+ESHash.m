@@ -102,7 +102,7 @@
     if ([key isKindOfClass:[NSData class]]) {
         keyData = (NSData *)key;
     } else if ([key isKindOfClass:[NSString class]]) {
-        keyData = [(NSString *) key dataUsingEncoding:NSUTF8StringEncoding];
+        keyData = [(NSString *)key dataUsingEncoding:NSUTF8StringEncoding];
     } else {
         printf("%s: 'key' must be a NSData or a NSString.\n", __PRETTY_FUNCTION__);
         return nil;

@@ -63,22 +63,22 @@ UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
 
 BOOL ESIsStringWithAnyText(id object)
 {
-    return ([object isKindOfClass:[NSString class]] && [(NSString *) object length] > 0);
+    return ([object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0);
 }
 
 BOOL ESIsArrayWithItems(id object)
 {
-    return ([object isKindOfClass:[NSArray class]] && [(NSArray *) object count] > 0);
+    return ([object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0);
 }
 
 BOOL ESIsDictionaryWithItems(id object)
 {
-    return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *) object count] > 0);
+    return ([object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0);
 }
 
 BOOL ESIsSetWithItems(id object)
 {
-    return ([object isKindOfClass:[NSSet class]] && [(NSSet *) object count] > 0);
+    return ([object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0);
 }
 
 NSMutableSet *ESCreateNonretainedMutableSet(void)
