@@ -144,5 +144,4 @@ static const void *__es_EventsKey = &__es_EventsKey;
     return !![wrappers count];
 }
 
-
 @end
