@@ -66,7 +66,7 @@ unsigned long ESULongValueWithDefault(id obj, unsigned long defaultValue)
 
 long long ESLongLongValueWithDefault(id obj, long long defaultValue)
 {
-    return (obj = NSNumberFromString(obj)) ? [obj longLongValue] : defaultValue;
+    return isKindOfNSNumberOrNSString(obj) ? [obj longLongValue] : defaultValue;
 }
 
 unsigned long long ESULongLongValueWithDefault(id obj, unsigned long long defaultValue)
@@ -181,7 +181,7 @@ NSURL *ESURLValue(id obj)
 
 BOOL ESIntVal(int *var, id obj)
 {
-    if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+    if (isKindOfNSNumberOrNSString(obj)) {
         *var = [obj intValue];
         return YES;
     }
@@ -202,7 +202,7 @@ BOOL ESUIntVal(unsigned int *var, id obj)
 
 BOOL ESIntegerVal(NSInteger *var, id obj)
 {
-    if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+    if (isKindOfNSNumberOrNSString(obj)) {
         *var = [obj integerValue];
         return YES;
     }
@@ -247,7 +247,7 @@ BOOL ESULongVal(unsigned long *var, id obj)
 
 BOOL ESLongLongVal(long long *var, id obj)
 {
-    if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+    if (isKindOfNSNumberOrNSString(obj)) {
         *var = [obj longLongValue];
         return YES;
     }
@@ -268,7 +268,7 @@ BOOL ESULongLongVal(unsigned long long *var, id obj)
 
 BOOL ESFloatVal(float *var, id obj)
 {
-    if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+    if (isKindOfNSNumberOrNSString(obj)) {
         *var = [obj floatValue];
         return YES;
     }
@@ -277,7 +277,7 @@ BOOL ESFloatVal(float *var, id obj)
 
 BOOL ESDoubleVal(double *var, id obj)
 {
-    if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+    if (isKindOfNSNumberOrNSString(obj)) {
         *var = [obj doubleValue];
         return YES;
     }
@@ -286,7 +286,7 @@ BOOL ESDoubleVal(double *var, id obj)
 
 BOOL ESBoolVal(BOOL *var, id obj)
 {
-    if ([obj isKindOfClass:[NSNumber class]] || [obj isKindOfClass:[NSString class]]) {
+    if (isKindOfNSNumberOrNSString(obj)) {
         *var = [obj boolValue];
         return YES;
     }
@@ -310,9 +310,7 @@ BOOL ESURLVal(NSURL **var, id obj)
     if ([obj isKindOfClass:[NSURL class]]) {
         *var = obj;
         return YES;
-    }
-
-    if (ESIsStringWithAnyText(obj)) {
+    } else if (ESIsStringWithAnyText(obj)) {
         *var = [NSURL URLWithString:(NSString *)obj];
         return YES;
     }
