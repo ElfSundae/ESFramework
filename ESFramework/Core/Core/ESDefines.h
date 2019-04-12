@@ -428,50 +428,58 @@ FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
 #pragma mark - Invocation
 
 @interface NSInvocation (_ESHelper)
+
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
 - (void)es_getReturnValue:(void *)returnValue;
-@end
 
-@interface NSObject (_ESInvoke)
+@end /* NSInvocation (_ESHelper) */
+
+@interface NSObject (_ESInvocationHelper)
+
 /**
  * Invokes selector.
+ *
  * @code
  * NSArray *__autoreleasing result;
  * BOOL outSucceed;
  * NSError *__autoreleasing outError;
  *
  * if ([self invokeSelector:@selector(foo:succeed:error:) retainArguments:NO result:&result, @"bar", &outSucceed, &outError]) {
- *         if (outSucceed) {
- *                 NSLog(@"result: %@", result);
- *         } else {
- *                 NSLog(@"error: %@", outError);
- *         }
+ *      if (outSucceed) {
+ *              NSLog(@"result: %@", result);
+ *      } else {
+ *              NSLog(@"error: %@", outError);
+ *      }
  * }
  * @endcode
  *
- * @return YES if invoked successfully, otherwise NO.
+ * @return YES if invokes successfully, otherwise NO.
  */
 - (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...;
 
 /**
  * Invokes selector.
+ *
  * @see -[NSObject invokeSelector:retainArguments:result,...]
- * @return YES if invoked successfully, otherwise NO.
+ * @return YES if invokes successfully, otherwise NO.
  */
 + (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...;
-@end
+
+@end /* NSObject (_ESInvocationHelper) */
 
 /**
  * Invokes selector.
+ *
  * @code
  * CGRect bounds;
  * if (ESInvokeSelector([UIScreen mainScreen], @selector(bounds), &bounds)) {
  *     NSLog(@"%@", NSStringFromCGRect(bounds));
  * }
  * @endcode
- * @return YES if invoked successfully, otherwise NO.
+ *
+ * @return YES if invokes successfully, otherwise NO.
  */
 FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
 

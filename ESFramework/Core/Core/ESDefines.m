@@ -558,7 +558,7 @@ static id __gNil = nil;
             } else {
                 SetArgumentWithPointer(void *);
             }
-        }
+        } /* for-loop */
     }
 
     if (invocation && retainArguments && !invocation.argumentsRetained) {
@@ -598,12 +598,13 @@ static id __gNil = nil;
     }               \
     return NO;
 
-@implementation NSObject (_ESInvoke)
+@implementation NSObject (_ESInvocationHelper)
 
 + (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...
 {
-    _ESInvokeSelector(self, selector, result);
+    _ESInvokeSelector([self class], selector, result);
 }
+
 - (BOOL)invokeSelector:(SEL)selector result:(void *)result, ...
 {
     _ESInvokeSelector(self, selector, result);
