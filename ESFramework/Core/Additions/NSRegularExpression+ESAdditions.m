@@ -29,17 +29,10 @@
 {
     return [self matchesInString:string options:0 range:NSMakeRange(0, string.length)];
 }
+
 - (NSUInteger)numberOfMatchesInString:(NSString *)string
 {
     return [self numberOfMatchesInString:string options:0 range:NSMakeRange(0, string.length)];
-}
-- (NSTextCheckingResult *)firstMatchInString:(NSString *)string
-{
-    return [self firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
-}
-- (NSRange)rangeOfFirstMatchInString:(NSString *)string
-{
-    return [self rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
 }
 
 - (BOOL)isMatchInString:(NSString *)string
@@ -47,6 +40,15 @@
     return ([self numberOfMatchesInString:string] > 0);
 }
 
+- (NSTextCheckingResult *)firstMatchInString:(NSString *)string
+{
+    return [self firstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
+}
+
+- (NSRange)rangeOfFirstMatchInString:(NSString *)string
+{
+    return [self rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, string.length)];
+}
 
 - (NSString *)stringByReplacingMatchesInString:(NSString *)string withTemplate:(NSString *)templ
 {

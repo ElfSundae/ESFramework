@@ -16,6 +16,7 @@
 
 - (NSArray *)matchesInString:(NSString *)string;
 - (NSUInteger)numberOfMatchesInString:(NSString *)string;
+- (BOOL)isMatchInString:(NSString *)string;
 - (NSTextCheckingResult *)firstMatchInString:(NSString *)string;
 - (NSRange)rangeOfFirstMatchInString:(NSString *)string;
 - (NSString *)stringByReplacingMatchesInString:(NSString *)string withTemplate:(NSString *)templ;
