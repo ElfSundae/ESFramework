@@ -73,7 +73,8 @@
 - (NSString *)URLDecode;
 
 /**
- * Parse query string (http://foo.bar?key=value&arr[]=value&arr[]=value1) to dictionary { key:value, arr:[value, value1] }.
+ * Parse query string (http://foo.bar?key=value&arr[]=value&arr[]=value1) to
+ * dictionary { key:value, arr:[value, value1] }.
  */
 - (NSDictionary *)queryDictionary;
 

@@ -139,21 +139,20 @@
     NSRange firstEqualRange = [queryString rangeOfString:@"="];
     if (firstEqualRange.location != NSNotFound) {
         // # 可能当作锚点： # 位于 ? 的后面，
-        // # 也可能当作查询字符串的开始（例如http://twitter.com/#!/username,
+        // # 也可能当作查询字符串的开始，例如 http://twitter.com/#!/username ,
         // https://www.google.com/#newwindow=1&q=url).
         NSRange fragmentStart = [queryString rangeOfString:@"#"];
         if (fragmentStart.location != NSNotFound &&
-            fragmentStart.location > firstEqualRange.location)
-        {
+            fragmentStart.location > firstEqualRange.location) {
             // 如果 # 是锚点，则忽略（移除）锚点后面的所有字符串
             NSRange fragmentRange = NSMakeRange(fragmentStart.location, queryString.length - fragmentStart.location);
             [queryString deleteCharactersInRange:fragmentRange];
         }
 
-        // 移除 /?# 结尾的路径
+        // 移除 /?# 结尾的 url.path
         [queryString replaceRegex:@"^[^?#]*[/?#]+" to:@"" caseInsensitive:NO];
 
-        // 按 & 分割query字符串
+        // 按 & 分割 query 字符串
         NSArray *parts = [queryString splitWith:@"&"];
 
         for (NSString *query in parts) {
