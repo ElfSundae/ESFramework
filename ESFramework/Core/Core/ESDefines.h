@@ -400,7 +400,7 @@ FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 /**
  * Defines a key for the Associcated Object.
  */
-#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key
+#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
 
 /**
  * Returns the value associated with a given object for a given key.
