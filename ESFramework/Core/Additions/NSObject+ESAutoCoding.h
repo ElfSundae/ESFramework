@@ -42,10 +42,10 @@
  * ### Supported Property Types
  * These types below will be automatically encoded.
  *
- * + `id`
- * + basic number types like `char` `int` `long` `float` `double` `unsigned long long`, etc.
- * + `NSValue`
- * + `struct`, like `CGRect` `CGSize` `CGAffineTransform`, etc.
+ * - `id`
+ * - basic number types like `char` `int` `long` `float` `double` `unsigned long long`, etc.
+ * - `NSValue`
+ * - `struct`, like `CGRect` `CGSize` `CGAffineTransform`, etc.
  *
  * ### Descussion
  * 1. To exclude certain properties of your object from being encoded,
@@ -56,10 +56,9 @@
  *              or `@synthesize` the ivar an another name, `@synthesize name = __name`
  *              (here ivar with two `_` prefix))
  *      - Override the `+es_codableProperties` method
- * 2. You can add additional coding/decoding logic by overriding the `-modelSetWithCoder:` and/or
- * the `-encodeWithCoder:` methods. As long as you call the `[super ...]` implementation,
+ * 2. You can add additional coding/decoding logic by overriding the `-es_setWithCoder:` and/or
+ * the `-es_encodeWithCoder:` methods. As long as you call the `[super ...]` implementation,
  * the auto-coding will still function.
- *
  */
 @interface NSObject (ESAutoCoding)
 

@@ -14,6 +14,7 @@
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
     + `ESDispatchAfter` => `es_dispatch_after`
 - Make the main queue dispatching functions safer.
+- Refactor `NSObject (ESAutoCoding)`
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
