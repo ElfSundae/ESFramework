@@ -99,7 +99,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
     return NO;
 }
 
-+ (NSDictionary *)es_codableProperties
++ (NSDictionary<NSString *, Class> *)es_codableProperties
 {
     NSDictionary *cached = ESGetAssociatedObject([self class], es_codablePropertiesKey);
     if (cached) {
@@ -210,7 +210,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
     return cached;
 }
 
-- (NSDictionary *)es_dictionaryRepresentation
+- (NSDictionary<NSString *, id> *)es_dictionaryRepresentation
 {
     return [self dictionaryWithValuesForKeys:[[self class] es_codableProperties].allKeys];
 }

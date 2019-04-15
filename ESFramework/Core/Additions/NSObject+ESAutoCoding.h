@@ -74,8 +74,8 @@
 - (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
 
 /// @{ property_name : property_class }
-+ (NSDictionary *)es_codableProperties;
-- (NSDictionary *)es_dictionaryRepresentation;
++ (NSDictionary<NSString *, Class> *)es_codableProperties;
+- (NSDictionary<NSString *, id> *)es_dictionaryRepresentation;
 - (NSString *)es_description;
 
 @end
