@@ -50,12 +50,12 @@
  * ### Descussion
  * 1. To exclude certain properties of your object from being encoded,
  * you can do so in any of the following ways:
- *      * Only use an ivar, without declaring a matching `@property`.
- *      * Change the name of the ivar to something that is not KVC compliant.
- *              (not the same as the property name, nor the property name with an `_` prefix,
+ *      - Only use an ivar, without declaring a matching `@property`.
+ *      - Change the name of the ivar to something which is not KVC compliant.
+ *              (not the same as the property name, nor the property name with an `_` prefix either,
  *              or `@synthesize` the ivar an another name, `@synthesize name = __name`
  *              (here ivar with two `_` prefix))
- *      * Override the `+es_codableProperties` method
+ *      - Override the `+es_codableProperties` method
  * 2. You can add additional coding/decoding logic by overriding the `-modelSetWithCoder:` and/or
  * the `-encodeWithCoder:` methods. As long as you call the `[super ...]` implementation,
  * the auto-coding will still function.
