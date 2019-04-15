@@ -37,7 +37,7 @@
         });
     }];
 
-    // [self testAutoCoding];
+    [self testAutoCoding];
 }
 
 - (void)testAutoCoding
@@ -64,6 +64,9 @@
     NSLog(@"%@\n%@", user.es_codableProperties, user.es_description);
     BOOL saved = [user es_writeToFile:file atomically:YES];
     NSLog(@"saved: %@", @(saved));
+
+    User *user2 = [user copy];
+    NSLog(@"%@", user2.es_description);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
