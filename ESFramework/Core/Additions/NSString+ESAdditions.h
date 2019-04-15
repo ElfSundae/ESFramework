@@ -55,8 +55,8 @@
 - (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters;
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
-- (NSArray *)splitWith:(NSString *)separator;
-- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
+- (NSArray<NSString *> *)splitWith:(NSString *)separator;
+- (NSArray<NSString *> *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
 /**
  * Returns a string in which all non-alphanumeric characters except -_.~ have been replaced

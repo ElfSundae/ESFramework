@@ -97,12 +97,12 @@
     return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
 }
 
-- (NSArray *)splitWith:(NSString *)separator
+- (NSArray<NSString *> *)splitWith:(NSString *)separator
 {
     return [self componentsSeparatedByString:separator];
 }
 
-- (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator
+- (NSArray<NSString *> *)splitWithCharacterSet:(NSCharacterSet *)separator
 {
     return [self componentsSeparatedByCharactersInSet:separator];
 }
@@ -119,25 +119,28 @@
             stringByRemovingPercentEncoding];
 }
 
+/**
+ * TestCase:
+ *
+ * foo=bar
+ * path?key=value
+ * http://example.com?key=value
+ * tel:path?key=value
+ * //path#key=value&array[]=val&array[]
+ * /path/?key
+ * path?key=value#fragment
+ */
 - (NSDictionary *)queryDictionary
 {
-    /**
-     * path=xxx
-     * http://path.com/test/?key=value
-     * tel:path?key=value
-     * //path#key=value&array[]=val&array[]
-     * path?key=value
-     * /path/?key
-     * path?key=value#fragment
-     */
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     NSMutableString *queryString = self.mutableCopy;
 
-    // 移除协议: http:// , file:/// , tel: , // .
+    // Remove URL.scheme: http:// , file:/// , tel: , // .
     [queryString replaceRegex:@"^[^:/]*[:/]+" to:@"" caseInsensitive:NO];
 
     NSRange firstEqualRange = [queryString rangeOfString:@"="];
     if (firstEqualRange.location != NSNotFound) {
+        // Remove URL.fragment
         // # 可能当作锚点： # 位于 ? 的后面，
         // # 也可能当作查询字符串的开始，例如 http://twitter.com/#!/username ,
         // https://www.google.com/#newwindow=1&q=url).
@@ -157,12 +160,15 @@
 
         for (NSString *query in parts) {
             NSArray *keyValue = [query splitWith:@"="];
-            if (keyValue.count != 2) {
+            if (1 == keyValue.count) {
+                keyValue = @[keyValue.firstObject, @""];
+            }
+            if (2 != keyValue.count) {
                 continue;
             }
-            NSString *key = [ESStringValueWithDefault(keyValue[0], @"") URLDecode];
-            NSString *value = [ESStringValueWithDefault(keyValue[1], @"") URLDecode];
-            if (key.isEmpty || value.isEmpty) {
+            NSString *key = [keyValue[0] URLDecode];
+            NSString *value = [keyValue[1] URLDecode];
+            if (key.isEmpty && value.isEmpty) {
                 continue;
             }
             if ([key hasSuffix:@"[]"]) {
