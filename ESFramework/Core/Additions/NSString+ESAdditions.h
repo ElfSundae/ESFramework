@@ -13,16 +13,23 @@
 @interface NSString (ESAdditions)
 
 /**
- * Compare string ignoring case
+ * Compare string ignoring case.
  */
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
 
+/**
+ * Indicates whether the length of string is 0.
+ */
 - (BOOL)isEmpty;
 
 /**
- * Trims with whitespace and new line
+ * Trims with whitespace and new line.
  */
 - (NSString *)trim;
+
+/**
+ * Trims with the given characters.
+ */
 - (NSString *)trimWithCharactersInString:(NSString *)string;
 
 - (BOOL)contains:(NSString*)string;
@@ -34,6 +41,7 @@
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
 - (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement;
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
+
 /**
  * The `replacement` is treated as a template, with $0 being replaced by the
  * contents of the matched range, $1 by the contents of the first capture group,
@@ -49,10 +57,6 @@
 
 - (NSArray *)splitWith:(NSString *)separator;
 - (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator;
-
-/// =============================================
-/// @name Encoding/Decoding URL
-/// =============================================
 
 /**
  * Returns a string in which all non-alphanumeric characters except -_.~ have been replaced

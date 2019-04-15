@@ -10,6 +10,7 @@
 #import "NSString+ESAdditions.h"
 #import "NSMutableString+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
+#import "NSCharacterSet+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
 
@@ -52,10 +53,12 @@
 {
     return [self stringByReplacing:string with:replacement options:0];
 }
+
 - (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement
 {
     return [self stringByReplacing:string with:replacement options:NSCaseInsensitiveSearch];
 }
+
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options
 {
     if (!replacement) {
@@ -63,6 +66,7 @@
     }
     return [self stringByReplacingOccurrencesOfString:string withString:replacement options:options range:NSMakeRange(0, self.length)];
 }
+
 - (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement
 {
     if (!replacement) {
@@ -97,6 +101,7 @@
 {
     return [self componentsSeparatedByString:separator];
 }
+
 - (NSArray *)splitWithCharacterSet:(NSCharacterSet *)separator
 {
     return [self componentsSeparatedByCharactersInSet:separator];
@@ -104,36 +109,14 @@
 
 - (NSString *)URLEncode
 {
-    if ([self respondsToSelector:@selector(stringByAddingPercentEncodingWithAllowedCharacters:)]) {
-        static NSCharacterSet *__allowedCharacters = nil;
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            NSMutableCharacterSet *charset = [NSMutableCharacterSet alphanumericCharacterSet];
-            [charset addCharactersInString:@"-_.~"];
-            __allowedCharacters = [charset copy];
-        });
-        return [self stringByAddingPercentEncodingWithAllowedCharacters:__allowedCharacters];
-    } else {
-        static NSString *const __charactersToBeEscaped = @":/?#[]@!$&'()*+,;=";
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
-        CFStringRef encoded = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, NULL, (__bridge CFStringRef)__charactersToBeEscaped, kCFStringEncodingUTF8);
-#pragma clang diagnostic pop
-        return CFBridgingRelease(encoded);
-    }
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:
+            [NSCharacterSet URLEncodingAllowedCharacterSet]];
 }
 
 - (NSString *)URLDecode
 {
-    NSString *decoded = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-    if ([decoded respondsToSelector:@selector(stringByRemovingPercentEncoding)]) {
-        return [decoded stringByRemovingPercentEncoding];
-    } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
-        return [decoded stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#pragma clang diagnostic pop
-    }
+    return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "]
+            stringByRemovingPercentEncoding];
 }
 
 - (NSDictionary *)queryDictionary
