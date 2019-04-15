@@ -14,47 +14,47 @@ ESDefineAssociatedObjectKey(es_codableProperties);
 
 @implementation NSObject (ESAutoCoding)
 
-- (id)initWithCoder_es:(NSCoder *)aDecoder
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+- (instancetype)initWithCoder_es:(NSCoder *)aDecoder
 {
-    self = [self init];
-    if (!self) {
-        return nil;
-    }
-
-    BOOL secureSupported = ([[self class] respondsToSelector:@selector(supportsSecureCoding)] &&
-                            [[self class] supportsSecureCoding]);
-    BOOL secureAvailable = [aDecoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)];
-
-    NSDictionary *properties = [[self class] es_codableProperties];
-
-    for (NSString *key in properties) {
-        Class propertyClass = properties[key];
-
-        id value = nil;
-
-        if (secureAvailable) {
-            value = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
-        } else {
-            value = [aDecoder decodeObjectForKey:key];
-        }
-
-        if (value) {
-            if (!secureSupported || [value isKindOfClass:propertyClass]) {
-                [self setValue:value forKey:key];
-            }
-        }
-    }
-
+    // No -init be called, see https://github.com/nicklockwood/AutoCoding/pull/32
+    [self es_setWithCoder:aDecoder];
     return self;
 }
+#pragma clang diagnostic pop
 
 - (void)es_encodeWithCoder:(NSCoder *)aCoder
 {
-    for (NSString *key in [[self class] es_codableProperties]) {
-        id value = [self valueForKey:key];
+    for (NSString *key in self.es_codableProperties) {
+        id object = [self valueForKey:key];
+        if (object) {
+            [aCoder encodeObject:object forKey:key];
+        }
+    }
+}
 
-        if (value) {
-            [aCoder encodeObject:value forKey:key];
+- (void)es_setWithCoder:(NSCoder *)aDecoder
+{
+    BOOL secureAvailable = [aDecoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)];
+    BOOL secureSupported = [self.class respondsToSelector:@selector(supportsSecureCoding)] && [self.class supportsSecureCoding];
+
+    NSDictionary *properties = self.es_codableProperties;
+    for (NSString *key in properties) {
+        Class propertyClass = properties[key];
+
+        id object = nil;
+        if (secureAvailable) {
+            object = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
+        } else {
+            object = [aDecoder decodeObjectForKey:key];
+        }
+
+        if (object) {
+            if (!secureSupported ||
+                ([object isKindOfClass:propertyClass] || [object isKindOfClass:NSNull.class])) {
+                [self setValue:object forKey:key];
+            }
         }
     }
 }
@@ -62,168 +62,181 @@ ESDefineAssociatedObjectKey(es_codableProperties);
 - (id)es_copyWithZone:(NSZone *)zone
 {
     id copy = [[[self class] alloc] init];
-
-    for (NSString *key in [[self class] es_codableProperties]) {
+    for (NSString *key in self.es_codableProperties) {
         [copy setValue:[self valueForKey:key] forKey:key];
     }
-
     return copy;
-}
-
-+ (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
-{
-    id object = nil;
-
-    @try {
-        object = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-    } @catch (NSException *exception) {
-
-    }
-
-    return [object isKindOfClass:[self class]] ? object : nil;
-}
-
-- (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
-{
-    if (ESTouchDirectoryAtFilePath(filePath)) {
-        @try {
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-            if (data) {
-                return [data writeToFile:filePath atomically:useAuxiliaryFile];
-            }
-        } @catch (NSException *exception) {
-
-        }
-    }
-
-    return NO;
 }
 
 + (NSDictionary<NSString *, Class> *)es_codableProperties
 {
-    NSDictionary *cached = ESGetAssociatedObject([self class], es_codablePropertiesKey);
-    if (cached) {
-        return cached;
-    }
+    NSMutableDictionary *codableProperties = [NSMutableDictionary dictionary];
+    unsigned int propertyCount = 0;
+    objc_property_t *properties = class_copyPropertyList(self, &propertyCount);
 
     @autoreleasepool {
-        NSMutableDictionary *codableProperties = [NSMutableDictionary dictionary];
+        for (unsigned int i = 0; i < propertyCount; ++i) {
+            objc_property_t property = properties[i];
+            const char *propertyName = property_getName(property);
+            NSString *key = @(propertyName);
 
-        Class superClass = [self class];
-        while (superClass != [NSObject class]) {
-            unsigned int propertiesCount = 0;
-            objc_property_t *properties = class_copyPropertyList(superClass, &propertiesCount);
-
-            for (unsigned int i = 0; i < propertiesCount; ++i) {
-
-                objc_property_t property = properties[i];
-                Class propertyClass = nil;
-
-                // get codable property class
-                // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
-                char *propertyTypeEncoding = property_copyAttributeValue(property, "T");
-
-                switch (propertyTypeEncoding[0]) {
-                    case '@': {
-                        if (strlen(propertyTypeEncoding) >= 3) {
-                            char *className = strndup(propertyTypeEncoding + 2, strlen(propertyTypeEncoding) - 3);
-                            NSString *name = @(className);
-                            NSRange range = [name rangeOfString:@"<"];
-                            if (range.location != NSNotFound) {
-                                name = [name substringToIndex:range.location];
-                            }
-                            propertyClass = NSClassFromString(name) ?: [NSObject class];
-                            free(className);
-                        }
-                        break;
-                    }
-
-                    case 'c':
-                    case 'i':
-                    case 's':
-                    case 'l':
-                    case 'q':
-                    case 'C':
-                    case 'I':
-                    case 'S':
-                    case 'L':
-                    case 'Q':
-                    case 'f':
-                    case 'd':
-                    case 'B': {
-                        propertyClass = [NSNumber class];
-                        break;
-                    }
-
-                    case '{': {
-                        propertyClass = [NSValue class];
-                        break;
-                    }
-                }
-                free(propertyTypeEncoding);
-
-                if (!propertyClass) {
-                    continue;
-                }
-
-                const char *propertyName = property_getName(property);
-                NSString *key = @(propertyName);
-
-                // -Elf, maybe already exists,
-                // found this bug in "SQLitePersistentObject"
-                if (codableProperties[key]) {
-                    continue;
-                }
-
-                // check if there is a backing ivar
-                char *ivar = property_copyAttributeValue(property, "V");
-                if (ivar) {
-                    // check if ivar has KVC-compliant name
-                    NSString *ivarName = @(ivar);
-                    if ([ivarName isEqualToString:key] || [ivarName isEqualToString:[@"_" stringByAppendingString:key]]) {
-                        // no setter, but setValue:forKey: will still work
-                        codableProperties[key] = propertyClass;
-                    }
-                    free(ivar);
-                } else {
-                    // check if property is dynamic and readwrite
-                    char *dynamic = property_copyAttributeValue(property, "D");
-                    char *readonly = property_copyAttributeValue(property, "R");
-                    if (dynamic && !readonly) {
-                        // no ivar, but setValue:forKey: will still work
-                        codableProperties[key] = propertyClass;
-                    }
-                    free(dynamic);
-                    free(readonly);
-                }
-
+            // -Elf, maybe already exists,
+            // found this bug in the "SQLitePersistentObject".
+            if (codableProperties[key]) {
+                continue;
             }
 
-            free(properties);
-            superClass = [superClass superclass];
-        }
+            Class propertyClass = nil;
 
-        cached = [codableProperties copy];
+            // get codable property class
+            // https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+            char *typeEncoding = property_copyAttributeValue(property, "T");
+            switch (typeEncoding[0]) {
+                case '@': {
+                    if (strlen(typeEncoding) >= 3) {
+                        char *className = strndup(typeEncoding + 2, strlen(typeEncoding) - 3);
+                        NSString *name = @(className);
+                        NSRange range = [name rangeOfString:@"<"];
+                        if (range.location != NSNotFound) {
+                            name = [name substringToIndex:range.location];
+                        }
+                        propertyClass = NSClassFromString(name) ?: [NSObject class];
+                        free(className);
+                    }
+                    break;
+                }
+
+                case 'c':
+                case 'i':
+                case 's':
+                case 'l':
+                case 'q':
+                case 'C':
+                case 'I':
+                case 'S':
+                case 'L':
+                case 'Q':
+                case 'f':
+                case 'd':
+                case 'B':
+                    propertyClass = [NSNumber class];
+                    break;
+
+                case '{':
+                    propertyClass = [NSValue class];
+                    break;
+            } /* switch-case */
+            free(typeEncoding);
+
+            if (!propertyClass) {
+                continue;
+            }
+
+            //check if there is a backing ivar
+            char *ivar = property_copyAttributeValue(property, "V");
+            if (ivar) {
+                //check if ivar has KVC-compliant name
+                NSString *ivarName = @(ivar);
+                if ([ivarName isEqualToString:key] ||
+                    [ivarName isEqualToString:[@"_" stringByAppendingString:key]]) {
+                    //no setter, but setValue:forKey: will still work
+                    codableProperties[key] = propertyClass;
+                }
+                free(ivar);
+            } else {
+                //check if property is dynamic and readwrite
+                char *dynamic = property_copyAttributeValue(property, "D");
+                char *readonly = property_copyAttributeValue(property, "R");
+                if (dynamic && !readonly) {
+                    //no ivar, but setValue:forKey: will still work
+                    codableProperties[key] = propertyClass;
+                }
+                free(dynamic);
+                free(readonly);
+            }
+        } /* for-loop */
+    } /* @autoreleasepool */
+
+    free(properties);
+
+    return codableProperties;
+}
+
+- (NSDictionary<NSString *, Class> *)es_codableProperties
+{
+    NSDictionary *codableProperties = ESGetAssociatedObject([self class], es_codablePropertiesKey);
+
+    if (!codableProperties) {
+        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+        Class class = [self class];
+        while (class != [NSObject class]) {
+            [properties addEntriesFromDictionary:[class es_codableProperties]];
+            class = [class superclass];
+        }
+        codableProperties = [NSDictionary dictionaryWithDictionary:properties];
+
+        //make the association atomically so that we don't need to bother with an @synchronize
+        ESSetAssociatedObject([self class], es_codablePropertiesKey, codableProperties, OBJC_ASSOCIATION_RETAIN);
     }
 
-    ESSetAssociatedObject([self class], es_codablePropertiesKey, cached, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    return cached;
+    return codableProperties;
 }
 
 - (NSDictionary<NSString *, id> *)es_dictionaryRepresentation
 {
-    return [self dictionaryWithValuesForKeys:[[self class] es_codableProperties].allKeys];
+    return [self dictionaryWithValuesForKeys:self.es_codableProperties.allKeys];
 }
 
 - (NSString *)es_description
 {
     NSMutableString *description = [NSMutableString string];
     [description appendFormat:@"<%@: %p\n", [self class], self];
-    [[self es_dictionaryRepresentation] enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [self.es_dictionaryRepresentation enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [description appendFormat:@"%@ = %@\n", key, obj];
     }];
     [description appendString:@">"];
+
     return [description copy];
+}
+
++ (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
+{
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+
+    if (data) {
+        // attempt to deserialise data as a plist
+        id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
+        if (object) {
+            // check if object is an NSCoded unarchive
+            if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && ((NSDictionary *)object)[@"$archiver"]) {
+                @try {
+                    // This method raises an NSInvalidArgumentException if data is not a valid archive.
+                    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                } @catch (NSException *exception) {
+                    return nil;
+                }
+            }
+        }
+    }
+
+    return data;
+}
+
+- (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
+{
+    //note: NSData, NSDictionary and NSArray already implement this method
+    //and do not save using NSCoding, however the +es_objectWithContentsOfFile
+    //method will correctly recover these objects anyway
+
+    //archive object
+    if (ESTouchDirectoryAtFilePath(filePath)) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+        if (data) {
+            return [data writeToFile:filePath atomically:useAuxiliaryFile];
+        }
+    }
+
+    return NO;
 }
 
 @end
