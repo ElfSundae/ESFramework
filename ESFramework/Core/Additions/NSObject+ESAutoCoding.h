@@ -8,30 +8,36 @@
 
 #import "ESDefines.h"
 
+/* NSCoding implementation */
 #define ES_CODING_IMPLEMENTATION \
-    - (id)initWithCoder: (NSCoder *)aDecoder { \
+    - (instancetype)initWithCoder:(NSCoder *)aDecoder \
+    { \
         return [self initWithCoder_es:aDecoder]; \
     } \
-    - (void)encodeWithCoder:(NSCoder *)aCoder { \
+    - (void)encodeWithCoder:(NSCoder *)aCoder \
+    { \
         [self es_encodeWithCoder:aCoder]; \
     }
 
+/* NSSecureCoding implementation */
 #define ES_SECURECODING_IMPLEMENTATION \
     ES_CODING_IMPLEMENTATION \
-    + (BOOL)supportsSecureCoding { \
+    + (BOOL)supportsSecureCoding \
+    { \
         return YES; \
     }
 
 #define ES_COPYING_IMPLEMENTATION \
-    - (id)copyWithZone: (NSZone *)zone { \
+    - (id)copyWithZone:(NSZone *)zone \
+    { \
         return [self es_copyWithZone:zone]; \
     }
 
 /*!
- * The ESAutoCoding category for NSObject makes it easiest for your models or other objects to
+ * The ESAutoCoding category for NSObject makes it easier for your models or other objects to
  * support NSCoding or NSCopying.
  *
- * ESAutoCoding inspired by [nicklockwood/AutoCoding](https://github.com/nicklockwood/AutoCoding)
+ * ESAutoCoding is inspired by [nicklockwood/AutoCoding](https://github.com/nicklockwood/AutoCoding)
  *
  * ### Supported Property Types
  * These types below will be automatically encoded.
@@ -46,7 +52,7 @@
  * you can do so in any of the following ways:
  *      * Only use an ivar, without declaring a matching `@property`.
  *      * Change the name of the ivar to something that is not KVC compliant.
- *              (not the same as the property name, or the property name with an `_` prefix,
+ *              (not the same as the property name, nor the property name with an `_` prefix,
  *              or `@synthesize` the ivar an another name, `@synthesize name = __name`
  *              (here ivar with two `_` prefix))
  *      * Override the `+es_codableProperties` method

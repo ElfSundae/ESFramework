@@ -111,7 +111,7 @@
 /**
  * Safely release CF instance.
  */
-#define CFReleaseSafely(var) if (var) { CFRelease(var); var = NULL; }
+#define CFReleaseSafely(var)            if (var) { CFRelease(var); var = NULL; }
 
 /**
  * Bits-mask helper.
