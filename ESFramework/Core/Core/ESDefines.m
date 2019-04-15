@@ -310,8 +310,9 @@ BOOL ESTouchDirectory(NSString *directoryPath)
         return YES;
     }
 
-    return ([fm removeItemAtPath:directoryPath error:NULL] &&
-            [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL]);
+    [fm removeItemAtPath:directoryPath error:NULL];
+
+    return [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL];
 }
 
 BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
