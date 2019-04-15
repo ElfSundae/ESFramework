@@ -12,6 +12,7 @@
 		E78975FA1BA4E8220034B065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975F91BA4E8220034B065 /* main.m */; };
 		E78976051BA4E8220034B065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78976041BA4E8220034B065 /* Images.xcassets */; };
 		E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78976061BA4E8220034B065 /* LaunchScreen.xib */; };
+		E7FDC96C22647D3F00D8CC25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FDC96A22647D3F00D8CC25 /* User.m */; };
 		F1AC76651D60DF8E046845EE /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC3D04CA7DE3B5DA3D377E /* libPods-Example.a */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,8 @@
 		E78975F91BA4E8220034B065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E78976041BA4E8220034B065 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E78976071BA4E8220034B065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E7FDC96A22647D3F00D8CC25 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		E7FDC96B22647D3F00D8CC25 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				E75AE19B1BA66474007F4561 /* App.m */,
 				E75AE19D1BA6655A007F4561 /* RootViewController.h */,
 				E75AE19E1BA6655A007F4561 /* RootViewController.m */,
+				E7FDC96B22647D3F00D8CC25 /* User.h */,
+				E7FDC96A22647D3F00D8CC25 /* User.m */,
 				E78976041BA4E8220034B065 /* Images.xcassets */,
 				E78976061BA4E8220034B065 /* LaunchScreen.xib */,
 				E78975F71BA4E8220034B065 /* Supporting Files */,
@@ -200,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7FDC96C22647D3F00D8CC25 /* User.m in Sources */,
 				E75AE19C1BA66474007F4561 /* App.m in Sources */,
 				E78975FA1BA4E8220034B065 /* main.m in Sources */,
 				E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */,

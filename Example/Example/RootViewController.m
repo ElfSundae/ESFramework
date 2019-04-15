@@ -8,6 +8,7 @@
 
 #import "RootViewController.h"
 #import <ESFramework/ESFramework.h>
+#import "User.h"
 
 @implementation RootViewController
 
@@ -35,6 +36,34 @@
             [refreshControl endRefreshing];
         });
     }];
+
+    [self testAutoCoding];
+}
+
+- (void)testAutoCoding
+{
+    NSString *file = ESPathForTemporaryResource(@"foo/bar/file");
+
+    User *user = [User es_objectWithContentsOfFile:file];
+
+    if (!user) {
+        user = [[User alloc] init];
+        user.name = @"Elf Sundae";
+        user.age = 18;
+        user.frame = CGRectMake(10, 20, 30, 40);
+        user.dict = @{@"key": @"value", @"array":@[@100, @200]};
+    } else {
+        user.name = [user.name stringByAppendingFormat:@",%d", user.age];
+        user.age += 10;
+        CGRect frame = user.frame;
+        frame.size.width = CGRectGetMaxX(frame);
+        frame.size.height = CGRectGetMaxY(frame);
+        user.frame = frame;
+    }
+
+    NSLog(@"%@\n%@", user.es_codableProperties, user.es_description);
+    BOOL saved = [user es_writeToFile:file atomically:YES];
+    NSLog(@"saved: %@", @(saved));
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
