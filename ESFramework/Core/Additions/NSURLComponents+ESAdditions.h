@@ -44,6 +44,6 @@
 /**
  * Add query items via the given dictionary.
  */
-- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)queryItemsDictionary;
+- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary;
 
 @end

@@ -58,10 +58,10 @@
     self.queryItems = [self _queryItemsFromDictionary:dictionary];
 }
 
-- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)queryItemsDictionary
+- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary
 {
     NSMutableDictionary *dict = (self.queryItemsDictionary ?: @{}).mutableCopy;
-    [dict addEntriesFromDictionary:queryItemsDictionary];
+    [dict addEntriesFromDictionary:dictionary];
     self.queryItemsDictionary = dict;
 }
 
