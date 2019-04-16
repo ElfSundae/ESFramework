@@ -26,6 +26,16 @@
 - (void)addQueryItemWithName:(NSString *)name value:(NSString *)value;
 
 /**
+ * Remove query items with the given item names.
+ */
+- (void)removeQueryItemsWithNames:(NSArray<NSString *> *)names;
+
+/**
+ * Remove query items with the given item name.
+ */
+- (void)removeQueryItemsWithName:(NSString *)name;
+
+/**
  * Gets and sets query items using a dictionary, it supports array in the query parameter like
  * ?foo=bar&foo=bar1&foo[]=bar2
  */

@@ -13,12 +13,13 @@
 
 - (void)addQueryItems:(NSArray<NSURLQueryItem *> *)queryItems
 {
-    self.queryItems = [(self.queryItems ?: @[]) arrayByAddingObjectsFromArray:queryItems];
+    NSArray *oldItems = self.queryItems;
+    self.queryItems = oldItems ? [oldItems arrayByAddingObjectsFromArray:queryItems] : queryItems;
 }
 
 - (void)addQueryItem:(NSURLQueryItem *)item
 {
-    self.queryItems = [(self.queryItems ?: @[]) arrayByAddingObject:item];
+    [self addQueryItems:@[ item ]];
 }
 
 - (void)addQueryItemWithName:(NSString *)name value:(NSString *)value
@@ -26,7 +27,28 @@
     [self addQueryItem:[NSURLQueryItem queryItemWithName:name value:value]];
 }
 
-- (NSDictionary<NSString *,id> *)queryItemsDictionary
+- (void)removeQueryItemsWithNames:(NSArray<NSString *> *)names
+{
+    NSArray *queryItems = self.queryItems;
+    if (queryItems) {
+        NSMutableArray *predicates = [NSMutableArray array];
+        for (NSString *name in names) {
+            [predicates addObject:[NSPredicate predicateWithFormat:@"name != %@ AND name != %@",
+                                   name, [name stringByAppendingString:@"[]"]]];
+        }
+        NSCompoundPredicate *compoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+        queryItems = [queryItems filteredArrayUsingPredicate:compoundPredicate];
+
+        self.queryItems = queryItems.count > 0 ? queryItems : nil;
+    }
+}
+
+- (void)removeQueryItemsWithName:(NSString *)name
+{
+    [self removeQueryItemsWithNames:@[ name ]];
+}
+
+- (NSDictionary<NSString *, id> *)queryItemsDictionary
 {
     NSArray *queryItems = self.queryItems;
     if (!queryItems) {
@@ -49,8 +71,8 @@
         }
 
         if (result[name]) {
-            if (![result[name] isKindOfClass:[NSMutableArray class]]) {
-                result[name] = @[result[name]].mutableCopy;
+            if (![result[name] isKindOfClass:NSMutableArray.class]) {
+                result[name] = @[ result[name] ].mutableCopy;
             }
             [(NSMutableArray *)result[name] addObject:item.value];
         } else {
@@ -60,7 +82,7 @@
     return [result copy];
 }
 
-- (void)setQueryItemsDictionary:(NSDictionary<NSString *,id> *)dictionary
+- (void)setQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary
 {
     if (!dictionary) {
         self.queryItems = nil;
@@ -69,16 +91,18 @@
 
     NSMutableArray *queryItems = [NSMutableArray array];
     for (NSString *name in dictionary) {
-        if ([dictionary[name] isKindOfClass:[NSArray class]]) {
+        id value = dictionary[name];
+
+        if ([value isKindOfClass:NSArray.class]) {
             NSString *itemName = [name stringByAppendingString:@"[]"];
-            for (id value in (NSArray *)dictionary[name]) {
-                [queryItems addObject:[NSURLQueryItem queryItemWithName:itemName value:ESStringValue(value)]];
+            for (id itemValue in (NSArray *)value) {
+                [queryItems addObject:[NSURLQueryItem queryItemWithName:itemName value:ESStringValue(itemValue)]];
             }
         } else {
-            [queryItems addObject:[NSURLQueryItem queryItemWithName:name value:ESStringValue(dictionary[name])]];
+            [queryItems addObject:[NSURLQueryItem queryItemWithName:name value:ESStringValue(value)]];
         }
     }
-    self.queryItems = [queryItems copy];
+    self.queryItems = queryItems;
 }
 
 @end
