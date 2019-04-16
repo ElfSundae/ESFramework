@@ -24,7 +24,7 @@
 
 - (void)addQueryItemWithName:(NSString *)name value:(NSString *)value
 {
-    [self addQueryItem:[NSURLQueryItem queryItemWithName:name value:value]];
+    [self addQueryItem:[NSURLQueryItem queryItemWithName:name value:ESStringValue(value)]];
 }
 
 - (void)removeQueryItemsWithNames:(NSArray<NSString *> *)names
