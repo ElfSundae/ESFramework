@@ -16,9 +16,28 @@
     return [self.absoluteString isEqualToString:anotherURL.absoluteString];
 }
 
-- (NSDictionary *)queryDictionary
+- (NSDictionary<NSString *, id> *)queryComponents
 {
-    return [self.absoluteString queryDictionary];
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES];
+    for (NSURLQueryItem *item in urlComponents.queryItems) {
+        if (!item.value) {
+            continue;
+        }
+
+        if ([item.name hasSuffix:@"[]"]) { // array
+            NSString *name = [item.name substringToIndex:item.name.length - 2];
+            if (![result[name] isKindOfClass:[NSMutableArray class]]) {
+                result[name] = [NSMutableArray array];
+            }
+            [(NSMutableArray *)(result[name]) addObject:item.value];
+        } else {
+            result[item.name] = item.value;
+        }
+    }
+
+    return [result copy];
 }
 
 @end

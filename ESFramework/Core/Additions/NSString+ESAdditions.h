@@ -73,10 +73,11 @@
 - (NSString *)URLDecode;
 
 /**
- * Parse query string (http://foo.bar?key=value&arr[]=value&arr[]=value1) to
- * dictionary { key:value, arr:[value, value1] }.
+ * Returns the query components parsed as a dictionary for this URL.
+ * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
+ * { key:value, arr:[value, value1] }.
  */
-- (NSDictionary *)queryDictionary;
+- (NSDictionary<NSString *, id> *)queryComponents;
 
 /**
  * Append URL query string from `queryDictionary`.

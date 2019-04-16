@@ -11,6 +11,7 @@
 #import "NSMutableString+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
+#import "NSURL+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
 
@@ -119,74 +120,9 @@
             stringByRemovingPercentEncoding];
 }
 
-/**
- * TestCase:
- *
- * foo=bar
- * path?key=value
- * http://example.com?key=value
- * tel:path?key=value
- * //path#key=value&array[]=val&array[]
- * /path/?key
- * path?key=value#fragment
- */
-- (NSDictionary *)queryDictionary
+- (NSDictionary<NSString *, id> *)queryComponents
 {
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
-    NSMutableString *queryString = self.mutableCopy;
-
-    // Remove URL.scheme: http:// , file:/// , tel: , // .
-    [queryString replaceRegex:@"^[^:/]*[:/]+" to:@"" caseInsensitive:NO];
-
-    NSRange firstEqualRange = [queryString rangeOfString:@"="];
-    if (firstEqualRange.location != NSNotFound) {
-        // Remove URL.fragment
-        // # 可能当作锚点： # 位于 ? 的后面，
-        // # 也可能当作查询字符串的开始，例如 http://twitter.com/#!/username ,
-        // https://www.google.com/#newwindow=1&q=url).
-        NSRange fragmentStart = [queryString rangeOfString:@"#"];
-        if (fragmentStart.location != NSNotFound &&
-            fragmentStart.location > firstEqualRange.location) {
-            // 如果 # 是锚点，则忽略（移除）锚点后面的所有字符串
-            NSRange fragmentRange = NSMakeRange(fragmentStart.location, queryString.length - fragmentStart.location);
-            [queryString deleteCharactersInRange:fragmentRange];
-        }
-
-        // 移除 /?# 结尾的 url.path
-        [queryString replaceRegex:@"^[^?#]*[/?#]+" to:@"" caseInsensitive:NO];
-
-        // 按 & 分割 query 字符串
-        NSArray *parts = [queryString splitWith:@"&"];
-
-        for (NSString *query in parts) {
-            NSArray *keyValue = [query splitWith:@"="];
-            if (1 == keyValue.count) {
-                keyValue = @[keyValue.firstObject, @""];
-            }
-            if (2 != keyValue.count) {
-                continue;
-            }
-            NSString *key = [keyValue[0] URLDecode];
-            NSString *value = [keyValue[1] URLDecode];
-            if (key.isEmpty && value.isEmpty) {
-                continue;
-            }
-            if ([key hasSuffix:@"[]"]) {
-                key = [key substringToIndex:key.length - 2];
-                if (key.isEmpty) {
-                    continue;
-                }
-                if (!result[key] || ![result[key] isKindOfClass:[NSMutableArray class]]) {
-                    result[key] = [NSMutableArray array];
-                }
-                [(NSMutableArray *)(result[key]) addObject:value];
-            } else {
-                result[key] = value;
-            }
-        }
-    }
-
-    return [result copy];
+    return [NSURL URLWithString:self].queryComponents;
 }
 
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary

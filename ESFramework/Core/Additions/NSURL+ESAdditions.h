@@ -10,7 +10,17 @@
 
 @interface NSURL (ESAdditions)
 
+/**
+ * Returns a Boolean value that indicates whether a given URL is equal to the receiver
+ * using a literal Unicode-based comparison.
+ */
 - (BOOL)isEqualToURL:(NSURL *)anotherURL;
-- (NSDictionary *)queryDictionary;
+
+/**
+ * Returns the query components parsed as a dictionary for this URL.
+ * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
+ * { key:value, arr:[value, value1] }.
+ */
+- (NSDictionary<NSString *, id> *)queryComponents;
 
 @end

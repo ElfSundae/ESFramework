@@ -19,6 +19,7 @@
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
+- Refactor `-queryDictionary` to `-queryComponents` for `NSURL` and `NSString`, using the new `NSURLComponents` API
 
 ## 2.6.2
 
