@@ -41,4 +41,9 @@
  */
 @property (copy) NSDictionary<NSString *, id> *queryItemsDictionary;
 
+/**
+ * Add query items via the given dictionary.
+ */
+- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)queryItemsDictionary;
+
 @end
