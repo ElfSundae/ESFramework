@@ -7,7 +7,7 @@
 //
 
 #import "NSTimer+ESAdditions.h"
-#import "NSObject+ESAssociatedObjectHelper.h"
+#import "ESDefines.h"
 
 ESDefineAssociatedObjectKey(taskBlock);
 

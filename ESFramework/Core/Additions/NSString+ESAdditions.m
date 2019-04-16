@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESValue.h"
 #import "NSString+ESAdditions.h"
+#import "ESDefines.h"
+#import "ESValue.h"
 #import "NSMutableString+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"

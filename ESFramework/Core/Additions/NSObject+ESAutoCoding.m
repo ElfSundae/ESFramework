@@ -7,8 +7,7 @@
 //
 
 #import "NSObject+ESAutoCoding.h"
-#import "NSDictionary+ESAdditions.h"
-#import <objc/runtime.h>
+#import "ESDefines.h"
 
 ESDefineAssociatedObjectKey(es_codableProperties);
 

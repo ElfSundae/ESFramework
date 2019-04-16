@@ -7,6 +7,8 @@
 //
 
 #import "NSObject+ESAssociatedObjectHelper.h"
+#import "ESDefines.h"
+#import "ESValue.h"
 
 @implementation NSObject (ESAssociatedObjectHelper)
 

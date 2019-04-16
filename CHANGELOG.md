@@ -15,11 +15,12 @@
     + `ESDispatchAfter` => `es_dispatch_after`
 - Make the main queue dispatching functions safer.
 - Refactor `NSObject (ESAutoCoding)`
+- Refactor `-queryDictionary` to `-queryComponents` for `NSURL` and `NSString`, using the new `NSURLComponents` API.
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
+- Renamed `-[NSString stringByAppendingQueryDictionary]` to `-stringByAppendingQueryComponents`.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
-- Refactor `-queryDictionary` to `-queryComponents` for `NSURL` and `NSString`, using the new `NSURLComponents` API
 
 ## 2.6.2
 

@@ -7,6 +7,7 @@
 //
 
 #import "NSDictionary+ESAdditions.h"
+#import "ESDefines.h"
 #import "ESValue.h"
 #import "NSString+ESAdditions.h"
 #import "NSArray+ESAdditions.h"
