@@ -572,7 +572,10 @@ static id __gNil = nil;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...
 {
     va_list arguments;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wvarargs"
     va_start(arguments, retainArguments);
+#pragma clang diagnostic pop
     NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:retainArguments arguments:arguments];
     va_end(arguments);
     return invocation;
