@@ -36,7 +36,7 @@
 - (void)removeQueryItemsWithName:(NSString *)name;
 
 /**
- * Gets and sets query items using a dictionary, it supports array in the query parameter like
+ * Gets and sets query items via a dictionary, it supports array in the query parameter like
  * ?foo=bar&foo=bar1&foo[]=bar2
  */
 @property (copy) NSDictionary<NSString *, id> *queryItemsDictionary;

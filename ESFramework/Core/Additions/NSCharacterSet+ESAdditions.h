@@ -15,6 +15,6 @@
  * includes all alphanumeric characters and "-_.~", it conforms to
  * [RFC 3986](http://www.faqs.org/rfcs/rfc3986.html)
  */
-@property (class, readonly, copy) NSCharacterSet *URLEncodingAllowedCharacterSet;
++ (NSCharacterSet *)URLEncodingAllowedCharacterSet;
 
 @end
