@@ -63,14 +63,9 @@ static void es_didFailToRegisterForRemoteNotificationsWithError(NSError *error)
                 es_didFailToRegisterForRemoteNotificationsWithError(error);
             }
         }];
-    } else if ([app respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+    } else {
         categories = [categories.anyObject isKindOfClass:[UIUserNotificationCategory class]] ? categories : nil;
         [app registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:types categories:categories]];
-    } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
-        [app registerForRemoteNotificationTypes:(UIRemoteNotificationType)types];
-#pragma clang diagnostic pop
     }
 }
 
