@@ -50,7 +50,16 @@
 
 - (NSDictionary<NSString *, id> *)queryItemsDictionary
 {
-    NSArray *queryItems = self.queryItems;
+    return [self _dictionaryFromQueryItems:self.queryItems];
+}
+
+- (void)setQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary
+{
+    self.queryItems = [self _queryItemsFromDictionary:dictionary];
+}
+
+- (NSDictionary<NSString *, id> *)_dictionaryFromQueryItems:(NSArray<NSURLQueryItem *> *)queryItems
+{
     if (!queryItems) {
         return nil;
     }
@@ -82,11 +91,10 @@
     return [result copy];
 }
 
-- (void)setQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary
+- (NSArray<NSURLQueryItem *> *)_queryItemsFromDictionary:(NSDictionary<NSString *, id> *)dictionary
 {
     if (!dictionary) {
-        self.queryItems = nil;
-        return;
+        return nil;
     }
 
     NSMutableArray *queryItems = [NSMutableArray array];
@@ -102,7 +110,7 @@
             [queryItems addObject:[NSURLQueryItem queryItemWithName:name value:ESStringValue(value)]];
         }
     }
-    self.queryItems = queryItems;
+    return [queryItems copy];
 }
 
 @end
