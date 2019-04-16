@@ -46,7 +46,7 @@ static void es_didFailToRegisterForRemoteNotificationsWithError(NSError *error)
 
     UIApplication *app = [UIApplication sharedApplication];
 
-    if ([UNUserNotificationCenter class]) {
+    if (@available(iOS 10.0, *)) {
         [[UNUserNotificationCenter currentNotificationCenter]
          requestAuthorizationWithOptions:(UNAuthorizationOptions)types
                        completionHandler:^(BOOL granted, NSError * _Nullable error) {
