@@ -121,11 +121,6 @@
             stringByRemovingPercentEncoding];
 }
 
-- (NSDictionary<NSString *, id> *)queryComponents
-{
-    return [NSURL URLWithString:self].queryComponents;
-}
-
 - (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
 {
     NSMutableString *result = self.mutableCopy;

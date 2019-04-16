@@ -72,13 +72,6 @@
 - (NSString *)URLDecode;
 
 /**
- * Returns the query components parsed as a dictionary for this URL.
- * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
- * { key:value, arr:[value, value1] }.
- */
-- (NSDictionary<NSString *, id> *)queryComponents;
-
-/**
  * Append URL query string from `queryDictionary`.
  * Supports 'array' params, like "?key[]=value1&key[]=value2".
  *

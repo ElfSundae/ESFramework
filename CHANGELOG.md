@@ -4,6 +4,7 @@
 
 - Updated iOS deployment target to 9.0.
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
+- Made the main queue dispatching functions safer.
 - Renamed GCD dispatch functions:
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
     + `ESDispatchOnMainThreadSynchrony` => `es_dispatch_sync_main`
@@ -13,15 +14,15 @@
     + `ESDispatchOnLowQueue` => `es_dispatch_async_low`
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
     + `ESDispatchAfter` => `es_dispatch_after`
-- Make the main queue dispatching functions safer.
-- Refactor `NSObject (ESAutoCoding)`
-- Refactor `-queryDictionary` to `-queryComponents` for `NSURL` and `NSString`, using the new `NSURLComponents` API.
+- Removed `-[NSString queryDictionary]`.
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
 - Renamed `-[NSString stringByAppendingQueryDictionary]` to `-stringByAppendingQueryComponents`.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
+- Refactored `NSObject (ESAutoCoding)`.
+- Refactored `-[NSURL queryDictionary]` to use the `NSURLComponents` API.
 
 ## 2.6.2
 
