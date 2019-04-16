@@ -126,6 +126,8 @@
 		E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+ESAdditions.m"; sourceTree = "<group>"; };
+		E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESAdditions.h"; sourceTree = "<group>"; };
+		E7FDC9722265B1F000D8CC25 /* NSURLComponents+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLComponents+ESAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -173,6 +175,8 @@
 				E76CA23F1CA50D1100EDBB8E /* NSMutableString+ESAdditions.m */,
 				E76CA2501CA50D1100EDBB8E /* NSURL+ESAdditions.h */,
 				E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */,
+				E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */,
+				E7FDC9722265B1F000D8CC25 /* NSURLComponents+ESAdditions.m */,
 				E76CA2341CA50D1100EDBB8E /* NSData+ESAdditions.h */,
 				E76CA2351CA50D1100EDBB8E /* NSData+ESAdditions.m */,
 				E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */,

@@ -18,6 +18,7 @@
 #import "NSString+ESHash.h"
 #import "NSMutableString+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
+#import "NSURLComponents+ESAdditions.h"
 #import "NSData+ESAdditions.h"
 #import "NSData+ESHash.h"
 #import "NSDate+ESAdditions.h"
