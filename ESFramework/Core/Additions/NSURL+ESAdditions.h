@@ -11,6 +11,11 @@
 @interface NSURL (ESAdditions)
 
 /**
+ * Initializes and returns a newly created NSURLComponents with the components of this URL.
+ */
+- (NSURLComponents *)components;
+
+/**
  * Returns a Boolean value that indicates whether a given URL equals to this URL.
  */
 - (BOOL)isEqualToURL:(NSURL *)anotherURL;
@@ -20,6 +25,6 @@
  * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
  * { key:value, arr:[value, value1] }.
  */
-- (NSDictionary<NSString *, id> *)queryComponents;
+- (NSDictionary<NSString *, id> *)queryDictionary;
 
 @end
