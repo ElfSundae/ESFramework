@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+ESGTMHTML.h"
 
 @interface NSString (ESAdditions)
 
@@ -87,46 +86,6 @@
 - (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
 
 /**
- * Get a string where internal characters that need escaping for HTML are escaped,
- * code grabbed from Google GTMNSString+HTML.
- *
- * Returns `nil` if failure.
- *
- * Example of table:
- * @code
- * // Taken from http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
- * // This is table A.2.2 Special Characters
- * static ESHTMLEscapeMap gUnicodeHTMLEscapeMap[] = {
- *      // C0 Controls and Basic Latin
- *      { @"&quot;", 34 },
- *      { @"&amp;", 38 },
- *      { @"&apos;", 39 },
- *      { @"&lt;", 60 },
- *      { @"&gt;", 62 },
- *
- *      // Latin Extended-A
- *      { @"&OElig;", 338 },
- *      { @"&oelig;", 339 },
- *
- *      //....
- * };
- * @endcode
- *
- * Example of usage:
- * @code
- * [self stringByEncodingHTMLEntitiesUsingTable:__gMyUnicodeHTMLEscapeMap size:sizeof(__gMyUnicodeHTMLEscapeMap) escapeUnicode:NO];
- * @endcode
- *
- * @param table     escaping table
- * @param escapeUnicode should escape unicode
- *
- * @see http://google-toolbox-for-mac.googlecode.com/svn/trunk/Foundation/GTMNSString+HTML.h
- * @see https://github.com/mwaterfall/MWFeedParser/blob/master/Classes/GTMNSString%2BHTML.h
- *
- */
-- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode;
-
-/**
  * Returns a string that escaped for HTML.
  * e.g. '<' becomes '&lt;' , '>' to '&gt;', '&' become '&amp;'
  *
@@ -134,20 +93,10 @@
  * A.2.2 of http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
  * which is what you want for a unicode encoded webpage.
  */
-- (NSString *)stringByEncodingHTMLEntitiesForUnicode;
-/**
- *  For example, '&' become '&amp;'
- *  All non-mapped characters (unicode that don't have a &keyword; mapping)
- *  will be converted to the appropriate &#xxx; value. If your webpage is
- *  unicode encoded (UTF16 or UTF8) use `stringByEncodingHTMLEntitiesForUnicode` instead as it is
- *  faster, and produces less bloated and more readable HTML (as long as you
- *  are using a unicode compliant HTML reader).
- *
- */
-- (NSString *)stringByEncodingHTMLEntitiesForASCII;
+- (NSString *)stringByEncodingHTMLEntities;
 
 /**
- * Get a string where internal characters that are escaped for HTML are unescaped
+ * Get a string where internal characters that are escaped for HTML are unescaped.
  *
  * For example, '&amp;' becomes '&'
  * Handles &#32; and &#x32; cases as well

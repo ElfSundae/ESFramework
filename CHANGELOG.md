@@ -19,6 +19,8 @@
 - Removed `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`.
 - Removed `-URLSafeBase64String:` , `-base64StringFromURLSafeString:` for `NSString`.
 - Removed `es_` prefix for `NSString` and `NSData` hashing methods.
+- Removed `-[NSString stringByEncodingHTMLEntitiesUsingTable:size:escapeUnicode:]`, use `-[NSString es_gtm_stringByEscapingHTMLUsingTable:ofSize:escapingUnicode:]` instead.
+- Removed `-[NSString stringByEncodingHTMLEntitiesForASCII]`, use `-[NSString es_gtm_stringByEscapingForAsciiHTML]` instead.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
 - Added `-[NSURL URLByAddingQueryDictionary:]`.
@@ -26,6 +28,7 @@
 - Renamed `-[NSString stringByAppendingQueryDictionary:]` to `-stringByAddingQueryDictionary:`
 - Renamed `-URLEncode` to `-URLEncoded`, `-URLDecode` to `-URLDecoded` for `NSString`.
 - Renamed `-base64Encoded` to `-base64EncodedData` for `NSString` and `NSData`.
+- Renamed `-[NSString stringByEncodingHTMLEntitiesForUnicode]` to `-stringByEncodingHTMLEntities`
 - Refactored `NSObject (ESAutoCoding)`.
 - Refactored `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API.
 

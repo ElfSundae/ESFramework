@@ -14,6 +14,7 @@
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
+#import "NSString+ESGTMHTML.h"
 
 @implementation NSString (ESAdditions)
 
@@ -148,30 +149,14 @@
     return urlComponents.string;
 }
 
-- (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
-{
-    return [self es_gtm_stringByEscapingHTMLUsingTable:table
-                                                ofSize:size
-                                       escapingUnicode:escapeUnicode];
-}
-
-- (NSString *)stringByEncodingHTMLEntitiesForUnicode
+- (NSString *)stringByEncodingHTMLEntities
 {
     return [self es_gtm_stringByEscapingForHTML];
 }
 
-- (NSString *)stringByEncodingHTMLEntitiesForASCII
-{
-    return [self es_gtm_stringByEscapingForAsciiHTML];
-}
-
 - (NSString *)stringByDecodingHTMLEntities
 {
-    NSString *result = [self es_gtm_stringByUnescapingFromHTML];
-    if (result) {
-        return [NSString stringWithString:result];
-    }
-    return nil;
+    return [self es_gtm_stringByUnescapingFromHTML];
 }
 
 @end
