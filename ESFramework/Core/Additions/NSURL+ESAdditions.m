@@ -11,11 +11,6 @@
 
 @implementation NSURL (ESAdditions)
 
-- (NSURLComponents *)components
-{
-    return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES];
-}
-
 - (BOOL)isEqualToURL:(NSURL *)anotherURL
 {
     return [self.absoluteString isEqualToString:anotherURL.absoluteString];
@@ -23,7 +18,7 @@
 
 - (NSDictionary<NSString *, id> *)queryDictionary
 {
-    return self.components.queryItemsDictionary;
+    return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES].queryItemsDictionary;
 }
 
 @end

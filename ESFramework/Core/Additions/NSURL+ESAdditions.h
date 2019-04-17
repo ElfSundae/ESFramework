@@ -11,11 +11,6 @@
 @interface NSURL (ESAdditions)
 
 /**
- * Initializes and returns a newly created NSURLComponents with the components of this URL.
- */
-- (NSURLComponents *)components;
-
-/**
  * Returns a Boolean value that indicates whether a given URL equals to this URL.
  */
 - (BOOL)isEqualToURL:(NSURL *)anotherURL;
