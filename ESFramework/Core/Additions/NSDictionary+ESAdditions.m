@@ -23,7 +23,7 @@
 {
     NSMutableArray *queryArray = [NSMutableArray array];
     for (id key in self.keyEnumerator) {
-        NSString *encodedKey = [ESStringValueWithDefault(key, @"") URLEncode];
+        NSString *encodedKey = [ESStringValueWithDefault(key, @"") URLEncoded];
         if (encodedKey.isEmpty) {
             continue;
         }
@@ -31,11 +31,11 @@
 
         if ([value isKindOfClass:[NSArray class]]) {
             for (id obj in (NSArray *)value) {
-                NSString *encodedObj = [ESStringValueWithDefault(obj, @"") URLEncode];
+                NSString *encodedObj = [ESStringValueWithDefault(obj, @"") URLEncoded];
                 [queryArray addObject:[NSString stringWithFormat:@"%@[]=%@", encodedKey, encodedObj]];
             }
         } else {
-            NSString *encodedValue = [ESStringValueWithDefault(value, @"") URLEncode];
+            NSString *encodedValue = [ESStringValueWithDefault(value, @"") URLEncoded];
             [queryArray addObject:[NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue]];
         }
     }

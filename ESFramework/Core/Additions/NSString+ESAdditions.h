@@ -63,18 +63,16 @@
 - (NSArray<NSString *> *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
 /**
- * Returns a string in which all non-alphanumeric characters except -_.~ have been replaced
- * with a percent (%) sign followed by two hex digits,
+ * Returns a URL-encoded string in which all non-alphanumeric characters
+ * except -_.~ have been replaced with a percent (%) sign followed by two hex digits,
  * it conforms to [RFC 3986](http://www.faqs.org/rfcs/rfc3986.html)
  */
-- (NSString *)URLEncode;
+- (NSString *)URLEncoded;
 
 /**
- * Decodes URL-encoded string.
- *
- * Decodes any %## encoding in the given string. Plus symbols ('+') are decoded to a space character.
+ * Returns a URL-decoded string.
  */
-- (NSString *)URLDecode;
+- (NSString *)URLDecoded;
 
 /**
  * Returns the query components parsed as a dictionary for the URL string.

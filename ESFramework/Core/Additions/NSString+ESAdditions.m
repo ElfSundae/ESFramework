@@ -124,13 +124,13 @@
     return [self componentsSeparatedByCharactersInSet:separator];
 }
 
-- (NSString *)URLEncode
+- (NSString *)URLEncoded
 {
     return [self stringByAddingPercentEncodingWithAllowedCharacters:
             [NSCharacterSet URLEncodingAllowedCharacterSet]];
 }
 
-- (NSString *)URLDecode
+- (NSString *)URLDecoded
 {
     return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "]
             stringByRemovingPercentEncoding];

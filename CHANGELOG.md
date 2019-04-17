@@ -22,6 +22,7 @@
 - Added `-[NSURL URLByAddingQueryDictionary:]`.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
 - Renamed `-[NSString stringByAppendingQueryDictionary:]` to `-stringByAddingQueryDictionary:`
+- Renamed `-URLEncode` to `-URLEncoded`, `-URLDecode` to `-URLDecoded` for `NSString`.
 - Refactored `NSObject (ESAutoCoding)`.
 - Refactored `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API.
 
