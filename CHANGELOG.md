@@ -16,6 +16,7 @@
     + `ESDispatchAfter` => `es_dispatch_after`
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
+- Removed `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
 - Added `-[NSURL URLByAddingQueryDictionary:]`.

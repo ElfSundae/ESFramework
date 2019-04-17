@@ -52,6 +52,26 @@
     return (NSNotFound != [self rangeOfString:string options:options].location);
 }
 
+- (NSRange)match:(NSString *)pattern
+{
+    return [self match:pattern caseInsensitive:NO];
+}
+
+- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
+{
+    return [self rangeOfString:pattern options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
+}
+
+- (BOOL)isMatch:(NSString *)pattern
+{
+    return [self isMatch:pattern caseInsensitive:NO];
+}
+
+- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
+{
+    return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
+}
+
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement
 {
     return [self stringByReplacing:string with:replacement options:0];
@@ -185,49 +205,6 @@
         return [NSString stringWithString:result];
     }
     return nil;
-}
-
-- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
-{
-    return [self rangeOfString:pattern options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
-}
-- (NSRange)match:(NSString *)pattern
-{
-    return [self match:pattern caseInsensitive:NO];
-}
-- (BOOL)isMatch:(NSString *)pattern
-{
-    return [self isMatch:pattern caseInsensitive:NO];
-}
-- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
-{
-    return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
-}
-
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
-{
-    es_dispatch_async_default(^{
-        BOOL result = (ESTouchDirectoryAtFilePath(path) &&
-                       [self writeToFile:path atomically:useAuxiliaryFile encoding:enc error:NULL]);
-        if (completion) {
-            es_dispatch_async_main(^{
-                completion(result);
-            });
-        }
-    });
-}
-
-- (void)writeToURL:(NSURL *)url atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc completion:(void (^)(BOOL result))completion
-{
-    es_dispatch_async_default(^{
-        BOOL result = (ESTouchDirectoryAtFileURL(url) &&
-                       [self writeToURL:url atomically:useAuxiliaryFile encoding:enc error:NULL]);
-        if (completion) {
-            es_dispatch_async_main(^{
-                completion(result);
-            });
-        }
-    });
 }
 
 @end
