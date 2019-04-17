@@ -20,6 +20,16 @@
     return (0 == self.count);
 }
 
+- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
+{
+    [self enumerateObjectsUsingBlock:block];
+}
+
+- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option
+{
+    [self enumerateObjectsWithOptions:option usingBlock:block];
+}
+
 - (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate
 {
     NSParameterAssert(predicate);

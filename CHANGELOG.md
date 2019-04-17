@@ -22,7 +22,6 @@
 - Removed `-[NSString stringByEncodingHTMLEntitiesUsingTable:size:escapeUnicode:]`, use `-[NSString es_gtm_stringByEscapingHTMLUsingTable:ofSize:escapingUnicode:]` instead.
 - Removed `-[NSString stringByEncodingHTMLEntitiesForASCII]`, use `-[NSString es_gtm_stringByEscapingForAsciiHTML]` instead.
 - Removed `-[NSData writeToFile:atomically:completion]`.
-- Removed `NSArray` methods: `-each:`, `-each:option:`, use `enumerateObjectsUsingBlock:` instead.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
 - Added `-[NSURL URLByAddingQueryDictionary:]`.
