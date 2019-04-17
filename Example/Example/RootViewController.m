@@ -37,7 +37,7 @@
         });
     }];
 
-    [self testAutoCoding];
+    // [self testAutoCoding];
 }
 
 - (void)testAutoCoding
