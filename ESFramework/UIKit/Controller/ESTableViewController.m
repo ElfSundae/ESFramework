@@ -89,7 +89,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self doesNotRecognizeSelector:_cmd];
-    return nil;
+    return [UITableViewCell new];
 }
 
 @end

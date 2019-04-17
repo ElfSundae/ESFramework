@@ -121,10 +121,10 @@ buttonFlatStyled = _buttonFlatStyled;
 
 - (NSNumber *)buttonRoundedCornerRadius
 {
-    if (!_buttonRoundedCornerRadius) {
+    if (nil == _buttonRoundedCornerRadius) {
         _buttonRoundedCornerRadius = [[[self class] appearance] buttonRoundedCornerRadius];
     }
-    if (_buttonRoundedCornerRadius) {
+    if (nil != _buttonRoundedCornerRadius) {
         return _buttonRoundedCornerRadius;
     }
     return self.buttonFlatStyled.boolValue ? kDefaultButtonRoundedCornerRadiusForFlatStyled : kDefaultButtonRoundedCornerRadius;
@@ -138,10 +138,10 @@ buttonFlatStyled = _buttonFlatStyled;
 
 - (NSNumber *)buttonFlatStyled
 {
-    if (!_buttonFlatStyled) {
+    if (nil == _buttonFlatStyled) {
         _buttonFlatStyled = [[[self class] appearance] buttonFlatStyled];
     }
-    if (_buttonFlatStyled) {
+    if (nil != _buttonFlatStyled) {
         return _buttonFlatStyled;
     }
     if (ESOSVersionIsAtLeast(7)) {
