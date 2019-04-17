@@ -21,6 +21,7 @@
 #import "NSURLComponents+ESAdditions.h"
 #import "NSData+ESHash.h"
 #import "NSDate+ESAdditions.h"
+#import "NSDateFormatter+ESAdditions.h"
 #import "NSError+ESAdditions.h"
 #import "NSArray+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"

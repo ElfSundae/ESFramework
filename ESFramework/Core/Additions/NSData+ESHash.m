@@ -7,7 +7,6 @@
 //
 
 #import "NSData+ESHash.h"
-#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSData (ESHash)
 
