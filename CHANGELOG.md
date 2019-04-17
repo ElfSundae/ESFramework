@@ -25,6 +25,8 @@
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
 - Added `-[NSURL URLByAddingQueryDictionary:]`.
+- Added `+[NSDate dateFromHTTPDateString:]`.
+- Added `NSDateFormatter (ESAdditions)` category.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
 - Renamed `-[NSString stringByAppendingQueryDictionary:]` to `-stringByAddingQueryDictionary:`
 - Renamed `-URLEncode` to `-URLEncoded`, `-URLDecode` to `-URLDecoded` for `NSString`.

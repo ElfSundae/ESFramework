@@ -36,7 +36,7 @@
     NSUInteger commaPosition = [string rangeOfString:@","].location;
 
     if (commaPosition == 3) {
-        return [[NSDateFormatter RFC1123DateFormatter] dateFromString:string];
+        return [self dateFromRFC1123String:string];
     }
 
     if (commaPosition != NSNotFound && commaPosition > 3) {
