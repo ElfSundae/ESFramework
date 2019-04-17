@@ -28,7 +28,7 @@
     if ([failureReason isKindOfClass:[NSString class]]) {
         userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
     }
-    NSDictionary *info = (userInfo.count) ? [userInfo copy] : nil;
+    NSDictionary *info = userInfo.count ? [userInfo copy] : nil;
     return [self errorWithDomain:domain code:code userInfo:info];
 }
 
@@ -40,7 +40,8 @@
              NSURLErrorCannotConnectToHost == self.code ||
              NSURLErrorNetworkConnectionLost == self.code ||
              NSURLErrorDNSLookupFailed == self.code ||
-             NSURLErrorNotConnectedToInternet == self.code));
+             NSURLErrorNotConnectedToInternet == self.code)
+            );
 }
 
 @end
