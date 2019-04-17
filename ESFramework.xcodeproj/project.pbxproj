@@ -15,8 +15,6 @@
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2341CA50D1100EDBB8E /* NSData+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2351CA50D1100EDBB8E /* NSData+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESHash.h"; sourceTree = "<group>"; };
 		E76CA2371CA50D1100EDBB8E /* NSData+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESHash.m"; sourceTree = "<group>"; };
 		E76CA2381CA50D1100EDBB8E /* NSDate+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+ESAdditions.h"; sourceTree = "<group>"; };
@@ -177,8 +175,6 @@
 				E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */,
 				E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */,
 				E7FDC9722265B1F000D8CC25 /* NSURLComponents+ESAdditions.m */,
-				E76CA2341CA50D1100EDBB8E /* NSData+ESAdditions.h */,
-				E76CA2351CA50D1100EDBB8E /* NSData+ESAdditions.m */,
 				E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */,
 				E76CA2371CA50D1100EDBB8E /* NSData+ESHash.m */,
 				E76CA2381CA50D1100EDBB8E /* NSDate+ESAdditions.h */,

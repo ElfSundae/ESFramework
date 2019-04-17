@@ -7,12 +7,9 @@
 //
 
 #import "NSString+ESAdditions.h"
-#import "ESDefines.h"
 #import "ESValue.h"
 #import "NSMutableString+ESAdditions.h"
-#import "NSDictionary+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
-#import "NSURL+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
 #import "NSString+ESGTMHTML.h"
 
