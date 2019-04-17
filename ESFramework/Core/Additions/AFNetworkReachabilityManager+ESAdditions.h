@@ -6,7 +6,7 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
-#import "AFNetworkReachabilityManager.h"
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 
 @interface AFNetworkReachabilityManager (ESAdditions)
 
