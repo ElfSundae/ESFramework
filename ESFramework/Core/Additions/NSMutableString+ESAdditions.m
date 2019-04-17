@@ -6,18 +6,13 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESValue.h"
-#import "NSString+ESAdditions.h"
 #import "NSMutableString+ESAdditions.h"
+#import "ESValue.h"
 
 @implementation NSMutableString (ESAdditions)
 
 - (void)replace:(NSString *)string to:(NSString *)replacement options:(NSStringCompareOptions)options
 {
-    if (![string isKindOfClass:[NSString class]]) {
-        return;
-    }
-
     [self replaceOccurrencesOfString:string withString:replacement ?: @"" options:options range:NSMakeRange(0, self.length)];
 }
 
@@ -33,10 +28,7 @@
 
 - (void)replaceInRange:(NSRange)range to:(NSString *)replacement
 {
-    if (!replacement) {
-        replacement = @"";
-    }
-    [self replaceCharactersInRange:range withString:replacement];
+    [self replaceCharactersInRange:range withString:replacement ?: @""];
 }
 
 - (void)replaceRegex:(NSString *)pattern to:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
@@ -46,8 +38,12 @@
 
 - (void)replaceWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
+    NSString *string = nil;
+    NSString *replacement = nil;
     for (id key in dictionary) {
-        [self replace:ESStringValue(key) to:ESStringValue(dictionary[key]) options:options];
+        if (ESStringVal(&string, key) && ESStringVal(&replacement, dictionary[key])) {
+            [self replace:string to:replacement options:options];
+        }
     }
 }
 

@@ -14,6 +14,7 @@
 - (void)replace:(NSString *)string to:(NSString *)replacement;
 - (void)replaceCaseInsensitive:(NSString *)string to:(NSString *)replacement;
 - (void)replaceInRange:(NSRange)range to:(NSString *)replacement;
+
 /**
  * The `replacement` is treated as a template, with $0 being replaced by the
  * contents of the matched range, $1 by the contents of the first capture group,

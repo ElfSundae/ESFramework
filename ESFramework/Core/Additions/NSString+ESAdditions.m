@@ -63,18 +63,12 @@
 
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options
 {
-    if (!replacement) {
-        replacement = @"";
-    }
-    return [self stringByReplacingOccurrencesOfString:string withString:replacement options:options range:NSMakeRange(0, self.length)];
+    return [self stringByReplacingOccurrencesOfString:string withString:replacement ?: @"" options:options range:NSMakeRange(0, self.length)];
 }
 
 - (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement
 {
-    if (!replacement) {
-        replacement = @"";
-    }
-    return [self stringByReplacingCharactersInRange:range withString:replacement];
+    return [self stringByReplacingCharactersInRange:range withString:replacement ?: @""];
 }
 
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
