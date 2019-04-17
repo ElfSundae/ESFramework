@@ -6,7 +6,8 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ESDefines.h"
+#import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface NSData (ESHash)
 
@@ -42,8 +43,8 @@
 
 #pragma mark - HMAC Digest
 
-- (NSData *)hmacHashDataWithAlgorithm:(uint32_t /* CCHmacAlgorithm */)algorithm key:(id)key;
-- (NSString *)hmacHashStringWithAlgorithm:(uint32_t /* CCHmacAlgorithm */)algorithm key:(id)key;
+- (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 
 #pragma mark - Base64
 
