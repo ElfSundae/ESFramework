@@ -87,18 +87,6 @@
 - (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
 
 /**
- * Returns an URL-safe string from Base64 encoded string.
- * It will replace '+' to '-' , '/' to '_', and remove '='.
- */
-- (NSString *)URLSafeBase64String;
-
-/**
- * Returns the original Base64 encoded string from an URL-safe string.
- * It will replace '-' to '+', '_' to '/', and add '='.
- */
-- (NSString *)base64StringFromURLSafeString;
-
-/**
  * Get a string where internal characters that need escaping for HTML are escaped,
  * code grabbed from Google GTMNSString+HTML.
  *

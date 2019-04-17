@@ -6,48 +6,40 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "ESDefines.h"
+#import <Foundation/Foundation.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface NSString (ESHash)
 
-/// =============================================
-/// @name MD5 Digest
-/// =============================================
+#pragma mark - MD5 Digest
 
-- (NSData *)es_md5HashData;
-- (NSString *)es_md5HashString;
+- (NSData *)md5HashData;
+- (NSString *)md5HashString;
 
-/// =============================================
-/// @name SHA Digest
-/// =============================================
+#pragma mark - SHA Digest
 
-- (NSData *)es_sha1HashData;
-- (NSString *)es_sha1HashString;
-- (NSData *)es_sha224HashData;
-- (NSString *)es_sha224HashString;
-- (NSData *)es_sha256HashData;
-- (NSString *)es_sha256HashString;
-- (NSData *)es_sha384HashData;
-- (NSString *)es_sha384HashString;
-- (NSData *)es_sha512HashData;
-- (NSString *)es_sha512HashString;
+- (NSData *)sha1HashData;
+- (NSString *)sha1HashString;
+- (NSData *)sha224HashData;
+- (NSString *)sha224HashString;
+- (NSData *)sha256HashData;
+- (NSString *)sha256HashString;
+- (NSData *)sha384HashData;
+- (NSString *)sha384HashString;
+- (NSData *)sha512HashData;
+- (NSString *)sha512HashString;
 
-/// =============================================
-/// @name Hmac Digest
-/// =============================================
+#pragma mark - HMAC Digest
 
-- (NSData *)es_HmacHashDataWithAlgorithm:(uint32_t /* CCHmacAlgorithm */)algorithm key:(id)key;
-- (NSString *)es_HmacHashStringWithAlgorithm:(uint32_t /* CCHmacAlgorithm */)algorithm key:(id)key;
+- (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
 
-/// =============================================
-/// @name Base64
-/// =============================================
+#pragma mark - Base64
 
-- (NSData *)es_base64Encoded;
-- (NSString *)es_base64EncodedString;
-- (NSString *)es_base64EncodedURLSafeString;
-- (NSData *)es_base64Decoded;
-- (NSString *)es_base64DecodedString;
-- (NSString *)es_base64DecodedStringFromURLSafeString;
+- (NSData *)base64EncodedData;
+- (NSString *)base64EncodedString;
+- (NSString *)base64EncodedURLSafeString;
+- (NSData *)base64DecodedData;
+- (NSString *)base64DecodedString;
 
 @end

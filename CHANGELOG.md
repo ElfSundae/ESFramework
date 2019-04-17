@@ -17,6 +17,8 @@
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
 - Removed `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`.
+- Removed `-URLSafeBase64String:` , `-base64StringFromURLSafeString:` for `NSString`.
+- Removed `es_` prefix for `NSString` and `NSData` hashing methods.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
 - Added `-[NSURL URLByAddingQueryDictionary:]`.

@@ -148,39 +148,6 @@
     return urlComponents.string;
 }
 
-- (NSString *)URLSafeBase64String
-{
-    static NSDictionary *replacement = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        replacement = @{ @"+": @"-",
-                         @"/": @"_",
-                         @"=": @"" };
-    });
-
-    return [self stringByReplacingWithDictionary:replacement options:0];
-}
-
-- (NSString *)base64StringFromURLSafeString
-{
-    static NSDictionary *replacement = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        replacement = @{ @"-": @"+",
-                         @"_": @"/" };
-    });
-
-    NSMutableString *result = self.mutableCopy;
-    [result replaceWithDictionary:replacement options:0];
-
-    NSUInteger equalLength = result.length % 4;
-    if (equalLength) {
-        return [result stringByPaddingToLength:result.length + 4 - equalLength withString:@"=" startingAtIndex:0];
-    }
-
-    return [result copy];
-}
-
 - (NSString *)stringByEncodingHTMLEntitiesUsingTable:(ESHTMLEscapeMap *)table size:(NSUInteger)size escapeUnicode:(BOOL)escapeUnicode
 {
     return [self es_gtm_stringByEscapingHTMLUsingTable:table
