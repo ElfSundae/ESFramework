@@ -16,11 +16,13 @@
 //  License for the specific language governing permissions and limitations under
 //  the License.
 //
+//  https://github.com/siriusdely/GTMNSString-HTML/blob/master/GTMNSString%2BHTML.h
+//
 
 #import <Foundation/Foundation.h>
 
 typedef struct {
-    __unsafe_unretained NSString *escapeSequence;
+    NSString *escapeSequence;
     unichar uchar;
 } ESHTMLEscapeMap;
 
