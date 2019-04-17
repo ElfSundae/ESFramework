@@ -72,17 +72,16 @@
 - (NSString *)URLDecode;
 
 /**
- * Append URL query string from `queryDictionary`.
- * Supports 'array' params, like "?key[]=value1&key[]=value2".
- *
- * In `queryDictionary`, the keys must be NSString/NSNumber, the values must be
- * NSString/NSNumber/NSArray with NSString,NSNumber.
+ * Returns the query components parsed as a dictionary for the URL string.
+ * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query dictionary will be:
+ * { key:value, arr:[value, value1] }.
  */
-- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary;
+- (NSDictionary<NSString *, id> *)queryDictionary;
 
-/// =============================================
-/// @name URL-safe Base64
-/// =============================================
+/**
+ * Returns a newly created URL string added the given query dictionary.
+ */
+- (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
 
 /**
  * Returns an URL-safe string from Base64 encoded string.
@@ -95,10 +94,6 @@
  * It will replace '-' to '+', '_' to '/', and add '='.
  */
 - (NSString *)base64StringFromURLSafeString;
-
-/// =============================================
-/// @name Encoding/Decoding HTML Entities
-/// =============================================
 
 /**
  * Get a string where internal characters that need escaping for HTML are escaped,
@@ -169,18 +164,10 @@
  */
 - (NSString *)stringByDecodingHTMLEntities;
 
-/// =============================================
-/// @name Match With Regular Expression
-/// =============================================
-
 - (NSRange)match:(NSString *)pattern;
 - (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
 - (BOOL)isMatch:(NSString *)pattern;
 - (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
-
-/// =============================================
-/// @name File Accessor
-/// =============================================
 
 /**
  * Asynchronously write string to file.

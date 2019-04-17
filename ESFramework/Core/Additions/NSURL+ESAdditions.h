@@ -22,4 +22,9 @@
  */
 - (NSDictionary<NSString *, id> *)queryDictionary;
 
+/**
+ * Returns a newly created URL added the given query dictionary.
+ */
+- (NSURL *)URLByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
+
 @end

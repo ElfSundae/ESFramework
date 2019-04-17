@@ -21,4 +21,12 @@
     return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES].queryItemsDictionary;
 }
 
+- (NSURL *)URLByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary
+{
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES];
+    [urlComponents addQueryItemsDictionary:queryDictionary];
+    return urlComponents.URL;
+}
+
+
 @end

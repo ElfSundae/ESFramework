@@ -13,6 +13,7 @@
 #import "NSDictionary+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
+#import "NSURLComponents+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
 
@@ -115,35 +116,16 @@
             stringByRemovingPercentEncoding];
 }
 
-- (NSString *)stringByAppendingQueryDictionary:(NSDictionary *)queryDictionary
+- (NSDictionary<NSString *, id> *)queryDictionary
 {
-    NSMutableString *result = self.mutableCopy;
-    NSString *fragment = nil;
-    NSString *queryString = queryDictionary.queryString;
+    return [NSURLComponents componentsWithString:self].queryItemsDictionary;
+}
 
-    if (ESIsStringWithAnyText(queryString)) {
-        // 临时保存fragment, 在拼接queryString后再拼接fragment
-        NSRange fragmentStart = [result rangeOfString:@"#"];
-        if (fragmentStart.location != NSNotFound) {
-            fragment = [self substringFromIndex:fragmentStart.location];
-            NSRange fragmentRange = NSMakeRange(fragmentStart.location, result.length - fragmentStart.location);
-            [result deleteCharactersInRange:fragmentRange];
-        }
-        // 去掉原串末尾的?或&， 方面后面拼接时添加连接符
-        if (result.length > 0) {
-            NSString *lastChar = [result substringFromIndex:result.length - 1];
-            if ([lastChar isEqualToString:@"?"] || [lastChar isEqualToString:@"&"]) {
-                [result deleteCharactersInRange:NSMakeRange(result.length - 1, 1)];
-            }
-        }
-        // 拼接
-        [result appendFormat:@"%@%@", ([result contains:@"?"] ? @"&" : @"?"), queryString];
-    }
-
-    if (fragment) {
-        [result appendString:fragment];
-    }
-    return [result copy];
+- (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary
+{
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:self];
+    [urlComponents addQueryItemsDictionary:queryDictionary];
+    return urlComponents.string;
 }
 
 - (NSString *)URLSafeBase64String

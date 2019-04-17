@@ -14,15 +14,13 @@
     + `ESDispatchOnLowQueue` => `es_dispatch_async_low`
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
     + `ESDispatchAfter` => `es_dispatch_after`
-- Removed `-[NSString queryDictionary]`.
 - Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
 - Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
 - Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
-- Renamed `-[NSString stringByAppendingQueryDictionary]` to `-stringByAppendingQueryComponents`.
 - Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
 - Added `NSURLComponents (ESAdditions)` category.
 - Refactored `NSObject (ESAutoCoding)`.
-- Refactored `-[NSURL queryDictionary]` to use the `NSURLComponents` API.
+- Refactored `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API.
 
 ## 2.6.2
 
