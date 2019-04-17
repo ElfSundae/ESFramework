@@ -13,28 +13,6 @@
 - (BOOL)isEmpty;
 
 /**
- * Enumerates (Block Enumeration) through an array and executes the given block with each object.
- */
-- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
-
-/**
- * Enumerates (Block Enumeration) through an array and executes the given block with each object.
- *
- * If option is `NSEnumerationConcurrent`,
- * Enumeration will occur on appropriate background queues. This
- * will have a noticeable speed increase, especially on dual-core
- * devices, but you *must* be aware of the thread safety of the
- * objects you message from within the block. Be aware that the
- * order of objects is not necessarily the order each block will
- * be called in.
- *
- * @see NSArray enumeration performance examined: http://darkdust.net/writings/objective-c/nsarray-enumeration-performance
- * @see NSArray 枚举性能研究: http://www.oschina.net/translate/nsarray-enumeration-performance
- *
- */
-- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option;
-
-/**
  * Find matched object index via passing test predicate block.
  */
 - (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate;
