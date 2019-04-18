@@ -29,6 +29,7 @@
     + `-[NSString stringByEncodingHTMLEntitiesForUnicode]` => `-stringByEncodingHTMLEntities`
     + NSArray methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`
     + `-[NSDictionary queryString]` => `-URLQueryString`
+    + `-[NSDictionary matchesDictionary:]` => `entriesPassingTest:`
 - Removed:
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
@@ -40,6 +41,7 @@
     + `NSArray` methods: `-match:` `matches:`, use `indexOfObjectPassingTest:` instead
     + `-[NSArray writeToFile:atomically:completion]`
     + `-[NSMutableArray matchWith:]`
+    + NSDictionary methods: `-esObjectForKey`, `-each:`, `each:option:`, `match:`, `matchDictionary:`, `matches:`, `matches:option:`, `matchWith:`, `writeToFile:atomically:completion:`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

@@ -26,118 +26,20 @@
     return urlComponents.percentEncodedQuery;
 }
 
-- (id)esObjectForKey:(id)key
+- (NSDictionary *)entriesPassingTest:(BOOL (^)(id, id, BOOL *))predicate
 {
-    id object = self[key];
-    if ([object isKindOfClass:[NSNull class]]) {
-        object = nil;
-    }
-    return object;
+    return [self entriesWithOptions:0 passingTest:predicate];
 }
 
-- (void)each:(void (^)(id key, id obj, BOOL *stop))block
+- (NSDictionary *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, id, BOOL *))predicate
 {
-    [self enumerateKeysAndObjectsUsingBlock:block];
-}
-
-- (void)each:(void (^)(id key, id obj, BOOL *stop))block option:(NSEnumerationOptions)option
-{
-    [self enumerateKeysAndObjectsWithOptions:option usingBlock:block];
-}
-
-- (id)match:(BOOL (^)(id key, id obj))predicate
-{
-    NSParameterAssert(predicate);
-    NSSet *set = [self matches:^BOOL (id key_, id obj_, BOOL *stop) {
-        if (predicate(key_, obj_)) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }];
-    return [set anyObject];
-}
-
-- (id)match:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSSet *set = [self matches:^BOOL (id key_, id obj_, BOOL *stop) {
-        if (predicate(key_, obj_)) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    } option:option];
-    return [set anyObject];
-}
-
-- (NSDictionary *)matchDictionary:(BOOL (^)(id key, id obj))predicate
-{
-    id key = [self match:predicate];
-    if (key) {
-        return self[key];
-    }
-    return nil;
-}
-
-- (NSDictionary *)matchDictionary:(BOOL (^)(id key, id obj))predicate option:(NSEnumerationOptions)option
-{
-    id key = [self match:predicate option:option];
-    if (key) {
-        return self[key];
-    }
-    return nil;
-}
-
-
-
-- (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate
-{
-    return [self keysOfEntriesPassingTest:predicate];
-}
-
-- (NSSet *)matches:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    return [self keysOfEntriesWithOptions:option passingTest:predicate];
-}
-
-- (NSDictionary *)matchesDictionary:(BOOL (^)(id key, id obj, BOOL *stop))predicate
-{
-    NSParameterAssert(predicate);
-    NSSet *set = [self matches:predicate];
-    NSArray *keys = [set allObjects];
-    NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
+    NSArray *keys = [self keysOfEntriesWithOptions:opts passingTest:predicate].allObjects;
+    NSArray *objects = [self objectsForKeys:keys notFoundMarker:NSNull.null];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-}
-
-- (NSDictionary *)matchesDictionary:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSSet *set = [self matches:predicate option:option];
-    NSArray *keys = [set allObjects];
-    NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
-    return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-}
-
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile completion:(void (^)(BOOL result))completion
-{
-    es_dispatch_async_default(^{
-        BOOL result = (ESTouchDirectoryAtFilePath(path) &&
-                       [self writeToFile:path atomically:useAuxiliaryFile]);
-        if (completion) {
-            es_dispatch_async_main(^{
-                completion(result);
-            });
-        }
-    });
 }
 
 @end
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSMutableDictionary
 @implementation NSMutableDictionary (ESAdditions)
 
 - (BOOL)es_setValue:(id)value forKeyPath:(NSString *)keyPath
@@ -180,24 +82,6 @@
         return YES;
     }
     return NO;
-}
-
-- (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate
-{
-    NSParameterAssert(predicate);
-    NSArray *keys = [[self matches:predicate] allObjects];
-    if (ESIsArrayWithItems(keys)) {
-        [self removeObjectsForKeys:keys];
-    }
-}
-
-- (void)matchWith:(BOOL (^)(id key, id obj, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSArray *keys = [[self matches:predicate option:option] allObjects];
-    if (ESIsArrayWithItems(keys)) {
-        [self removeObjectsForKeys:keys];
-    }
 }
 
 @end
