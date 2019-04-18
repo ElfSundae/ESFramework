@@ -7,7 +7,7 @@
 //
 
 #import "UIToolbar+ESAdditions.h"
-#import "NSArray+ESAdditions.h"
+#import "NSMutableArray+ESAdditions.h"
 
 @implementation UIToolbar (ESAdditions)
 

@@ -5,7 +5,13 @@
 - Updated iOS deployment target to 9.0.
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
 - Made the main queue dispatching functions safer.
-- Renamed GCD dispatch functions:
+- Added:
+    + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
+    + `NSURLComponents (ESAdditions)` category
+    + `-[NSURL URLByAddingQueryDictionary:]`
+    + `+[NSDate dateFromHTTPDateString:]`
+    + `NSDateFormatter (ESAdditions)` category
+- Renamed:
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
     + `ESDispatchOnMainThreadSynchrony` => `es_dispatch_sync_main`
     + `ESDispatchOnGlobalQueue` => `es_dispatch_async_global_queue`
@@ -14,27 +20,28 @@
     + `ESDispatchOnLowQueue` => `es_dispatch_async_low`
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
     + `ESDispatchAfter` => `es_dispatch_after`
-- Removed `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()` functions.
-- Removed `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`.
-- Removed `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`.
-- Removed `-URLSafeBase64String:` , `-base64StringFromURLSafeString:` for `NSString`.
-- Removed `es_` prefix for `NSString` and `NSData` hashing methods.
-- Removed `-[NSString stringByEncodingHTMLEntitiesUsingTable:size:escapeUnicode:]`, use `-[NSString es_gtm_stringByEscapingHTMLUsingTable:ofSize:escapingUnicode:]` instead.
-- Removed `-[NSString stringByEncodingHTMLEntitiesForASCII]`, use `-[NSString es_gtm_stringByEscapingForAsciiHTML]` instead.
-- Removed `-[NSData writeToFile:atomically:completion]`.
-- Removed `NSArray` methods: `-each:`, `-each:option:`, use `enumerateObjectsUsingBlock:` instead.
-- Added `+[NSCharacterSet URLEncodingAllowedCharacterSet]`.
-- Added `NSURLComponents (ESAdditions)` category.
-- Added `-[NSURL URLByAddingQueryDictionary:]`.
-- Added `+[NSDate dateFromHTTPDateString:]`.
-- Added `NSDateFormatter (ESAdditions)` category.
-- Renamed `ESTouchDirectoryAtURL()` to `ESTouchDirectoryAtFileURL()`.
-- Renamed `-[NSString stringByAppendingQueryDictionary:]` to `-stringByAddingQueryDictionary:`
-- Renamed `-URLEncode` to `-URLEncoded`, `-URLDecode` to `-URLDecoded` for `NSString`.
-- Renamed `-base64Encoded` to `-base64EncodedData` for `NSString` and `NSData`.
-- Renamed `-[NSString stringByEncodingHTMLEntitiesForUnicode]` to `-stringByEncodingHTMLEntities`.
-- Refactored `NSObject (ESAutoCoding)`.
-- Refactored `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API.
+    + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
+    + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
+    + NSString methods: `-URLEncode` => `-URLEncoded`, `-URLDecode` => `-URLDecoded`
+    + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
+    + `-[NSString stringByEncodingHTMLEntitiesUsingTable:]` => `-es_gtm_stringByEscapingHTMLUsingTable:`
+    + `-[NSString stringByEncodingHTMLEntitiesForASCII]` => `-es_gtm_stringByEscapingForAsciiHTML`
+    + `-[NSString stringByEncodingHTMLEntitiesForUnicode]` => `-stringByEncodingHTMLEntities`
+    + NSArray methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`
+- Removed:
+    + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
+    + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
+    + `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`
+    + NSString methods: `-URLSafeBase64String:`, `-base64StringFromURLSafeString:`
+    + `es_` prefix for `NSString` and `NSData` hashing methods
+    + `-[NSData writeToFile:atomically:completion]`
+    + `NSArray` methods: `-each:` `-each:option:`, use `enumerateObjectsUsingBlock:` instead
+    + `NSArray` methods: `-match:` `matches:`, use `indexOfObjectPassingTest:` instead
+    + `-[NSArray writeToFile:atomically:completion]`
+    + `-[NSMutableArray matchWith:]`
+- Refactored:
+    + `NSObject (ESAutoCoding)`
+    + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
 
 ## 2.6.2
 

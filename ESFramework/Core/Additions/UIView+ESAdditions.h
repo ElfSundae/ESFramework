@@ -53,12 +53,12 @@
  */
 - (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
 
-- (NSArray *)allTapGestureRecognizers;
-- (NSArray *)allLongPressGestureRecognizers;
-- (NSArray *)allPanGestureRecognizers;
-- (NSArray *)allPinchGestureRecognizers;
-- (NSArray *)allSwipeGestureRecognizers;
-- (NSArray *)allRotationGestureRecognizers;
+- (NSArray<__kindof UITapGestureRecognizer *> *)allTapGestureRecognizers;
+- (NSArray<__kindof UILongPressGestureRecognizer *> *)allLongPressGestureRecognizers;
+- (NSArray<__kindof UIPanGestureRecognizer *> *)allPanGestureRecognizers;
+- (NSArray<__kindof UIPinchGestureRecognizer *> *)allPinchGestureRecognizers;
+- (NSArray<__kindof UISwipeGestureRecognizer *> *)allSwipeGestureRecognizers;
+- (NSArray<__kindof UIRotationGestureRecognizer *> *)allRotationGestureRecognizers;
 
 - (void)removeAllTapGestureRecognizers;
 - (void)removeAllLongPressGestureRecognizers;

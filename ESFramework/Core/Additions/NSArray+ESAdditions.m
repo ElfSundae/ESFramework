@@ -7,147 +7,33 @@
 //
 
 #import "NSArray+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation NSArray (ESAdditions)
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Blocks
 
 - (BOOL)isEmpty
 {
     return (0 == self.count);
 }
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate
+- (id)objectPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    NSParameterAssert(predicate);
-    return [self indexOfObjectPassingTest:^BOOL (id obj_, NSUInteger idx_, BOOL *stop) {
-        if (predicate(obj_, idx_)) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }];
+    return [self objectWithOptions:0 passingTest:predicate];
 }
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option
+- (id)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    NSParameterAssert(predicate);
-    return [self indexOfObjectWithOptions:option passingTest:^BOOL (id obj_, NSUInteger idx_, BOOL *stop) {
-        if (predicate(obj_, idx_)) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }];
+    NSUInteger index = [self indexOfObjectWithOptions:opts passingTest:predicate];
+    return NSNotFound != index ? self[index] : nil;
 }
 
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate
+- (NSArray *)objectsPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    NSParameterAssert(predicate);
-    NSUInteger index = [self match:predicate];
-    if (NSNotFound != index) {
-        return self[index];
-    }
-    return nil;
+    return [self objectsWithOptions:0 passingTest:predicate];
 }
 
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option
+- (NSArray *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    NSParameterAssert(predicate);
-    NSUInteger index = [self match:predicate option:option];
-    if (NSNotFound != index) {
-        return self[index];
-    }
-    return nil;
-}
-
-- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
-{
-    return [self indexesOfObjectsPassingTest:predicate];
-}
-
-- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    return [self indexesOfObjectsWithOptions:option passingTest:predicate];
-}
-
-- (NSArray *)matchesObjects:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
-{
-    NSParameterAssert(predicate);
-    NSIndexSet *indexes = [self matches:predicate];
-    if ([indexes count]) {
-        return [self objectsAtIndexes:indexes];
-    }
-    return [NSArray array];
-}
-
-- (NSArray *)matchesObjects:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSIndexSet *indexes = [self matches:predicate option:option];
-    if ([indexes count]) {
-        return [self objectsAtIndexes:indexes];
-    }
-    return [NSArray array];
-}
-
-- (void)writeToFile:(NSString *)path atomically:(BOOL)useAuxiliaryFile completion:(void (^)(BOOL result))completion
-{
-    es_dispatch_async_default(^{
-        BOOL result = (ESTouchDirectoryAtFilePath(path) &&
-                       [self writeToFile:path atomically:useAuxiliaryFile]);
-        if (completion) {
-            es_dispatch_async_main(^{
-                completion(result);
-            });
-        }
-    });
-}
-
-@end
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - NSMutableArray
-
-@implementation NSMutableArray (ESAdditions)
-
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
-{
-    NSParameterAssert(predicate);
-    NSIndexSet *indexes = [self matches:^BOOL (id obj_, NSUInteger idx_, BOOL *stop_) {
-        return !predicate(obj_, idx_, stop_);
-    }];
-    if (indexes.count) {
-        [self removeObjectsAtIndexes:indexes];
-    }
-}
-
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSIndexSet *indexes = [self matches:^BOOL (id obj_, NSUInteger idx_, BOOL *stop_) {
-        return !predicate(obj_, idx_, stop_);
-    } option:option];
-
-    if (indexes.count) {
-        [self removeObjectsAtIndexes:indexes];
-    }
-}
-
-- (void)replaceObject:(id)object withObject:(id)anObject
-{
-    if (!object || !anObject) {
-        return;
-    }
-    NSUInteger index = [self indexOfObject:object];
-    if (index != NSNotFound) {
-        self[index] = anObject;
-    }
+    return [self objectsAtIndexes:[self indexesOfObjectsWithOptions:opts passingTest:predicate]];
 }
 
 @end

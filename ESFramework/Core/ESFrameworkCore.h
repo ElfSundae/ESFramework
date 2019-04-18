@@ -24,6 +24,7 @@
 #import "NSDateFormatter+ESAdditions.h"
 #import "NSError+ESAdditions.h"
 #import "NSArray+ESAdditions.h"
+#import "NSMutableArray+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 #import "NSOrderedSet+ESAdditions.h"
 #import "NSSet+ESAdditions.h"
