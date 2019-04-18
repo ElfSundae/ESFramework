@@ -178,7 +178,7 @@
     NSUInteger maxIndex = keys.count - 1;
     __block NSMutableString *currentKeyPath = [NSMutableString string];
     __block NSMutableDictionary *mutableCopy = self.mutableCopy;
-    [keys each:^(id subKey, NSUInteger idx, BOOL *stop) {
+    [keys enumerateObjectsUsingBlock:^(id subKey, NSUInteger idx, BOOL *stop) {
         [currentKeyPath appendFormat:@"%@%@", (currentKeyPath.length > 0 ? @"." : @""), subKey];
         if (idx == maxIndex) {
             [mutableCopy setValue:value forKeyPath:currentKeyPath];

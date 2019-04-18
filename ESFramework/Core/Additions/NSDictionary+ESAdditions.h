@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- * @see NSArray(ESAdditions)
- */
 @interface NSDictionary (ESAdditions)
 
 - (BOOL)isEmpty;
