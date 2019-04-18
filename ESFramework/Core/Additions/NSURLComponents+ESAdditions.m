@@ -7,6 +7,7 @@
 //
 
 #import "NSURLComponents+ESAdditions.h"
+#import "ESDefines.h"
 #import "ESValue.h"
 
 @implementation NSURLComponents (ESAdditions)
@@ -24,7 +25,9 @@
 
 - (void)addQueryItemWithName:(NSString *)name value:(NSString *)value
 {
-    [self addQueryItem:[NSURLQueryItem queryItemWithName:name value:ESStringValue(value)]];
+    if ((name = ESStringValue(name))) {
+        [self addQueryItem:[NSURLQueryItem queryItemWithName:name value:ESStringValue(value)]];
+    }
 }
 
 - (void)removeQueryItemsWithNames:(NSArray<NSString *> *)names
@@ -105,8 +108,13 @@
     }
 
     NSMutableArray *queryItems = [NSMutableArray array];
-    for (NSString *name in dictionary) {
-        id value = dictionary[name];
+    for (NSString *_name in dictionary) {
+        NSString *name = ESStringValue(_name);
+        if (!ESIsStringWithAnyText(name)) {
+            continue;
+        }
+
+        id value = dictionary[_name];
 
         if ([value isKindOfClass:NSArray.class]) {
             NSString *itemName = [name stringByAppendingString:@"[]"];
