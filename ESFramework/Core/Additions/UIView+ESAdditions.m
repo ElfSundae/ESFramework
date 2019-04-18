@@ -120,42 +120,42 @@
 
 - (NSArray<__kindof UITapGestureRecognizer *> *)allTapGestureRecognizers
 {
-    return [self.gestureRecognizers objectsPassingTest:^BOOL(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+    return [self.gestureRecognizers objectsPassingTest:^BOOL (__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:UITapGestureRecognizer.class];
     }];
 }
 
 - (NSArray<__kindof UILongPressGestureRecognizer *> *)allLongPressGestureRecognizers
 {
-    return [self.gestureRecognizers objectsPassingTest:^BOOL(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+    return [self.gestureRecognizers objectsPassingTest:^BOOL (__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:UILongPressGestureRecognizer.class];
     }];
 }
 
 - (NSArray<__kindof UIPanGestureRecognizer *> *)allPanGestureRecognizers
 {
-    return [self.gestureRecognizers objectsPassingTest:^BOOL(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+    return [self.gestureRecognizers objectsPassingTest:^BOOL (__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:UIPanGestureRecognizer.class];
     }];
 }
 
 - (NSArray<__kindof UIPinchGestureRecognizer *> *)allPinchGestureRecognizers
 {
-    return [self.gestureRecognizers objectsPassingTest:^BOOL(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+    return [self.gestureRecognizers objectsPassingTest:^BOOL (__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:UIPinchGestureRecognizer.class];
     }];
 }
 
 - (NSArray<__kindof UISwipeGestureRecognizer *> *)allSwipeGestureRecognizers
 {
-    return [self.gestureRecognizers objectsPassingTest:^BOOL(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+    return [self.gestureRecognizers objectsPassingTest:^BOOL (__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:UISwipeGestureRecognizer.class];
     }];
 }
 
 - (NSArray<__kindof UIRotationGestureRecognizer *> *)allRotationGestureRecognizers
 {
-    return [self.gestureRecognizers objectsPassingTest:^BOOL(__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
+    return [self.gestureRecognizers objectsPassingTest:^BOOL (__kindof UIGestureRecognizer *obj, NSUInteger idx, BOOL *stop) {
         return [obj isKindOfClass:UIRotationGestureRecognizer.class];
     }];
 }

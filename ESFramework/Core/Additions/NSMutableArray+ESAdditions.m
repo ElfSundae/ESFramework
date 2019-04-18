@@ -7,7 +7,6 @@
 //
 
 #import "NSMutableArray+ESAdditions.h"
-#import "NSArray+ESAdditions.h"
 
 @implementation NSMutableArray (ESAdditions)
 

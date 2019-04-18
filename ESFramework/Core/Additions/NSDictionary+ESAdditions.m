@@ -7,10 +7,10 @@
 //
 
 #import "NSDictionary+ESAdditions.h"
+#import "NSURLComponents+ESAdditions.h"
 #import "ESDefines.h"
 #import "ESValue.h"
 #import "NSString+ESAdditions.h"
-#import "NSArray+ESAdditions.h"
 
 @implementation NSDictionary (ESAdditions)
 
@@ -19,32 +19,11 @@
     return (0 == self.count);
 }
 
-- (NSString *)queryString
+- (NSString *)URLQueryString
 {
-    NSMutableArray *queryArray = [NSMutableArray array];
-    for (id key in self.keyEnumerator) {
-        NSString *encodedKey = [ESStringValueWithDefault(key, @"") URLEncoded];
-        if (encodedKey.isEmpty) {
-            continue;
-        }
-        id value = self[key];
-
-        if ([value isKindOfClass:[NSArray class]]) {
-            for (id obj in (NSArray *)value) {
-                NSString *encodedObj = [ESStringValueWithDefault(obj, @"") URLEncoded];
-                [queryArray addObject:[NSString stringWithFormat:@"%@[]=%@", encodedKey, encodedObj]];
-            }
-        } else {
-            NSString *encodedValue = [ESStringValueWithDefault(value, @"") URLEncoded];
-            [queryArray addObject:[NSString stringWithFormat:@"%@=%@", encodedKey, encodedValue]];
-        }
-    }
-
-    if (queryArray) {
-        return [queryArray componentsJoinedByString:@"&"];
-    }
-
-    return @"";
+    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:@"http://foo.bar"];
+    urlComponents.queryItemsDictionary = self;
+    return urlComponents.percentEncodedQuery;
 }
 
 - (id)esObjectForKey:(id)key

@@ -13,14 +13,12 @@
 - (BOOL)isEmpty;
 
 /**
- * Generate URL query string.
+ * Creates a percent encoded URL query string from this dictionary.
  *
- * {key1:value1, key2:[a,b]} to
- * key1=value1&key2[]=a&key2[2]=b
- *
- * key and value must be NSString or NSNumber
+ * For example, @{ @"foo": @123, @"bar": @[ @"a", @"b" ] } will return
+ * @"foo=123&bar%5B%5D=a&bar%5B%5D=b"
  */
-- (NSString *)queryString;
+- (NSString *)URLQueryString;
 
 /**
  * If the object is `[NSNull null]`, it will returns `nil`.
