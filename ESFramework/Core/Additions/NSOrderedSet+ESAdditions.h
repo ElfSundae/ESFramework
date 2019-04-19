@@ -8,33 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- * @see NSArray(ESAdditions)
- */
-@interface NSOrderedSet (ESAdditions)
+@interface NSOrderedSet<ObjectType> (ESAdditions)
 
 - (BOOL)isEmpty;
-- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
-- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option;
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate;
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option;
+- (ObjectType)objectPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
+- (ObjectType)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate;
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option;
+- (NSArray<ObjectType> *)objectsPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSArray<ObjectType> *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 
-
-- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
-- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
-
-- (NSOrderedSet *)matchesOrderedSets:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
-- (NSOrderedSet *)matchesOrderedSets:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
-
-@end
-
-@interface NSMutableOrderedSet (ESAdditions)
-
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option;
+- (NSOrderedSet<ObjectType> *)orderedSetPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
+- (NSOrderedSet<ObjectType> *)orderedSetWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 
 @end

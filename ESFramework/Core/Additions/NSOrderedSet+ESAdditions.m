@@ -16,114 +16,35 @@
     return (0 == self.count);
 }
 
-- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
+- (id)objectPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    [self enumerateObjectsUsingBlock:block];
+    return [self objectWithOptions:0 passingTest:predicate];
 }
 
-- (void)each:(void (^)(id obj, NSUInteger idx, BOOL *stop))block option:(NSEnumerationOptions)option
+- (id)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    [self enumerateObjectsWithOptions:option usingBlock:block];
+    NSUInteger index = [self indexOfObjectWithOptions:opts passingTest:predicate];
+    return NSNotFound != index ? self[index] : nil;
 }
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate
+- (NSArray *)objectsPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    return [self indexOfObjectPassingTest:^BOOL (id obj_, NSUInteger idx_, BOOL *stop) {
-        if (predicate(obj_, idx_)) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }];
+    return [self objectsWithOptions:0 passingTest:predicate];
 }
 
-- (NSUInteger)match:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option
+- (NSArray *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    return [self indexOfObjectWithOptions:option passingTest:^BOOL (id obj_, NSUInteger idx_, BOOL *stop) {
-        if (predicate(obj_, idx_)) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }];
+    return [self objectsAtIndexes:[self indexesOfObjectsWithOptions:opts passingTest:predicate]];
 }
 
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate
+- (NSOrderedSet *)orderedSetPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    NSParameterAssert(predicate);
-    NSUInteger index = [self match:predicate];
-    if (NSNotFound != index) {
-        return self[index];
-    }
-    return nil;
+    return [self orderedSetWithOptions:0 passingTest:predicate];
 }
 
-- (id)matchObject:(BOOL (^)(id obj, NSUInteger idx))predicate option:(NSEnumerationOptions)option
+- (NSOrderedSet *)orderedSetWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
-    NSParameterAssert(predicate);
-    NSUInteger index = [self match:predicate option:option];
-    if (NSNotFound != index) {
-        return self[index];
-    }
-    return nil;
-}
-
-- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
-{
-    return [self indexesOfObjectsPassingTest:predicate];
-}
-
-- (NSIndexSet *)matches:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    return [self indexesOfObjectsWithOptions:option passingTest:predicate];
-}
-
-- (NSOrderedSet *)matchesOrderedSets:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
-{
-    NSParameterAssert(predicate);
-    NSArray *objects = [self objectsAtIndexes:[self matches:predicate]];
-    if (ESIsArrayWithItems(objects)) {
-        return [NSOrderedSet orderedSetWithArray:objects];
-    } else {
-        return [NSOrderedSet orderedSet];
-    }
-}
-
-- (NSOrderedSet *)matchesOrderedSets:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSArray *objects = [self objectsAtIndexes:[self matches:predicate option:option]];
-    if (ESIsArrayWithItems(objects)) {
-        return [NSOrderedSet orderedSetWithArray:objects];
-    } else {
-        return [NSOrderedSet orderedSet];
-    }
-}
-
-@end
-
-@implementation NSMutableOrderedSet (ESAdditions)
-
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate
-{
-    NSParameterAssert(predicate);
-    NSIndexSet *set = [self matches:^BOOL (id obj_, NSUInteger idx_, BOOL *stop_) {
-        return !predicate(obj_, idx_, stop_);
-    }];
-    if ([set count]) {
-        [self removeObjectsAtIndexes:set];
-    }
-}
-
-- (void)matchWith:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate option:(NSEnumerationOptions)option
-{
-    NSParameterAssert(predicate);
-    NSIndexSet *set = [self matches:^BOOL (id obj_, NSUInteger idx_, BOOL *stop_) {
-        return !predicate(obj_, idx_, stop_);
-    } option:option];
-    if ([set count]) {
-        [self removeObjectsAtIndexes:set];
-    }
+    return [NSOrderedSet orderedSetWithArray:[self objectsWithOptions:opts passingTest:predicate]];
 }
 
 @end

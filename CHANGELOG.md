@@ -33,6 +33,7 @@
     + `-[NSDictionary queryString]` => `-URLQueryString`
     + `-[NSDictionary matchesDictionary:]` => `entriesPassingTest:`
     + `-[NSMutableDictionary es_setValue:forKeyPath:]` => `-setObject:forKeyPath:`
+    + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
 - Removed:
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `NSObject (ESAssociatedObjectHelper)` category
@@ -46,7 +47,8 @@
     + NSArray methods: `-match:` `matches:`, use `indexOfObjectPassingTest:` instead
     + `-[NSArray writeToFile:atomically:completion]`
     + `-[NSMutableArray matchWith:]`
-    + NSDictionary methods: `-esObjectForKey`, `-each:`, `each:option:`, `match:`, `matchDictionary:`, `matches:`, `matches:option:`, `matchWith:`, `writeToFile:atomically:completion:`
+    + NSDictionary methods: `-esObjectForKey`, `-each:`, `-each:option:`, `match:`, `matchDictionary:`, `matches:`, `matches:option:`, `matchWith:`, `writeToFile:atomically:completion:`
+    + NSOrderedSet methods: `-each:`, `-each:option:`, `-match:`, `matchWith:`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
