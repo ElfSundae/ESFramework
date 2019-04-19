@@ -9,23 +9,13 @@
 #import "NSObject+ESAutoCoding.h"
 #import "ESDefines.h"
 
-ESDefineAssociatedObjectKey(es_codableProperties);
+ESDefineAssociatedObjectKey(codableProperties);
 
 @implementation NSObject (ESAutoCoding)
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
-- (instancetype)initWithCoder_es:(NSCoder *)aDecoder
-{
-    // No -init should be called, see https://github.com/nicklockwood/AutoCoding/pull/32
-    [self es_setWithCoder:aDecoder];
-    return self;
-}
-#pragma clang diagnostic pop
-
 - (void)es_encodeWithCoder:(NSCoder *)aCoder
 {
-    for (NSString *key in self.es_codableProperties) {
+    for (NSString *key in self.codableProperties) {
         id object = [self valueForKey:key];
         if (object) {
             [aCoder encodeObject:object forKey:key];
@@ -33,12 +23,21 @@ ESDefineAssociatedObjectKey(es_codableProperties);
     }
 }
 
+- (id)es_copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+    for (NSString *key in self.codableProperties) {
+        [copy setValue:[self valueForKey:key] forKey:key];
+    }
+    return copy;
+}
+
 - (void)es_setWithCoder:(NSCoder *)aDecoder
 {
     BOOL secureAvailable = [aDecoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)];
     BOOL secureSupported = [self.class respondsToSelector:@selector(supportsSecureCoding)] && [self.class supportsSecureCoding];
 
-    NSDictionary *properties = self.es_codableProperties;
+    NSDictionary *properties = self.codableProperties;
     for (NSString *key in properties) {
         Class propertyClass = properties[key];
 
@@ -58,16 +57,84 @@ ESDefineAssociatedObjectKey(es_codableProperties);
     }
 }
 
-- (id)es_copyWithZone:(NSZone *)zone
+- (NSDictionary<NSString *, Class> *)codableProperties
 {
-    id copy = [[[self class] alloc] init];
-    for (NSString *key in self.es_codableProperties) {
-        [copy setValue:[self valueForKey:key] forKey:key];
+    NSDictionary *codableProperties = objc_getAssociatedObject([self class], codablePropertiesKey);
+
+    if (!codableProperties) {
+        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
+        Class class = [self class];
+        while (class != [NSObject class]) {
+            [properties addEntriesFromDictionary:[class codableProperties]];
+            class = [class superclass];
+        }
+        codableProperties = [NSDictionary dictionaryWithDictionary:properties];
+
+        // make the association atomically so that we don't need to bother with an @synchronize
+        objc_setAssociatedObject([self class], codablePropertiesKey, codableProperties, OBJC_ASSOCIATION_RETAIN);
     }
-    return copy;
+
+    return codableProperties;
 }
 
-+ (NSDictionary<NSString *, Class> *)es_codableProperties
+- (NSDictionary<NSString *, id> *)dictionaryRepresentation
+{
+    return [self dictionaryWithValuesForKeys:self.codableProperties.allKeys];
+}
+
+- (NSString *)es_description
+{
+    return [NSString stringWithFormat:@"<%@: %p>\n%@", self.class, self, self.dictionaryRepresentation];
+}
+
++ (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
+{
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+
+    if (data) {
+        // attempt to deserialise data as a plist
+        id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
+        if (object) {
+            // check if object is an NSCoded unarchive
+            if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && object[@"$archiver"]) {
+                if (@available(iOS 12.0, *)) {
+                    object = [NSKeyedUnarchiver unarchivedObjectOfClass:self.class fromData:data error:NULL];
+                } else {
+                    @try {
+                        // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
+                        object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                    } @catch (NSException *exception) {
+                        object = nil;
+                    }
+                }
+            }
+
+            return object;
+        }
+    }
+
+    return data;
+}
+
+- (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
+{
+    // note: NSData, NSDictionary and NSArray already implement this method
+    // and do not save using NSCoding, however the +es_objectWithContentsOfFile
+    // method will correctly recover these objects anyway
+
+    NSData *data = nil;
+
+    if (@available(iOS 12.0, *)) {
+        BOOL secureCoding = [self.class respondsToSelector:@selector(supportsSecureCoding)] && [self.class supportsSecureCoding];
+        data = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:secureCoding error:NULL];
+    } else {
+        data = [NSKeyedArchiver archivedDataWithRootObject:self];
+    }
+
+    return [data writeToFile:filePath atomically:useAuxiliaryFile];
+}
+
++ (NSDictionary<NSString *, Class> *)codableProperties
 {
     NSMutableDictionary *codableProperties = [NSMutableDictionary dictionary];
     unsigned int propertyCount = 0;
@@ -153,75 +220,6 @@ ESDefineAssociatedObjectKey(es_codableProperties);
     free(properties);
 
     return [codableProperties copy];
-}
-
-- (NSDictionary<NSString *, Class> *)es_codableProperties
-{
-    NSDictionary *codableProperties = ESGetAssociatedObject([self class], es_codablePropertiesKey);
-
-    if (!codableProperties) {
-        NSMutableDictionary *properties = [NSMutableDictionary dictionary];
-        Class class = [self class];
-        while (class != [NSObject class]) {
-            [properties addEntriesFromDictionary:[class es_codableProperties]];
-            class = [class superclass];
-        }
-        codableProperties = [NSDictionary dictionaryWithDictionary:properties];
-
-        // make the association atomically so that we don't need to bother with an @synchronize
-        ESSetAssociatedObject([self class], es_codablePropertiesKey, codableProperties, OBJC_ASSOCIATION_RETAIN);
-    }
-
-    return codableProperties;
-}
-
-- (NSDictionary<NSString *, id> *)es_dictionaryRepresentation
-{
-    return [self dictionaryWithValuesForKeys:self.es_codableProperties.allKeys];
-}
-
-- (NSString *)es_description
-{
-    return [NSString stringWithFormat:@"<%@: %p>\n%@", self.class, self, self.es_dictionaryRepresentation];
-}
-
-+ (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
-{
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-
-    if (data) {
-        // attempt to deserialise data as a plist
-        id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
-        if (object) {
-            // check if object is an NSCoded unarchive
-            if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && ((NSDictionary *)object)[@"$archiver"]) {
-                @try {
-                    // -[NSKeyedUnarchiver unarchiveObjectWithData:] raises an NSInvalidArgumentException if data is not a valid archive.
-                    return [NSKeyedUnarchiver unarchiveObjectWithData:data];
-                } @catch (NSException *exception) {
-                    return nil;
-                }
-            }
-
-            return object;
-        }
-    }
-
-    return data;
-}
-
-- (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
-{
-    // note: NSData, NSDictionary and NSArray already implement this method
-    // and do not save using NSCoding, however the +es_objectWithContentsOfFile
-    // method will correctly recover these objects anyway
-
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    if (data) {
-        return [data writeToFile:filePath atomically:useAuxiliaryFile];
-    }
-
-    return NO;
 }
 
 @end

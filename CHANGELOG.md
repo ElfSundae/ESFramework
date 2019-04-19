@@ -21,6 +21,7 @@
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
     + `ESDispatchAfter` => `es_dispatch_after`
     + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
+    + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
     + NSString methods: `-URLEncode` => `-URLEncoded`, `-URLDecode` => `-URLDecoded`
     + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
@@ -39,8 +40,8 @@
     + NSString methods: `-URLSafeBase64String:`, `-base64StringFromURLSafeString:`
     + `es_` prefix for `NSString` and `NSData` hashing methods
     + `-[NSData writeToFile:atomically:completion]`
-    + `NSArray` methods: `-each:` `-each:option:`, use `enumerateObjectsUsingBlock:` instead
-    + `NSArray` methods: `-match:` `matches:`, use `indexOfObjectPassingTest:` instead
+    + NSArray methods: `-each:` `-each:option:`, use `enumerateObjectsUsingBlock:` instead
+    + NSArray methods: `-match:` `matches:`, use `indexOfObjectPassingTest:` instead
     + `-[NSArray writeToFile:atomically:completion]`
     + `-[NSMutableArray matchWith:]`
     + NSDictionary methods: `-esObjectForKey`, `-each:`, `each:option:`, `match:`, `matchDictionary:`, `matches:`, `matches:option:`, `matchWith:`, `writeToFile:atomically:completion:`
