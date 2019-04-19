@@ -34,25 +34,17 @@ ESDefineAssociatedObjectKey(codableProperties);
 
 - (void)es_setWithCoder:(NSCoder *)aDecoder
 {
-    BOOL secureAvailable = [aDecoder respondsToSelector:@selector(decodeObjectOfClass:forKey:)];
-    BOOL secureSupported = [self.class respondsToSelector:@selector(supportsSecureCoding)] && [self.class supportsSecureCoding];
-
     NSDictionary *properties = self.codableProperties;
     for (NSString *key in properties) {
         Class propertyClass = properties[key];
 
         id object = nil;
-        if (secureAvailable) {
+        @try {
             object = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
-        } else {
-            object = [aDecoder decodeObjectForKey:key];
-        }
+        } @catch (NSException *exception) { }
 
         if (object) {
-            if (!secureSupported ||
-                ([object isKindOfClass:propertyClass] || [object isKindOfClass:NSNull.class])) {
-                [self setValue:object forKey:key];
-            }
+            [self setValue:object forKey:key];
         }
     }
 }
