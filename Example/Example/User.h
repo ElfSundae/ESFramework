@@ -15,4 +15,7 @@
 @property (nonatomic, assign) CGRect frame;
 @property (nonatomic, strong) NSDictionary *dict;
 
+// @property (nonatomic, assign) double addedDouble;
+// @property (nonatomic, copy) NSURL *addedURL;
+
 @end

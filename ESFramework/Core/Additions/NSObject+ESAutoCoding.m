@@ -41,7 +41,9 @@ ESDefineAssociatedObjectKey(codableProperties);
         id object = nil;
         @try {
             object = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
-        } @catch (NSException *exception) { }
+        } @catch (NSException *exception) {
+            NSLog(@"-[NSCoder decodeObjectOfClass:forKey:] exception: %@", exception);
+        }
 
         if (object) {
             [self setValue:object forKey:key];
@@ -89,15 +91,12 @@ ESDefineAssociatedObjectKey(codableProperties);
         if (object) {
             // check if object is an NSCoded unarchive
             if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && object[@"$archiver"]) {
-                if (@available(iOS 12.0, *)) {
-                    object = [NSKeyedUnarchiver unarchivedObjectOfClass:self.class fromData:data error:NULL];
-                } else {
-                    @try {
-                        // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
-                        object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-                    } @catch (NSException *exception) {
-                        object = nil;
-                    }
+                @try {
+                    // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
+                    object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+                } @catch (NSException *exception) {
+                    NSLog(@"-[NSKeyedUnarchiver unarchiveObjectWithData:] exception: %@", exception);
+                    object = nil;
                 }
             }
 
@@ -114,16 +113,9 @@ ESDefineAssociatedObjectKey(codableProperties);
     // and do not save using NSCoding, however the +es_objectWithContentsOfFile
     // method will correctly recover these objects anyway
 
-    NSData *data = nil;
-
-    if (@available(iOS 12.0, *)) {
-        BOOL secureCoding = [self.class respondsToSelector:@selector(supportsSecureCoding)] && [self.class supportsSecureCoding];
-        data = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:secureCoding error:NULL];
-    } else {
-        data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    }
-
-    return [data writeToFile:filePath atomically:useAuxiliaryFile];
+    return ESTouchDirectoryAtFilePath(filePath) &&
+           [[NSKeyedArchiver archivedDataWithRootObject:self]
+            writeToFile:filePath atomically:useAuxiliaryFile];
 }
 
 + (NSDictionary<NSString *, Class> *)codableProperties
