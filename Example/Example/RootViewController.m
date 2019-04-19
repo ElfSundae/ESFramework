@@ -61,7 +61,7 @@
         user.frame = frame;
     }
 
-    NSLog(@"%@\n%@", user.es_codableProperties, user.es_description);
+    NSLog(@"%@\n%@", user.codableProperties, user.es_description);
     BOOL saved = [user es_writeToFile:file atomically:YES];
     NSLog(@"saved: %@", @(saved));
 
