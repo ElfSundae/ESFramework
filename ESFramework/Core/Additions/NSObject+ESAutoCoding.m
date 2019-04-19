@@ -216,11 +216,9 @@ ESDefineAssociatedObjectKey(es_codableProperties);
     // and do not save using NSCoding, however the +es_objectWithContentsOfFile
     // method will correctly recover these objects anyway
 
-    if (ESTouchDirectoryAtFilePath(filePath)) {
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-        if (data) {
-            return [data writeToFile:filePath atomically:useAuxiliaryFile];
-        }
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
+    if (data) {
+        return [data writeToFile:filePath atomically:useAuxiliaryFile];
     }
 
     return NO;
