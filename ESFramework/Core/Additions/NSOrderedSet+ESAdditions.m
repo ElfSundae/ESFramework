@@ -7,7 +7,6 @@
 //
 
 #import "NSOrderedSet+ESAdditions.h"
-#import "ESDefines.h"
 
 @implementation NSOrderedSet (ESAdditions)
 
