@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |ss|
     ss.dependency             'AFNetworking/Reachability'
+    ss.dependency             'NestedObjectSetters'
     ss.source_files           = 'ESFramework/Core/**/*.{h,m}'
     ss.private_header_files   = 'ESFramework/Core/**/_*.h'
     ss.frameworks             = 'Security', 'CoreTelephony', 'SystemConfiguration'

@@ -31,6 +31,7 @@
     + NSArray methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`
     + `-[NSDictionary queryString]` => `-URLQueryString`
     + `-[NSDictionary matchesDictionary:]` => `entriesPassingTest:`
+    + `-[NSMutableDictionary es_setValue:forKeyPath:]` => `-setObject:forKeyPath:`
 - Removed:
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `NSObject (ESAssociatedObjectHelper)` category

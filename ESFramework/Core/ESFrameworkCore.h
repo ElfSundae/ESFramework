@@ -24,6 +24,7 @@
 #import "NSArray+ESAdditions.h"
 #import "NSMutableArray+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
+#import "NSMutableDictionary+ESAdditions.h"
 #import "NSOrderedSet+ESAdditions.h"
 #import "NSSet+ESAdditions.h"
 #import "NSTimer+ESAdditions.h"
