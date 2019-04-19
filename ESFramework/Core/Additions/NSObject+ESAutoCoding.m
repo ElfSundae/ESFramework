@@ -152,7 +152,7 @@ ESDefineAssociatedObjectKey(es_codableProperties);
 
     free(properties);
 
-    return codableProperties;
+    return [codableProperties copy];
 }
 
 - (NSDictionary<NSString *, Class> *)es_codableProperties

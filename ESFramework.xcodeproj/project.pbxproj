@@ -27,8 +27,6 @@
 		E76CA23F1CA50D1100EDBB8E /* NSMutableString+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2421CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2431CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2441CA50D1100EDBB8E /* NSRegularExpression+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSRegularExpression+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2451CA50D1100EDBB8E /* NSRegularExpression+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSRegularExpression+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2461CA50D1100EDBB8E /* NSSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2471CA50D1100EDBB8E /* NSSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2481CA50D1100EDBB8E /* NSString+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ESAdditions.h"; sourceTree = "<group>"; };
@@ -159,8 +157,6 @@
 			children = (
 				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,
 				E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */,
-				E76CA2441CA50D1100EDBB8E /* NSRegularExpression+ESAdditions.h */,
-				E76CA2451CA50D1100EDBB8E /* NSRegularExpression+ESAdditions.m */,
 				E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */,
 				E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */,
 				E76CA2481CA50D1100EDBB8E /* NSString+ESAdditions.h */,

@@ -10,7 +10,6 @@
 #import "ESValue.h"
 
 #import "NSObject+ESAutoCoding.h"
-#import "NSRegularExpression+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSString+ESAdditions.h"
 #import "NSString+ESGTMHTML.h"

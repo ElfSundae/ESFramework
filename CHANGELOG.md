@@ -31,8 +31,9 @@
     + `-[NSDictionary queryString]` => `-URLQueryString`
     + `-[NSDictionary matchesDictionary:]` => `entriesPassingTest:`
 - Removed:
-    + `NSObject (ESAssociatedObjectHelper)` category
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
+    + `NSObject (ESAssociatedObjectHelper)` category
+    + `NSRegularExpression (ESAdditions)` category
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
     + `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`
     + NSString methods: `-URLSafeBase64String:`, `-base64StringFromURLSafeString:`

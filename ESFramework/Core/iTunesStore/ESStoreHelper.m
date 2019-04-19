@@ -10,7 +10,6 @@
 #import "ESDefines.h"
 #import "ESValue.h"
 #import "NSString+ESAdditions.h"
-#import "NSRegularExpression+ESAdditions.h"
 
 @implementation ESStoreHelper
 
@@ -24,8 +23,8 @@
 {
     NSString *urlString = URL.absoluteString;
     if (ESIsStringWithAnyText(urlString)) {
-        NSRegularExpression *regex = [NSRegularExpression regex:@"://itunes\\.apple\\.com/.+/id(\\d{8,})" caseInsensitive:YES];
-        NSTextCheckingResult *match = [regex firstMatchInString:urlString];
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"://itunes\\.apple\\.com/.+/id(\\d{8,})" options:NSRegularExpressionCaseInsensitive error:NULL];
+        NSTextCheckingResult *match = [regex firstMatchInString:urlString options:0 range:NSMakeRange(0, urlString.length)];
         if (match && match.numberOfRanges > 1) {
             return [urlString substringWithRange:[match rangeAtIndex:1]];
         }
