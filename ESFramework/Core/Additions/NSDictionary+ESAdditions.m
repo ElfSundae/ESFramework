@@ -11,11 +11,6 @@
 
 @implementation NSDictionary (ESAdditions)
 
-- (BOOL)isEmpty
-{
-    return (0 == self.count);
-}
-
 - (NSString *)URLQueryString
 {
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:@"http://foo.bar"];

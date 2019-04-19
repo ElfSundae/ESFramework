@@ -20,11 +20,6 @@
     return (NSOrderedSame == [self caseInsensitiveCompare:aString]);
 }
 
-- (BOOL)isEmpty
-{
-    return (0 == self.length);
-}
-
 - (NSString *)trim
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

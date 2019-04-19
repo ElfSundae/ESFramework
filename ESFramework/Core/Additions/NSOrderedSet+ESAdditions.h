@@ -10,8 +10,6 @@
 
 @interface NSOrderedSet<ObjectType> (ESAdditions)
 
-- (BOOL)isEmpty;
-
 - (ObjectType)objectPassingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 - (ObjectType)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 

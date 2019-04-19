@@ -10,11 +10,6 @@
 
 @implementation NSOrderedSet (ESAdditions)
 
-- (BOOL)isEmpty
-{
-    return (0 == self.count);
-}
-
 - (id)objectPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectWithOptions:0 passingTest:predicate];

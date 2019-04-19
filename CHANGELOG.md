@@ -50,6 +50,7 @@
     + NSDictionary methods: `-esObjectForKey`, `-each:`, `-each:option:`, `match:`, `matchDictionary:`, `matches:`, `matches:option:`, `matchWith:`, `writeToFile:atomically:completion:`
     + NSOrderedSet methods: `-each:`, `-each:option:`, `-match:`, `matchWith:`
     + NSSet methods: `each`, `match`, `matches`, `matchWith`
+    + `-isEmpty` on NSString, NSArray, NSDictionary, NSOrderedSet, NSSet
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

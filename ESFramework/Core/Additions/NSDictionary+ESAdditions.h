@@ -10,8 +10,6 @@
 
 @interface NSDictionary<KeyType, ObjectType> (ESAdditions)
 
-- (BOOL)isEmpty;
-
 /**
  * Creates a percent encoded URL query string from this dictionary.
  *

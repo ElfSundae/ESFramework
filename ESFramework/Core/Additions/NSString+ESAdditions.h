@@ -16,11 +16,6 @@
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
 
 /**
- * Indicates whether the length of string is 0.
- */
-- (BOOL)isEmpty;
-
-/**
  * Trims with whitespace and new line.
  */
 - (NSString *)trim;
