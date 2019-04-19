@@ -34,31 +34,13 @@
     }
 
 /*!
- * The ESAutoCoding category for NSObject makes it easier for your models or other objects to
- * support NSCoding or NSCopying.
+ * The ESAutoCoding category on NSObject provides automatic support for
+ * NSCoding and NSCopying to any object, it is inspired by
+ * [nicklockwood/AutoCoding](https://github.com/nicklockwood/AutoCoding).
  *
- * ESAutoCoding is inspired by [nicklockwood/AutoCoding](https://github.com/nicklockwood/AutoCoding)
+ * Tips: https://github.com/nicklockwood/AutoCoding#tips
  *
- * ### Supported Property Types
- * These types below will be automatically encoded.
- *
- * - `id`
- * - basic number types like `char` `int` `long` `float` `double` `unsigned long long`, etc.
- * - `NSValue`
- * - `struct`, like `CGRect` `CGSize` `CGAffineTransform`, etc.
- *
- * ### Descussion
- * 1. To exclude certain properties of your object from being encoded,
- * you can do so in any of the following ways:
- *      - Only use an ivar, without declaring a matching `@property`.
- *      - Change the name of the ivar to something which is not KVC compliant.
- *              (not the same as the property name, nor the property name with an `_` prefix either,
- *              or `@synthesize` the ivar an another name, `@synthesize name = __name`
- *              (here ivar with two `_` prefix))
- *      - Override the `+es_codableProperties` method
- * 2. You can add additional coding/decoding logic by overriding the `-es_setWithCoder:` and/or
- * the `-es_encodeWithCoder:` methods. As long as you call the `[super ...]` implementation,
- * the auto-coding will still function.
+ * @note Your object should conform to NSSecureCoding instead NSCoding whenever possible.
  */
 @interface NSObject (ESAutoCoding)
 
