@@ -7,9 +7,20 @@
 //
 
 #import "NSUserDefaults+ESAdditions.h"
+#import <NestedObjectSetters/NestedObjectSetters.h>
 #import "ESDefines.h"
 
 @implementation NSUserDefaults (ESAdditions)
+
+- (void)setObject:(id)object forKeyPath:(NSString *)keyPath
+{
+    [self setObject:object forKeyPath:keyPath createIntermediateDictionaries:YES replaceIntermediateObjects:YES];
+}
+
+- (void)setObject:(id)object forKeyPath:(NSString *)keyPath createIntermediateDictionaries:(BOOL)createIntermediates replaceIntermediateObjects:(BOOL)replaceIntermediates
+{
+    [NestedObjectSetters setObject:object onObject:self forKeyPath:keyPath createIntermediateDictionaries:createIntermediates replaceIntermediateObjects:replaceIntermediates];
+}
 
 + (id)objectForKey:(NSString *)defaultName
 {

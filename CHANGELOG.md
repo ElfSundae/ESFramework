@@ -11,6 +11,7 @@
     + `-[NSURL URLByAddingQueryDictionary:]`
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
+    + `-[NSUserDefaults setObject:forKeyPath:]`
 - Renamed:
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
     + `ESDispatchOnMainThreadSynchrony` => `es_dispatch_sync_main`
