@@ -90,7 +90,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.navigationController pushViewController:TestViewController.alloc.init animated:YES];
+    [self.navigationController pushViewController:TestViewController.new animated:YES];
 }
 
 @end
