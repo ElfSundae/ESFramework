@@ -20,36 +20,15 @@
  */
 - (NSString *)trim;
 
-/**
- * Trims with the given characters.
- */
-- (NSString *)trimWithCharactersInString:(NSString *)string;
-
 - (BOOL)contains:(NSString*)string;
 - (BOOL)containsCaseInsensitive:(NSString *)string;
 - (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
-- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement;
-- (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement;
-- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;
-- (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement;
+- (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options;
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
-
-/**
- * The `replacement` is treated as a template, with $0 being replaced by the
- * contents of the matched range, $1 by the contents of the first capture group,
- * and so on.
- * Additional digits beyond the maximum required to represent
- * the number of capture groups will be treated as ordinary characters, as will
- * a $ not followed by digits.  Backslash will escape both $ and itself.
- */
-- (NSString *)stringByReplacingRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive;
 
 - (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters;
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string;
-
-- (NSArray<NSString *> *)splitWith:(NSString *)separator;
-- (NSArray<NSString *> *)splitWithCharacterSet:(NSCharacterSet *)separator;
 
 /**
  * Returns a URL-encoded string in which all non-alphanumeric characters

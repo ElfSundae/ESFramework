@@ -40,6 +40,7 @@
     + `NSRegularExpression (ESAdditions)` category
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
     + NSString methods: `-match:`, `-match:caseInsensitive:`, `-isMatch:`, `-isMatch:caseInsensitive:`
+    + NSString methods: `-trimWithCharactersInString:`, `-stringByReplacing:`, `-stringByReplacingCaseInsensitive:`, `-stringByReplacing:with:options:`, `-stringByReplacingInRange:with:`, `-stringByReplacingRegex:with:caseInsensitive`, `-splitWith:`, `-splitWithCharacterSet:`
     + `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`
     + NSString methods: `-URLSafeBase64String:`, `-base64StringFromURLSafeString:`
     + `es_` prefix for `NSString` and `NSData` hashing methods

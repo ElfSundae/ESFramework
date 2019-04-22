@@ -24,11 +24,6 @@
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-- (NSString *)trimWithCharactersInString:(NSString *)string
-{
-    return [self stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
-}
-
 - (BOOL)contains:(NSString *)string
 {
     return [self contains:string options:0];
@@ -44,24 +39,9 @@
     return (NSNotFound != [self rangeOfString:string options:options].location);
 }
 
-- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement
+- (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options
 {
-    return [self stringByReplacing:string with:replacement options:0];
-}
-
-- (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement
-{
-    return [self stringByReplacing:string with:replacement options:NSCaseInsensitiveSearch];
-}
-
-- (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options
-{
-    return [self stringByReplacingOccurrencesOfString:string withString:replacement ?: @"" options:options range:NSMakeRange(0, self.length)];
-}
-
-- (NSString *)stringByReplacingInRange:(NSRange)range with:(NSString *)replacement
-{
-    return [self stringByReplacingCharactersInRange:range withString:replacement ?: @""];
+    return [self stringByReplacingOccurrencesOfString:target withString:replacement options:options range:NSMakeRange(0, self.length)];
 }
 
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
@@ -69,11 +49,6 @@
     NSMutableString *result = self.mutableCopy;
     [result replaceWithDictionary:dictionary options:options];
     return [result copy];
-}
-
-- (NSString *)stringByReplacingRegex:(NSString *)pattern with:(NSString *)replacement caseInsensitive:(BOOL)caseInsensitive
-{
-    return [self stringByReplacing:pattern with:replacement options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
 }
 
 - (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters
@@ -86,26 +61,14 @@
     return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
 }
 
-- (NSArray<NSString *> *)splitWith:(NSString *)separator
-{
-    return [self componentsSeparatedByString:separator];
-}
-
-- (NSArray<NSString *> *)splitWithCharacterSet:(NSCharacterSet *)separator
-{
-    return [self componentsSeparatedByCharactersInSet:separator];
-}
-
 - (NSString *)URLEncoded
 {
-    return [self stringByAddingPercentEncodingWithAllowedCharacters:
-            [NSCharacterSet URLEncodingAllowedCharacterSet]];
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLEncodingAllowedCharacterSet]];
 }
 
 - (NSString *)URLDecoded
 {
-    return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "]
-            stringByRemovingPercentEncoding];
+    return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
 }
 
 - (NSDictionary<NSString *, id> *)queryDictionary
