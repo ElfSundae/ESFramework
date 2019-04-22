@@ -6,7 +6,7 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
-#import "NSMutableDictionary+ESAdditions.h"
+#import "NSDictionary+ESAdditions.h"
 #import <NestedObjectSetters/NestedObjectSetters.h>
 
 @implementation NSMutableDictionary (ESAdditions)

@@ -74,3 +74,13 @@
 - (NSString *)stringByDecodingHTMLEntities;
 
 @end
+
+#pragma mark - NSMutableString (ESAdditions)
+
+@interface NSMutableString (ESAdditions)
+
+- (NSUInteger)replaceOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options;
+
+- (void)replaceWithDictionary:(NSDictionary<NSString *, NSString *> *)dictionary options:(NSStringCompareOptions)options;
+
+@end

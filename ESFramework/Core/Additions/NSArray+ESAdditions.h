@@ -17,3 +17,10 @@
 - (NSArray<ObjectType> *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 
 @end
+
+@interface NSMutableArray<ObjectType> (ESAdditions)
+
+- (void)replaceObject:(ObjectType)object withObject:(ObjectType)anObject;
+
+@end
+

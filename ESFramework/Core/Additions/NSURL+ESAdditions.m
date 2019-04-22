@@ -13,8 +13,7 @@
 
 - (BOOL)isEqualToURL:(NSURL *)anotherURL
 {
-    return ([self isEqual:anotherURL] ||
-            [self.absoluteString isEqualToString:anotherURL.absoluteString]);
+    return ([self isEqual:anotherURL] || [self.absoluteString isEqualToString:anotherURL.absoluteString]);
 }
 
 - (NSDictionary<NSString *, id> *)queryDictionary
