@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E75AE19C1BA66474007F4561 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19B1BA66474007F4561 /* App.m */; };
 		E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19E1BA6655A007F4561 /* RootViewController.m */; };
+		E779126F226D6CB8006EF94D /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E779126E226D6CB8006EF94D /* TestViewController.m */; };
 		E78975FA1BA4E8220034B065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975F91BA4E8220034B065 /* main.m */; };
 		E78976051BA4E8220034B065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78976041BA4E8220034B065 /* Images.xcassets */; };
 		E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78976061BA4E8220034B065 /* LaunchScreen.xib */; };
@@ -24,6 +25,8 @@
 		E75AE19B1BA66474007F4561 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		E75AE19D1BA6655A007F4561 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		E75AE19E1BA6655A007F4561 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		E779126D226D6CB8006EF94D /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		E779126E226D6CB8006EF94D /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		E78975F41BA4E8220034B065 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E78975F81BA4E8220034B065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E78975F91BA4E8220034B065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -89,6 +92,8 @@
 				E75AE19B1BA66474007F4561 /* App.m */,
 				E75AE19D1BA6655A007F4561 /* RootViewController.h */,
 				E75AE19E1BA6655A007F4561 /* RootViewController.m */,
+				E779126D226D6CB8006EF94D /* TestViewController.h */,
+				E779126E226D6CB8006EF94D /* TestViewController.m */,
 				E7FDC96B22647D3F00D8CC25 /* User.h */,
 				E7FDC96A22647D3F00D8CC25 /* User.m */,
 				E78976041BA4E8220034B065 /* Images.xcassets */,
@@ -209,6 +214,7 @@
 				E75AE19C1BA66474007F4561 /* App.m in Sources */,
 				E78975FA1BA4E8220034B065 /* main.m in Sources */,
 				E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */,
+				E779126F226D6CB8006EF94D /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#import <ESFramework/ESFramework.h>
+#import "TestViewController.h"
 #import "User.h"
 
 @implementation RootViewController
@@ -81,7 +81,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
-    cell.textLabel.attributedText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"section %@ row %@", @(indexPath.section), @(indexPath.row)]
+    cell.textLabel.attributedText =
+    [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"section %@ row %@", @(indexPath.section), @(indexPath.row)]
                                                                     attributes:@{NSForegroundColorAttributeName: ESRandomColor(),
                                                                                  NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
     return cell;
@@ -89,7 +90,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.navigationController pushViewController:TestViewController.alloc.init animated:YES];
 }
 
 @end
