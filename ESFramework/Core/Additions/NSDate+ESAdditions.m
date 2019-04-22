@@ -11,11 +11,6 @@
 
 @implementation NSDate (ESAdditions)
 
-+ (NSTimeInterval)timeIntervalSince1970
-{
-    return [[self date] timeIntervalSince1970];
-}
-
 - (BOOL)isBefore:(NSDate *)aDate
 {
     return [self timeIntervalSinceDate:aDate] < 0;

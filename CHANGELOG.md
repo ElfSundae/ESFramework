@@ -51,6 +51,7 @@
     + NSOrderedSet methods: `-each:`, `-each:option:`, `-match:`, `matchWith:`
     + NSSet methods: `each`, `match`, `matches`, `matchWith`
     + `-isEmpty` on NSString, NSArray, NSDictionary, NSOrderedSet, NSSet
+    + `+[NSDate timeIntervalSince1970]`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
