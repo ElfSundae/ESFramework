@@ -48,16 +48,6 @@
 @interface NSObject (ESAutoCoding)
 
 /**
- * NSCoding delegate method: -encodeWithCoder: .
- */
-- (void)es_encodeWithCoder:(NSCoder *)aCoder;
-
-/**
- * NSCopying delegate method: -copyWithZone: .
- */
-- (id)es_copyWithZone:(NSZone *)zone;
-
-/**
  * Populates the object's properties using the provided `NSCoder` object, based
  * on the `codableProperties` dictionary. This is called internally by the
  * `initWithCoder:` method, but may be useful if you wish to initialise an object
@@ -66,6 +56,16 @@
  * calling `es_setWithCoder:` more than once.
  */
 - (void)es_setWithCoder:(NSCoder *)aDecoder;
+
+/**
+ * NSCoding delegate method: -encodeWithCoder: .
+ */
+- (void)es_encodeWithCoder:(NSCoder *)aCoder;
+
+/**
+ * NSCopying delegate method: -copyWithZone: .
+ */
+- (id)es_copyWithZone:(NSZone *)zone;
 
 /**
  * Returns all the codable properties of the object, including those that are

@@ -13,25 +13,6 @@ ESDefineAssociatedObjectKey(codableProperties);
 
 @implementation NSObject (ESAutoCoding)
 
-- (void)es_encodeWithCoder:(NSCoder *)aCoder
-{
-    for (NSString *key in self.codableProperties) {
-        id object = [self valueForKey:key];
-        if (object) {
-            [aCoder encodeObject:object forKey:key];
-        }
-    }
-}
-
-- (id)es_copyWithZone:(NSZone *)zone
-{
-    id copy = [[[self class] alloc] init];
-    for (NSString *key in self.codableProperties) {
-        [copy setValue:[self valueForKey:key] forKey:key];
-    }
-    return copy;
-}
-
 - (void)es_setWithCoder:(NSCoder *)aDecoder
 {
     NSDictionary *properties = self.codableProperties;
@@ -49,6 +30,25 @@ ESDefineAssociatedObjectKey(codableProperties);
             [self setValue:object forKey:key];
         }
     }
+}
+
+- (void)es_encodeWithCoder:(NSCoder *)aCoder
+{
+    for (NSString *key in self.codableProperties) {
+        id object = [self valueForKey:key];
+        if (object) {
+            [aCoder encodeObject:object forKey:key];
+        }
+    }
+}
+
+- (id)es_copyWithZone:(NSZone *)zone
+{
+    id copy = [[[self class] alloc] init];
+    for (NSString *key in self.codableProperties) {
+        [copy setValue:[self valueForKey:key] forKey:key];
+    }
+    return copy;
 }
 
 - (NSDictionary<NSString *, Class> *)codableProperties
