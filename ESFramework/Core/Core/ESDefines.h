@@ -120,15 +120,6 @@
 #define ESMaskSet(value, flag)          ((value) |= (flag));
 #define ESMaskUnset(value, flag)        ((value) &= ~(flag));
 
-/**
- * Localized string.
- */
-#define ESLocalizedString(key) NSLocalizedString(key, nil)
-#ifndef _e
-#define _e(key) NSLocalizedString(key, nil)
-#endif
-#define ESLocalizedStringWithFormat(key, ...) [NSString stringWithFormat:NSLocalizedString(key, nil), ##__VA_ARGS__]
-
 /// =============================================
 /// @name Helper Functions
 /// =============================================

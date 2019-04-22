@@ -37,6 +37,7 @@
     + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
     + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
 - Removed:
+    + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category
