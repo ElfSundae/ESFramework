@@ -35,6 +35,7 @@
     + `-[NSDictionary matchesDictionary:]` => `entriesPassingTest:`
     + `-[NSMutableDictionary es_setValue:forKeyPath:]` => `-setObject:forKeyPath:`
     + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
+    + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
 - Removed:
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `NSObject (ESAssociatedObjectHelper)` category

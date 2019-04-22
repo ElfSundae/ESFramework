@@ -7,42 +7,45 @@
 //
 
 #import "NSTimer+ESAdditions.h"
-#import "ESDefines.h"
+#import <objc/runtime.h>
 
-ESDefineAssociatedObjectKey(taskBlock);
+static const void *esTaskBlockKey = &esTaskBlockKey;
 
 @implementation NSTimer (ESAdditions)
 
-- (void (^)(NSTimer *))esTaskBlock
+- (void)es_setTaskBlock:(void (^)(NSTimer *))block
 {
-    return ESGetAssociatedObject(self, taskBlockKey);
-}
-- (void)setEsTaskBlock:(void (^)(NSTimer *))block
-{
-    ESSetAssociatedObject(self, taskBlockKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, esTaskBlockKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
-+ (void)_esTimerTask:(NSTimer *)timer
++ (void)es_runTaskBlock:(NSTimer *)timer
 {
-    void (^block)(NSTimer *) = timer.esTaskBlock;
+    void (^block)(NSTimer *) = objc_getAssociatedObject(timer, esTaskBlockKey);
     if (block) {
         block(timer);
     }
 }
 
-+ (NSTimer *)timerWithTimeInterval:(NSTimeInterval)ti userInfo:(id)userInfo repeats:(BOOL)yesOrNo block:(void (^)(NSTimer *timer))block
++ (NSTimer *)es_timerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats block:(void (^)(NSTimer *timer))block
 {
-    NSTimer *timer = [self timerWithTimeInterval:ti target:self selector:@selector(_esTimerTask:) userInfo:userInfo repeats:yesOrNo];
-    timer.esTaskBlock = block;
-    return timer;
+    if (@available(iOS 10.0, *)) {
+        return [self timerWithTimeInterval:interval repeats:repeats block:block];
+    } else {
+        NSTimer *timer = [self timerWithTimeInterval:interval target:self selector:@selector(es_runTaskBlock:) userInfo:nil repeats:repeats];
+        [timer es_setTaskBlock:block];
+        return timer;
+    }
 }
 
-+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti userInfo:(id)userInfo repeats:(BOOL)yesOrNo block:(void (^)(NSTimer *timer))block
++ (NSTimer *)es_scheduledTimerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats block:(void (^)(NSTimer *timer))block
 {
-    NSTimer *timer = [self scheduledTimerWithTimeInterval:ti target:self selector:@selector(_esTimerTask:) userInfo:userInfo repeats:yesOrNo];
-    timer.esTaskBlock = block;
-    return timer;
+    if (@available(iOS 10.0, *)) {
+        return [self scheduledTimerWithTimeInterval:interval repeats:repeats block:block];
+    } else {
+        NSTimer *timer = [self scheduledTimerWithTimeInterval:interval target:self selector:@selector(es_runTaskBlock:) userInfo:nil repeats:repeats];
+        [timer es_setTaskBlock:block];
+        return timer;
+    }
 }
-
 
 @end
