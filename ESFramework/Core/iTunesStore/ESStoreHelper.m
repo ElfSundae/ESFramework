@@ -16,7 +16,7 @@
 + (BOOL)isItemID:(id)itemID
 {
     NSString *string = ESStringValue(itemID);
-    return (string && [string isMatch:@"^\\d{8,}$"]);
+    return string && [string rangeOfString:@"^\\d{8,}$" options:NSRegularExpressionSearch].location != NSNotFound;
 }
 
 + (NSString *)itemIDFromURL:(NSURL *)URL
