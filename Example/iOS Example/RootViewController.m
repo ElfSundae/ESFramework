@@ -51,7 +51,7 @@
         user.name = @"Elf Sundae";
         user.age = 18;
         user.frame = CGRectMake(10, 20, 30, 40);
-        user.dict = @{@"key": @"value", @"array":@[@100, @200]};
+        user.dict = @{ @"key": @"value", @"array": @[ @100, @200 ] };
     } else {
         user.name = [user.name stringByAppendingFormat:@",%d", user.age];
         user.age += 10;
@@ -82,9 +82,10 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
     cell.textLabel.attributedText =
-    [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"section %@ row %@", @(indexPath.section), @(indexPath.row)]
-                                                                    attributes:@{NSForegroundColorAttributeName: ESRandomColor(),
-                                                                                 NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
+        [[NSAttributedString alloc] initWithString:
+         [NSString stringWithFormat:@"section %@ row %@", @(indexPath.section), @(indexPath.row)]
+                                        attributes:@{ NSForegroundColorAttributeName: ESRandomColor(),
+                                                      NSFontAttributeName: [UIFont boldSystemFontOfSize:20] }];
     return cell;
 }
 
