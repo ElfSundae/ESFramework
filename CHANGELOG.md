@@ -29,6 +29,7 @@
     + `-[NSString stringByEncodingHTMLEntitiesUsingTable:]` => `-es_gtm_stringByEscapingHTMLUsingTable:`
     + `-[NSString stringByEncodingHTMLEntitiesForASCII]` => `-es_gtm_stringByEscapingForAsciiHTML`
     + `-[NSString stringByEncodingHTMLEntitiesForUnicode]` => `-stringByEncodingHTMLEntities`
+    + NSMutableString methods: `replace:to:options:` => `replaceOccurrencesOfString:withString:options:`
     + NSArray methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`
     + `-[NSDictionary queryString]` => `-URLQueryString`
     + `-[NSDictionary matchesDictionary:]` => `entriesPassingTest:`
@@ -41,6 +42,7 @@
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
     + NSString methods: `-match:`, `-match:caseInsensitive:`, `-isMatch:`, `-isMatch:caseInsensitive:`
     + NSString methods: `-trimWithCharactersInString:`, `-stringByReplacing:`, `-stringByReplacingCaseInsensitive:`, `-stringByReplacing:with:options:`, `-stringByReplacingInRange:with:`, `-stringByReplacingRegex:with:caseInsensitive`, `-splitWith:`, `-splitWithCharacterSet:`
+    + NSMutableString methods: `replaceCaseInsensitive:to:`, `replaceInRange:to:`, `replaceRegex:to:caseInsensitive:`
     + `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`
     + NSString methods: `-URLSafeBase64String:`, `-base64StringFromURLSafeString:`
     + `es_` prefix for `NSString` and `NSData` hashing methods
