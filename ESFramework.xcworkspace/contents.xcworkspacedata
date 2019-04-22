@@ -5,15 +5,15 @@
       location = "group:ESFramework.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/Example.xcodeproj">
+      location = "group:/Volumes/HDD/projects/ESFramework/ESFramework/Example/iOS Example.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Example/Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MacExample/MacExample.xcodeproj">
+      location = "group:MacExample/Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MacExample/Pods/Pods.xcodeproj">
+      location = "group:Example/iOS Example.xcodeproj">
    </FileRef>
 </Workspace>

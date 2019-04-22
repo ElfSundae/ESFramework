@@ -9,5 +9,7 @@
 #import <ESFramework/ESFrameworkCore.h>
 
 @interface App : ESApp
+
 @property (nonatomic, strong) UINavigationController *rootViewController;
+
 @end

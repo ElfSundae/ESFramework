@@ -9,4 +9,5 @@
 #import <ESFramework/ESFramework.h>
 
 @interface RootViewController : ESTableViewController
+
 @end

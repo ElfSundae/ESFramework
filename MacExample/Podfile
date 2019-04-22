@@ -1,6 +1,0 @@
-platform :osx, '10.9'
-workspace '../ESFramework.xcworkspace'
-
-target 'MacExample' do
-    pod "ESFramework/Reachability", :path => "../"
-end
