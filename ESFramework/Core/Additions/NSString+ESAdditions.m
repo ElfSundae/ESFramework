@@ -45,26 +45,6 @@
     return (NSNotFound != [self rangeOfString:string options:options].location);
 }
 
-- (NSRange)match:(NSString *)pattern
-{
-    return [self match:pattern caseInsensitive:NO];
-}
-
-- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
-{
-    return [self rangeOfString:pattern options:(NSRegularExpressionSearch | (caseInsensitive ? NSCaseInsensitiveSearch : 0))];
-}
-
-- (BOOL)isMatch:(NSString *)pattern
-{
-    return [self isMatch:pattern caseInsensitive:NO];
-}
-
-- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive
-{
-    return (NSNotFound != [self match:pattern caseInsensitive:caseInsensitive].location);
-}
-
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement
 {
     return [self stringByReplacing:string with:replacement options:0];

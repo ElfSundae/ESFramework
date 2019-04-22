@@ -29,11 +29,6 @@
 - (BOOL)containsCaseInsensitive:(NSString *)string;
 - (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
 
-- (NSRange)match:(NSString *)pattern;
-- (NSRange)match:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
-- (BOOL)isMatch:(NSString *)pattern;
-- (BOOL)isMatch:(NSString *)pattern caseInsensitive:(BOOL)caseInsensitive;
-
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement;
 - (NSString *)stringByReplacingCaseInsensitive:(NSString *)string with:(NSString *)replacement;
 - (NSString *)stringByReplacing:(NSString *)string with:(NSString *)replacement options:(NSStringCompareOptions)options;

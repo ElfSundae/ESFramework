@@ -39,6 +39,7 @@
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
+    + NSString methods: `-match:`, `-match:caseInsensitive:`, `-isMatch:`, `-isMatch:caseInsensitive:`
     + `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`
     + NSString methods: `-URLSafeBase64String:`, `-base64StringFromURLSafeString:`
     + `es_` prefix for `NSString` and `NSData` hashing methods
