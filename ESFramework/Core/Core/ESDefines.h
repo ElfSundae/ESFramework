@@ -88,32 +88,6 @@
 #define ESStrongSelf                            ESStrong(self);
 
 /**
- * Declare singleton `+sharedInstance` method.
- */
-#define ES_SINGLETON_DEC(sharedInstance)        + (instancetype)sharedInstance;
-
-/**
- * Implement singleton `+sharedInstance` method.
- *
- * @warning If you are subclassing a signleton class, make sure overwrite the `+sharedInstance` method to
- * provide a different local variable name.
- */
-#define ES_SINGLETON_IMP_AS(sharedInstance, sharedInstanceVariableName) \
-    + (instancetype)sharedInstance \
-    { \
-        static id sharedInstanceVariableName = nil; \
-        static dispatch_once_t onceToken_##sharedInstanceVariableName; \
-        dispatch_once(&onceToken_##sharedInstanceVariableName, ^{ sharedInstanceVariableName = [[[self class] alloc] init]; }); \
-        return sharedInstanceVariableName; \
-    }
-#define ES_SINGLETON_IMP(sharedInstance)        ES_SINGLETON_IMP_AS(sharedInstance, __gSharedInstance)
-
-/**
- * Safely release CF instance.
- */
-#define CFReleaseSafely(var)            if (var) { CFRelease(var); var = NULL; }
-
-/**
  * Bits-mask helper.
  */
 #define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
