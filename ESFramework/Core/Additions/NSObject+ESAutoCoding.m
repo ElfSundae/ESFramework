@@ -9,8 +9,6 @@
 #import "NSObject+ESAutoCoding.h"
 #import "ESDefines.h"
 
-ESDefineAssociatedObjectKey(codableProperties);
-
 @implementation NSObject (ESAutoCoding)
 
 - (void)es_setWithCoder:(NSCoder *)aDecoder
@@ -53,7 +51,7 @@ ESDefineAssociatedObjectKey(codableProperties);
 
 - (NSDictionary<NSString *, Class> *)codableProperties
 {
-    NSDictionary *codableProperties = objc_getAssociatedObject([self class], codablePropertiesKey);
+    NSDictionary *codableProperties = objc_getAssociatedObject([self class], _cmd);
 
     if (!codableProperties) {
         NSMutableDictionary *properties = [NSMutableDictionary dictionary];
@@ -65,7 +63,7 @@ ESDefineAssociatedObjectKey(codableProperties);
         codableProperties = [NSDictionary dictionaryWithDictionary:properties];
 
         // make the association atomically so that we don't need to bother with an @synchronize
-        objc_setAssociatedObject([self class], codablePropertiesKey, codableProperties, OBJC_ASSOCIATION_RETAIN);
+        objc_setAssociatedObject([self class], _cmd, codableProperties, OBJC_ASSOCIATION_RETAIN);
     }
 
     return codableProperties;
