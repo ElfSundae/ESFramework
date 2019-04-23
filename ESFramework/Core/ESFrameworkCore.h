@@ -7,6 +7,7 @@
 //
 
 #import "ESDefines.h"
+#import "ESWeakProxy.h"
 #import "ESValue.h"
 
 #import "NSObject+ESAutoCoding.h"

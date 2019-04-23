@@ -93,6 +93,8 @@
 		E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFNetworkReachabilityManager+ESAdditions.h"; sourceTree = "<group>"; };
 		E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFNetworkReachabilityManager+ESAdditions.m"; sourceTree = "<group>"; };
 		E779126C2269E83F006EF94D /* NSMutableDictionary+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ESAdditions.m"; sourceTree = "<group>"; };
+		E7791293226DFB8A006EF94D /* ESWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESWeakProxy.h; sourceTree = "<group>"; };
+		E7791294226DFB8A006EF94D /* ESWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESWeakProxy.m; sourceTree = "<group>"; };
 		E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
 		E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A38BC41C4DD82100972B01 /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
@@ -247,6 +249,8 @@
 			children = (
 				E76CA27F1CA50D1100EDBB8E /* ESDefines.h */,
 				E76CA2801CA50D1100EDBB8E /* ESDefines.m */,
+				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
+				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
 				E76CA2821CA50D1100EDBB8E /* ESValue.h */,
 				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
 			);

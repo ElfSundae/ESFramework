@@ -6,6 +6,7 @@
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
 - Made the main queue dispatching functions safer.
 - Added:
+    + `ESWeakProxy`
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`

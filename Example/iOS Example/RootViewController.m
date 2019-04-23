@@ -21,7 +21,7 @@
     [infoButton addEventHandler:^(id sender, UIControlEvents controlEvent) {
         [UIAlertController showAlertWithTitle:@"About"
                                       message:@"ESFramework\nhttp://0x123.com"
-                            cancelButtonTitle:ESLocalizedString(@"OK")];
+                            cancelButtonTitle:NSLocalizedString(@"OK", nil)];
     }
                forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];

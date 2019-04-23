@@ -23,4 +23,3 @@
 - (void)replaceObject:(ObjectType)object withObject:(ObjectType)anObject;
 
 @end
-
