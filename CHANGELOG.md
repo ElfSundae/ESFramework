@@ -7,6 +7,7 @@
 - Made the main queue dispatching functions safer.
 - Added:
     + `ESWeakProxy`
+    + `es_dispatch_is_main_queue()`
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`
@@ -17,10 +18,10 @@
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
     + `ESDispatchOnMainThreadSynchrony` => `es_dispatch_sync_main`
     + `ESDispatchOnGlobalQueue` => `es_dispatch_async_global_queue`
-    + `ESDispatchOnHighQueue` => `es_dispatch_async_high`
-    + `ESDispatchOnDefaultQueue` => `es_dispatch_async_default`
-    + `ESDispatchOnLowQueue` => `es_dispatch_async_low`
-    + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_background`
+    + `ESDispatchOnHighQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, block)`
+    + `ESDispatchOnDefaultQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, block)`
+    + `ESDispatchOnLowQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, block)`
+    + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block)`
     + `ESDispatchAfter` => `es_dispatch_after`
     + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`

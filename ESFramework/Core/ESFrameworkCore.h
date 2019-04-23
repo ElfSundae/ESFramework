@@ -7,6 +7,8 @@
 //
 
 #import "ESDefines.h"
+#import "ESHelpers.h"
+#import "NSInvocation+ESHelper.h"
 #import "ESWeakProxy.h"
 #import "ESValue.h"
 

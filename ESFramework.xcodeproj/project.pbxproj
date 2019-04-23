@@ -74,7 +74,6 @@
 		E76CA27B1CA50D1100EDBB8E /* ESApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESApp.h; sourceTree = "<group>"; };
 		E76CA27C1CA50D1100EDBB8E /* ESApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESApp.m; sourceTree = "<group>"; };
 		E76CA27F1CA50D1100EDBB8E /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
-		E76CA2801CA50D1100EDBB8E /* ESDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESDefines.m; sourceTree = "<group>"; };
 		E76CA2821CA50D1100EDBB8E /* ESValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
 		E76CA2831CA50D1100EDBB8E /* ESValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
 		E76CA28C1CA50D3600EDBB8E /* ESFrameworkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkCore.h; sourceTree = "<group>"; };
@@ -95,6 +94,10 @@
 		E779126C2269E83F006EF94D /* NSMutableDictionary+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ESAdditions.m"; sourceTree = "<group>"; };
 		E7791293226DFB8A006EF94D /* ESWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESWeakProxy.h; sourceTree = "<group>"; };
 		E7791294226DFB8A006EF94D /* ESWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESWeakProxy.m; sourceTree = "<group>"; };
+		E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+ESHelper.h"; sourceTree = "<group>"; };
+		E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+ESHelper.m"; sourceTree = "<group>"; };
+		E7791299226F032D006EF94D /* ESHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHelpers.h; sourceTree = "<group>"; };
+		E779129A226F032D006EF94D /* ESHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHelpers.m; sourceTree = "<group>"; };
 		E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
 		E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A38BC41C4DD82100972B01 /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
@@ -248,7 +251,10 @@
 			isa = PBXGroup;
 			children = (
 				E76CA27F1CA50D1100EDBB8E /* ESDefines.h */,
-				E76CA2801CA50D1100EDBB8E /* ESDefines.m */,
+				E7791299226F032D006EF94D /* ESHelpers.h */,
+				E779129A226F032D006EF94D /* ESHelpers.m */,
+				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
+				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
 				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
 				E76CA2821CA50D1100EDBB8E /* ESValue.h */,

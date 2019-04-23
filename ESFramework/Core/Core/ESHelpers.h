@@ -1,0 +1,314 @@
+//
+//  ESHelpers.h
+//  ESFramework
+//
+//  Created by Elf Sundae on 2019/04/23.
+//  Copyright © 2019 www.0x123.com. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import <Availability.h>
+#import <objc/runtime.h>
+
+#pragma mark - Helper Functions
+
+/**
+ * The current version of the operating system.
+ */
+FOUNDATION_EXTERN NSString *ESOSVersion(void);
+
+/**
+ * Returns a Boolean value indicating whether the version of the operating system
+ * on which the process is executing is the same or later than the given version.
+ */
+FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
+
+/**
+ * Creates UIColor from RGB values.
+ *
+ * e.g. `UIColorWithRGBA(123, 255, 200, 0.8);`
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+
+/**
+ * Creates UIColor from RGB values.
+ *
+ * e.g. `UIColorWithRGB(123, 255, 200);`
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
+
+/**
+ * Creates UIColor from RGB Hex number.
+ *
+ * e.g. `UIColorWithRGBAHex(0x7bffc8, 0.8);`
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
+
+/**
+ * Creates UIColor from RGB Hex number.
+ *
+ * e.g. `UIColorWithRGBHex(0x7bffc8);`
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
+
+/**
+ * Creates UIColor from the last six characters on which a hex string.
+ *
+ * e.g.
+ * @code
+ * UIColorWithRGBHexString(@"#33AF00", 1);
+ * UIColorWithRGBHexString(@"0x33AF00", 0.3);
+ * UIColorWithRGBHexString(@"33AF00", 0.9);
+ * @endcode
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
+
+/**
+ * Checks whether the given object is a non-empty string.
+ */
+FOUNDATION_EXTERN BOOL ESIsStringWithAnyText(id object);
+
+/**
+ * Checks whether the given object is a non-empty array.
+ */
+FOUNDATION_EXTERN BOOL ESIsArrayWithItems(id object);
+
+/**
+ * Checks whether the given object is a non-empty dictionary.
+ */
+FOUNDATION_EXTERN BOOL ESIsDictionaryWithItems(id object);
+
+/**
+ * Checks whether the given object is a non-empty set.
+ */
+FOUNDATION_EXTERN BOOL ESIsSetWithItems(id object);
+
+/**
+ * Creates a mutable set which does not retain references to the objects it contains.
+ */
+FOUNDATION_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
+
+/**
+ * Creates a mutable array which does not retain references to the objects it contains.
+ */
+FOUNDATION_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
+
+/**
+ * Creates a mutable dictionary which does not retain references to the objects it contains.
+ */
+FOUNDATION_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
+
+/**
+ * Generates a random number between min and max.
+ */
+FOUNDATION_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);
+
+/**
+ * Generates a random data using `SecRandomCopyBytes`.
+ */
+FOUNDATION_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
+
+/**
+ * Generates a random string that contains 0-9a-zA-Z.
+ */
+FOUNDATION_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
+
+/**
+ * Generates a random color.
+ */
+FOUNDATION_EXTERN UIColor *ESRandomColor(void);
+
+/**
+ * Generates an UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
+ */
+FOUNDATION_EXTERN NSString *ESUUID(void);
+
+/**
+ * Returns the current statusBar's height, in any orientation.
+ */
+FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
+
+/**
+ * Returns the current interface orientation of the application.
+ */
+FOUNDATION_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
+
+/**
+ * Returns the physical orientation of the device.
+ * This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
+ */
+FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
+
+/**
+ * Returns a recommended rotating transform for the given interface orientation.
+ */
+FOUNDATION_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
+
+/**
+ * Converts degrees to radians.
+ */
+FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
+
+/**
+ * Converts radians to degrees.
+ */
+FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
+
+/**
+ * Checks whether the current User Interface is Pad type.
+ */
+FOUNDATION_EXTERN BOOL ESIsPadUI(void);
+
+/**
+ * Checks whether the device is an iPad/iPad Mini/iPad Air.
+ */
+FOUNDATION_EXTERN BOOL ESIsPadDevice(void);
+
+/**
+ * Checks whether the current User Interface is Phone type.
+ */
+FOUNDATION_EXTERN BOOL ESIsPhoneUI(void);
+
+/**
+ * Checks whether the device is an iPhone/iPod Touch.
+ */
+FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
+
+/**
+ * Checks whether the device has retina screen.
+ */
+FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
+
+/**
+ * Returns the bundle for the given name.
+ */
+FOUNDATION_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
+
+/**
+ * Returns the full path relatived to the given bundle's resourcePath and the given relativePath.
+ */
+FOUNDATION_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
+
+/**
+ * Returns the full path for the resource path of the main bundle.
+ */
+FOUNDATION_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
+
+/**
+ * Returns the path of the Documents directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForDocuments(void);
+
+/**
+ * Returns the path relatived to the Documents directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
+
+/**
+ * Returns the path of the Library directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForLibrary(void);
+
+/**
+ * Returns the path relatived to the Library directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
+
+/**
+ * Returns the path of the Caches directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForCaches(void);
+
+/**
+ * Returns the path relatived to the Caches directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
+
+/**
+ * Returns the path of the temporary (tmp) directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForTemporary(void);
+
+/**
+ * Returns the path relatived to the temporary (tmp) directory.
+ */
+FOUNDATION_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
+
+/**
+ * Creates the directory at the given path if the directory does not exist.
+ */
+FOUNDATION_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
+
+/**
+ * Creates the directory at the given file path if the directory does not exist.
+ */
+FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
+
+/**
+ * Creates the directory at the given file URL if the directory does not exist.
+ */
+FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFileURL(NSURL *url);
+
+#pragma mark - GCD
+
+NS_INLINE BOOL es_dispatch_is_main_queue(void) {
+    return dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue());
+}
+
+NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
+    if (es_dispatch_is_main_queue()) {
+        block();
+    } else {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }
+}
+
+NS_INLINE void es_dispatch_sync_main(dispatch_block_t block) {
+    if (es_dispatch_is_main_queue()) {
+        block();
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), block);
+    }
+}
+
+NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block) {
+    dispatch_async(dispatch_get_global_queue(priority, 0), block);
+}
+
+NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), block);
+}
+
+#pragma mark - ObjC Runtime
+
+/**
+ * Swizzle instance methods.
+ * @code
+ * + (void)load {
+ *      ESSwizzleInstanceMethod(self, @selector(method:), @selector(newMethod:));
+ * }
+ * @endcode
+ */
+FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new_sel);
+
+/**
+ * Swizzle class methods.
+ * @code
+ * + (void)load {
+ *      ESSwizzleInstanceMethod(self, @selector(method:), @selector(newMethod:));
+ * }
+ * @endcode
+ */
+FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
+
+/**
+ * Invokes the given selector on the given target.
+ * @code
+ * NSString *result = nil;
+ * if (ESInvokeSelector(self, @selector(foo:), &result, @"arg")) {
+ *     NSLog(@"%@", result);
+ * }
+ * @endcode
+ * @return YES if invokes successfully, otherwise NO.
+ */
+FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
