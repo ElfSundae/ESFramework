@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Availability.h>
 #import <objc/runtime.h>
 
 /**
- * Profile the execution time.
+ * Profiles the execution time.
  */
 FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
 
@@ -52,7 +51,6 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
 /**
  * Creates UIColor from the last six characters on which a hex string.
  *
- * e.g.
  * @code
  * UIColorWithRGBHexString(@"#33AF00", 1);
  * UIColorWithRGBHexString(@"0x33AF00", 0.3);
@@ -307,6 +305,6 @@ FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
  *     NSLog(@"%@", result);
  * }
  * @endcode
- * @return YES if invokes successfully, otherwise NO.
+ * @return YES if invoked successfully, otherwise NO.
  */
 FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);

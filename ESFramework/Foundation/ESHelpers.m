@@ -27,12 +27,12 @@ BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {
-    return [UIColor colorWithRed:red / 255. green:green / 255. blue:blue / 255. alpha:alpha];
+    return [UIColor colorWithRed:red / 255 green:green / 255 blue:blue / 255 alpha:alpha];
 }
 
 UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
 {
-    return UIColorWithRGBA(red, green, blue, 1.);
+    return UIColorWithRGBA(red, green, blue, 1);
 }
 
 UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha)
@@ -42,7 +42,7 @@ UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha)
 
 UIColor *UIColorWithRGBHex(NSInteger rgbValue)
 {
-    return UIColorWithRGBAHex(rgbValue, 1.);
+    return UIColorWithRGBAHex(rgbValue, 1);
 }
 
 UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
@@ -121,7 +121,7 @@ UIColor *ESRandomColor(void)
     return [UIColor colorWithRed:(CGFloat)arc4random() / UINT_MAX
                            green:(CGFloat)arc4random() / UINT_MAX
                             blue:(CGFloat)arc4random() / UINT_MAX
-                           alpha:1.];
+                           alpha:1];
 }
 
 NSString *ESRandomStringOfLength(NSUInteger length)
@@ -186,12 +186,12 @@ CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orienta
 
 CGFloat ESDegreesToRadians(CGFloat degrees)
 {
-    return (degrees * M_PI / 180.0);
+    return (degrees * M_PI / 180);
 }
 
 CGFloat ESRadiansToDegrees(CGFloat radians)
 {
-    return (radians * 180.0 / M_PI);
+    return (radians * 180 / M_PI);
 }
 
 BOOL ESIsPadUI(void)
