@@ -21,7 +21,7 @@
  */
 @interface ESStoreProductViewControllerManager : NSObject <SKStoreProductViewControllerDelegate>
 
-    ES_SINGLETON_DEC(sharedManager);
++ (instancetype)sharedManager;
 
 + (BOOL)storeProductViewControllerExists;
 
