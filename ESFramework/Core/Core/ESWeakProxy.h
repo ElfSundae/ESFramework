@@ -11,42 +11,33 @@
 /*!
  * ESWeakProxy can be used to hold a weak object.
  *
- * Usage #1
- It also can be used to avoid
- * retain cycles, for example, setting a ESWeakProxy instance to the target of
- * the NSTimer or CADisplayLink instance.
- */
-
-/**
- ESWeakProxy can be used to hold a weak object.
-
- Usage #1:
-    Access an associated object with "zeroing weak reference".
-    @code
-    // a weak property in the category
-    @property (nonatomic, weak) __weak id<SomeProtocol> delegate;
-
-    // setter
-    objc_setAssociatedObject(
-        self,
-        delegateKey,
-        delegate ? [ESWeakProxy proxyWithTarget:delegate] : nil,
-        OBJC_ASSOCIATION_RETAIN_NONATOMIC
-    );
-
-    // getter
-    [(ESWeakProxy *)objc_getAssociatedObject(self, delegateKey) target];
-    @endcode
-
- Usage #2:
-    Avoid retain cycles, such as the target of the NSTimer or CADisplayLink instance.
-    @code
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:10
-                        target:[ESWeakProxy proxyWithTarget:self]
-                        selector:@selector(timerAction:)
-                        userInfo:nil
-                        repeats:YES];
-    @endcode
+ * Usage #1:
+ * Access an associated object with "zeroing weak reference".
+ * @code
+ * // a weak property in the category
+ * @property (nonatomic, weak) __weak id<SomeProtocol> delegate;
+ *
+ * // setter
+ * objc_setAssociatedObject(
+ *     self,
+ *     delegateKey,
+ *     delegate ? [ESWeakProxy proxyWithTarget:delegate] : nil,
+ *     OBJC_ASSOCIATION_RETAIN_NONATOMIC
+ * );
+ *
+ * // getter
+ * [(ESWeakProxy *)objc_getAssociatedObject(self, delegateKey) target];
+ * @endcode
+ *
+ * Usage #2:
+ * Avoid retain cycles, such as the target of the NSTimer or CADisplayLink instance.
+ * @code
+ * self.timer = [NSTimer scheduledTimerWithTimeInterval:10
+ *                     target:[ESWeakProxy proxyWithTarget:self]
+ *                     selector:@selector(timerAction:)
+ *                     userInfo:nil
+ *                     repeats:YES];
+ * @endcode
  */
 @interface ESWeakProxy : NSProxy
 

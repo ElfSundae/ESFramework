@@ -15,7 +15,7 @@ static const void *_esRefreshControlKey = &_esRefreshControlKey;
 
 - (ESRefreshControl *)es_refreshControl
 {
-    return ESGetAssociatedObject(self, _esRefreshControlKey);
+    return objc_getAssociatedObject(self, _esRefreshControlKey);
 }
 
 - (void)setEs_refreshControl:(ESRefreshControl *)refreshControl
@@ -27,7 +27,7 @@ static const void *_esRefreshControlKey = &_esRefreshControlKey;
     if (refreshControl) {
         [self addSubview:refreshControl];
     }
-    ESSetAssociatedObject(self, _esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, _esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

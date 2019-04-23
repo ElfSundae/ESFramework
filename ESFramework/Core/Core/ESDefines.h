@@ -384,24 +384,9 @@ FOUNDATION_EXTERN void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch
 #pragma mark - ObjC Runtime
 
 /**
- * Specifies a "zeroing weak reference" to the associated object.
- */
-FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
-
-/**
  * Defines a key for the associcated object.
  */
 #define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
-
-/**
- * Returns the value associated with a given object for a given key.
- */
-FOUNDATION_EXTERN id ESGetAssociatedObject(id target, const void *key);
-
-/**
- * Sets an associated value for a given object using a given key and association policy.
- */
-FOUNDATION_EXTERN void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy);
 
 /**
  * @code

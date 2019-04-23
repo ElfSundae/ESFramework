@@ -381,41 +381,6 @@ void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - ObjC Runtime
 
-const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK = (01407);
-
-/*!
- * `_ESWeakObjectHolder` stores the weak object.
- */
-@interface _ESWeakObjectHolder : NSObject
-@property (nonatomic, weak) __weak id weakObject;
-@end
-
-@implementation _ESWeakObjectHolder
-@end
-
-id ESGetAssociatedObject(id target, const void *key)
-{
-    id object = objc_getAssociatedObject(target, key);
-    if ([object isKindOfClass:[_ESWeakObjectHolder class]]) {
-        object = [(_ESWeakObjectHolder *)object weakObject];
-    }
-    return object;
-}
-
-void ESSetAssociatedObject(id target, const void *key, id value, objc_AssociationPolicy policy)
-{
-    if (OBJC_ASSOCIATION_WEAK == policy) {
-        _ESWeakObjectHolder *weakHolder = objc_getAssociatedObject(target, key);
-        if (!weakHolder) {
-            weakHolder = [[_ESWeakObjectHolder alloc] init];
-            objc_setAssociatedObject(target, key, weakHolder, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        }
-        weakHolder.weakObject = value;
-    } else {
-        objc_setAssociatedObject(target, key, value, policy);
-    }
-}
-
 void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
 {
     Method origMethod = class_getInstanceMethod(c, orig);

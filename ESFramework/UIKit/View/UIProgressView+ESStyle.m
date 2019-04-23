@@ -22,13 +22,13 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
 - (CGFloat)_esResizableHeight
 {
     float ret = 0;
-    ESFloatVal(&ret, ESGetAssociatedObject(self, _esProgressViewResizableKey));
+    ESFloatVal(&ret, objc_getAssociatedObject(self, _esProgressViewResizableKey));
     return (CGFloat)ret;
 }
 
 - (void)set_esResizableHeight:(CGFloat)_esResizableHeight
 {
-    ESSetAssociatedObject(self, _esProgressViewResizableKey, @(_esResizableHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, _esProgressViewResizableKey, @(_esResizableHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

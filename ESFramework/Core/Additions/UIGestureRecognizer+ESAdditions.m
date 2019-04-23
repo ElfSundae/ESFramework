@@ -8,21 +8,21 @@
 
 #import "UIGestureRecognizer+ESAdditions.h"
 
+static const void *__es_HandlerKey = &__es_HandlerKey;
+
 @interface UIGestureRecognizer (_ESAdditionsInternal)
 @property (nonatomic, copy) ESUIGestureRecognizerHandler __es_Handler;
 @end
-
-static const void *__es_HandlerKey = &__es_HandlerKey;
 
 @implementation UIGestureRecognizer (ESAdditions)
 
 - (ESUIGestureRecognizerHandler)__es_Handler
 {
-    return ESGetAssociatedObject(self, __es_HandlerKey);
+    return objc_getAssociatedObject(self, __es_HandlerKey);
 }
 - (void)set__es_Handler:(ESUIGestureRecognizerHandler)handler
 {
-    ESSetAssociatedObject(self, __es_HandlerKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, __es_HandlerKey, handler, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (instancetype)initWithHandler:(ESUIGestureRecognizerHandler)handler
