@@ -7,7 +7,7 @@
 //
 
 #import "NSObject+ESAutoCoding.h"
-#import "ESMacros.h"
+#import "ESHelpers.h"
 
 @implementation NSObject (ESAutoCoding)
 

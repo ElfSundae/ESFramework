@@ -7,6 +7,7 @@
 //
 
 #import <CoreFoundation/CoreFoundation.h>
+#import "ESHelpers.h"
 #import "ESApp.h"
 #import "ESValue.h"
 #import "UIDevice+ESInfo.h"

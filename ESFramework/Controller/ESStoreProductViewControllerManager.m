@@ -7,6 +7,8 @@
 //
 
 #import "ESStoreProductViewControllerManager.h"
+#import "ESMacros.h"
+#import "ESHelpers.h"
 #import "ESStoreHelper.h"
 #import "ESApp.h"
 

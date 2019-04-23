@@ -7,7 +7,6 @@
 //
 
 #import "UIColor+ESAdditions.h"
-#import "ESMacros.h"
 
 @implementation UIColor (ESAdditions)
 

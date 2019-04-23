@@ -7,6 +7,7 @@
 //
 
 #import "UIGestureRecognizer+ESAdditions.h"
+#import "ESHelpers.h"
 
 static const void *__es_HandlerKey = &__es_HandlerKey;
 

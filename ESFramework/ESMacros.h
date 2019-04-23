@@ -9,9 +9,6 @@
 #ifndef ESFramework_ESMacros_h
 #define ESFramework_ESMacros_h
 
-#import "ESHelpers.h"
-#import "NSInvocation+ESHelper.h"
-
 #if !defined(NSLog)
 #if DEBUG
 #define NSLog(fmt, ...) NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)

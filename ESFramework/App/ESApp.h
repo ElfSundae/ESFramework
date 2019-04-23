@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESMacros.h"
-
 /**
  * Posts when received remote notifications.
  * Keys for userInfo: UIApplicationLaunchOptionsRemoteNotificationKey or ESAppRemoteNotificationKey

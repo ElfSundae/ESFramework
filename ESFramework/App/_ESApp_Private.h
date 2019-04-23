@@ -10,6 +10,7 @@
 #define ESAPP_PRIVATE_H
 
 #import "ESApp.h"
+#import "ESHelpers.h"
 
 /**
  * Hack UIApplicationDelegate instance for swizzling notification methods.

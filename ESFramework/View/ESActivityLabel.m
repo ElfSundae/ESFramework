@@ -7,8 +7,8 @@
 //
 
 #import "ESActivityLabel.h"
-#import "ESMacros.h"
 #import "UIView+ESShortcut.h"
+#import "ESHelpers.h"
 
 @implementation ESActivityLabel
 
