@@ -17,9 +17,7 @@ void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMilliseco
     gettimeofday(&begin, NULL);
     block();
     gettimeofday(&end, NULL);
-    completion(
-        (double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000
-    );
+    completion((double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000);
 }
 
 NSString *ESOSVersion(void)
