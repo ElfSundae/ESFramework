@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESFrameworkCore.h>
+#import <ESFramework/ESFramework.h>
 
 @interface App : ESApp
 

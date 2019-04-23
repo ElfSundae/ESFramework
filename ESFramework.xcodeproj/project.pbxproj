@@ -10,8 +10,6 @@
 		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
 		E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESWebViewUserAgentFetcher.h; sourceTree = "<group>"; };
 		E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _ESWebViewUserAgentFetcher.m; sourceTree = "<group>"; };
-		E74717C51E1CE601009D30FF /* UITabBarController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ESAdditions.h"; sourceTree = "<group>"; };
-		E74717C61E1CE601009D30FF /* UITabBarController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ESAdditions.m"; sourceTree = "<group>"; };
 		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
@@ -38,34 +36,6 @@
 		E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2521CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2531CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2581CA50D1100EDBB8E /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2591CA50D1100EDBB8E /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA25A1CA50D1100EDBB8E /* UIColor+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA25B1CA50D1100EDBB8E /* UIColor+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA25C1CA50D1100EDBB8E /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA25D1CA50D1100EDBB8E /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA25E1CA50D1100EDBB8E /* UIDevice+ESInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESInfo.h"; sourceTree = "<group>"; };
-		E76CA25F1CA50D1100EDBB8E /* UIDevice+ESInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESInfo.m"; sourceTree = "<group>"; };
-		E76CA2601CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2611CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2621CA50D1100EDBB8E /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2631CA50D1100EDBB8E /* UIImage+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2641CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+ESFixOrientation.h"; sourceTree = "<group>"; };
-		E76CA2651CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+ESFixOrientation.m"; sourceTree = "<group>"; };
-		E76CA2661CA50D1100EDBB8E /* UIImageView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2671CA50D1100EDBB8E /* UIImageView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2681CA50D1100EDBB8E /* UINavigationController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2691CA50D1100EDBB8E /* UINavigationController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA26A1CA50D1100EDBB8E /* UITableView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA26B1CA50D1100EDBB8E /* UITableView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA26C1CA50D1100EDBB8E /* UIToolbar+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA26D1CA50D1100EDBB8E /* UIToolbar+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA26E1CA50D1100EDBB8E /* UIView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA26F1CA50D1100EDBB8E /* UIView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2701CA50D1100EDBB8E /* UIView+ESShortcut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ESShortcut.h"; sourceTree = "<group>"; };
-		E76CA2711CA50D1100EDBB8E /* UIView+ESShortcut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESShortcut.m"; sourceTree = "<group>"; };
-		E76CA2721CA50D1100EDBB8E /* UIViewController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESAdditions.h"; sourceTree = "<group>"; };
-		E76CA2731CA50D1100EDBB8E /* UIViewController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+AppInfo.m"; sourceTree = "<group>"; };
 		E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESApp+Helper.m"; sourceTree = "<group>"; };
 		E76CA2771CA50D1100EDBB8E /* _ESApp_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESApp_Private.h; sourceTree = "<group>"; };
@@ -76,7 +46,6 @@
 		E76CA27F1CA50D1100EDBB8E /* ESDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESDefines.h; sourceTree = "<group>"; };
 		E76CA2821CA50D1100EDBB8E /* ESValue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESValue.h; sourceTree = "<group>"; };
 		E76CA2831CA50D1100EDBB8E /* ESValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESValue.m; sourceTree = "<group>"; };
-		E76CA28C1CA50D3600EDBB8E /* ESFrameworkCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkCore.h; sourceTree = "<group>"; };
 		E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESAutoCoding.h"; sourceTree = "<group>"; };
 		E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAutoCoding.m"; sourceTree = "<group>"; };
 		E76CA2901CA51C5300EDBB8E /* ESAppStoreTerritories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESAppStoreTerritories.h; sourceTree = "<group>"; };
@@ -98,10 +67,39 @@
 		E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+ESHelper.m"; sourceTree = "<group>"; };
 		E7791299226F032D006EF94D /* ESHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHelpers.h; sourceTree = "<group>"; };
 		E779129A226F032D006EF94D /* ESHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHelpers.m; sourceTree = "<group>"; };
-		E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
-		E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
+		E779129D226F3DCB006EF94D /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
+		E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
+		E779129F226F3DCB006EF94D /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912A0226F3DCB006EF94D /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912A3226F3DCB006EF94D /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912A4226F3DCB006EF94D /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912A5226F3DCB006EF94D /* UIDevice+ESInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESInfo.h"; sourceTree = "<group>"; };
+		E77912A6226F3DCB006EF94D /* UIDevice+ESInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESInfo.m"; sourceTree = "<group>"; };
+		E77912A7226F3DCB006EF94D /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912A8226F3DCB006EF94D /* UIGestureRecognizer+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912AA226F3DCB006EF94D /* UIImage+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912AB226F3DCB006EF94D /* UIImagePickerController+ESFixOrientation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+ESFixOrientation.h"; sourceTree = "<group>"; };
+		E77912AC226F3DCB006EF94D /* UIImagePickerController+ESFixOrientation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+ESFixOrientation.m"; sourceTree = "<group>"; };
+		E77912AD226F3DCB006EF94D /* UIImageView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912AE226F3DCB006EF94D /* UIImageView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912AF226F3DCB006EF94D /* UINavigationController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912B0226F3DCB006EF94D /* UINavigationController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912B1226F3DCB006EF94D /* UITabBarController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912B2226F3DCB006EF94D /* UITabBarController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912B3226F3DCB006EF94D /* UITableView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912B4226F3DCB006EF94D /* UITableView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912B5226F3DCB006EF94D /* UIToolbar+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIToolbar+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912B6226F3DCB006EF94D /* UIToolbar+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIToolbar+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912B7226F3DCB006EF94D /* UIView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912B8226F3DCB006EF94D /* UIView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESAdditions.m"; sourceTree = "<group>"; };
+		E77912B9226F3DCB006EF94D /* UIView+ESShortcut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+ESShortcut.h"; sourceTree = "<group>"; };
+		E77912BA226F3DCB006EF94D /* UIView+ESShortcut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+ESShortcut.m"; sourceTree = "<group>"; };
+		E77912BB226F3DCB006EF94D /* UIViewController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912BC226F3DCB006EF94D /* UIViewController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A38BC41C4DD82100972B01 /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
-		E7A38C8C1C4DF9D500972B01 /* ESFrameworkUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUIKit.h; sourceTree = "<group>"; };
 		E7A38C911C4DFA1A00972B01 /* ESMoviePlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMoviePlayerViewController.h; sourceTree = "<group>"; };
 		E7A38C921C4DFA1A00972B01 /* ESMoviePlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESMoviePlayerViewController.m; sourceTree = "<group>"; };
 		E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESTableViewController.h; sourceTree = "<group>"; };
@@ -140,23 +138,34 @@
 			sourceTree = "<group>";
 			tabWidth = 4;
 		};
-		E76CA22F1CA50D1100EDBB8E /* Core */ = {
+		E76CA2741CA50D1100EDBB8E /* App */ = {
 			isa = PBXGroup;
 			children = (
-				E76CA28C1CA50D3600EDBB8E /* ESFrameworkCore.h */,
-				E76CA27E1CA50D1100EDBB8E /* Core */,
-				E76CA2301CA50D1100EDBB8E /* Additions */,
-				E76CA2741CA50D1100EDBB8E /* App */,
-				E76CA28F1CA51C5300EDBB8E /* iTunesStore */,
+				E76CA27B1CA50D1100EDBB8E /* ESApp.h */,
+				E76CA2771CA50D1100EDBB8E /* _ESApp_Private.h */,
+				E76CA27C1CA50D1100EDBB8E /* ESApp.m */,
+				E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */,
+				E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */,
+				E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */,
+				E76CA27A1CA50D1100EDBB8E /* ESApp+Notifications.m */,
+				E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */,
+				E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */,
+				E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */,
 			);
-			indentWidth = 4;
-			path = Core;
+			path = App;
 			sourceTree = "<group>";
-			tabWidth = 4;
 		};
-		E76CA2301CA50D1100EDBB8E /* Additions */ = {
+		E76CA27E1CA50D1100EDBB8E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E76CA2821CA50D1100EDBB8E /* ESValue.h */,
+				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
+				E7791299226F032D006EF94D /* ESHelpers.h */,
+				E779129A226F032D006EF94D /* ESHelpers.m */,
+				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
+				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
+				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
+				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
 				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,
 				E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */,
 				E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */,
@@ -192,75 +201,8 @@
 				E76CA24F1CA50D1100EDBB8E /* NSTimer+ESAdditions.m */,
 				E76CA2521CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.h */,
 				E76CA2531CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.m */,
-				E76CA25A1CA50D1100EDBB8E /* UIColor+ESAdditions.h */,
-				E76CA25B1CA50D1100EDBB8E /* UIColor+ESAdditions.m */,
-				E76CA2621CA50D1100EDBB8E /* UIImage+ESAdditions.h */,
-				E76CA2631CA50D1100EDBB8E /* UIImage+ESAdditions.m */,
-				E76CA25E1CA50D1100EDBB8E /* UIDevice+ESInfo.h */,
-				E76CA25F1CA50D1100EDBB8E /* UIDevice+ESInfo.m */,
-				E79F36611E14C5BF00DF115C /* UIAlertController+ESAdditions.h */,
-				E79F36621E14C5BF00DF115C /* UIAlertController+ESAdditions.m */,
-				E76CA2601CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.h */,
-				E76CA2611CA50D1100EDBB8E /* UIGestureRecognizer+ESAdditions.m */,
-				E76CA25C1CA50D1100EDBB8E /* UIControl+ESAdditions.h */,
-				E76CA25D1CA50D1100EDBB8E /* UIControl+ESAdditions.m */,
-				E76CA26E1CA50D1100EDBB8E /* UIView+ESAdditions.h */,
-				E76CA26F1CA50D1100EDBB8E /* UIView+ESAdditions.m */,
-				E76CA2701CA50D1100EDBB8E /* UIView+ESShortcut.h */,
-				E76CA2711CA50D1100EDBB8E /* UIView+ESShortcut.m */,
-				E76CA2581CA50D1100EDBB8E /* UIBarButtonItem+ESAdditions.h */,
-				E76CA2591CA50D1100EDBB8E /* UIBarButtonItem+ESAdditions.m */,
-				E76CA2661CA50D1100EDBB8E /* UIImageView+ESAdditions.h */,
-				E76CA2671CA50D1100EDBB8E /* UIImageView+ESAdditions.m */,
-				E76CA26A1CA50D1100EDBB8E /* UITableView+ESAdditions.h */,
-				E76CA26B1CA50D1100EDBB8E /* UITableView+ESAdditions.m */,
-				E76CA26C1CA50D1100EDBB8E /* UIToolbar+ESAdditions.h */,
-				E76CA26D1CA50D1100EDBB8E /* UIToolbar+ESAdditions.m */,
-				E76CA2721CA50D1100EDBB8E /* UIViewController+ESAdditions.h */,
-				E76CA2731CA50D1100EDBB8E /* UIViewController+ESAdditions.m */,
-				E76CA2681CA50D1100EDBB8E /* UINavigationController+ESAdditions.h */,
-				E76CA2691CA50D1100EDBB8E /* UINavigationController+ESAdditions.m */,
-				E76CA2641CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.h */,
-				E76CA2651CA50D1100EDBB8E /* UIImagePickerController+ESFixOrientation.m */,
-				E74717C51E1CE601009D30FF /* UITabBarController+ESAdditions.h */,
-				E74717C61E1CE601009D30FF /* UITabBarController+ESAdditions.m */,
-				E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */,
-				E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */,
 			);
-			path = Additions;
-			sourceTree = "<group>";
-		};
-		E76CA2741CA50D1100EDBB8E /* App */ = {
-			isa = PBXGroup;
-			children = (
-				E76CA27B1CA50D1100EDBB8E /* ESApp.h */,
-				E76CA2771CA50D1100EDBB8E /* _ESApp_Private.h */,
-				E76CA27C1CA50D1100EDBB8E /* ESApp.m */,
-				E76CA2791CA50D1100EDBB8E /* ESApp+Subclassing.m */,
-				E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */,
-				E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */,
-				E76CA27A1CA50D1100EDBB8E /* ESApp+Notifications.m */,
-				E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */,
-				E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */,
-				E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
-		E76CA27E1CA50D1100EDBB8E /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				E76CA27F1CA50D1100EDBB8E /* ESDefines.h */,
-				E7791299226F032D006EF94D /* ESHelpers.h */,
-				E779129A226F032D006EF94D /* ESHelpers.m */,
-				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
-				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
-				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
-				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
-				E76CA2821CA50D1100EDBB8E /* ESValue.h */,
-				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
-			);
-			path = Core;
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 		E76CA28F1CA51C5300EDBB8E /* iTunesStore */ = {
@@ -278,24 +220,65 @@
 			isa = PBXGroup;
 			children = (
 				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
-				E76CA22F1CA50D1100EDBB8E /* Core */,
-				E7A38C8B1C4DF9C800972B01 /* UIKit */,
+				E76CA27F1CA50D1100EDBB8E /* ESDefines.h */,
+				E76CA27E1CA50D1100EDBB8E /* Foundation */,
+				E779129B226F3C65006EF94D /* Networking */,
+				E779129C226F3DCB006EF94D /* UIKit */,
+				E76CA2741CA50D1100EDBB8E /* App */,
+				E76CA28F1CA51C5300EDBB8E /* iTunesStore */,
+				E7A38C971C4DFA1A00972B01 /* View */,
+				E7A38C901C4DFA1A00972B01 /* Controller */,
 			);
 			path = ESFramework;
 			sourceTree = "<group>";
 		};
-		E7A38C8B1C4DF9C800972B01 /* UIKit */ = {
+		E779129B226F3C65006EF94D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E7A38C8C1C4DF9D500972B01 /* ESFrameworkUIKit.h */,
-				E7A38CAE1C4DFEE300972B01 /* RefreshControl */,
-				E7A38C971C4DFA1A00972B01 /* View */,
-				E7A38C901C4DFA1A00972B01 /* Controller */,
+				E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */,
+				E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */,
 			);
-			indentWidth = 4;
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E779129C226F3DCB006EF94D /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E779129D226F3DCB006EF94D /* UIAlertController+ESAdditions.h */,
+				E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */,
+				E77912A5226F3DCB006EF94D /* UIDevice+ESInfo.h */,
+				E77912A6226F3DCB006EF94D /* UIDevice+ESInfo.m */,
+				E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */,
+				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
+				E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */,
+				E77912AA226F3DCB006EF94D /* UIImage+ESAdditions.m */,
+				E77912A7226F3DCB006EF94D /* UIGestureRecognizer+ESAdditions.h */,
+				E77912A8226F3DCB006EF94D /* UIGestureRecognizer+ESAdditions.m */,
+				E77912A3226F3DCB006EF94D /* UIControl+ESAdditions.h */,
+				E77912A4226F3DCB006EF94D /* UIControl+ESAdditions.m */,
+				E77912B9226F3DCB006EF94D /* UIView+ESShortcut.h */,
+				E77912BA226F3DCB006EF94D /* UIView+ESShortcut.m */,
+				E77912B7226F3DCB006EF94D /* UIView+ESAdditions.h */,
+				E77912B8226F3DCB006EF94D /* UIView+ESAdditions.m */,
+				E779129F226F3DCB006EF94D /* UIBarButtonItem+ESAdditions.h */,
+				E77912A0226F3DCB006EF94D /* UIBarButtonItem+ESAdditions.m */,
+				E77912AD226F3DCB006EF94D /* UIImageView+ESAdditions.h */,
+				E77912AE226F3DCB006EF94D /* UIImageView+ESAdditions.m */,
+				E77912B3226F3DCB006EF94D /* UITableView+ESAdditions.h */,
+				E77912B4226F3DCB006EF94D /* UITableView+ESAdditions.m */,
+				E77912B5226F3DCB006EF94D /* UIToolbar+ESAdditions.h */,
+				E77912B6226F3DCB006EF94D /* UIToolbar+ESAdditions.m */,
+				E77912BB226F3DCB006EF94D /* UIViewController+ESAdditions.h */,
+				E77912BC226F3DCB006EF94D /* UIViewController+ESAdditions.m */,
+				E77912AF226F3DCB006EF94D /* UINavigationController+ESAdditions.h */,
+				E77912B0226F3DCB006EF94D /* UINavigationController+ESAdditions.m */,
+				E77912AB226F3DCB006EF94D /* UIImagePickerController+ESFixOrientation.h */,
+				E77912AC226F3DCB006EF94D /* UIImagePickerController+ESFixOrientation.m */,
+				E77912B1226F3DCB006EF94D /* UITabBarController+ESAdditions.h */,
+				E77912B2226F3DCB006EF94D /* UITabBarController+ESAdditions.m */,
+			);
 			path = UIKit;
 			sourceTree = "<group>";
-			tabWidth = 4;
 		};
 		E7A38C901C4DFA1A00972B01 /* Controller */ = {
 			isa = PBXGroup;
@@ -313,6 +296,7 @@
 		E7A38C971C4DFA1A00972B01 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E7A38CAE1C4DFEE300972B01 /* RefreshControl */,
 				E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */,
 				E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */,
 				E7A38C981C4DFA1A00972B01 /* ESActivityLabel.h */,
