@@ -389,7 +389,7 @@ FOUNDATION_EXTERN void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch
 FOUNDATION_EXTERN const objc_AssociationPolicy OBJC_ASSOCIATION_WEAK;
 
 /**
- * Defines a key for the Associcated Object.
+ * Defines a key for the associcated object.
  */
 #define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
 
