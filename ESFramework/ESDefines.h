@@ -71,14 +71,11 @@
 /**
  * Make weak references to break "retain cycles".
  */
-#define ESWeak_(var, weakVar)                   __weak __typeof(&*var) weakVar = var;
-#define ESWeak(var)                             ESWeak_(var, weak_##var);
-#define ESWeakSelf                              ESWeak(self);
+#define ESWeak(var)     __weak __typeof(&*var) weak_##var = var;
+#define ESWeakSelf      ESWeak(self);
 
-#define ESStrong_DoNotCheckNil(weakVar, var)    __typeof(&*weakVar) var = weakVar;
-#define ESStrong_(weakVar, var)                 ESStrong_DoNotCheckNil(weakVar, var); if (!var) return;
-#define ESStrong(var)                           ESStrong_(weak_##var, _##var);
-#define ESStrongSelf                            ESStrong(self);
+#define ESStrong(var)   __strong __typeof(&*weak_##var) _##var = weak_##var;
+#define ESStrongSelf    ESStrong(self); if (!_self) return;
 
 /**
  * Bits-mask helper.
