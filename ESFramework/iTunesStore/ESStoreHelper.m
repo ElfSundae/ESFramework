@@ -7,7 +7,7 @@
 //
 
 #import "ESStoreHelper.h"
-#import "ESDefines.h"
+#import "ESMacros.h"
 #import "ESValue.h"
 #import "NSString+ESAdditions.h"
 

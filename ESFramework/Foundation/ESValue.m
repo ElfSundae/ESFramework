@@ -7,7 +7,7 @@
 //
 
 #import "ESValue.h"
-#import "ESDefines.h"
+#import "ESHelpers.h"
 
 #define isKindOfNSNumberOrNSString(obj) ([obj isKindOfClass:NSNumber.class] || [obj isKindOfClass:NSString.class])
 

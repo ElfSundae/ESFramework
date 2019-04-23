@@ -7,7 +7,7 @@
 //
 
 #import "UIProgressView+ESStyle.h"
-#import "ESDefines.h"
+#import "ESMacros.h"
 #import "ESValue.h"
 #import "UIImage+ESAdditions.h"
 

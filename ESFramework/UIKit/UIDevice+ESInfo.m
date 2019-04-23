@@ -12,7 +12,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
-#import "ESDefines.h"
+#import "ESMacros.h"
 #import "ESValue.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>

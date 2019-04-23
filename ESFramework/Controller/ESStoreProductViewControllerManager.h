@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <StoreKit/StoreKit.h>
-#import "ESDefines.h"
+#import "ESMacros.h"
 
 // TODO: 可以提前dismiss StoreProductViewController
 

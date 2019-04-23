@@ -6,14 +6,12 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#ifndef ESFramework_ESDefines_h
-#define ESFramework_ESDefines_h
+#ifndef ESFramework_ESMacros_h
+#define ESFramework_ESMacros_h
 
 #import <mach/mach_time.h>
 #import "ESHelpers.h"
 #import "NSInvocation+ESHelper.h"
-
-#pragma mark - Log
 
 #if (!defined(NSLog))
 #if DEBUG
@@ -32,9 +30,29 @@
 #endif
 
 /**
+ * Make weak references to break "retain cycles".
+ */
+#define ESWeak(var)     __weak __typeof(&*var) weak_##var = var;
+#define ESWeakSelf      ESWeak(self);
+
+#define ESStrong(var)   __strong __typeof(&*weak_##var) _##var = weak_##var;
+#define ESStrongSelf    ESStrong(self); if (!_self) return;
+
+/**
+ * Bits-mask helper.
+ */
+#define ESMaskIsSet(value, flag)    (((value) & (flag)) == (flag))
+#define ESMaskSet(value, flag)      ((value) |= (flag));
+#define ESMaskUnset(value, flag)    ((value) &= ~(flag));
+
+/**
+ * Defines a key for the associcated object.
+ */
+#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
+
+/**
  * Log the execution time.
  */
-
 #if DEBUG
 #define ES_STOPWATCH_BEGIN(stopwatch_begin_var) uint64_t stopwatch_begin_var = mach_absolute_time();
 #define ES_STOPWATCH_END(stopwatch_begin_var) { \
@@ -50,9 +68,6 @@
 #define ES_STOPWATCH_END(stopwatch_begin_var)
 #endif
 
-/// =============================================
-/// @name Constants
-/// =============================================
 #pragma mark - Constants
 
 #define ES_MINUTE   (60)
@@ -63,30 +78,4 @@
 #define ES_MONTH    (2635200) /* 30.5 days */
 #define ES_YEAR     (31536000) /* 365 days */
 
-/// =============================================
-/// @name Helper Macros
-/// =============================================
-#pragma mark - Helper Macros
-
-/**
- * Make weak references to break "retain cycles".
- */
-#define ESWeak(var)     __weak __typeof(&*var) weak_##var = var;
-#define ESWeakSelf      ESWeak(self);
-
-#define ESStrong(var)   __strong __typeof(&*weak_##var) _##var = weak_##var;
-#define ESStrongSelf    ESStrong(self); if (!_self) return;
-
-/**
- * Bits-mask helper.
- */
-#define ESMaskIsSet(value, flag)        (((value) & (flag)) == (flag))
-#define ESMaskSet(value, flag)          ((value) |= (flag));
-#define ESMaskUnset(value, flag)        ((value) &= ~(flag));
-
-/**
- * Defines a key for the associcated object.
- */
-#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
-
-#endif /* ESFramework_ESDefines_h */
+#endif /* ESFramework_ESMacros_h */

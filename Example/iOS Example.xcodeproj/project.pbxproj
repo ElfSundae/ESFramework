@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5AFAEE8C9BB025EEC8CEEC9 /* libPods-iOS Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 735C08D1E7FB6828A3E2A328 /* libPods-iOS Example.a */; };
 		E75AE19C1BA66474007F4561 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19B1BA66474007F4561 /* App.m */; };
 		E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19E1BA6655A007F4561 /* RootViewController.m */; };
 		E779126F226D6CB8006EF94D /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E779126E226D6CB8006EF94D /* TestViewController.m */; };
@@ -15,16 +16,15 @@
 		E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78976061BA4E8220034B065 /* LaunchScreen.xib */; };
 		E7FDC96C22647D3F00D8CC25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FDC96A22647D3F00D8CC25 /* User.m */; };
 		F1AC76651D60DF8E046845EE /* libPods-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEBC3D04CA7DE3B5DA3D377E /* libPods-Example.a */; };
-		FE1D5C778BE54170830A029E /* libPods-iOS Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E00A4B6041A27B6070E5FCD2 /* libPods-iOS Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0CB3FFDA85F962F479C7DB86 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
+		735C08D1E7FB6828A3E2A328 /* libPods-iOS Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0A43A1F06C49DD7B295F3D /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C02E97F03ADAF1E6E81956E7 /* Pods-iOS Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Example/Pods-iOS Example.release.xcconfig"; sourceTree = "<group>"; };
 		C5F71045437D9A55429BF15A /* Pods-iOS Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Example/Pods-iOS Example.debug.xcconfig"; sourceTree = "<group>"; };
 		CEBC3D04CA7DE3B5DA3D377E /* libPods-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E00A4B6041A27B6070E5FCD2 /* libPods-iOS Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iOS Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75AE19A1BA66474007F4561 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
 		E75AE19B1BA66474007F4561 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		E75AE19D1BA6655A007F4561 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1AC76651D60DF8E046845EE /* libPods-Example.a in Frameworks */,
-				FE1D5C778BE54170830A029E /* libPods-iOS Example.a in Frameworks */,
+				D5AFAEE8C9BB025EEC8CEEC9 /* libPods-iOS Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				CEBC3D04CA7DE3B5DA3D377E /* libPods-Example.a */,
-				E00A4B6041A27B6070E5FCD2 /* libPods-iOS Example.a */,
+				735C08D1E7FB6828A3E2A328 /* libPods-iOS Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

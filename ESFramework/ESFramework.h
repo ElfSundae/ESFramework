@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "ESDefines.h"
+#import "ESMacros.h"
 #import "ESValue.h"
 #import "ESHelpers.h"
 #import "ESWeakProxy.h"

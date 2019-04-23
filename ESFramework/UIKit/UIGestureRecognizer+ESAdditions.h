@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESDefines.h"
+#import "ESMacros.h"
 
 typedef void (^ESUIGestureRecognizerHandler)(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint locationInView);
 

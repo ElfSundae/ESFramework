@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESDefines.h"
+#import "ESMacros.h"
 
 @interface UIView (ESAdditions)
 

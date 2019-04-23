@@ -7,7 +7,7 @@
 //
 
 #import "NSURLComponents+ESAdditions.h"
-#import "ESDefines.h"
+#import "ESMacros.h"
 #import "ESValue.h"
 
 @implementation NSURLComponents (ESAdditions)

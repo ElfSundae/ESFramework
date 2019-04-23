@@ -8,7 +8,7 @@
 
 #import "NSUserDefaults+ESAdditions.h"
 #import <NestedObjectSetters/NestedObjectSetters.h>
-#import "ESDefines.h"
+#import "ESMacros.h"
 
 @implementation NSUserDefaults (ESAdditions)
 

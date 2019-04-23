@@ -7,7 +7,7 @@
 //
 
 #import "UIView+ESShortcut.h"
-#import "ESDefines.h"
+#import "ESMacros.h"
 
 @implementation UIView (ESShortcut)
 

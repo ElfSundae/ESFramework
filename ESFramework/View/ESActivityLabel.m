@@ -7,7 +7,7 @@
 //
 
 #import "ESActivityLabel.h"
-#import "ESDefines.h"
+#import "ESMacros.h"
 #import "UIView+ESShortcut.h"
 
 @implementation ESActivityLabel

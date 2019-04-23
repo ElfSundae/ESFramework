@@ -7,7 +7,7 @@
 //
 
 #import "UIScrollView+ESRefreshControl.h"
-#import "ESDefines.h"
+#import "ESMacros.h"
 
 static const void *_esRefreshControlKey = &_esRefreshControlKey;
 
