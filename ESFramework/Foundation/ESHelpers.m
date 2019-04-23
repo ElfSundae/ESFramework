@@ -7,8 +7,20 @@
 //
 
 #import "ESHelpers.h"
+#import <sys/time.h>
 #import <Security/SecRandom.h>
 #import "NSInvocation+ESHelper.h"
+
+void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond))
+{
+    struct timeval begin, end;
+    gettimeofday(&begin, NULL);
+    block();
+    gettimeofday(&end, NULL);
+    completion(
+        (double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000
+    );
+}
 
 NSString *ESOSVersion(void)
 {

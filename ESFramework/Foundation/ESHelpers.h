@@ -10,7 +10,10 @@
 #import <Availability.h>
 #import <objc/runtime.h>
 
-#pragma mark - Helper Functions
+/**
+ * Profile the execution time.
+ */
+FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
 
 /**
  * The current version of the operating system.
