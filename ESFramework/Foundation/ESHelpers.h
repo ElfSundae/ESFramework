@@ -16,11 +16,6 @@
 FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
 
 /**
- * The current version of the operating system.
- */
-FOUNDATION_EXTERN NSString *ESOSVersion(void);
-
-/**
  * Returns a Boolean value indicating whether the version of the operating system
  * on which the process is executing is the same or later than the given version.
  */

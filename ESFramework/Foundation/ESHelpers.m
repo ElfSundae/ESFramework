@@ -20,14 +20,9 @@ void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMilliseco
     completion((double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000);
 }
 
-NSString *ESOSVersion(void)
-{
-    return [[UIDevice currentDevice] systemVersion];
-}
-
 BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
 {
-    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion, 0, 0}];
+    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion}];
 }
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
