@@ -12,21 +12,9 @@ An Effective & Swingy Framework for iOS.
 
 ## Installation
 
-- Via [CocoaPods](http://cocoapods.org) (Recommended):
-
-    ```
-    pod "ESFramework", "~> 2.6"
-    ```
-
-    Subspecs:
-
-    ```
-    ESFramework/Core
-    ESFramework/UIKit
-    ```
-
-- Manually:
-  Add `ESFramework` folder to your project.
+```ruby
+pod 'ESFramework', '~> 2.6'
+```
 
 ## License
 
