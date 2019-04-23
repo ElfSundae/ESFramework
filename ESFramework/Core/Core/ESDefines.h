@@ -384,11 +384,6 @@ FOUNDATION_EXTERN void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch
 #pragma mark - ObjC Runtime
 
 /**
- * Defines a key for the associcated object.
- */
-#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
-
-/**
  * @code
  * + (void)load {
  *      ESSwizzleInstanceMethod(self, @selector(method:), @selector(method_new:));
