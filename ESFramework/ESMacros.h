@@ -12,7 +12,7 @@
 #import "ESHelpers.h"
 #import "NSInvocation+ESHelper.h"
 
-#if (!defined(NSLog))
+#if !defined(NSLog)
 #if DEBUG
 #define NSLog(fmt, ...) NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
@@ -20,7 +20,7 @@
 #endif
 #endif
 
-#if (!defined(NSLogIf))
+#if !defined(NSLogIf)
 #if DEBUG
 #define NSLogIf(condition, fmt, ...) if ((condition)) { NSLog(fmt, ##__VA_ARGS__); }
 #else
