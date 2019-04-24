@@ -22,48 +22,28 @@
     [NestedObjectSetters setObject:object onObject:self forKeyPath:keyPath createIntermediateDictionaries:createIntermediates replaceIntermediateObjects:replaceIntermediates];
 }
 
-+ (NSDictionary *)registeredDefaults;
+- (NSDictionary<NSString *, id> *)registeredDefaults
 {
-    return [[self standardUserDefaults] volatileDomainForName:NSRegistrationDomain];
+    return [self volatileDomainForName:NSRegistrationDomain];
 }
 
-+ (void)unregisterDefaultsForKey:(NSString *)defaultName
+- (void)replaceRegisteredDefaultsWith:(NSDictionary<NSString *, id> *)registration
 {
-    if (!defaultName) {
-        return;
-    }
-    NSMutableDictionary *registered = [self registeredDefaults].mutableCopy;
-    [registered removeObjectForKey:defaultName];
-    [self replaceRegisteredDefaults:[registered copy]];
+    [self setVolatileDomain:registration forName:NSRegistrationDomain];
 }
 
-+ (void)unregisterDefaultsForKeys:(NSArray *)defaultNames
+- (void)setRegisteredObject:(id)value forKey:(NSString *)defaultName
 {
-    if (!ESIsArrayWithItems(defaultNames)) {
-        return;
-    }
-    NSMutableDictionary *registered = [self registeredDefaults].mutableCopy;
+    NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
+    [registered setValue:value forKey:defaultName];
+    [self replaceRegisteredDefaultsWith:registered.copy];
+}
+
+- (void)unregisterDefaultsForKeys:(NSArray<NSString *> *)defaultNames
+{
+    NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
     [registered removeObjectsForKeys:defaultNames];
-    [self replaceRegisteredDefaults:[registered copy]];
-}
-
-+ (void)replaceRegisteredObject:(id)value forKey:(NSString *)defaultName
-{
-    if (!defaultName) {
-        return;
-    }
-    NSMutableDictionary *registered = [self registeredDefaults].mutableCopy;
-    if (value) {
-        [registered setObject:value forKey:defaultName];
-    } else {
-        [registered removeObjectForKey:defaultName];
-    }
-    [self replaceRegisteredDefaults:[registered copy]];
-}
-
-+ (void)replaceRegisteredDefaults:(NSDictionary *)registrationDictionary
-{
-    [[self standardUserDefaults] setVolatileDomain:registrationDictionary forName:NSRegistrationDomain];
+    [self replaceRegisteredDefaultsWith:registered.copy];
 }
 
 @end

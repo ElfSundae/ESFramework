@@ -28,39 +28,32 @@
  */
 - (void)setObject:(id)object forKeyPath:(NSString *)keyPath createIntermediateDictionaries:(BOOL)createIntermediates replaceIntermediateObjects:(BOOL)replaceIntermediates;
 
-/// =============================================
-/// @name NSRegistrationDomain
-/// =============================================
+#pragma mark - NSRegistrationDomain Accessor
 
 /**
  * Returns the dictionary for the registration domain (NSRegistrationDomain).
  */
-+ (NSDictionary *)registeredDefaults;
-
-/**
- * Removes a given defaultName and its associated value from the registration dictionary.
- */
-+ (void)unregisterDefaultsForKey:(NSString *)defaultName;
-
-/**
- * Removes from the registration dictionary entries specified by elements in a given defaultNames array.
- */
-+ (void)unregisterDefaultsForKeys:(NSArray *)defaultNames;
-
-/**
- * Replaces the associated value of the given defaultName from the registration dictionary.
- * If the value is nil, it will unregister(remove) the given defaultName.
- * If the defaultName does not exist, it will register(add) the given defaultName and value.
- */
-+ (void)replaceRegisteredObject:(id)value forKey:(NSString *)defaultName;
+- (NSDictionary<NSString *, id> *)registeredDefaults;
 
 /**
  * Sets the dictionary for the registration domain (NSRegistrationDomain).
  *
- * @warning This method will replace the whole entried of the registration domain (NSRegistrationDomain),
- * including the values which system generated, such as "AppleLanguages", "NSLanguages", etc.
- * So use it carefully.
+ * @warning This method will replace the whole entried of the registration
+ * domain (NSRegistrationDomain), including the values which system generated,
+ * such as "AppleLanguages", "NSLanguages", etc. So use it carefully.
  */
-+ (void)replaceRegisteredDefaults:(NSDictionary *)registrationDictionary;
+- (void)replaceRegisteredDefaultsWith:(NSDictionary<NSString *, id> *)registration;
+
+/**
+ * Sets the associated value of the given defaultName from the registration dictionary.
+ * If the defaultName does not exist, it will register(add) the given defaultName and value.
+ * If the value is nil, it will unregister(remove) the given defaultName.
+ */
+- (void)setRegisteredObject:(id)value forKey:(NSString *)defaultName;
+
+/**
+ * Removes from the registration dictionary entries specified by elements in a given defaultNames array.
+ */
+- (void)unregisterDefaultsForKeys:(NSArray<NSString *> *)defaultNames;
 
 @end
