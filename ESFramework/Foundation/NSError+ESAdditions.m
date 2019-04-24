@@ -34,14 +34,13 @@
 
 - (BOOL)isLocalNetworkError
 {
-    return ([self.domain isEqualToString:NSURLErrorDomain] &&
-            (NSURLErrorTimedOut == self.code ||
-             NSURLErrorCannotFindHost == self.code ||
-             NSURLErrorCannotConnectToHost == self.code ||
-             NSURLErrorNetworkConnectionLost == self.code ||
-             NSURLErrorDNSLookupFailed == self.code ||
-             NSURLErrorNotConnectedToInternet == self.code)
-            );
+    return [self.domain isEqualToString:NSURLErrorDomain] &&
+           (NSURLErrorTimedOut == self.code ||
+            NSURLErrorCannotFindHost == self.code ||
+            NSURLErrorCannotConnectToHost == self.code ||
+            NSURLErrorNetworkConnectionLost == self.code ||
+            NSURLErrorDNSLookupFailed == self.code ||
+            NSURLErrorNotConnectedToInternet == self.code);
 }
 
 @end
