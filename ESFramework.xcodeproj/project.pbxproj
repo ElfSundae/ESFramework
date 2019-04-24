@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+ESAdditions.h"; sourceTree = "<group>"; };
+		E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+ESAdditions.m"; sourceTree = "<group>"; };
 		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
 		E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESWebViewUserAgentFetcher.h; sourceTree = "<group>"; };
 		E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _ESWebViewUserAgentFetcher.m; sourceTree = "<group>"; };
@@ -160,12 +162,14 @@
 			children = (
 				E7791299226F032D006EF94D /* ESHelpers.h */,
 				E779129A226F032D006EF94D /* ESHelpers.m */,
-				E76CA2821CA50D1100EDBB8E /* ESValue.h */,
-				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
-				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
-				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
 				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
 				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
+				E76CA2821CA50D1100EDBB8E /* ESValue.h */,
+				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
+				E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */,
+				E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */,
+				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
+				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
 				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,
 				E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */,
 				E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */,

@@ -8,17 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- * A shared NSNumberFormatter instance.
- */
-FOUNDATION_EXTERN NSNumberFormatter *ESSharedNumberFormatter(void);
-
-/**
- * Convert NSString to NSNumber using `ESSharedNumberFormatter()`
- */
-FOUNDATION_EXTERN NSNumber *NSNumberFromString(NSString *string);
-
-
 /// =============================================
 /// @name ESValueWithDefault
 /// =============================================

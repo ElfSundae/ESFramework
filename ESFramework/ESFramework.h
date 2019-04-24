@@ -7,10 +7,12 @@
 //
 
 #import "ESMacros.h"
+
 #import "ESHelpers.h"
-#import "ESValue.h"
-#import "ESWeakProxy.h"
 #import "NSInvocation+ESHelper.h"
+#import "ESValue.h"
+#import "NSNumberFormatter+ESAdditions.h"
+#import "ESWeakProxy.h"
 #import "NSObject+ESAutoCoding.h"
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSString+ESAdditions.h"

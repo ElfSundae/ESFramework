@@ -26,6 +26,7 @@
     + `ESDispatchAfter` => `es_dispatch_after`
     + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
+    + `ESSharedNumberFormatter` => `+[NSNumberFormatter defaultFormatter]`
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
     + NSString methods: `-URLEncode` => `-URLEncoded`, `-URLDecode` => `-URLDecoded`
     + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
@@ -45,6 +46,7 @@
     + `ESOSVersion`
     + `ESGetAssociatedObject()`, `ESSetAssociatedObject()`, `OBJC_ASSOCIATION_WEAK`, use `objc_getAssociatedObject`, `objc_setAssociatedObject` directly
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
+    + `NSNumberFromString()`
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
