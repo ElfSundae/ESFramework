@@ -31,18 +31,14 @@
 #pragma mark - NSRegistrationDomain Accessor
 
 /**
- * Returns the dictionary for the registration domain (NSRegistrationDomain).
- */
-- (NSDictionary<NSString *, id> *)registeredDefaults;
-
-/**
- * Sets the dictionary for the registration domain (NSRegistrationDomain).
+ * The dictionary for the registration domain (NSRegistrationDomain).
  *
- * @warning This method will replace the whole entried of the registration
- * domain (NSRegistrationDomain), including the values which system generated,
- * such as "AppleLanguages", "NSLanguages", etc. So use it carefully.
+ * @warning Setting registeredDefaults will replace the whole entried of the
+ * registration domain (NSRegistrationDomain), including the values which
+ * system generated, such as "AppleLanguages", "NSLanguages", etc. So use it
+ * carefully.
  */
-- (void)replaceRegisteredDefaultsWith:(NSDictionary<NSString *, id> *)registration;
+@property (nonatomic, copy) NSDictionary<NSString *, id> *registeredDefaults;
 
 /**
  * Sets the associated value of the given defaultName from the registration dictionary.
@@ -54,6 +50,6 @@
 /**
  * Removes from the registration dictionary entries specified by elements in a given defaultNames array.
  */
-- (void)unregisterDefaultsForKeys:(NSArray<NSString *> *)defaultNames;
+- (void)removeRegisteredObjectsForKeys:(NSArray<NSString *> *)defaultNames;
 
 @end

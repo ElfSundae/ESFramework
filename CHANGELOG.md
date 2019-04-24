@@ -40,6 +40,7 @@
     + `-[NSMutableDictionary es_setValue:forKeyPath:]` => `-setObject:forKeyPath:`
     + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
     + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
+    + NSUserDefaults methods: `+registeredDefaults` => `-registeredDefaults`, `+registerDefaults:` => `-setRegisteredDefaults:`, `+unregisterDefaultsForKeys:` => `-removeRegisteredObjectsForKeys:`, `+replaceRegisteredObject:forKey:` => `-setRegisteredObject:forKey:`
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`

@@ -26,23 +26,23 @@
     return [self volatileDomainForName:NSRegistrationDomain];
 }
 
-- (void)replaceRegisteredDefaultsWith:(NSDictionary<NSString *, id> *)registration
+- (void)setRegisteredDefaults:(NSDictionary<NSString *, id> *)registeredDefaults
 {
-    [self setVolatileDomain:registration forName:NSRegistrationDomain];
+    [self setVolatileDomain:registeredDefaults.copy forName:NSRegistrationDomain];
 }
 
 - (void)setRegisteredObject:(id)value forKey:(NSString *)defaultName
 {
     NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
     [registered setValue:value forKey:defaultName];
-    [self replaceRegisteredDefaultsWith:registered.copy];
+    self.registeredDefaults = registered;
 }
 
-- (void)unregisterDefaultsForKeys:(NSArray<NSString *> *)defaultNames
+- (void)removeRegisteredObjectsForKeys:(NSArray<NSString *> *)defaultNames
 {
     NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
     [registered removeObjectsForKeys:defaultNames];
-    [self replaceRegisteredDefaultsWith:registered.copy];
+    self.registeredDefaults = registered;
 }
 
 @end
