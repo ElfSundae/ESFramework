@@ -29,15 +29,14 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
     static dispatch_once_t onceTokenCheckAppFreshLaunch;
     dispatch_once(&onceTokenCheckAppFreshLaunch, ^{
-        __gPreviousVersion = ESStringValue([NSUserDefaults objectForKey:ESAppCheckFreshLaunchUserDefaultsKey]);
-        ESIsStringWithAnyText(__gPreviousVersion) || (__gPreviousVersion = nil);
+        __gPreviousVersion = [NSUserDefaults.standardUserDefaults stringForKey:ESAppCheckFreshLaunchUserDefaultsKey];
         NSString *currentVersion = [ESApp appVersion];
 
         if (__gPreviousVersion && [__gPreviousVersion isEqualToString:currentVersion]) {
             __gIsFreshLaunch = NO;
         } else {
             __gIsFreshLaunch = YES;
-            [NSUserDefaults setObjectAsynchrony:currentVersion forKey:ESAppCheckFreshLaunchUserDefaultsKey];
+            [NSUserDefaults.standardUserDefaults setObject:currentVersion forKey:ESAppCheckFreshLaunchUserDefaultsKey];
         }
     });
 

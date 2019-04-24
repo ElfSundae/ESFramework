@@ -22,41 +22,9 @@
     [NestedObjectSetters setObject:object onObject:self forKeyPath:keyPath createIntermediateDictionaries:createIntermediates replaceIntermediateObjects:replaceIntermediates];
 }
 
-+ (id)objectForKey:(NSString *)defaultName
-{
-    return [[self standardUserDefaults] objectForKey:defaultName];
-}
-
-+ (void)setObject:(id)value forKey:(NSString *)defaultName
-{
-    [[self standardUserDefaults] setObject:value forKey:defaultName];
-    [[self standardUserDefaults] synchronize];
-}
-
-+ (void)setObjectAsynchrony:(id)value forKey:(NSString *)defaultName
-{
-    [[self standardUserDefaults] setObject:value forKey:defaultName];
-}
-
-+ (void)removeObjectForKey:(NSString *)defaultName
-{
-    [[self standardUserDefaults] removeObjectForKey:defaultName];
-    [[self standardUserDefaults] synchronize];
-}
-
-+ (void)removeObjectAsynchronyForKey:(NSString *)defaultName
-{
-    [[self standardUserDefaults] removeObjectForKey:defaultName];
-}
-
 + (NSDictionary *)registeredDefaults;
 {
     return [[self standardUserDefaults] volatileDomainForName:NSRegistrationDomain];
-}
-
-+ (void)registerDefaults:(NSDictionary *)registrationDictionary
-{
-    [[self standardUserDefaults] registerDefaults:registrationDictionary];
 }
 
 + (void)unregisterDefaultsForKey:(NSString *)defaultName

@@ -66,6 +66,7 @@
     + NSSet methods: `each`, `match`, `matches`, `matchWith`
     + `-isEmpty` on NSString, NSArray, NSDictionary, NSOrderedSet, NSSet
     + `+[NSDate timeIntervalSince1970]`
+    + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
