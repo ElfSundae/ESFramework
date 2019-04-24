@@ -16,7 +16,7 @@
  * "EEE',' dd MMM yyyy HH':'mm':'ss z"
  * Sun, 06 Nov 1994 08:49:37 GMT
  *
- * @see HTTP-date: [RFC 7231, section 7.1.1.2: Date](https://tools.ietf.org/html/rfc7231#section-7.1.1.2)
+ * HTTP-date: [RFC 7231, section 7.1.1.2: Date](https://tools.ietf.org/html/rfc7231#section-7.1.1.2)
  */
 + (NSDateFormatter *)RFC1123DateFormatter;
 
