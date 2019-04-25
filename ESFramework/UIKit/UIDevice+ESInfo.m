@@ -54,7 +54,7 @@
 {
     NSArray *carrierNames = nil;
     CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-    if (@available(iOS 13.0, *)) {
+    if (@available(iOS 12.0, *)) {
         carrierNames = [networkInfo.serviceSubscriberCellularProviders.allValues valueForKeyPath:@"@unionOfObjects.carrierName"];
     } else {
         NSString *name = networkInfo.subscriberCellularProvider.carrierName;
