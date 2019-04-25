@@ -72,23 +72,18 @@
     return self.carrierNames.firstObject;
 }
 
-+ (NSString *)currentWiFiSSID
+- (nullable NSString *)WiFiSSID
 {
     NSString *ssid = nil;
-#if !TARGET_IPHONE_SIMULATOR
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
     NSArray *interfaces = CFBridgingRelease(CNCopySupportedInterfaces());
     for (NSString *name in interfaces) {
-        CFStringRef interface = (__bridge CFStringRef)name;         // @"en0"
+        CFStringRef interface = (__bridge CFStringRef)name; // @"en0"
         NSDictionary *info = CFBridgingRelease(CNCopyCurrentNetworkInfo(interface));
-#pragma clang diagnostic pop
         if (info[@"SSID"]) {
             ssid = info[@"SSID"];
             break;
         }
     }
-#endif
     return ssid;
 }
 

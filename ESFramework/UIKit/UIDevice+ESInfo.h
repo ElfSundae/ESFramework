@@ -43,9 +43,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString *)carrierName;
 
 /**
- * Returns the current Wi-Fi SSID
+ * Returns the WiFi SSID.
+ *
+ * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
+ * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
-+ (NSString *)currentWiFiSSID;
+- (nullable NSString *)WiFiSSID;
 
 /**
  * Detect whether this device has been jailbroken.

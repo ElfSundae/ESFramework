@@ -101,7 +101,7 @@ static NSDate *__gAppLaunchDate = nil;
         result[@"carrier"] = carrier;
     }
     result[@"network"] = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString;
-    NSString *ssid = [UIDevice currentWiFiSSID];
+    NSString *ssid = [UIDevice.currentDevice WiFiSSID];
     if (ssid) {
         result[@"ssid"] = ssid;
     }
