@@ -343,11 +343,11 @@
 			};
 			buildConfigurationList = E7143A601BA5B3560001BE70 /* Build configuration list for PBXProject "ESFramework" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
+				Base,
 			);
 			mainGroup = E7143A5C1BA5B3560001BE70;
 			productRefGroup = E7143A5C1BA5B3560001BE70;
