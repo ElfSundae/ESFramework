@@ -13,7 +13,7 @@
 /**
  * Returns a string representation of the current network reachability status.
  *
- * Possibility: "None", "WWAN", "WiFi", "Unknown".
+ * Possible values: "None", "WWAN", "WiFi", "Unknown".
  */
 - (NSString *)networkReachabilityStatusString;
 
