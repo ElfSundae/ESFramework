@@ -9,7 +9,6 @@
 #import "UIDevice+ESInfo.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
-#import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/sysctl.h>
 #import <mach/mach.h>
@@ -70,19 +69,25 @@
     return self.carrierNames.firstObject;
 }
 
+- (nullable NSDictionary *)WiFiNetworkInfo
+{
+    CFArrayRef interfaces = CNCopySupportedInterfaces();
+    if (interfaces) {
+        CFDictionaryRef networkInfo = CNCopyCurrentNetworkInfo((CFStringRef)CFArrayGetValueAtIndex(interfaces, 0));
+        CFRelease(interfaces);
+        return CFBridgingRelease(networkInfo);
+    }
+    return nil;
+}
+
 - (nullable NSString *)WiFiSSID
 {
-    NSString *ssid = nil;
-    NSArray *interfaces = CFBridgingRelease(CNCopySupportedInterfaces());
-    for (NSString *name in interfaces) {
-        CFStringRef interface = (__bridge CFStringRef)name; // @"en0"
-        NSDictionary *info = CFBridgingRelease(CNCopyCurrentNetworkInfo(interface));
-        if (info[@"SSID"]) {
-            ssid = info[@"SSID"];
-            break;
-        }
-    }
-    return ssid;
+    return self.WiFiNetworkInfo[(__bridge NSString *)kCNNetworkInfoKeySSID];
+}
+
+- (nullable NSString *)WiFiBSSID
+{
+    return self.WiFiNetworkInfo[(__bridge NSString *)kCNNetworkInfoKeyBSSID];
 }
 
 - (BOOL)isJailbroken
