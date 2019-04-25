@@ -14,7 +14,7 @@
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
     + `-[NSUserDefaults setObject:forKeyPath:]`
-    + UIDevice methods: `-carrierNames`, `-WiFiNetworkInfo`, `-WiFiSSID`, `-WiFiBSSID`
+    + UIDevice methods: `-WiFiNetworkInfo`, `-WiFiSSID`, `-WiFiBSSID`
 - Renamed:
     + `ES_STOPWATCH_BEGIN` `ES_STOPWATCH_END` => `ESBenchmark()`
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`

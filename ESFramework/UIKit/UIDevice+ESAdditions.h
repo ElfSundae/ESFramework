@@ -64,12 +64,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isJailbroken;
 
 /**
- * Returns an array contains the name of the subscriber's cellular service provider.
- * e.g. @[ @"ChinaNet", @"AT&T" ]
- */
-@property (nullable, nonatomic, copy, readonly) NSArray<NSString *> *carrierNames;
-
-/**
  * Returns the name of the subscriber's main (first) cellular service provider.
  * e.g. @"AT&T"
  */

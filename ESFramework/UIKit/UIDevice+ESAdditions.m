@@ -114,25 +114,9 @@
     return _isJailbroken;
 }
 
-- (nullable NSArray<NSString *> *)carrierNames
-{
-    NSArray *carrierNames = nil;
-    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-    if (@available(iOS 12.0, *)) {
-        carrierNames = [networkInfo.serviceSubscriberCellularProviders.allValues
-                        valueForKeyPath:@"@unionOfObjects.carrierName"];
-    } else {
-        NSString *name = networkInfo.subscriberCellularProvider.carrierName;
-        if (name) {
-            carrierNames = @[ name ];
-        }
-    }
-    return carrierNames.count ? carrierNames : nil;
-}
-
 - (nullable NSString *)carrierName
 {
-    return self.carrierNames.firstObject;
+    return CTTelephonyNetworkInfo.new.subscriberCellularProvider.carrierName;
 }
 
 - (nullable NSDictionary *)WiFiNetworkInfo
