@@ -43,7 +43,7 @@
     + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
     + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
     + NSUserDefaults methods: `+registeredDefaults` => `-registeredDefaults`, `+registerDefaults:` => `-setRegisteredDefaults:`, `+unregisterDefaultsForKeys:` => `-removeRegisteredObjectsForKeys:`, `+replaceRegisteredObject:forKey:` => `-setRegisteredObject:forKey:`
-    + UIDevice class methods to instance methods: `+platform` => `-platform`, `+carrierString` => `-carrierName`, `+currentWiFiSSID` => `-WiFiSSID`, `+isJailbroken` => `-isJailbroken`, `+diskTotalSize` => `-diskSize`
+    + UIDevice class methods to instance methods: `+platform` => `-platform`, `+carrierString` => `-carrierName`, `+currentWiFiSSID` => `-WiFiSSID`, `+isJailbroken` => `-isJailbroken`, `+diskTotalSize` => `-diskSize`, `+screenSizeString:` => `ESScreenSizeString()`
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
@@ -72,7 +72,7 @@
     + `+[NSDate timeIntervalSince1970]`
     + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
-    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`, `+isRetinaScreen`
+    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`, `+isRetinaScreen`, `+isIPhoneRetina35InchScreen`, `+isIPhoneRetina4InchScreen`, `+isIPhoneRetina47InchScreen`, `+isIPhoneRetina55InchScreen`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
