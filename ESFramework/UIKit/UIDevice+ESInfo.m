@@ -9,7 +9,6 @@
 #import "UIDevice+ESInfo.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
-#import <CoreGraphics/CoreGraphics.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/sysctl.h>
@@ -116,24 +115,29 @@
     return _isJailbroken;
 }
 
-+ (unsigned long long)diskFreeSize
+- (nullable id)es_attributeOfFileSystem:(NSFileAttributeKey)key
 {
-    return ESULongLongValue([[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][NSFileSystemFreeSize]);
+    return [NSFileManager.defaultManager attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][key];
 }
 
-+ (NSString *)diskFreeSizeString
+- (long long)diskFreeSize
 {
-    return [NSByteCountFormatter stringFromByteCount:(long long)[self diskFreeSize] countStyle:NSByteCountFormatterCountStyleFile];
+    return [[self es_attributeOfFileSystem:NSFileSystemFreeSize] longLongValue];
 }
 
-+ (unsigned long long)diskTotalSize
+- (NSString *)diskFreeSizeString
 {
-    return ESULongLongValue([[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][NSFileSystemSize]);
+    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSize countStyle:NSByteCountFormatterCountStyleFile];
 }
 
-+ (NSString *)diskTotalSizeString
+- (long long)diskSize
 {
-    return [NSByteCountFormatter stringFromByteCount:(long long)[self diskTotalSize] countStyle:NSByteCountFormatterCountStyleFile];
+    return [[self es_attributeOfFileSystem:NSFileSystemSize] longLongValue];
+}
+
+- (NSString *)diskSizeString
+{
+    return [NSByteCountFormatter stringFromByteCount:self.diskSize countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 + (CGSize)screenSizeInPoints

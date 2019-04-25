@@ -51,10 +51,27 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isJailbroken;
 
-+ (unsigned long long)diskFreeSize;
-+ (NSString *)diskFreeSizeString;
-+ (unsigned long long)diskTotalSize;
-+ (NSString *)diskTotalSizeString;
+/**
+ * Returns the free size of the disk.
+ */
+- (long long)diskFreeSize;
+
+/**
+ * Returns a string whose value indicates the free size of the disk,
+ * e.g. "11.23 GB"
+ */
+- (NSString *)diskFreeSizeString;
+
+/**
+ * Returns the total size of the disk.
+ */
+- (long long)diskSize;
+
+/**
+ * Returns a string whose value indicates the total size of the disk,
+ * e.g. "63.99 GB"
+ */
+- (NSString *)diskSizeString;
 
 /**
  * The width and height in points
