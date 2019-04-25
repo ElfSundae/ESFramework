@@ -20,10 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIDevice (ESInfo)
 
-/// =============================================
-/// @name Basic information
-/// =============================================
-
 /**
  * e.g. @"iPhone3,1", @"x86_64".
  * http://theiphonewiki.com/wiki/Models
@@ -55,18 +51,10 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isJailbroken;
 
-/// =============================================
-/// @name Disk space
-/// =============================================
-
 + (unsigned long long)diskFreeSize;
 + (NSString *)diskFreeSizeString;
 + (unsigned long long)diskTotalSize;
 + (NSString *)diskTotalSizeString;
-
-/// =============================================
-/// @name Screen
-/// =============================================
 
 /**
  * The width and height in points
@@ -93,32 +81,27 @@ NS_ASSUME_NONNULL_BEGIN
 // iPhone 6 Plus, 1242x2208
 + (BOOL)isIPhoneRetina55InchScreen;
 
-/// =============================================
-/// @name Locale
-/// =============================================
-
 + (NSTimeZone *)localTimeZone;
 
 + (NSInteger)localTimeZoneFromGMT;
 
 + (NSLocale *)currentLocale;
+
 /**
  * e.g. @"zh", @"en"
  */
 + (NSString *)currentLocaleLanguageCode;
+
 /**
  * e.g. @"CN", @"US"
  */
 + (NSString *)currentLocaleCountryCode;
+
 /**
  * languageCode_countryCode.
  * e.g. @"zh_CN", @"en_US"
  */
 + (NSString *)currentLocaleIdentifier;
-
-/// =============================================
-/// @name Network Interfaces
-/// =============================================
 
 /**
  * Returns network interfaces names and addresses.
