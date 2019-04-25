@@ -45,9 +45,8 @@
         sysctlbyname("hw.machine", NULL, &size, NULL, 0);
         char *machine = (char *)malloc(size);
         sysctlbyname("hw.machine", machine, &size, NULL, 0);
-        NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+        _platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
         free(machine);
-        _platform = platform;
     });
     return _platform;
 }
@@ -87,9 +86,9 @@
     return ssid;
 }
 
-+ (BOOL)isJailbroken
+- (BOOL)isJailbroken
 {
-    static BOOL __isJailBroken = NO;
+    static BOOL _isJailbroken = NO;
 #if !TARGET_IPHONE_SIMULATOR
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -104,20 +103,17 @@
         ];
         for (NSString *path in jbApps) {
             if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                __isJailBroken = YES;
+                _isJailbroken = YES;
                 break;
             }
         }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated"
-        if (!__isJailBroken && 0 == popen("ls", "r")) {
-            __isJailBroken = YES;
+        if (!_isJailbroken && 0 == popen("ls", "r")) {
+            _isJailbroken = YES;
         }
-#pragma clang diagnostic pop
     });
 #endif
-    return __isJailBroken;
+    return _isJailbroken;
 }
 
 + (BOOL)isPhoneDevice
