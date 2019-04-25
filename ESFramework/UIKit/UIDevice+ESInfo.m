@@ -150,36 +150,6 @@
     return UIScreen.mainScreen.currentMode.size;
 }
 
-- (NSTimeZone *)localTimeZone
-{
-    return [NSTimeZone localTimeZone];
-}
-
-- (NSInteger)localTimeZoneFromGMT
-{
-    return ([[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
-}
-
-- (NSLocale *)currentLocale
-{
-    return [NSLocale currentLocale];
-}
-
-- (NSString *)currentLocaleLanguageCode
-{
-    return [[self currentLocale] objectForKey:NSLocaleLanguageCode];
-}
-
-- (NSString *)currentLocaleCountryCode
-{
-    return [[self currentLocale] objectForKey:NSLocaleCountryCode];
-}
-
-- (NSString *)currentLocaleIdentifier
-{
-    return [[self currentLocale] localeIdentifier];
-}
-
 - (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];

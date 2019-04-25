@@ -83,28 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (CGSize)screenSizeInPixels;
 
-- (NSTimeZone *)localTimeZone;
-
-- (NSInteger)localTimeZoneFromGMT;
-
-- (NSLocale *)currentLocale;
-
-/**
- * e.g. @"zh", @"en"
- */
-- (NSString *)currentLocaleLanguageCode;
-
-/**
- * e.g. @"CN", @"US"
- */
-- (NSString *)currentLocaleCountryCode;
-
-/**
- * languageCode_countryCode.
- * e.g. @"zh_CN", @"en_US"
- */
-- (NSString *)currentLocaleIdentifier;
-
 /**
  * Returns network interfaces names and addresses.
  *

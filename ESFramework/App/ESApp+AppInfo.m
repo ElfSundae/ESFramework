@@ -95,8 +95,8 @@ static NSDate *__gAppLaunchDate = nil;
     result[@"jailbroken"] = [device isJailbroken] ? @1 : @0;
     result[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
     result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
-    result[@"timezone_gmt"] = @([device localTimeZoneFromGMT]);
-    result[@"locale"] = [device currentLocaleIdentifier];
+    result[@"timezone_gmt"] = @([[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
+    result[@"locale"] = NSLocale.currentLocale.localeIdentifier;
     NSString *carrier = [device carrierName];
     if (carrier) {
         result[@"carrier"] = carrier;
@@ -140,7 +140,7 @@ static NSDate *__gAppLaunchDate = nil;
      [UIDevice.currentDevice systemVersion],
      [UIScreen mainScreen].scale,
      ESScreenSizeString(UIDevice.currentDevice.screenSizeInPoints)];
-    [ua appendFormat:@"; Locale/%@", [UIDevice.currentDevice currentLocaleIdentifier]];
+    [ua appendFormat:@"; Locale/%@", NSLocale.currentLocale.localeIdentifier];
     [ua appendFormat:@"; Network/%@", [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString];
     if (self.appChannel) {
         [ua appendFormat:@"; Channel/%@", self.appChannel];
