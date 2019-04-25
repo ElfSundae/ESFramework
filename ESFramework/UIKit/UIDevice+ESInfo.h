@@ -83,15 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (CGSize)screenSizeInPixels;
 
-// iPhone 4/4S, 640x960
-- (BOOL)isIPhoneRetina35InchScreen;
-// iPhone 5/5S, 640x1136
-- (BOOL)isIPhoneRetina4InchScreen;
-// iPhone 6, 750x1334
-- (BOOL)isIPhoneRetina47InchScreen;
-// iPhone 6 Plus, 1242x2208
-- (BOOL)isIPhoneRetina55InchScreen;
-
 - (NSTimeZone *)localTimeZone;
 
 - (NSInteger)localTimeZoneFromGMT;

@@ -150,26 +150,6 @@
     return UIScreen.mainScreen.currentMode.size;
 }
 
-- (BOOL)isIPhoneRetina35InchScreen
-{
-    return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 960.));
-}
-
-- (BOOL)isIPhoneRetina4InchScreen
-{
-    return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 1136.));
-}
-
-- (BOOL)isIPhoneRetina47InchScreen
-{
-    return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(750., 1334.));
-}
-
-- (BOOL)isIPhoneRetina55InchScreen
-{
-    return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(1242., 2208.));
-}
-
 - (NSTimeZone *)localTimeZone
 {
     return [NSTimeZone localTimeZone];
