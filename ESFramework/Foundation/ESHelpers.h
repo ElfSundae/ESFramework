@@ -176,6 +176,12 @@ FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
 
 /**
+ * Converts a screen size to a string.
+ * e.g. "414x736", the width always be less than the height.
+ */
+FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
+
+/**
  * Returns the bundle for the given name.
  */
 FOUNDATION_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);

@@ -220,6 +220,13 @@ BOOL ESIsRetinaScreen(void)
     return [UIScreen mainScreen].scale >= 2.0;
 }
 
+NSString *ESScreenSizeString(CGSize size)
+{
+    return [NSString stringWithFormat:@"%dx%d",
+            (int)fmin(size.width, size.height),
+            (int)fmax(size.width, size.height)];
+}
+
 NSBundle *ESBundleWithName(NSString *bundleName)
 {
     NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
