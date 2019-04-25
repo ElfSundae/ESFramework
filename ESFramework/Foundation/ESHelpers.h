@@ -173,7 +173,7 @@ FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 /**
  * Checks whether the device has retina screen.
  */
-FOUNDATION_EXTERN BOOL UIScreenIsRetina(void);
+FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
 
 /**
  * Returns the bundle for the given name.

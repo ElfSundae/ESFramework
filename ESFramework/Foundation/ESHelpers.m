@@ -215,7 +215,7 @@ BOOL ESIsPhoneDevice(void)
             [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
 }
 
-BOOL UIScreenIsRetina(void)
+BOOL ESIsRetinaScreen(void)
 {
     return [UIScreen mainScreen].scale >= 2.0;
 }
