@@ -13,12 +13,10 @@
 
 + (void)load
 {
-    @autoreleasepool {
-        ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_esfix_shouldAutorotate));
-        ESSwizzleInstanceMethod(self, @selector(shouldAutorotateToInterfaceOrientation:), @selector(_esfix_shouldAutorotateToInterfaceOrientation:));
-        ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_esfix_supportedInterfaceOrientations));
-        ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_esfix_preferredInterfaceOrientationForPresentation));
-    }
+    ESSwizzleInstanceMethod(self, @selector(shouldAutorotate), @selector(_esfix_shouldAutorotate));
+    ESSwizzleInstanceMethod(self, @selector(shouldAutorotateToInterfaceOrientation:), @selector(_esfix_shouldAutorotateToInterfaceOrientation:));
+    ESSwizzleInstanceMethod(self, @selector(supportedInterfaceOrientations), @selector(_esfix_supportedInterfaceOrientations));
+    ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_esfix_preferredInterfaceOrientationForPresentation));
 }
 
 - (BOOL)_esfix_shouldAutorotate

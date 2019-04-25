@@ -37,9 +37,7 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
 
 + (void)load
 {
-    @autoreleasepool {
-        ESSwizzleInstanceMethod([self class], @selector(sizeThatFits:), @selector(sizeThatFits_ESStyle:));
-    }
+    ESSwizzleInstanceMethod([self class], @selector(sizeThatFits:), @selector(sizeThatFits_ESStyle:));
 }
 
 + (instancetype)flatProgressViewWithTrackColor:(UIColor *)trackColor progressColor:(UIColor *)progressColor

@@ -22,9 +22,7 @@ static NSDate *__gAppLaunchDate = nil;
 {
     __gAppLaunchDate = [NSDate date];
 
-    @autoreleasepool {
-        [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    }
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
 }
 
 + (id)objectForInfoDictionaryKey:(NSString *)key
