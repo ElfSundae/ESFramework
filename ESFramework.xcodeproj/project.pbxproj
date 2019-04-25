@@ -77,8 +77,8 @@
 		E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A3226F3DCB006EF94D /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
 		E77912A4226F3DCB006EF94D /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
-		E77912A5226F3DCB006EF94D /* UIDevice+ESInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESInfo.h"; sourceTree = "<group>"; };
-		E77912A6226F3DCB006EF94D /* UIDevice+ESInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESInfo.m"; sourceTree = "<group>"; };
+		E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESAdditions.h"; sourceTree = "<group>"; };
+		E77912A6226F3DCB006EF94D /* UIDevice+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A7226F3DCB006EF94D /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
 		E77912A8226F3DCB006EF94D /* UIGestureRecognizer+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
@@ -250,8 +250,8 @@
 			children = (
 				E779129D226F3DCB006EF94D /* UIAlertController+ESAdditions.h */,
 				E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */,
-				E77912A5226F3DCB006EF94D /* UIDevice+ESInfo.h */,
-				E77912A6226F3DCB006EF94D /* UIDevice+ESInfo.m */,
+				E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */,
+				E77912A6226F3DCB006EF94D /* UIDevice+ESAdditions.m */,
 				E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */,
 				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
 				E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */,

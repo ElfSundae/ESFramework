@@ -10,7 +10,7 @@
 #import "ESHelpers.h"
 #import "ESApp.h"
 #import "ESValue.h"
-#import "UIDevice+ESInfo.h"
+#import "UIDevice+ESAdditions.h"
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "_ESWebViewUserAgentFetcher.h"
 

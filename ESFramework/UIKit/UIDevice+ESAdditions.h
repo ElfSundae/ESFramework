@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define kESNetworkInterfaceNameVPN              @"utun0"
 #define kESNetworkInterfaceNameAWDL             @"awdl0" // AWDL (Apple Wireless Direct Link)
 
-@interface UIDevice (ESInfo)
+@interface UIDevice (ESAdditions)
 
 /**
  * e.g. @"iPhone3,1", @"x86_64".

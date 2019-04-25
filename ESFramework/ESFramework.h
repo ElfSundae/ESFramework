@@ -33,7 +33,7 @@
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 
 #import "UIAlertController+ESAdditions.h"
-#import "UIDevice+ESInfo.h"
+#import "UIDevice+ESAdditions.h"
 #import "UIColor+ESAdditions.h"
 #import "UIImage+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"

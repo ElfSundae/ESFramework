@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
-#import "UIDevice+ESInfo.h"
+#import "UIDevice+ESAdditions.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
@@ -18,7 +18,7 @@
 #import "ESHelpers.h"
 #import "ESValue.h"
 
-@implementation UIDevice (ESInfo)
+@implementation UIDevice (ESAdditions)
 
 + (void)load
 {
