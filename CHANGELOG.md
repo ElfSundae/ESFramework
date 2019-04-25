@@ -14,6 +14,7 @@
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
     + `-[NSUserDefaults setObject:forKeyPath:]`
+    + `-[UIDevice carrierNames]`
 - Renamed:
     + `ES_STOPWATCH_BEGIN` `ES_STOPWATCH_END` => `ESBenchmark()`
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
@@ -41,6 +42,7 @@
     + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
     + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
     + NSUserDefaults methods: `+registeredDefaults` => `-registeredDefaults`, `+registerDefaults:` => `-setRegisteredDefaults:`, `+unregisterDefaultsForKeys:` => `-removeRegisteredObjectsForKeys:`, `+replaceRegisteredObject:forKey:` => `-setRegisteredObject:forKey:`
+    + UIDevice class methods to instance methods: `+platform` => `-platform`, `+carrierString` => `-carrierName`,
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
@@ -69,6 +71,7 @@
     + `+[NSDate timeIntervalSince1970]`
     + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
+    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`,
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

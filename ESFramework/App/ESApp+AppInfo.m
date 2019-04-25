@@ -86,17 +86,17 @@ static NSDate *__gAppLaunchDate = nil;
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
-    result[@"os"] = [UIDevice systemName];
-    result[@"os_version"] = [UIDevice systemVersion];
-    result[@"model"] = [UIDevice model];
-    result[@"platform"] = [UIDevice platform];
-    result[@"name"] = [UIDevice name];
+    result[@"os"] = [UIDevice.currentDevice systemName];
+    result[@"os_version"] = [UIDevice.currentDevice systemVersion];
+    result[@"model"] = [UIDevice.currentDevice model];
+    result[@"platform"] = [UIDevice.currentDevice platform];
+    result[@"name"] = [UIDevice.currentDevice name];
     result[@"jailbroken"] = [UIDevice isJailbroken] ? @1 : @0;
     result[@"screen_size"] = [UIDevice screenSizeString:UIDevice.screenSizeInPoints];
     result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
     result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
     result[@"locale"] = [UIDevice currentLocaleIdentifier];
-    NSString *carrier = [UIDevice carrierString];
+    NSString *carrier = [UIDevice.currentDevice carrierName];
     if (carrier) {
         result[@"carrier"] = carrier;
     }
@@ -134,9 +134,9 @@ static NSDate *__gAppLaunchDate = nil;
     NSMutableString *ua = [NSMutableString string];
     [ua appendFormat:@"%@/%@", self.appName, [[self class] appVersion]];
     [ua appendFormat:@" (%@; %@ %@; Scale/%0.2f; Screen/%@",
-     [UIDevice model],
-     [UIDevice systemName],
-     [UIDevice systemVersion],
+     [UIDevice.currentDevice model],
+     [UIDevice.currentDevice systemName],
+     [UIDevice.currentDevice systemVersion],
      [UIScreen mainScreen].scale,
      [UIDevice screenSizeString:UIDevice.screenSizeInPoints]];
     [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
@@ -162,11 +162,11 @@ static NSDate *__gAppLaunchDate = nil;
         [ua appendString:defaultUA];
     } else {
         [ua appendFormat:@"Mozilla/5.0 (%@; CPU %@ %@ like Mac OS X) AppleWebKit/%@ (KHTML, like Gecko) Mobile/%@",
-         [UIDevice model],
+         [UIDevice.currentDevice model],
          (ESIsPhoneDevice() ? @"iPhone OS" : @"OS"),
-         [[UIDevice systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"],
+         [[UIDevice.currentDevice systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"],
          @"600.1.4",
-         [UIDevice systemBuildIdentifier]];
+         @"15E148"];
     }
     if (myUserAgent) {
         [ua appendFormat:@" %@", myUserAgent];

@@ -12,84 +12,64 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
-#import "ESHelpers.h"
-#import "ESValue.h"
 #import <sys/sysctl.h>
 #import <mach/mach.h>
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UIDevice (ESInfo)
+#import "ESHelpers.h"
+#import "ESValue.h"
 
 @implementation UIDevice (ESInfo)
 
-+ (NSString *)name
++ (void)load
 {
-    return ([[UIDevice currentDevice] name] ?: @"");
+    ESSwizzleInstanceMethod(self, @selector(systemName), @selector(es_systemName));
 }
 
-+ (NSString *)systemName
+- (NSString *)es_systemName
 {
-    NSString *name = [[UIDevice currentDevice] systemName];
+    NSString *name = [self es_systemName];
     if ([name isEqualToString:@"iPhone OS"]) {
         name = @"iOS";
     }
     return name;
 }
 
-+ (NSString *)systemVersion
+- (NSString *)platform
 {
-    return [[UIDevice currentDevice] systemVersion];
-}
-
-+ (NSString *)systemBuildIdentifier
-{
-    static NSString *__gBuildIdentifier = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSString *build = nil;
-        int mib[] = { CTL_KERN, KERN_OSVERSION };
-        size_t size;
-        sysctl(mib, 2, NULL, &size, NULL, 0);
-        char *str = malloc(size);
-        if (sysctl(mib, 2, str, &size, NULL, 0) >= 0) {
-            build = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
-        }
-        free(str);
-        __gBuildIdentifier = build ?: @"";
-    });
-    return __gBuildIdentifier;
-}
-
-+ (NSString *)model
-{
-    return [[UIDevice currentDevice] model];
-}
-
-+ (NSString *)platform
-{
-    static NSString *__gPlatfrom = nil;
+    static NSString *_platform = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         size_t size;
         sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-        char *machine = malloc(size);
+        char *machine = (char *)malloc(size);
         sysctlbyname("hw.machine", machine, &size, NULL, 0);
         NSString *platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
         free(machine);
-        __gPlatfrom = platform ?: @"";
+        _platform = platform;
     });
-    return __gPlatfrom;
+    return _platform;
 }
 
-+ (NSString *)carrierString
+- (nullable NSArray<NSString *> *)carrierNames
 {
-    CTTelephonyNetworkInfo *netInfo = [[CTTelephonyNetworkInfo alloc] init];
-    CTCarrier *carrier_t = [netInfo subscriberCellularProvider];
-    return [carrier_t carrierName];
+    NSArray *carrierNames = nil;
+    CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
+    if (@available(iOS 13.0, *)) {
+        carrierNames = [networkInfo.serviceSubscriberCellularProviders.allValues valueForKeyPath:@"@unionOfObjects.carrierName"];
+    } else {
+        NSString *name = networkInfo.subscriberCellularProvider.carrierName;
+        if (name) {
+            carrierNames = @[ name ];
+        }
+    }
+    return carrierNames.count ? carrierNames : nil;
+}
+
+- (nullable NSString *)carrierName
+{
+    return self.carrierNames.firstObject;
 }
 
 + (NSString *)currentWiFiSSID

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 #define kESNetworkInterfaceFamilyIPv4           @"IPv4"
 #define kESNetworkInterfaceFamilyIPv6           @"IPv6"
 #define kESNetworkInterfaceNameLoopback         @"lo0" // localhost
@@ -16,10 +18,6 @@
 #define kESNetworkInterfaceNameVPN              @"utun0"
 #define kESNetworkInterfaceNameAWDL             @"awdl0" // AWDL (Apple Wireless Direct Link)
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
 @interface UIDevice (ESInfo)
 
 /// =============================================
@@ -27,35 +25,23 @@
 /// =============================================
 
 /**
- * e.g. @"My iPhone"
+ * e.g. @"iPhone3,1", @"x86_64".
+ * http://theiphonewiki.com/wiki/Models
  */
-+ (NSString *)name;
+- (NSString *)platform;
+
 /**
- * e.g. @"iPhone OS" @"iOS"
+ * Returns an array contains the name of the subscriber's cellular service provider.
+ * e.g. @[ @"ChinaNet", @"AT&T" ]
  */
-+ (NSString *)systemName;
+- (nullable NSArray<NSString *> *)carrierNames;
+
 /**
- * e.g. @"7.1"
+ * Returns the name of the subscriber's main (first) cellular service provider.
+ * e.g. @"AT&T"
  */
-+ (NSString *)systemVersion;
-/**
- * e.g. @"11D169"
- */
-+ (NSString *)systemBuildIdentifier;
-/**
- * e.g. @"iPhone", @"iPod touch", @"iPhone Simulator"
- */
-+ (NSString *)model;
-/**
- * e.g. @"iPhone3,1", @"x86_64"
- * @see: http://theiphonewiki.com/wiki/Models
- */
-+ (NSString *)platform;
-/**
- * Returns the subscriber's cellular service provider.
- * e.g. @"AT&T", @"ChinaNet"
- */
-+ (NSString *)carrierString;
+- (nullable NSString *)carrierName;
+
 /**
  * Returns the current Wi-Fi SSID
  */
@@ -172,3 +158,5 @@
 + (NSString *)localIPv6Address;
 
 @end
+
+NS_ASSUME_NONNULL_END
