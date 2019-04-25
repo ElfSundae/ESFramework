@@ -74,51 +74,50 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)diskSizeString;
 
 /**
- * The width and height in points
+ * the screen size in points.
  */
-+ (CGSize)screenSizeInPoints;
+- (CGSize)screenSizeInPoints;
 
 /**
- * The width and height in pixels.
+ * The screen size in pixels.
  */
-+ (CGSize)screenSizeInPixels;
+- (CGSize)screenSizeInPixels;
 
 /**
- * Convert a screen size to string, e.g. "320x480".
+ * The aspect ratio of a single pixel. The ratio is defined as X/Y.
  */
-+ (NSString *)screenSizeString:(CGSize)size;
+- (CGFloat)screenPixelAspectRatio;
 
-+ (BOOL)isRetinaScreen;
 // iPhone 4/4S, 640x960
-+ (BOOL)isIPhoneRetina35InchScreen;
+- (BOOL)isIPhoneRetina35InchScreen;
 // iPhone 5/5S, 640x1136
-+ (BOOL)isIPhoneRetina4InchScreen;
+- (BOOL)isIPhoneRetina4InchScreen;
 // iPhone 6, 750x1334
-+ (BOOL)isIPhoneRetina47InchScreen;
+- (BOOL)isIPhoneRetina47InchScreen;
 // iPhone 6 Plus, 1242x2208
-+ (BOOL)isIPhoneRetina55InchScreen;
+- (BOOL)isIPhoneRetina55InchScreen;
 
-+ (NSTimeZone *)localTimeZone;
+- (NSTimeZone *)localTimeZone;
 
-+ (NSInteger)localTimeZoneFromGMT;
+- (NSInteger)localTimeZoneFromGMT;
 
-+ (NSLocale *)currentLocale;
+- (NSLocale *)currentLocale;
 
 /**
  * e.g. @"zh", @"en"
  */
-+ (NSString *)currentLocaleLanguageCode;
+- (NSString *)currentLocaleLanguageCode;
 
 /**
  * e.g. @"CN", @"US"
  */
-+ (NSString *)currentLocaleCountryCode;
+- (NSString *)currentLocaleCountryCode;
 
 /**
  * languageCode_countryCode.
  * e.g. @"zh_CN", @"en_US"
  */
-+ (NSString *)currentLocaleIdentifier;
+- (NSString *)currentLocaleIdentifier;
 
 /**
  * Returns network interfaces names and addresses.
@@ -139,17 +138,17 @@ NS_ASSUME_NONNULL_BEGIN
  * }
  * @endcode
  */
-+ (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback;
+- (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback;
 
 /**
  * Returns IPv4 address on en0.
  */
-+ (NSString *)localIPv4Address;
+- (NSString *)localIPv4Address;
 
 /**
  * Returns IPv6 address on en0.
  */
-+ (NSString *)localIPv6Address;
+- (NSString *)localIPv6Address;
 
 @end
 

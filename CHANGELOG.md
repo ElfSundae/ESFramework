@@ -26,6 +26,7 @@
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block)`
     + `ESDispatchAfter` => `es_dispatch_after`
     + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
+    + `UIScreenIsRetina()` => `ESIsRetinaScreen()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
     + `ESSharedNumberFormatter` => `+[NSNumberFormatter defaultFormatter]`
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
@@ -71,7 +72,7 @@
     + `+[NSDate timeIntervalSince1970]`
     + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
-    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`
+    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`, `+isRetinaScreen`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

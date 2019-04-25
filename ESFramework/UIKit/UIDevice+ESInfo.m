@@ -140,79 +140,72 @@
     return [NSByteCountFormatter stringFromByteCount:self.diskSize countStyle:NSByteCountFormatterCountStyleFile];
 }
 
-+ (CGSize)screenSizeInPoints
+- (CGSize)screenSizeInPoints
 {
-    return [UIScreen mainScreen].bounds.size;
+    return UIScreen.mainScreen.bounds.size;
 }
 
-+ (CGSize)screenSizeInPixels
+- (CGSize)screenSizeInPixels
 {
-    return [[UIScreen mainScreen] currentMode].size;
+    return UIScreen.mainScreen.currentMode.size;
 }
 
-+ (NSString *)screenSizeString:(CGSize)size
+- (CGFloat)screenPixelAspectRatio
 {
-    return [NSString stringWithFormat:@"%dx%d",
-            (int)fmin(size.width, size.height),
-            (int)fmax(size.width, size.height)];
+    return UIScreen.mainScreen.currentMode.pixelAspectRatio;
 }
 
-+ (BOOL)isRetinaScreen
-{
-    return UIScreenIsRetina();
-}
-
-+ (BOOL)isIPhoneRetina35InchScreen
+- (BOOL)isIPhoneRetina35InchScreen
 {
     return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 960.));
 }
 
-+ (BOOL)isIPhoneRetina4InchScreen
+- (BOOL)isIPhoneRetina4InchScreen
 {
     return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 1136.));
 }
 
-+ (BOOL)isIPhoneRetina47InchScreen
+- (BOOL)isIPhoneRetina47InchScreen
 {
     return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(750., 1334.));
 }
 
-+ (BOOL)isIPhoneRetina55InchScreen
+- (BOOL)isIPhoneRetina55InchScreen
 {
     return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(1242., 2208.));
 }
 
-+ (NSTimeZone *)localTimeZone
+- (NSTimeZone *)localTimeZone
 {
     return [NSTimeZone localTimeZone];
 }
 
-+ (NSInteger)localTimeZoneFromGMT
+- (NSInteger)localTimeZoneFromGMT
 {
     return ([[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
 }
 
-+ (NSLocale *)currentLocale
+- (NSLocale *)currentLocale
 {
     return [NSLocale currentLocale];
 }
 
-+ (NSString *)currentLocaleLanguageCode
+- (NSString *)currentLocaleLanguageCode
 {
     return [[self currentLocale] objectForKey:NSLocaleLanguageCode];
 }
 
-+ (NSString *)currentLocaleCountryCode
+- (NSString *)currentLocaleCountryCode
 {
     return [[self currentLocale] objectForKey:NSLocaleCountryCode];
 }
 
-+ (NSString *)currentLocaleIdentifier
+- (NSString *)currentLocaleIdentifier
 {
     return [[self currentLocale] localeIdentifier];
 }
 
-+ (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback
+- (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
@@ -259,12 +252,12 @@
     return [result copy];
 }
 
-+ (NSString *)localIPv4Address
+- (NSString *)localIPv4Address
 {
     return [self getNetworkInterfacesIncludesLoopback:NO][kESNetworkInterfaceFamilyIPv4][kESNetworkInterfaceNameWiFi];
 }
 
-+ (NSString *)localIPv6Address
+- (NSString *)localIPv6Address
 {
     return [self getNetworkInterfacesIncludesLoopback:NO][kESNetworkInterfaceFamilyIPv6][kESNetworkInterfaceNameWiFi];
 }

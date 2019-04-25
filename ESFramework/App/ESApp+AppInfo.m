@@ -86,26 +86,27 @@ static NSDate *__gAppLaunchDate = nil;
 {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
-    result[@"os"] = [UIDevice.currentDevice systemName];
-    result[@"os_version"] = [UIDevice.currentDevice systemVersion];
-    result[@"model"] = [UIDevice.currentDevice model];
-    result[@"platform"] = [UIDevice.currentDevice platform];
-    result[@"name"] = [UIDevice.currentDevice name];
-    result[@"jailbroken"] = [UIDevice.currentDevice isJailbroken] ? @1 : @0;
-    result[@"screen_size"] = [UIDevice screenSizeString:UIDevice.screenSizeInPoints];
+    UIDevice *device = UIDevice.currentDevice;
+    result[@"os"] = [device systemName];
+    result[@"os_version"] = [device systemVersion];
+    result[@"model"] = [device model];
+    result[@"platform"] = [device platform];
+    result[@"name"] = [device name];
+    result[@"jailbroken"] = [device isJailbroken] ? @1 : @0;
+    result[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
     result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
-    result[@"timezone_gmt"] = @([UIDevice localTimeZoneFromGMT]);
-    result[@"locale"] = [UIDevice currentLocaleIdentifier];
-    NSString *carrier = [UIDevice.currentDevice carrierName];
+    result[@"timezone_gmt"] = @([device localTimeZoneFromGMT]);
+    result[@"locale"] = [device currentLocaleIdentifier];
+    NSString *carrier = [device carrierName];
     if (carrier) {
         result[@"carrier"] = carrier;
     }
     result[@"network"] = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString;
-    NSString *ssid = [UIDevice.currentDevice WiFiSSID];
+    NSString *ssid = [device WiFiSSID];
     if (ssid) {
         result[@"ssid"] = ssid;
     }
-    NSString *localIP = [UIDevice localIPv4Address] ?: [UIDevice localIPv6Address];
+    NSString *localIP = [device localIPv4Address] ?: [device localIPv6Address];
     if (localIP) {
         result[@"local_ip"] = localIP;
     }
@@ -138,8 +139,8 @@ static NSDate *__gAppLaunchDate = nil;
      [UIDevice.currentDevice systemName],
      [UIDevice.currentDevice systemVersion],
      [UIScreen mainScreen].scale,
-     [UIDevice screenSizeString:UIDevice.screenSizeInPoints]];
-    [ua appendFormat:@"; Locale/%@", [UIDevice currentLocaleIdentifier]];
+     ESScreenSizeString(UIDevice.currentDevice.screenSizeInPoints)];
+    [ua appendFormat:@"; Locale/%@", [UIDevice.currentDevice currentLocaleIdentifier]];
     [ua appendFormat:@"; Network/%@", [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString];
     if (self.appChannel) {
         [ua appendFormat:@"; Channel/%@", self.appChannel];
