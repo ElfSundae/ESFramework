@@ -83,11 +83,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (CGSize)screenSizeInPixels;
 
-/**
- * The aspect ratio of a single pixel. The ratio is defined as X/Y.
- */
-- (CGFloat)screenPixelAspectRatio;
-
 // iPhone 4/4S, 640x960
 - (BOOL)isIPhoneRetina35InchScreen;
 // iPhone 5/5S, 640x1136

@@ -150,11 +150,6 @@
     return UIScreen.mainScreen.currentMode.size;
 }
 
-- (CGFloat)screenPixelAspectRatio
-{
-    return UIScreen.mainScreen.currentMode.pixelAspectRatio;
-}
-
 - (BOOL)isIPhoneRetina35InchScreen
 {
     return CGSizeEqualToSize([self screenSizeInPixels], CGSizeMake(640., 960.));
