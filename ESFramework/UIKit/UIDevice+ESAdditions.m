@@ -119,7 +119,8 @@
     NSArray *carrierNames = nil;
     CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
     if (@available(iOS 12.0, *)) {
-        carrierNames = [networkInfo.serviceSubscriberCellularProviders.allValues valueForKeyPath:@"@unionOfObjects.carrierName"];
+        carrierNames = [networkInfo.serviceSubscriberCellularProviders.allValues
+                        valueForKeyPath:@"@unionOfObjects.carrierName"];
     } else {
         NSString *name = networkInfo.subscriberCellularProvider.carrierName;
         if (name) {
@@ -160,29 +161,31 @@
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
 
     struct ifaddrs *interfaces = NULL;
-    const struct ifaddrs *cursor = NULL;
-    if ((getifaddrs(&interfaces) == 0)) {
-        for (cursor = interfaces; cursor != NULL; cursor = cursor->ifa_next) {
-            if (!(cursor->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */) {
-                continue;                 // deeply nested code harder to read
-            }
-            if (!includesLoopback && strcmp(cursor->ifa_name, "lo0") == 0) {
-                continue;                 // skip Loopback address
+    if (0 == getifaddrs(&interfaces)) {
+        // Loop through linked list of interfaces
+        struct ifaddrs *interface = NULL;
+        for (interface = interfaces; interface != NULL; interface = interface->ifa_next) {
+            if (!(interface->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */) {
+                continue; // deeply nested code harder to read
             }
 
-            NSString *name = [NSString stringWithUTF8String:cursor->ifa_name];
+            if (!includesLoopback && (interface->ifa_flags & IFF_LOOPBACK)) {
+                continue; // skip loopback address
+            }
+
+            NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
             NSString *family = nil;
             NSString *ip = nil;
-            if (cursor->ifa_addr->sa_family == AF_INET) {
+            if (interface->ifa_addr->sa_family == AF_INET) {
                 char ipBuffer[INET_ADDRSTRLEN];
-                struct sockaddr_in *addr = (struct sockaddr_in *)cursor->ifa_addr;
+                struct sockaddr_in *addr = (struct sockaddr_in *)interface->ifa_addr;
                 if (inet_ntop(AF_INET, &addr->sin_addr, ipBuffer, sizeof(ipBuffer))) {
                     family = kESNetworkInterfaceFamilyIPv4;
                     ip = [NSString stringWithUTF8String:ipBuffer];
                 }
-            } else if (cursor->ifa_addr->sa_family == AF_INET6) {
+            } else if (interface->ifa_addr->sa_family == AF_INET6) {
                 char ipBuffer[INET6_ADDRSTRLEN];
-                struct sockaddr_in6 *addr = (struct sockaddr_in6 *)cursor->ifa_addr;
+                struct sockaddr_in6 *addr = (struct sockaddr_in6 *)interface->ifa_addr;
                 if (inet_ntop(AF_INET6, &addr->sin6_addr, ipBuffer, sizeof(ipBuffer))) {
                     family = kESNetworkInterfaceFamilyIPv6;
                     ip = [NSString stringWithUTF8String:ipBuffer];
