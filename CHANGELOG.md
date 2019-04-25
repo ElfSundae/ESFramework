@@ -71,7 +71,7 @@
     + `+[NSDate timeIntervalSince1970]`
     + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
-    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`,
+    + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

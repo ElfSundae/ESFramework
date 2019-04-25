@@ -55,15 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)isJailbroken;
 
-/**
- * Returns `ESIsPhoneDevice()`
- */
-+ (BOOL)isPhoneDevice;
-/**
- * Returns `ESIsPadDevice()`
- */
-+ (BOOL)isPadDevice;
-
 /// =============================================
 /// @name Disk space
 /// =============================================

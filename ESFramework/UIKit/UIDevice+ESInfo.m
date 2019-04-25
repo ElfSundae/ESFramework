@@ -116,16 +116,6 @@
     return _isJailbroken;
 }
 
-+ (BOOL)isPhoneDevice
-{
-    return ESIsPhoneDevice();
-}
-
-+ (BOOL)isPadDevice
-{
-    return ESIsPadDevice();
-}
-
 + (unsigned long long)diskFreeSize
 {
     return ESULongLongValue([[NSFileManager defaultManager] attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][NSFileSystemFreeSize]);
