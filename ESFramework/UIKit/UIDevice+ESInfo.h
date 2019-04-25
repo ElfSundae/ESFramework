@@ -24,19 +24,19 @@ NS_ASSUME_NONNULL_BEGIN
  * e.g. @"iPhone3,1", @"x86_64".
  * http://theiphonewiki.com/wiki/Models
  */
-- (NSString *)platform;
+@property (nonatomic, copy, readonly) NSString *platform;
 
 /**
  * Returns an array contains the name of the subscriber's cellular service provider.
  * e.g. @[ @"ChinaNet", @"AT&T" ]
  */
-- (nullable NSArray<NSString *> *)carrierNames;
+@property (nullable, nonatomic, copy, readonly) NSArray<NSString *> *carrierNames;
 
 /**
  * Returns the name of the subscriber's main (first) cellular service provider.
  * e.g. @"AT&T"
  */
-- (nullable NSString *)carrierName;
+@property (nullable, nonatomic, copy, readonly) NSString *carrierName;
 
 /**
  * Returns the current WiFi network info.
@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
-- (nullable NSDictionary *)WiFiNetworkInfo;
+@property (nullable, nonatomic, copy, readonly) NSDictionary *WiFiNetworkInfo;
 
 /**
  * Returns the current WiFi SSID.
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
-- (nullable NSString *)WiFiSSID;
+@property (nullable, nonatomic, copy, readonly) NSString *WiFiSSID;
 
 /**
  * Returns the current WiFi BSSID.
@@ -68,44 +68,44 @@ NS_ASSUME_NONNULL_BEGIN
  * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
-- (nullable NSString *)WiFiBSSID;
+@property (nullable, nonatomic, copy, readonly) NSString *WiFiBSSID;
 
 /**
  * Detects whether this device has been jailbroken.
  */
-- (BOOL)isJailbroken;
+@property (nonatomic, readonly) BOOL isJailbroken;
 
 /**
  * Returns the free size of the disk.
  */
-- (long long)diskFreeSize;
+@property (nonatomic, readonly) long long diskFreeSize;
 
 /**
  * Returns a string whose value indicates the free size of the disk,
  * e.g. "11.23 GB"
  */
-- (NSString *)diskFreeSizeString;
+@property (nonatomic, copy, readonly) NSString *diskFreeSizeString;
 
 /**
  * Returns the total size of the disk.
  */
-- (long long)diskSize;
+@property (nonatomic, readonly) long long diskSize;
 
 /**
  * Returns a string whose value indicates the total size of the disk,
  * e.g. "63.99 GB"
  */
-- (NSString *)diskSizeString;
+@property (nonatomic, copy, readonly) NSString *diskSizeString;
 
 /**
  * the screen size in points.
  */
-- (CGSize)screenSizeInPoints;
+@property (nonatomic, readonly) CGSize screenSizeInPoints;
 
 /**
  * The screen size in pixels.
  */
-- (CGSize)screenSizeInPixels;
+@property (nonatomic, readonly) CGSize screenSizeInPixels;
 
 /**
  * Returns network interfaces names and addresses.
