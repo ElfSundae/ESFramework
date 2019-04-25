@@ -12,41 +12,48 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIAlertController (ESAdditions)
 
-+ (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
-+ (instancetype)actionSheetWithTitle:(nullable NSString *)title;
+/// Creates and returns a alert controller with style UIAlertControllerStyleActionSheet.
 + (instancetype)actionSheet;
-+ (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
+/// Creates and returns a alert controller with style UIAlertControllerStyleActionSheet.
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title;
+/// Creates and returns a alert controller with style UIAlertControllerStyleActionSheet.
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
+/// Creates and returns a alert controller with style UIAlertControllerStyleActionSheet.
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
+/// Creates and returns a alert controller with style UIAlertControllerStyleActionSheet.
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 
-+ (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
-+ (instancetype)alertWithTitle:(nullable NSString *)title;
+/// Creates and returns a alert controller with style UIAlertControllerStyleAlert.
 + (instancetype)alert;
-+ (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
+/// Creates and returns a alert controller with style UIAlertControllerStyleAlert.
++ (instancetype)alertWithTitle:(nullable NSString *)title;
+/// Creates and returns a alert controller with style UIAlertControllerStyleAlert.
++ (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
+/// Creates and returns a alert controller with style UIAlertControllerStyleAlert.
 + (instancetype)alertWithTitle:(nullable NSString *)title cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
+/// Creates and returns a alert controller with style UIAlertControllerStyleAlert.
++ (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 
+/// Attaches an action object to the alert or action sheet.
 - (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ __nullable)(UIAlertAction *action))handler;
-
+/// Attaches an action button with default style to the alert or action sheet.
 - (UIAlertAction *)addButtonWithTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
+/// Attaches an action button with cancel style to the alert or action sheet.
 - (UIAlertAction *)addCancelButtonWithTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
-- (UIAlertAction *)addCancelButtonWithTitle:(nullable NSString *)title;
+/// Attaches an action button with destructive style to the alert or action sheet.
 - (UIAlertAction *)addDestructiveButtonTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
 
-- (void)addTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
-- (void)addSecureTextFieldWithPlaceholder:(nullable NSString *)placeholder configurationHandler:(void (^ __nullable)(UITextField *textField))configurationHandler;
-
-/**
- * The preferred action for the user to take from an alert.
- *
- * @see -[UIAlertController preferredAction]
- */
-@property (nonatomic, strong, nullable) UIAlertAction *defaultAction;
-
-- (void)showAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+/// Presents this alert controller.
 - (void)show;
+/// Presents this alert controller.
+- (void)showAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 
-- (void)dismissAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+/// Dismisses this alert controller.
 - (void)dismiss;
+/// Dismisses this alert controller.
+- (void)dismissAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
 
+/// Creates and presents an alert.
 + (instancetype)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 
 @end
