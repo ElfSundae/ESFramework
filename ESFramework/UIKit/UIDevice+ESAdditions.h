@@ -27,6 +27,43 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *platform;
 
 /**
+ * Returns the free size of the disk.
+ */
+@property (nonatomic, readonly) long long diskFreeSize;
+
+/**
+ * Returns a string whose value indicates the free size of the disk,
+ * e.g. "11.23 GB"
+ */
+@property (nonatomic, copy, readonly) NSString *diskFreeSizeString;
+
+/**
+ * Returns the total size of the disk.
+ */
+@property (nonatomic, readonly) long long diskSize;
+
+/**
+ * Returns a string whose value indicates the total size of the disk,
+ * e.g. "63.99 GB"
+ */
+@property (nonatomic, copy, readonly) NSString *diskSizeString;
+
+/**
+ * the screen size in points.
+ */
+@property (nonatomic, readonly) CGSize screenSizeInPoints;
+
+/**
+ * The screen size in pixels.
+ */
+@property (nonatomic, readonly) CGSize screenSizeInPixels;
+
+/**
+ * Detects whether this device has been jailbroken.
+ */
+@property (nonatomic, readonly) BOOL isJailbroken;
+
+/**
  * Returns an array contains the name of the subscriber's cellular service provider.
  * e.g. @[ @"ChinaNet", @"AT&T" ]
  */
@@ -69,43 +106,6 @@ NS_ASSUME_NONNULL_BEGIN
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
 @property (nullable, nonatomic, copy, readonly) NSString *WiFiBSSID;
-
-/**
- * Detects whether this device has been jailbroken.
- */
-@property (nonatomic, readonly) BOOL isJailbroken;
-
-/**
- * Returns the free size of the disk.
- */
-@property (nonatomic, readonly) long long diskFreeSize;
-
-/**
- * Returns a string whose value indicates the free size of the disk,
- * e.g. "11.23 GB"
- */
-@property (nonatomic, copy, readonly) NSString *diskFreeSizeString;
-
-/**
- * Returns the total size of the disk.
- */
-@property (nonatomic, readonly) long long diskSize;
-
-/**
- * Returns a string whose value indicates the total size of the disk,
- * e.g. "63.99 GB"
- */
-@property (nonatomic, copy, readonly) NSString *diskSizeString;
-
-/**
- * the screen size in points.
- */
-@property (nonatomic, readonly) CGSize screenSizeInPoints;
-
-/**
- * The screen size in pixels.
- */
-@property (nonatomic, readonly) CGSize screenSizeInPixels;
 
 /**
  * Returns network interfaces names and addresses.

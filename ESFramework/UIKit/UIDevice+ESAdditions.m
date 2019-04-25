@@ -49,6 +49,71 @@
     return _platform;
 }
 
+- (nullable id)es_attributeOfFileSystem:(NSFileAttributeKey)key
+{
+    return [NSFileManager.defaultManager attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][key];
+}
+
+- (long long)diskFreeSize
+{
+    return [[self es_attributeOfFileSystem:NSFileSystemFreeSize] longLongValue];
+}
+
+- (NSString *)diskFreeSizeString
+{
+    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSize countStyle:NSByteCountFormatterCountStyleFile];
+}
+
+- (long long)diskSize
+{
+    return [[self es_attributeOfFileSystem:NSFileSystemSize] longLongValue];
+}
+
+- (NSString *)diskSizeString
+{
+    return [NSByteCountFormatter stringFromByteCount:self.diskSize countStyle:NSByteCountFormatterCountStyleFile];
+}
+
+- (CGSize)screenSizeInPoints
+{
+    return UIScreen.mainScreen.bounds.size;
+}
+
+- (CGSize)screenSizeInPixels
+{
+    return UIScreen.mainScreen.currentMode.size;
+}
+
+- (BOOL)isJailbroken
+{
+    static BOOL _isJailbroken = NO;
+#if !TARGET_IPHONE_SIMULATOR
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSArray *jbApps = @[
+                            @"/Application/Cydia.app",
+                            @"/Library/MobileSubstrate/MobileSubstrate.dylib",
+                            @"/bin/bash",
+                            @"/usr/sbin/sshd",
+                            @"/etc/apt",
+                            @"/private/var/lib/cydia",
+                            @"/private/var/lib/apt",
+                            ];
+        for (NSString *path in jbApps) {
+            if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+                _isJailbroken = YES;
+                break;
+            }
+        }
+
+        if (!_isJailbroken && 0 == popen("ls", "r")) {
+            _isJailbroken = YES;
+        }
+    });
+#endif
+    return _isJailbroken;
+}
+
 - (nullable NSArray<NSString *> *)carrierNames
 {
     NSArray *carrierNames = nil;
@@ -88,71 +153,6 @@
 - (nullable NSString *)WiFiBSSID
 {
     return self.WiFiNetworkInfo[(__bridge NSString *)kCNNetworkInfoKeyBSSID];
-}
-
-- (BOOL)isJailbroken
-{
-    static BOOL _isJailbroken = NO;
-#if !TARGET_IPHONE_SIMULATOR
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSArray *jbApps = @[
-            @"/Application/Cydia.app",
-            @"/Library/MobileSubstrate/MobileSubstrate.dylib",
-            @"/bin/bash",
-            @"/usr/sbin/sshd",
-            @"/etc/apt",
-            @"/private/var/lib/cydia",
-            @"/private/var/lib/apt",
-        ];
-        for (NSString *path in jbApps) {
-            if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-                _isJailbroken = YES;
-                break;
-            }
-        }
-
-        if (!_isJailbroken && 0 == popen("ls", "r")) {
-            _isJailbroken = YES;
-        }
-    });
-#endif
-    return _isJailbroken;
-}
-
-- (nullable id)es_attributeOfFileSystem:(NSFileAttributeKey)key
-{
-    return [NSFileManager.defaultManager attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][key];
-}
-
-- (long long)diskFreeSize
-{
-    return [[self es_attributeOfFileSystem:NSFileSystemFreeSize] longLongValue];
-}
-
-- (NSString *)diskFreeSizeString
-{
-    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSize countStyle:NSByteCountFormatterCountStyleFile];
-}
-
-- (long long)diskSize
-{
-    return [[self es_attributeOfFileSystem:NSFileSystemSize] longLongValue];
-}
-
-- (NSString *)diskSizeString
-{
-    return [NSByteCountFormatter stringFromByteCount:self.diskSize countStyle:NSByteCountFormatterCountStyleFile];
-}
-
-- (CGSize)screenSizeInPoints
-{
-    return UIScreen.mainScreen.bounds.size;
-}
-
-- (CGSize)screenSizeInPixels
-{
-    return UIScreen.mainScreen.currentMode.size;
 }
 
 - (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback
