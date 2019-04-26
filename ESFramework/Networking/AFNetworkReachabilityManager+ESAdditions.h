@@ -8,6 +8,8 @@
 
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface AFNetworkReachabilityManager (ESAdditions)
 
 /**
@@ -18,3 +20,5 @@
 - (NSString *)networkReachabilityStatusString;
 
 @end
+
+NS_ASSUME_NONNULL_END
