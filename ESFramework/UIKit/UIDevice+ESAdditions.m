@@ -45,14 +45,14 @@
     return _platform;
 }
 
-- (nullable id)es_attributeOfFileSystem:(NSFileAttributeKey)key
+- (nullable id)es_attributeOfFileSystemForKey:(NSFileAttributeKey)key
 {
     return [NSFileManager.defaultManager attributesOfFileSystemForPath:ESPathForDocuments() error:NULL][key];
 }
 
 - (long long)diskFreeSize
 {
-    return [[self es_attributeOfFileSystem:NSFileSystemFreeSize] longLongValue];
+    return [[self es_attributeOfFileSystemForKey:NSFileSystemFreeSize] longLongValue];
 }
 
 - (NSString *)diskFreeSizeString
@@ -62,7 +62,7 @@
 
 - (long long)diskSize
 {
-    return [[self es_attributeOfFileSystem:NSFileSystemSize] longLongValue];
+    return [[self es_attributeOfFileSystemForKey:NSFileSystemSize] longLongValue];
 }
 
 - (NSString *)diskSizeString
