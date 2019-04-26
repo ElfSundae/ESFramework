@@ -227,15 +227,6 @@ NSString *ESScreenSizeString(CGSize size)
             (int)fmax(size.width, size.height)];
 }
 
-NSBundle *ESBundleWithName(NSString *bundleName)
-{
-    NSString *path = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:bundleName];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        return [NSBundle bundleWithPath:path];
-    }
-    return nil;
-}
-
 NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath)
 {
     NSString *path = bundle.resourcePath;

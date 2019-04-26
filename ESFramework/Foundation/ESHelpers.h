@@ -182,11 +182,6 @@ FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
 FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 
 /**
- * Returns the bundle for the given name.
- */
-FOUNDATION_EXTERN NSBundle *ESBundleWithName(NSString *bundleName);
-
-/**
  * Returns the full path relatived to the given bundle's resourcePath and the given relativePath.
  */
 FOUNDATION_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);

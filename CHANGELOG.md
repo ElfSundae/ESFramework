@@ -47,7 +47,7 @@
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
-    + `ESOSVersion`
+    + `ESOSVersion`, `ESBundleWithName()`
     + `ESGetAssociatedObject()`, `ESSetAssociatedObject()`, `OBJC_ASSOCIATION_WEAK`, use `objc_getAssociatedObject`, `objc_setAssociatedObject` directly
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `NSNumberFromString()`
