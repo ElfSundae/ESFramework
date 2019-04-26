@@ -115,25 +115,4 @@
     return CTTelephonyNetworkInfo.new.subscriberCellularProvider.carrierName;
 }
 
-- (nullable NSDictionary *)WiFiNetworkInfo
-{
-    CFArrayRef interfaces = CNCopySupportedInterfaces();
-    if (interfaces) {
-        CFDictionaryRef networkInfo = CNCopyCurrentNetworkInfo((CFStringRef)CFArrayGetValueAtIndex(interfaces, 0));
-        CFRelease(interfaces);
-        return CFBridgingRelease(networkInfo);
-    }
-    return nil;
-}
-
-- (nullable NSString *)WiFiSSID
-{
-    return self.WiFiNetworkInfo[(__bridge NSString *)kCNNetworkInfoKeySSID];
-}
-
-- (nullable NSString *)WiFiBSSID
-{
-    return self.WiFiNetworkInfo[(__bridge NSString *)kCNNetworkInfoKeyBSSID];
-}
-
 @end

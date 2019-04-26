@@ -56,42 +56,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) BOOL isJailbroken;
 
 /**
- * Returns the name of the subscriber's main (first) cellular service provider.
+ * Returns the name of the subscriber's home cellular service provider.
  * e.g. @"AT&T"
  */
 @property (nullable, nonatomic, copy, readonly) NSString *carrierName;
-
-/**
- * Returns the current WiFi network info.
- *
- * @code
- * {
- *     BSSID = "20:c9:d0:e1:78:c9";
- *     SSID = "Elf Sundae's MBP";
- *     SSIDDATA = <456c6620 53756e64 61652773 204d4250>;
- * }
- * @endcode
- *
- * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
- * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
- */
-@property (nullable, nonatomic, copy, readonly) NSDictionary *WiFiNetworkInfo;
-
-/**
- * Returns the current WiFi SSID.
- *
- * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
- * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
- */
-@property (nullable, nonatomic, copy, readonly) NSString *WiFiSSID;
-
-/**
- * Returns the current WiFi BSSID.
- *
- * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
- * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
- */
-@property (nullable, nonatomic, copy, readonly) NSString *WiFiBSSID;
 
 @end
 

@@ -31,7 +31,7 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
 @interface ESNetworkHelper : NSObject
 
 /**
- * Returns the IP addresses of the network interfaces.
+ * Returns the IP addresses of all actived network interfaces.
  * { interfaceName: { addressFamily: address, ... } }
  *
  * @code
@@ -59,15 +59,53 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
  */
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses;
 
-/**
- * Returns the IPv4 address of "en0" network interface.
- */
-+ (nullable NSString *)getLocalIPv4Address;
 
 /**
- * Returns the IPv6 address of "en0" network interface.
+ * Returns the IP addresses for the network interfaces.
+ * { interfaceName: { addressFamily: address, ... } }
+ *
+ * @param interfacesPredicate Optional NSSet filter of network interface names. If this param is nil or an empty set, all interfaces and associated IP addresses will be returned.
  */
-+ (nullable NSString *)getLocalIPv6Address;
++ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForNetworkInterfaces:(nullable NSSet *)interfacesPredicate;
+
+/**
+ * Returns the local IPv4 address of the "en0" network interface.
+ * You may optionally pass `IPv6Address` out param to get the IPv6 address.
+ */
++ (NSString *)getLocalIPAddress:(NSString * _Nullable * _Nullable)IPv6Address;
+
+/**
+ * Returns the current WiFi network info.
+ *
+ * @code
+ * // Example result:
+ * {
+ *     BSSID = "20:c9:d0:e1:78:c9";
+ *     SSID = "Elf Sundae's MBP";
+ *     SSIDDATA = <456c6620 53756e64 61652773 204d4250>;
+ * }
+ * @endcode
+ *
+ * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
+ * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
+ */
++ (nullable NSDictionary *)getWiFiNetworkInfo;
+
+/**
+ * Returns the current WiFi SSID.
+ *
+ * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
+ * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
+ */
++ (nullable NSString *)getWiFiSSID;
+
+/**
+ * Returns the current WiFi BSSID.
+ *
+ * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
+ * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
+ */
++ (nullable NSString *)getWiFiBSSID;
 
 @end
 

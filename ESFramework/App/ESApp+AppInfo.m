@@ -101,16 +101,23 @@ static NSDate *__gAppLaunchDate = nil;
         result[@"carrier"] = carrier;
     }
     result[@"network"] = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString;
-    NSString *ssid = [device WiFiSSID];
-    if (ssid) {
-        result[@"ssid"] = ssid;
+
+    NSString *SSID = [ESNetworkHelper getWiFiSSID];
+    if (SSID) {
+        result[@"ssid"] = SSID;
     }
-    NSDictionary *localIP = [ESNetworkHelper getIPAddresses][ESNetworkInterfaceWiFiName];
-    if (localIP[ESNetworkAddressFamilyIPv4]) {
-        result[@"local_ip"] = localIP[ESNetworkAddressFamilyIPv4];
+    NSString *BSSID = [ESNetworkHelper getWiFiBSSID];
+    if (BSSID) {
+        result[@"bssid"] = BSSID;
     }
-    if (localIP[ESNetworkAddressFamilyIPv6]) {
-        result[@"local_ipv6"] = localIP[ESNetworkAddressFamilyIPv6];
+
+    NSString *localIPv6 = nil;
+    NSString *localIP = [ESNetworkHelper getLocalIPAddress:&localIPv6];
+    if (localIP) {
+        result[@"local_ip"] = localIP;
+    }
+    if (localIPv6) {
+        result[@"local_ipv6"] = localIPv6;
     }
 
     result[@"app_name"] = self.appName;

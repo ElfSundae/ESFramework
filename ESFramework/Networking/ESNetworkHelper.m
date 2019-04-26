@@ -10,6 +10,7 @@
 #include <ifaddrs.h>
 #include <net/if.h>
 #include <arpa/inet.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4 = @"IPv4";
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6 = @"IPv6";
@@ -22,9 +23,14 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 
 @implementation ESNetworkHelper
 
++ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses
+{
+    return [self getIPAddressesForNetworkInterfaces:nil];
+}
+
 // ref: http://man7.org/linux/man-pages/man3/getifaddrs.3.html
 // ref: https://stackoverflow.com/a/10803584/521946
-+ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses;
++ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForNetworkInterfaces:(nullable NSSet *)interfacesPredicate
 {
     struct ifaddrs *ifaddr;
     if (0 != getifaddrs(&ifaddr)) {
@@ -38,6 +44,12 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
     for (interface = ifaddr; interface != NULL; interface = interface->ifa_next) {
         if (NULL == interface->ifa_addr ||
             IFF_UP != (interface->ifa_flags & IFF_UP)) {
+            continue;
+        }
+
+        NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
+
+        if (interfacesPredicate.count && ![interfacesPredicate containsObject:name]) {
             continue;
         }
 
@@ -64,9 +76,8 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
             continue;
         }
 
-        NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
         if (addresses[name][family]) {
-            // we only get the first IP address for the interface
+            // we only get the first IP address for one interface
             continue;
         }
 
@@ -81,14 +92,35 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
     return addresses.copy;
 }
 
-+ (nullable NSString *)getLocalIPv4Address
++ (NSString *)getLocalIPAddress:(NSString * _Nullable * _Nullable)IPv6Address
 {
-    return [self getIPAddresses][ESNetworkInterfaceWiFiName][ESNetworkAddressFamilyIPv4];
+    NSDictionary *addresses = [[self getIPAddressesForNetworkInterfaces:[NSSet setWithObjects:ESNetworkInterfaceWiFiName, nil]]
+                               objectForKey:ESNetworkInterfaceWiFiName];
+    if (IPv6Address) {
+        *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
+    }
+    return addresses[ESNetworkAddressFamilyIPv4];
 }
 
-+ (nullable NSString *)getLocalIPv6Address
++ (nullable NSDictionary *)getWiFiNetworkInfo
 {
-    return [self getIPAddresses][ESNetworkInterfaceWiFiName][ESNetworkAddressFamilyIPv6];
+    CFArrayRef interfaces = CNCopySupportedInterfaces();
+    if (interfaces) {
+        CFDictionaryRef networkInfo = CNCopyCurrentNetworkInfo((CFStringRef)CFArrayGetValueAtIndex(interfaces, 0));
+        CFRelease(interfaces);
+        return CFBridgingRelease(networkInfo);
+    }
+    return nil;
+}
+
++ (nullable NSString *)getWiFiSSID
+{
+    return [self getWiFiNetworkInfo][(__bridge NSString *)kCNNetworkInfoKeySSID];
+}
+
++ (nullable NSString *)getWiFiBSSID
+{
+    return [self getWiFiNetworkInfo][(__bridge NSString *)kCNNetworkInfoKeyBSSID];
 }
 
 @end
