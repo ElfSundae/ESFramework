@@ -30,6 +30,7 @@
 #import "NSTimer+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"
 
+#import "ESNetworkHelper.h"
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 
 #import "UIAlertController+ESAdditions.h"

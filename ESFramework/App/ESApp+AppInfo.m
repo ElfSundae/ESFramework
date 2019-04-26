@@ -13,6 +13,7 @@
 #import "UIDevice+ESAdditions.h"
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "_ESWebViewUserAgentFetcher.h"
+#import "ESNetworkHelper.h"
 
 static NSDate *__gAppLaunchDate = nil;
 
@@ -104,9 +105,12 @@ static NSDate *__gAppLaunchDate = nil;
     if (ssid) {
         result[@"ssid"] = ssid;
     }
-    NSString *localIP = [device localIPv4Address] ?: [device localIPv6Address];
-    if (localIP) {
-        result[@"local_ip"] = localIP;
+    NSDictionary *localIP = [ESNetworkHelper getIPAddresses][ESNetworkInterfaceWiFiName];
+    if (localIP[ESNetworkAddressFamilyIPv4]) {
+        result[@"local_ip"] = localIP[ESNetworkAddressFamilyIPv4];
+    }
+    if (localIP[ESNetworkAddressFamilyIPv6]) {
+        result[@"local_ipv6"] = localIP[ESNetworkAddressFamilyIPv6];
     }
 
     result[@"app_name"] = self.appName;

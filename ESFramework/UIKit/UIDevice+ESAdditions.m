@@ -11,10 +11,6 @@
 #import <CoreTelephony/CTCarrier.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/sysctl.h>
-#import <mach/mach.h>
-#include <ifaddrs.h>
-#include <arpa/inet.h>
-#include <net/if.h>
 #import "ESHelpers.h"
 #import "ESValue.h"
 
@@ -138,65 +134,6 @@
 - (nullable NSString *)WiFiBSSID
 {
     return self.WiFiNetworkInfo[(__bridge NSString *)kCNNetworkInfoKeyBSSID];
-}
-
-- (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback
-{
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
-
-    struct ifaddrs *interfaces = NULL;
-    if (0 == getifaddrs(&interfaces)) {
-        // Loop through linked list of interfaces
-        struct ifaddrs *interface = NULL;
-        for (interface = interfaces; interface != NULL; interface = interface->ifa_next) {
-            if (!(interface->ifa_flags & IFF_UP) /* || (interface->ifa_flags & IFF_LOOPBACK) */) {
-                continue; // deeply nested code harder to read
-            }
-
-            if (!includesLoopback && (interface->ifa_flags & IFF_LOOPBACK)) {
-                continue; // skip loopback address
-            }
-
-            NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
-            NSString *family = nil;
-            NSString *ip = nil;
-            if (interface->ifa_addr->sa_family == AF_INET) {
-                char ipBuffer[INET_ADDRSTRLEN];
-                struct sockaddr_in *addr = (struct sockaddr_in *)interface->ifa_addr;
-                if (inet_ntop(AF_INET, &addr->sin_addr, ipBuffer, sizeof(ipBuffer))) {
-                    family = kESNetworkInterfaceFamilyIPv4;
-                    ip = [NSString stringWithUTF8String:ipBuffer];
-                }
-            } else if (interface->ifa_addr->sa_family == AF_INET6) {
-                char ipBuffer[INET6_ADDRSTRLEN];
-                struct sockaddr_in6 *addr = (struct sockaddr_in6 *)interface->ifa_addr;
-                if (inet_ntop(AF_INET6, &addr->sin6_addr, ipBuffer, sizeof(ipBuffer))) {
-                    family = kESNetworkInterfaceFamilyIPv6;
-                    ip = [NSString stringWithUTF8String:ipBuffer];
-                }
-            }
-
-            if (name && family && ip) {
-                if (!result[family]) {
-                    result[family] = [NSMutableDictionary dictionary];
-                }
-                result[family][name] = ip;
-            }
-        }
-
-        freeifaddrs(interfaces);
-    }
-    return [result copy];
-}
-
-- (NSString *)localIPv4Address
-{
-    return [self getNetworkInterfacesIncludesLoopback:NO][kESNetworkInterfaceFamilyIPv4][kESNetworkInterfaceNameWiFi];
-}
-
-- (NSString *)localIPv6Address
-{
-    return [self getNetworkInterfacesIncludesLoopback:NO][kESNetworkInterfaceFamilyIPv6][kESNetworkInterfaceNameWiFi];
 }
 
 @end

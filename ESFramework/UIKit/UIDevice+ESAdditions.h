@@ -10,14 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define kESNetworkInterfaceFamilyIPv4           @"IPv4"
-#define kESNetworkInterfaceFamilyIPv6           @"IPv6"
-#define kESNetworkInterfaceNameLoopback         @"lo0" // localhost
-#define kESNetworkInterfaceNameCellular         @"pdp_ip0"
-#define kESNetworkInterfaceNameWiFi             @"en0"
-#define kESNetworkInterfaceNameVPN              @"utun0"
-#define kESNetworkInterfaceNameAWDL             @"awdl0" // AWDL (Apple Wireless Direct Link)
-
 @interface UIDevice (ESAdditions)
 
 /**
@@ -100,37 +92,6 @@ NS_ASSUME_NONNULL_BEGIN
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
 @property (nullable, nonatomic, copy, readonly) NSString *WiFiBSSID;
-
-/**
- * Returns network interfaces names and addresses.
- *
- * e.g.
- * @code
- * {
- *     IPv4 = {
- *         en0 = "192.168.2.115";
- *         lo0 = "127.0.0.1";
- *         "pdp_ip0" = "100.114.247.226";
- *     };
- *     IPv6 = {
- *         awdl0 = "fe80::5c75:e1ff:fe4e:f45a";
- *         en0 = "fe80::881:8a52:89cb:bb89";
- *         lo0 = "fe80::1";
- *     };
- * }
- * @endcode
- */
-- (NSDictionary *)getNetworkInterfacesIncludesLoopback:(BOOL)includesLoopback;
-
-/**
- * Returns IPv4 address on en0.
- */
-- (NSString *)localIPv4Address;
-
-/**
- * Returns IPv6 address on en0.
- */
-- (NSString *)localIPv6Address;
 
 @end
 
