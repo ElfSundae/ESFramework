@@ -37,9 +37,6 @@
     return image;
 }
 
-/**
- * Returns true if the image has an alpha layer.
- */
 - (BOOL)hasAlpha
 {
     CGImageAlphaInfo alpha = CGImageGetAlphaInfo(self.CGImage);
@@ -49,9 +46,6 @@
             alpha == kCGImageAlphaPremultipliedLast);
 }
 
-/**
- * Returns a copy of the given image, adding an alpha channel if it doesn't already have one.
- */
 - (UIImage *)imageWithAlpha
 {
     if ([self hasAlpha]) {
@@ -64,13 +58,10 @@
     size_t height = CGImageGetHeight(imageRef) * scale;
 
     // The bitsPerComponent and bitmapInfo values are hard-coded to prevent an "unsupported parameter combination" error
-    CGContextRef offscreenContext = CGBitmapContextCreate(NULL,
-                                                          width,
-                                                          height,
-                                                          8,
-                                                          0,
-                                                          CGImageGetColorSpace(imageRef),
-                                                          kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
+    CGContextRef offscreenContext = CGBitmapContextCreate(
+        NULL, width, height, 8, 0,
+        CGImageGetColorSpace(imageRef),
+        kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
 
     // Draw the image into the context and retrieve the new image, which will now have an alpha layer
     CGContextDrawImage(offscreenContext, CGRectMake(0, 0, width, height), imageRef);
@@ -84,7 +75,6 @@
     return imageWithAlpha;
 }
 
-
 - (UIImage *)croppedImage:(CGRect)bounds
 {
     CGFloat scale = MAX(self.scale, 1.0);
@@ -95,14 +85,10 @@
     return croppedImage;
 }
 
-/**
- * Resizing using kCGInterpolationHigh quality.
- */
 - (UIImage *)resizedImage:(CGSize)newSize
 {
     return [self resizedImage:newSize interpolationQuality:kCGInterpolationHigh];
 }
-
 
 /**
  * Returns a rescaled copy of the image, taking into account its orientation.
@@ -209,11 +195,12 @@
     return [self resizedImage:newSize interpolationQuality:quality];
 }
 
-
 /**
  * Returns a copy of this image that is squared to the thumbnail size.
  */
-- (UIImage *)thumbnailImage:(NSInteger)thumbnailSize cornerRadius:(NSUInteger)cornerRadius interpolationQuality:(CGInterpolationQuality)quality
+- (UIImage *)thumbnailImage:(NSInteger)thumbnailSize
+               cornerRadius:(NSUInteger)cornerRadius
+       interpolationQuality:(CGInterpolationQuality)quality
 {
 
     UIImage *resizedImage = [self resizedImageWithContentMode:UIViewContentModeScaleAspectFill
@@ -291,7 +278,10 @@
  * Adds a rectangular path to the given context and rounds its corners by the given extents.
  * Original author: Björn Sållarp. Used with permission. See: http://blog.sallarp.com/iphone-uiimage-round-corners/.
  */
-- (void)addRoundedRectToPath:(CGRect)rect context:(CGContextRef)context ovalWidth:(CGFloat)ovalWidth ovalHeight:(CGFloat)ovalHeight
+- (void)addRoundedRectToPath:(CGRect)rect
+                     context:(CGContextRef)context
+                   ovalWidth:(CGFloat)ovalWidth
+                  ovalHeight:(CGFloat)ovalHeight
 {
     if (ovalWidth == 0 || ovalHeight == 0) {
         CGContextAddRect(context, rect);
@@ -357,6 +347,5 @@
 
     return roundedImage;
 }
-
 
 @end

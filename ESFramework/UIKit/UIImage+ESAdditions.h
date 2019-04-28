@@ -16,6 +16,7 @@
 @interface UIImage (ESAdditions)
 
 + (UIImage *)imageWithColor:(UIColor *)color cornerRadius:(CGFloat)cornerRadius;
+
 - (UIImage *)resizableImageWithMinimumSize:(CGSize)size;
 
 /**
@@ -26,7 +27,6 @@
  * Returns a copy of the given image, adding an alpha channel if it doesn't already have one.
  */
 - (UIImage *)imageWithAlpha;
-
 
 /**
  * Returns a copy of this image that is cropped to the given bounds.
@@ -39,6 +39,7 @@
  * Resizing using kCGInterpolationHigh quality.
  */
 - (UIImage *)resizedImage:(CGSize)newSize;
+
 /**
  * Returns a rescaled copy of the image, taking into account its orientation.
  * The image will be scaled disproportionately if necessary to fit the bounds specified by the parameter.
@@ -71,7 +72,6 @@
                cornerRadius:(NSUInteger)cornerRadius
        interpolationQuality:(CGInterpolationQuality)quality;
 
-
 /**
  * Helper method.
  * Returns an affine transform that takes into account the image orientation when drawing a scaled image
@@ -82,14 +82,16 @@
  * Adds a rectangular path to the given context and rounds its corners by the given extents.
  * Original author: Björn Sållarp. Used with permission. See: http://blog.sallarp.com/iphone-uiimage-round-corners/.
  */
-- (void)addRoundedRectToPath:(CGRect)rect context:(CGContextRef)context ovalWidth:(CGFloat)ovalWidth ovalHeight:(CGFloat)ovalHeight;
+- (void)addRoundedRectToPath:(CGRect)rect
+                     context:(CGContextRef)context
+                   ovalWidth:(CGFloat)ovalWidth
+                  ovalHeight:(CGFloat)ovalHeight;
+
 /**
  * Creates a copy of this image with rounded corners
  * If borderSize is non-zero, a transparent border of the given size will also be added
  * Original author: Björn Sållarp. Used with permission. See: http://blog.sallarp.com/iphone-uiimage-round-corners/
  */
 - (UIImage *)roundedCornerImage:(NSInteger)cornerSize borderSize:(NSInteger)borderSize;
-
-
 
 @end
