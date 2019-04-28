@@ -14,16 +14,17 @@
 
 - (UIView *)findFirstResponder
 {
-    if ([self isFirstResponder]) {
+    if (self.isFirstResponder) {
         return self;
     }
 
-    for (UIView *subView in [self subviews]) {
+    for (UIView *subView in self.subviews) {
         UIView *firstResponder = [subView findFirstResponder];
-        if (nil != firstResponder) {
+        if (firstResponder) {
             return firstResponder;
         }
     }
+
     return nil;
 }
 
@@ -41,18 +42,18 @@
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
-- (UIView *)findViewWithClassInSuperviews:(Class)viewClass
+- (UIView *)findSuperviewOf:(Class)viewClass
 {
     if ([self.superview isKindOfClass:viewClass]) {
         return self.superview;
     } else if (self.superview) {
-        return [self.superview findViewWithClassInSuperviews:viewClass];
+        return [self.superview findSuperviewOf:viewClass];
     } else {
         return nil;
     }
 }
 
-- (UIView *)findViewWithClassInSubviews:(Class)viewClass
+- (UIView *)findSubviewOf:(Class)viewClass
 {
     UIView *foundView = nil;
     for (UIView *view in self.subviews) {
@@ -60,7 +61,7 @@
             foundView = view;
             break;
         } else {
-            UIView *subview = [view findViewWithClassInSubviews:viewClass];
+            UIView *subview = [view findSubviewOf:viewClass];
             if (subview) {
                 foundView = subview;
                 break;
@@ -85,6 +86,7 @@
         }
 
     } while (view && controller == nil);
+
     return controller;
 }
 

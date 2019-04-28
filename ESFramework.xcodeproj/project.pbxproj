@@ -138,6 +138,13 @@
 			sourceTree = "<group>";
 			tabWidth = 4;
 		};
+		E74E44812275DD02007D1DFB /* Quartz */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quartz;
+			sourceTree = "<group>";
+		};
 		E76CA2741CA50D1100EDBB8E /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +232,7 @@
 				E76CA27F1CA50D1100EDBB8E /* ESMacros.h */,
 				E76CA27E1CA50D1100EDBB8E /* Foundation */,
 				E779129B226F3C65006EF94D /* Networking */,
+				E74E44812275DD02007D1DFB /* Quartz */,
 				E779129C226F3DCB006EF94D /* UIKit */,
 				E76CA2741CA50D1100EDBB8E /* App */,
 				E76CA28F1CA51C5300EDBB8E /* iTunesStore */,

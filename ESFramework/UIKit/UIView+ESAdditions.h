@@ -28,15 +28,15 @@
 /**
  * Searches in superviews recursively to find the view which its class is the given viewClass.
  */
-- (UIView *)findViewWithClassInSuperviews:(Class)viewClass;
+- (UIView *)findSuperviewOf:(Class)viewClass;
 
 /**
  * Searches in subviews recursively to find the view which its class is the given viewClass.
  */
-- (UIView *)findViewWithClassInSubviews:(Class)viewClass;
+- (UIView *)findSubviewOf:(Class)viewClass;
 
 /**
- * Returns `UIViewController` which manages this view.
+ * Returns the UIViewController instance which manages this view.
  */
 - (UIViewController *)viewController;
 

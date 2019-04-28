@@ -104,7 +104,7 @@
         case UIImageOrientationRightMirrored:
             drawTransposed = YES;
             break;
-            
+
         default:
             drawTransposed = NO;
     }
