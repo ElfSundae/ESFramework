@@ -37,7 +37,6 @@
 #import "UIDevice+ESAdditions.h"
 #import "UIColor+ESAdditions.h"
 #import "UIImage+ESAdditions.h"
-#import "UIGestureRecognizer+ESAdditions.h"
 #import "UIControl+ESAdditions.h"
 #import "UIView+ESShortcut.h"
 #import "UIView+ESAdditions.h"

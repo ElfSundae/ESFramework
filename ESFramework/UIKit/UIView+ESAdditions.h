@@ -40,32 +40,6 @@
  */
 - (UIViewController *)viewController;
 
-/**
- * Add an UITapGestureRecognizer with block way.
- */
-- (UITapGestureRecognizer *)addTapGestureHandler:(void (^)(UITapGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
-
-/**
- * Add an UILongPressGestureRecognizer with block way.
- *
- * @warning `handler` will be invoked when the state of gesture recognizer becomes UIGestureRecognizerStateBegan.
- */
-- (UILongPressGestureRecognizer *)addLongPressGestureHandler:(void (^)(UILongPressGestureRecognizer *gestureRecognizer, UIView *view, CGPoint locationInView))handler;
-
-- (NSArray<__kindof UITapGestureRecognizer *> *)allTapGestureRecognizers;
-- (NSArray<__kindof UILongPressGestureRecognizer *> *)allLongPressGestureRecognizers;
-- (NSArray<__kindof UIPanGestureRecognizer *> *)allPanGestureRecognizers;
-- (NSArray<__kindof UIPinchGestureRecognizer *> *)allPinchGestureRecognizers;
-- (NSArray<__kindof UISwipeGestureRecognizer *> *)allSwipeGestureRecognizers;
-- (NSArray<__kindof UIRotationGestureRecognizer *> *)allRotationGestureRecognizers;
-
-- (void)removeAllTapGestureRecognizers;
-- (void)removeAllLongPressGestureRecognizers;
-- (void)removeAllPanGestureRecognizers;
-- (void)removeAllPinchGestureRecognizers;
-- (void)removeAllSwipeGestureRecognizers;
-- (void)removeAllRotationGestureRecognizers;
-
 /// Set layer.mask, rounds all corners with the same horizontal and vertical radius
 /// @see http://stackoverflow.com/a/5826745
 - (void)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius;
