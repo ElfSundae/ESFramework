@@ -64,8 +64,7 @@ FOUNDATION_EXTERN NSURL *ESURLValue(id obj);
 /*!
  * Gets value from NSNumber or NSString safely.
  *
- * If the given object is parsed failed, these functions will return NO, and the old value stored in
- * the parameter `var` will no changes.
+ * Invoke these methods with NULL as var to simply detect past the type representation.
  */
 FOUNDATION_EXTERN BOOL ESIntVal(int *var, id obj);
 FOUNDATION_EXTERN BOOL ESUIntVal(unsigned int *var, id obj);

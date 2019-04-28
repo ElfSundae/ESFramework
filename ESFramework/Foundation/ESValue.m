@@ -84,19 +84,14 @@ BOOL ESBoolValueWithDefault(id obj, BOOL defaultValue)
 
 NSString *ESStringValueWithDefault(id obj, NSString *defaultValue)
 {
-    if ([obj isKindOfClass:NSNumber.class]) {
-        return [(NSNumber *)obj stringValue];
-    }
-
-    return [obj isKindOfClass:NSString.class] ? obj : defaultValue;
+    return [obj isKindOfClass:NSString.class] ? obj :
+    ([obj isKindOfClass:NSNumber.class] ? [(NSNumber *)obj stringValue] : defaultValue);
 }
 
 NSURL *ESURLValueWithDefault(id obj, NSURL *defaultValue)
 {
-    if (ESIsStringWithAnyText(obj)) {
-        return [NSURL URLWithString:obj];
-    }
-    return [obj isKindOfClass:NSURL.class] ? obj : defaultValue;
+    return [obj isKindOfClass:NSURL.class] ? obj :
+    ([obj isKindOfClass:NSString.class] ? [NSURL URLWithString:obj] : defaultValue);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -175,7 +170,7 @@ NSURL *ESURLValue(id obj)
 BOOL ESIntVal(int *var, id obj)
 {
     if (isKindOfNSNumberOrNSString(obj)) {
-        *var = [obj intValue];
+        if (var) *var = [obj intValue];
         return YES;
     }
     return NO;
@@ -184,10 +179,10 @@ BOOL ESIntVal(int *var, id obj)
 BOOL ESUIntVal(unsigned int *var, id obj)
 {
     if ([obj isKindOfClass:[NSNumber class]]) {
-        *var = [obj unsignedIntValue];
+        if (var) *var = [obj unsignedIntValue];
         return YES;
     } else if ([obj isKindOfClass:[NSString class]]) {
-        *var = [get_number(obj) unsignedIntValue];
+        if (var) *var = [get_number(obj) unsignedIntValue];
         return YES;
     }
     return NO;
@@ -196,7 +191,7 @@ BOOL ESUIntVal(unsigned int *var, id obj)
 BOOL ESIntegerVal(NSInteger *var, id obj)
 {
     if (isKindOfNSNumberOrNSString(obj)) {
-        *var = [obj integerValue];
+        if (var) *var = [obj integerValue];
         return YES;
     }
     return NO;
@@ -205,10 +200,10 @@ BOOL ESIntegerVal(NSInteger *var, id obj)
 BOOL ESUIntegerVal(NSUInteger *var, id obj)
 {
     if ([obj isKindOfClass:[NSNumber class]]) {
-        *var = [obj unsignedIntegerValue];
+        if (var) *var = [obj unsignedIntegerValue];
         return YES;
     } else if ([obj isKindOfClass:[NSString class]]) {
-        *var = [get_number(obj) unsignedIntegerValue];
+        if (var) *var = [get_number(obj) unsignedIntegerValue];
         return YES;
     }
     return NO;
@@ -217,10 +212,10 @@ BOOL ESUIntegerVal(NSUInteger *var, id obj)
 BOOL ESLongVal(long *var, id obj)
 {
     if ([obj isKindOfClass:[NSNumber class]]) {
-        *var = [obj longValue];
+        if (var) *var = [obj longValue];
         return YES;
     } else if ([obj isKindOfClass:[NSString class]]) {
-        *var = [get_number(obj) longValue];
+        if (var) *var = [get_number(obj) longValue];
         return YES;
     }
     return NO;
@@ -229,10 +224,10 @@ BOOL ESLongVal(long *var, id obj)
 BOOL ESULongVal(unsigned long *var, id obj)
 {
     if ([obj isKindOfClass:[NSNumber class]]) {
-        *var = [obj unsignedLongValue];
+        if (var) *var = [obj unsignedLongValue];
         return YES;
     } else if ([obj isKindOfClass:[NSString class]]) {
-        *var = [get_number(obj) unsignedLongValue];
+        if (var) *var = [get_number(obj) unsignedLongValue];
         return YES;
     }
     return NO;
@@ -241,7 +236,7 @@ BOOL ESULongVal(unsigned long *var, id obj)
 BOOL ESLongLongVal(long long *var, id obj)
 {
     if (isKindOfNSNumberOrNSString(obj)) {
-        *var = [obj longLongValue];
+        if (var) *var = [obj longLongValue];
         return YES;
     }
     return NO;
@@ -250,10 +245,10 @@ BOOL ESLongLongVal(long long *var, id obj)
 BOOL ESULongLongVal(unsigned long long *var, id obj)
 {
     if ([obj isKindOfClass:[NSNumber class]]) {
-        *var = [obj unsignedLongLongValue];
+        if (var) *var = [obj unsignedLongLongValue];
         return YES;
     } else if ([obj isKindOfClass:[NSString class]]) {
-        *var = [get_number(obj) unsignedLongLongValue];
+        if (var) *var = [get_number(obj) unsignedLongLongValue];
         return YES;
     }
     return NO;
@@ -262,7 +257,7 @@ BOOL ESULongLongVal(unsigned long long *var, id obj)
 BOOL ESFloatVal(float *var, id obj)
 {
     if (isKindOfNSNumberOrNSString(obj)) {
-        *var = [obj floatValue];
+        if (var) *var = [obj floatValue];
         return YES;
     }
     return NO;
@@ -271,7 +266,7 @@ BOOL ESFloatVal(float *var, id obj)
 BOOL ESDoubleVal(double *var, id obj)
 {
     if (isKindOfNSNumberOrNSString(obj)) {
-        *var = [obj doubleValue];
+        if (var) *var = [obj doubleValue];
         return YES;
     }
     return NO;
@@ -280,7 +275,7 @@ BOOL ESDoubleVal(double *var, id obj)
 BOOL ESBoolVal(BOOL *var, id obj)
 {
     if (isKindOfNSNumberOrNSString(obj)) {
-        *var = [obj boolValue];
+        if (var) *var = [obj boolValue];
         return YES;
     }
     return NO;
@@ -289,10 +284,10 @@ BOOL ESBoolVal(BOOL *var, id obj)
 BOOL ESStringVal(NSString **var, id obj)
 {
     if ([obj isKindOfClass:[NSString class]]) {
-        *var = obj;
+        if (var) *var = obj;
         return YES;
     } else if ([obj isKindOfClass:[NSNumber class]]) {
-        *var = [obj stringValue];
+        if (var) *var = [obj stringValue];
         return YES;
     }
     return NO;
@@ -301,10 +296,10 @@ BOOL ESStringVal(NSString **var, id obj)
 BOOL ESURLVal(NSURL **var, id obj)
 {
     if ([obj isKindOfClass:[NSURL class]]) {
-        *var = obj;
+        if (var) *var = obj;
         return YES;
     } else if (ESIsStringWithAnyText(obj)) {
-        *var = [NSURL URLWithString:(NSString *)obj];
+        if (var) *var = [NSURL URLWithString:(NSString *)obj];
         return YES;
     }
     return NO;
