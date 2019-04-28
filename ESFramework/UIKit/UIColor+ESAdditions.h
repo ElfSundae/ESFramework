@@ -46,11 +46,6 @@
  */
 - (NSString *)hexDescription;
 
-/// groupTableViewBackgroundColor below iOS 7
-+ (UIColor *)es_iOS6GroupTableViewBackgroundColor;
-/// groupTableViewBackgroundColor above iOS 7
-+ (UIColor *)es_viewBackgroundColor;
-
 /// [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000]
 + (UIColor *)es_redNavigationBarColor;
 /// [UIColor colorWithRed:0.054 green:0.433 blue:0.925 alpha:1.000]
