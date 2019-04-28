@@ -36,12 +36,15 @@
  */
 + (UIColor *)colorWithHexRGBString:(NSString *)hexString alpha:(CGFloat)alpha;
 
-/// @"rgb(239,156,255)"
-- (NSString *)es_RGBString;
-/// @"rgba(239,156,255,0.5)"
-- (NSString *)es_RGBAString;
-/// @"#EF9CFF"
-- (NSString *)es_HexString;
+/**
+ * e.g. "rgba(239,156,255,0.5)"
+ */
+- (NSString *)RGBADescription;
+
+/**
+ * e.g. "#EF9CFF"
+ */
+- (NSString *)hexDescription;
 
 /// groupTableViewBackgroundColor below iOS 7
 + (UIColor *)es_iOS6GroupTableViewBackgroundColor;

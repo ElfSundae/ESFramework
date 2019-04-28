@@ -21,21 +21,14 @@
     return UIColorWithHexRGBString(hexString, alpha);
 }
 
-- (NSString *)es_RGBString
-{
-    CGFloat r, g, b;
-    [self getRed:&r green:&g blue:&b alpha:NULL];
-    return [NSString stringWithFormat:@"rgb(%lu,%lu,%lu)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.)];
-}
-
-- (NSString *)es_RGBAString
+- (NSString *)RGBADescription
 {
     CGFloat r, g, b, a;
     [self getRed:&r green:&g blue:&b alpha:&a];
     return [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.), a];
 }
 
-- (NSString *)es_HexString
+- (NSString *)hexDescription
 {
     CGFloat r, g, b;
     [self getRed:&r green:&g blue:&b alpha:NULL];
