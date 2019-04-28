@@ -12,6 +12,15 @@
 
 @implementation UIView (ESAdditions)
 
+- (UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates
+{
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0);
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:afterUpdates];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
 - (UIView *)findFirstResponder
 {
     if (self.isFirstResponder) {

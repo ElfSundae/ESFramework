@@ -11,6 +11,11 @@
 @interface UIView (ESAdditions)
 
 /**
+ * Returns a snapshot image of the view hierarchy.
+ */
+- (UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates;
+
+/**
  * Returns the first responder of this view.
  */
 - (UIView *)findFirstResponder;
