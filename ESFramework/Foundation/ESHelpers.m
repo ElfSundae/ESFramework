@@ -11,20 +11,6 @@
 #import <Security/SecRandom.h>
 #import "NSInvocation+ESHelper.h"
 
-void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond))
-{
-    struct timeval begin, end;
-    gettimeofday(&begin, NULL);
-    block();
-    gettimeofday(&end, NULL);
-    completion((double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000);
-}
-
-BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
-{
-    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion}];
-}
-
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {
     return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
@@ -54,6 +40,20 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
         return [UIColor clearColor];
     }
     return UIColorWithRGBHex(hex, alpha);
+}
+
+void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond))
+{
+    struct timeval begin, end;
+    gettimeofday(&begin, NULL);
+    block();
+    gettimeofday(&end, NULL);
+    completion((double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000);
+}
+
+BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
+{
+    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion}];
 }
 
 BOOL ESIsStringWithAnyText(id object)
