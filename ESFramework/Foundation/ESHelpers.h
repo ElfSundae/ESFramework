@@ -22,6 +22,7 @@ FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
 
 /**
  * Creates an UIColor instance from RGB values.
+ * RGB numbers are between 0 - 255.
  * @code
  * UIColorWithRGBA(123, 255, 200, 0.8);
  * @endcode
@@ -30,6 +31,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat b
 
 /**
  * Creates an UIColor instance from RGB values.
+ * RGB numbers are between 0 - 255.
  * @code
  * UIColorWithRGB(123, 255, 200);
  * @endcode
@@ -42,7 +44,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat bl
  * UIColorWithHexRGB(0x7bffc8, 0.8);
  * @endcode
  */
-FOUNDATION_EXTERN UIColor *UIColorWithHexRGB(NSUInteger hex, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
 
 /**
  * Creates an UIColor instance from a hexadecimal RGB string.
@@ -53,7 +55,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithHexRGB(NSUInteger hex, CGFloat alpha);
  * UIColorWithHexRGBString(@"33AF00", 0.9);
  * @endcode
  */
-FOUNDATION_EXTERN UIColor *UIColorWithHexRGBString(NSString *hexString, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
 /**
  * Checks whether the given object is a non-empty string.

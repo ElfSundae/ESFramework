@@ -18,33 +18,14 @@
 @interface UIColor (ESAdditions)
 
 /**
- * Creates an UIColor instance from a hexadecimal RGB number.
- * @code
- * [UIColor colorWithHexRGB:0x7bffc8 alpha:0.8];
- * @endcode
- */
-+ (UIColor *)colorWithHexRGB:(NSUInteger)hex alpha:(CGFloat)alpha;
-
-/**
- * Creates an UIColor instance from a hexadecimal RGB string.
- *
- * @code
- * [UIColor colorWithHexRGBString:@"0x33ff80" alpha:1];
- * [UIColor colorWithHexRGBString:@"#33ff80" alpha:0.8];
- * [UIColor colorWithHexRGBString:@"33AF00" alpha:0.8];
- * @endcode
- */
-+ (UIColor *)colorWithHexRGBString:(NSString *)hexString alpha:(CGFloat)alpha;
-
-/**
  * e.g. "rgba(239,156,255,0.5)"
  */
-- (NSString *)RGBADescription;
+- (NSString *)RGBAString;
 
 /**
  * e.g. "#EF9CFF"
  */
-- (NSString *)hexDescription;
+- (NSString *)RGBHexString;
 
 /// [UIColor colorWithRed:0.987 green:0.129 blue:0.146 alpha:1.000]
 + (UIColor *)es_redNavigationBarColor;

@@ -58,7 +58,7 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
     if (ESOSVersionIsAtLeast(7)) {
         return [[self alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
     } else {
-        return [self flatProgressViewWithTrackColor:UIColorWithHexRGB(0xb6b6b6, 1) progressColor:UIColorWithHexRGB(0x1374ff, 1)];
+        return [self flatProgressViewWithTrackColor:UIColorWithRGBHex(0xb6b6b6, 1) progressColor:UIColorWithRGBHex(0x1374ff, 1)];
     }
 }
 

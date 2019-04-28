@@ -7,28 +7,17 @@
 //
 
 #import "UIColor+ESAdditions.h"
-#import "ESHelpers.h"
 
 @implementation UIColor (ESAdditions)
 
-+ (UIColor *)colorWithHexRGB:(NSUInteger)hex alpha:(CGFloat)alpha
-{
-    return UIColorWithHexRGB(hex, alpha);
-}
-
-+ (UIColor *)colorWithHexRGBString:(NSString *)hexString alpha:(CGFloat)alpha
-{
-    return UIColorWithHexRGBString(hexString, alpha);
-}
-
-- (NSString *)RGBADescription
+- (NSString *)RGBAString
 {
     CGFloat r, g, b, a;
     [self getRed:&r green:&g blue:&b alpha:&a];
     return [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.), a];
 }
 
-- (NSString *)hexDescription
+- (NSString *)RGBHexString
 {
     CGFloat r, g, b;
     [self getRed:&r green:&g blue:&b alpha:NULL];

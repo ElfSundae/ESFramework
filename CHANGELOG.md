@@ -15,7 +15,6 @@
     + `NSDateFormatter (ESAdditions)` category
     + `-[NSUserDefaults setObject:forKeyPath:]`
     + `ESNetworkHelper` class
-    + `+[UIColor colorWithHexRGB:alpha:]`, `+[UIColor colorWithHexRGBString:alpha:]`
 - Renamed:
     + `ES_STOPWATCH_BEGIN` `ES_STOPWATCH_END` => `ESBenchmark()`
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`
@@ -26,7 +25,6 @@
     + `ESDispatchOnLowQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, block)`
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block)`
     + `ESDispatchAfter` => `es_dispatch_after`
-    + `UIColorWithRGBAHex()` => `UIColorWithHexRGB()`, `UIColorWithRGBHex()` => `UIColorWithHexRGB()`, `UIColorWithRGBAHexString()` => `UIColorWithHexRGBString()`
     + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
     + `UIScreenIsRetina()` => `ESIsRetinaScreen()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
@@ -46,7 +44,7 @@
     + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
     + NSUserDefaults methods: `+registeredDefaults` => `-registeredDefaults`, `+registerDefaults:` => `-setRegisteredDefaults:`, `+unregisterDefaultsForKeys:` => `-removeRegisteredObjectsForKeys:`, `+replaceRegisteredObject:forKey:` => `-setRegisteredObject:forKey:`
     + UIDevice class methods to instance methods: `+platform` => `-platform`, `+carrierString` => `-carrierName`, `+currentWiFiSSID` => `-WiFiSSID`, `+isJailbroken` => `-isJailbroken`, `+diskTotalSize` => `-diskSize`, `+screenSizeString:` => `ESScreenSizeString()`
-    + UIColor methods: `-es_RGBAString` => `-RGBADescription`, `-es_HexString` => `-hexDescription`
+    + UIColor methods: `-es_RGBAString` => `-RGBAString`, `-es_HexString` => `-RGBHexString`
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
@@ -76,7 +74,7 @@
     + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
     + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`, `+isRetinaScreen`, `+isIPhoneRetina35InchScreen`, `+isIPhoneRetina4InchScreen`, `+isIPhoneRetina47InchScreen`, `+isIPhoneRetina55InchScreen`, `+localTimeZone`, `+localTimeZoneFromGMT`, `+currentLocale`, `+currentLocaleLanguageCode`, `+currentLocaleCountryCode`, `+currentLocaleIdentifier`, `+getNetworkInterfacesIncludesLoopback:`, `+localIPv4Address`, `+localIPv6Address`
-    + UIColor methods: `-es_RGBString`, `+es_iOS6GroupTableViewBackgroundColor`, `+es_viewBackgroundColor`
+    + UIColor methods: `+es_iOS6GroupTableViewBackgroundColor`, `+es_viewBackgroundColor`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

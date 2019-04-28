@@ -32,10 +32,10 @@ UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha
 
 UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
 {
-    return UIColorWithRGBA(red, green, blue, 1.0);
+    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1.0];
 }
 
-UIColor *UIColorWithHexRGB(NSUInteger hex, CGFloat alpha)
+UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha)
 {
     return [UIColor colorWithRed:(CGFloat)((hex & 0xFF0000) >> 16) / 255.0
                            green:(CGFloat)((hex & 0xFF00) >> 8) / 255.0
@@ -43,7 +43,7 @@ UIColor *UIColorWithHexRGB(NSUInteger hex, CGFloat alpha)
                            alpha:alpha];
 }
 
-UIColor *UIColorWithHexRGBString(NSString *hexString, CGFloat alpha)
+UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
 {
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     if (7 == hexString.length) {
@@ -53,7 +53,7 @@ UIColor *UIColorWithHexRGBString(NSString *hexString, CGFloat alpha)
     if (![scanner scanHexInt:&hex]) {
         return [UIColor clearColor];
     }
-    return UIColorWithHexRGB(hex, alpha);
+    return UIColorWithRGBHex(hex, alpha);
 }
 
 BOOL ESIsStringWithAnyText(id object)
