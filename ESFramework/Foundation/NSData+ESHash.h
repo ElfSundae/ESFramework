@@ -14,12 +14,12 @@
 #pragma mark - String Value
 
 /**
- * Converts data to string with UTF-8 encoding.
+ * Converts data to an UTF-8 encoded string.
  */
 - (NSString *)stringValue;
 
 /**
- * Converts data to Hex string with lower case.
+ * Converts data to a lowercase hexadecimal string.
  */
 - (NSString *)hexStringValue;
 
