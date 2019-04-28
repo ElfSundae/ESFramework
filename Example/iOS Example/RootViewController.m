@@ -16,14 +16,10 @@
 {
     [super viewDidLoad];
 
-    self.title = @"ESFramework Example";
+    self.title = @"ESFramework";
+
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    [infoButton addEventHandler:^(id sender, UIControlEvents controlEvent) {
-        [UIAlertController showAlertWithTitle:@"About"
-                                      message:@"ESFramework\nhttp://0x123.com"
-                            cancelButtonTitle:NSLocalizedString(@"OK", nil)];
-    }
-               forControlEvents:UIControlEventTouchUpInside];
+    [infoButton addTarget:self action:@selector(infoButtonHandler:) forControlEvents:UIControlEventTouchUpInside];    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 
     self.tableView.rowHeight = 60;
@@ -67,6 +63,13 @@
 
     User *user2 = [user copy];
     NSLog(@"%@", user2.es_description);
+}
+
+- (void)infoButtonHandler:(UIButton *)button
+{
+    [UIAlertController showAlertWithTitle:@"About"
+                                  message:@"ESFramework\n\nhttps://0x123.com"
+                        cancelButtonTitle:@"OK"];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////

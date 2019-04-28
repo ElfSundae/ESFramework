@@ -77,8 +77,6 @@
 		E77912A0226F3DCB006EF94D /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESAdditions.h"; sourceTree = "<group>"; };
 		E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESAdditions.m"; sourceTree = "<group>"; };
-		E77912A3226F3DCB006EF94D /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
-		E77912A4226F3DCB006EF94D /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+ESAdditions.h"; sourceTree = "<group>"; };
 		E77912A6226F3DCB006EF94D /* UIDevice+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESAdditions.h"; sourceTree = "<group>"; };
@@ -258,8 +256,6 @@
 				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
 				E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */,
 				E77912AA226F3DCB006EF94D /* UIImage+ESAdditions.m */,
-				E77912A3226F3DCB006EF94D /* UIControl+ESAdditions.h */,
-				E77912A4226F3DCB006EF94D /* UIControl+ESAdditions.m */,
 				E77912B9226F3DCB006EF94D /* UIView+ESShortcut.h */,
 				E77912BA226F3DCB006EF94D /* UIView+ESShortcut.m */,
 				E77912B7226F3DCB006EF94D /* UIView+ESAdditions.h */,

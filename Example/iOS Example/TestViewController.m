@@ -26,14 +26,17 @@
 {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = UIColor.groupTableViewBackgroundColor;
 
-//    ESWeakSelf;
-//    self.timer = [NSTimer es_scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer *timer) {
-//        [weak_self timerAction:timer];
-//    }];
-
+#if 1
+    ESWeakSelf;
+    self.timer = [NSTimer es_scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer *timer) {
+        ESStrongSelf;
+        [_self timerAction:timer];
+    }];
+#else
      self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:[ESWeakProxy proxyWithTarget:self] selector:@selector(timerAction:) userInfo:nil repeats:YES];
+#endif
 }
 
 - (void)timerAction:(NSTimer *)timer

@@ -75,7 +75,8 @@
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
     + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`, `+isRetinaScreen`, `+isIPhoneRetina35InchScreen`, `+isIPhoneRetina4InchScreen`, `+isIPhoneRetina47InchScreen`, `+isIPhoneRetina55InchScreen`, `+localTimeZone`, `+localTimeZoneFromGMT`, `+currentLocale`, `+currentLocaleLanguageCode`, `+currentLocaleCountryCode`, `+currentLocaleIdentifier`, `+getNetworkInterfacesIncludesLoopback:`, `+localIPv4Address`, `+localIPv6Address`
     + UIColor methods: `+es_iOS6GroupTableViewBackgroundColor`, `+es_viewBackgroundColor`
-    + UIGestureRecognizer methods: `-initWithHandler:`, `+recognizerWithHandler:`
+    + UIGestureRecognizer block methods: `-initWithHandler:`, `+recognizerWithHandler:`
+    + UIControl block methods: `-addEventHandler:forControlEvents:`, `-removeEventHandlersForControlEvents:`, `-removeAllEventHandlersAndTargetsActions`, `existsEventHandlersForControlEvents:`
     + UIView methods: `-addTapGestureHandler:`, `-addLongPressGestureHandler:`, `-all...GestureRecognizers`, `-removeAll...GestureRecognizers`
 - Refactored:
     + `NSObject (ESAutoCoding)`
