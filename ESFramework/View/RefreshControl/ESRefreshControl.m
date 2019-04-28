@@ -8,7 +8,7 @@
 
 #import "ESRefreshControl.h"
 #import "ESRefreshControlDefaultContentView.h"
-#import "UIView+ESShortcut.h"
+#import "UIView+ESAdditions.h"
 
 static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 #define _esDefaultContentViewHeight 50.

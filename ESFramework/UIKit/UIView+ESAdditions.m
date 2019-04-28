@@ -236,12 +236,14 @@
     self.layer.borderColor = [borderColor CGColor];
 }
 
-- (void)setShadowOffset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
+- (void)setLayerShadowWithColor:(UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
 {
     self.layer.masksToBounds = NO;
+    if (color) self.layer.shadowColor = color.CGColor;
     self.layer.shadowOffset = offset;
     self.layer.shadowRadius = radius;
     self.layer.shadowOpacity = opacity;
+    self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
 }
 
 - (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor

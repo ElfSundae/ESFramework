@@ -76,7 +76,7 @@
 /// self.layer.masksToBounds = YES;
 - (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
 /// self.layer.masksToBounds = NO;
-- (void)setShadowOffset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
+- (void)setLayerShadowWithColor:(UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
 /// insert `CAGradientLayer` at index 0.
 - (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
 /// insert `CAGradientLayer` at index 0.

@@ -7,7 +7,7 @@
 //
 
 #import "ESStatusOverlayView.h"
-#import "UIView+ESShortcut.h"
+#import "UIView+ESAdditions.h"
 
 @interface ESStatusOverlayView ()
 {
