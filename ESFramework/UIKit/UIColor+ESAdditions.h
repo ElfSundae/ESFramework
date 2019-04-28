@@ -9,12 +9,11 @@
 #import <UIKit/UIKit.h>
 
 // Color Picker Websites:
+// https://briangrinstead.com/blog/ios-uicolor-picker
 // http://tintui.com
 // https://flatuicolors.com
-// http://flatcolors.net
 // http://www.flatuicolorpicker.com
 // http://bootflat.github.io/color-picker.html
-
 
 @interface UIColor (ESAdditions)
 
