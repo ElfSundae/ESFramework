@@ -10,6 +10,27 @@
 
 @interface UIView (ESAdditions)
 
+/// frame.origin
+@property (nonatomic) CGPoint origin;
+/// frame.size
+@property (nonatomic) CGSize size;
+/// frame.origin.x
+@property (nonatomic) CGFloat left;
+/// frame.origin.y
+@property (nonatomic) CGFloat top;
+/// frame.origin.x + frame.size.width
+@property (nonatomic) CGFloat right;
+/// frame.origin.y + frame.size.height
+@property (nonatomic) CGFloat bottom;
+/// frame.size.width
+@property (nonatomic) CGFloat width;
+/// frame.size.height
+@property (nonatomic) CGFloat height;
+/// center.x
+@property (nonatomic) CGFloat centerX;
+/// center.y
+@property (nonatomic) CGFloat centerY;
+
 /**
  * Returns a snapshot image of the view hierarchy.
  */
