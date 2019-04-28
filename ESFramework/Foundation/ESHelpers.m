@@ -35,7 +35,7 @@ UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
     return UIColorWithRGBA(red, green, blue, 1.0);
 }
 
-UIColor *UIColorWithHexRGB(NSInteger hex, CGFloat alpha)
+UIColor *UIColorWithHexRGB(NSUInteger hex, CGFloat alpha)
 {
     return [UIColor colorWithRed:(CGFloat)((hex & 0xFF0000) >> 16) / 255.0
                            green:(CGFloat)((hex & 0xFF00) >> 8) / 255.0
@@ -51,7 +51,7 @@ UIColor *UIColorWithHexRGBString(NSString *hexString, CGFloat alpha)
     }
     unsigned int hex = 0;
     if (![scanner scanHexInt:&hex]) {
-        return nil;
+        return [UIColor clearColor];
     }
     return UIColorWithHexRGB(hex, alpha);
 }

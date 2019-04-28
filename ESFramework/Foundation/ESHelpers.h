@@ -42,10 +42,10 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat bl
  * UIColorWithHexRGB(0x7bffc8, 0.8);
  * @endcode
  */
-FOUNDATION_EXTERN UIColor *UIColorWithHexRGB(NSInteger hex, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithHexRGB(NSUInteger hex, CGFloat alpha);
 
 /**
- * Creates UIColor from the last six characters on which a hex string.
+ * Creates an UIColor instance from a hexadecimal RGB string.
  *
  * @code
  * UIColorWithHexRGBString(@"#33AF00", 1);

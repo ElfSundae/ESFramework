@@ -7,8 +7,19 @@
 //
 
 #import "UIColor+ESAdditions.h"
+#import "ESHelpers.h"
 
 @implementation UIColor (ESAdditions)
+
++ (UIColor *)colorWithHexRGB:(NSUInteger)hex alpha:(CGFloat)alpha
+{
+    return UIColorWithHexRGB(hex, alpha);
+}
+
++ (UIColor *)colorWithHexRGBString:(NSString *)hexString alpha:(CGFloat)alpha
+{
+    return UIColorWithHexRGBString(hexString, alpha);
+}
 
 - (NSString *)es_RGBString
 {
