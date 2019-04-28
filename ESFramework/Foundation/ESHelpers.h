@@ -10,6 +10,12 @@
 #import <objc/runtime.h>
 
 /**
+ * Returns a boolean value indicating whether the version of the operating system
+ * on which the process is executing is the same or later than the given version.
+ */
+FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
+
+/**
  * Creates an UIColor instance from RGB values.
  * RGB numbers are between 0 - 255.
  * @code
@@ -50,12 +56,6 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
  * Profiles the execution time.
  */
 FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
-
-/**
- * Returns a boolean value indicating whether the version of the operating system
- * on which the process is executing is the same or later than the given version.
- */
-FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
 
 /**
  * Checks whether the given object is a non-empty string.
