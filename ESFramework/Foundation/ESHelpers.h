@@ -15,49 +15,45 @@
 FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
 
 /**
- * Returns a Boolean value indicating whether the version of the operating system
+ * Returns a boolean value indicating whether the version of the operating system
  * on which the process is executing is the same or later than the given version.
  */
 FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
 
 /**
- * Creates UIColor from RGB values.
- *
- * e.g. `UIColorWithRGBA(123, 255, 200, 0.8);`
+ * Creates an UIColor instance from RGB values.
+ * @code
+ * UIColorWithRGBA(123, 255, 200, 0.8);
+ * @endcode
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 
 /**
- * Creates UIColor from RGB values.
- *
- * e.g. `UIColorWithRGB(123, 255, 200);`
+ * Creates an UIColor instance from RGB values.
+ * @code
+ * UIColorWithRGB(123, 255, 200);
+ * @endcode
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
 
 /**
- * Creates UIColor from RGB Hex number.
- *
- * e.g. `UIColorWithRGBAHex(0x7bffc8, 0.8);`
+ * Creates an UIColor instance from a hexadecimal RGB number.
+ * @code
+ * UIColorWithHexRGB(0x7bffc8, 0.8);
+ * @endcode
  */
-FOUNDATION_EXTERN UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha);
-
-/**
- * Creates UIColor from RGB Hex number.
- *
- * e.g. `UIColorWithRGBHex(0x7bffc8);`
- */
-FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSInteger rgbValue);
+FOUNDATION_EXTERN UIColor *UIColorWithHexRGB(NSInteger hex, CGFloat alpha);
 
 /**
  * Creates UIColor from the last six characters on which a hex string.
  *
  * @code
- * UIColorWithRGBHexString(@"#33AF00", 1);
- * UIColorWithRGBHexString(@"0x33AF00", 0.3);
- * UIColorWithRGBHexString(@"33AF00", 0.9);
+ * UIColorWithHexRGBString(@"#33AF00", 1);
+ * UIColorWithHexRGBString(@"0x33AF00", 0.3);
+ * UIColorWithHexRGBString(@"33AF00", 0.9);
  * @endcode
  */
-FOUNDATION_EXTERN UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha);
+FOUNDATION_EXTERN UIColor *UIColorWithHexRGBString(NSString *hexString, CGFloat alpha);
 
 /**
  * Checks whether the given object is a non-empty string.

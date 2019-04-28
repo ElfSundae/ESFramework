@@ -43,7 +43,7 @@ static const CGFloat kHPadding  = 10.0;
         [self addSubview:self.subtitleLabel];
 
         self.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-        self.backgroundColor = UIColorWithRGBHex(0xfafafa);
+        self.backgroundColor = UIColorWithHexRGB(0xfafafa, 1);
     }
 
     return self;

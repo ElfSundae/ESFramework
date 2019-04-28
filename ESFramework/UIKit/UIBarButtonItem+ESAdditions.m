@@ -113,7 +113,7 @@ static const void *_ESUIBarButtonItemHandlerKey = &_ESUIBarButtonItemHandlerKey;
 
 + (instancetype)itemWithRedStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler
 {
-    return [self itemWithTitle:title tintColor:UIColorWithRGBHex(0xfa140e) style:UIBarButtonItemStylePlain handler:handler];
+    return [self itemWithTitle:title tintColor:UIColorWithHexRGB(0xfa140e, 1) style:UIBarButtonItemStylePlain handler:handler];
 }
 
 + (instancetype)itemWithDoneStyle:(NSString *)title handler:(ESUIBarButtonItemHandler)handler

@@ -25,6 +25,7 @@
     + `ESDispatchOnLowQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, block)`
     + `ESDispatchOnBackgroundQueue` => `es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, block)`
     + `ESDispatchAfter` => `es_dispatch_after`
+    + `UIColorWithRGBAHex()` => `UIColorWithHexRGB()`, `UIColorWithRGBAHexString()` => `UIColorWithHexRGBString()`
     + `ESTouchDirectoryAtURL()` => `ESTouchDirectoryAtFileURL()`
     + `UIScreenIsRetina()` => `ESIsRetinaScreen()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`

@@ -27,40 +27,33 @@ BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {
-    return [UIColor colorWithRed:red / 255 green:green / 255 blue:blue / 255 alpha:alpha];
+    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
 }
 
 UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
 {
-    return UIColorWithRGBA(red, green, blue, 1);
+    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1.0];
 }
 
-UIColor *UIColorWithRGBAHex(NSInteger rgbValue, CGFloat alpha)
+UIColor *UIColorWithHexRGB(NSInteger hex, CGFloat alpha)
 {
-    return UIColorWithRGBA((CGFloat)((rgbValue & 0xFF0000) >> 16), (CGFloat)((rgbValue & 0xFF00) >> 8), (CGFloat)(rgbValue & 0xFF), alpha);
+    return [UIColor colorWithRed:(CGFloat)((hex & 0xFF0000) >> 16) / 255.0
+                           green:(CGFloat)((hex & 0xFF00) >> 8) / 255.0
+                            blue:(CGFloat)(hex & 0xFF) / 255.0
+                           alpha:alpha];
 }
 
-UIColor *UIColorWithRGBHex(NSInteger rgbValue)
+UIColor *UIColorWithHexRGBString(NSString *hexString, CGFloat alpha)
 {
-    return UIColorWithRGBAHex(rgbValue, 1);
-}
-
-UIColor *UIColorWithRGBAHexString(NSString *hexString, CGFloat alpha)
-{
-    unsigned rgbValue = 0;
-    if ([hexString isKindOfClass:[NSString class]]) {
-        NSScanner *scanner = [NSScanner scannerWithString:hexString];
-        if (6 == hexString.length) {
-            [scanner scanHexInt:&rgbValue];
-        } else if (7 == hexString.length) {
-            [scanner setScanLocation:1];            // bypass '#' character
-            [scanner scanHexInt:&rgbValue];
-        } else if (8 == hexString.length) {
-            [scanner setScanLocation:2];            // bypass '0x'
-            [scanner scanHexInt:&rgbValue];
-        }
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    if (7 == hexString.length) {
+        scanner.scanLocation = 1; // bypass '#' char
     }
-    return UIColorWithRGBAHex(rgbValue, alpha);
+    unsigned int hex = 0;
+    if (![scanner scanHexInt:&hex]) {
+        return nil;
+    }
+    return UIColorWithHexRGB(hex, alpha);
 }
 
 BOOL ESIsStringWithAnyText(id object)
