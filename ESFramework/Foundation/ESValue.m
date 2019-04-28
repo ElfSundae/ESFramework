@@ -85,13 +85,13 @@ BOOL ESBoolValueWithDefault(id obj, BOOL defaultValue)
 NSString *ESStringValueWithDefault(id obj, NSString *defaultValue)
 {
     return [obj isKindOfClass:NSString.class] ? obj :
-    ([obj isKindOfClass:NSNumber.class] ? [(NSNumber *)obj stringValue] : defaultValue);
+           ([obj isKindOfClass:NSNumber.class] ? [(NSNumber *)obj stringValue] : defaultValue);
 }
 
 NSURL *ESURLValueWithDefault(id obj, NSURL *defaultValue)
 {
     return [obj isKindOfClass:NSURL.class] ? obj :
-    ([obj isKindOfClass:NSString.class] ? [NSURL URLWithString:obj] : defaultValue);
+           ([obj isKindOfClass:NSString.class] ? [NSURL URLWithString:obj] : defaultValue);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
