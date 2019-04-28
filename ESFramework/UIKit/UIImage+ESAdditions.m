@@ -96,7 +96,7 @@
  */
 - (UIImage *)resizedImage:(CGSize)newSize interpolationQuality:(CGInterpolationQuality)quality
 {
-    BOOL drawTransposed;
+    BOOL drawTransposed = NO;
     switch (self.imageOrientation) {
         case UIImageOrientationLeft:
         case UIImageOrientationLeftMirrored:
@@ -104,14 +104,15 @@
         case UIImageOrientationRightMirrored:
             drawTransposed = YES;
             break;
-
+            
         default:
             drawTransposed = NO;
     }
 
-    CGAffineTransform transform = [self transformForOrientation:newSize];
-
-    return [self resizedImage:newSize transform:transform drawTransposed:drawTransposed interpolationQuality:quality];
+    return [self resizedImage:newSize
+                    transform:[self transformForOrientation:newSize]
+               drawTransposed:drawTransposed
+         interpolationQuality:quality];
 }
 
 
@@ -122,7 +123,8 @@
  */
 - (UIImage *)resizedImage:(CGSize)newSize
                 transform:(CGAffineTransform)transform
-           drawTransposed:(BOOL)transpose interpolationQuality:(CGInterpolationQuality)quality
+           drawTransposed:(BOOL)transpose
+     interpolationQuality:(CGInterpolationQuality)quality
 {
     CGFloat scale = MAX(1.0, self.scale);
     CGRect newRect = CGRectIntegral(CGRectMake(0, 0, newSize.width * scale, newSize.height * scale));
@@ -137,8 +139,8 @@
         NULL,
         newRect.size.width,
         newRect.size.height,
-        8,                                             /* bits per channel */
-        (newRect.size.width * 4),                                             /* 4 channels per pixel * numPixels/row */
+        8,                          /* bits per channel */
+        (newRect.size.width * 4),   /* 4 channels per pixel * numPixels/row */
         colorSpace,
         (CGBitmapInfo)kCGImageAlphaPremultipliedLast
         );
@@ -315,13 +317,15 @@
     NSUInteger scaledBorderSize = borderSize * scale;
 
     // Build a context that's the same dimensions as the new size
-    CGContextRef context = CGBitmapContextCreate(NULL,
-                                                 image.size.width * scale,
-                                                 image.size.height * scale,
-                                                 CGImageGetBitsPerComponent(image.CGImage),
-                                                 0,
-                                                 CGImageGetColorSpace(image.CGImage),
-                                                 CGImageGetBitmapInfo(image.CGImage));
+    CGContextRef context = CGBitmapContextCreate(
+        NULL,
+        image.size.width * scale,
+        image.size.height * scale,
+        CGImageGetBitsPerComponent(image.CGImage),
+        0,
+        CGImageGetColorSpace(image.CGImage),
+        CGImageGetBitmapInfo(image.CGImage)
+        );
 
     // Create a clipping path with rounded corners
 

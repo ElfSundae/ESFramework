@@ -23,6 +23,7 @@
  * Returns true if the image has an alpha layer.
  */
 - (BOOL)hasAlpha;
+
 /**
  * Returns a copy of the given image, adding an alpha channel if it doesn't already have one.
  */
@@ -54,7 +55,8 @@
  */
 - (UIImage *)resizedImage:(CGSize)newSize
                 transform:(CGAffineTransform)transform
-           drawTransposed:(BOOL)transpose interpolationQuality:(CGInterpolationQuality)quality;
+           drawTransposed:(BOOL)transpose
+     interpolationQuality:(CGInterpolationQuality)quality;
 
 /**
  * Resizes the image according to the given content mode, taking into account the image's orientation.
@@ -92,6 +94,7 @@
  * If borderSize is non-zero, a transparent border of the given size will also be added
  * Original author: Björn Sållarp. Used with permission. See: http://blog.sallarp.com/iphone-uiimage-round-corners/
  */
-- (UIImage *)roundedCornerImage:(NSInteger)cornerSize borderSize:(NSInteger)borderSize;
+- (UIImage *)roundedCornerImage:(NSInteger)cornerSize
+                     borderSize:(NSInteger)borderSize;
 
 @end
