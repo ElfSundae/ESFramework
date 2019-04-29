@@ -42,7 +42,6 @@
 #import "UITableView+ESAdditions.h"
 #import "UIToolbar+ESAdditions.h"
 #import "UIViewController+ESAdditions.h"
-#import "UITabBarController+ESAdditions.h"
 
 #import "ESApp.h"
 #import "ESStoreHelper.h"
