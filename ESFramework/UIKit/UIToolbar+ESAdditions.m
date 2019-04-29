@@ -11,17 +11,17 @@
 
 @implementation UIToolbar (ESAdditions)
 
-- (UIBarButtonItem *)itemWithTag:(NSInteger)tag
+- (nullable UIBarButtonItem *)itemWithTag:(NSInteger)tag
 {
     for (UIBarButtonItem *item in self.items) {
-        if (item.tag == tag) {
+        if (tag == item.tag) {
             return item;
         }
     }
     return nil;
 }
 
-- (void)replaceItemWithTag:(NSInteger)tag withItem:(UIBarButtonItem *)newItem
+- (void)replaceItemWithTag:(NSInteger)tag toItem:(UIBarButtonItem *)newItem
 {
     UIBarButtonItem *item = [self itemWithTag:tag];
     if (item) {
@@ -30,6 +30,5 @@
         self.items = newItems;
     }
 }
-
 
 @end

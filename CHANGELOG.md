@@ -47,6 +47,7 @@
     + UIDevice class methods to instance methods: `+platform` => `-platform`, `+carrierString` => `-carrierName`, `+currentWiFiSSID` => `-WiFiSSID`, `+isJailbroken` => `-isJailbroken`, `+diskTotalSize` => `-diskSize`, `+screenSizeString:` => `ESScreenSizeString()`
     + UIColor methods: `-es_RGBAString` => `-RGBAString`, `-es_HexString` => `-RGBHexString`
     + UIView methods: `-findViewWithClassInSuperviews:` => `-findSuperviewOf:`, `-findViewWithClassInSubviews:` => `-findSubviewOf:`, `-setShadowOffset:` => `-setLayerShadowWithColor:`, `-setBackgroundGradientColor:` => `setGradientBackgroundColor:`
+    + `-[UIToolbar replaceItemWithTag:withItem:]` => `-replaceItemWithTag:toItem:`
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`

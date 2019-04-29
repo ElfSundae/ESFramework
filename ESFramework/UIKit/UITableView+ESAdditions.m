@@ -49,7 +49,7 @@
             break;
         }
     }
-    
+
     if (indexPath) {
         [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
@@ -72,10 +72,13 @@
     if (![self cellForRowAtIndexPath:indexPath]) {
         return;
     }
+
     if ([self.delegate respondsToSelector:@selector(tableView:willSelectRowAtIndexPath:)]) {
         [self.delegate tableView:self willSelectRowAtIndexPath:indexPath];
     }
+
     [self selectRowAtIndexPath:indexPath animated:animated scrollPosition:scrollPosition];
+
     if ([self.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
         [self.delegate tableView:self didSelectRowAtIndexPath:indexPath];
     }

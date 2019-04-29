@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIToolbar (ESAdditions)
-- (UIBarButtonItem *)itemWithTag:(NSInteger)tag;
-- (void)replaceItemWithTag:(NSInteger)tag withItem:(UIBarButtonItem *)newItem;
+
+- (nullable UIBarButtonItem *)itemWithTag:(NSInteger)tag;
+- (void)replaceItemWithTag:(NSInteger)tag toItem:(UIBarButtonItem *)newItem;
+
 @end
+
+NS_ASSUME_NONNULL_END
