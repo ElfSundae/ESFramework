@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Set layer's shadow: https://stackoverflow.com/a/9761354/521946
  * Rounded corner + shadow: https://fluffy.es/rounded-corner-shadow/
+ * Rounded corner + shadow: https://github.com/douglas-queiroz/UIViewWithRoundedCornersAndShadow/blob/master/UIViewWithRoundedCornersAndShadow/UIView+RoundedCorner+Shadow.m
  */
 - (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
 
