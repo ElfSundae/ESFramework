@@ -10,18 +10,20 @@
 
 @implementation UIColor (ESAdditions)
 
-- (NSString *)RGBAString
+- (nullable NSString *)RGBAString
 {
     CGFloat r, g, b, a;
-    [self getRed:&r green:&g blue:&b alpha:&a];
-    return [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.), a];
+    return [self getRed:&r green:&g blue:&b alpha:&a]
+           ? [NSString stringWithFormat:@"rgba(%lu,%lu,%lu,%g)", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.), a]
+           : nil;
 }
 
-- (NSString *)RGBHexString
+- (nullable NSString *)RGBHexString
 {
     CGFloat r, g, b;
-    [self getRed:&r green:&g blue:&b alpha:NULL];
-    return [NSString stringWithFormat:@"#%02lX%02lX%02lX", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.)];
+    return [self getRed:&r green:&g blue:&b alpha:NULL]
+           ? [NSString stringWithFormat:@"#%02lX%02lX%02lX", lroundf(r * 255.), lroundf(g * 255.), lroundf(b * 255.)]
+           : nil;
 }
 
 + (UIColor *)es_redNavigationBarColor
@@ -116,11 +118,12 @@
 
 #pragma mark - Utilities
 
-- (UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent
+- (nullable UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent
 {
     CGFloat h, s, b, a;
-    [self getHue:&h saturation:&s brightness:&b alpha:&a];
-    return [UIColor colorWithHue:h saturation:s * percent brightness:b alpha:a];
+    return [self getHue:&h saturation:&s brightness:&b alpha:&a]
+           ? [UIColor colorWithHue:h saturation:s * percent brightness:b alpha:a]
+           : nil;
 }
 
 - (UIColor *)es_lightenColorWithValue:(CGFloat)value

@@ -35,23 +35,23 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;
 
 /// Attaches an action object to the alert or action sheet.
-- (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ __nullable)(UIAlertAction *action))handler;
+- (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 /// Attaches an action button with default style to the alert or action sheet.
-- (UIAlertAction *)addButtonWithTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
+- (UIAlertAction *)addButtonWithTitle:(nullable NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 /// Attaches an action button with cancel style to the alert or action sheet.
-- (UIAlertAction *)addCancelButtonWithTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
+- (UIAlertAction *)addCancelButtonWithTitle:(nullable NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 /// Attaches an action button with destructive style to the alert or action sheet.
-- (UIAlertAction *)addDestructiveButtonTitle:(nullable NSString *)title handler:(void (^ __nullable)(UIAlertAction *action))handler;
+- (UIAlertAction *)addDestructiveButtonTitle:(nullable NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 
 /// Presents this alert controller.
 - (void)show;
 /// Presents this alert controller.
-- (void)showAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+- (void)showAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /// Dismisses this alert controller.
 - (void)dismiss;
 /// Dismisses this alert controller.
-- (void)dismissAnimated:(BOOL)animated completion:(void (^ __nullable)(void))completion;
+- (void)dismissAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /// Creates and presents an alert.
 + (instancetype)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelButtonTitle:(nullable NSString *)cancelButtonTitle;

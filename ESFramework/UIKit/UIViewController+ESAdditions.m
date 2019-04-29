@@ -10,7 +10,7 @@
 
 @implementation UIViewController (ESAdditions)
 
-- (UIViewController *)previousViewController
+- (nullable UIViewController *)previousViewController
 {
     UINavigationController *navController = self.navigationController;
     if (navController) {
@@ -29,7 +29,7 @@
     return nil;
 }
 
-- (UIViewController *)nextViewController
+- (nullable UIViewController *)nextViewController
 {
     UINavigationController *navController = self.navigationController;
     if (navController) {

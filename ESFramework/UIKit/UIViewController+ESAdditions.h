@@ -8,17 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIViewController (ESAdditions)
 
 /**
  * The previous view controller from this view controller, in navigation controller's stack.
  */
-- (UIViewController *)previousViewController;
+- (nullable UIViewController *)previousViewController;
 
 /**
  * The next view controller from this view controller, in navigation controller's stack.
  */
-- (UIViewController *)nextViewController;
+- (nullable UIViewController *)nextViewController;
 
 /**
  * Returns `YES` when viewLoaded and viewVisible(it's `window` is not `nil`).
@@ -35,3 +37,5 @@
 - (UIViewController *)currentVisibleViewController;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 // Color pickers:
 // https://briangrinstead.com/blog/ios-uicolor-picker
 // http://tintui.com
@@ -18,10 +20,10 @@
 @interface UIColor (ESAdditions)
 
 /// e.g. "rgba(239,156,255,0.5)"
-- (NSString *)RGBAString;
+- (nullable NSString *)RGBAString;
 
 /// e.g. "#EF9CFF"
-- (NSString *)RGBHexString;
+- (nullable NSString *)RGBHexString;
 
 + (UIColor *)es_redNavigationBarColor;
 + (UIColor *)es_blueNavigationBarColor;
@@ -48,9 +50,11 @@
 + (UIColor *)es_oceanDarkColor;
 
 /// Utilities from [BButton](https://github.com/jessesquires/BButton)
-- (UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent;
+- (nullable UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent;
 - (UIColor *)es_lightenColorWithValue:(CGFloat)value;
 - (UIColor *)es_darkenColorWithValue:(CGFloat)value;
 - (BOOL)es_isLightColor;
 
 @end
+
+NS_ASSUME_NONNULL_END
