@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  * ESWeakProxy can be used to hold a weak object.
  *
@@ -47,3 +49,5 @@
 + (instancetype)proxyWithTarget:(id)target;
 
 @end
+
+NS_ASSUME_NONNULL_END

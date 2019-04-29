@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /* NSCoding implementation */
 #define ES_CODING_IMPLEMENTATION                                \
     - (instancetype)initWithCoder:(NSCoder *)aDecoder           \
@@ -65,7 +67,7 @@
 /**
  * NSCopying delegate method: -copyWithZone: .
  */
-- (id)es_copyWithZone:(NSZone *)zone;
+- (id)es_copyWithZone:(nullable NSZone *)zone;
 
 /**
  * Returns all the codable properties of the object, including those that are
@@ -95,7 +97,7 @@
  * being used to load it, an exception will be thrown (to avoid this, call the
  * method on `NSObject` instead of a specific subclass).
  */
-+ (instancetype)es_objectWithContentsOfFile:(NSString *)filePath;
++ (nullable instancetype)es_objectWithContentsOfFile:(NSString *)filePath;
 
 /**
  * Attempts to write the file to disk. This method is overridden by the
@@ -137,3 +139,5 @@
 + (NSDictionary<NSString *, Class> *)codableProperties;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSCharacterSet (ESAdditions)
 
 /**
@@ -18,3 +20,5 @@
 + (NSCharacterSet *)URLEncodingAllowedCharacterSet;
 
 @end
+
+NS_ASSUME_NONNULL_END

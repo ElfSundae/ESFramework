@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSString (ESAdditions)
 
 /**
@@ -47,7 +49,7 @@
  * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query dictionary will be:
  * { key:value, arr:[value, value1] }.
  */
-- (NSDictionary<NSString *, id> *)queryDictionary;
+- (nullable NSDictionary<NSString *, id> *)queryDictionary;
 
 /**
  * Returns a newly created URL string added the given query dictionary.
@@ -84,3 +86,5 @@
 - (void)replaceWithDictionary:(NSDictionary<NSString *, NSString *> *)dictionary options:(NSStringCompareOptions)options;
 
 @end
+
+NS_ASSUME_NONNULL_END
