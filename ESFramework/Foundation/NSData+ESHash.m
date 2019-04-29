@@ -55,6 +55,7 @@
     CC_SHA224(self.bytes, (CC_LONG)self.length, buffer);
     return [NSData dataWithBytes:buffer length:CC_SHA224_DIGEST_LENGTH];
 }
+
 - (NSString *)sha224HashString
 {
     return [[self sha224HashData] hexStringValue];
@@ -66,6 +67,7 @@
     CC_SHA256(self.bytes, (CC_LONG)self.length, buffer);
     return [NSData dataWithBytes:buffer length:CC_SHA256_DIGEST_LENGTH];
 }
+
 - (NSString *)sha256HashString
 {
     return [[self sha256HashData] hexStringValue];
@@ -77,6 +79,7 @@
     CC_SHA384(self.bytes, (CC_LONG)self.length, buffer);
     return [NSData dataWithBytes:buffer length:CC_SHA384_DIGEST_LENGTH];
 }
+
 - (NSString *)sha384HashString
 {
     return [[self sha384HashData] hexStringValue];
@@ -88,6 +91,7 @@
     CC_SHA512(self.bytes, (CC_LONG)self.length, buffer);
     return [NSData dataWithBytes:buffer length:CC_SHA512_DIGEST_LENGTH];
 }
+
 - (NSString *)sha512HashString
 {
     return [[self sha512HashData] hexStringValue];

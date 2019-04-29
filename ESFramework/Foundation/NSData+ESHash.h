@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonHMAC.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSData (ESHash)
 
 #pragma mark - String Value
@@ -51,7 +53,9 @@
 - (NSData *)base64EncodedData;
 - (NSString *)base64EncodedString;
 - (NSString *)base64EncodedURLSafeString;
-- (NSData *)base64DecodedData;
-- (NSString *)base64DecodedString;
+- (nullable NSData *)base64DecodedData;
+- (nullable NSString *)base64DecodedString;
 
 @end
+
+NS_ASSUME_NONNULL_END

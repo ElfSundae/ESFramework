@@ -21,6 +21,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef struct {
     NSString *escapeSequence;
     unichar uchar;
@@ -76,3 +78,5 @@ typedef struct {
 - (NSString *)es_gtm_stringByUnescapingFromHTML;
 
 @end
+
+NS_ASSUME_NONNULL_END

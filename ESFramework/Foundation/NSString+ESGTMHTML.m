@@ -516,6 +516,4 @@ static int ESEscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
     return [finalString copy];
 } // gtm_stringByUnescapingHTML
 
-
-
 @end

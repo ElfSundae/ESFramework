@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSError (ESAdditions)
 
-+ (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description;
-+ (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason;
++ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(nullable NSString *)description;
++ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(nullable NSString *)description failureReason:(nullable NSString *)failureReason;
 
 - (BOOL)isLocalNetworkError;
 
 @end
+
+NS_ASSUME_NONNULL_END

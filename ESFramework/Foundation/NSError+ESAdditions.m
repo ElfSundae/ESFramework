@@ -10,7 +10,7 @@
 
 @implementation NSError (ESAdditions)
 
-+ (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description
++ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(NSString *)description
 {
     NSDictionary *userInfo = nil;
     if ([description isKindOfClass:[NSString class]]) {
@@ -19,7 +19,7 @@
     return [self errorWithDomain:domain code:code userInfo:userInfo];
 }
 
-+ (instancetype)errorWithDomain:(NSString *)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason
++ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason
 {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     if ([description isKindOfClass:[NSString class]]) {

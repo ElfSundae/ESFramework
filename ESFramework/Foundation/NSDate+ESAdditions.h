@@ -12,6 +12,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSDate (ESAdditions)
 
 - (BOOL)isBefore:(NSDate *)aDate;
@@ -20,7 +22,7 @@
 /**
  * Convert RFC 1123 Full Date string to NSDate.
  */
-+ (NSDate *)dateFromRFC1123String:(NSString *)string;
++ (nullable NSDate *)dateFromRFC1123String:(NSString *)string;
 
 /**
  * Convert HTTP-date string to NSDate.
@@ -31,7 +33,7 @@
  *      Sunday, 06-Nov-94 08:49:37 GMT ; RFC 850, obsoleted by RFC 1036
  *      Sun Nov  6 08:49:37 1994       ; ANSI C's asctime() format
  */
-+ (NSDate *)dateFromHTTPDateString:(NSString *)string;
++ (nullable NSDate *)dateFromHTTPDateString:(NSString *)string;
 
 /**
  * Convert NSDate to RFC 1123 Full Date string.
@@ -42,3 +44,5 @@
 - (NSString *)RFC1123String;
 
 @end
+
+NS_ASSUME_NONNULL_END

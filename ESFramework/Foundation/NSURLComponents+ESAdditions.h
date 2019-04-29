@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSURLComponents (ESAdditions)
 
 /**
@@ -23,7 +25,7 @@
 /**
  * Add a query item with the given name-value pair.
  */
-- (void)addQueryItemWithName:(NSString *)name value:(NSString *)value;
+- (void)addQueryItemWithName:(NSString *)name value:(nullable NSString *)value;
 
 /**
  * Remove query items with the given item names.
@@ -39,11 +41,13 @@
  * Gets and sets query items via a dictionary, it supports array in the query parameter like
  * ?foo=bar&foo=bar1&foo[]=bar2
  */
-@property (copy) NSDictionary<NSString *, id> *queryItemsDictionary;
+@property (nullable, copy) NSDictionary<NSString *, id> *queryItemsDictionary;
 
 /**
- * Add query items via the given dictionary.
+ * Add query items from the given dictionary.
  */
 - (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary;
 
 @end
+
+NS_ASSUME_NONNULL_END
