@@ -18,17 +18,23 @@
 
 - (void)scrollToBottom:(BOOL)animated
 {
-    CGFloat offsetY = 0.;
     if (self.contentSize.height > self.bounds.size.height) {
-        offsetY = self.contentSize.height - self.bounds.size.height;
+        CGFloat offsetY = self.contentSize.height - self.bounds.size.height;
+        [self setContentOffset:CGPointMake(0, offsetY) animated:animated];
     }
-    [self setContentOffset:CGPointMake(0., offsetY) animated:animated];
 }
 
 - (void)scrollToFirstRow:(BOOL)animated
 {
-    if (self.numberOfSections > 0 && [self numberOfRowsInSection:0] > 0) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    NSIndexPath *indexPath = nil;
+    for (NSInteger section = 0; self.numberOfSections > section; ++section) {
+        if ([self numberOfRowsInSection:section] > 0) {
+            indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
+            break;
+        }
+    }
+
+    if (indexPath) {
         [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
     }
 }
@@ -43,6 +49,7 @@
             break;
         }
     }
+    
     if (indexPath) {
         [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
