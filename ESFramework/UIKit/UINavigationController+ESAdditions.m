@@ -21,43 +21,34 @@
     ESSwizzleInstanceMethod(self, @selector(preferredInterfaceOrientationForPresentation), @selector(_es_preferredInterfaceOrientationForPresentation));
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - StatusBar
-
 - (UIStatusBarStyle)_es_preferredStatusBarStyle
 {
-    return ((UIViewController *)self.viewControllers.lastObject).preferredStatusBarStyle;
+    return self.viewControllers.lastObject.preferredStatusBarStyle;
 }
 
 - (UIStatusBarAnimation)_es_preferredStatusBarUpdateAnimation
 {
-    return ((UIViewController *)self.viewControllers.lastObject).preferredStatusBarUpdateAnimation;
+    return self.viewControllers.lastObject.preferredStatusBarUpdateAnimation;
 }
 
 - (BOOL)_es_prefersStatusBarHidden
 {
-    return ((UIViewController *)self.viewControllers.lastObject).prefersStatusBarHidden;
+    return self.viewControllers.lastObject.prefersStatusBarHidden;
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - Orientation
 
 - (BOOL)_es_shouldAutorotate
 {
-    return [(UIViewController *)self.viewControllers.lastObject shouldAutorotate];
+    return self.viewControllers.lastObject.shouldAutorotate;
 }
 
 - (NSUInteger)_es_supportedInterfaceOrientations
 {
-    return [(UIViewController *)self.viewControllers.lastObject supportedInterfaceOrientations];
+    return self.viewControllers.lastObject.supportedInterfaceOrientations;
 }
 
 - (UIInterfaceOrientation)_es_preferredInterfaceOrientationForPresentation
 {
-    return [(UIViewController *)self.viewControllers.lastObject preferredInterfaceOrientationForPresentation];
+    return self.viewControllers.lastObject.preferredInterfaceOrientationForPresentation;
 }
-
 
 @end
