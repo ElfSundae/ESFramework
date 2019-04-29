@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSInvocation (ESHelper)
 
-+ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
-+ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
-+ (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
-
-- (void)es_getReturnValue:(void *)returnValue;
++ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
++ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
++ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
 
 @end
+
+NS_ASSUME_NONNULL_END

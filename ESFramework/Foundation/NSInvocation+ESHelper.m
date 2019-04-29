@@ -15,15 +15,11 @@ static id __gNil = nil;
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector
 {
     if (target && selector && [target respondsToSelector:selector]) {
-        NSMethodSignature *signature = [target methodSignatureForSelector:selector];
-        if (signature) {
-            NSInvocation *invocation = [self invocationWithMethodSignature:signature];
-            if (invocation) {
-                [invocation setTarget:target];
-                [invocation setSelector:selector];
-                return invocation;
-            }
-        }
+        NSInvocation *invocation = [self invocationWithMethodSignature:
+                                    [target methodSignatureForSelector:selector]];
+        [invocation setTarget:target];
+        [invocation setSelector:selector];
+        return invocation;
     }
     return nil;
 }
@@ -143,13 +139,6 @@ static id __gNil = nil;
     }
 
     return invocation;
-}
-
-- (void)es_getReturnValue:(void *)returnValue
-{
-    if (returnValue && 0 != strcmp(self.methodSignature.methodReturnType, @encode(void))) {
-        [self getReturnValue:returnValue];
-    }
 }
 
 @end

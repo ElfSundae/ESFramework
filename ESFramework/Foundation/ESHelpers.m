@@ -121,7 +121,7 @@ NSString *ESRandomStringOfLength(NSUInteger length)
 {
     NSData *data = ESRandomDataOfLength(length);
     NSString *string = [data base64EncodedStringWithOptions:0];
-    // Remove "+/-"
+    // Remove "+/="
     string = [[string componentsSeparatedByCharactersInSet:
                [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
               componentsJoinedByString:@""];
@@ -218,20 +218,6 @@ NSString *ESScreenSizeString(CGSize size)
     return [NSString stringWithFormat:@"%dx%d",
             (int)fmin(size.width, size.height),
             (int)fmax(size.width, size.height)];
-}
-
-NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath)
-{
-    NSString *path = bundle.resourcePath;
-    if (relativePath) {
-        path = [path stringByAppendingPathComponent:relativePath];
-    }
-    return path;
-}
-
-NSString *ESPathForMainBundleResource(NSString *relativePath)
-{
-    return ESPathForBundleResource([NSBundle mainBundle], relativePath);
 }
 
 NSString *ESPathForDocuments(void)
@@ -346,8 +332,8 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
     va_end(arguments);
     if (invocation) {
         [invocation invoke];
-        if (result) {
-            [invocation es_getReturnValue:result];
+        if (result && 0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
+            [invocation getReturnValue:result];
         }
         return YES;
     }

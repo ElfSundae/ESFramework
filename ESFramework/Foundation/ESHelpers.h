@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
  * Returns a boolean value indicating whether the version of the operating system
  * on which the process is executing is the same or later than the given version.
@@ -60,22 +62,22 @@ FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(doubl
 /**
  * Checks whether the given object is a non-empty string.
  */
-FOUNDATION_EXTERN BOOL ESIsStringWithAnyText(id object);
+FOUNDATION_EXTERN BOOL ESIsStringWithAnyText(id _Nullable object);
 
 /**
  * Checks whether the given object is a non-empty array.
  */
-FOUNDATION_EXTERN BOOL ESIsArrayWithItems(id object);
+FOUNDATION_EXTERN BOOL ESIsArrayWithItems(id _Nullable object);
 
 /**
  * Checks whether the given object is a non-empty dictionary.
  */
-FOUNDATION_EXTERN BOOL ESIsDictionaryWithItems(id object);
+FOUNDATION_EXTERN BOOL ESIsDictionaryWithItems(id _Nullable object);
 
 /**
  * Checks whether the given object is a non-empty set.
  */
-FOUNDATION_EXTERN BOOL ESIsSetWithItems(id object);
+FOUNDATION_EXTERN BOOL ESIsSetWithItems(id _Nullable object);
 
 /**
  * Creates a mutable set which does not retain references to the objects it contains.
@@ -178,16 +180,6 @@ FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
  * e.g. "414x736", the width always be less than the height.
  */
 FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
-
-/**
- * Returns the full path relatived to the given bundle's resourcePath and the given relativePath.
- */
-FOUNDATION_EXTERN NSString *ESPathForBundleResource(NSBundle *bundle, NSString *relativePath);
-
-/**
- * Returns the full path for the resource path of the main bundle.
- */
-FOUNDATION_EXTERN NSString *ESPathForMainBundleResource(NSString *relativePath);
 
 /**
  * Returns the path of the Documents directory.
@@ -306,4 +298,6 @@ FOUNDATION_EXTERN void ESSwizzleClassMethod(Class c, SEL orig, SEL new_sel);
  * @endcode
  * @return YES if invoked successfully, otherwise NO.
  */
-FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void *result, ...);
+FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void * _Nullable result, ...);
+
+NS_ASSUME_NONNULL_END
