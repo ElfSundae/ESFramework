@@ -42,7 +42,6 @@
 #import "UITableView+ESAdditions.h"
 #import "UIToolbar+ESAdditions.h"
 #import "UIViewController+ESAdditions.h"
-#import "UINavigationController+ESAdditions.h"
 #import "UIImagePickerController+ESFixOrientation.h"
 #import "UITabBarController+ESAdditions.h"
 
