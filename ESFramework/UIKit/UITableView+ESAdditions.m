@@ -35,13 +35,16 @@
 
 - (void)scrollToLastRow:(BOOL)animated
 {
-    if (self.numberOfSections > 0) {
-        NSInteger section = self.numberOfSections - 1;
-        NSInteger rowCount = [self numberOfRowsInSection:section];
-        if (rowCount > 0) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:rowCount - 1 inSection:section];
-            [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    NSIndexPath *indexPath = nil;
+    for (NSInteger section = self.numberOfSections - 1; section >= 0; --section) {
+        NSInteger rowsCount = [self numberOfRowsInSection:section];
+        if (rowsCount > 0) {
+            indexPath = [NSIndexPath indexPathForRow:rowsCount - 1 inSection:section];
+            break;
         }
+    }
+    if (indexPath) {
+        [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
     }
 }
 
