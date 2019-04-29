@@ -31,4 +31,26 @@
     return [self objectsAtIndexes:[self indexesOfObjectsWithOptions:opts passingTest:predicate]];
 }
 
+- (id)previousObjectToIndex:(NSUInteger)index
+{
+    index--;
+    return (index >= 0 && index < self.count) ? self[index] : nil;
+}
+
+- (id)previousObjectToObject:(id)object
+{
+    return [self previousObjectToIndex:[self indexOfObject:object]];
+}
+
+- (id)nextObjectToIndex:(NSUInteger)index
+{
+    index++;
+    return (index >= 0 && index < self.count) ? self[index] : nil;
+}
+
+- (id)nextObjectToObject:(id)object
+{
+    return [self nextObjectToIndex:[self indexOfObject:object]];
+}
+
 @end

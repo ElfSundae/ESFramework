@@ -13,6 +13,7 @@
     + `-[NSURL URLByAddingQueryDictionary:]`
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
+    + NSArray methods: `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
     + `-[NSUserDefaults setObject:forKeyPath:]`
     + `ESNetworkHelper` class
     + `-[UIView snapshotViewAfterScreenUpdates:]`
