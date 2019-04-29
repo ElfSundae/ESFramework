@@ -83,6 +83,7 @@
     + UIControl block methods: `-addEventHandler:forControlEvents:`, `-removeEventHandlersForControlEvents:`, `-removeAllEventHandlersAndTargetsActions`, `existsEventHandlersForControlEvents:`
     + UIView methods: `-addTapGestureHandler:`, `-addLongPressGestureHandler:`, `-all...GestureRecognizers`, `-removeAll...GestureRecognizers`, `-setCornerRadius:borderWidth:borderColor:`
     + UIBarButtonItem block methods
+    + `-[UIViewController currentVisibleViewController]`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
