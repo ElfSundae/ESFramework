@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIView (ESAdditions)
 
 /// frame.origin
@@ -34,12 +36,12 @@
 /**
  * Returns a snapshot image of the view hierarchy.
  */
-- (UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates;
+- (nullable UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates;
 
 /**
  * Returns the first responder of this view.
  */
-- (UIView *)findFirstResponder;
+- (nullable UIView *)findFirstResponder;
 
 /**
  * Find and resign the first responder of this view.
@@ -54,51 +56,53 @@
 /**
  * Searches in superviews recursively to find the view which its class is the given viewClass.
  */
-- (UIView *)findSuperviewOf:(Class)viewClass;
+- (nullable UIView *)findSuperviewOf:(Class)viewClass;
 
 /**
  * Searches in subviews recursively to find the view which its class is the given viewClass.
  */
-- (UIView *)findSubviewOf:(Class)viewClass;
+- (nullable UIView *)findSubviewOf:(Class)viewClass;
 
 /**
  * Returns the UIViewController instance which manages this view.
  */
-- (UIViewController *)viewController;
+- (nullable UIViewController *)viewController;
 
-/// Set layer.mask, rounds all corners with the same horizontal and vertical radius
-/// @see http://stackoverflow.com/a/5826745
-- (void)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius;
-/// Set layer.mask
-/// @see http://stackoverflow.com/a/5826745
-- (void)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
+/**
+ * Set layer.mask
+ * http://stackoverflow.com/a/5826745
+ */
+- (CAShapeLayer *)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii;
 
-/// self.layer.masksToBounds = YES;
-- (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor;
-/// self.layer.masksToBounds = NO;
-- (void)setLayerShadowWithColor:(UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
+/**
+ * Set layer.mask, rounds all corners with the same horizontal and vertical radius
+ * http://stackoverflow.com/a/5826745
+ */
+- (CAShapeLayer *)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius;
+
+/**
+ * Set layer's shadow: https://stackoverflow.com/a/9761354/521946
+ * Rounded corner + shadow: https://fluffy.es/rounded-corner-shadow/
+ */
+- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
+
 /// insert `CAGradientLayer` at index 0.
-- (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
-/// insert `CAGradientLayer` at index 0.
-- (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION;
+- (CAGradientLayer *)setGradientBackgroundColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION;
 
-/// =============================================
-/// @name Debug Border
-/// =============================================
+/// insert `CAGradientLayer` at index 0.
+- (CAGradientLayer *)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor;
 
 - (void)enableDebugBorder;
 - (void)enableDebugBorderWithColor:(UIColor *)color;
 
-/// =============================================
-/// @name View Hierarchy
-/// =============================================
-
-- (NSUInteger)indexOnSuperview;
 - (void)bringToFront;
 - (void)sendToBack;
+- (void)moveToCenterOfSuperview;
+
+- (NSUInteger)indexOnSuperview;
 - (BOOL)isInFrontOfSuperview;
 - (BOOL)isAtBackOfSuperview;
 
-- (void)moveToCenterOfSuperview;
-
 @end
+
+NS_ASSUME_NONNULL_END

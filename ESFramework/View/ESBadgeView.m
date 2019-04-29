@@ -7,7 +7,6 @@
 //
 
 #import "ESBadgeView.h"
-#import <QuartzCore/QuartzCore.h>
 #import "ESHelpers.h"
 
 @implementation ESBadgeView

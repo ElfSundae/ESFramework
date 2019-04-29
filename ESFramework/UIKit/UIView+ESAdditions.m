@@ -128,16 +128,18 @@
     self.center = CGPointMake(self.center.x, centerY);
 }
 
-- (UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates
+- (nullable UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates
 {
+    UIImage *image = nil;
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0);
-    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:afterUpdates];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    if ([self drawViewHierarchyInRect:self.bounds afterScreenUpdates:afterUpdates]) {
+        image = UIGraphicsGetImageFromCurrentImageContext();
+    }
     UIGraphicsEndImageContext();
     return image;
 }
 
-- (UIView *)findFirstResponder
+- (nullable UIView *)findFirstResponder
 {
     if (self.isFirstResponder) {
         return self;
@@ -167,7 +169,7 @@
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
-- (UIView *)findSuperviewOf:(Class)viewClass
+- (nullable UIView *)findSuperviewOf:(Class)viewClass
 {
     if ([self.superview isKindOfClass:viewClass]) {
         return self.superview;
@@ -178,7 +180,7 @@
     }
 }
 
-- (UIView *)findSubviewOf:(Class)viewClass
+- (nullable UIView *)findSubviewOf:(Class)viewClass
 {
     UIView *foundView = nil;
     for (UIView *view in self.subviews) {
@@ -196,7 +198,7 @@
     return foundView;
 }
 
-- (UIViewController *)viewController
+- (nullable UIViewController *)viewController
 {
     UIViewController *controller = nil;
     UIView *view = self;
@@ -215,28 +217,22 @@
     return controller;
 }
 
-- (void)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
+- (CAShapeLayer *)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
 {
     CAShapeLayer *maskLayer = [CAShapeLayer layer];
     maskLayer.frame = self.bounds;
-    maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:corners cornerRadii:cornerRadii].CGPath;
-    self.layer.mask = maskLayer;
+    maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                           byRoundingCorners:corners
+                                                 cornerRadii:cornerRadii].CGPath;
+    return self.layer.mask = maskLayer;
 }
 
-- (void)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius
+- (CAShapeLayer *)setMaskLayerWithCornerRadius:(CGFloat)cornerRadius
 {
-    [self setMaskLayerByRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
+    return [self setMaskLayerByRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius borderWidth:(CGFloat)borderWidth borderColor:(UIColor *)borderColor
-{
-    self.layer.masksToBounds = YES;
-    self.layer.cornerRadius = cornerRadius;
-    self.layer.borderWidth = borderWidth;
-    self.layer.borderColor = [borderColor CGColor];
-}
-
-- (void)setLayerShadowWithColor:(UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
+- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
 {
     self.layer.masksToBounds = NO;
     if (color) self.layer.shadowColor = color.CGColor;
@@ -246,40 +242,27 @@
     self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
 }
 
-- (void)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor
+- (CAGradientLayer *)setGradientBackgroundColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION
 {
-    CAGradientLayer *gradient = [CAGradientLayer layer];
+    NSMutableArray *colors = [NSMutableArray array];
+    va_list args;
+    va_start(args, startColor);
+    UIColor *color = startColor;
+    do {
+        [colors addObject:(id)color.CGColor];
+    } while ((color = va_arg(args, UIColor *)));
+    va_end(args);
 
-    gradient.frame = self.bounds;
-    gradient.colors = @[ (id)[startColor CGColor], (id)[endColor CGColor] ];
-
-    [self.layer insertSublayer:gradient atIndex:0];
+    CAGradientLayer *layer = [CAGradientLayer layer];
+    layer.frame = self.bounds;
+    layer.colors = [colors copy];
+    [self.layer insertSublayer:layer atIndex:0];
+    return layer;
 }
 
-- (void)setBackgroundGradientColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION
+- (CAGradientLayer *)setGradientBackgroundWithStartColor:(UIColor *)startColor endColor:(UIColor *)endColor
 {
-    if (startColor) {
-        NSMutableArray *colors = [NSMutableArray array];
-        va_list args;
-        va_start(args, startColor);
-        UIColor *color = startColor;
-        do {
-            [colors addObject:(id)color.CGColor];
-        } while ((color = va_arg(args, UIColor *)));
-        va_end(args);
-
-        CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = self.bounds;
-        gradient.colors = [colors copy];
-
-        [self.layer insertSublayer:gradient atIndex:0];
-    }
-}
-
-- (void)enableDebugBorderWithColor:(UIColor *)color
-{
-    self.layer.borderColor = color.CGColor;
-    self.layer.borderWidth = 2.0;
+    return [self setGradientBackgroundColor:startColor, endColor, nil];
 }
 
 - (void)enableDebugBorder
@@ -287,13 +270,10 @@
     [self enableDebugBorderWithColor:ESRandomColor()];
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-
-- (NSUInteger)indexOnSuperview
+- (void)enableDebugBorderWithColor:(UIColor *)color
 {
-    return [self.superview.subviews indexOfObject:self];
+    self.layer.borderColor = color.CGColor;
+    self.layer.borderWidth = 2.0;
 }
 
 - (void)bringToFront
@@ -304,6 +284,18 @@
 - (void)sendToBack
 {
     [self.superview sendSubviewToBack:self];
+}
+
+- (void)moveToCenterOfSuperview
+{
+    if (self.superview) {
+        self.center = CGPointMake(CGRectGetMidX(self.superview.bounds), CGRectGetMidY(self.superview.bounds));
+    }
+}
+
+- (NSUInteger)indexOnSuperview
+{
+    return [self.superview.subviews indexOfObject:self];
 }
 
 - (BOOL)isInFrontOfSuperview
@@ -320,16 +312,6 @@
         return NO;
     }
     return self.superview.subviews.firstObject == self;
-}
-
-- (void)moveToCenterOfSuperview
-{
-    if (self.superview) {
-        self.frame = CGRectMake((self.superview.bounds.size.width - self.frame.size.width) / 2.,
-                                (self.superview.bounds.size.height - self.frame.size.height) / 2.,
-                                self.frame.size.width,
-                                self.frame.size.height);
-    }
 }
 
 @end
