@@ -10,13 +10,6 @@
 
 @implementation UITabBarController (ESAdditions)
 
-- (void)setBadgeValue:(NSString *)badgeValue forTabBarItemAtIndex:(NSUInteger)index
-{
-    if (index < self.tabBar.items.count) {
-        [self.tabBar.items[index] setBadgeValue:badgeValue];
-    }
-}
-
 - (BOOL)pushViewController:(UIViewController *)viewController atTabIndex:(NSUInteger)tabIndex fromRoot:(BOOL)fromRoot popCurrentViewControllerToRoot:(BOOL)popCurrentToRoot animated:(BOOL)animated
 {
     if (tabIndex >= self.viewControllers.count) {

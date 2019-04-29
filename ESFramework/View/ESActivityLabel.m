@@ -32,9 +32,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
-    return [self         initWithFrame:frame
-            activityIndicatorViewStyle:UIActivityIndicatorViewStyleGray
-                        attributedText:[[NSAttributedString alloc] initWithString:@"" attributes:[[self class] defaultTextAttributes]]];
+    return [self initWithFrame:frame activityIndicatorViewStyle:UIActivityIndicatorViewStyleGray
+                attributedText:[[NSAttributedString alloc] initWithString:@"" attributes:[[self class] defaultTextAttributes]]];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size

@@ -8,15 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UITabBarController (ESAdditions)
+NS_ASSUME_NONNULL_BEGIN
 
-/**
- * Set badge value for tab bar item at the given index.
- */
-- (void)setBadgeValue:(NSString *)badgeValue forTabBarItemAtIndex:(NSUInteger)index;
+@interface UITabBarController (ESAdditions)
 
 - (BOOL)pushViewController:(UIViewController *)viewController atTabIndex:(NSUInteger)tabIndex fromRoot:(BOOL)fromRoot popCurrentViewControllerToRoot:(BOOL)popCurrentToRoot animated:(BOOL)animated;
 
 - (BOOL)pushViewController:(UIViewController *)viewController atTabIndex:(NSUInteger)tabIndex fromRoot:(BOOL)fromRoot;
 
 @end
+
+NS_ASSUME_NONNULL_END
