@@ -14,14 +14,15 @@ static id __gNil = nil;
 
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector
 {
-    if (target && selector && [target respondsToSelector:selector]) {
-        NSInvocation *invocation = [self invocationWithMethodSignature:
-                                    [target methodSignatureForSelector:selector]];
-        [invocation setTarget:target];
-        [invocation setSelector:selector];
-        return invocation;
+    NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+    if (!signature) {
+        return nil;
     }
-    return nil;
+
+    NSInvocation *invocation = [self invocationWithMethodSignature:signature];
+    [invocation setTarget:target];
+    [invocation setSelector:selector];
+    return invocation;
 }
 
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...
