@@ -25,7 +25,6 @@
 		E76CA23B1CA50D1100EDBB8E /* NSDictionary+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA23C1CA50D1100EDBB8E /* NSError+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA23D1CA50D1100EDBB8E /* NSError+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA23F1CA50D1100EDBB8E /* NSMutableString+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2421CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2431CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2481CA50D1100EDBB8E /* NSString+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ESAdditions.h"; sourceTree = "<group>"; };
@@ -64,7 +63,6 @@
 		E76CA2991CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
 		E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFNetworkReachabilityManager+ESAdditions.h"; sourceTree = "<group>"; };
 		E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFNetworkReachabilityManager+ESAdditions.m"; sourceTree = "<group>"; };
-		E779126C2269E83F006EF94D /* NSMutableDictionary+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ESAdditions.m"; sourceTree = "<group>"; };
 		E7791293226DFB8A006EF94D /* ESWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESWeakProxy.h; sourceTree = "<group>"; };
 		E7791294226DFB8A006EF94D /* ESWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESWeakProxy.m; sourceTree = "<group>"; };
 		E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+ESHelper.h"; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 		E7FDC9722265B1F000D8CC25 /* NSURLComponents+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLComponents+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC97322672B1E00D8CC25 /* NSDateFormatter+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC97422672B1E00D8CC25 /* NSDateFormatter+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAdditions.m"; sourceTree = "<group>"; };
-		E7FDC97622674F5100D8CC25 /* NSMutableArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+ESAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -170,7 +167,6 @@
 				E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */,
 				E76CA2481CA50D1100EDBB8E /* NSString+ESAdditions.h */,
 				E76CA2491CA50D1100EDBB8E /* NSString+ESAdditions.m */,
-				E76CA23F1CA50D1100EDBB8E /* NSMutableString+ESAdditions.m */,
 				E76CA24A1CA50D1100EDBB8E /* NSString+ESGTMHTML.h */,
 				E76CA24B1CA50D1100EDBB8E /* NSString+ESGTMHTML.m */,
 				E76CA24C1CA50D1100EDBB8E /* NSString+ESHash.h */,
@@ -189,10 +185,8 @@
 				E76CA23D1CA50D1100EDBB8E /* NSError+ESAdditions.m */,
 				E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */,
 				E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */,
-				E7FDC97622674F5100D8CC25 /* NSMutableArray+ESAdditions.m */,
 				E76CA23A1CA50D1100EDBB8E /* NSDictionary+ESAdditions.h */,
 				E76CA23B1CA50D1100EDBB8E /* NSDictionary+ESAdditions.m */,
-				E779126C2269E83F006EF94D /* NSMutableDictionary+ESAdditions.m */,
 				E76CA2421CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.h */,
 				E76CA2431CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.m */,
 				E76CA24E1CA50D1100EDBB8E /* NSTimer+ESAdditions.h */,

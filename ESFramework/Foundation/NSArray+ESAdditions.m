@@ -54,3 +54,17 @@
 }
 
 @end
+
+#pragma mark - NSMutableArray (ESAdditions)
+
+@implementation NSMutableArray (ESAdditions)
+
+- (void)replaceObject:(id)object withObject:(id)anObject
+{
+    NSUInteger index = [self indexOfObject:object];
+    if (NSNotFound != index) {
+        [self replaceObjectAtIndex:index withObject:anObject];
+    }
+}
+
+@end

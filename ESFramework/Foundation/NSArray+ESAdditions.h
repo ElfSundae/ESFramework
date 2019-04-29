@@ -25,6 +25,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+#pragma mark - NSMutableArray (ESAdditions)
+
 @interface NSMutableArray<ObjectType> (ESAdditions)
 
 - (void)replaceObject:(ObjectType)object withObject:(ObjectType)anObject;

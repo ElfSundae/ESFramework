@@ -8,6 +8,7 @@
 
 #import "NSDictionary+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
+#import <NestedObjectSetters/NestedObjectSetters.h>
 
 @implementation NSDictionary (ESAdditions)
 
@@ -28,6 +29,22 @@
     NSArray *keys = [self keysOfEntriesWithOptions:opts passingTest:predicate].allObjects;
     NSArray *objects = [self objectsForKeys:keys notFoundMarker:NSNull.null];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+}
+
+@end
+
+#pragma mark - NSMutableDictionary (ESAdditions)
+
+@implementation NSMutableDictionary (ESAdditions)
+
+- (void)setObject:(id)object forKeyPath:(NSString *)keyPath
+{
+    [self setObject:object forKeyPath:keyPath createIntermediateDictionaries:YES replaceIntermediateObjects:YES];
+}
+
+- (void)setObject:(id)object forKeyPath:(NSString *)keyPath createIntermediateDictionaries:(BOOL)createIntermediates replaceIntermediateObjects:(BOOL)replaceIntermediates
+{
+    [NestedObjectSetters setObject:object onObject:self forKeyPath:keyPath createIntermediateDictionaries:createIntermediates replaceIntermediateObjects:replaceIntermediates];
 }
 
 @end

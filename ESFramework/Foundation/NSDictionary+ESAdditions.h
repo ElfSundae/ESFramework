@@ -23,6 +23,8 @@
 
 @end
 
+#pragma mark - NSMutableDictionary (ESAdditions)
+
 @interface NSMutableDictionary (ESAdditions)
 
 /**
