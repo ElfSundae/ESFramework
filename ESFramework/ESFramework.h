@@ -38,7 +38,6 @@
 #import "UIColor+ESAdditions.h"
 #import "UIImage+ESAdditions.h"
 #import "UIView+ESAdditions.h"
-#import "UIBarButtonItem+ESAdditions.h"
 #import "UIImageView+ESAdditions.h"
 #import "UITableView+ESAdditions.h"
 #import "UIToolbar+ESAdditions.h"
