@@ -25,12 +25,12 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses
 {
-    return [self getIPAddressesForNetworkInterfaces:nil];
+    return [self getIPAddressesForInterfaces:nil];
 }
 
 // ref: http://man7.org/linux/man-pages/man3/getifaddrs.3.html
 // ref: https://stackoverflow.com/a/10803584/521946
-+ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForNetworkInterfaces:(nullable NSSet *)interfacesPredicate
++ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForInterfaces:(nullable NSSet *)interfacesPredicate
 {
     struct ifaddrs *ifaddr;
     if (0 != getifaddrs(&ifaddr)) {
@@ -94,7 +94,7 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 
 + (NSString *)getLocalIPAddress:(NSString * _Nullable * _Nullable)IPv6Address
 {
-    NSDictionary *addresses = [[self getIPAddressesForNetworkInterfaces:
+    NSDictionary *addresses = [[self getIPAddressesForInterfaces:
                                 [NSSet setWithObjects:ESNetworkInterfaceWiFiName, nil]]
                                objectForKey:ESNetworkInterfaceWiFiName];
     if (IPv6Address) {
