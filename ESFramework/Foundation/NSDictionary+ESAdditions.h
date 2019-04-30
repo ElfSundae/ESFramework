@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSDictionary<KeyType, ObjectType> (ESAdditions)
 
 /**
@@ -46,3 +48,5 @@
 - (void)setObject:(id)object forKeyPath:(NSString *)keyPath createIntermediateDictionaries:(BOOL)createIntermediates replaceIntermediateObjects:(BOOL)replaceIntermediates;
 
 @end
+
+NS_ASSUME_NONNULL_END
