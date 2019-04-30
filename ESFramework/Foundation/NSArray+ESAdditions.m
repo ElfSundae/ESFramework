@@ -33,8 +33,7 @@
 
 - (id)previousObjectToIndex:(NSUInteger)index
 {
-    index--;
-    return (index >= 0 && index < self.count) ? self[index] : nil;
+    return --index < self.count ? self[index] : nil;
 }
 
 - (id)previousObjectToObject:(id)object
@@ -44,8 +43,7 @@
 
 - (id)nextObjectToIndex:(NSUInteger)index
 {
-    index++;
-    return (index >= 0 && index < self.count) ? self[index] : nil;
+    return ++index < self.count ? self[index] : nil;
 }
 
 - (id)nextObjectToObject:(id)object
