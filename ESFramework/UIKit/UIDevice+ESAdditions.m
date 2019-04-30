@@ -102,8 +102,24 @@
             }
         }
 
+        if (!_isJailbroken) {
+            FILE *bash = fopen("/bin/bash", "r");
+            if (bash) {
+                fclose(bash);
+                _isJailbroken = YES;
+            }
+        }
+
         if (!_isJailbroken && 0 == popen("ls", "r")) {
             _isJailbroken = YES;
+        }
+
+        if (!_isJailbroken) {
+            NSString *path = [@"/private/" stringByAppendingString:ESUUID()];
+            if ([@"foo" writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL]) {
+                [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
+                _isJailbroken = YES;
+            }
         }
     });
 #endif
