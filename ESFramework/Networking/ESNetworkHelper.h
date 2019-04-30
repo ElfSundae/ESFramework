@@ -32,27 +32,47 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
 
 /**
  * Returns the IP addresses of all actived network interfaces.
- * { interfaceName: { addressFamily: address, ... } }
+ * { interfaceName: { family: address, ... } }
  *
  * @code
  * // Example result:
  * {
  *     awdl0 =     {
- *         IPv6 = "fe80::9893:97ff:fe3b:e2a8";
+ *         IPv6 = "fe80::406b:fff:fea5:75e1";
  *     };
  *     en0 =     {
- *         IPv4 = "192.168.1.127";
- *         IPv6 = "fe80::449:7487:aaeb:a91";
+ *         IPv4 = "192.168.2.2";
+ *         IPv6 = "fe80::105b:74b3:6866:5c74";
+ *     };
+ *     en2 =     {
+ *         IPv4 = "169.254.230.211";
+ *         IPv6 = "fe80::8f1:c91:6c6b:6dff";
+ *     };
+ *     ipsec1 =     {
+ *         IPv6 = "fe80::923c:92ff:fe46:87e";
+ *     };
+ *     ipsec2 =     {
+ *         IPv6 = "fe80::923c:92ff:fe46:87e";
  *     };
  *     lo0 =     {
  *         IPv4 = "127.0.0.1";
  *         IPv6 = "::1";
  *     };
- *     utun0 =     {
- *         IPv6 = "fe80::2390:e96c:4e93:8be0";
+ *     "pdp_ip0" =     {
+ *         IPv4 = "10.62.227.126";
+ *         IPv6 = "fe80::5f:8e75:5dcd:e3fa";
  *     };
- *     ipsec1 =     {
- *         IPv6 = "fe80::923c:92ff:fe46:87e";
+ *     "pdp_ip1" =     {
+ *         IPv6 = "fe80::80f:8a47:ad66:9eed";
+ *     };
+ *     utun0 =     {
+ *         IPv6 = "fe80::67e2:1942:c9d5:a602";
+ *     };
+ *     utun1 =     {
+ *         IPv6 = "fe80::f9b8:325d:ff9f:96fc";
+ *     };
+ *     utun2 =     {
+ *         IPv4 = "240.0.0.1";
  *     };
  * }
  * @endcode
