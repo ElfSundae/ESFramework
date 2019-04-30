@@ -86,7 +86,13 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
  *
  * @param interfacesPredicate Optional NSSet filter of network interface names. If this param is nil or an empty set, all interfaces and associated IP addresses will be returned.
  */
-+ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForInterfaces:(nullable NSSet *)interfacesPredicate;
++ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForInterfaces:(nullable NSSet<NSString *> *)interfacesPredicate;
+
+/**
+ * Returns the IP addresses for the network interface.
+ * { addressFamily: address, ... }
+ */
++ (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface;
 
 /**
  * Returns the local IPv4 address of the "en0" network interface.
