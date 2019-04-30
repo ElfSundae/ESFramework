@@ -92,7 +92,13 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
  * Returns the local IPv4 address of the "en0" network interface.
  * You may optionally pass `IPv6Address` out param to get the IPv6 address.
  */
-+ (nullable NSString *)getLocalIPAddress:(NSString * _Nullable * _Nullable)IPv6Address;
++ (nullable NSString *)getLocalIPAddressForWiFi:(NSString * _Nullable * _Nullable)IPv6Address;
+
+/**
+ * Returns the local IPv4 address of the "pdp_ip0" network interface.
+ * You may optionally pass `IPv6Address` out param to get the IPv6 address.
+ */
++ (nullable NSString *)getLocalIPAddressForCellular:(NSString * _Nullable * _Nullable)IPv6Address;
 
 /**
  * Returns the current WiFi network info.

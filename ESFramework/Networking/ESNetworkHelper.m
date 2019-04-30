@@ -92,11 +92,20 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
     return addresses.copy;
 }
 
-+ (NSString *)getLocalIPAddress:(NSString * _Nullable * _Nullable)IPv6Address
++ (NSString *)getLocalIPAddressForWiFi:(NSString **)IPv6Address
 {
-    NSDictionary *addresses = [[self getIPAddressesForInterfaces:
-                                [NSSet setWithObjects:ESNetworkInterfaceWiFiName, nil]]
+    NSDictionary *addresses = [[self getIPAddressesForInterfaces:[NSSet setWithObjects:ESNetworkInterfaceWiFiName, nil]]
                                objectForKey:ESNetworkInterfaceWiFiName];
+    if (IPv6Address) {
+        *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
+    }
+    return addresses[ESNetworkAddressFamilyIPv4];
+}
+
++ (NSString *)getLocalIPAddressForCellular:(NSString **)IPv6Address
+{
+    NSDictionary *addresses = [[self getIPAddressesForInterfaces:[NSSet setWithObjects:ESNetworkInterfaceCellularName, nil]]
+                               objectForKey:ESNetworkInterfaceCellularName];
     if (IPv6Address) {
         *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
     }

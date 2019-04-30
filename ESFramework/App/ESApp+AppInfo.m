@@ -112,7 +112,7 @@ static NSDate *__gAppLaunchDate = nil;
     }
 
     NSString *localIPv6 = nil;
-    NSString *localIP = [ESNetworkHelper getLocalIPAddress:&localIPv6];
+    NSString *localIP = [ESNetworkHelper getLocalIPAddressForWiFi:&localIPv6];
     if (localIP) {
         result[@"local_ip"] = localIP;
     }
