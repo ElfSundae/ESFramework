@@ -32,7 +32,7 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
 
 /**
  * Returns the IP addresses of all actived network interfaces.
- * { interfaceName: { family: address, ... } }
+ * { interface: { family: address, ... } }
  *
  * @code
  * // Example result:
@@ -79,10 +79,9 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
  */
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses;
 
-
 /**
  * Returns the IP addresses for the network interfaces.
- * { interfaceName: { addressFamily: address, ... } }
+ * { interface: { family: address, ... } }
  *
  * @param interfacesPredicate Optional NSSet filter of network interface names. If this param is nil or an empty set, all interfaces and associated IP addresses will be returned.
  */
@@ -90,7 +89,7 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
 
 /**
  * Returns the IP addresses for the network interface.
- * { addressFamily: address, ... }
+ * { family: address, ... }
  */
 + (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface;
 

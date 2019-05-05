@@ -42,14 +42,13 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
     // Loop through linked list of interfaces
     struct ifaddrs *interface;
     for (interface = ifaddr; interface != NULL; interface = interface->ifa_next) {
-        if (NULL == interface->ifa_addr ||
-            IFF_UP != (interface->ifa_flags & IFF_UP)) {
+        if (NULL == interface->ifa_addr || IFF_UP != (interface->ifa_flags & IFF_UP)) {
             continue;
         }
 
         NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
 
-        if (interfacesPredicate.count && ![interfacesPredicate containsObject:name]) {
+        if (interfacesPredicate && ![interfacesPredicate containsObject:name]) {
             continue;
         }
 
@@ -87,6 +86,7 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 
         addresses[name][family] = address;
     } /* for-loop */
+
     freeifaddrs(ifaddr);
 
     return addresses.copy;
@@ -118,12 +118,12 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 + (nullable NSDictionary *)getWiFiNetworkInfo
 {
     CFArrayRef interfaces = CNCopySupportedInterfaces();
-    if (interfaces) {
-        CFDictionaryRef networkInfo = CNCopyCurrentNetworkInfo((CFStringRef)CFArrayGetValueAtIndex(interfaces, 0));
-        CFRelease(interfaces);
-        return CFBridgingRelease(networkInfo);
+    if (!interfaces) {
+        return nil;
     }
-    return nil;
+    CFDictionaryRef networkInfo = CNCopyCurrentNetworkInfo((CFStringRef)CFArrayGetValueAtIndex(interfaces, 0));
+    CFRelease(interfaces);
+    return CFBridgingRelease(networkInfo);
 }
 
 + (nullable NSString *)getWiFiSSID
