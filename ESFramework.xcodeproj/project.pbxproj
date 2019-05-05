@@ -107,6 +107,8 @@
 		E7A38CB31C4DFEE300972B01 /* UIScrollView+ESRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ESRefreshControl.m"; sourceTree = "<group>"; };
 		E7A38CBC1C4E035600972B01 /* ESRefreshControlDefaultContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControlDefaultContentView.h; sourceTree = "<group>"; };
 		E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
+		E7A8D488227F0F0F0013A7E8 /* UIApplication+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+ESAdditions.h"; sourceTree = "<group>"; };
+		E7A8D489227F0F0F0013A7E8 /* UIApplication+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESAdditions.h"; sourceTree = "<group>"; };
@@ -147,44 +149,44 @@
 			children = (
 				E7791299226F032D006EF94D /* ESHelpers.h */,
 				E779129A226F032D006EF94D /* ESHelpers.m */,
-				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
-				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
 				E76CA2821CA50D1100EDBB8E /* ESValue.h */,
 				E76CA2831CA50D1100EDBB8E /* ESValue.m */,
-				E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */,
-				E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
 				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
-				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,
-				E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */,
+				E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */,
+				E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */,
 				E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */,
 				E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */,
-				E76CA2481CA50D1100EDBB8E /* NSString+ESAdditions.h */,
-				E76CA2491CA50D1100EDBB8E /* NSString+ESAdditions.m */,
-				E76CA24A1CA50D1100EDBB8E /* NSString+ESGTMHTML.h */,
-				E76CA24B1CA50D1100EDBB8E /* NSString+ESGTMHTML.m */,
-				E76CA24C1CA50D1100EDBB8E /* NSString+ESHash.h */,
-				E76CA24D1CA50D1100EDBB8E /* NSString+ESHash.m */,
-				E76CA2501CA50D1100EDBB8E /* NSURL+ESAdditions.h */,
-				E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */,
-				E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */,
-				E7FDC9722265B1F000D8CC25 /* NSURLComponents+ESAdditions.m */,
 				E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */,
 				E76CA2371CA50D1100EDBB8E /* NSData+ESHash.m */,
 				E76CA2381CA50D1100EDBB8E /* NSDate+ESAdditions.h */,
 				E76CA2391CA50D1100EDBB8E /* NSDate+ESAdditions.m */,
 				E7FDC97322672B1E00D8CC25 /* NSDateFormatter+ESAdditions.h */,
 				E7FDC97422672B1E00D8CC25 /* NSDateFormatter+ESAdditions.m */,
-				E76CA23C1CA50D1100EDBB8E /* NSError+ESAdditions.h */,
-				E76CA23D1CA50D1100EDBB8E /* NSError+ESAdditions.m */,
-				E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */,
-				E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */,
 				E76CA23A1CA50D1100EDBB8E /* NSDictionary+ESAdditions.h */,
 				E76CA23B1CA50D1100EDBB8E /* NSDictionary+ESAdditions.m */,
+				E76CA23C1CA50D1100EDBB8E /* NSError+ESAdditions.h */,
+				E76CA23D1CA50D1100EDBB8E /* NSError+ESAdditions.m */,
+				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
+				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
+				E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */,
+				E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */,
+				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,
+				E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */,
 				E76CA2421CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.h */,
 				E76CA2431CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.m */,
+				E76CA2481CA50D1100EDBB8E /* NSString+ESAdditions.h */,
+				E76CA2491CA50D1100EDBB8E /* NSString+ESAdditions.m */,
+				E76CA24A1CA50D1100EDBB8E /* NSString+ESGTMHTML.h */,
+				E76CA24B1CA50D1100EDBB8E /* NSString+ESGTMHTML.m */,
+				E76CA24C1CA50D1100EDBB8E /* NSString+ESHash.h */,
+				E76CA24D1CA50D1100EDBB8E /* NSString+ESHash.m */,
 				E76CA24E1CA50D1100EDBB8E /* NSTimer+ESAdditions.h */,
 				E76CA24F1CA50D1100EDBB8E /* NSTimer+ESAdditions.m */,
+				E76CA2501CA50D1100EDBB8E /* NSURL+ESAdditions.h */,
+				E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */,
+				E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */,
+				E7FDC9722265B1F000D8CC25 /* NSURLComponents+ESAdditions.m */,
 				E76CA2521CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.h */,
 				E76CA2531CA50D1100EDBB8E /* NSUserDefaults+ESAdditions.m */,
 			);
@@ -221,10 +223,10 @@
 		E779129B226F3C65006EF94D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				E74E71072272FBD8008C7943 /* ESNetworkHelper.h */,
-				E74E71082272FBD8008C7943 /* ESNetworkHelper.m */,
 				E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */,
 				E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */,
+				E74E71072272FBD8008C7943 /* ESNetworkHelper.h */,
+				E74E71082272FBD8008C7943 /* ESNetworkHelper.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -234,20 +236,22 @@
 			children = (
 				E779129D226F3DCB006EF94D /* UIAlertController+ESAdditions.h */,
 				E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */,
-				E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */,
-				E77912A6226F3DCB006EF94D /* UIDevice+ESAdditions.m */,
+				E7A8D488227F0F0F0013A7E8 /* UIApplication+ESAdditions.h */,
+				E7A8D489227F0F0F0013A7E8 /* UIApplication+ESAdditions.m */,
 				E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */,
 				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
+				E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */,
+				E77912A6226F3DCB006EF94D /* UIDevice+ESAdditions.m */,
 				E77912A9226F3DCB006EF94D /* UIImage+ESAdditions.h */,
 				E77912AA226F3DCB006EF94D /* UIImage+ESAdditions.m */,
-				E77912B7226F3DCB006EF94D /* UIView+ESAdditions.h */,
-				E77912B8226F3DCB006EF94D /* UIView+ESAdditions.m */,
 				E77912AD226F3DCB006EF94D /* UIImageView+ESAdditions.h */,
 				E77912AE226F3DCB006EF94D /* UIImageView+ESAdditions.m */,
 				E77912B3226F3DCB006EF94D /* UITableView+ESAdditions.h */,
 				E77912B4226F3DCB006EF94D /* UITableView+ESAdditions.m */,
 				E77912B5226F3DCB006EF94D /* UIToolbar+ESAdditions.h */,
 				E77912B6226F3DCB006EF94D /* UIToolbar+ESAdditions.m */,
+				E77912B7226F3DCB006EF94D /* UIView+ESAdditions.h */,
+				E77912B8226F3DCB006EF94D /* UIView+ESAdditions.m */,
 				E77912BB226F3DCB006EF94D /* UIViewController+ESAdditions.h */,
 				E77912BC226F3DCB006EF94D /* UIViewController+ESAdditions.m */,
 			);
