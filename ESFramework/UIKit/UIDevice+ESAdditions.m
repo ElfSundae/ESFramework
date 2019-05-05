@@ -7,12 +7,10 @@
 //
 
 #import "UIDevice+ESAdditions.h"
+#import <sys/sysctl.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
-#import <SystemConfiguration/CaptiveNetwork.h>
-#import <sys/sysctl.h>
 #import "ESHelpers.h"
-#import "ESValue.h"
 
 @implementation UIDevice (ESAdditions)
 

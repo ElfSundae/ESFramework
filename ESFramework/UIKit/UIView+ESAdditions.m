@@ -8,7 +8,6 @@
 
 #import "UIView+ESAdditions.h"
 #import "ESHelpers.h"
-#import "NSArray+ESAdditions.h"
 
 @implementation UIView (ESAdditions)
 
