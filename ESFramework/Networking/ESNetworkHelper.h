@@ -157,6 +157,11 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
  */
 + (ESCellularNetworkType)getCellularNetworkType;
 
+/**
+ * Returns the current cellular network type as string.
+ */
++ (NSString *)getCellularNetworkTypeString;
+
 @end
 
 NS_ASSUME_NONNULL_END

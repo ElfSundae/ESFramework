@@ -149,7 +149,7 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
     if (!name) {
         return ESCellularNetworkTypeNone;
     } else if ([name isEqualToString:CTRadioAccessTechnologyGPRS] ||
-        [name isEqualToString:CTRadioAccessTechnologyEdge]) {
+               [name isEqualToString:CTRadioAccessTechnologyEdge]) {
         return ESCellularNetworkType2G;
     } else if ([name isEqualToString:CTRadioAccessTechnologyWCDMA] ||
                [name isEqualToString:CTRadioAccessTechnologyHSDPA] ||
@@ -164,6 +164,23 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
         return ESCellularNetworkType4G;
     } else {
         return ESCellularNetworkTypeUnknown;
+    }
+}
+
++ (NSString *)getCellularNetworkTypeString
+{
+    switch ([self getCellularNetworkType]) {
+        case ESCellularNetworkTypeNone:
+            return @"None";
+        case ESCellularNetworkType2G:
+            return @"2G";
+        case ESCellularNetworkType3G:
+            return @"3G";
+        case ESCellularNetworkType4G:
+            return @"4G";
+        case ESCellularNetworkTypeUnknown:
+        default:
+            return @"Unknown";
     }
 }
 
