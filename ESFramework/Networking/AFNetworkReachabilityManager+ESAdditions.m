@@ -15,13 +15,10 @@
     switch (self.networkReachabilityStatus) {
         case AFNetworkReachabilityStatusNotReachable:
             return @"None";
-
         case AFNetworkReachabilityStatusReachableViaWWAN:
             return @"WWAN";
-
         case AFNetworkReachabilityStatusReachableViaWiFi:
             return @"WiFi";
-
         case AFNetworkReachabilityStatusUnknown:
         default:
             return @"Unknown";
