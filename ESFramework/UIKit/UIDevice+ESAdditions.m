@@ -8,8 +8,6 @@
 
 #import "UIDevice+ESAdditions.h"
 #import <sys/sysctl.h>
-#import <CoreTelephony/CTTelephonyNetworkInfo.h>
-#import <CoreTelephony/CTCarrier.h>
 #import "ESHelpers.h"
 
 @implementation UIDevice (ESAdditions)
@@ -122,11 +120,6 @@
     });
 #endif
     return _isJailbroken;
-}
-
-- (nullable NSString *)carrierName
-{
-    return CTTelephonyNetworkInfo.new.subscriberCellularProvider.carrierName;
 }
 
 @end

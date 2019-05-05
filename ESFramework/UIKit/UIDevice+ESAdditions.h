@@ -55,12 +55,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) BOOL isJailbroken;
 
-/**
- * Returns the name of the subscriber's home cellular service provider.
- * e.g. @"AT&T"
- */
-@property (nullable, nonatomic, copy, readonly) NSString *carrierName;
-
 @end
 
 NS_ASSUME_NONNULL_END

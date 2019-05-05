@@ -11,6 +11,8 @@
 #include <net/if.h>
 #include <arpa/inet.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4 = @"IPv4";
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6 = @"IPv6";
@@ -134,6 +136,35 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 + (nullable NSString *)getWiFiBSSID
 {
     return [self getWiFiNetworkInfo][(__bridge NSString *)kCNNetworkInfoKeyBSSID];
+}
+
++ (nullable NSString *)getCarrierName
+{
+    return CTTelephonyNetworkInfo.new.subscriberCellularProvider.carrierName;
+}
+
++ (ESCellularNetworkType)currentCellularNetworkType
+{
+    NSString *name = CTTelephonyNetworkInfo.new.currentRadioAccessTechnology;
+    if (!name) {
+        return ESCellularNetworkTypeNone;
+    } else if ([name isEqualToString:CTRadioAccessTechnologyGPRS] ||
+        [name isEqualToString:CTRadioAccessTechnologyEdge]) {
+        return ESCellularNetworkType2G;
+    } else if ([name isEqualToString:CTRadioAccessTechnologyWCDMA] ||
+               [name isEqualToString:CTRadioAccessTechnologyHSDPA] ||
+               [name isEqualToString:CTRadioAccessTechnologyHSUPA] ||
+               [name isEqualToString:CTRadioAccessTechnologyCDMA1x] ||
+               [name isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0] ||
+               [name isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA] ||
+               [name isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB] ||
+               [name isEqualToString:CTRadioAccessTechnologyeHRPD]) {
+        return ESCellularNetworkType3G;
+    } else if ([name isEqualToString:CTRadioAccessTechnologyLTE]) {
+        return ESCellularNetworkType4G;
+    } else {
+        return ESCellularNetworkTypeUnknown;
+    }
 }
 
 @end

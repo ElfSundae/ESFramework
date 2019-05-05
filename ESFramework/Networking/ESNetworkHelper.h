@@ -10,6 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
+    ESCellularNetworkTypeUnknown  = -1,
+    ESCellularNetworkTypeNone     = 0,
+    ESCellularNetworkType2G       = 2,
+    ESCellularNetworkType3G       = 3,
+    ESCellularNetworkType4G       = 4,
+};
+
 typedef NSString * ESNetworkAddressFamily NS_EXTENSIBLE_STRING_ENUM;
 
 /// "IPv4"
@@ -137,6 +145,17 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
 + (nullable NSString *)getWiFiBSSID;
+
+/**
+ * Returns the name of the cellular service provider.
+ * e.g. "AT&T"
+ */
++ (nullable NSString *)getCarrierName;
+
+/**
+ * Returns the current cellular network type.
+ */
++ (ESCellularNetworkType)currentCellularNetworkType;
 
 @end
 

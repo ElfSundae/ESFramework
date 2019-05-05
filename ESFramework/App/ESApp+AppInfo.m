@@ -96,7 +96,7 @@ static NSDate *__gAppLaunchDate = nil;
     result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
     result[@"timezone_gmt"] = @([[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
     result[@"locale"] = NSLocale.currentLocale.localeIdentifier;
-    NSString *carrier = [device carrierName];
+    NSString *carrier = [ESNetworkHelper getCarrierName];
     if (carrier) {
         result[@"carrier"] = carrier;
     }
