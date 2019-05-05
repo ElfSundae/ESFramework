@@ -69,7 +69,7 @@
 {
     [UIAlertController showAlertWithTitle:@"About"
                                   message:@"ESFramework\n\nhttps://0x123.com"
-                        cancelButtonTitle:@"OK"];
+                        cancelActionTitle:@"OK"];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
