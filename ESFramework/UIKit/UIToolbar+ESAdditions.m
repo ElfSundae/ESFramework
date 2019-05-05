@@ -21,13 +21,13 @@
     return nil;
 }
 
-- (void)replaceItemWithTag:(NSInteger)tag toItem:(UIBarButtonItem *)newItem
+- (void)replaceItemWithTag:(NSInteger)tag toItem:(UIBarButtonItem *)newItem animated:(BOOL)animated
 {
     UIBarButtonItem *item = [self itemWithTag:tag];
     if (item) {
         NSMutableArray *newItems = self.items.mutableCopy;
         [newItems replaceObject:item withObject:newItem];
-        self.items = newItems;
+        [self setItems:newItems animated:animated];
     }
 }
 
