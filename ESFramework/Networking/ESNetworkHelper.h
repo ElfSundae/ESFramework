@@ -26,15 +26,15 @@ FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4;
 FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6;
 
 /// "lo0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceLoopbackName;
+FOUNDATION_EXTERN NSString *const ESNetworkInterfaceLoopback;
 /// "awdl0" (Apple Wireless Direct Link)
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceAWDLName;
+FOUNDATION_EXTERN NSString *const ESNetworkInterfaceAWDL;
 /// "en0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceWiFiName;
+FOUNDATION_EXTERN NSString *const ESNetworkInterfaceWiFi;
 /// "pdp_ip0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceCellularName;
+FOUNDATION_EXTERN NSString *const ESNetworkInterfaceCellular;
 /// "utun0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
+FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
 
 @interface ESNetworkHelper : NSObject
 
@@ -88,18 +88,18 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses;
 
 /**
+ * Returns the IP addresses for the network interface.
+ * { family: address, ... }
+ */
++ (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface;
+
+/**
  * Returns the IP addresses for the network interfaces.
  * { interface: { family: address, ... } }
  *
  * @param interfacesPredicate Optional NSSet filter of network interface names. If this param is nil or an empty set, all interfaces and associated IP addresses will be returned.
  */
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForInterfaces:(nullable NSSet<NSString *> *)interfacesPredicate;
-
-/**
- * Returns the IP addresses for the network interface.
- * { family: address, ... }
- */
-+ (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface;
 
 /**
  * Returns the local IPv4 address of the "en0" network interface.
@@ -148,14 +148,14 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPNName;
 
 /**
  * Returns the name of the cellular service provider.
- * e.g. "AT&T"
+ * e.g. "AT&T", "ChinaNet"
  */
 + (nullable NSString *)getCarrierName;
 
 /**
  * Returns the current cellular network type.
  */
-+ (ESCellularNetworkType)currentCellularNetworkType;
++ (ESCellularNetworkType)getCellularNetworkType;
 
 @end
 

@@ -17,17 +17,22 @@
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4 = @"IPv4";
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6 = @"IPv6";
 
-NSString *const ESNetworkInterfaceLoopbackName = @"lo0";
-NSString *const ESNetworkInterfaceAWDLName = @"awdl0";
-NSString *const ESNetworkInterfaceWiFiName = @"en0";
-NSString *const ESNetworkInterfaceCellularName = @"pdp_ip0";
-NSString *const ESNetworkInterfaceVPNName = @"utun0";
+NSString *const ESNetworkInterfaceLoopback  = @"lo0";
+NSString *const ESNetworkInterfaceAWDL      = @"awdl0";
+NSString *const ESNetworkInterfaceWiFi      = @"en0";
+NSString *const ESNetworkInterfaceCellular  = @"pdp_ip0";
+NSString *const ESNetworkInterfaceVPN       = @"utun0";
 
 @implementation ESNetworkHelper
 
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses
 {
     return [self getIPAddressesForInterfaces:nil];
+}
+
++ (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface
+{
+    return [[self getIPAddressesForInterfaces:[NSSet setWithObjects:interface, nil]] objectForKey:interface];
 }
 
 // ref: http://man7.org/linux/man-pages/man3/getifaddrs.3.html
@@ -78,7 +83,7 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
         }
 
         if (addresses[name][family]) {
-            // we only get the first IP address for one interface
+            // we only get the first IP address for the interface
             continue;
         }
 
@@ -94,14 +99,9 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
     return addresses.copy;
 }
 
-+ (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface
-{
-    return [[self getIPAddressesForInterfaces:[NSSet setWithObjects:interface, nil]] objectForKey:interface];
-}
-
 + (NSString *)getIPAddressForWiFi:(NSString **)IPv6Address
 {
-    NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceWiFiName];
+    NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceWiFi];
     if (IPv6Address) {
         *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
     }
@@ -110,7 +110,7 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
 
 + (NSString *)getIPAddressForCellular:(NSString **)IPv6Address
 {
-    NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceCellularName];
+    NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceCellular];
     if (IPv6Address) {
         *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
     }
@@ -143,7 +143,7 @@ NSString *const ESNetworkInterfaceVPNName = @"utun0";
     return CTTelephonyNetworkInfo.new.subscriberCellularProvider.carrierName;
 }
 
-+ (ESCellularNetworkType)currentCellularNetworkType
++ (ESCellularNetworkType)getCellularNetworkType
 {
     NSString *name = CTTelephonyNetworkInfo.new.currentRadioAccessTechnology;
     if (!name) {
