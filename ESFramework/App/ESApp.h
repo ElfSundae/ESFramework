@@ -273,16 +273,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 + (BOOL)isFreshLaunch:(NSString *__autoreleasing *)previousAppVersion;
 
 /**
- * Delete all cookies which send to the given URL.
- */
-+ (void)deleteHTTPCookiesForURL:(NSURL *)URL;
-
-/**
- * Delete all HTTP Cookies.
- */
-+ (void)deleteAllHTTPCookies;
-
-/**
  * Simulate low memory warning.
  *
  * @warning Don't use this in production because it uses private API.

@@ -47,23 +47,6 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
     return __gIsFreshLaunch;
 }
 
-+ (void)deleteHTTPCookiesForURL:(NSURL *)URL
-{
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    NSArray *cookies = [cookieStorage cookiesForURL:URL];
-    for (NSHTTPCookie *c in cookies) {
-        [cookieStorage deleteCookie:c];
-    }
-}
-
-+ (void)deleteAllHTTPCookies
-{
-    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (NSHTTPCookie *c in cookieStorage.cookies) {
-        [cookieStorage deleteCookie:c];
-    }
-}
-
 + (void)simulateLowMemoryWarning
 {
     SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");

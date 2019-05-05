@@ -18,6 +18,7 @@
 #import "NSDateFormatter+ESAdditions.h"
 #import "NSDictionary+ESAdditions.h"
 #import "NSError+ESAdditions.h"
+#import "NSHTTPCookieStorage+ESAdditions.h"
 #import "NSInvocation+ESHelper.h"
 #import "NSNumberFormatter+ESAdditions.h"
 #import "NSObject+ESAutoCoding.h"

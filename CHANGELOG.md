@@ -49,6 +49,8 @@
     + UIColor methods: `-es_RGBAString` => `-RGBAString`, `-es_HexString` => `-RGBHexString`
     + UIView methods: `-findViewWithClassInSuperviews:` => `-findSuperviewOf:`, `-findViewWithClassInSubviews:` => `-findSubviewOf:`, `-setShadowOffset:` => `-setLayerShadowWithColor:`, `-setBackgroundGradientColor:` => `setGradientBackgroundColor:`
     + `-[UIToolbar replaceItemWithTag:withItem:]` => `-replaceItemWithTag:toItem:animated:`
+    + `+[ESApp deleteHTTPCookiesForURL:]` => `-[NSHTTPCookieStorage deleteCookiesForURL:]`
+    + `+[ESApp deleteAllHTTPCookies]` => `-[NSHTTPCookieStorage deleteAllCookies]`
 - Removed:
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
