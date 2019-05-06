@@ -53,7 +53,7 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
             continue;
         }
 
-        NSString *name = [NSString stringWithUTF8String:interface->ifa_name];
+        NSString *name = @(interface->ifa_name);
 
         if (interfacesPredicate && ![interfacesPredicate containsObject:name]) {
             continue;
@@ -67,14 +67,14 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
             char addrBuf[INET_ADDRSTRLEN];
             if (inet_ntop(AF_INET, &addr->sin_addr, addrBuf, INET_ADDRSTRLEN)) {
                 family = ESNetworkAddressFamilyIPv4;
-                address = [NSString stringWithUTF8String:addrBuf];
+                address = @(addrBuf);
             }
         } else if (AF_INET6 == interface->ifa_addr->sa_family) {
             const struct sockaddr_in6 *addr = (const struct sockaddr_in6 *)interface->ifa_addr;
             char addrBuf[INET6_ADDRSTRLEN];
             if (inet_ntop(AF_INET6, &addr->sin6_addr, addrBuf, INET6_ADDRSTRLEN)) {
                 family = ESNetworkAddressFamilyIPv6;
-                address = [NSString stringWithUTF8String:addrBuf];
+                address = @(addrBuf);
             }
         }
 

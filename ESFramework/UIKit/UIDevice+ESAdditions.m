@@ -38,7 +38,7 @@
         sysctlbyname("hw.machine", NULL, &size, NULL, 0);
         char *machine = (char *)malloc(size);
         sysctlbyname("hw.machine", machine, &size, NULL, 0);
-        _modelIdentifier = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+        _modelIdentifier = @(machine);
         free(machine);
 #endif
     });
