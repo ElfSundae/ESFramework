@@ -13,10 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIDevice (ESAdditions)
 
 /**
+ * Returns the model identifier of the device.
  * e.g. @"iPhone3,1", @"x86_64".
  * https://www.theiphonewiki.com/wiki/Models
  */
-@property (nonatomic, readonly) NSString *platform;
+@property (nonatomic, readonly) NSString *modelIdentifier;
 
 /**
  * Returns the total disk space in bytes.
