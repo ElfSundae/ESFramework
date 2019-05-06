@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * e.g. @"iPhone3,1", @"x86_64".
- * http://theiphonewiki.com/wiki/Models
+ * https://www.theiphonewiki.com/wiki/Models
  */
 @property (nonatomic, readonly) NSString *platform;
 
