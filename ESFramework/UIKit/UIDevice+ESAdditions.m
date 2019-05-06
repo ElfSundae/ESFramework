@@ -26,7 +26,7 @@
     return name;
 }
 
-- (NSString *)machineModel
+- (NSString *)platform
 {
     static NSString *_platform = nil;
     static dispatch_once_t onceToken;

@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  * e.g. @"iPhone3,1", @"x86_64".
  * https://www.theiphonewiki.com/wiki/Models
  */
-@property (nonatomic, readonly) NSString *machineModel;
+@property (nonatomic, readonly) NSString *platform;
 
 /**
  * Returns the total disk space in bytes.
