@@ -41,26 +41,26 @@
     return _platform;
 }
 
-- (long long)diskFreeSize
+- (long long)diskFreeSpace
 {
     return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
              objectForKey:NSFileSystemFreeSize] longLongValue];
 }
 
-- (NSString *)diskFreeSizeString
+- (NSString *)diskFreeSpaceString
 {
-    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSize countStyle:NSByteCountFormatterCountStyleFile];
+    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSpace countStyle:NSByteCountFormatterCountStyleFile];
 }
 
-- (long long)diskSize
+- (long long)diskSpace
 {
     return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
              objectForKey:NSFileSystemSize] longLongValue];
 }
 
-- (NSString *)diskSizeString
+- (NSString *)diskSpaceString
 {
-    return [NSByteCountFormatter stringFromByteCount:self.diskSize countStyle:NSByteCountFormatterCountStyleFile];
+    return [NSByteCountFormatter stringFromByteCount:self.diskSpace countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 - (CGSize)screenSizeInPoints
