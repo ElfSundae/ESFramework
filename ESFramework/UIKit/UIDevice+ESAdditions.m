@@ -28,21 +28,22 @@
 
 - (NSString *)modelIdentifier
 {
-    static NSString *_platform = nil;
+    static NSString *_modelIdentifier = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
 #if TARGET_IPHONE_SIMULATOR
-        _platform = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
+        _modelIdentifier = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
 #else
         size_t size;
         sysctlbyname("hw.machine", NULL, &size, NULL, 0);
         char *machine = (char *)malloc(size);
         sysctlbyname("hw.machine", machine, &size, NULL, 0);
-        _platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
+        _modelIdentifier = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
         free(machine);
 #endif
     });
-    return _platform;
+    return _modelIdentifier;
+}
 }
 
 - (long long)diskTotalSpace
