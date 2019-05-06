@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Returns the model identifier of the device.
- * e.g. @"iPhone3,1", @"x86_64".
+ * e.g. "iPhone3,1", "iPhone11,2".
  * https://www.theiphonewiki.com/wiki/Models
  */
 @property (nonatomic, readonly) NSString *modelIdentifier;
