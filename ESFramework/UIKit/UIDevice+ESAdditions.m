@@ -63,6 +63,16 @@
     return [NSByteCountFormatter stringFromByteCount:self.diskFreeSpace countStyle:NSByteCountFormatterCountStyleFile];
 }
 
+- (long long)diskUsedSpace
+{
+    return self.diskSpace - self.diskFreeSpace;
+}
+
+- (NSString *)diskUsedSpaceString
+{
+    return [NSByteCountFormatter stringFromByteCount:self.diskUsedSpace countStyle:NSByteCountFormatterCountStyleFile];
+}
+
 - (CGSize)screenSizeInPoints
 {
     return UIScreen.mainScreen.bounds.size;

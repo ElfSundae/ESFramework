@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  * e.g. @"iPhone3,1", @"x86_64".
  * http://theiphonewiki.com/wiki/Models
  */
-@property (nonatomic, copy, readonly) NSString *platform;
+@property (nonatomic, readonly) NSString *platform;
 
 /**
  * Returns the total disk space in bytes.
@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns a string whose value indicates the total disk space, e.g. "63.99 GB".
  */
-@property (nonatomic, copy, readonly) NSString *diskSpaceString;
+@property (nonatomic, readonly) NSString *diskSpaceString;
 
 /**
  * Returns the free disk space in bytes.
@@ -36,7 +36,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns a string whose value indicates the free disk space, e.g. "11.23 GB".
  */
-@property (nonatomic, copy, readonly) NSString *diskFreeSpaceString;
+@property (nonatomic, readonly) NSString *diskFreeSpaceString;
+
+/**
+ * Returns the used disk space in bytes.
+ */
+@property (nonatomic, readonly) long long diskUsedSpace;
+
+/**
+ * Returns a string whose value indicates the used disk space, e.g. "11.23 GB".
+ */
+@property (nonatomic, readonly) NSString *diskUsedSpaceString;
 
 /**
  * the screen size in points.
