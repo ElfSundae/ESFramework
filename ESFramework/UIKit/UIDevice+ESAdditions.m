@@ -41,21 +41,28 @@
     return _platform;
 }
 
-- (long long)diskSpace
+- (long long)diskTotalSpace
 {
     return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
              objectForKey:NSFileSystemSize] longLongValue];
 }
 
-- (NSString *)diskSpaceString
+- (NSString *)diskTotalSpaceString
 {
-    return [NSByteCountFormatter stringFromByteCount:self.diskSpace countStyle:NSByteCountFormatterCountStyleFile];
+    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+    formatter.adaptive = NO;
+    return [formatter stringFromByteCount:self.diskTotalSpace];
 }
 
 - (long long)diskFreeSpace
 {
-    return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
-             objectForKey:NSFileSystemFreeSize] longLongValue];
+    if (@available(iOS 11.0, *)) {
+        return [[[[NSURL fileURLWithPath:NSHomeDirectory()] resourceValuesForKeys:@[NSURLVolumeAvailableCapacityForImportantUsageKey] error:NULL]
+                 objectForKey:NSURLVolumeAvailableCapacityForImportantUsageKey] longLongValue];
+    } else {
+        return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
+                 objectForKey:NSFileSystemFreeSize] longLongValue];
+    }
 }
 
 - (NSString *)diskFreeSpaceString
@@ -65,7 +72,7 @@
 
 - (long long)diskUsedSpace
 {
-    return self.diskSpace - self.diskFreeSpace;
+    return self.diskTotalSpace - self.diskFreeSpace;
 }
 
 - (NSString *)diskUsedSpaceString

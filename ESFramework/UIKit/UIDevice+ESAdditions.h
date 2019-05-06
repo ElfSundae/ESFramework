@@ -21,12 +21,12 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns the total disk space in bytes.
  */
-@property (nonatomic, readonly) long long diskSpace;
+@property (nonatomic, readonly) long long diskTotalSpace;
 
 /**
  * Returns a string whose value indicates the total disk space, e.g. "63.99 GB".
  */
-@property (nonatomic, readonly) NSString *diskSpaceString;
+@property (nonatomic, readonly) NSString *diskTotalSpaceString;
 
 /**
  * Returns the free disk space in bytes.
