@@ -57,7 +57,7 @@
 - (long long)diskFreeSpace
 {
     if (@available(iOS 11.0, *)) {
-        return [[[[NSURL fileURLWithPath:NSHomeDirectory()] resourceValuesForKeys:@[NSURLVolumeAvailableCapacityForImportantUsageKey] error:NULL]
+        return [[[[NSURL fileURLWithPath:NSHomeDirectory()] resourceValuesForKeys:@[ NSURLVolumeAvailableCapacityForImportantUsageKey ] error:NULL]
                  objectForKey:NSURLVolumeAvailableCapacityForImportantUsageKey] longLongValue];
     } else {
         return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
