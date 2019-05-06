@@ -19,16 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *platform;
 
 /**
- * Returns the free disk space in bytes.
- */
-@property (nonatomic, readonly) long long diskFreeSpace;
-
-/**
- * Returns a string whose value indicates the free disk space, e.g. "11.23 GB".
- */
-@property (nonatomic, copy, readonly) NSString *diskFreeSpaceString;
-
-/**
  * Returns the total disk space in bytes.
  */
 @property (nonatomic, readonly) long long diskSpace;
@@ -37,6 +27,16 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns a string whose value indicates the total disk space, e.g. "63.99 GB".
  */
 @property (nonatomic, copy, readonly) NSString *diskSpaceString;
+
+/**
+ * Returns the free disk space in bytes.
+ */
+@property (nonatomic, readonly) long long diskFreeSpace;
+
+/**
+ * Returns a string whose value indicates the free disk space, e.g. "11.23 GB".
+ */
+@property (nonatomic, copy, readonly) NSString *diskFreeSpaceString;
 
 /**
  * the screen size in points.
