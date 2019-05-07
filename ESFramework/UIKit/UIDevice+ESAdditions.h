@@ -20,6 +20,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *modelIdentifier;
 
 /**
+ * Returns the model name of the device.
+ * e.g. "iPhone 6 Plus", "iPad Pro"
+ */
+@property (nonatomic, readonly) NSString *modelName;
+
+/**
  * Returns the total disk space in bytes.
  */
 @property (nonatomic, readonly) long long diskTotalSpace;
