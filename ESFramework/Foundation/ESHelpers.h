@@ -212,11 +212,6 @@ FOUNDATION_EXTERN NSString *ESPathForCaches(void);
 FOUNDATION_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
 
 /**
- * Returns the path of the temporary (tmp) directory.
- */
-FOUNDATION_EXTERN NSString *ESPathForTemporary(void);
-
-/**
  * Returns the path relatived to the temporary (tmp) directory.
  */
 FOUNDATION_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);

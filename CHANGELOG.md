@@ -58,7 +58,7 @@
     + `ESOSVersion`, `ESBundleWithName()`
     + `ESGetAssociatedObject()`, `ESSetAssociatedObject()`, `OBJC_ASSOCIATION_WEAK`, use `objc_getAssociatedObject`, `objc_setAssociatedObject` directly
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
-    + `ESPathForBundleResource()`, `ESPathForMainBundleResource()`
+    + `ESPathForBundleResource()`, `ESPathForMainBundleResource()`, `ESPathForTemporary()`
     + `NSNumberFromString()`
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category
