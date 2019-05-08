@@ -11,17 +11,17 @@
 
 #if !defined(NSLog)
 #if DEBUG
-#define NSLog(fmt, ...) NSLog((@"%@:%d %s " fmt), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define NSLog(format, ...) NSLog((@"%@:%d %s " format), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
-#define NSLog(fmt, ...)
+#define NSLog(format, ...)
 #endif
 #endif
 
 #if !defined(NSLogIf)
 #if DEBUG
-#define NSLogIf(condition, fmt, ...) if ((condition)) { NSLog(fmt, ##__VA_ARGS__); }
+#define NSLogIf(condition, format, ...) if ((condition)) { NSLog(format, ##__VA_ARGS__); }
 #else
-#define NSLogIf(condition, fmt, ...)
+#define NSLogIf(condition, format, ...)
 #endif
 #endif
 
