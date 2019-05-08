@@ -9,9 +9,13 @@
 #ifndef ESFramework_ESMacros_h
 #define ESFramework_ESMacros_h
 
+#if !defined(__FILENAME__)
+#define __FILENAME__ (strrchr("/" __FILE__, '/') + 1)
+#endif
+
 #if !defined(NSLog)
 #if DEBUG
-#define NSLog(format, ...) NSLog((@"%@:%d %s " format), [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define NSLog(format, ...) NSLog((@"%s:%d %s " format), __FILENAME__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
 #define NSLog(format, ...)
 #endif
