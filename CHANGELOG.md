@@ -64,7 +64,7 @@
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category
     + `UIAlertView+ESBlock`, `UIActionSheet+ESBlock`
-    + NSString methods: `-match:`, `-match:caseInsensitive:`, `-isMatch:`, `-isMatch:caseInsensitive:`
+    + NSString methods: `-isEqualToStringCaseInsensitive`, `-match:`, `-match:caseInsensitive:`, `-isMatch:`, `-isMatch:caseInsensitive:`
     + NSString methods: `-trimWithCharactersInString:`, `-stringByReplacing:`, `-stringByReplacingCaseInsensitive:`, `-stringByReplacing:with:options:`, `-stringByReplacingInRange:with:`, `-stringByReplacingRegex:with:caseInsensitive`, `-splitWith:`, `-splitWithCharacterSet:`
     + NSMutableString methods: `replaceCaseInsensitive:to:`, `replaceInRange:to:`, `replaceRegex:to:caseInsensitive:`
     + `-[NSString writeToFile:::]`, `-[NSString writeToURL:::]`

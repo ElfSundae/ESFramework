@@ -13,11 +13,6 @@
 
 @implementation NSString (ESAdditions)
 
-- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString
-{
-    return (NSOrderedSame == [self caseInsensitiveCompare:aString]);
-}
-
 - (NSString *)trim
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

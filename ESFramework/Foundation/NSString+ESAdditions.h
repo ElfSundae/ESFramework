@@ -12,14 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (ESAdditions)
 
-/**
- * Compare string ignoring case.
- */
-- (BOOL)isEqualToStringCaseInsensitive:(NSString *)aString;
-
-/**
- * Trims with whitespace and new line.
- */
 - (NSString *)trim;
 
 - (BOOL)contains:(NSString*)string;
