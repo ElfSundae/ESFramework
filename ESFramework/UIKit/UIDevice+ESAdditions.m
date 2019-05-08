@@ -252,7 +252,7 @@
         }
 
         if (!_isJailbroken) {
-            NSString *path = [@"/private/" stringByAppendingString:ESUUID()];
+            NSString *path = [@"/private/" stringByAppendingString:NSUUID.UUID.UUIDString];
             if ([@"foo" writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:NULL]) {
                 [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
                 _isJailbroken = YES;

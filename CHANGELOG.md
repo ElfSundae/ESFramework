@@ -56,6 +56,7 @@
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
     + `ESOSVersion`, `ESBundleWithName()`
+    + `ESUUID()`: use `NSUUID.UUID.UUIDString` instead
     + `ESGetAssociatedObject()`, `ESSetAssociatedObject()`, `OBJC_ASSOCIATION_WEAK`, use `objc_getAssociatedObject`, `objc_setAssociatedObject` directly
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `ESPathForBundleResource()`, `ESPathForMainBundleResource()`

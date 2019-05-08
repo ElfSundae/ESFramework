@@ -140,14 +140,6 @@ NSString *ESRandomStringOfLength(NSUInteger length)
     }
 }
 
-NSString *ESUUID(void)
-{
-    CFUUIDRef theUUID = CFUUIDCreate(NULL);
-    CFStringRef string = CFUUIDCreateString(NULL, theUUID);
-    CFBridgingRelease(theUUID);
-    return CFBridgingRelease(string);
-}
-
 CGFloat ESStatusBarHeight(void)
 {
     CGRect frame = UIApplication.sharedApplication.statusBarFrame;

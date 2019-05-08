@@ -115,11 +115,6 @@ FOUNDATION_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
 FOUNDATION_EXTERN UIColor *ESRandomColor(void);
 
 /**
- * Generates an UUID string, 36bits, e.g. @"B743154C-087E-4E7C-84AC-2573AAB940AD"
- */
-FOUNDATION_EXTERN NSString *ESUUID(void);
-
-/**
  * Returns the current statusBar's height, in any orientation.
  */
 FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
