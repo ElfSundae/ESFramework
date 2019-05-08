@@ -265,9 +265,14 @@ NSString *ESPathForCachesResource(NSString *relativePath)
     return [ESPathForCaches() stringByAppendingPathComponent:relativePath];
 }
 
+NSString *ESPathForTemporary(void)
+{
+    return NSTemporaryDirectory();
+}
+
 NSString *ESPathForTemporaryResource(NSString *relativePath)
 {
-    return [NSTemporaryDirectory() stringByAppendingPathComponent:relativePath];
+    return [ESPathForTemporary() stringByAppendingPathComponent:relativePath];
 }
 
 BOOL ESTouchDirectory(NSString *directoryPath)
