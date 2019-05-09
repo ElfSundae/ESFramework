@@ -221,9 +221,14 @@ NSString *ESDocumentPath(NSString *pathComponent)
     return [ESDocumentDirectory() stringByAppendingPathComponent:pathComponent];
 }
 
-NSURL *ESDocumentURL(void)
+NSURL *ESDocumentDirectoryURL(void)
 {
     return [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
+}
+
+NSURL *ESDocumentURL(NSString *pathComponent)
+{
+    return [ESDocumentDirectoryURL() URLByAppendingPathComponent:pathComponent];
 }
 
 NSString *ESLibraryDirectory(void)
@@ -236,9 +241,14 @@ NSString *ESLibraryPath(NSString *pathComponent)
     return [ESLibraryDirectory() stringByAppendingPathComponent:pathComponent];
 }
 
-NSURL *ESLibraryURL(void)
+NSURL *ESLibraryDirectoryURL(void)
 {
     return [NSFileManager.defaultManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask].firstObject;
+}
+
+NSURL *ESLibraryURL(NSString *pathComponent)
+{
+    return [ESLibraryDirectoryURL() URLByAppendingPathComponent:pathComponent];
 }
 
 NSString *ESCachesDirectory(void)
@@ -251,9 +261,14 @@ NSString *ESCachesPath(NSString *pathComponent)
     return [ESCachesDirectory() stringByAppendingPathComponent:pathComponent];
 }
 
-NSURL *ESCachesURL(void)
+NSURL *ESCachesDirectoryURL(void)
 {
     return [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
+}
+
+NSURL *ESCachesURL(NSString *pathComponent)
+{
+    return [ESCachesDirectoryURL() URLByAppendingPathComponent:pathComponent];
 }
 
 NSString *ESTemporaryDirectory(void)
@@ -266,9 +281,14 @@ NSString *ESTemporaryPath(NSString *pathComponent)
     return [ESTemporaryDirectory() stringByAppendingPathComponent:pathComponent];
 }
 
-NSURL *ESTemporaryURL(void)
+NSURL *ESTemporaryDirectoryURL(void)
 {
     return [NSURL fileURLWithPath:ESTemporaryDirectory() isDirectory:YES];
+}
+
+NSURL *ESTemporaryURL(NSString *pathComponent)
+{
+    return [ESTemporaryDirectoryURL() URLByAppendingPathComponent:pathComponent];
 }
 
 BOOL ESTouchDirectory(NSString *directoryPath)

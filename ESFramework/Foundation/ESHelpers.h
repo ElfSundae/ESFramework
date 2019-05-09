@@ -182,14 +182,19 @@ FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 FOUNDATION_EXTERN NSString *ESDocumentDirectory(void);
 
 /**
- * Returns the path of appending the path component to the Documents directory.
+ * Returns the path made by appending the path component to the Documents directory.
  */
 FOUNDATION_EXTERN NSString *ESDocumentPath(NSString *pathComponent);
 
 /**
  * Returns the URL of the Documents directory.
  */
-FOUNDATION_EXTERN NSURL *ESDocumentURL(void);
+FOUNDATION_EXTERN NSURL *ESDocumentDirectoryURL(void);
+
+/**
+ * Returns the URL made by appending the path component to the Documents directory.
+ */
+FOUNDATION_EXTERN NSURL *ESDocumentURL(NSString *pathComponent);
 
 /**
  * Returns the path of the Library directory.
@@ -197,14 +202,19 @@ FOUNDATION_EXTERN NSURL *ESDocumentURL(void);
 FOUNDATION_EXTERN NSString *ESLibraryDirectory(void);
 
 /**
- * Returns the path of appending the path component to the Library directory.
+ * Returns the path made by appending the path component to the Library directory.
  */
 FOUNDATION_EXTERN NSString *ESLibraryPath(NSString *pathComponent);
 
 /**
  * Returns the URL of the Library directory.
  */
-FOUNDATION_EXTERN NSURL *ESLibraryURL(void);
+FOUNDATION_EXTERN NSURL *ESLibraryDirectoryURL(void);
+
+/**
+ * Returns the URL made by appending the path component to the Library directory.
+ */
+FOUNDATION_EXTERN NSURL *ESLibraryURL(NSString *pathComponent);
 
 /**
  * Returns the path of the Caches directory.
@@ -212,14 +222,19 @@ FOUNDATION_EXTERN NSURL *ESLibraryURL(void);
 FOUNDATION_EXTERN NSString *ESCachesDirectory(void);
 
 /**
- * Returns the path of appending the path component to the Caches directory.
+ * Returns the path made by appending the path component to the Caches directory.
  */
 FOUNDATION_EXTERN NSString *ESCachesPath(NSString *pathComponent);
 
 /**
  * Returns the URL of the Caches directory.
  */
-FOUNDATION_EXTERN NSURL *ESCachesURL(void);
+FOUNDATION_EXTERN NSURL *ESCachesDirectoryURL(void);
+
+/**
+ * Returns the URL made by appending the path component to the Caches directory.
+ */
+FOUNDATION_EXTERN NSURL *ESCachesURL(NSString *pathComponent);
 
 /**
  * Returns the path of the temporary directory.
@@ -227,14 +242,19 @@ FOUNDATION_EXTERN NSURL *ESCachesURL(void);
 FOUNDATION_EXTERN NSString *ESTemporaryDirectory(void);
 
 /**
- * Returns the path of appending the path component to the temporary directory.
+ * Returns the path made by appending the path component to the temporary directory.
  */
 FOUNDATION_EXTERN NSString *ESTemporaryPath(NSString *pathComponent);
 
 /**
- * Returns the URL of the Temporary directory.
+ * Returns the URL of the temporary directory.
  */
-FOUNDATION_EXTERN NSURL *ESTemporaryURL(void);
+FOUNDATION_EXTERN NSURL *ESTemporaryDirectoryURL(void);
+
+/**
+ * Returns the URL made by appending the path component to the temporary directory.
+ */
+FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent);
 
 /**
  * Creates the directory at the given path if the directory does not exist.
