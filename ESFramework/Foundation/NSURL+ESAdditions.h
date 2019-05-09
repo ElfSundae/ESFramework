@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSURL (ESAdditions)
 
 /**
- * Returns the query components parsed as a dictionary for this URL.
- * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
+ * Returns the query components parsed to a dictionary for this URL.
+ *
+ * @discussion For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
  * { key:value, arr:[value, value1] }.
  */
 - (nullable NSDictionary<NSString *, id> *)queryDictionary;
