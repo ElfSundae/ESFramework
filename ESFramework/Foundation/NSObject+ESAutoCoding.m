@@ -82,27 +82,27 @@
 + (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
 {
     NSData *data = [NSData dataWithContentsOfFile:filePath];
+    if (!data) {
+        return nil;
+    }
 
-    if (data) {
-        // attempt to deserialise data as a plist
-        id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
-        if (object) {
-            // check if object is an NSCoded unarchive
-            if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && object[@"$archiver"]) {
-                @try {
-                    // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
-                    object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-                } @catch (NSException *exception) {
-                    NSLog(@"-[NSKeyedUnarchiver unarchiveObjectWithData:] exception: %@", exception);
-                    object = nil;
-                }
-            }
+    // attempt to deserialise data as a plist
+    id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
+    if (!object) {
+        return data;
+    }
 
-            return object;
+    // check if object is an NSCoded unarchive
+    if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && object[@"$archiver"]) {
+        @try {
+            // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
+            object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        } @catch (NSException *exception) {
+            object = nil;
         }
     }
 
-    return data;
+    return object;
 }
 
 - (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
