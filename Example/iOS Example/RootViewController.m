@@ -57,12 +57,12 @@
         user.frame = frame;
     }
 
-    NSLog(@"%@\n%@", user.codableProperties, user.es_description);
+    NSLog(@"%@\n%@", user.codableProperties, user.dictionaryRepresentation);
     BOOL saved = [user es_writeToFile:file atomically:YES];
     NSLog(@"saved: %@", @(saved));
 
     User *user2 = [user copy];
-    NSLog(@"%@", user2.es_description);
+    NSLog(@"%@", user2.dictionaryRepresentation);
 }
 
 - (void)infoButtonHandler:(UIButton *)button

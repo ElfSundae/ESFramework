@@ -8,7 +8,7 @@
 
 #import <ESFramework/ESFramework.h>
 
-@interface User : NSObject <NSSecureCoding, NSCopying>
+@interface User : NSObject <NSCopying>
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) int age;

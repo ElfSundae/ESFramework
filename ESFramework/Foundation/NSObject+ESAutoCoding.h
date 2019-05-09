@@ -10,32 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/* NSCoding implementation */
-#define ES_CODING_IMPLEMENTATION                                \
-    - (instancetype)initWithCoder:(NSCoder *)aDecoder           \
-    {                                                           \
-        self = [super init];                                    \
-        [self es_setWithCoder:aDecoder];                        \
-        return self;                                            \
-    }                                                           \
-    - (void)encodeWithCoder:(NSCoder *)aCoder                   \
-    {                                                           \
-        [self es_encodeWithCoder:aCoder];                       \
-    }
-
-/* NSSecureCoding implementation */
-#define ES_SECURECODING_IMPLEMENTATION                          \
-    ES_CODING_IMPLEMENTATION                                    \
-    + (BOOL)supportsSecureCoding                                \
-    {                                                           \
-        return YES;                                             \
-    }
-
-/* NSCopying -copyWithZone: implementation */
-#define ES_COPYING_copyWithZone_IMPLEMENTATION                  \
-    - (id)copyWithZone:(NSZone *)zone                           \
-    {                                                           \
-        return [self es_copyWithZone:zone];                     \
+/* Implementation for -[NSCopying copyWithZone:] */
+#define ES_IMPLEMENTATION_NSCopying_copyWithZone                \
+    - (id)copyWithZone:(NSZone *)zone {                         \
+        id copy = [[[self class] alloc] init];                  \
+        for (NSString *key in self.codableProperties) {         \
+            [copy setValue:[self valueForKey:key] forKey:key];  \
+        }                                                       \
+        return copy;                                            \
     }
 
 /*!
@@ -45,9 +27,31 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * Tips: https://github.com/nicklockwood/AutoCoding#tips
  *
+ * @code
+ * @interface User : NSObject <NSCopying>
+ * @property (nonatomic, copy) NSString *name;
+ * @end
+ *
+ * @implementation User
+ *
+ * ES_IMPLEMENTATION_NSCopying_copyWithZone
+ *
+ * - (NSUInteger)hash
+ * {
+ *     //
+ * }
+ *
+ * - (BOOL)isEqual:(id)object
+ * {
+ *     //
+ * }
+ *
+ * @end
+ * @endcode
+ *
  * @note Your object should conform to NSSecureCoding instead NSCoding whenever possible.
  */
-@interface NSObject (ESAutoCoding)
+@interface NSObject (ESAutoCoding) <NSSecureCoding>
 
 /**
  * Populates the object's properties using the provided `NSCoder` object, based
@@ -55,39 +59,23 @@ NS_ASSUME_NONNULL_BEGIN
  * `initWithCoder:` method, but may be useful if you wish to initialise an object
  * from a coded archive after it has already been created. You could even
  * initialise the object by merging the results of several different archives by
- * calling `es_setWithCoder:` more than once.
+ * calling `setWithCoder:` more than once.
  */
-- (void)es_setWithCoder:(NSCoder *)aDecoder;
-
-/**
- * NSCoding delegate method: -encodeWithCoder: .
- */
-- (void)es_encodeWithCoder:(NSCoder *)aCoder;
-
-/**
- * NSCopying delegate method: -copyWithZone: .
- */
-- (id)es_copyWithZone:(nullable NSZone *)zone;
+- (void)setWithCoder:(NSCoder *)aDecoder;
 
 /**
  * Returns all the codable properties of the object, including those that are
- * inherited from superclasses. You should not override this method - if you
- * want to add additional properties, override the `+codableProperties` class
- * method instead.
+ * inherited from superclasses.
+ *
+ * @warning You should not override this method - if you want to add additional
+ * properties, override the `+codableProperties` class method instead.
  */
 @property (nonatomic, readonly) NSDictionary<NSString *, Class> *codableProperties;
 
 /**
- * Returns a dictionary of the values of all the codable properties of the
- * object. It is equivalent to calling `dictionaryWithValuesForKeys:` with the
- * result of `object.codableProperties.allKeys` as the parameter.
+ * Returns a dictionary of the values of all the codable properties.
  */
 @property (nonatomic, readonly) NSDictionary<NSString *, id> *dictionaryRepresentation;
-
-/**
- * Returns a string that represents the contents of the receiving class.
- */
-@property (nonatomic, readonly) NSString *es_description;
 
 /**
  * Attempts to load the file using the following sequence: 1) If the file is an

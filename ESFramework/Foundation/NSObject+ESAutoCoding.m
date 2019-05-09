@@ -11,26 +11,22 @@
 
 @implementation NSObject (ESAutoCoding)
 
-- (void)es_setWithCoder:(NSCoder *)aDecoder
++ (BOOL)supportsSecureCoding
 {
-    NSDictionary *properties = self.codableProperties;
-    for (NSString *key in properties) {
-        Class propertyClass = properties[key];
-
-        id object = nil;
-        @try {
-            object = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
-        } @catch (NSException *exception) {
-            NSLog(@"-[NSCoder decodeObjectOfClass:forKey:] exception: %@", exception);
-        }
-
-        if (object) {
-            [self setValue:object forKey:key];
-        }
-    }
+    return YES;
 }
 
-- (void)es_encodeWithCoder:(NSCoder *)aCoder
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    // No -init should be called, see https://github.com/nicklockwood/AutoCoding/pull/32
+    [self setWithCoder:aDecoder];
+    return self;
+}
+#pragma clang diagnostic pop
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
 {
     for (NSString *key in self.codableProperties) {
         id object = [self valueForKey:key];
@@ -40,13 +36,21 @@
     }
 }
 
-- (id)es_copyWithZone:(NSZone *)zone
+- (void)setWithCoder:(NSCoder *)aDecoder
 {
-    id copy = [[[self class] alloc] init];
-    for (NSString *key in self.codableProperties) {
-        [copy setValue:[self valueForKey:key] forKey:key];
+    NSDictionary *properties = self.codableProperties;
+    for (NSString *key in properties) {
+        Class propertyClass = properties[key];
+
+        id object = nil;
+        @try {
+            object = [aDecoder decodeObjectOfClass:propertyClass forKey:key];
+        } @catch (NSException *exception) {}
+
+        if (object) {
+            [self setValue:object forKey:key];
+        }
     }
-    return copy;
 }
 
 - (NSDictionary<NSString *, Class> *)codableProperties
@@ -72,11 +76,6 @@
 - (NSDictionary<NSString *, id> *)dictionaryRepresentation
 {
     return [self dictionaryWithValuesForKeys:self.codableProperties.allKeys];
-}
-
-- (NSString *)es_description
-{
-    return [NSString stringWithFormat:@"<%@: %p>\n%@", self.class, self, self.dictionaryRepresentation];
 }
 
 + (instancetype)es_objectWithContentsOfFile:(NSString *)filePath

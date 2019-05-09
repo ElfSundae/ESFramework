@@ -10,7 +10,6 @@
 
 @implementation User
 
-ES_SECURECODING_IMPLEMENTATION
-ES_COPYING_copyWithZone_IMPLEMENTATION
+ES_IMPLEMENTATION_NSCopying_copyWithZone
 
 @end
