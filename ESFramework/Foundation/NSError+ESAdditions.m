@@ -12,24 +12,22 @@
 
 + (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(NSString *)description
 {
-    NSDictionary *userInfo = nil;
-    if ([description isKindOfClass:[NSString class]]) {
-        userInfo = @{ NSLocalizedDescriptionKey: description };
-    }
-    return [self errorWithDomain:domain code:code userInfo:userInfo];
+    return [self errorWithDomain:domain code:code description:description failureReason:nil];
 }
 
 + (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason
 {
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    if ([description isKindOfClass:[NSString class]]) {
-        userInfo[NSLocalizedDescriptionKey] = description;
+    NSMutableDictionary *userInfo = nil;
+    if (description || failureReason) {
+        userInfo = [NSMutableDictionary dictionary];
+        if (description) {
+            userInfo[NSLocalizedDescriptionKey] = description;
+        }
+        if (failureReason) {
+            userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
+        }
     }
-    if ([failureReason isKindOfClass:[NSString class]]) {
-        userInfo[NSLocalizedFailureReasonErrorKey] = failureReason;
-    }
-    NSDictionary *info = userInfo.count ? [userInfo copy] : nil;
-    return [self errorWithDomain:domain code:code userInfo:info];
+    return [self errorWithDomain:domain code:code userInfo:userInfo];
 }
 
 @end
