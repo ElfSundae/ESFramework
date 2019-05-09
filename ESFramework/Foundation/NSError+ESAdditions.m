@@ -32,15 +32,4 @@
     return [self errorWithDomain:domain code:code userInfo:info];
 }
 
-- (BOOL)isLocalNetworkError
-{
-    return [self.domain isEqualToString:NSURLErrorDomain] &&
-           (NSURLErrorTimedOut == self.code ||
-            NSURLErrorCannotFindHost == self.code ||
-            NSURLErrorCannotConnectToHost == self.code ||
-            NSURLErrorNetworkConnectionLost == self.code ||
-            NSURLErrorDNSLookupFailed == self.code ||
-            NSURLErrorNotConnectedToInternet == self.code);
-}
-
 @end

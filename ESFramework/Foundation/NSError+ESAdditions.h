@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(nullable NSString *)description;
 + (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(nullable NSString *)description failureReason:(nullable NSString *)failureReason;
 
-- (BOOL)isLocalNetworkError;
-
 @end
 
 NS_ASSUME_NONNULL_END

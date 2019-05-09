@@ -78,6 +78,7 @@
     + `-[NSArray writeToFile:atomically:completion]`
     + `-[NSMutableArray matchWith:]`
     + NSDictionary methods: `-esObjectForKey`, `-each:`, `-each:option:`, `match:`, `matchDictionary:`, `matches:`, `matches:option:`, `matchWith:`, `writeToFile:atomically:completion:`
+    + `-[NSError isLocalNetworkError]`
     + NSOrderedSet methods: `-each:`, `-each:option:`, `-match:`, `matchWith:`
     + NSSet methods: `each`, `match`, `matches`, `matchWith`
     + `-isEmpty` on NSString, NSArray, NSDictionary, NSOrderedSet, NSSet
