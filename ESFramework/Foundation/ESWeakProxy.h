@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/*!
+/**
  * ESWeakProxy can be used to hold a weak object.
  *
  * Usage #1:

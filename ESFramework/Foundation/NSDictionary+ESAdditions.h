@@ -20,8 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)URLQueryString;
 
-- (NSDictionary<KeyType, ObjectType> *)entriesPassingTest:(BOOL (^)(KeyType key, ObjectType obj, BOOL *stop))predicate;
-- (NSDictionary<KeyType, ObjectType> *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(KeyType key, ObjectType obj, BOOL *stop))predicate;
+- (NSDictionary<KeyType, ObjectType> *)entriesPassingTest:(BOOL (NS_NOESCAPE ^)(KeyType key, ObjectType obj, BOOL *stop))predicate;
+- (NSDictionary<KeyType, ObjectType> *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(KeyType key, ObjectType obj, BOOL *stop))predicate;
 
 @end
 

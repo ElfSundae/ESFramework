@@ -19,12 +19,12 @@
     return urlComponents.percentEncodedQuery;
 }
 
-- (NSDictionary *)entriesPassingTest:(BOOL (^)(id, id, BOOL *))predicate
+- (NSDictionary *)entriesPassingTest:(BOOL (NS_NOESCAPE ^)(id, id, BOOL *))predicate
 {
     return [self entriesWithOptions:0 passingTest:predicate];
 }
 
-- (NSDictionary *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, id, BOOL *))predicate
+- (NSDictionary *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id, id, BOOL *))predicate
 {
     NSArray *keys = [self keysOfEntriesWithOptions:opts passingTest:predicate].allObjects;
     NSArray *objects = [self objectsForKeys:keys notFoundMarker:NSNull.null];

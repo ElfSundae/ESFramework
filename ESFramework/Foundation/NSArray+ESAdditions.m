@@ -10,23 +10,23 @@
 
 @implementation NSArray (ESAdditions)
 
-- (id)objectPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
+- (id)objectPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectWithOptions:0 passingTest:predicate];
 }
 
-- (id)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
+- (id)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     NSUInteger index = [self indexOfObjectWithOptions:opts passingTest:predicate];
     return NSNotFound != index ? self[index] : nil;
 }
 
-- (NSArray *)objectsPassingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
+- (NSArray *)objectsPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectsWithOptions:0 passingTest:predicate];
 }
 
-- (NSArray *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id, NSUInteger, BOOL *))predicate
+- (NSArray *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectsAtIndexes:[self indexesOfObjectsWithOptions:opts passingTest:predicate]];
 }

@@ -57,7 +57,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
 /**
  * Profiles the execution time.
  */
-FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
+FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^completion)(double elapsedMillisecond));
 
 #pragma mark - Foundation
 
@@ -276,7 +276,7 @@ NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
     }
 }
 
-NS_INLINE void es_dispatch_sync_main(dispatch_block_t block) {
+NS_INLINE void es_dispatch_sync_main(NS_NOESCAPE dispatch_block_t block) {
     if (es_dispatch_is_main_queue()) {
         block();
     } else {

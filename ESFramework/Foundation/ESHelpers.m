@@ -47,7 +47,7 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
     return UIColorWithRGBHex(hex, alpha);
 }
 
-void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond))
+void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^completion)(double elapsedMillisecond))
 {
     struct timeval begin, end;
     gettimeofday(&begin, NULL);
