@@ -179,42 +179,62 @@ FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 /**
  * Returns the path of the Documents directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForDocuments(void);
+FOUNDATION_EXTERN NSString *ESDocumentDirectory(void);
 
 /**
- * Returns the path relatived to the Documents directory.
+ * Returns the path of appending the path component to the Documents directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForDocumentsResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESDocumentPath(NSString *pathComponent);
+
+/**
+ * Returns the URL of the Documents directory.
+ */
+FOUNDATION_EXTERN NSURL *ESDocumentURL(void);
 
 /**
  * Returns the path of the Library directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForLibrary(void);
+FOUNDATION_EXTERN NSString *ESLibraryDirectory(void);
 
 /**
- * Returns the path relatived to the Library directory.
+ * Returns the path of appending the path component to the Library directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForLibraryResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESLibraryPath(NSString *pathComponent);
+
+/**
+ * Returns the URL of the Library directory.
+ */
+FOUNDATION_EXTERN NSURL *ESLibraryURL(void);
 
 /**
  * Returns the path of the Caches directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForCaches(void);
+FOUNDATION_EXTERN NSString *ESCachesDirectory(void);
 
 /**
- * Returns the path relatived to the Caches directory.
+ * Returns the path of appending the path component to the Caches directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForCachesResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESCachesPath(NSString *pathComponent);
 
 /**
- * Returns the path of the temporary (tmp) directory.
+ * Returns the URL of the Caches directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForTemporary(void);
+FOUNDATION_EXTERN NSURL *ESCachesURL(void);
 
 /**
- * Returns the path relatived to the temporary (tmp) directory.
+ * Returns the path of the temporary directory.
  */
-FOUNDATION_EXTERN NSString *ESPathForTemporaryResource(NSString *relativePath);
+FOUNDATION_EXTERN NSString *ESTemporaryDirectory(void);
+
+/**
+ * Returns the path of appending the path component to the temporary directory.
+ */
+FOUNDATION_EXTERN NSString *ESTemporaryPath(NSString *pathComponent);
+
+/**
+ * Returns the URL of the Temporary directory.
+ */
+FOUNDATION_EXTERN NSURL *ESTemporaryURL(void);
 
 /**
  * Creates the directory at the given path if the directory does not exist.

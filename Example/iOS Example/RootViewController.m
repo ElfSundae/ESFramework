@@ -38,7 +38,7 @@
 
 - (void)testAutoCoding
 {
-    NSString *file = ESPathForTemporaryResource(@"foo/bar/file");
+    NSString *file = ESTemporaryPath(@"foo/bar/file");
 
     User *user = [User es_objectWithContentsOfFile:file];
 

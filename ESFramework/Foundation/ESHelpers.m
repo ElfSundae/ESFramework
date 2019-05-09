@@ -211,59 +211,64 @@ NSString *ESScreenSizeString(CGSize size)
             (int)fmax(size.width, size.height)];
 }
 
-NSString *ESPathForDocuments(void)
+NSString *ESDocumentDirectory(void)
 {
-    static NSString *docs = nil;
-    static dispatch_once_t onceToken_DocumentsPath;
-    dispatch_once(&onceToken_DocumentsPath, ^{
-        docs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
-    });
-    return docs;
+    return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
 }
 
-NSString *ESPathForDocumentsResource(NSString *relativePath)
+NSString *ESDocumentPath(NSString *pathComponent)
 {
-    return [ESPathForDocuments() stringByAppendingPathComponent:relativePath];
+    return [ESDocumentDirectory() stringByAppendingPathComponent:pathComponent];
 }
 
-NSString *ESPathForLibrary(void)
+NSURL *ESDocumentURL(void)
 {
-    static NSString *lib = nil;
-    static dispatch_once_t onceToken_LibraryPath;
-    dispatch_once(&onceToken_LibraryPath, ^{
-        lib = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject;
-    });
-    return lib;
+    return [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-NSString *ESPathForLibraryResource(NSString *relativePath)
+NSString *ESLibraryDirectory(void)
 {
-    return [ESPathForLibrary() stringByAppendingPathComponent:relativePath];
+    return NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).firstObject;
 }
 
-NSString *ESPathForCaches(void)
+NSString *ESLibraryPath(NSString *pathComponent)
 {
-    static NSString *caches = nil;
-    static dispatch_once_t onceToken_CachesPath;
-    dispatch_once(&onceToken_CachesPath, ^{
-        caches = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
-    });
-    return caches;
+    return [ESLibraryDirectory() stringByAppendingPathComponent:pathComponent];
 }
 
-NSString *ESPathForCachesResource(NSString *relativePath)
+NSURL *ESLibraryURL(void)
 {
-    return [ESPathForCaches() stringByAppendingPathComponent:relativePath];
+    return [NSFileManager.defaultManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-NSString *ESPathForTemporary(void)
+NSString *ESCachesDirectory(void)
+{
+    return NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
+}
+
+NSString *ESCachesPath(NSString *pathComponent)
+{
+    return [ESCachesDirectory() stringByAppendingPathComponent:pathComponent];
+}
+
+NSURL *ESCachesURL(void)
+{
+    return [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
+}
+
+NSString *ESTemporaryDirectory(void)
 {
     return NSTemporaryDirectory();
 }
 
-NSString *ESPathForTemporaryResource(NSString *relativePath)
+NSString *ESTemporaryPath(NSString *pathComponent)
 {
-    return [ESPathForTemporary() stringByAppendingPathComponent:relativePath];
+    return [ESTemporaryDirectory() stringByAppendingPathComponent:pathComponent];
+}
+
+NSURL *ESTemporaryURL(void)
+{
+    return [NSURL fileURLWithPath:ESTemporaryDirectory() isDirectory:YES];
 }
 
 BOOL ESTouchDirectory(NSString *directoryPath)
