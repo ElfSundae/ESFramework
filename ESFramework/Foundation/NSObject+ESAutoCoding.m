@@ -87,6 +87,16 @@
     }
 }
 
+- (BOOL)writeToFile:(NSString *)path atomically:(BOOL)atomically
+{
+    return [self.archivedData writeToFile:path atomically:atomically];
+}
+
+- (BOOL)writeToURL:(NSURL *)url atomically:(BOOL)atomically
+{
+    return [self.archivedData writeToURL:url atomically:atomically];
+}
+
 + (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
 {
     NSData *data = [NSData dataWithContentsOfFile:filePath];

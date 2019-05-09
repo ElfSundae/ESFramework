@@ -83,6 +83,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSData *)archivedData;
 
 /**
+ * Writes the archived data to the file specified by a given path.
+ */
+- (BOOL)writeToFile:(NSString *)path atomically:(BOOL)atomically;
+
+/**
+ * Writes the archived data to the location specified by a given URL.
+ */
+- (BOOL)writeToURL:(NSURL *)url atomically:(BOOL)atomically;
+
+/**
  * Attempts to load the file using the following sequence: 1) If the file is an
  * NSCoded archive, load the root object and return it; 2) If the file is an
  * ordinary Plist, load and return the root object; 3) Return the raw data as an
