@@ -111,8 +111,7 @@
     // and do not save using NSCoding, however the +es_objectWithContentsOfFile
     // method will correctly recover these objects anyway
 
-    return ESTouchDirectoryAtFilePath(filePath) &&
-           [[NSKeyedArchiver archivedDataWithRootObject:self]
+    return [[NSKeyedArchiver archivedDataWithRootObject:self]
             writeToFile:filePath atomically:useAuxiliaryFile];
 }
 

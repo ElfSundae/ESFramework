@@ -111,6 +111,8 @@
 		E7A8D489227F0F0F0013A7E8 /* UIApplication+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A8D490227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPCookieStorage+ESAdditions.h"; sourceTree = "<group>"; };
 		E7A8D491227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPCookieStorage+ESAdditions.m"; sourceTree = "<group>"; };
+		E7C5ACC122841AB200005804 /* NSFileManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ESAdditions.h"; sourceTree = "<group>"; };
+		E7C5ACC222841AB200005804 /* NSFileManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESAdditions.h"; sourceTree = "<group>"; };
@@ -169,6 +171,8 @@
 				E76CA23B1CA50D1100EDBB8E /* NSDictionary+ESAdditions.m */,
 				E76CA23C1CA50D1100EDBB8E /* NSError+ESAdditions.h */,
 				E76CA23D1CA50D1100EDBB8E /* NSError+ESAdditions.m */,
+				E7C5ACC122841AB200005804 /* NSFileManager+ESAdditions.h */,
+				E7C5ACC222841AB200005804 /* NSFileManager+ESAdditions.m */,
 				E7A8D490227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.h */,
 				E7A8D491227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.m */,
 				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,

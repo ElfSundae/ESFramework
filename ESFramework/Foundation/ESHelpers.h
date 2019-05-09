@@ -59,6 +59,8 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
  */
 FOUNDATION_EXTERN void ESBenchmark(void (^block)(void), void (^completion)(double elapsedMillisecond));
 
+#pragma mark - Foundation
+
 /**
  * Checks whether the given object is a non-empty string.
  */
@@ -115,6 +117,18 @@ FOUNDATION_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
 FOUNDATION_EXTERN UIColor *ESRandomColor(void);
 
 /**
+ * Converts degrees to radians.
+ */
+FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
+
+/**
+ * Converts radians to degrees.
+ */
+FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
+
+#pragma mark - User Interface
+
+/**
  * Returns the current statusBar's height, in any orientation.
  */
 FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
@@ -134,16 +148,6 @@ FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
  * Returns a recommended rotating transform for the given interface orientation.
  */
 FOUNDATION_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
-
-/**
- * Converts degrees to radians.
- */
-FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
-
-/**
- * Converts radians to degrees.
- */
-FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
 
 /**
  * Checks whether the current User Interface is Pad type.
@@ -175,6 +179,8 @@ FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
  * e.g. "414x736", the width always be less than the height.
  */
 FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
+
+#pragma mark - File System
 
 /**
  * Returns the path of the Documents directory.
@@ -255,21 +261,6 @@ FOUNDATION_EXTERN NSURL *ESTemporaryDirectoryURL(void);
  * Returns the URL made by appending the path component to the temporary directory.
  */
 FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent);
-
-/**
- * Creates the directory at the given path if the directory does not exist.
- */
-FOUNDATION_EXTERN BOOL ESTouchDirectory(NSString *directoryPath);
-
-/**
- * Creates the directory at the given file path if the directory does not exist.
- */
-FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFilePath(NSString *filePath);
-
-/**
- * Creates the directory at the given file URL if the directory does not exist.
- */
-FOUNDATION_EXTERN BOOL ESTouchDirectoryAtFileURL(NSURL *url);
 
 #pragma mark - GCD
 

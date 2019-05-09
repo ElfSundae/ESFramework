@@ -117,6 +117,16 @@ UIColor *ESRandomColor(void)
                            alpha:1.0];
 }
 
+CGFloat ESDegreesToRadians(CGFloat degrees)
+{
+    return (degrees * M_PI / 180);
+}
+
+CGFloat ESRadiansToDegrees(CGFloat radians)
+{
+    return (radians * 180 / M_PI);
+}
+
 NSString *ESRandomStringOfLength(NSUInteger length)
 {
     NSData *data = ESRandomDataOfLength(length);
@@ -166,16 +176,6 @@ CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orienta
     } else {
         return CGAffineTransformIdentity;
     }
-}
-
-CGFloat ESDegreesToRadians(CGFloat degrees)
-{
-    return (degrees * M_PI / 180);
-}
-
-CGFloat ESRadiansToDegrees(CGFloat radians)
-{
-    return (radians * 180 / M_PI);
 }
 
 BOOL ESIsPadUI(void)
@@ -289,30 +289,6 @@ NSURL *ESTemporaryDirectoryURL(void)
 NSURL *ESTemporaryURL(NSString *pathComponent)
 {
     return [ESTemporaryDirectoryURL() URLByAppendingPathComponent:pathComponent];
-}
-
-BOOL ESTouchDirectory(NSString *directoryPath)
-{
-    NSFileManager *fm = [NSFileManager defaultManager];
-    BOOL isDir = NO;
-    if ([fm fileExistsAtPath:directoryPath isDirectory:&isDir]) {
-        if (isDir) {
-            return YES;
-        } else {
-            [fm removeItemAtPath:directoryPath error:NULL];
-        }
-    }
-    return [fm createDirectoryAtPath:directoryPath withIntermediateDirectories:YES attributes:nil error:NULL];
-}
-
-BOOL ESTouchDirectoryAtFilePath(NSString *filePath)
-{
-    return ESTouchDirectory([filePath stringByDeletingLastPathComponent]);
-}
-
-BOOL ESTouchDirectoryAtFileURL(NSURL *url)
-{
-    return ESTouchDirectoryAtFilePath(url.path);
 }
 
 #pragma mark - ObjC Runtime
