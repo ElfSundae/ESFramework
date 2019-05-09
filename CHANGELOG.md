@@ -84,6 +84,7 @@
     + NSSet methods: `each`, `match`, `matches`, `matchWith`
     + `-isEmpty` on NSString, NSArray, NSDictionary, NSOrderedSet, NSSet
     + `+[NSDate timeIntervalSince1970]`
+    + `-[NSURL isEqualToURL:]`
     + Quick methods for NSUserDefaults.standardUserDefaults, such as `+[NSUserDefaults objectForKey:]`, `+setObject:forKey:`, `+registerDefaults:`
     + UIAlertController methods: `-addTextFieldWithPlaceholder:configurationHandler:`, `-addSecureTextFieldWithPlaceholder:configurationHandler:`, property `defaultAction`
     + UIDevice methods: `+name`, `+systemName`, `+systemVersion`, `+model`, `+systemBuildIdentifier`, `+isPhoneDevice`, `+isPadDevice`, `+isRetinaScreen`, `+isIPhoneRetina35InchScreen`, `+isIPhoneRetina4InchScreen`, `+isIPhoneRetina47InchScreen`, `+isIPhoneRetina55InchScreen`, `+localTimeZone`, `+localTimeZoneFromGMT`, `+currentLocale`, `+currentLocaleLanguageCode`, `+currentLocaleCountryCode`, `+currentLocaleIdentifier`, `+getNetworkInterfacesIncludesLoopback:`, `+localIPv4Address`, `+localIPv6Address`

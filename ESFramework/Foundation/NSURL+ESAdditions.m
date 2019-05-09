@@ -11,11 +11,6 @@
 
 @implementation NSURL (ESAdditions)
 
-- (BOOL)isEqualToURL:(NSURL *)anotherURL
-{
-    return ([self isEqual:anotherURL] || [self.absoluteString isEqualToString:anotherURL.absoluteString]);
-}
-
 - (NSDictionary<NSString *, id> *)queryDictionary
 {
     return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES].queryItemsDictionary;
