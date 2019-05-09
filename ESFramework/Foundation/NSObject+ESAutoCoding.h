@@ -78,6 +78,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setWithCoder:(NSCoder *)aDecoder;
 
 /**
+ * Returns an NSData object containing the encoded form of the object graph.
+ */
+- (nullable NSData *)archivedData;
+
+/**
  * Attempts to load the file using the following sequence: 1) If the file is an
  * NSCoded archive, load the root object and return it; 2) If the file is an
  * ordinary Plist, load and return the root object; 3) Return the raw data as an

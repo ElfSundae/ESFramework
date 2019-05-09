@@ -78,6 +78,15 @@
     return [self dictionaryWithValuesForKeys:self.codableProperties.allKeys];
 }
 
+- (nullable NSData *)archivedData
+{
+    if (@available(iOS 11.0, *)) {
+        return [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:YES error:NULL];
+    } else {
+        return [NSKeyedArchiver archivedDataWithRootObject:self];
+    }
+}
+
 + (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
 {
     NSData *data = [NSData dataWithContentsOfFile:filePath];
