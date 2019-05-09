@@ -54,16 +54,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (ESAutoCoding) <NSSecureCoding>
 
 /**
- * Populates the object's properties using the provided `NSCoder` object, based
- * on the `codableProperties` dictionary. This is called internally by the
- * `initWithCoder:` method, but may be useful if you wish to initialise an object
- * from a coded archive after it has already been created. You could even
- * initialise the object by merging the results of several different archives by
- * calling `setWithCoder:` more than once.
- */
-- (void)setWithCoder:(NSCoder *)aDecoder;
-
-/**
  * Returns all the codable properties of the object, including those that are
  * inherited from superclasses.
  *
@@ -76,6 +66,16 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns a dictionary of the values of all the codable properties.
  */
 @property (nonatomic, readonly) NSDictionary<NSString *, id> *dictionaryRepresentation;
+
+/**
+ * Populates the object's properties using the provided `NSCoder` object, based
+ * on the `codableProperties` dictionary. This is called internally by the
+ * `initWithCoder:` method, but may be useful if you wish to initialise an object
+ * from a coded archive after it has already been created. You could even
+ * initialise the object by merging the results of several different archives by
+ * calling `setWithCoder:` more than once.
+ */
+- (void)setWithCoder:(NSCoder *)aDecoder;
 
 /**
  * Attempts to load the file using the following sequence: 1) If the file is an
