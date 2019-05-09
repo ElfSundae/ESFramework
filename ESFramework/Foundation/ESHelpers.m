@@ -114,7 +114,7 @@ UIColor *ESRandomColor(void)
     return [UIColor colorWithRed:(CGFloat)arc4random() / UINT_MAX
                            green:(CGFloat)arc4random() / UINT_MAX
                             blue:(CGFloat)arc4random() / UINT_MAX
-                           alpha:1];
+                           alpha:1.0];
 }
 
 NSString *ESRandomStringOfLength(NSUInteger length)
