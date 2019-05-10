@@ -15,6 +15,7 @@
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
     + NSArray methods: `objectOrNilAtIndex:`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
+    + NSOrderedSet methods: `objectOrNilAtIndex:`
     + `-[NSUserDefaults setObject:forKeyPath:]`
     + `-[UIDevice modelName]`
     + `ESNetworkHelper` class
