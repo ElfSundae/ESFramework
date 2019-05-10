@@ -14,13 +14,14 @@
 
 - (NSDictionary *)entriesForKeys:(NSSet *)keys
 {
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSMutableDictionary *entries = [NSMutableDictionary dictionary];
     for (id key in keys) {
-        if (self[key]) {
-            dict[key] = self[key];
+        id value = self[key];
+        if (value) {
+            entries[key] = value;
         }
     }
-    return [dict copy];
+    return entries.copy;
 }
 
 - (NSString *)URLQueryString
