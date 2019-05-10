@@ -54,6 +54,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSObject (ESAutoCoding) <NSSecureCoding>
 
 /**
+ * Populates the object's properties using the provided `NSCoder` object, based
+ * on the `codableProperties` dictionary. This is called internally by the
+ * `initWithCoder:` method, but may be useful if you wish to initialise an object
+ * from a coded archive after it has already been created. You could even
+ * initialise the object by merging the results of several different archives by
+ * calling `setWithCoder:` more than once.
+ */
+- (void)setWithCoder:(NSCoder *)aDecoder;
+
+/**
  * Returns all the codable properties of the object, including those that are
  * inherited from superclasses.
  *
@@ -68,19 +78,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSDictionary<NSString *, id> *dictionaryRepresentation;
 
 /**
- * Populates the object's properties using the provided `NSCoder` object, based
- * on the `codableProperties` dictionary. This is called internally by the
- * `initWithCoder:` method, but may be useful if you wish to initialise an object
- * from a coded archive after it has already been created. You could even
- * initialise the object by merging the results of several different archives by
- * calling `setWithCoder:` more than once.
+ * Returns an NSData object containing the encoded form of the object.
  */
-- (void)setWithCoder:(NSCoder *)aDecoder;
-
-/**
- * Returns an NSData object containing the encoded form of the object graph.
- */
-- (nullable NSData *)archivedData;
+@property (nullable, nonatomic, readonly) NSData *archivedData;
 
 /**
  * Writes the archived data to the file specified by a given path.
@@ -93,25 +93,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)writeToURL:(NSURL *)url atomically:(BOOL)atomically;
 
 /**
- * Attempts to load the file using the following sequence: 1) If the file is an
- * NSCoded archive, load the root object and return it; 2) If the file is an
- * ordinary Plist, load and return the root object; 3) Return the raw data as an
- * `NSData` object. If the de-serialised object is not a subclass of the class
- * being used to load it, an exception will be thrown (to avoid this, call the
- * method on `NSObject` instead of a specific subclass).
+ * Decodes and returns the object previously encoded and stored in a given
+ * NSData object.
  */
-+ (nullable instancetype)es_objectWithContentsOfFile:(NSString *)filePath;
++ (nullable instancetype)objectWithArchivedData:(NSData *)data;
 
 /**
- * Attempts to write the file to disk. This method is overridden by the
- * equivalent methods for `NSData`, `NSDictionary` and `NSArray`, which save the
- * file as a human-readable XML Plist rather than a binary NSCoded Plist archive,
- * but the `objectWithContentsOfFile:` method will correctly de-serialise these
- * again anyway. For any other object it will serialise the object using the
- * `NSCoding` protocol and write out the file as a NSCoded binary Plist archive.
- * Returns `YES` on success and `NO` on failure.
+ * Creates and returns an object previously encoded and stored to the file
+ * specified by a given path.
  */
-- (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile;
++ (nullable instancetype)objectWithContentsOfFile:(NSString *)path;
+
+/**
+ * Creates and returns an object previously encoded and stored to the location
+ * specified by a given URL.
+ */
++ (nullable instancetype)objectWithContentsOfURL:(NSURL *)url;
 
 /**
  * Returns a dictionary containing the names and classes of all the properties of

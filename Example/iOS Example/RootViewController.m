@@ -38,9 +38,9 @@
 
 - (void)testAutoCoding
 {
-    NSString *file = ESTemporaryPath(@"foo/bar/file");
+    NSString *file = ESTemporaryPath(@"foo/bar/user");
 
-    User *user = [User es_objectWithContentsOfFile:file];
+    User *user = [User objectWithContentsOfFile:file];
 
     if (!user) {
         user = [[User alloc] init];
@@ -58,7 +58,9 @@
     }
 
     NSLog(@"%@\n%@", user.codableProperties, user.dictionaryRepresentation);
-    BOOL saved = [user es_writeToFile:file atomically:YES];
+
+    [NSFileManager.defaultManager createDirectoryAtPath:file.stringByDeletingLastPathComponent];
+    BOOL saved = [user writeToFile:file atomically:YES];
     NSLog(@"saved: %@", @(saved));
 
     User *user2 = [user copy];

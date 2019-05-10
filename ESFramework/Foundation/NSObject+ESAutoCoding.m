@@ -80,11 +80,7 @@
 
 - (nullable NSData *)archivedData
 {
-    if (@available(iOS 11.0, *)) {
-        return [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:YES error:NULL];
-    } else {
-        return [NSKeyedArchiver archivedDataWithRootObject:self];
-    }
+    return [NSKeyedArchiver archivedDataWithRootObject:self];
 }
 
 - (BOOL)writeToFile:(NSString *)path atomically:(BOOL)atomically
@@ -97,40 +93,29 @@
     return [self.archivedData writeToURL:url atomically:atomically];
 }
 
-+ (instancetype)es_objectWithContentsOfFile:(NSString *)filePath
++ (nullable instancetype)objectWithArchivedData:(NSData *)data
 {
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
     if (!data) {
         return nil;
     }
 
-    // attempt to deserialise data as a plist
-    id object = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:NULL error:NULL];
-    if (!object) {
-        return data;
-    }
+    id object = nil;
+    @try {
+        // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
+        object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    } @catch (NSException *exception) {}
 
-    // check if object is an NSCoded unarchive
-    if ([object respondsToSelector:@selector(objectForKeyedSubscript:)] && object[@"$archiver"]) {
-        @try {
-            // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
-            object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        } @catch (NSException *exception) {
-            object = nil;
-        }
-    }
-
-    return object;
+    return [object isKindOfClass:self] ? object : nil;
 }
 
-- (BOOL)es_writeToFile:(NSString *)filePath atomically:(BOOL)useAuxiliaryFile
++ (nullable instancetype)objectWithContentsOfFile:(NSString *)path
 {
-    // note: NSData, NSDictionary and NSArray already implement this method
-    // and do not save using NSCoding, however the +es_objectWithContentsOfFile
-    // method will correctly recover these objects anyway
+    return [self objectWithArchivedData:[NSData dataWithContentsOfFile:path]];
+}
 
-    return [[NSKeyedArchiver archivedDataWithRootObject:self]
-            writeToFile:filePath atomically:useAuxiliaryFile];
++ (nullable instancetype)objectWithContentsOfURL:(NSURL *)url
+{
+    return [self objectWithArchivedData:[NSData dataWithContentsOfURL:url]];
 }
 
 + (NSDictionary<NSString *, Class> *)codableProperties
