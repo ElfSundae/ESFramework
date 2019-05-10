@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSDictionary<KeyType, ObjectType> (ESAdditions)
 
 /**
+ * Returns a new dictionary containing the entries for the specified keys.
+ */
+- (NSDictionary<KeyType, ObjectType> *)entriesForKeys:(NSSet<KeyType> *)keys;
+
+/**
  * Creates a percent encoded URL query string from this dictionary.
  *
  * For example, @{ @"foo": @123, @"bar": @[ @"a", @"b" ] } will return

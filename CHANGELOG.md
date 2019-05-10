@@ -14,7 +14,8 @@
     + `-[NSURL URLByAddingQueryDictionary:]`
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
-    + NSArray methods: `objectOrNilAtIndex:`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
+    + NSArray methods: `-objectOrNilAtIndex:`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
+    + NSDictionary methods: `-entriesForKeys:`
     + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`
     + NSOrderedSet methods: `objectOrNilAtIndex:`
     + `-[NSUserDefaults setObject:forKeyPath:]`

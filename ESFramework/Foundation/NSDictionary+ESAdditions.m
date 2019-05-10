@@ -12,6 +12,17 @@
 
 @implementation NSDictionary (ESAdditions)
 
+- (NSDictionary *)entriesForKeys:(NSSet *)keys
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (id key in keys) {
+        if (self[key]) {
+            dict[key] = self[key];
+        }
+    }
+    return [dict copy];
+}
+
 - (NSString *)URLQueryString
 {
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:@"http://foo.bar"];
