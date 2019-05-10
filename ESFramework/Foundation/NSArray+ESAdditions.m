@@ -61,6 +61,13 @@
 
 @implementation NSMutableArray (ESAdditions)
 
+- (void)removeFirstObject
+{
+    if (self.count) {
+        [self removeObjectAtIndex:0];
+    }
+}
+
 - (BOOL)replaceObject:(id)object withObject:(id)anObject
 {
     NSUInteger index = [self indexOfObject:object];
