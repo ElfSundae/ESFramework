@@ -134,7 +134,7 @@ FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
 FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
 
 /**
- * Returns the current interface orientation of the application.
+ * Returns the current orientation of your application’s user interface.
  */
 FOUNDATION_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
 
@@ -150,7 +150,7 @@ FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
 FOUNDATION_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
 
 /**
- * Checks whether the current User Interface is Pad type.
+ * Checks whether the current user interface is iPad style.
  */
 FOUNDATION_EXTERN BOOL ESIsPadUI(void);
 
@@ -160,12 +160,12 @@ FOUNDATION_EXTERN BOOL ESIsPadUI(void);
 FOUNDATION_EXTERN BOOL ESIsPadDevice(void);
 
 /**
- * Checks whether the current User Interface is Phone type.
+ * Checks whether the current user interface is iPhone or iPod touch style.
  */
 FOUNDATION_EXTERN BOOL ESIsPhoneUI(void);
 
 /**
- * Checks whether the device is an iPhone/iPod Touch.
+ * Checks whether the device is an iPhone or iPod touch.
  */
 FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
 

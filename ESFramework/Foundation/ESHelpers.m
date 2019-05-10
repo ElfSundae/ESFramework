@@ -162,7 +162,7 @@ UIInterfaceOrientation ESInterfaceOrientation(void)
 
 UIDeviceOrientation ESDeviceOrientation(void)
 {
-    return [UIDevice currentDevice].orientation;
+    return UIDevice.currentDevice.orientation;
 }
 
 CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation)
@@ -180,23 +180,23 @@ CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orienta
 
 BOOL ESIsPadUI(void)
 {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad);
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
 }
 
 BOOL ESIsPadDevice(void)
 {
-    return ([[UIDevice currentDevice].model rangeOfString:@"iPad" options:NSCaseInsensitiveSearch].location != NSNotFound);
+    return [UIDevice.currentDevice.model hasPrefix:@"iPad"];
 }
 
 BOOL ESIsPhoneUI(void)
 {
-    return ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone);
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone;
 }
 
 BOOL ESIsPhoneDevice(void)
 {
-    return ([[UIDevice currentDevice].model rangeOfString:@"iPhone" options:NSCaseInsensitiveSearch].location != NSNotFound ||
-            [[UIDevice currentDevice].model rangeOfString:@"iPod" options:NSCaseInsensitiveSearch].location != NSNotFound);
+    return ([UIDevice.currentDevice.model hasPrefix:@"iPhone"] ||
+            [UIDevice.currentDevice.model hasPrefix:@"iPod"]);
 }
 
 BOOL ESIsRetinaScreen(void)
