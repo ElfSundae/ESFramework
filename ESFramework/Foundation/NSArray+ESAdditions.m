@@ -76,6 +76,20 @@
     }
 }
 
+- (id)shiftFirstObject
+{
+    id object = self.firstObject;
+    [self removeFirstObject];
+    return object;
+}
+
+- (id)popLastObject
+{
+    id object = self.lastObject;
+    [self removeLastObject];
+    return object;
+}
+
 - (BOOL)replaceObject:(id)object withObject:(id)anObject
 {
     NSUInteger index = [self indexOfObject:object];
