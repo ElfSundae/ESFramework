@@ -15,6 +15,14 @@
     return index < self.count ? self[index] : nil;
 }
 
+- (id)randomObject
+{
+    if (self.count) {
+        return self[arc4random_uniform((uint32_t)self.count)];
+    }
+    return nil;
+}
+
 - (id)objectPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectWithOptions:0 passingTest:predicate];
