@@ -200,7 +200,7 @@ FOUNDATION_EXTERN NSURL *ESDocumentDirectoryURL(void);
 /**
  * Returns the URL made by appending the path component to the Documents directory.
  */
-FOUNDATION_EXTERN NSURL *ESDocumentURL(NSString *pathComponent);
+FOUNDATION_EXTERN NSURL *ESDocumentURL(NSString *pathComponent, BOOL isDirectory);
 
 /**
  * Returns the path of the Library directory.
@@ -220,7 +220,7 @@ FOUNDATION_EXTERN NSURL *ESLibraryDirectoryURL(void);
 /**
  * Returns the URL made by appending the path component to the Library directory.
  */
-FOUNDATION_EXTERN NSURL *ESLibraryURL(NSString *pathComponent);
+FOUNDATION_EXTERN NSURL *ESLibraryURL(NSString *pathComponent, BOOL isDirectory);
 
 /**
  * Returns the path of the Caches directory.
@@ -240,7 +240,7 @@ FOUNDATION_EXTERN NSURL *ESCachesDirectoryURL(void);
 /**
  * Returns the URL made by appending the path component to the Caches directory.
  */
-FOUNDATION_EXTERN NSURL *ESCachesURL(NSString *pathComponent);
+FOUNDATION_EXTERN NSURL *ESCachesURL(NSString *pathComponent, BOOL isDirectory);
 
 /**
  * Returns the path of the temporary directory.
@@ -260,7 +260,7 @@ FOUNDATION_EXTERN NSURL *ESTemporaryDirectoryURL(void);
 /**
  * Returns the URL made by appending the path component to the temporary directory.
  */
-FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent);
+FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory);
 
 #pragma mark - GCD
 

@@ -226,9 +226,9 @@ NSURL *ESDocumentDirectoryURL(void)
     return [NSFileManager.defaultManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-NSURL *ESDocumentURL(NSString *pathComponent)
+NSURL *ESDocumentURL(NSString *pathComponent, BOOL isDirectory)
 {
-    return [ESDocumentDirectoryURL() URLByAppendingPathComponent:pathComponent];
+    return [ESDocumentDirectoryURL() URLByAppendingPathComponent:pathComponent isDirectory:isDirectory];
 }
 
 NSString *ESLibraryDirectory(void)
@@ -246,9 +246,9 @@ NSURL *ESLibraryDirectoryURL(void)
     return [NSFileManager.defaultManager URLsForDirectory:NSLibraryDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-NSURL *ESLibraryURL(NSString *pathComponent)
+NSURL *ESLibraryURL(NSString *pathComponent, BOOL isDirectory)
 {
-    return [ESLibraryDirectoryURL() URLByAppendingPathComponent:pathComponent];
+    return [ESLibraryDirectoryURL() URLByAppendingPathComponent:pathComponent isDirectory:isDirectory];
 }
 
 NSString *ESCachesDirectory(void)
@@ -266,9 +266,9 @@ NSURL *ESCachesDirectoryURL(void)
     return [NSFileManager.defaultManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask].firstObject;
 }
 
-NSURL *ESCachesURL(NSString *pathComponent)
+NSURL *ESCachesURL(NSString *pathComponent, BOOL isDirectory)
 {
-    return [ESCachesDirectoryURL() URLByAppendingPathComponent:pathComponent];
+    return [ESCachesDirectoryURL() URLByAppendingPathComponent:pathComponent isDirectory:isDirectory];
 }
 
 NSString *ESTemporaryDirectory(void)
@@ -286,9 +286,9 @@ NSURL *ESTemporaryDirectoryURL(void)
     return [NSURL fileURLWithPath:ESTemporaryDirectory() isDirectory:YES];
 }
 
-NSURL *ESTemporaryURL(NSString *pathComponent)
+NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory)
 {
-    return [ESTemporaryDirectoryURL() URLByAppendingPathComponent:pathComponent];
+    return [ESTemporaryDirectoryURL() URLByAppendingPathComponent:pathComponent isDirectory:isDirectory];
 }
 
 #pragma mark - ObjC Runtime
