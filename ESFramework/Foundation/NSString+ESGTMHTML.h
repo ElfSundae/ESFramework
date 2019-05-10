@@ -33,8 +33,8 @@ typedef struct {
 @interface NSString (ESGTMHTML)
 
 - (nullable NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
-                                             ofSize:(NSUInteger)size
-                                    escapingUnicode:(BOOL)escapeUnicode;
+                                                      ofSize:(NSUInteger)size
+                                             escapingUnicode:(BOOL)escapeUnicode;
 
 /// Get a string where internal characters that need escaping for HTML are escaped
 //

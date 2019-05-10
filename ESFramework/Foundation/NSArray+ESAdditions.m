@@ -10,6 +10,11 @@
 
 @implementation NSArray (ESAdditions)
 
+- (id)objectOrNilAtIndex:(NSUInteger)index
+{
+    return index < self.count ? self[index] : nil;
+}
+
 - (id)objectPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectWithOptions:0 passingTest:predicate];
@@ -17,8 +22,7 @@
 
 - (id)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
-    NSUInteger index = [self indexOfObjectWithOptions:opts passingTest:predicate];
-    return NSNotFound != index ? self[index] : nil;
+    return [self objectOrNilAtIndex:[self indexOfObjectWithOptions:opts passingTest:predicate]];
 }
 
 - (NSArray *)objectsPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
@@ -33,7 +37,7 @@
 
 - (id)previousObjectToIndex:(NSUInteger)index
 {
-    return --index < self.count ? self[index] : nil;
+    return [self objectOrNilAtIndex:index - 1];
 }
 
 - (id)previousObjectToObject:(id)object
@@ -43,7 +47,7 @@
 
 - (id)nextObjectToIndex:(NSUInteger)index
 {
-    return ++index < self.count ? self[index] : nil;
+    return [self objectOrNilAtIndex:index + 1];
 }
 
 - (id)nextObjectToObject:(id)object
