@@ -31,14 +31,4 @@
     return [self objectsAtIndexes:[self indexesOfObjectsWithOptions:opts passingTest:predicate]];
 }
 
-- (NSOrderedSet *)orderedSetPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
-{
-    return [self orderedSetWithOptions:0 passingTest:predicate];
-}
-
-- (NSOrderedSet *)orderedSetWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
-{
-    return [NSOrderedSet orderedSetWithArray:[self objectsWithOptions:opts passingTest:predicate]];
-}
-
 @end
