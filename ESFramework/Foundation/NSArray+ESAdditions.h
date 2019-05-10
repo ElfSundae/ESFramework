@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSMutableArray<ObjectType> (ESAdditions)
 
 /**
- * Removes the object with the lowest-valued index in the array.
+ * Removes the first object in the array.
  */
 - (void)removeFirstObject;
 
