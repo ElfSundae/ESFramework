@@ -56,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
  * A.2.2 of http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
  * which is what you want for a unicode encoded webpage.
  */
-- (NSString *)stringByEncodingHTMLEntities;
+- (nullable NSString *)stringByEncodingHTMLEntities;
 
 /**
  * Get a string where internal characters that are escaped for HTML are unescaped.

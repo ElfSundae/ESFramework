@@ -32,7 +32,7 @@ typedef struct {
 /// Utilities for NSStrings containing HTML
 @interface NSString (ESGTMHTML)
 
-- (NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
+- (nullable NSString *)es_gtm_stringByEscapingHTMLUsingTable:(ESHTMLEscapeMap*)table
                                              ofSize:(NSUInteger)size
                                     escapingUnicode:(BOOL)escapeUnicode;
 
@@ -49,7 +49,7 @@ typedef struct {
 //  Returns:
 //    Autoreleased NSString
 //
-- (NSString *)es_gtm_stringByEscapingForHTML;
+- (nullable NSString *)es_gtm_stringByEscapingForHTML;
 
 /// Get a string where internal characters that need escaping for HTML are escaped
 //
@@ -65,7 +65,7 @@ typedef struct {
 //  Returns:
 //    Autoreleased NSString
 //
-- (NSString *)es_gtm_stringByEscapingForAsciiHTML;
+- (nullable NSString *)es_gtm_stringByEscapingForAsciiHTML;
 
 /// Get a string where internal characters that are escaped for HTML are unescaped
 //
