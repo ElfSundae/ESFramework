@@ -21,9 +21,19 @@
     return [self timeIntervalSinceDate:aDate] > 0;
 }
 
+- (NSString *)RFC1123String
+{
+    return [[NSDateFormatter RFC1123DateFormatter] stringFromDate:self];
+}
+
 + (NSDate *)dateFromRFC1123String:(NSString *)string
 {
     return [[NSDateFormatter RFC1123DateFormatter] dateFromString:string];
+}
+
+- (NSString *)HTTPDateString
+{
+    return [self RFC1123String];
 }
 
 + (NSDate *)dateFromHTTPDateString:(NSString *)string
@@ -43,11 +53,6 @@
     }
 
     return nil;
-}
-
-- (NSString *)RFC1123String
-{
-    return [[NSDateFormatter RFC1123DateFormatter] stringFromDate:self];
 }
 
 @end

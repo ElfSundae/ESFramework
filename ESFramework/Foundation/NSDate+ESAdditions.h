@@ -20,9 +20,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isAfter:(NSDate *)aDate;
 
 /**
+ * Convert NSDate to RFC 1123 Full Date string.
+ * http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1
+ *
+ * e.g. Sun, 06 Nov 1994 08:49:37 GMT
+ */
+- (NSString *)RFC1123String;
+
+/**
  * Convert RFC 1123 Full Date string to NSDate.
  */
 + (nullable NSDate *)dateFromRFC1123String:(NSString *)string;
+
+/**
+ * Converts date to HTTP-date string, this method is an alias to -RFC1123String .
+ */
+- (NSString *)HTTPDateString;
 
 /**
  * Convert HTTP-date string to NSDate.
@@ -34,14 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
  *      Sun Nov  6 08:49:37 1994       ; ANSI C's asctime() format
  */
 + (nullable NSDate *)dateFromHTTPDateString:(NSString *)string;
-
-/**
- * Convert NSDate to RFC 1123 Full Date string.
- * http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1
- *
- * e.g. Sun, 06 Nov 1994 08:49:37 GMT
- */
-- (NSString *)RFC1123String;
 
 @end
 
