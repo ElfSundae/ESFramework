@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSMutableArray<ObjectType> (ESAdditions)
 
-- (void)replaceObject:(ObjectType)object withObject:(ObjectType)anObject;
+- (BOOL)replaceObject:(ObjectType)object withObject:(ObjectType)anObject;
 
 @end
 

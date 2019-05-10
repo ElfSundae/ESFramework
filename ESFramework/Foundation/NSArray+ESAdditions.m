@@ -61,12 +61,14 @@
 
 @implementation NSMutableArray (ESAdditions)
 
-- (void)replaceObject:(id)object withObject:(id)anObject
+- (BOOL)replaceObject:(id)object withObject:(id)anObject
 {
     NSUInteger index = [self indexOfObject:object];
-    if (NSNotFound != index) {
+    if (index < self.count) {
         [self replaceObjectAtIndex:index withObject:anObject];
+        return YES;
     }
+    return NO;
 }
 
 @end
