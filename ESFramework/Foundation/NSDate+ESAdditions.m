@@ -42,13 +42,9 @@
 
     if (commaPosition == 3) {
         return [self dateFromRFC1123String:string];
-    }
-
-    if (commaPosition != NSNotFound && commaPosition > 3) {
+    } else if (commaPosition != NSNotFound && commaPosition > 3) {
         return [[NSDateFormatter RFC1036DateFormatter] dateFromString:string];
-    }
-
-    if (commaPosition == NSNotFound) {
+    } else if (commaPosition == NSNotFound) {
         return [[NSDateFormatter ANSIDateFormatter] dateFromString:string];
     }
 

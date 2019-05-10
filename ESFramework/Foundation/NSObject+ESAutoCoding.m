@@ -141,7 +141,7 @@
                         char *className = strndup(typeEncoding + 2, strlen(typeEncoding) - 3);
                         NSString *name = @(className);
                         NSRange range = [name rangeOfString:@"<"];
-                        if (range.location != NSNotFound) {
+                        if (range.length > 0) {
                             name = [name substringToIndex:range.location];
                         }
                         propertyClass = NSClassFromString(name) ?: [NSObject class];
