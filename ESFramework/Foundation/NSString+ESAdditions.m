@@ -77,16 +77,6 @@
     return urlComponents.string;
 }
 
-- (NSString *)stringByEncodingHTMLEntities
-{
-    return [self es_gtm_stringByEscapingForHTML];
-}
-
-- (NSString *)stringByDecodingHTMLEntities
-{
-    return [self es_gtm_stringByUnescapingFromHTML];
-}
-
 @end
 
 #pragma mark - NSMutableString (ESAdditions)

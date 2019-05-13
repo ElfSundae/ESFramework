@@ -48,25 +48,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
 
-/**
- * Returns a string that escaped for HTML.
- * e.g. '<' becomes '&lt;' , '>' to '&gt;', '&' become '&amp;'
- *
- * This will only cover characters from table
- * A.2.2 of http://www.w3.org/TR/xhtml1/dtds.html#a_dtd_Special_characters
- * which is what you want for a unicode encoded webpage.
- */
-- (nullable NSString *)stringByEncodingHTMLEntities;
-
-/**
- * Get a string where internal characters that are escaped for HTML are unescaped.
- *
- * For example, '&amp;' becomes '&'
- * Handles &#32; and &#x32; cases as well
- *
- */
-- (NSString *)stringByDecodingHTMLEntities;
-
 @end
 
 #pragma mark - NSMutableString (ESAdditions)
