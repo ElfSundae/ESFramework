@@ -71,14 +71,64 @@
     return [[self dataUsingEncoding:NSUTF8StringEncoding] sha512HashString];
 }
 
-- (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+- (NSData *)hmacMD5HashDataWithKey:(NSData *)key
 {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacHashDataWithAlgorithm:algorithm key:key];
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacMD5HashDataWithKey:key];
 }
 
-- (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+- (NSString *)hmacMD5HashStringWithKey:(NSString *)key
 {
-    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacHashStringWithAlgorithm:algorithm key:key];
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacMD5HashStringWithKey:key];
+}
+
+- (NSData *)hmacSHA1HashDataWithKey:(NSData *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA1HashDataWithKey:key];
+}
+
+- (NSString *)hmacSHA1HashStringWithKey:(NSString *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA1HashStringWithKey:key];
+}
+
+- (NSData *)hmacSHA224HashDataWithKey:(NSData *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA224HashDataWithKey:key];
+}
+
+- (NSString *)hmacSHA224HashStringWithKey:(NSString *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA224HashStringWithKey:key];
+}
+
+- (NSData *)hmacSHA256HashDataWithKey:(NSData *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA256HashDataWithKey:key];
+}
+
+- (NSString *)hmacSHA256HashStringWithKey:(NSString *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA256HashStringWithKey:key];
+}
+
+- (NSData *)hmacSHA384HashDataWithKey:(NSData *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA384HashDataWithKey:key];
+}
+
+- (NSString *)hmacSHA384HashStringWithKey:(NSString *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA384HashStringWithKey:key];
+}
+
+- (NSData *)hmacSHA512HashDataWithKey:(NSData *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA512HashDataWithKey:key];
+}
+
+- (NSString *)hmacSHA512HashStringWithKey:(NSString *)key
+{
+    return [[self dataUsingEncoding:NSUTF8StringEncoding] hmacSHA512HashStringWithKey:key];
 }
 
 - (NSData *)base64EncodedData

@@ -7,6 +7,8 @@
 //
 
 #import "NSData+ESHash.h"
+#include <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 @implementation NSData (ESHash)
 
@@ -109,43 +111,103 @@
     return [[self sha512HashData] lowercaseHexString];
 }
 
-- (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+- (NSData *)es_hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(NSData *)key
 {
-    NSData *keyData = nil;
-    if ([key isKindOfClass:[NSData class]]) {
-        keyData = (NSData *)key;
-    } else if ([key isKindOfClass:[NSString class]]) {
-        keyData = [(NSString *)key dataUsingEncoding:NSUTF8StringEncoding];
-    } else {
-        printf("%s: 'key' must be a NSData or a NSString.\n", __PRETTY_FUNCTION__);
-        return nil;
-    }
     size_t size = 0;
-    if (kCCHmacAlgSHA1 == algorithm) {
-        size = CC_SHA1_DIGEST_LENGTH;
-    } else if (kCCHmacAlgMD5 == algorithm) {
-        size = CC_MD5_DIGEST_LENGTH;
-    } else if (kCCHmacAlgSHA224 == algorithm) {
-        size = CC_SHA224_DIGEST_LENGTH;
-    } else if (kCCHmacAlgSHA256 == algorithm) {
-        size = CC_SHA256_DIGEST_LENGTH;
-    } else if (kCCHmacAlgSHA384 == algorithm) {
-        size = CC_SHA384_DIGEST_LENGTH;
-    } else if (kCCHmacAlgSHA512 == algorithm) {
-        size = CC_SHA512_DIGEST_LENGTH;
-    } else {
-        printf("%s: 'algorithm' is wrong.\n", __PRETTY_FUNCTION__);
-        return nil;
+    switch (algorithm) {
+        case kCCHmacAlgMD5:
+            size = CC_MD5_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA1:
+            size = CC_SHA1_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA224:
+            size = CC_SHA224_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA256:
+            size = CC_SHA256_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA384:
+            size = CC_SHA384_DIGEST_LENGTH;
+            break;
+        case kCCHmacAlgSHA512:
+            size = CC_SHA512_DIGEST_LENGTH;
+            break;
+        default:
+            [NSException raise:NSInvalidArgumentException format:@"Invalid hmac algorithm"];
+            break;
     }
 
     unsigned char buffer[size];
-    CCHmac(algorithm, keyData.bytes, keyData.length, self.bytes, self.length, buffer);
+    CCHmac(algorithm, key.bytes, key.length, self.bytes, self.length, buffer);
     return [NSData dataWithBytes:buffer length:(NSUInteger)size];
 }
 
-- (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
+- (NSString *)es_hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(NSString *)key
 {
-    return [[self hmacHashDataWithAlgorithm:algorithm key:key] lowercaseHexString];
+    return [[self es_hmacHashDataWithAlgorithm:algorithm
+                                           key:[key dataUsingEncoding:NSUTF8StringEncoding]]
+            lowercaseHexString];
+}
+
+- (NSData *)hmacMD5HashDataWithKey:(NSData *)key
+{
+    return [self es_hmacHashDataWithAlgorithm:kCCHmacAlgMD5 key:key];
+}
+
+- (NSString *)hmacMD5HashStringWithKey:(NSString *)key
+{
+    return [self es_hmacHashStringWithAlgorithm:kCCHmacAlgMD5 key:key];
+}
+
+- (NSData *)hmacSHA1HashDataWithKey:(NSData *)key
+{
+    return [self es_hmacHashDataWithAlgorithm:kCCHmacAlgSHA1 key:key];
+}
+
+- (NSString *)hmacSHA1HashStringWithKey:(NSString *)key
+{
+    return [self es_hmacHashStringWithAlgorithm:kCCHmacAlgSHA1 key:key];
+}
+
+- (NSData *)hmacSHA224HashDataWithKey:(NSData *)key
+{
+    return [self es_hmacHashDataWithAlgorithm:kCCHmacAlgSHA224 key:key];
+}
+
+- (NSString *)hmacSHA224HashStringWithKey:(NSString *)key
+{
+    return [self es_hmacHashStringWithAlgorithm:kCCHmacAlgSHA224 key:key];
+}
+
+- (NSData *)hmacSHA256HashDataWithKey:(NSData *)key
+{
+    return [self es_hmacHashDataWithAlgorithm:kCCHmacAlgSHA256 key:key];
+}
+
+- (NSString *)hmacSHA256HashStringWithKey:(NSString *)key
+{
+    return [self es_hmacHashStringWithAlgorithm:kCCHmacAlgSHA256 key:key];
+}
+
+- (NSData *)hmacSHA384HashDataWithKey:(NSData *)key
+{
+    return [self es_hmacHashDataWithAlgorithm:kCCHmacAlgSHA384 key:key];
+}
+
+- (NSString *)hmacSHA384HashStringWithKey:(NSString *)key
+{
+    return [self es_hmacHashStringWithAlgorithm:kCCHmacAlgSHA384 key:key];
+}
+
+- (NSData *)hmacSHA512HashDataWithKey:(NSData *)key
+{
+    return [self es_hmacHashDataWithAlgorithm:kCCHmacAlgSHA512 key:key];
+}
+
+- (NSString *)hmacSHA512HashStringWithKey:(NSString *)key
+{
+    return [self es_hmacHashStringWithAlgorithm:kCCHmacAlgSHA512 key:key];
 }
 
 - (NSData *)base64EncodedData

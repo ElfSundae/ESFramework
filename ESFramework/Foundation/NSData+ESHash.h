@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CommonCrypto/CommonHMAC.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -50,10 +49,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - HMAC Digest
 
-- (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
-- (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key;
+- (NSData *)hmacMD5HashDataWithKey:(NSData *)key;
+- (NSString *)hmacMD5HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA1HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA1HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA224HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA224HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA256HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA256HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA384HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA384HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA512HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA512HashStringWithKey:(NSString *)key;
 
-#pragma mark - Base64
+#pragma mark - Base64 Encoding
 
 - (NSData *)base64EncodedData;
 - (NSString *)base64EncodedString;
