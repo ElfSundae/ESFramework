@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSMutableDictionary (ESAdditions)
 
 /**
- * Sets an object for the key path that formed "dot" notation.
+ * Sets an object for the key path that formed nested "dot" notation.
  */
 - (void)setObject:(id)object forKeyPath:(NSString *)keyPath;
 
