@@ -12,6 +12,7 @@
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`
+    + NSData methods: `-uppercaseHexString`, `lowercaseHexString`
     + `+[NSDate dateFromHTTPDateString:]`
     + `NSDateFormatter (ESAdditions)` category
     + NSArray methods: `-objectOrNilAtIndex:`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
@@ -38,7 +39,7 @@
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
     + NSString methods: `-URLEncode` => `-URLEncoded`, `-URLDecode` => `-URLDecoded`
     + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
-    + NSData methods: `-stringValue` => `-UTF8String`, `-hexStringValue` => `hexString`
+    + NSData methods: `-stringValue` => `-UTF8String`, `-hexStringValue` => `-lowercaseHexString`
     + `-[NSString stringByEncodingHTMLEntitiesUsingTable:]` => `-es_gtm_stringByEscapingHTMLUsingTable:`
     + `-[NSString stringByEncodingHTMLEntitiesForASCII]` => `-es_gtm_stringByEscapingForAsciiHTML`
     + `-[NSString stringByEncodingHTMLEntitiesForUnicode]` => `-stringByEncodingHTMLEntities`

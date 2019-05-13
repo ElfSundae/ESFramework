@@ -15,7 +15,18 @@
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)hexString
+- (NSString *)uppercaseHexString
+{
+    NSUInteger length = self.length;
+    NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
+    const unsigned char *p = self.bytes;
+    for (NSUInteger i = 0; i < length; i++, p++) {
+        [hexString appendFormat:@"%02X", *p];
+    }
+    return [hexString copy];
+}
+
+- (NSString *)lowercaseHexString
 {
     NSUInteger length = self.length;
     NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
@@ -35,7 +46,7 @@
 
 - (NSString *)md5HashString
 {
-    return [[self md5HashData] hexString];
+    return [[self md5HashData] lowercaseHexString];
 }
 
 - (NSData *)sha1HashData
@@ -47,7 +58,7 @@
 
 - (NSString *)sha1HashString
 {
-    return [[self sha1HashData] hexString];
+    return [[self sha1HashData] lowercaseHexString];
 }
 
 - (NSData *)sha224HashData
@@ -59,7 +70,7 @@
 
 - (NSString *)sha224HashString
 {
-    return [[self sha224HashData] hexString];
+    return [[self sha224HashData] lowercaseHexString];
 }
 
 - (NSData *)sha256HashData
@@ -71,7 +82,7 @@
 
 - (NSString *)sha256HashString
 {
-    return [[self sha256HashData] hexString];
+    return [[self sha256HashData] lowercaseHexString];
 }
 
 - (NSData *)sha384HashData
@@ -83,7 +94,7 @@
 
 - (NSString *)sha384HashString
 {
-    return [[self sha384HashData] hexString];
+    return [[self sha384HashData] lowercaseHexString];
 }
 
 - (NSData *)sha512HashData
@@ -95,7 +106,7 @@
 
 - (NSString *)sha512HashString
 {
-    return [[self sha512HashData] hexString];
+    return [[self sha512HashData] lowercaseHexString];
 }
 
 - (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
@@ -134,7 +145,7 @@
 
 - (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
 {
-    return [[self hmacHashDataWithAlgorithm:algorithm key:key] hexString];
+    return [[self hmacHashDataWithAlgorithm:algorithm key:key] lowercaseHexString];
 }
 
 - (NSData *)base64EncodedData
