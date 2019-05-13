@@ -17,10 +17,11 @@
 
 - (NSString *)hexString
 {
-    NSMutableString *hexString = [NSMutableString string];
+    NSUInteger length = self.length;
+    NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
     const unsigned char *p = self.bytes;
-    for (NSUInteger i = 0; i < self.length; ++i) {
-        [hexString appendFormat:@"%02x", *p++];
+    for (NSUInteger i = 0; i < length; i++, p++) {
+        [hexString appendFormat:@"%02x", *p];
     }
     return [hexString copy];
 }

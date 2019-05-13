@@ -136,14 +136,15 @@ NSString *ESRandomStringOfLength(NSUInteger length)
                [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
               componentsJoinedByString:@""];
     // Base64 后的字符串长度是原串长度的大约135%，去掉特殊字符后再检查字符串长度
-    if (string.length == length) {
+    NSUInteger stringLength = string.length;
+    if (stringLength == length) {
         return string;
-    } else if (string.length > length) {
+    } else if (stringLength > length) {
         return [string substringToIndex:length];
     } else {
         NSMutableString *result = string.mutableCopy;
-        for (NSUInteger i = string.length; i < length; i++) {
-            [result appendFormat:@"%c", [string characterAtIndex:arc4random_uniform((uint32_t)string.length)]];
+        for (NSUInteger i = stringLength; i < length; i++) {
+            [result appendFormat:@"%c", [string characterAtIndex:arc4random_uniform((uint32_t)stringLength)]];
         }
         return [result copy];
     }
