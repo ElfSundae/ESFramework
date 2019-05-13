@@ -10,12 +10,12 @@
 
 @implementation NSData (ESHash)
 
-- (NSString *)stringValue
+- (NSString *)UTF8String
 {
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)hexStringValue
+- (NSString *)hexString
 {
     NSMutableString *hexString = [NSMutableString string];
     const unsigned char *p = self.bytes;
@@ -34,7 +34,7 @@
 
 - (NSString *)md5HashString
 {
-    return [[self md5HashData] hexStringValue];
+    return [[self md5HashData] hexString];
 }
 
 - (NSData *)sha1HashData
@@ -46,7 +46,7 @@
 
 - (NSString *)sha1HashString
 {
-    return [[self sha1HashData] hexStringValue];
+    return [[self sha1HashData] hexString];
 }
 
 - (NSData *)sha224HashData
@@ -58,7 +58,7 @@
 
 - (NSString *)sha224HashString
 {
-    return [[self sha224HashData] hexStringValue];
+    return [[self sha224HashData] hexString];
 }
 
 - (NSData *)sha256HashData
@@ -70,7 +70,7 @@
 
 - (NSString *)sha256HashString
 {
-    return [[self sha256HashData] hexStringValue];
+    return [[self sha256HashData] hexString];
 }
 
 - (NSData *)sha384HashData
@@ -82,7 +82,7 @@
 
 - (NSString *)sha384HashString
 {
-    return [[self sha384HashData] hexStringValue];
+    return [[self sha384HashData] hexString];
 }
 
 - (NSData *)sha512HashData
@@ -94,7 +94,7 @@
 
 - (NSString *)sha512HashString
 {
-    return [[self sha512HashData] hexStringValue];
+    return [[self sha512HashData] hexString];
 }
 
 - (NSData *)hmacHashDataWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
@@ -133,7 +133,7 @@
 
 - (NSString *)hmacHashStringWithAlgorithm:(CCHmacAlgorithm)algorithm key:(id)key
 {
-    return [[self hmacHashDataWithAlgorithm:algorithm key:key] hexStringValue];
+    return [[self hmacHashDataWithAlgorithm:algorithm key:key] hexString];
 }
 
 - (NSData *)base64EncodedData
@@ -161,7 +161,7 @@
 
 - (NSString *)base64DecodedString
 {
-    return self.base64DecodedData.stringValue;
+    return self.base64DecodedData.UTF8String;
 }
 
 @end

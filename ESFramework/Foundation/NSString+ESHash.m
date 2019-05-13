@@ -111,7 +111,7 @@
 
 - (NSString *)base64DecodedString
 {
-    return self.base64DecodedData.stringValue;
+    return self.base64DecodedData.UTF8String;
 }
 
 @end
