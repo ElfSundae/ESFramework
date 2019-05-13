@@ -82,6 +82,11 @@ FOUNDATION_EXTERN BOOL ESIsDictionaryWithItems(id _Nullable object);
 FOUNDATION_EXTERN BOOL ESIsSetWithItems(id _Nullable object);
 
 /**
+ * Checks whether the given object is a non-empty ordered set.
+ */
+FOUNDATION_EXTERN BOOL ESIsOrderedSetWithItems(id _Nullable object);
+
+/**
  * Creates a mutable set which does not retain references to the objects it contains.
  */
 FOUNDATION_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);

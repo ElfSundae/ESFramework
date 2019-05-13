@@ -6,7 +6,8 @@
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
 - Made the main queue dispatching functions safer.
 - Added:
-    + `BOOL es_dispatch_is_main_queue()`
+    + `BOOL es_dispatch_is_main_queue(void)`
+    + `BOOL ESIsOrderedSetWithItems(id)`
     + `NSURL *ESDocumentDirectoryURL()`, `NSURL *ESDocumentURL(NSString *pathComponent)`, `ESLibraryDirectoryURL()`, `ESLibraryURL(NSString *)`, `ESCachesDirectoryURL()`, `ESCachesURL(NSString *)`, `ESTemporaryDirectoryURL()`, `ESTemporaryURL(NSString *)`
     + `ESWeakProxy` class
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
