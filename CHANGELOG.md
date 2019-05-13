@@ -18,7 +18,6 @@
     + NSDictionary methods: `-entriesForKeys:`
     + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`
     + NSOrderedSet methods: `objectOrNilAtIndex:`
-    + `-[NSUserDefaults setObject:forKeyPath:]`
     + `-[UIDevice modelName]`
     + `ESNetworkHelper` class
     + `-[UIView snapshotViewAfterScreenUpdates:]`

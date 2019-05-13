@@ -13,5 +13,4 @@ Pod::Spec.new do |s|
   s.frameworks = 'QuartzCore', 'Security', 'SystemConfiguration', 'CoreTelephony', 'StoreKit', 'MediaPlayer'
   s.weak_frameworks = 'UserNotifications'
   s.dependency 'AFNetworking/Reachability'
-  s.dependency 'NestedObjectSetters'
 end

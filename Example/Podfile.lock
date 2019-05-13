@@ -2,8 +2,6 @@ PODS:
   - AFNetworking/Reachability (3.2.1)
   - ESFramework (2.6.2):
     - AFNetworking/Reachability
-    - NestedObjectSetters
-  - NestedObjectSetters (1.1)
 
 DEPENDENCIES:
   - ESFramework (from `../`)
@@ -11,7 +9,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - NestedObjectSetters
 
 EXTERNAL SOURCES:
   ESFramework:
@@ -19,8 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  ESFramework: a72b51eb46ad64eac5639826c170b95bda406229
-  NestedObjectSetters: bdf1eeb6593bcedf5d4c0cd9a2b18bfc0ca629f6
+  ESFramework: fe00314d3518c9604a781da8ed9c9eb090b64565
 
 PODFILE CHECKSUM: 4a0a405e373db135639ede81077572714d3940f6
 

@@ -7,19 +7,8 @@
 //
 
 #import "NSUserDefaults+ESAdditions.h"
-#import <NestedObjectSetters/NestedObjectSetters.h>
 
 @implementation NSUserDefaults (ESAdditions)
-
-- (void)setObject:(id)object forKeyPath:(NSString *)keyPath
-{
-    [self setObject:object forKeyPath:keyPath createIntermediateDictionaries:YES replaceIntermediateObjects:YES];
-}
-
-- (void)setObject:(id)object forKeyPath:(NSString *)keyPath createIntermediateDictionaries:(BOOL)createIntermediates replaceIntermediateObjects:(BOOL)replaceIntermediates
-{
-    [NestedObjectSetters setObject:object onObject:self forKeyPath:keyPath createIntermediateDictionaries:createIntermediates replaceIntermediateObjects:replaceIntermediates];
-}
 
 - (NSDictionary<NSString *, id> *)registeredDefaults
 {
@@ -31,7 +20,7 @@
     [self setVolatileDomain:registeredDefaults.copy forName:NSRegistrationDomain];
 }
 
-- (void)setRegisteredObject:(id)value forKey:(NSString *)defaultName
+- (void)setRegisteredObject:(nullable id)value forKey:(NSString *)defaultName
 {
     NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
     [registered setValue:value forKey:defaultName];

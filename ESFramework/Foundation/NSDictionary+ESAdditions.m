@@ -8,7 +8,6 @@
 
 #import "NSDictionary+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
-#import <NestedObjectSetters/NestedObjectSetters.h>
 
 @implementation NSDictionary (ESAdditions)
 
@@ -51,12 +50,26 @@
 
 - (void)setObject:(id)object forKeyPath:(NSString *)keyPath
 {
-    [self setObject:object forKeyPath:keyPath createIntermediateDictionaries:YES replaceIntermediateObjects:YES];
-}
+    NSMutableDictionary *dict = self;
+    NSArray *keys = [keyPath componentsSeparatedByString:@"."];
+    for (NSUInteger i = 0; i + 1 < keys.count; i++) {
+        NSString *key = keys[i];
+        NSMutableDictionary *current = dict[key];
 
-- (void)setObject:(id)object forKeyPath:(NSString *)keyPath createIntermediateDictionaries:(BOOL)createIntermediates replaceIntermediateObjects:(BOOL)replaceIntermediates
-{
-    [NestedObjectSetters setObject:object onObject:self forKeyPath:keyPath createIntermediateDictionaries:createIntermediates replaceIntermediateObjects:replaceIntermediates];
+        if ([current isKindOfClass:NSDictionary.class] &&
+            ![current isKindOfClass:NSMutableDictionary.class]) {
+            current = current.mutableCopy;
+        }
+
+        if (!current || ![current isKindOfClass:NSMutableDictionary.class]) {
+            current = [NSMutableDictionary dictionary];
+        }
+
+        dict[key] = current;
+        dict = current;
+    }
+
+    dict[keys.lastObject] = object;
 }
 
 @end
