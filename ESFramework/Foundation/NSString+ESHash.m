@@ -148,7 +148,7 @@
 
 - (NSData *)base64DecodedData
 {
-    // Restore the URL-safe string to a original base64 encoded string
+    // Restore the URL-safe string to the original base64 encoded string
     NSString *string = [[self stringByReplacingOccurrencesOfString:@"-" withString:@"+"]
                         stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
     NSUInteger equalLength = string.length % 4;
