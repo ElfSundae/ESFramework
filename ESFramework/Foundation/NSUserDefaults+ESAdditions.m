@@ -10,28 +10,28 @@
 
 @implementation NSUserDefaults (ESAdditions)
 
-- (NSDictionary<NSString *, id> *)registeredDefaults
+- (NSDictionary<NSString *, id> *)registrationDictionary
 {
     return [self volatileDomainForName:NSRegistrationDomain];
 }
 
-- (void)setRegisteredDefaults:(NSDictionary<NSString *, id> *)registeredDefaults
+- (void)setRegistrationDictionary:(NSDictionary<NSString *, id> *)registration
 {
-    [self setVolatileDomain:registeredDefaults.copy forName:NSRegistrationDomain];
+    [self setVolatileDomain:registration.copy forName:NSRegistrationDomain];
 }
 
-- (void)setRegisteredObject:(nullable id)value forKey:(NSString *)defaultName
+- (void)setRegistrationObject:(nullable id)value forKey:(NSString *)defaultName
 {
-    NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
-    [registered setValue:value forKey:defaultName];
-    self.registeredDefaults = registered;
+    NSMutableDictionary *registration = self.registrationDictionary.mutableCopy;
+    [registration setValue:value forKey:defaultName];
+    self.registrationDictionary = registration;
 }
 
-- (void)removeRegisteredObjectsForKeys:(NSArray<NSString *> *)defaultNames
+- (void)removeRegistrationObjectsForKeys:(NSArray<NSString *> *)defaultNames
 {
-    NSMutableDictionary *registered = self.registeredDefaults.mutableCopy;
-    [registered removeObjectsForKeys:defaultNames];
-    self.registeredDefaults = registered;
+    NSMutableDictionary *registration = self.registrationDictionary.mutableCopy;
+    [registration removeObjectsForKeys:defaultNames];
+    self.registrationDictionary = registration;
 }
 
 @end

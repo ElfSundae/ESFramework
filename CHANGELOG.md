@@ -48,7 +48,7 @@
     + `-[NSMutableDictionary es_setValue:forKeyPath:]` => `-setObject:forKeyPath:`
     + NSOrderedSet methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`, `matchesOrderedSets` => `orderedSetPassingTest`
     + Add `es_` prefix for NSTimer methods: `-es_timerWithTimeInterval:`, `-es_scheduledTimerWithTimeInterval:`
-    + NSUserDefaults methods: `+registeredDefaults` => `-registeredDefaults`, `+registerDefaults:` => `-setRegisteredDefaults:`, `+unregisterDefaultsForKeys:` => `-removeRegisteredObjectsForKeys:`, `+replaceRegisteredObject:forKey:` => `-setRegisteredObject:forKey:`
+    + NSUserDefaults methods: `+registeredDefaults` => `-registrationDictionary`, `+registerDefaults:` => `-setRegistrationDictionary:`, `+unregisterDefaultsForKeys:` => `-removeRegistrationObjectsForKeys:`, `+replaceRegisteredObject:forKey:` => `-setRegistrationObject:forKey:`
     + UIDevice class methods to instance methods: `+platform` => `-modelIdentifier`, `+carrierString` => `-carrierName`, `+currentWiFiSSID` => `-WiFiSSID`, `+isJailbroken` => `-isJailbroken`, `+diskTotalSize` => `-diskTotalSpace`, `+diskFreeSize` => `-diskFreeSpace`, `+screenSizeString:` => `ESScreenSizeString()`
     + UIColor methods: `-es_RGBAString` => `-RGBAString`, `-es_HexString` => `-RGBHexString`
     + UIView methods: `-findViewWithClassInSuperviews:` => `-findSuperviewOf:`, `-findViewWithClassInSubviews:` => `-findSubviewOf:`, `-setShadowOffset:` => `-setLayerShadowWithColor:`, `-setBackgroundGradientColor:` => `setGradientBackgroundColor:`
