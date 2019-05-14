@@ -8,8 +8,9 @@
 
 #import "NSTimer+ESAdditions.h"
 #import <objc/runtime.h>
+#import "ESMacros.h"
 
-static const void *esTaskBlockKey = &esTaskBlockKey;
+ESDefineAssociatedObjectKey(esTaskBlock)
 
 @implementation NSTimer (ESAdditions)
 

@@ -7,11 +7,12 @@
 //
 
 #import "UIProgressView+ESStyle.h"
+#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "ESValue.h"
 #import "UIImage+ESAdditions.h"
 
-static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
+ESDefineAssociatedObjectKey(_esResizableHeight)
 
 @interface UIProgressView (_ESStyleInternal)
 @property (nonatomic) CGFloat _esResizableHeight;
@@ -22,13 +23,13 @@ static const void *_esProgressViewResizableKey = &_esProgressViewResizableKey;
 - (CGFloat)_esResizableHeight
 {
     float ret = 0;
-    ESFloatVal(&ret, objc_getAssociatedObject(self, _esProgressViewResizableKey));
+    ESFloatVal(&ret, objc_getAssociatedObject(self, _esResizableHeightKey));
     return (CGFloat)ret;
 }
 
 - (void)set_esResizableHeight:(CGFloat)_esResizableHeight
 {
-    objc_setAssociatedObject(self, _esProgressViewResizableKey, @(_esResizableHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, _esResizableHeightKey, @(_esResizableHeight), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

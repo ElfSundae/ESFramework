@@ -8,8 +8,9 @@
 
 #import "UIViewController+ESStatusOverlayView.h"
 #import <objc/runtime.h>
+#import "ESMacros.h"
 
-static const void *statusOverlayViewKey = &statusOverlayViewKey;
+ESDefineAssociatedObjectKey(statusOverlayView)
 
 @implementation UIViewController (ESStatusOverlayView)
 

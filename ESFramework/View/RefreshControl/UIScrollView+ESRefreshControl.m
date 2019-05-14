@@ -8,14 +8,15 @@
 
 #import "UIScrollView+ESRefreshControl.h"
 #import <objc/runtime.h>
+#import "ESMacros.h"
 
-static const void *_esRefreshControlKey = &_esRefreshControlKey;
+ESDefineAssociatedObjectKey(esRefreshControl)
 
 @implementation UIScrollView (ESRefreshControl)
 
 - (ESRefreshControl *)es_refreshControl
 {
-    return objc_getAssociatedObject(self, _esRefreshControlKey);
+    return objc_getAssociatedObject(self, esRefreshControlKey);
 }
 
 - (void)setEs_refreshControl:(ESRefreshControl *)refreshControl
@@ -27,7 +28,7 @@ static const void *_esRefreshControlKey = &_esRefreshControlKey;
     if (refreshControl) {
         [self addSubview:refreshControl];
     }
-    objc_setAssociatedObject(self, _esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
