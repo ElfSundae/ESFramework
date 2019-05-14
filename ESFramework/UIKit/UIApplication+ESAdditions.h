@@ -10,30 +10,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol ESUIApplicationDelegate <NSObject>
-@optional
-
-/**
- * Returns the channel that app submitted to.
- */
-- (NSString *)appChannel;
-
-/**
- * Returns the app ID in the App Store, used to generate the app Download link
- * and the app review link.
- */
-- (NSString *)appStoreID;
-
-@end
-
 @interface UIApplication (ESAdditions)
 
 @end
 
 @interface UIApplication (ESAppInfo)
 
-/// The name of the executable in the main bundle.
-@property (readonly) NSString *appName;
+/**
+ * The app name.
+ * @discussion The default value is the executable in the main bundle.
+ */
+@property (nonatomic, copy) NSString *appName;
+
+/**
+ * The channel that app submitted to.
+ * @discussion The default value is "App Store".
+ */
+@property (nullable, nonatomic, copy) NSString *appChannel;
+
+/**
+ * The app ID in the App Store, used to generate the app Download link and
+ * the app review link.
+ */
+@property (nullable, nonatomic, copy) NSString *appStoreID;
+
 @property (readonly) NSString *appBundleName;
 @property (readonly) NSString *appDisplayName;
 @property (readonly) NSString *appBundleIdentifier;
@@ -43,22 +43,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) NSString *appFullVersion;
 @property (readonly) BOOL isUIViewControllerBasedStatusBarAppearance;
 
-@property (nonatomic, readonly) NSDate *appLaunchDate;
-@property (nonatomic, readonly) NSTimeInterval appLaunchDuration;
+@property (readonly) NSDate *appLaunchDate;
+@property (readonly) NSTimeInterval appLaunchDuration;
 
 /**
  * Indicates whether the current app launch is a "fresh launch" which means the
  * first time of app launch after the app was installed or upgraded.
  */
-@property (nonatomic, readonly) BOOL isFreshLaunch;
+@property (readonly) BOOL isFreshLaunch;
 
 /**
  * Returns the app version before the current launching.
  */
-@property (nullable, nonatomic, readonly) NSString *appPreviousVersion;
-
-@property (nullable, readonly) NSString *appChannel;
-@property (nullable, readonly) NSString *appStoreID;
+@property (nullable, readonly) NSString *appPreviousVersion;
 
 /**
  * Returns the app analytics information.

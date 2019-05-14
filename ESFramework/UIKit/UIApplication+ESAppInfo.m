@@ -7,6 +7,7 @@
 //
 
 #import "UIApplication+ESAdditions.h"
+#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "ESValue.h"
 #import "UIDevice+ESAdditions.h"
@@ -15,6 +16,10 @@
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 
 #define ESAppPreviousVersionUserDefaultsKey @"ESAppCheckFreshLaunch"
+
+ESDefineAssociatedObjectKey(appName)
+ESDefineAssociatedObjectKey(appChannel)
+ESDefineAssociatedObjectKey(appStoreID)
 
 static NSDate *_gAppLaunchDate = nil;
 static NSString *_gAppPreviousVersion = nil;
@@ -42,7 +47,33 @@ static void ESCheckAppFreshLaunch(void)
 
 - (NSString *)appName
 {
-    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleExecutable"];
+    return (objc_getAssociatedObject(self, appNameKey)
+            ?: [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleExecutable"]);
+}
+
+- (void)setAppName:(NSString *)appName
+{
+    objc_setAssociatedObject(self, appNameKey, appName, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)appChannel
+{
+    return objc_getAssociatedObject(self, appChannelKey) ?: @"App Store";
+}
+
+- (void)setAppChannel:(NSString *)appChannel
+{
+    objc_setAssociatedObject(self, appChannelKey, appChannel, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSString *)appStoreID
+{
+    return objc_getAssociatedObject(self, appStoreIDKey);
+}
+
+- (void)setAppStoreID:(NSString *)appStoreID
+{
+    objc_setAssociatedObject(self, appStoreIDKey, appStoreID, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (NSString *)appBundleName
@@ -102,20 +133,6 @@ static void ESCheckAppFreshLaunch(void)
 - (NSString *)appPreviousVersion
 {
     return _gAppPreviousVersion;
-}
-
-- (NSString *)appChannel
-{
-    NSString *channel = nil;
-    ESInvokeSelector(self.delegate, @selector(appChannel), &channel);
-    return channel;
-}
-
-- (NSString *)appStoreID
-{
-    NSString *storeID = nil;
-    ESInvokeSelector(self.delegate, @selector(appStoreID), &storeID);
-    return storeID;
 }
 
 - (NSDictionary *)analyticsInfo
