@@ -21,7 +21,7 @@ ESDefineAssociatedObjectKey(appName)
 ESDefineAssociatedObjectKey(appChannel)
 ESDefineAssociatedObjectKey(appStoreID)
 
-static NSDate *_gAppLaunchDate = nil;
+static NSDate *_gAppStartupDate = nil;
 static NSString *_gAppPreviousVersion = nil;
 
 static void ESCheckAppFreshLaunch(void)
@@ -38,7 +38,7 @@ static void ESCheckAppFreshLaunch(void)
 
 + (void)load
 {
-    _gAppLaunchDate = [NSDate date];
+    _gAppStartupDate = [NSDate date];
 
     [AFNetworkReachabilityManager.sharedManager startMonitoring];
 
@@ -115,14 +115,14 @@ static void ESCheckAppFreshLaunch(void)
     return ESBoolValueWithDefault([NSBundle.mainBundle objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"], YES);
 }
 
-- (NSDate *)appLaunchDate
+- (NSDate *)appStartupDate
 {
-    return _gAppLaunchDate;
+    return _gAppStartupDate;
 }
 
-- (NSTimeInterval)appLaunchDuration
+- (NSTimeInterval)appUptime
 {
-    return fabs(self.appLaunchDate.timeIntervalSinceNow);
+    return fabs(self.appStartupDate.timeIntervalSinceNow);
 }
 
 - (BOOL)isFreshLaunch
@@ -157,7 +157,7 @@ static void ESCheckAppFreshLaunch(void)
     info[@"app_channel"] = self.appChannel ?: @"";
     info[@"app_version"] = self.appVersion;
     info[@"app_build_version"] = self.appBuildVersion;
-    info[@"app_launch"] = [NSString stringWithFormat:@"%.2f", self.appLaunchDuration];
+    info[@"app_uptime"] = [NSString stringWithFormat:@"%.2f", self.appUptime];
     if (self.isFreshLaunch) {
         info[@"app_fresh_launch"] = @YES;
         info[@"app_previous_version"] = self.appPreviousVersion;

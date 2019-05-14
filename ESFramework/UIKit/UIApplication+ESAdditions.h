@@ -43,8 +43,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) NSString *appFullVersion;
 @property (readonly) BOOL isUIViewControllerBasedStatusBarAppearance;
 
-@property (readonly) NSDate *appLaunchDate;
-@property (readonly) NSTimeInterval appLaunchDuration;
+/**
+ * Returns the date when the app was launched.
+ */
+@property (readonly) NSDate *appStartupDate;
+
+/**
+ * Returns the duration of the app has been running.
+ */
+@property (readonly) NSTimeInterval appUptime;
 
 /**
  * Indicates whether the current app launch is a "fresh launch" which means the
