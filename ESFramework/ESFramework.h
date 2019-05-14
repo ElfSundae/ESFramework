@@ -28,6 +28,7 @@
 #import "NSString+ESGTMHTML.h"
 #import "NSString+ESHash.h"
 #import "NSTimer+ESAdditions.h"
+#import "NSTimeZone+ESAdditions.h"
 #import "NSURL+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
 #import "NSUserDefaults+ESAdditions.h"

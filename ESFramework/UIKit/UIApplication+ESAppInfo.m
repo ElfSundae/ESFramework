@@ -11,6 +11,7 @@
 #import "ESValue.h"
 #import "UIDevice+ESAdditions.h"
 #import "ESNetworkHelper.h"
+#import "NSTimeZone+ESAdditions.h"
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 
 #define ESAppPreviousVersionUserDefaultsKey @"ESAppCheckFreshLaunch"
@@ -117,7 +118,7 @@ static void ESCheckAppFreshLaunch(void)
     info[@"jailbroken"] = @(device.isJailbroken);
     info[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
-    info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.secondsFromGMT / 3600);
+    info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.hoursFromGMT);
     info[@"locale"] = NSLocale.currentLocale.localeIdentifier;
 
     info[@"app_name"] = self.appName;
