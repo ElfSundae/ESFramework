@@ -18,27 +18,6 @@
 
 @implementation ESApp (_AppInfo)
 
-- (NSString *)userAgent
-{
-    UIApplication *app = UIApplication.sharedApplication;
-    // Split with '; '
-    NSMutableString *ua = [NSMutableString string];
-    [ua appendFormat:@"%@/%@", app.appName, app.appVersion];
-    [ua appendFormat:@" (%@; %@ %@; Scale/%0.2f; Screen/%@",
-     [UIDevice.currentDevice model],
-     [UIDevice.currentDevice systemName],
-     [UIDevice.currentDevice systemVersion],
-     [UIScreen mainScreen].scale,
-     ESScreenSizeString(UIDevice.currentDevice.screenSizeInPoints)];
-    [ua appendFormat:@"; Locale/%@", NSLocale.currentLocale.localeIdentifier];
-    [ua appendFormat:@"; Network/%@", [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString];
-    if (app.appChannel) {
-        [ua appendFormat:@"; Channel/%@", app.appChannel];
-    }
-    [ua appendFormat:@")"];
-    return [ua copy];
-}
-
 + (NSString *)defaultUserAgentOfWebView
 {
     return [_ESWebViewUserAgentFetcher defaultUserAgent];
@@ -48,7 +27,7 @@
 {
     NSMutableString *ua = [NSMutableString string];
     NSString *defaultUA = [[self class] defaultUserAgentOfWebView];
-    NSString *myUserAgent = self.userAgent;
+    NSString *myUserAgent = UIApplication.sharedApplication.userAgentForHTTPRequest;
     if (defaultUA) {
         [ua appendString:defaultUA];
     } else {

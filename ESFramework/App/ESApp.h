@@ -72,13 +72,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 @interface ESApp (_AppInfo)
 
 /**
- * Returns the User Agent for HTTP request.
- *
- * e.g. `ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Network/WiFi; Channel/App Store)`
- */
-- (NSString *)userAgent;
-
-/**
  * The default user agent of UIWebview.
  * The value will be fetched on a background thread after app launched, and it will cost about 100~300ms time.
  *
