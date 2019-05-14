@@ -100,102 +100,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 @interface ESApp (_AppInfo)
 
 /**
- * Returns the value associated with the specified key in the main bundle's Info.plist file.
- */
-+ (id)objectForInfoDictionaryKey:(NSString *)key;
-
-/**
- * Returns the value of CFBundleIdentifier in the main bundle's Info.plist file.
- */
-+ (NSString *)appBundleIdentifier;
-
-/**
- * Returns the value of CFBundleShortVersionString in the main bundle's Info.plist file.
- * If the value is not found, it will return the value of CFBundleVersion or @"1.0"
- */
-+ (NSString *)appVersion;
-
-/**
- * Returns the value of CFBundleVersion in the main bundle's Info.plist file.
- * If the value is not found, @"1" will be returned.
- */
-+ (NSString *)appBuildVersion;
-
-/**
- * CFBundleShortVersionString + CFBundleVersion
- * e.g. "1.2.1(20150433.387)", "1.2.0", "2015988"
- */
-+ (NSString *)appVersionWithBuildVersion;
-
-/**
- * UIViewControllerBasedStatusBarAppearance (Boolean - iOS) specifies whether the status bar appearance
- * is based on the style preferred by the view controller that is currently under the status bar.
- * When this key is not present or its value is set to YES, the view controller determines the
- * status bar style. When the key is set to NO, view controllers (or the app) must each set the
- * status bar style explicitly using the UIApplication object.
- *
- * This key is supported in iOS 7.0 and later.
- *
- * @see https://developer.apple.com/library/mac/documentation/General/Reference/InfoPlistKeyReference/Articles/iPhoneOSKeys.html#//apple_ref/doc/uid/TP40009252-SW29
- */
-+ (BOOL)isUIViewControllerBasedStatusBarAppearance;
-
-/**
- * The date when the app launched.
- */
-+ (NSDate *)appLaunchDate;
-
-/**
- * The time duration after app launched.
- */
-+ (NSTimeInterval)appLaunchDuration;
-
-/**
- * Returns the value of CFBundleExecutable in the main bundle's Info.plist file.
- * If the value is not found, it will return the app process name.
- */
-- (NSString *)appName;
-
-/**
- * Returns the value of CFBundleDisplayName in the main bundle's Info.plist file.
- * If the value is not found, it will return the value of CFBundleName or @"".
- */
-- (NSString *)appDisplayName;
-
-/**
- * e.g.
- *
- * @code
- * {
- *     "os": "iOS",
- *     "os_version": "9.3.3",
- *     "model": "iPhone",
- *     "platform": "iPhone7,1",
- *     "name": "Elf Sundae's iPhone",
- *     "jailbroken": 1,
- *     "screen_size": "414x736",
- *     "screen_scale": "3.00",
- *     "timezone_gmt": 8,
- *     "locale": "zh_CN",
- *     "carrier": "China Mobile",
- *     "network": "WiFi",
- *     "ssid": "0x123.com",
- *     "local_ip": "192.168.3.101",
- *     "app_name": "Example",
- *     "app_identifier": "com.0x123.ESFramework.Example",
- *     "app_version": "1.3",
- *     "app_build_version": 23,
- *     "app_channel": "App Store",
- *     "app_launch": "0.35",
- *     "app_fresh_launch": 1,
- *     "app_previous_version": "1.0"
- * }
- * @endcode
- *
- */
-- (NSDictionary *)analyticsInformation;
-
-/**
  * Returns the User Agent for HTTP request.
  *
  * e.g. `ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Network/WiFi; Channel/App Store)`
@@ -263,14 +167,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 #pragma mark - Helper
 
 @interface ESApp (_Helper)
-
-/**
- * Checks whether the current launch is a **fresh launch** which means that
- * this is the first time launched by user, after the app was installed or updated.
- *
- * @param previousAppVersion return the previous app version, it may be the same as the current app version if it's not a fresh launch.
- */
-+ (BOOL)isFreshLaunch:(NSString *__autoreleasing *)previousAppVersion;
 
 /**
  * Simulate low memory warning.

@@ -113,6 +113,7 @@
 		E7A8D491227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPCookieStorage+ESAdditions.m"; sourceTree = "<group>"; };
 		E7C5ACC122841AB200005804 /* NSFileManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ESAdditions.h"; sourceTree = "<group>"; };
 		E7C5ACC222841AB200005804 /* NSFileManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ESAdditions.m"; sourceTree = "<group>"; };
+		E7C5ACC6228977AD00005804 /* UIApplication+ESAppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ESAppInfo.m"; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESAdditions.h"; sourceTree = "<group>"; };
@@ -246,6 +247,7 @@
 				E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */,
 				E7A8D488227F0F0F0013A7E8 /* UIApplication+ESAdditions.h */,
 				E7A8D489227F0F0F0013A7E8 /* UIApplication+ESAdditions.m */,
+				E7C5ACC6228977AD00005804 /* UIApplication+ESAppInfo.m */,
 				E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */,
 				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
 				E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */,

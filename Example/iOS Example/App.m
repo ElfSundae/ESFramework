@@ -20,7 +20,7 @@
         self.rootViewController =
             [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
 
-    NSLog(@"%@", [ESApp sharedApp].analyticsInformation);
+    NSLog(@"%@", application.analyticsInfo);
     NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:nil]);
 
     [self.window makeKeyAndVisible];

@@ -14,135 +14,16 @@
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "_ESWebViewUserAgentFetcher.h"
 #import "ESNetworkHelper.h"
-
-static NSDate *__gAppLaunchDate = nil;
+#import "UIApplication+ESAdditions.h"
 
 @implementation ESApp (_AppInfo)
 
-+ (void)load
-{
-    __gAppLaunchDate = [NSDate date];
-
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-}
-
-+ (id)objectForInfoDictionaryKey:(NSString *)key
-{
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:key];
-}
-
-+ (NSString *)appBundleIdentifier
-{
-    return [self objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
-}
-
-+ (NSString *)appVersion
-{
-    NSString *version = ESStringValueWithDefault([self objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
-                                                 [self objectForInfoDictionaryKey:@"CFBundleVersion"]);
-    return version ?: @"1.0";
-}
-
-+ (NSString *)appBuildVersion
-{
-    return ESStringValueWithDefault([self objectForInfoDictionaryKey:@"CFBundleVersion"], @"1");
-}
-
-+ (NSString *)appVersionWithBuildVersion
-{
-    return [NSString stringWithFormat:@"%@ (%@)", [self appVersion], [self appBuildVersion]];
-}
-
-+ (BOOL)isUIViewControllerBasedStatusBarAppearance
-{
-    return ESBoolValueWithDefault([self objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"],
-                                  YES);
-}
-
-+ (NSDate *)appLaunchDate
-{
-    return __gAppLaunchDate ?: (__gAppLaunchDate = [NSDate date]);
-}
-
-+ (NSTimeInterval)appLaunchDuration
-{
-    return fabs([[self appLaunchDate] timeIntervalSinceNow]);
-}
-
-- (NSString *)appName
-{
-    return ESStringValueWithDefault([[self class] objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey],
-                                    [NSProcessInfo processInfo].processName);
-}
-
-- (NSString *)appDisplayName
-{
-    return ESStringValueWithDefault([[self class] objectForInfoDictionaryKey:@"CFBundleDisplayName"],
-                                    [[self class] objectForInfoDictionaryKey:@"CFBundleName"]);
-}
-
-- (NSDictionary *)analyticsInformation
-{
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
-
-    UIDevice *device = UIDevice.currentDevice;
-    result[@"os"] = [device systemName];
-    result[@"os_version"] = [device systemVersion];
-    result[@"model"] = [device model];
-    result[@"platform"] = [device modelIdentifier];
-    result[@"name"] = [device name];
-    result[@"jailbroken"] = [device isJailbroken] ? @1 : @0;
-    result[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
-    result[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", [UIScreen mainScreen].scale];
-    result[@"timezone_gmt"] = @([[NSTimeZone localTimeZone] secondsFromGMT] / 3600);
-    result[@"locale"] = NSLocale.currentLocale.localeIdentifier;
-    NSString *carrier = [ESNetworkHelper getCarrierName];
-    if (carrier) {
-        result[@"carrier"] = carrier;
-    }
-    result[@"network"] = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString;
-
-    NSString *SSID = [ESNetworkHelper getWiFiSSID];
-    if (SSID) {
-        result[@"ssid"] = SSID;
-    }
-    NSString *BSSID = [ESNetworkHelper getWiFiBSSID];
-    if (BSSID) {
-        result[@"bssid"] = BSSID;
-    }
-
-    NSString *localIPv6 = nil;
-    NSString *localIP = [ESNetworkHelper getIPAddressForWiFi:&localIPv6];
-    if (localIP) {
-        result[@"local_ip"] = localIP;
-    }
-    if (localIPv6) {
-        result[@"local_ipv6"] = localIPv6;
-    }
-
-    result[@"app_name"] = self.appName;
-    result[@"app_identifier"] = [[self class] appBundleIdentifier];
-    result[@"app_version"] = [[self class] appVersion];
-    result[@"app_build_version"] = [[self class] appBuildVersion];
-    result[@"app_channel"] = self.appChannel ?: @"";
-    result[@"app_launch"] = [NSString stringWithFormat:@"%.2f", [[self class] appLaunchDuration]];
-
-    NSString *__autoreleasing previousAppVersion = nil;
-    if ([[self class] isFreshLaunch:&previousAppVersion]) {
-        result[@"app_fresh_launch"] = @(YES);
-        if (previousAppVersion) {
-            result[@"app_previous_version"] = previousAppVersion;
-        }
-    }
-
-    return [result copy];
-}
-
 - (NSString *)userAgent
 {
+    UIApplication *app = UIApplication.sharedApplication;
     // Split with '; '
     NSMutableString *ua = [NSMutableString string];
-    [ua appendFormat:@"%@/%@", self.appName, [[self class] appVersion]];
+    [ua appendFormat:@"%@/%@", app.appName, app.appVersion];
     [ua appendFormat:@" (%@; %@ %@; Scale/%0.2f; Screen/%@",
      [UIDevice.currentDevice model],
      [UIDevice.currentDevice systemName],
@@ -188,7 +69,7 @@ static NSDate *__gAppLaunchDate = nil;
 {
     NSMutableArray *result = [NSMutableArray array];
 
-    NSArray *urlTypes = [self objectForInfoDictionaryKey:@"CFBundleURLTypes"];
+    NSArray *urlTypes = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"];
     if (ESIsArrayWithItems(urlTypes)) {
         NSPredicate *predicate = nil;
         if (ESIsStringWithAnyText(identifier)) {
@@ -215,7 +96,7 @@ static NSDate *__gAppLaunchDate = nil;
 {
     NSMutableArray *result = [NSMutableArray array];
 
-    NSArray *urlTypes = [self objectForInfoDictionaryKey:@"CFBundleURLTypes"];
+    NSArray *urlTypes = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"];
     if (ESIsArrayWithItems(urlTypes)) {
         for (NSDictionary *dict in urlTypes) {
             if ([dict isKindOfClass:[NSDictionary class]]) {

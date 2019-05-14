@@ -16,37 +16,6 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 @implementation ESApp (_Helper)
 
-+ (void)load
-{
-    [self isFreshLaunch:NULL];
-}
-
-+ (BOOL)isFreshLaunch:(NSString *__autoreleasing *)previousAppVersion
-{
-#define ESAppCheckFreshLaunchUserDefaultsKey @"ESAppCheckFreshLaunch"
-    static NSString *__gPreviousVersion = nil;
-    static BOOL __gIsFreshLaunch = NO;
-
-    static dispatch_once_t onceTokenCheckAppFreshLaunch;
-    dispatch_once(&onceTokenCheckAppFreshLaunch, ^{
-        __gPreviousVersion = [NSUserDefaults.standardUserDefaults stringForKey:ESAppCheckFreshLaunchUserDefaultsKey];
-        NSString *currentVersion = [ESApp appVersion];
-
-        if (__gPreviousVersion && [__gPreviousVersion isEqualToString:currentVersion]) {
-            __gIsFreshLaunch = NO;
-        } else {
-            __gIsFreshLaunch = YES;
-            [NSUserDefaults.standardUserDefaults setObject:currentVersion forKey:ESAppCheckFreshLaunchUserDefaultsKey];
-        }
-    });
-
-    if (previousAppVersion) {
-        *previousAppVersion = [__gPreviousVersion copy];
-    }
-
-    return __gIsFreshLaunch;
-}
-
 + (void)simulateLowMemoryWarning
 {
     SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");

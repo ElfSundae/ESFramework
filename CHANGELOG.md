@@ -5,6 +5,8 @@
 - Updated iOS deployment target to 9.0.
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
 - Made the main queue dispatching functions safer.
+- Moved ESApp+AppInfo methods to UIApplication category, such as `+appName`, `+appVersion`, `-analyticsInformation` etc.
+- Changed keys for `-[UIApplication analyticsInfo]`: `platform` => `model_identifier`, `name` => `device_name`.
 - Added:
     + `BOOL es_dispatch_is_main_queue(void)`
     + `BOOL ESIsOrderedSetWithItems(id)`
