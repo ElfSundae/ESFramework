@@ -133,7 +133,7 @@ static void ESCheckAppFreshLaunch(void)
 
     info[@"network"] = AFNetworkReachabilityManager.sharedManager.networkReachabilityStatusString;
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
-    
+
     NSString *carrier = [ESNetworkHelper getCarrierName];
     if (carrier) {
         info[@"carrier"] = carrier;
