@@ -107,13 +107,13 @@ static void ESCheckAppFreshLaunch(void)
 - (NSDictionary *)analyticsInfo
 {
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    
     UIDevice *device = UIDevice.currentDevice;
     info[@"os"] = device.systemName;
     info[@"os_version"] = device.systemVersion;
     info[@"model"] = device.model;
     info[@"model_identifier"] = device.modelIdentifier;
     info[@"model_name"] = device.modelName;
-
     info[@"device_name"] = device.name;
     info[@"jailbroken"] = @(device.isJailbroken);
     info[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
@@ -136,26 +136,20 @@ static void ESCheckAppFreshLaunch(void)
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *carrier = [ESNetworkHelper getCarrierName];
-    if (carrier) {
-        info[@"carrier"] = carrier;
-    }
-    NSString *SSID = [ESNetworkHelper getWiFiSSID];
-    if (SSID) {
-        info[@"ssid"] = SSID;
-    }
-    NSString *BSSID = [ESNetworkHelper getWiFiBSSID];
-    if (BSSID) {
-        info[@"bssid"] = BSSID;
-    }
+    if (carrier) info[@"carrier"] = carrier;
 
-    NSString *localIPv6 = nil;
-    NSString *localIP = [ESNetworkHelper getIPAddressForWiFi:&localIPv6];
-    if (localIP) {
-        info[@"local_ip"] = localIP;
-    }
-    if (localIPv6) {
-        info[@"local_ipv6"] = localIPv6;
-    }
+    NSString *SSID = [ESNetworkHelper getWiFiSSID];
+    if (SSID) info[@"ssid"] = SSID;
+    NSString *BSSID = [ESNetworkHelper getWiFiBSSID];
+    if (BSSID) info[@"bssid"] = BSSID;
+
+    NSString *ipv6 = nil;
+    NSString *ip = [ESNetworkHelper getIPAddressForWiFi:&ipv6];
+    if (ip) info[@"local_ip"] = ip;
+    if (ipv6) info[@"local_ipv6"] = ipv6;
+    ip = [ESNetworkHelper getIPAddressForCellular:&ipv6];
+    if (ip) info[@"wwan_ip"] = ip;
+    if (ipv6) info[@"wwan_ipv6"] = ipv6;
 
     return [info copy];
 }

@@ -43,6 +43,37 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Returns the app analytics information.
+ * @code
+ * {
+ *     "os" : "iOS",
+ *     "os_version" : "12.2",
+ *     "model" : "iPhone",
+ *     "model_identifier" : "iPhone9,2",
+ *     "model_name" : "iPhone 7 Plus",
+ *     "device_name" : "Elf Sundae's iPhone",
+ *     "jailbroken" : 0,
+ *     "screen_size" : "414x736",
+ *     "screen_scale" : "3.00",
+ *     "timezone_gmt" : 8,
+ *     "locale" : "zh_CN",
+ *     "app_name" : "iOS Example",
+ *     "app_identifier" : "com.0x123.ESFramework",
+ *     "app_version" : "2.1",
+ *     "app_build_version" : 45,
+ *     "app_launch" : "0.27",
+ *     "app_fresh_launch" : 1,
+ *     "app_previous_version" : "1.3",
+ *     "network" : "WiFi",
+ *     "wwan" : "4G",
+ *     "carrier" : "中国电信",
+ *     "ssid" : "Elf Sundae's MBP",
+ *     "bssid" : "20:c9:d0:e1:78:c9",
+ *     "local_ip" : "192.168.2.21",
+ *     "local_ipv6" : "fe80::1c04:cf4e:2d7c:c533",
+ *     "wwan_ip" : "10.14.58.61",
+ *     "wwan_ipv6" : "fe80::18e8:e230:e459:4f68",
+ * }
+ * @endcode
  */
 - (NSDictionary *)analyticsInfo;
 
