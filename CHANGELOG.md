@@ -103,6 +103,8 @@
     + UIBarButtonItem block methods
     + `-[UIViewController currentVisibleViewController]`
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`
+    + ESApp methods: `-appWebServerTimeZone`
+    + `+[NSDateFormatter appServerDateFormatterWith...Style]`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API

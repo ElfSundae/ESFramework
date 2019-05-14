@@ -83,14 +83,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
  */
 - (NSString *)appStoreID;
 
-/**
- * Returns the timeZone used by your web/API server/backend, it used to convert datetime between server and local.
- * Default is "GMT"
- *
- * e.g. [NSTimeZone timeZoneWithName:@"Asia/Shanghai"]
- */
-- (NSTimeZone *)appWebServerTimeZone;
-
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,24 +268,5 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
  * If `shouldReturn` is YES, it will return back to this app after phone call.
  */
 + (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
-
-@end
-
-@interface NSDateFormatter (_ESAppAdditions)
-
-/**
- * Shared NSDateFormatter instance with time zone that returned from -[ESApp appWebServerTimeZone]
- */
-
-/// "yyyy'-'MM'-'dd HH':'mm':'ss"
-+ (NSDateFormatter *)appServerDateFormatterWithFullStyle;
-/// yyyy'-'MM'-'dd HH':'mm"
-+ (NSDateFormatter *)appServerDateFormatterWithFullDateStyle;
-/// "MM'-'dd HH':'mm"
-+ (NSDateFormatter *)appServerDateFormatterWithShortDateStyle;
-/// "MM'-'dd HH':'mm':'ss"
-+ (NSDateFormatter *)appServerDateFormatterWithShortDateSecondsStyle;
-/// "HH':'mm";
-+ (NSDateFormatter *)appServerDateFormatterWithOnlyTimeStyle;
 
 @end

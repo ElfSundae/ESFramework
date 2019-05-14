@@ -14,7 +14,6 @@
 		E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _ESWebViewUserAgentFetcher.m; sourceTree = "<group>"; };
 		E74E71072272FBD8008C7943 /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		E74E71082272FBD8008C7943 /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
-		E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+ESAppAdditions.m"; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESHash.h"; sourceTree = "<group>"; };
@@ -144,7 +143,6 @@
 				E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */,
 				E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */,
 				E76CA27A1CA50D1100EDBB8E /* ESApp+Notifications.m */,
-				E75077F31CB1B7D8007153E5 /* NSDateFormatter+ESAppAdditions.m */,
 				E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */,
 				E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */,
 			);

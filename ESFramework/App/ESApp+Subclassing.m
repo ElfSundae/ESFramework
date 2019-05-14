@@ -20,9 +20,4 @@
     return nil;
 }
 
-- (NSTimeZone *)appWebServerTimeZone
-{
-    return [NSTimeZone timeZoneWithName:@"GMT"];
-}
-
 @end
