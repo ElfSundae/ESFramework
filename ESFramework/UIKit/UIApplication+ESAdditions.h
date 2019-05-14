@@ -94,6 +94,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSDictionary *)analyticsInfo;
 
+/**
+ * Returns the User Agent for HTTP requests.
+ * @code
+ * "ExampleApp/1.3 (iPhone; iOS 12.2; Channel/dev; Scale/3.00; Screen/414x736; Locale/zh_CN; Network/WiFi)"
+ * @endcode
+ */
+- (NSString *)userAgentForHTTPRequest;
+
 @end
 
 NS_ASSUME_NONNULL_END
