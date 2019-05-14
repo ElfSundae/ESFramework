@@ -32,8 +32,8 @@
      ESScreenSizeString(UIDevice.currentDevice.screenSizeInPoints)];
     [ua appendFormat:@"; Locale/%@", NSLocale.currentLocale.localeIdentifier];
     [ua appendFormat:@"; Network/%@", [AFNetworkReachabilityManager sharedManager].networkReachabilityStatusString];
-    if (self.appChannel) {
-        [ua appendFormat:@"; Channel/%@", self.appChannel];
+    if (app.appChannel) {
+        [ua appendFormat:@"; Channel/%@", app.appChannel];
     }
     [ua appendFormat:@")"];
     return [ua copy];
