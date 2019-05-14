@@ -102,9 +102,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSDictionary *)analyticsInfo;
 
 /**
- * Returns the User Agent for HTTP requests.
+ * Returns the user agent for HTTP requests.
  * @code
+ * // Example:
  * "ExampleApp/1.3 (iPhone; iOS 12.2; Channel/dev; Scale/3.00; Screen/414x736; Locale/zh_CN; Network/WiFi)"
+ *
+ * // Set user agent for HTTP request:
+ * [request setValue:UIApplication.sharedApplication.userAgentForHTTPRequest forHTTPHeaderField:@"User-Agent"];
+ *
+ * // Set user agent for WKWebView configuration:
+ * webViewConfiguration.applicationNameForUserAgent = UIApplication.sharedApplication.userAgentForHTTPRequest;
  * @endcode
  */
 - (NSString *)userAgentForHTTPRequest;
