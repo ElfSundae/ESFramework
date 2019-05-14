@@ -104,10 +104,24 @@ static void ESCheckAppFreshLaunch(void)
     return _gAppPreviousVersion;
 }
 
+- (NSString *)appChannel
+{
+    NSString *channel = nil;
+    ESInvokeSelector(self.delegate, @selector(appChannel), &channel);
+    return channel;
+}
+
+- (NSString *)appStoreID
+{
+    NSString *storeID = nil;
+    ESInvokeSelector(self.delegate, @selector(appStoreID), &storeID);
+    return storeID;
+}
+
 - (NSDictionary *)analyticsInfo
 {
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
-    
+
     UIDevice *device = UIDevice.currentDevice;
     info[@"os"] = device.systemName;
     info[@"os_version"] = device.systemVersion;
@@ -123,6 +137,7 @@ static void ESCheckAppFreshLaunch(void)
 
     info[@"app_name"] = self.appName;
     info[@"app_identifier"] = self.appBundleIdentifier;
+    info[@"app_channel"] = self.appChannel ?: @"";
     info[@"app_version"] = self.appVersion;
     info[@"app_build_version"] = self.appBuildVersion;
     info[@"app_launch"] = [NSString stringWithFormat:@"%.2f", self.appLaunchDuration];
@@ -130,7 +145,6 @@ static void ESCheckAppFreshLaunch(void)
         info[@"app_fresh_launch"] = @YES;
         info[@"app_previous_version"] = self.appPreviousVersion;
     }
-    // info[@"app_channel"] = self.appChannel ?: @"";
 
     info[@"network"] = AFNetworkReachabilityManager.sharedManager.networkReachabilityStatusString;
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];

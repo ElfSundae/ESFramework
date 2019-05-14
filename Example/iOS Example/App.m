@@ -27,6 +27,11 @@
     return YES;
 }
 
+- (NSString *)appChannel
+{
+    return @"dev";
+}
+
 - (NSString *)appStoreID
 {
     return @"12345678";

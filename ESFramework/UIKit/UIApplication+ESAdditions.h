@@ -10,6 +10,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol ESUIApplicationDelegate <NSObject>
+@optional
+
+/**
+ * Returns the channel that app submitted to.
+ */
+- (NSString *)appChannel;
+
+/**
+ * Returns the app ID in the App Store, used to generate the app Download link
+ * and the app review link.
+ */
+- (NSString *)appStoreID;
+
+@end
+
 @interface UIApplication (ESAdditions)
 
 @end
@@ -41,6 +57,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nullable, nonatomic, readonly) NSString *appPreviousVersion;
 
+@property (nullable, readonly) NSString *appChannel;
+@property (nullable, readonly) NSString *appStoreID;
+
 /**
  * Returns the app analytics information.
  * @code
@@ -58,6 +77,7 @@ NS_ASSUME_NONNULL_BEGIN
  *     "locale" : "zh_CN",
  *     "app_name" : "iOS Example",
  *     "app_identifier" : "com.0x123.ESFramework",
+ *     "app_channel" : "App Store",
  *     "app_version" : "2.1",
  *     "app_build_version" : 45,
  *     "app_launch" : "0.27",
