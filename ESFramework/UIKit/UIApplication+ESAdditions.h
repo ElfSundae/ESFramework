@@ -92,7 +92,7 @@ NS_ASSUME_NONNULL_BEGIN
  * }
  * @endcode
  */
-- (NSDictionary *)analyticsInfo;
+@property (nonatomic, readonly) NSDictionary *analyticsInfo;
 
 @end
 

@@ -20,21 +20,14 @@
         self.rootViewController =
             [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
 
+    application.appChannel = @"dev";
+    application.appStoreID = @"12345678";
+
     NSLog(@"%@", application.analyticsInfo);
-    NSLog(@"%@", [ESStoreHelper appLinkForAppID:self.appStoreID storeCountryCode:nil]);
+    NSLog(@"%@", [ESStoreHelper appLinkForAppID:application.appStoreID storeCountryCode:nil]);
 
     [self.window makeKeyAndVisible];
     return YES;
-}
-
-- (NSString *)appChannel
-{
-    return @"dev";
-}
-
-- (NSString *)appStoreID
-{
-    return @"12345678";
 }
 
 @end

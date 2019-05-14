@@ -8,7 +8,7 @@
 
 #import <ESFramework/ESFramework.h>
 
-@interface App : ESApp <ESUIApplicationDelegate>
+@interface App : ESApp
 
 @property (nonatomic, strong) UINavigationController *rootViewController;
 
