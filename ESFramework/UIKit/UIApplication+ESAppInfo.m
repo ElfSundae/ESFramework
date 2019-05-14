@@ -7,13 +7,13 @@
 //
 
 #import "UIApplication+ESAdditions.h"
+#import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "ESMacros.h"
 #import "ESHelpers.h"
 #import "ESValue.h"
 #import "UIDevice+ESAdditions.h"
 #import "ESNetworkHelper.h"
 #import "NSTimeZone+ESAdditions.h"
-#import "AFNetworkReachabilityManager+ESAdditions.h"
 
 #define ESAppPreviousVersionUserDefaultsKey @"ESAppCheckFreshLaunch"
 
