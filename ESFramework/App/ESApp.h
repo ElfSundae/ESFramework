@@ -171,16 +171,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
  */
 + (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^)(void))completion;
 
-/**
- * Checks if the application state is UIApplicationStateActive
- */
-+ (BOOL)isInForeground;
-
-/**
- * Sets `applicationIconBadgeNumber` to zero.
- */
-+ (void)clearApplicationIconBadgeNumber;
-
 /// =============================================
 /// @name Open URL
 /// =============================================

@@ -179,11 +179,6 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
     [[self rootViewController] dismissViewControllerAnimated:animated completion:completion];
 }
 
-+ (BOOL)isInForeground
-{
-    return ([UIApplication sharedApplication].applicationState == UIApplicationStateActive);
-}
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - OpenURL
