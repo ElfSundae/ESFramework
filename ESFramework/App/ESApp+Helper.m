@@ -16,21 +16,6 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
 
 @implementation ESApp (_Helper)
 
-+ (void)simulateLowMemoryWarning
-{
-    SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");
-    if ([[UIApplication sharedApplication] respondsToSelector:memoryWarningSel]) {
-        printf("Simulate low memory warning\n");
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [[UIApplication sharedApplication] performSelector:memoryWarningSel];
-#pragma clang diagnostic pop
-    } else {
-        printf("UIApplication no longer responds \"_performMemoryWarning\" selector.\n");
-        exit(1);
-    }
-}
-
 + (void)enableMultitasking
 {
     if ([self isMultitaskingEnabled]) {

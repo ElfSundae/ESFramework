@@ -95,13 +95,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 @interface ESApp (_Helper)
 
 /**
- * Simulate low memory warning.
- *
- * @warning Don't use this in production because it uses private API.
- */
-+ (void)simulateLowMemoryWarning;
-
-/**
  * Enable multitasking.
  * App in background can continue running 10 mins on iOS6-, 3 mins on iOS7+.
  */

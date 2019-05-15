@@ -129,4 +129,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+@interface UIApplication (ESHelper)
+
+/**
+ * Simulate low memory warning, just for testing.
+ *
+ * @warning Don't use this method in production because it uses private API.
+ */
+- (void)simulateMemoryWarning;
+
+@end
+
 NS_ASSUME_NONNULL_END
