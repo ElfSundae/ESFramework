@@ -184,13 +184,6 @@ static UIBackgroundTaskIdentifier __esBackgroundTaskIdentifier = 0;
     return ([UIApplication sharedApplication].applicationState == UIApplicationStateActive);
 }
 
-+ (void)clearApplicationIconBadgeNumber
-{
-    if ([UIApplication sharedApplication].applicationIconBadgeNumber > 0) {
-        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    }
-}
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - OpenURL

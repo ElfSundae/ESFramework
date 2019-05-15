@@ -103,7 +103,7 @@
     + UIBarButtonItem block methods
     + `-[UIViewController currentVisibleViewController]`
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`
-    + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`
+    + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`, `+clearApplicationIconBadgeNumber`
     + `+[NSDateFormatter appServerDateFormatterWith...Style]`
 - Refactored:
     + `NSObject (ESAutoCoding)`
