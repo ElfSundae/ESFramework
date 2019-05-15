@@ -65,6 +65,17 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, readonly) NSString *appPreviousVersion;
 
 /**
+ * Returns all URL schemes (http, ftp, and so on) supported by the app.
+ * @discussion All URL Types specified in the Info.plist file.
+ */
+- (NSSet *)allURLSchemes;
+
+/**
+ * Returns all URL schemes that identified by the given identifier.
+ */
+- (NSSet *)URLSchemesForIdentifier:(nullable NSString *)identifier;
+
+/**
  * Returns the app analytics information.
  * @code
  * {

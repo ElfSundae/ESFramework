@@ -135,6 +135,44 @@ static void ESCheckAppFreshLaunch(void)
     return _gAppPreviousVersion;
 }
 
+- (NSSet *)allURLSchemes
+{
+    NSMutableSet *result = [NSMutableSet set];
+
+    for (NSDictionary *dict in [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"]) {
+        NSArray *schemes = dict[@"CFBundleURLSchemes"];
+        if ([schemes isKindOfClass:NSArray.class]) {
+            [result addObjectsFromArray:schemes];
+        }
+    }
+
+    return result.copy;
+}
+
+- (NSSet *)URLSchemesForIdentifier:(NSString *)identifier
+{
+    NSMutableSet *result = [NSMutableSet set];
+
+    NSArray *urlTypes = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"];
+    if (ESIsArrayWithItems(urlTypes)) {
+        NSPredicate *predicate = nil;
+        if (ESIsStringWithAnyText(identifier)) {
+            predicate = [NSPredicate predicateWithFormat:@"CFBundleURLName == %@", identifier];
+        } else {
+            predicate = [NSPredicate predicateWithFormat:@"CFBundleURLName == NULL OR CFBundleURLName == ''"];
+        }
+        NSArray *filtered = [urlTypes filteredArrayUsingPredicate:predicate];
+        for (NSDictionary *dict in filtered) {
+            NSArray *schemes = dict[@"CFBundleURLSchemes"];
+            if ([schemes isKindOfClass:NSArray.class]) {
+                [result addObjectsFromArray:schemes];
+            }
+        }
+    }
+
+    return [result copy];
+}
+
 - (NSDictionary *)analyticsInfo
 {
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
