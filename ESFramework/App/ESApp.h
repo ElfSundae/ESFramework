@@ -72,25 +72,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 @interface ESApp (_AppInfo)
 
 /**
- * The default user agent of UIWebview.
- * The value will be fetched on a background thread after app launched, and it will cost about 100~300ms time.
- *
- * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H143 ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
- */
-+ (NSString *)defaultUserAgentOfWebView;
-
-/**
- * Returns the User Agent for UIWebView.
- *
- * This User Agent for UIWebView, it registered via +[NSUserDefaults registerDefaults:]
- * after app launched.
- * Subclass can return nil to use the iOS default User Agent for UIWebView.
- *
- * e.g. `Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12H143 ESDemo/1.0.0 (iPhone; iOS 8.4; Scale/3.00; Screen/1242x2208; Locale/zh_CN; Network/WiFi; Channel/App Store; OpenUDID/cf7cff0aaeea94806e247bf4e47a8ff760e46047)`
- */
-- (NSString *)userAgentForWebView;
-
-/**
  * Returns all URL Schemes that specified in the Info.plist.
  *
  * @param identifier can be `nil`, `@""`, or a string

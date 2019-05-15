@@ -10,8 +10,6 @@
 		E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+ESAdditions.h"; sourceTree = "<group>"; };
 		E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+ESAdditions.m"; sourceTree = "<group>"; };
 		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
-		E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _ESWebViewUserAgentFetcher.h; sourceTree = "<group>"; };
-		E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _ESWebViewUserAgentFetcher.m; sourceTree = "<group>"; };
 		E74E71072272FBD8008C7943 /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		E74E71082272FBD8008C7943 /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
@@ -141,8 +139,6 @@
 				E76CA2751CA50D1100EDBB8E /* ESApp+AppInfo.m */,
 				E76CA2761CA50D1100EDBB8E /* ESApp+Helper.m */,
 				E76CA27A1CA50D1100EDBB8E /* ESApp+Notifications.m */,
-				E738FD471E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.h */,
-				E738FD481E1139A000EB52C8 /* _ESWebViewUserAgentFetcher.m */,
 			);
 			path = App;
 			sourceTree = "<group>";

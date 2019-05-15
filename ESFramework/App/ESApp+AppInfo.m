@@ -12,37 +12,10 @@
 #import "ESValue.h"
 #import "UIDevice+ESAdditions.h"
 #import "AFNetworkReachabilityManager+ESAdditions.h"
-#import "_ESWebViewUserAgentFetcher.h"
 #import "ESNetworkHelper.h"
 #import "UIApplication+ESAdditions.h"
 
 @implementation ESApp (_AppInfo)
-
-+ (NSString *)defaultUserAgentOfWebView
-{
-    return [_ESWebViewUserAgentFetcher defaultUserAgent];
-}
-
-- (NSString *)userAgentForWebView
-{
-    NSMutableString *ua = [NSMutableString string];
-    NSString *defaultUA = [[self class] defaultUserAgentOfWebView];
-    NSString *myUserAgent = UIApplication.sharedApplication.userAgentForHTTPRequest;
-    if (defaultUA) {
-        [ua appendString:defaultUA];
-    } else {
-        [ua appendFormat:@"Mozilla/5.0 (%@; CPU %@ %@ like Mac OS X) AppleWebKit/%@ (KHTML, like Gecko) Mobile/%@",
-         [UIDevice.currentDevice model],
-         (ESIsPhoneDevice() ? @"iPhone OS" : @"OS"),
-         [[UIDevice.currentDevice systemVersion] stringByReplacingOccurrencesOfString:@"." withString:@"_"],
-         @"600.1.4",
-         @"15E148"];
-    }
-    if (myUserAgent) {
-        [ua appendFormat:@" %@", myUserAgent];
-    }
-    return [ua copy];
-}
 
 + (NSArray *)URLSchemesForIdentifier:(NSString *)identifier
 {

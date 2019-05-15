@@ -103,7 +103,7 @@
     + UIBarButtonItem block methods
     + `-[UIViewController currentVisibleViewController]`
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`
-    + ESApp methods: `-appWebServerTimeZone`
+    + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`
     + `+[NSDateFormatter appServerDateFormatterWith...Style]`
 - Refactored:
     + `NSObject (ESAutoCoding)`
