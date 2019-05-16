@@ -47,8 +47,9 @@
     + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
     + NSData methods: `-stringValue` => `-UTF8String`, `-hexStringValue` => `-lowercaseHexString`
     + `-[NSString stringByEncodingHTMLEntitiesUsingTable:]` => `-stringByEscapingHTMLUsingTable:`
-    + `-[NSString stringByEncodingHTMLEntitiesForASCII]` => `-stringByEncodingAsciiHTMLEntities:`
-    + `-[NSString stringByEncodingHTMLEntitiesForUnicode]` => `-stringByEncodingHTMLEntities`
+    + `-[NSString stringByEncodingHTMLEntitiesForUnicode]` => `-stringByEscapingHTML`
+    + `-[NSString stringByEncodingHTMLEntitiesForASCII]` => `-stringByEscapingAsciiHTML`
+    + `-[NSString stringByDecodingHTMLEntities]` => `-stringByUnescapingHTML`
     + NSMutableString methods: `replace:to:options:` => `replaceOccurrencesOfString:withString:options:`
     + NSArray methods: `matchObject:` => `objectPassingTest`, `matchesObjects` => `objectsPassingTest`
     + `-[NSDictionary queryString]` => `-URLQueryString`

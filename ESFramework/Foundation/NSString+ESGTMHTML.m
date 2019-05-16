@@ -437,21 +437,21 @@ static int ESEscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
     return [finalString copy];
 }
 
-- (NSString *)stringByEncodingHTMLEntities
+- (NSString *)stringByEscapingHTML
 {
     return [self stringByEscapingHTMLUsingTable:ESUnicodeHTMLEscapeMap
                                          ofSize:sizeof(ESUnicodeHTMLEscapeMap)
                                 escapingUnicode:NO];
 } // gtm_stringByEscapingHTML
 
-- (NSString *)stringByEncodingAsciiHTMLEntities
+- (NSString *)stringByEscapingAsciiHTML
 {
     return [self stringByEscapingHTMLUsingTable:ESAsciiHTMLEscapeMap
                                          ofSize:sizeof(ESAsciiHTMLEscapeMap)
                                 escapingUnicode:YES];
 } // gtm_stringByEscapingAsciiHTML
 
-- (NSString *)stringByDecodingHTMLEntities
+- (NSString *)stringByUnescapingHTML
 {
     NSRange range = NSMakeRange(0, [self length]);
     NSRange subrange = [self rangeOfString:@"&" options:NSBackwardsSearch range:range];

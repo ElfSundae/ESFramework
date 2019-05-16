@@ -49,7 +49,7 @@ typedef struct {
 //  Returns:
 //    Autoreleased NSString
 //
-- (nullable NSString *)stringByEncodingHTMLEntities;
+- (nullable NSString *)stringByEscapingHTML;
 
 /// Get a string where internal characters that need escaping for HTML are escaped
 //
@@ -65,7 +65,7 @@ typedef struct {
 //  Returns:
 //    Autoreleased NSString
 //
-- (nullable NSString *)stringByEncodingAsciiHTMLEntities;
+- (nullable NSString *)stringByEscapingAsciiHTML;
 
 /// Get a string where internal characters that are escaped for HTML are unescaped
 //
@@ -75,7 +75,7 @@ typedef struct {
 //  Returns:
 //    Autoreleased NSString
 //
-- (NSString *)stringByDecodingHTMLEntities;
+- (NSString *)stringByUnescapingHTML;
 
 @end
 
