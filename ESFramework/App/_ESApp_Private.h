@@ -11,6 +11,7 @@
 
 #import "ESApp.h"
 #import "ESHelpers.h"
+#import "UIApplication+ESAdditions.h"
 
 /**
  * Hack UIApplicationDelegate instance for swizzling notification methods.

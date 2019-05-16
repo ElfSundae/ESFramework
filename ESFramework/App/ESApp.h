@@ -95,21 +95,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 @interface ESApp (_Helper)
 
 /**
- * Enable multitasking.
- * App in background can continue running 10 mins on iOS6-, 3 mins on iOS7+.
- */
-+ (void)enableMultitasking;
-
-/**
- * Disable multitasking.
- */
-+ (void)disableMultitasking;
-
-+ (BOOL)isMultitaskingEnabled;
-
-+ (UIBackgroundTaskIdentifier)backgroundTaskIdentifier;
-
-/**
  * Preferences for iOS apps are displayed by the system-provided Settings app.
  *
  * This method returns the registered defaules, or the default value from Settings Plist File,

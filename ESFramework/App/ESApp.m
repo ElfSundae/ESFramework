@@ -44,7 +44,7 @@ static NSDictionary *__gRemoteNotificationFromLaunch = nil;
 {
     __gRemoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
 
-    [[self class] enableMultitasking];
+    [UIApplication.sharedApplication enableMultitasking];
 }
 
 - (void)_es_applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification

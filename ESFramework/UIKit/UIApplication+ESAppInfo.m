@@ -15,7 +15,7 @@
 #import "ESNetworkHelper.h"
 #import "NSTimeZone+ESAdditions.h"
 
-#define ESAppPreviousVersionUserDefaultsKey @"ESAppCheckFreshLaunch"
+NSString *const ESAppPreviousVersionUserDefaultsKey = @"ESAppCheckFreshLaunch";
 
 ESDefineAssociatedObjectKey(appName)
 ESDefineAssociatedObjectKey(appChannel)

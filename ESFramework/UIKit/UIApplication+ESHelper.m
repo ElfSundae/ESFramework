@@ -7,6 +7,12 @@
 //
 
 #import "UIApplication+ESAdditions.h"
+#import <objc/runtime.h>
+#import "ESMacros.h"
+
+NSString *const ESMultitaskingBackgroundTaskName = @"ESMultitaskingBackgroundTask";
+
+ESDefineAssociatedObjectKey(multitaskingBackgroundTaskIdentifier)
 
 @implementation UIApplication (ESHelper)
 
@@ -22,6 +28,44 @@
     } else {
         printf("UIApplication no longer responds \"_performMemoryWarning\" selector.\n");
         exit(1);
+    }
+}
+
+- (UIBackgroundTaskIdentifier)multitaskingBackgroundTaskIdentifier
+{
+    NSNumber *value = objc_getAssociatedObject(self, multitaskingBackgroundTaskIdentifierKey);
+    return value ? [value unsignedIntegerValue] : UIBackgroundTaskInvalid;
+}
+
+- (void)setMultitaskingBackgroundTaskIdentifier:(UIBackgroundTaskIdentifier)identifier
+{
+    objc_setAssociatedObject(self, multitaskingBackgroundTaskIdentifierKey,
+                             @(identifier), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)isMultitaskingEnabled
+{
+    return self.multitaskingBackgroundTaskIdentifier != UIBackgroundTaskInvalid;
+}
+
+- (void)enableMultitasking
+{
+    if (self.isMultitaskingEnabled) {
+        return;
+    }
+
+    self.multitaskingBackgroundTaskIdentifier =
+        [self beginBackgroundTaskWithName:ESMultitaskingBackgroundTaskName expirationHandler:^{
+            [self disableMultitasking];
+            [self enableMultitasking];
+        }];
+}
+
+- (void)disableMultitasking
+{
+    if (self.isMultitaskingEnabled) {
+        [self endBackgroundTask:self.multitaskingBackgroundTaskIdentifier];
+        self.multitaskingBackgroundTaskIdentifier = UIBackgroundTaskInvalid;
     }
 }
 
