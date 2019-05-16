@@ -45,8 +45,6 @@
 		E76CA2911CA51C5300EDBB8E /* ESAppStoreTerritories.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESAppStoreTerritories.m; sourceTree = "<group>"; };
 		E76CA2921CA51C5300EDBB8E /* ESStoreHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStoreHelper.h; sourceTree = "<group>"; };
 		E76CA2931CA51C5300EDBB8E /* ESStoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStoreHelper.m; sourceTree = "<group>"; };
-		E76CA2941CA51C9700EDBB8E /* ESStoreProductViewControllerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStoreProductViewControllerManager.h; sourceTree = "<group>"; };
-		E76CA2951CA51C9700EDBB8E /* ESStoreProductViewControllerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStoreProductViewControllerManager.m; sourceTree = "<group>"; };
 		E76CA2961CA51DB300EDBB8E /* ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStatusOverlayView.h; sourceTree = "<group>"; };
 		E76CA2971CA51DB300EDBB8E /* ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStatusOverlayView.m; sourceTree = "<group>"; };
 		E76CA2981CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESStatusOverlayView.h"; sourceTree = "<group>"; };
@@ -251,8 +249,6 @@
 				E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */,
 				E7A38C911C4DFA1A00972B01 /* ESMoviePlayerViewController.h */,
 				E7A38C921C4DFA1A00972B01 /* ESMoviePlayerViewController.m */,
-				E76CA2941CA51C9700EDBB8E /* ESStoreProductViewControllerManager.h */,
-				E76CA2951CA51C9700EDBB8E /* ESStoreProductViewControllerManager.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

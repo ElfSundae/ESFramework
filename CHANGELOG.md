@@ -8,7 +8,6 @@
 - :warning: Moved ESApp+AppInfo methods to UIApplication category: `-appName`, `-appVersion`, `-appChannel`, `-isFreshLaunch`, `-appPreviousVersion`, `-analyticsInfo`, `-userAgentForHTTPRequest`, `-allURLSchemes`, `-URLSchemesForIdentifier:` etc.
 - :warning: Removed automatically multitasking background task and related methods such as `-enableMultitasking`. If you want to do some background tasks, call `-beginBackgroundTask...` in `-applicationDidEnterBackground:`, or use the `NSURLSession` background networking transfer, see https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html
 - :warning: Moved ESApp+Helper methods to UIApplication category: `-appWindow`, `-rootViewController`, `-rootViewControllerForPresenting`, `-presentViewController:`, `-dismissViewControllersAnimated:`, `-dismissKeyboard`, `-simulateMemoryWarning`, `-canMakePhoneCalls`, `-makePhoneCall:` etc.
-- :warning: Removed `ESApp` class
 - Changed keys for `-[UIApplication analyticsInfo]`: `platform` => `model_identifier`, `name` => `device_name`, `app_launch` => `app_uptime`.
 - Added:
     + `BOOL es_dispatch_is_main_queue(void)`
@@ -108,6 +107,8 @@
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`
     + `+[NSDateFormatter appServerDateFormatterWith...Style]`
     + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`, `+clearApplicationIconBadgeNumber`, `+loadPreferencesDefaultsFromSettingsPlistAtURL:`, `+registerPreferencesDefaultsWithDefaultValues:`, `+registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:`
+    + :warning: `ESApp` class
+    + :warning: `ESStoreProductViewControllerManager` class
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
