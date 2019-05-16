@@ -15,6 +15,11 @@ FOUNDATION_EXTERN NSString *const ESMultitaskingBackgroundTaskName;
 
 @interface UIApplication (ESAdditions)
 
+/**
+ * Shortcut for the `delegate.window`.
+ */
+@property (nullable, nonatomic, strong) UIWindow *appWindow;
+
 @end
 
 @interface UIApplication (ESAppInfo)

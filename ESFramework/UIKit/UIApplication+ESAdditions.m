@@ -10,4 +10,14 @@
 
 @implementation UIApplication (ESAdditions)
 
+- (UIWindow *)appWindow
+{
+    return self.delegate.window;
+}
+
+- (void)setAppWindow:(UIWindow *)appWindow
+{
+    self.delegate.window = appWindow;
+}
+
 @end

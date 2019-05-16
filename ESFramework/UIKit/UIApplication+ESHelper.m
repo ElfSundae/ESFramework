@@ -57,7 +57,7 @@ ESDefineAssociatedObjectKey(multitaskingBackgroundTaskIdentifier)
                 [self enableMultitasking];
             }];
     }
-    
+
     return self.multitaskingBackgroundTaskIdentifier;
 }
 
