@@ -108,6 +108,7 @@
     + UIGestureRecognizer block methods: `-initWithHandler:`, `+recognizerWithHandler:`
     + UIControl block methods: `-addEventHandler:forControlEvents:`, `-removeEventHandlersForControlEvents:`, `-removeAllEventHandlersAndTargetsActions`, `existsEventHandlersForControlEvents:`
     + UIView methods: `-addTapGestureHandler:`, `-addLongPressGestureHandler:`, `-all...GestureRecognizers`, `-removeAll...GestureRecognizers`, `-setCornerRadius:borderWidth:borderColor:`
+    + UITableView methods: `-scrollToFirstRow:`, `-scrollToLastRow:`
     + UIBarButtonItem block methods
     + `-[UIViewController currentVisibleViewController]`
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`

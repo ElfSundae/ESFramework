@@ -11,37 +11,6 @@
 
 @implementation UITableView (ESAdditions)
 
-- (void)scrollToFirstRow:(BOOL)animated
-{
-    NSIndexPath *indexPath = nil;
-    for (NSInteger section = 0; self.numberOfSections > section; ++section) {
-        if ([self numberOfRowsInSection:section] > 0) {
-            indexPath = [NSIndexPath indexPathForRow:0 inSection:section];
-            break;
-        }
-    }
-
-    if (indexPath) {
-        [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:animated];
-    }
-}
-
-- (void)scrollToLastRow:(BOOL)animated
-{
-    NSIndexPath *indexPath = nil;
-    for (NSInteger section = self.numberOfSections - 1; section >= 0; --section) {
-        NSInteger rowsCount = [self numberOfRowsInSection:section];
-        if (rowsCount > 0) {
-            indexPath = [NSIndexPath indexPathForRow:rowsCount - 1 inSection:section];
-            break;
-        }
-    }
-
-    if (indexPath) {
-        [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
-    }
-}
-
 - (void)scrollToFirstResponderAnimated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition
 {
     UIView *responder = [self.window findFirstResponder];
