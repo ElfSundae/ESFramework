@@ -10,7 +10,7 @@
 #import "ESMacros.h"
 #import "ESHelpers.h"
 #import "ESStoreHelper.h"
-#import "ESApp.h"
+#import "UIApplication+ESAdditions.h"
 
 @interface ESStoreProductViewControllerManager ()
 @property (nonatomic, getter = isPresentingStoreProductViewController) BOOL presentingStoreProductViewController;
@@ -74,7 +74,7 @@
             productController.delegate = _self;
             _self.applicationNavigationBarTintColor = [UINavigationBar appearance].tintColor;
             [UINavigationBar appearance].tintColor = nil;
-            [ESApp presentViewController:productController animated:YES completion:nil];
+            [UIApplication.sharedApplication presentViewController:productController animated:YES completion:nil];
         } else {
             _self.presentingStoreProductViewController = NO;
             if (shouldOpenURLWhenFailure) {

@@ -7,7 +7,7 @@
 //
 
 #import "ESMoviePlayerViewController.h"
-#import "ESApp.h"
+#import "UIApplication+ESAdditions.h"
 
 #ifndef __IPHONE_8_4
 #define __IPHONE_8_4      80400
@@ -63,7 +63,7 @@
 - (void)presentWithAnimation:(BOOL)animated dismissedBlock:(void (^)(NSURL *contentURL, MPMovieFinishReason finishReason))dismissedBlock
 {
     self.dismissedBlock = dismissedBlock;
-    [[ESApp rootViewControllerForPresenting] presentViewController:self animated:animated completion:nil];
+    [UIApplication.sharedApplication presentViewController:self animated:animated completion:nil];
 }
 
 - (void)dismiss
