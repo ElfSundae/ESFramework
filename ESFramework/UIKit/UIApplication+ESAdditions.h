@@ -153,16 +153,16 @@ FOUNDATION_EXTERN NSString *const ESMultitaskingBackgroundTaskName;
 
 /**
  * Enable app multitasking: to make app continue running in background for
- * limited minutes.
+ * limited seconds.
  * @discussion After calling this method, a background task will be started
  * automatically by invoking the -beginBackgroundTask... method when the app
- * goes to background status. The app can continue run 3 minutes on iOS 7+.
+ * goes to background status.
  * @note For background networking tasks, you should use NSURLSession for
  * background transfers.
  * https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html
  * https://docs.microsoft.com/en-us/xamarin/ios/app-fundamentals/backgrounding/ios-backgrounding-techniques/ios-backgrounding-with-tasks
  */
-- (void)enableMultitasking;
+- (UIBackgroundTaskIdentifier)enableMultitasking;
 
 /**
  * Disable app multitasking: stop the multitasking background task.

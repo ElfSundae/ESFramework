@@ -48,17 +48,17 @@ ESDefineAssociatedObjectKey(multitaskingBackgroundTaskIdentifier)
     return self.multitaskingBackgroundTaskIdentifier != UIBackgroundTaskInvalid;
 }
 
-- (void)enableMultitasking
+- (UIBackgroundTaskIdentifier)enableMultitasking
 {
-    if (self.isMultitaskingEnabled) {
-        return;
+    if (!self.isMultitaskingEnabled) {
+        self.multitaskingBackgroundTaskIdentifier =
+            [self beginBackgroundTaskWithName:ESMultitaskingBackgroundTaskName expirationHandler:^{
+                [self disableMultitasking];
+                [self enableMultitasking];
+            }];
     }
-
-    self.multitaskingBackgroundTaskIdentifier =
-        [self beginBackgroundTaskWithName:ESMultitaskingBackgroundTaskName expirationHandler:^{
-            [self disableMultitasking];
-            [self enableMultitasking];
-        }];
+    
+    return self.multitaskingBackgroundTaskIdentifier;
 }
 
 - (void)disableMultitasking
