@@ -105,8 +105,8 @@
     + UIBarButtonItem block methods
     + `-[UIViewController currentVisibleViewController]`
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`
-    + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`, `+clearApplicationIconBadgeNumber`
     + `+[NSDateFormatter appServerDateFormatterWith...Style]`
+    + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`, `+clearApplicationIconBadgeNumber`, `+loadPreferencesDefaultsFromSettingsPlistAtURL:`, `+registerPreferencesDefaultsWithDefaultValues:`, `+registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:`
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
