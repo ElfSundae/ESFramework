@@ -53,7 +53,6 @@
 #import "ESActivityLabel.h"
 #import "ESButton.h"
 #import "ESErrorView.h"
-#import "UIProgressView+ESStyle.h"
 #import "ESStatusOverlayView.h"
 #import "UIViewController+ESStatusOverlayView.h"
 
