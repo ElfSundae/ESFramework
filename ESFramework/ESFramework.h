@@ -42,6 +42,7 @@
 #import "UIDevice+ESAdditions.h"
 #import "UIImage+ESAdditions.h"
 #import "UIImageView+ESAdditions.h"
+#import "UIScrollView+ESAdditions.h"
 #import "UITableView+ESAdditions.h"
 #import "UIToolbar+ESAdditions.h"
 #import "UIView+ESAdditions.h"

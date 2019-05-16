@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (ESAdditions)
 
-- (void)scrollToTop:(BOOL)animated;
-- (void)scrollToBottom:(BOOL)animated;
 - (void)scrollToFirstRow:(BOOL)animated;
 - (void)scrollToLastRow:(BOOL)animated;
 - (void)scrollToFirstResponderAnimated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;

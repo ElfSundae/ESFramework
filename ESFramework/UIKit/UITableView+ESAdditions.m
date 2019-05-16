@@ -11,19 +11,6 @@
 
 @implementation UITableView (ESAdditions)
 
-- (void)scrollToTop:(BOOL)animated
-{
-    [self setContentOffset:CGPointZero animated:animated];
-}
-
-- (void)scrollToBottom:(BOOL)animated
-{
-    if (self.contentSize.height > self.bounds.size.height) {
-        CGFloat offsetY = self.contentSize.height - self.bounds.size.height;
-        [self setContentOffset:CGPointMake(0, offsetY) animated:animated];
-    }
-}
-
 - (void)scrollToFirstRow:(BOOL)animated
 {
     NSIndexPath *indexPath = nil;
