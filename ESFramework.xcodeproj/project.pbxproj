@@ -178,7 +178,7 @@
 				E779129B226F3C65006EF94D /* Networking */,
 				E779129C226F3DCB006EF94D /* UIKit */,
 				E7A38C971C4DFA1A00972B01 /* View */,
-				E7A38C901C4DFA1A00972B01 /* Controller */,
+				E7A38C901C4DFA1A00972B01 /* View Controller */,
 			);
 			path = ESFramework;
 			sourceTree = "<group>";
@@ -222,13 +222,13 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		E7A38C901C4DFA1A00972B01 /* Controller */ = {
+		E7A38C901C4DFA1A00972B01 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */,
 				E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */,
 			);
-			path = Controller;
+			path = "View Controller";
 			sourceTree = "<group>";
 		};
 		E7A38C971C4DFA1A00972B01 /* View */ = {
