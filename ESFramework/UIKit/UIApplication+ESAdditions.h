@@ -20,6 +20,31 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @property (nullable, nonatomic, strong) UIWindow *appWindow;
 
 /**
+ * Shortcut for the `delegate.window.rootViewController`.
+ */
+@property (nullable, nonatomic, strong) UIViewController *rootViewController;
+
+/**
+ * Returns the root view controller for presenting modal view controller.
+ */
+- (nullable UIViewController *)rootViewControllerForPresenting;
+
+/**
+ * Presents a view controller modally from the rootViewControllerForPresenting.
+ */
+- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+
+/**
+ * Dismisses all modal view controllers.
+ */
+- (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+
+/**
+ * Dismiss the keyboard.
+ */
+- (void)dismissKeyboard;
+
+/**
  * Simulate low memory warning, just for testing.
  *
  * @warning Don't use this method in production because it uses private API.

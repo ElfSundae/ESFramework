@@ -128,35 +128,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
 + (BOOL)registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:(NSDictionary *)defaultValues;
 
 /// =============================================
-/// @name UI
-/// =============================================
-
-+ (UIWindow *)keyWindow;
-- (UIWindow *)keyWindow;
-
-+ (void)dismissKeyboard;
-
-/**
- * Returns the root view controller of keyWindow.
- */
-+ (UIViewController *)rootViewController;
-
-/**
- * Returns the root view controller for presenting modal view controller.
- */
-+ (UIViewController *)rootViewControllerForPresenting;
-
-/**
- * Presents a viewController.
- */
-+ (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)(void))completion;
-
-/**
- * Dismiss all Modal ViewControllers.
- */
-+ (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^)(void))completion;
-
-/// =============================================
 /// @name Open URL
 /// =============================================
 

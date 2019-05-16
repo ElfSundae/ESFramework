@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertController+ESAdditions.h"
-#import "ESApp.h"
+#import "UIApplication+ESAdditions.h"
 
 @implementation UIAlertController (ESAdditions)
 
@@ -64,7 +64,7 @@
 
 - (void)showAnimated:(BOOL)animated completion:(void (^)(void))completion
 {
-    [ESApp presentViewController:self animated:animated completion:completion];
+    [UIApplication.sharedApplication presentViewController:self animated:animated completion:completion];
 }
 
 - (void)dismiss

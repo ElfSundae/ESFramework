@@ -96,58 +96,6 @@
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - UI
-
-+ (UIWindow *)keyWindow
-{
-    id appDelegate = [UIApplication sharedApplication].delegate;
-    if ([appDelegate respondsToSelector:@selector(window)]) {
-        id window = [appDelegate valueForKey:@"window"];
-        if ([window isKindOfClass:[UIWindow class]]) {
-            return window;
-        }
-    }
-    return [UIApplication sharedApplication].keyWindow;
-}
-
-- (UIWindow *)keyWindow
-{
-    return [[self class] keyWindow];
-}
-
-+ (void)dismissKeyboard
-{
-    [[UIApplication sharedApplication] sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
-}
-
-+ (UIViewController *)rootViewController
-{
-    return [self keyWindow].rootViewController;
-}
-
-+ (UIViewController *)rootViewControllerForPresenting
-{
-    UIViewController *rootViewController = [self rootViewController];
-
-    while (rootViewController.presentedViewController) {
-        rootViewController = rootViewController.presentedViewController;
-    }
-
-    return rootViewController;
-}
-
-+ (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^)(void))completion
-{
-    [[self rootViewControllerForPresenting] presentViewController:viewControllerToPresent animated:animated completion:completion];
-}
-
-+ (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^)(void))completion
-{
-    [[self rootViewController] dismissViewControllerAnimated:animated completion:completion];
-}
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - OpenURL
 
 + (BOOL)canOpenPhoneCall
