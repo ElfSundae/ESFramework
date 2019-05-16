@@ -127,19 +127,4 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
  */
 + (BOOL)registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:(NSDictionary *)defaultValues;
 
-/// =============================================
-/// @name Open URL
-/// =============================================
-
-/**
- * Checks whether the current device can make a phone call.
- */
-+ (BOOL)canOpenPhoneCall;
-
-/**
- * Makes a phone call to the given phone number.
- * If `shouldReturn` is YES, it will return back to this app after phone call.
- */
-+ (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn;
-
 @end

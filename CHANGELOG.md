@@ -7,7 +7,7 @@
 - Made the main queue dispatching functions safer.
 - :warning: Moved ESApp+AppInfo methods to UIApplication category: `-appName`, `-appVersion`, `-appChannel`, `-isFreshLaunch`, `-appPreviousVersion`, `-analyticsInfo`, `-userAgentForHTTPRequest`, `-allURLSchemes`, `-URLSchemesForIdentifier:` etc.
 - :warning: Removed automatically multitasking background task and related methods such as `-enableMultitasking`. If you want to do some background tasks, call `-beginBackgroundTask...` in `-applicationDidEnterBackground:`, or use the `NSURLSession` background networking transfer, see https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html
-- Moved ESApp+Helper methods to UIApplication category: `-appWindow`, `-rootViewController`, `-rootViewControllerForPresenting`, `-presentViewController:`, `-dismissViewControllersAnimated:`, `-dismissKeyboard`, `-simulateMemoryWarning` etc.
+- Moved ESApp+Helper methods to UIApplication category: `-appWindow`, `-rootViewController`, `-rootViewControllerForPresenting`, `-presentViewController:`, `-dismissViewControllersAnimated:`, `-dismissKeyboard`, `-simulateMemoryWarning`, `-canMakePhoneCalls`, `-makePhoneCall:` etc.
 - Changed keys for `-[UIApplication analyticsInfo]`: `platform` => `model_identifier`, `name` => `device_name`, `app_launch` => `app_uptime`.
 - Added:
     + `BOOL es_dispatch_is_main_queue(void)`

@@ -71,4 +71,19 @@
     }
 }
 
+- (BOOL)canMakePhoneCalls
+{
+    return [self canOpenURL:[NSURL URLWithString:@"tel:"]];
+}
+
+- (void)makePhoneCall:(NSString *)phoneNumber
+{
+    NSURL *telURL = [NSURL URLWithString:[@"tel:" stringByAppendingString:phoneNumber]];
+    if (@available(iOS 10.0, *)) {
+        [self openURL:telURL options:@{} completionHandler:nil];
+    } else {
+        [self openURL:telURL];
+    }
+}
+
 @end

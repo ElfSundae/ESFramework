@@ -51,6 +51,17 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  */
 - (void)simulateMemoryWarning;
 
+/**
+ * Checks whether the current device can make phone calls.
+ */
+- (BOOL)canMakePhoneCalls;
+
+/**
+ * Make a phone call to the phone number.
+ * @node Call the `-canMakePhoneCalls` method before making phone calls.
+ */
+- (void)makePhoneCall:(NSString *)phoneNumber;
+
 @end
 
 @interface UIApplication (ESAppInfo)

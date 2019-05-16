@@ -94,31 +94,4 @@
                                     forRootSettingsPlistAtURL:defaultRootSettings];
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark - OpenURL
-
-+ (BOOL)canOpenPhoneCall
-{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel:"]];
-}
-
-+ (BOOL)openPhoneCall:(NSString *)phoneNumber returnToAppAfterCall:(BOOL)shouldReturn
-{
-    phoneNumber = ESStringValue(phoneNumber);
-    if (phoneNumber) {
-        NSURL *telURL = [NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", phoneNumber]];
-        if ([self canOpenPhoneCall]) {
-            if (shouldReturn) {
-                UIWebView *phoneCallWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
-                [phoneCallWebView loadRequest:[NSURLRequest requestWithURL:telURL]];
-                return YES;
-            } else {
-                return [[UIApplication sharedApplication] openURL:telURL];
-            }
-        }
-    }
-    return NO;
-}
-
 @end
