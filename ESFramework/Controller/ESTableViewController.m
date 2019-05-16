@@ -34,6 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
     if (self.clearsSelectionOnViewWillAppear) {
         for (NSIndexPath *indexPath in self.tableView.indexPathsForSelectedRows) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:animated];
@@ -44,19 +45,21 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
     [self.tableView flashScrollIndicators];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
+
     [self.tableView setEditing:editing animated:animated];
 }
 
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_tableViewStyle];
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:self.tableViewStyle];
         _tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         _tableView.dataSource = self;
         _tableView.delegate = self;
