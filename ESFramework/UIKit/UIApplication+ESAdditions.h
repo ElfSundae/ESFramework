@@ -161,6 +161,17 @@ FOUNDATION_EXTERN NSString *const ESMultitaskingBackgroundTaskName;
  * background transfers.
  * https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html
  * https://docs.microsoft.com/en-us/xamarin/ios/app-fundamentals/backgrounding/ios-backgrounding-techniques/ios-backgrounding-with-tasks
+ * @code
+ * - (void)applicationDidEnterBackground:(UIApplication *)application
+ * {
+ *     [application enableMultitasking];
+ *
+ *     // Start background task...
+ *     NSLog(@"Background Time Remaining: %f seconds", application.backgroundTimeRemaining);
+ *
+ *     [application disableMultitasking];
+ * }
+ * @endcode
  */
 - (UIBackgroundTaskIdentifier)enableMultitasking;
 
