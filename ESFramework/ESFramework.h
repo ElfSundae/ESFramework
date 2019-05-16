@@ -47,8 +47,6 @@
 #import "UIView+ESAdditions.h"
 #import "UIViewController+ESAdditions.h"
 
-#import "ESStoreHelper.h"
-
 #import "ESRefreshControl.h"
 #import "UIScrollView+ESRefreshControl.h"
 #import "ESBadgeView.h"

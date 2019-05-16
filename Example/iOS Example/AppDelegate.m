@@ -23,7 +23,6 @@
     application.appStoreID = @"12345678";
 
     NSLog(@"%@", application.analyticsInfo);
-    NSLog(@"%@", [ESStoreHelper appLinkForAppID:application.appStoreID storeCountryCode:nil]);
 
     [self.window makeKeyAndVisible];
     return YES;

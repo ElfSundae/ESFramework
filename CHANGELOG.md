@@ -67,6 +67,7 @@
     + :warning: `ESApp` class, use `UIApplication+ESAdditions` and the original `AppDelegate` directly
     + :warning: `ESStoreProductViewControllerManager` class, use `StoreProductViewController` directly
     + :warning: `ESMoviePlayerViewController` class, use `AVPlayerViewController` instead
+    + :warning: `ESStoreHelper` class
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
     + `ESOSVersion`, `ESBundleWithName()`
