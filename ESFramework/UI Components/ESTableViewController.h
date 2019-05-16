@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIScrollView+ESRefreshControl.h"
+#import "ESRefreshControl.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

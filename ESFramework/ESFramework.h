@@ -47,13 +47,11 @@
 #import "UIView+ESAdditions.h"
 #import "UIViewController+ESAdditions.h"
 
-#import "ESRefreshControl.h"
-#import "UIScrollView+ESRefreshControl.h"
-#import "ESBadgeView.h"
 #import "ESActivityLabel.h"
+#import "ESBadgeView.h"
 #import "ESButton.h"
 #import "ESErrorView.h"
+#import "ESRefreshControl.h"
+#import "ESRefreshControlDefaultContentView.h"
 #import "ESStatusOverlayView.h"
-#import "UIViewController+ESStatusOverlayView.h"
-
 #import "ESTableViewController.h"

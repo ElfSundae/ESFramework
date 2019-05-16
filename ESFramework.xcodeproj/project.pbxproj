@@ -9,7 +9,6 @@
 /* Begin PBXFileReference section */
 		E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+ESAdditions.h"; sourceTree = "<group>"; };
 		E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+ESAdditions.m"; sourceTree = "<group>"; };
-		E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESRefreshControl.h"; sourceTree = "<group>"; };
 		E74E71072272FBD8008C7943 /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		E74E71082272FBD8008C7943 /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
@@ -43,8 +42,6 @@
 		E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESAutoCoding.m"; sourceTree = "<group>"; };
 		E76CA2961CA51DB300EDBB8E /* ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESStatusOverlayView.h; sourceTree = "<group>"; };
 		E76CA2971CA51DB300EDBB8E /* ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESStatusOverlayView.m; sourceTree = "<group>"; };
-		E76CA2981CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ESStatusOverlayView.h"; sourceTree = "<group>"; };
-		E76CA2991CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESStatusOverlayView.m"; sourceTree = "<group>"; };
 		E7704630225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFNetworkReachabilityManager+ESAdditions.h"; sourceTree = "<group>"; };
 		E7704631225E0F8F00F84D6D /* AFNetworkReachabilityManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFNetworkReachabilityManager+ESAdditions.m"; sourceTree = "<group>"; };
 		E7791293226DFB8A006EF94D /* ESWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESWeakProxy.h; sourceTree = "<group>"; };
@@ -84,7 +81,6 @@
 		E7A38C9F1C4DFA1A00972B01 /* ESErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESErrorView.m; sourceTree = "<group>"; };
 		E7A38CAF1C4DFEE300972B01 /* ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControl.h; sourceTree = "<group>"; };
 		E7A38CB01C4DFEE300972B01 /* ESRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControl.m; sourceTree = "<group>"; };
-		E7A38CB31C4DFEE300972B01 /* UIScrollView+ESRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ESRefreshControl.m"; sourceTree = "<group>"; };
 		E7A38CBC1C4E035600972B01 /* ESRefreshControlDefaultContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControlDefaultContentView.h; sourceTree = "<group>"; };
 		E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
 		E7A8D488227F0F0F0013A7E8 /* UIApplication+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+ESAdditions.h"; sourceTree = "<group>"; };
@@ -177,8 +173,7 @@
 				E76CA27E1CA50D1100EDBB8E /* Foundation */,
 				E779129B226F3C65006EF94D /* Networking */,
 				E779129C226F3DCB006EF94D /* UIKit */,
-				E7A38C971C4DFA1A00972B01 /* View */,
-				E7A38C901C4DFA1A00972B01 /* View Controller */,
+				E7A38C971C4DFA1A00972B01 /* UI Components */,
 			);
 			path = ESFramework;
 			sourceTree = "<group>";
@@ -222,46 +217,27 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		E7A38C901C4DFA1A00972B01 /* View Controller */ = {
+		E7A38C971C4DFA1A00972B01 /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
-				E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */,
-				E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */,
-			);
-			path = "View Controller";
-			sourceTree = "<group>";
-		};
-		E7A38C971C4DFA1A00972B01 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E7A38CAE1C4DFEE300972B01 /* RefreshControl */,
-				E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */,
-				E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */,
 				E7A38C981C4DFA1A00972B01 /* ESActivityLabel.h */,
 				E7A38C991C4DFA1A00972B01 /* ESActivityLabel.m */,
+				E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */,
+				E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */,
 				E7A38C9C1C4DFA1A00972B01 /* ESButton.h */,
 				E7A38C9D1C4DFA1A00972B01 /* ESButton.m */,
 				E7A38C9E1C4DFA1A00972B01 /* ESErrorView.h */,
 				E7A38C9F1C4DFA1A00972B01 /* ESErrorView.m */,
-				E76CA2961CA51DB300EDBB8E /* ESStatusOverlayView.h */,
-				E76CA2971CA51DB300EDBB8E /* ESStatusOverlayView.m */,
-				E76CA2981CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.h */,
-				E76CA2991CA51DB300EDBB8E /* UIViewController+ESStatusOverlayView.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E7A38CAE1C4DFEE300972B01 /* RefreshControl */ = {
-			isa = PBXGroup;
-			children = (
 				E7A38CAF1C4DFEE300972B01 /* ESRefreshControl.h */,
 				E7A38CB01C4DFEE300972B01 /* ESRefreshControl.m */,
-				E738FD3E1E106C5F00EB52C8 /* UIScrollView+ESRefreshControl.h */,
-				E7A38CB31C4DFEE300972B01 /* UIScrollView+ESRefreshControl.m */,
 				E7A38CBC1C4E035600972B01 /* ESRefreshControlDefaultContentView.h */,
 				E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */,
+				E76CA2961CA51DB300EDBB8E /* ESStatusOverlayView.h */,
+				E76CA2971CA51DB300EDBB8E /* ESStatusOverlayView.m */,
+				E7A38C931C4DFA1A00972B01 /* ESTableViewController.h */,
+				E7A38C941C4DFA1A00972B01 /* ESTableViewController.m */,
 			);
-			path = RefreshControl;
+			path = "UI Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

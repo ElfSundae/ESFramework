@@ -23,7 +23,6 @@
  */
 @interface ESStatusOverlayView : UIView
 {
-    @protected
     ESActivityLabel *_activityLabel;
     ESErrorView *_errorView;
 }
@@ -43,5 +42,11 @@
 - (void)showErrorView;
 
 - (void)hideAnimated:(BOOL)animated;
+
+@end
+
+@interface UIViewController (ESStatusOverlayView)
+
+@property (nonatomic, strong) ESStatusOverlayView *statusOverlayView;
 
 @end

@@ -9,6 +9,8 @@
 #import "ESRefreshControl.h"
 #import "ESRefreshControlDefaultContentView.h"
 #import "UIView+ESAdditions.h"
+#import <objc/runtime.h>
+#import "ESMacros.h"
 
 static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
 #define _esDefaultContentViewHeight 50.
@@ -307,6 +309,29 @@ static void *_esRefreshControlKVOContext = &_esRefreshControlKVOContext;
         return self.textForStateBlock(self, state);
     }
     return nil;
+}
+
+@end
+
+ESDefineAssociatedObjectKey(esRefreshControl)
+
+@implementation UIScrollView (ESRefreshControl)
+
+- (ESRefreshControl *)es_refreshControl
+{
+    return objc_getAssociatedObject(self, esRefreshControlKey);
+}
+
+- (void)setEs_refreshControl:(ESRefreshControl *)refreshControl
+{
+    ESRefreshControl *control = [self es_refreshControl];
+    if (control) {
+        [control removeFromSuperview];
+    }
+    if (refreshControl) {
+        [self addSubview:refreshControl];
+    }
+    objc_setAssociatedObject(self, esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

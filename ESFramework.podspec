@@ -9,8 +9,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
   s.source_files = 'ESFramework/**/*.{h,m}'
-  s.private_header_files = 'ESFramework/**/_*.h'
-  s.frameworks = 'QuartzCore', 'Security', 'SystemConfiguration', 'CoreTelephony', 'StoreKit', 'MediaPlayer'
-  s.weak_frameworks = 'UserNotifications'
+  s.frameworks = 'UIKit', 'Security', 'SystemConfiguration', 'CoreTelephony'
   s.dependency 'AFNetworking/Reachability'
 end

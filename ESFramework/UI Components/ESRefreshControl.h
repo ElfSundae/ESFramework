@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @class ESRefreshControl;
-@protocol ESRefreshControlContentViewDelegate;
 
 typedef NS_ENUM(NSUInteger, ESRefreshControlState) {
     ESRefreshControlStateNormal = 0,
@@ -17,8 +16,19 @@ typedef NS_ENUM(NSUInteger, ESRefreshControlState) {
 };
 
 typedef void (^ESRefreshControlBlock)(ESRefreshControl *refreshControl);
-typedef NSString* (^ESRefreshControlStateBlock)(ESRefreshControl *refreshControl, ESRefreshControlState state);
+typedef NSString * (^ESRefreshControlStateBlock)(ESRefreshControl *refreshControl, ESRefreshControlState state);
 typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refreshControl, UIScrollView *scrollView);
+
+@protocol ESRefreshControlContentViewDelegate <NSObject>
+
+@required
+- (void)refreshControl:(ESRefreshControl *)refreshControl stateChanged:(ESRefreshControlState)state from:(ESRefreshControlState)fromState;
+
+@optional
+- (CGFloat)refreshControlContentViewHeight:(ESRefreshControl *)refreshControl; // 50. as default
+- (void)refreshControl:(ESRefreshControl *)refreshControl pullProgressChanged:(CGFloat)pullProgress;
+
+@end
 
 /**
  * Pull-To-Refresh control.
@@ -29,6 +39,7 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
 @property (nonatomic, copy) ESRefreshControlBlock didStartRefreshingBlock;
 @property (nonatomic, copy) ESRefreshControlUpdatedScrollViewBlock didUpdateScrollViewsContentInsetBlock;
 @property (nonatomic, copy) ESRefreshControlStateBlock textForStateBlock;
+
 - (UIScrollView *)scrollView;
 
 + (instancetype)refreshControlWithDidStartRefreshingBlock:(ESRefreshControlBlock)block;
@@ -46,27 +57,20 @@ typedef void (^ESRefreshControlUpdatedScrollViewBlock)(ESRefreshControl *refresh
  */
 - (BOOL)isRefreshing;
 
-
 /**
  * The content view displayed when the `scrollView` is pulling down.
  */
 @property (nonatomic, strong) UIView<ESRefreshControlContentViewDelegate> *contentView;
+
 /**
  * Will ask `textForStateBlock` block.
  */
 - (NSString *)textForState:(ESRefreshControlState)state;
+
 @end
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -  ESRefreshControlContentViewDelegate
+@interface UIScrollView (ESRefreshControl)
 
-@protocol ESRefreshControlContentViewDelegate <NSObject>
+@property (nonatomic, strong) ESRefreshControl *es_refreshControl;
 
-@required
-- (void)refreshControl:(ESRefreshControl *)refreshControl stateChanged:(ESRefreshControlState)state from:(ESRefreshControlState)fromState;
-
-@optional
-- (CGFloat)refreshControlContentViewHeight:(ESRefreshControl *)refreshControl; // 50. as default
-- (void)refreshControl:(ESRefreshControl *)refreshControl pullProgressChanged:(CGFloat)pullProgress;
 @end

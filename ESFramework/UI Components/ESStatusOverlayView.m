@@ -8,6 +8,8 @@
 
 #import "ESStatusOverlayView.h"
 #import "UIView+ESAdditions.h"
+#import <objc/runtime.h>
+#import "ESMacros.h"
 
 @interface ESStatusOverlayView ()
 {
@@ -147,6 +149,22 @@
             [self removeFromSuperview];
         }];
     }
+}
+
+@end
+
+ESDefineAssociatedObjectKey(statusOverlayView)
+
+@implementation UIViewController (ESStatusOverlayView)
+
+- (ESStatusOverlayView *)statusOverlayView
+{
+    return objc_getAssociatedObject(self, statusOverlayViewKey);
+}
+
+- (void)setStatusOverlayView:(ESStatusOverlayView *)view
+{
+    objc_setAssociatedObject(self, statusOverlayViewKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
