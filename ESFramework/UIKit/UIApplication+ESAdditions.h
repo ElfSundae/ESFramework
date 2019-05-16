@@ -19,6 +19,13 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  */
 @property (nullable, nonatomic, strong) UIWindow *appWindow;
 
+/**
+ * Simulate low memory warning, just for testing.
+ *
+ * @warning Don't use this method in production because it uses private API.
+ */
+- (void)simulateMemoryWarning;
+
 @end
 
 @interface UIApplication (ESAppInfo)
@@ -133,17 +140,6 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  * @endcode
  */
 - (NSString *)userAgentForHTTPRequest;
-
-@end
-
-@interface UIApplication (ESHelper)
-
-/**
- * Simulate low memory warning, just for testing.
- *
- * @warning Don't use this method in production because it uses private API.
- */
-- (void)simulateMemoryWarning;
 
 @end
 

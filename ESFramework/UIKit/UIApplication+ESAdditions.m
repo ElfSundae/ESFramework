@@ -20,4 +20,19 @@
     self.delegate.window = appWindow;
 }
 
+- (void)simulateMemoryWarning
+{
+    SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");
+    if ([self respondsToSelector:memoryWarningSel]) {
+        printf("=== Simulate Memory Warning! ===\n");
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        [self performSelector:memoryWarningSel];
+#pragma clang diagnostic pop
+    } else {
+        printf("UIApplication no longer responds \"_performMemoryWarning\" selector.\n");
+        exit(1);
+    }
+}
+
 @end
