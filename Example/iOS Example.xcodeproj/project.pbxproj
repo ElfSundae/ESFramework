@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D5AFAEE8C9BB025EEC8CEEC9 /* libPods-iOS Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 735C08D1E7FB6828A3E2A328 /* libPods-iOS Example.a */; };
-		E75AE19C1BA66474007F4561 /* App.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19B1BA66474007F4561 /* App.m */; };
 		E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75AE19E1BA6655A007F4561 /* RootViewController.m */; };
 		E779126F226D6CB8006EF94D /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E779126E226D6CB8006EF94D /* TestViewController.m */; };
 		E78975FA1BA4E8220034B065 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E78975F91BA4E8220034B065 /* main.m */; };
 		E78976051BA4E8220034B065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E78976041BA4E8220034B065 /* Images.xcassets */; };
 		E78976081BA4E8220034B065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E78976061BA4E8220034B065 /* LaunchScreen.xib */; };
+		E7C5ACE9228D574400005804 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C5ACE8228D574400005804 /* AppDelegate.m */; };
 		E7FDC96C22647D3F00D8CC25 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FDC96A22647D3F00D8CC25 /* User.m */; };
 /* End PBXBuildFile section */
 
@@ -24,8 +24,6 @@
 		C02E97F03ADAF1E6E81956E7 /* Pods-iOS Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Example/Pods-iOS Example.release.xcconfig"; sourceTree = "<group>"; };
 		C5F71045437D9A55429BF15A /* Pods-iOS Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOS Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOS Example/Pods-iOS Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E74E70FE2271A639008C7943 /* iOS Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Example.entitlements"; sourceTree = "<group>"; };
-		E75AE19A1BA66474007F4561 /* App.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = App.h; sourceTree = "<group>"; };
-		E75AE19B1BA66474007F4561 /* App.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = App.m; sourceTree = "<group>"; };
 		E75AE19D1BA6655A007F4561 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		E75AE19E1BA6655A007F4561 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		E779126D226D6CB8006EF94D /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -35,6 +33,8 @@
 		E78975F91BA4E8220034B065 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E78976041BA4E8220034B065 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E78976071BA4E8220034B065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		E7C5ACE7228D574400005804 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E7C5ACE8228D574400005804 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E7FDC96A22647D3F00D8CC25 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		E7FDC96B22647D3F00D8CC25 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,8 +93,8 @@
 		E78975F61BA4E8220034B065 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
-				E75AE19A1BA66474007F4561 /* App.h */,
-				E75AE19B1BA66474007F4561 /* App.m */,
+				E7C5ACE7228D574400005804 /* AppDelegate.h */,
+				E7C5ACE8228D574400005804 /* AppDelegate.m */,
 				E75AE19D1BA6655A007F4561 /* RootViewController.h */,
 				E75AE19E1BA6655A007F4561 /* RootViewController.m */,
 				E779126D226D6CB8006EF94D /* TestViewController.h */,
@@ -102,8 +102,8 @@
 				E7FDC96B22647D3F00D8CC25 /* User.h */,
 				E7FDC96A22647D3F00D8CC25 /* User.m */,
 				E78976041BA4E8220034B065 /* Images.xcassets */,
-				E78976061BA4E8220034B065 /* LaunchScreen.xib */,
 				E74E70FE2271A639008C7943 /* iOS Example.entitlements */,
+				E78976061BA4E8220034B065 /* LaunchScreen.xib */,
 				E78975F71BA4E8220034B065 /* Supporting Files */,
 			);
 			path = "iOS Example";
@@ -222,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FDC96C22647D3F00D8CC25 /* User.m in Sources */,
-				E75AE19C1BA66474007F4561 /* App.m in Sources */,
+				E7C5ACE9228D574400005804 /* AppDelegate.m in Sources */,
 				E78975FA1BA4E8220034B065 /* main.m in Sources */,
 				E75AE19F1BA6655A007F4561 /* RootViewController.m in Sources */,
 				E779126F226D6CB8006EF94D /* TestViewController.m in Sources */,
