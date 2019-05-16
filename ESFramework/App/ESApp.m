@@ -15,36 +15,9 @@ static NSDictionary *__gRemoteNotificationFromLaunch = nil;
 
 @implementation ESApp
 
-+ (instancetype)sharedApp
-{
-    return __gSharedApp;
-}
-
-- (UIWindow *)window
-{
-    return _window ?: [[self class] keyWindow];
-}
-
-- (UIViewController *)rootViewController
-{
-    return _rootViewController ?: [[self class] rootViewController];
-}
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    if (self == application.delegate) {
-        self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        self.window.backgroundColor = [UIColor whiteColor];
-    }
-
-    return YES;
-}
-
 - (void)_es_applicationDidFinishLaunchingNotificationHandler:(NSNotification *)notification
 {
     __gRemoteNotificationFromLaunch = notification.userInfo[UIApplicationLaunchOptionsRemoteNotificationKey];
-
-    // [UIApplication.sharedApplication enableMultitasking];
 }
 
 - (void)_es_applicationDidBecomeActiveNotificationHandler:(NSNotification *)notification

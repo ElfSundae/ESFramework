@@ -40,29 +40,6 @@ FOUNDATION_EXTERN NSString *const ESAppErrorDomain;
  */
 @interface ESApp : UIResponder <UIApplicationDelegate, ESAppDelegate>
 
-/**
- * Returns the shared ESApp instance.
- */
-+ (instancetype)sharedApp;
-
-/**
- * Returns the keyWindow of app.
- */
-@property (nonatomic, strong) UIWindow *window;
-
-/**
- * Returns the root view controller of keyWindow.
- *
- * If your app delegate is a subclass of ESApp, you can overwrite this property and @dynamic it to
- * specify a different class instead `UIViewController`.
- */
-@property (nonatomic, strong) UIViewController *rootViewController;
-
-/**
- * UIApplicationDelegate implementation.
- */
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
