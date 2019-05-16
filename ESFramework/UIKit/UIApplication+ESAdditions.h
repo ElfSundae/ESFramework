@@ -11,7 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 
 FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
-FOUNDATION_EXTERN NSString *const ESMultitaskingBackgroundTaskName;
 
 @interface UIApplication (ESAdditions)
 
@@ -145,45 +144,6 @@ FOUNDATION_EXTERN NSString *const ESMultitaskingBackgroundTaskName;
  * @warning Don't use this method in production because it uses private API.
  */
 - (void)simulateMemoryWarning;
-
-/**
- * The identifier for the multitasking background task.
- */
-@property (nonatomic, readonly) UIBackgroundTaskIdentifier multitaskingBackgroundTaskIdentifier;
-
-/**
- * Indicates the multitasking is enabled.
- */
-@property (nonatomic, readonly) BOOL isMultitaskingEnabled;
-
-/**
- * Enable app multitasking: to make app continue running in background for
- * limited seconds.
- * @discussion After calling this method, a background task will be started
- * automatically by invoking the -beginBackgroundTask... method when the app
- * goes to background status.
- * @note For background networking tasks, you should use NSURLSession for
- * background transfers.
- * https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html
- * https://docs.microsoft.com/en-us/xamarin/ios/app-fundamentals/backgrounding/ios-backgrounding-techniques/ios-backgrounding-with-tasks
- * @code
- * - (void)applicationDidEnterBackground:(UIApplication *)application
- * {
- *     [application enableMultitasking];
- *
- *     // Start background task...
- *     NSLog(@"Background Time Remaining: %f seconds", application.backgroundTimeRemaining);
- *
- *     [application disableMultitasking];
- * }
- * @endcode
- */
-- (UIBackgroundTaskIdentifier)enableMultitasking;
-
-/**
- * Disable app multitasking: stop the multitasking background task.
- */
-- (void)disableMultitasking;
 
 @end
 
