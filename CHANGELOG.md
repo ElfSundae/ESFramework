@@ -64,6 +64,9 @@
     + `+[ESApp deleteHTTPCookiesForURL:]` => `-[NSHTTPCookieStorage deleteCookiesForURL:]`
     + `+[ESApp deleteAllHTTPCookies]` => `-[NSHTTPCookieStorage deleteAllCookies]`
 - Removed:
+    + :warning: `ESApp` class, use `UIApplication+ESAdditions` and the original `AppDelegate` directly
+    + :warning: `ESStoreProductViewControllerManager` class, use `StoreProductViewController` directly
+    + :warning: `ESMoviePlayerViewController` class, use `AVPlayerViewController` instead
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
     + `ESOSVersion`, `ESBundleWithName()`
@@ -107,8 +110,6 @@
     + `-[UITabBarController setBadgeValue:forTabBarItemAtIndex:]`
     + `+[NSDateFormatter appServerDateFormatterWith...Style]`
     + ESApp methods: `-appWebServerTimeZone`, `+defaultUserAgentOfWebView`, `-userAgentForWebView`, `+clearApplicationIconBadgeNumber`, `+loadPreferencesDefaultsFromSettingsPlistAtURL:`, `+registerPreferencesDefaultsWithDefaultValues:`, `+registerPreferencesDefaultsWithDefaultValuesForAppDefaultRootSettingsPlist:`
-    + :warning: `ESApp` class
-    + :warning: `ESStoreProductViewControllerManager` class
 - Refactored:
     + `NSObject (ESAutoCoding)`
     + `-queryDictionary` of `NSURL`/`NSString` to use the `NSURLComponents` API
