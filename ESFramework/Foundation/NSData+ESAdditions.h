@@ -20,14 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)UTF8String;
 
 /**
- * Converts data to an uppercase hexadecimal string.
- */
-- (NSString *)uppercaseHexString;
-
-/**
  * Converts data to a lowercase hexadecimal string.
  */
 - (NSString *)lowercaseHexString;
+
+/**
+ * Converts data to an uppercase hexadecimal string.
+ */
+- (NSString *)uppercaseHexString;
 
 #pragma mark - MD5 Digest
 

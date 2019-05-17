@@ -17,26 +17,20 @@
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)uppercaseHexString
-{
-    NSUInteger length = self.length;
-    NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
-    const unsigned char *p = self.bytes;
-    for (NSUInteger i = 0; i < length; i++, p++) {
-        [hexString appendFormat:@"%02X", *p];
-    }
-    return [hexString copy];
-}
-
 - (NSString *)lowercaseHexString
 {
     NSUInteger length = self.length;
     NSMutableString *hexString = [NSMutableString stringWithCapacity:length * 2];
-    const unsigned char *p = self.bytes;
-    for (NSUInteger i = 0; i < length; i++, p++) {
-        [hexString appendFormat:@"%02x", *p];
+    const unsigned char *bytes = (const unsigned char *)self.bytes;
+    for (NSUInteger i = 0; i < length; i++) {
+        [hexString appendFormat:@"%02.2hhx", bytes[i]];
     }
     return [hexString copy];
+}
+
+- (NSString *)uppercaseHexString
+{
+    return [[self lowercaseHexString] uppercaseString];
 }
 
 - (NSData *)md5HashData
