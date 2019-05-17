@@ -10,6 +10,7 @@
 #import <sys/time.h>
 #import <Security/SecRandom.h>
 #import "NSNumber+ESAdditions.h"
+#import "NSString+ESAdditions.h"
 #import "NSInvocation+ESHelper.h"
 
 static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
@@ -230,23 +231,17 @@ NSString *ESRandomStringOfLength(NSUInteger length)
 {
     NSData *data = ESRandomDataOfLength(length);
     NSString *string = [data base64EncodedStringWithOptions:0];
-    // Remove "+/="
-    string = [[string componentsSeparatedByCharactersInSet:
-               [NSCharacterSet characterSetWithCharactersInString:@"+/="]]
-              componentsJoinedByString:@""];
-    // Base64 后的字符串长度是原串长度的大约135%，去掉特殊字符后再检查字符串长度
+    string = [string stringByDeletingCharactersInString:@"+/="];
     NSUInteger stringLength = string.length;
-    if (stringLength == length) {
-        return string;
-    } else if (stringLength > length) {
+    if (stringLength >= length) {
         return [string substringToIndex:length];
-    } else {
-        NSMutableString *result = string.mutableCopy;
-        for (NSUInteger i = stringLength; i < length; i++) {
-            [result appendFormat:@"%c", [string characterAtIndex:arc4random_uniform((uint32_t)stringLength)]];
-        }
-        return [result copy];
     }
+
+    NSMutableString *result = string.mutableCopy;
+    for (NSUInteger i = stringLength; i < length; i++) {
+        [result appendFormat:@"%c", [string characterAtIndex:arc4random_uniform((uint32_t)stringLength)]];
+    }
+    return [result copy];
 }
 
 CGFloat ESStatusBarHeight(void)
