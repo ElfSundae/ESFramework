@@ -84,35 +84,35 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  */
 @property (nullable, nonatomic, copy) NSString *appStoreID;
 
-@property (readonly) NSString *appBundleName;
-@property (readonly) NSString *appDisplayName;
-@property (readonly) NSString *appBundleIdentifier;
-@property (readonly) NSString *appVersion;
-@property (readonly) NSString *appBuildVersion;
+@property (nonatomic, readonly) NSString *appBundleName;
+@property (nonatomic, readonly) NSString *appDisplayName;
+@property (nonatomic, readonly) NSString *appBundleIdentifier;
+@property (nonatomic, readonly) NSString *appVersion;
+@property (nonatomic, readonly) NSString *appBuildVersion;
 /// e.g. "1.2.4 (210)"
-@property (readonly) NSString *appFullVersion;
-@property (readonly) BOOL isUIViewControllerBasedStatusBarAppearance;
+@property (nonatomic, readonly) NSString *appFullVersion;
+@property (nonatomic, readonly) BOOL isUIViewControllerBasedStatusBarAppearance;
 
 /**
  * Returns the date when the app was launched.
  */
-@property (readonly) NSDate *appStartupDate;
+@property (nonatomic, readonly) NSDate *appStartupDate;
 
 /**
  * Returns the duration of the app has been running.
  */
-@property (readonly) NSTimeInterval appUptime;
+@property (nonatomic, readonly) NSTimeInterval appUptime;
 
 /**
  * Indicates whether the current app launch is a "fresh launch" which means the
  * first time of app launch after the app was installed or upgraded.
  */
-@property (readonly) BOOL isFreshLaunch;
+@property (nonatomic, readonly) BOOL isFreshLaunch;
 
 /**
  * Returns the app version before the current launching.
  */
-@property (nullable, readonly) NSString *appPreviousVersion;
+@property (nullable, nonatomic, readonly) NSString *appPreviousVersion;
 
 /**
  * Returns all URL schemes (http, ftp, and so on) supported by the app.

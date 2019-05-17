@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Gets and sets query items via a dictionary, it supports array in the query parameter like
  * ?foo=bar&foo=bar1&foo[]=bar2
  */
-@property (nullable, copy) NSDictionary<NSString *, id> *queryItemsDictionary;
+@property (nullable, nonatomic, copy) NSDictionary<NSString *, id> *queryItemsDictionary;
 
 /**
  * Add query items from the given dictionary.

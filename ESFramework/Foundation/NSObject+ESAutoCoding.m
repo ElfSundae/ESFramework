@@ -78,7 +78,7 @@
     return [self dictionaryWithValuesForKeys:self.codableProperties.allKeys];
 }
 
-- (nullable NSData *)archivedData
+- (NSData *)archivedData
 {
     return [NSKeyedArchiver archivedDataWithRootObject:self];
 }

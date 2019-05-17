@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns an NSData object containing the encoded form of the object.
  */
-@property (nullable, nonatomic, readonly) NSData *archivedData;
+@property (nonatomic, readonly) NSData *archivedData;
 
 /**
  * Writes the archived data to the file specified by a given path.
