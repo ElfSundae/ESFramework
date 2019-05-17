@@ -16,7 +16,7 @@
     + `ESWeakProxy` class
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
     + `+[NSNumber numberWithString:]`
-    + NSString methods: `-numberValue`
+    + NSString methods: `-numberValue`, `-dataValue`
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`
     + NSData methods: `-uppercaseHexString`, `lowercaseHexString`

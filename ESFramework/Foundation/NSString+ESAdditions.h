@@ -12,8 +12,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (ESAdditions)
 
+/**
+ * Returns an NSNumber object created by parsing the string.
+ */
 - (nullable NSNumber *)numberValue;
 
+/**
+ * Returns an NSData object containing a representation of the string encoded using UTF-8 encoding.
+ */
+- (nullable NSData *)dataValue;
+
+/**
+ * Returns a new string made by trimming whitespace and newline characters.
+ */
 - (NSString *)trimmedString;
 
 - (BOOL)contains:(NSString*)string;

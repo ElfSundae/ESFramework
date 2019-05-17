@@ -18,6 +18,11 @@
     return [NSNumber numberWithString:self];
 }
 
+- (nullable NSData *)dataValue
+{
+    return [self dataUsingEncoding:NSUTF8StringEncoding];
+}
+
 - (NSString *)trimmedString
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
