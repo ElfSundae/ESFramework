@@ -18,7 +18,7 @@
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`
     + NSData methods: `-uppercaseHexString`, `lowercaseHexString`
-    + `+[NSDate dateFromHTTPDateString:]`
+    + NSDate methods: `+dateFromHTTPDateString:`, `-isToday`, `-isYesterday`, `-isTomorrow`, `-isWeekend`, `-isWorkday`, `-isInThisWeek`
     + NSDateFormatter additions: `+RFC1123DateFormatter`, `+RFC1036DateFormatter`, `+ANSIDateFormatter`
     + NSArray methods: `-objectOrNilAtIndex:`, `-reversedArray`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
     + NSDictionary methods: `-entriesForKeys:`

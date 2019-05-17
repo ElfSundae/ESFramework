@@ -13,12 +13,42 @@
 
 - (BOOL)isBefore:(NSDate *)aDate
 {
-    return [self timeIntervalSinceDate:aDate] < 0;
+    return [self compare:aDate] == NSOrderedAscending;
 }
 
 - (BOOL)isAfter:(NSDate *)aDate
 {
-    return [self timeIntervalSinceDate:aDate] > 0;
+    return [self compare:aDate] == NSOrderedDescending;
+}
+
+- (BOOL)isToday
+{
+    return [NSCalendar.currentCalendar isDateInToday:self];
+}
+
+- (BOOL)isYesterday
+{
+    return [NSCalendar.currentCalendar isDateInYesterday:self];
+}
+
+- (BOOL)isTomorrow
+{
+    return [NSCalendar.currentCalendar isDateInTomorrow:self];
+}
+
+- (BOOL)isWeekend
+{
+    return [NSCalendar.currentCalendar isDateInWeekend:self];
+}
+
+- (BOOL)isWorkday
+{
+    return !self.isWeekend;
+}
+
+- (BOOL)isInThisWeek
+{
+    return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekday];
 }
 
 - (NSString *)RFC1123String

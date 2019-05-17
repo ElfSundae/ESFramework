@@ -19,6 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isBefore:(NSDate *)aDate;
 - (BOOL)isAfter:(NSDate *)aDate;
 
+- (BOOL)isToday;
+- (BOOL)isYesterday;
+- (BOOL)isTomorrow;
+- (BOOL)isWeekend;
+- (BOOL)isWorkday;
+- (BOOL)isInThisWeek;
+
 /**
  * Convert NSDate to RFC 1123 Full Date string.
  * http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1
