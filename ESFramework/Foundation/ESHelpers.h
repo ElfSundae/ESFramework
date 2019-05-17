@@ -270,7 +270,7 @@ FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirector
 #pragma mark - GCD
 
 NS_INLINE BOOL es_dispatch_is_main_queue(void) {
-    return dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL) == dispatch_queue_get_label(dispatch_get_main_queue());
+    return 0 == strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue()));
 }
 
 NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
