@@ -22,7 +22,7 @@
     + NSDateFormatter additions: `+RFC1123DateFormatter`, `+RFC1036DateFormatter`, `+ANSIDateFormatter`
     + NSArray methods: `-objectOrNilAtIndex:`, `-reversedArray`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
     + NSDictionary methods: `-entriesForKeys:`
-    + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`
+    + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`, `-reverseObjects`
     + NSOrderedSet methods: `objectOrNilAtIndex:`
     + `-[NSTimeZone hoursFromGMT]`
     + `-[UIDevice modelName]`

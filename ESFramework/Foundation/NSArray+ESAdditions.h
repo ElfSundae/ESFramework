@@ -54,6 +54,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)replaceObject:(ObjectType)object withObject:(ObjectType)anObject;
 
+/**
+ * Reverses objects in the array.
+ */
+- (void)reverseObjects;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -102,4 +102,17 @@
     return NO;
 }
 
+- (void)reverseObjects
+{
+    if (self.count < 2) {
+        return;
+    }
+    
+    NSUInteger i = 0;
+    NSUInteger j = self.count - 1;
+    while (i < j) {
+        [self exchangeObjectAtIndex:i++ withObjectAtIndex:j--];
+    }
+}
+
 @end
