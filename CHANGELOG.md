@@ -20,7 +20,7 @@
     + NSData methods: `-uppercaseHexString`, `lowercaseHexString`
     + `+[NSDate dateFromHTTPDateString:]`
     + NSDateFormatter additions: `+RFC1123DateFormatter`, `+RFC1036DateFormatter`, `+ANSIDateFormatter`
-    + NSArray methods: `-objectOrNilAtIndex:`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
+    + NSArray methods: `-objectOrNilAtIndex:`, `-reversedArray`, `-previousObjectToIndex:`, `-previousObjectToObject:`, `-nextObjectToIndex:`, `-nextObjectToObject:`
     + NSDictionary methods: `-entriesForKeys:`
     + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`
     + NSOrderedSet methods: `objectOrNilAtIndex:`

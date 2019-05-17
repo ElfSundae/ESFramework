@@ -20,6 +20,11 @@
     return self.count ? self[arc4random_uniform((uint32_t)self.count)] : nil;
 }
 
+- (NSArray *)reversedArray
+{
+    return self.reverseObjectEnumerator.allObjects;
+}
+
 - (id)objectPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
 {
     return [self objectWithOptions:0 passingTest:predicate];

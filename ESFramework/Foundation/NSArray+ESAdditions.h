@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable ObjectType)objectOrNilAtIndex:(NSUInteger)index;
 - (nullable ObjectType)randomObject;
 
+- (NSArray<ObjectType> *)reversedArray;
+
 - (nullable ObjectType)objectPassingTest:(BOOL (NS_NOESCAPE ^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 - (nullable ObjectType)objectWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(ObjectType obj, NSUInteger idx, BOOL *stop))predicate;
 
