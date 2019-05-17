@@ -61,7 +61,42 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-#pragma mark - NSMutableString (ESAdditions)
+@interface NSString (ESHash)
+
+- (NSData *)md5HashData;
+- (NSString *)md5HashString;
+
+- (NSData *)sha1HashData;
+- (NSString *)sha1HashString;
+- (NSData *)sha224HashData;
+- (NSString *)sha224HashString;
+- (NSData *)sha256HashData;
+- (NSString *)sha256HashString;
+- (NSData *)sha384HashData;
+- (NSString *)sha384HashString;
+- (NSData *)sha512HashData;
+- (NSString *)sha512HashString;
+
+- (NSData *)hmacMD5HashDataWithKey:(NSData *)key;
+- (NSString *)hmacMD5HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA1HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA1HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA224HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA224HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA256HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA256HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA384HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA384HashStringWithKey:(NSString *)key;
+- (NSData *)hmacSHA512HashDataWithKey:(NSData *)key;
+- (NSString *)hmacSHA512HashStringWithKey:(NSString *)key;
+
+- (NSData *)base64EncodedData;
+- (NSString *)base64EncodedString;
+- (NSString *)base64EncodedURLSafeString;
+- (nullable NSData *)base64DecodedData;
+- (nullable NSString *)base64DecodedString;
+
+@end
 
 @interface NSMutableString (ESAdditions)
 

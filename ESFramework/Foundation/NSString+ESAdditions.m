@@ -89,8 +89,6 @@
 
 @end
 
-#pragma mark - NSMutableString (ESAdditions)
-
 @implementation NSMutableString (ESAdditions)
 
 - (NSUInteger)replaceOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options

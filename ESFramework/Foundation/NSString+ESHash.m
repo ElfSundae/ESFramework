@@ -6,8 +6,8 @@
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "NSString+ESHash.h"
-#import "NSData+ESHash.h"
+#import "NSString+ESAdditions.h"
+#import "NSData+ESAdditions.h"
 
 @implementation NSString (ESHash)
 

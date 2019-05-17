@@ -1,16 +1,16 @@
 //
-//  NSData+ESHash.m
+//  NSData+ESAdditions.m
 //  ESFramework
 //
 //  Created by Elf Sundae on 16/1/23.
 //  Copyright © 2016年 www.0x123.com. All rights reserved.
 //
 
-#import "NSData+ESHash.h"
+#import "NSData+ESAdditions.h"
 #include <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 
-@implementation NSData (ESHash)
+@implementation NSData (ESAdditions)
 
 - (NSString *)UTF8String
 {

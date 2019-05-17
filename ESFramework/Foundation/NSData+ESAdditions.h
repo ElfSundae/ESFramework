@@ -1,5 +1,5 @@
 //
-//  NSData+ESHash.h
+//  NSData+ESAdditions.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 16/1/23.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSData (ESHash)
+@interface NSData (ESAdditions)
 
 #pragma mark - String Value
 

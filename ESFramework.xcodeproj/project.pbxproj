@@ -11,8 +11,8 @@
 		E74E71082272FBD8008C7943 /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESAdditions.m"; sourceTree = "<group>"; };
-		E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESHash.h"; sourceTree = "<group>"; };
-		E76CA2371CA50D1100EDBB8E /* NSData+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESHash.m"; sourceTree = "<group>"; };
+		E76CA2361CA50D1100EDBB8E /* NSData+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ESAdditions.h"; sourceTree = "<group>"; };
+		E76CA2371CA50D1100EDBB8E /* NSData+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA2381CA50D1100EDBB8E /* NSDate+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA2391CA50D1100EDBB8E /* NSDate+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA23A1CA50D1100EDBB8E /* NSDictionary+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ESAdditions.h"; sourceTree = "<group>"; };
@@ -25,7 +25,6 @@
 		E76CA2491CA50D1100EDBB8E /* NSString+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESAdditions.m"; sourceTree = "<group>"; };
 		E76CA24A1CA50D1100EDBB8E /* NSString+ESGTMHTML.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ESGTMHTML.h"; sourceTree = "<group>"; };
 		E76CA24B1CA50D1100EDBB8E /* NSString+ESGTMHTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESGTMHTML.m"; sourceTree = "<group>"; };
-		E76CA24C1CA50D1100EDBB8E /* NSString+ESHash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+ESHash.h"; sourceTree = "<group>"; };
 		E76CA24D1CA50D1100EDBB8E /* NSString+ESHash.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESHash.m"; sourceTree = "<group>"; };
 		E76CA24E1CA50D1100EDBB8E /* NSTimer+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+ESAdditions.h"; sourceTree = "<group>"; };
 		E76CA24F1CA50D1100EDBB8E /* NSTimer+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+ESAdditions.m"; sourceTree = "<group>"; };
@@ -121,8 +120,8 @@
 				E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */,
 				E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */,
 				E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */,
-				E76CA2361CA50D1100EDBB8E /* NSData+ESHash.h */,
-				E76CA2371CA50D1100EDBB8E /* NSData+ESHash.m */,
+				E76CA2361CA50D1100EDBB8E /* NSData+ESAdditions.h */,
+				E76CA2371CA50D1100EDBB8E /* NSData+ESAdditions.m */,
 				E76CA2381CA50D1100EDBB8E /* NSDate+ESAdditions.h */,
 				E76CA2391CA50D1100EDBB8E /* NSDate+ESAdditions.m */,
 				E7FDC97322672B1E00D8CC25 /* NSDateFormatter+ESAdditions.h */,
@@ -147,7 +146,6 @@
 				E76CA2491CA50D1100EDBB8E /* NSString+ESAdditions.m */,
 				E76CA24A1CA50D1100EDBB8E /* NSString+ESGTMHTML.h */,
 				E76CA24B1CA50D1100EDBB8E /* NSString+ESGTMHTML.m */,
-				E76CA24C1CA50D1100EDBB8E /* NSString+ESHash.h */,
 				E76CA24D1CA50D1100EDBB8E /* NSString+ESHash.m */,
 				E76CA24E1CA50D1100EDBB8E /* NSTimer+ESAdditions.h */,
 				E76CA24F1CA50D1100EDBB8E /* NSTimer+ESAdditions.m */,
