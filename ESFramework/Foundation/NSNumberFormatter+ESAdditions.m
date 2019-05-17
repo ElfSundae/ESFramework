@@ -16,6 +16,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _defaultFormatter = [[self alloc] init];
+        _defaultFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        _defaultFormatter.usesGroupingSeparator = NO;
     });
     return _defaultFormatter;
 }

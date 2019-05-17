@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSNumberFormatter (ESAdditions)
 
 /**
- * The shared NSNumberFormatter instance.
+ * A shared NSNumberFormatter instance with decimal style format and without group separator.
  */
 + (instancetype)defaultFormatter;
 
