@@ -89,7 +89,7 @@
         }
 
         if (result[name]) {
-            if (![result[name] isKindOfClass:NSMutableArray.class]) {
+            if (![result[name] isKindOfClass:[NSMutableArray class]]) {
                 result[name] = @[ result[name] ].mutableCopy;
             }
             [(NSMutableArray *)result[name] addObject:item.value];
@@ -115,7 +115,7 @@
 
         id value = dictionary[_name];
 
-        if ([value isKindOfClass:NSArray.class]) {
+        if ([value isKindOfClass:[NSArray class]]) {
             NSString *itemName = [name stringByAppendingString:@"[]"];
             for (id itemValue in (NSArray *)value) {
                 [queryItems addObject:[NSURLQueryItem queryItemWithName:itemName value:ESStringValue(itemValue)]];

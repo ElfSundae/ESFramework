@@ -14,9 +14,9 @@
 
 static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
 {
-    if ([obj isKindOfClass:NSNumber.class]) {
+    if ([obj isKindOfClass:[NSNumber class]]) {
         return (NSNumber *)obj;
-    } else if ([obj isKindOfClass:NSString.class]) {
+    } else if ([obj isKindOfClass:[NSString class]]) {
         return [NSNumber numberWithString:(NSString *)obj];
     } else {
         return nil;
@@ -125,9 +125,9 @@ NSUInteger ESUIntegerValue(id _Nullable obj)
 
 NSString * _Nullable ESStringValue(id _Nullable obj)
 {
-    if ([obj isKindOfClass:NSString.class]) {
+    if ([obj isKindOfClass:[NSString class]]) {
         return (NSString *)obj;
-    } else if ([obj isKindOfClass:NSNumber.class]) {
+    } else if ([obj isKindOfClass:[NSNumber class]]) {
         return [(NSNumber *)obj stringValue];
     } else {
         return nil;
@@ -136,7 +136,7 @@ NSString * _Nullable ESStringValue(id _Nullable obj)
 
 NSURL * _Nullable ESURLValue(id _Nullable obj)
 {
-    if ([obj isKindOfClass:NSURL.class]) {
+    if ([obj isKindOfClass:[NSURL class]]) {
         return (NSURL *)obj;
     } else if (ESIsStringWithAnyText(obj)) {
         return [NSURL URLWithString:(NSString *)obj];
@@ -147,27 +147,27 @@ NSURL * _Nullable ESURLValue(id _Nullable obj)
 
 BOOL ESIsStringWithAnyText(id object)
 {
-    return [object isKindOfClass:NSString.class] && [(NSString *)object length] > 0;
+    return [object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0;
 }
 
 BOOL ESIsArrayWithItems(id object)
 {
-    return [object isKindOfClass:NSArray.class] && [(NSArray *)object count] > 0;
+    return [object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0;
 }
 
 BOOL ESIsDictionaryWithItems(id object)
 {
-    return [object isKindOfClass:NSDictionary.class] && [(NSDictionary *)object count] > 0;
+    return [object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0;
 }
 
 BOOL ESIsSetWithItems(id object)
 {
-    return [object isKindOfClass:NSSet.class] && [(NSSet *)object count] > 0;
+    return [object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0;
 }
 
 BOOL ESIsOrderedSetWithItems(id object)
 {
-    return [object isKindOfClass:NSOrderedSet.class] && [(NSOrderedSet *)object count] > 0;
+    return [object isKindOfClass:[NSOrderedSet class]] && [(NSOrderedSet *)object count] > 0;
 }
 
 NSMutableSet *ESCreateNonretainedMutableSet(void)
@@ -201,7 +201,7 @@ uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 NSData *ESRandomDataOfLength(NSUInteger length)
 {
     NSMutableData *data = [NSMutableData dataWithLength:length];
-    int result = SecRandomCopyBytes(NULL, (size_t)length, data.mutableBytes);
+    int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, data.mutableBytes);
     if (0 != result) {
         printf("%s: Unable to generate random data.\n", __PRETTY_FUNCTION__);
     }

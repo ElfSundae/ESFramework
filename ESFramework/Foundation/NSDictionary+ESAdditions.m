@@ -56,12 +56,12 @@
         NSString *key = keys[i];
         NSMutableDictionary *current = dict[key];
 
-        if ([current isKindOfClass:NSDictionary.class] &&
-            ![current isKindOfClass:NSMutableDictionary.class]) {
+        if ([current isKindOfClass:[NSDictionary class]] &&
+            ![current isKindOfClass:[NSMutableDictionary class]]) {
             current = current.mutableCopy;
         }
 
-        if (!current || ![current isKindOfClass:NSMutableDictionary.class]) {
+        if (!current || ![current isKindOfClass:[NSMutableDictionary class]]) {
             current = [NSMutableDictionary dictionary];
         }
 

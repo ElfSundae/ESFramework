@@ -141,7 +141,7 @@ static void ESCheckAppFreshLaunch(void)
 
     for (NSDictionary *dict in [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"]) {
         NSArray *schemes = dict[@"CFBundleURLSchemes"];
-        if ([schemes isKindOfClass:NSArray.class]) {
+        if ([schemes isKindOfClass:[NSArray class]]) {
             [result addObjectsFromArray:schemes];
         }
     }
@@ -164,7 +164,7 @@ static void ESCheckAppFreshLaunch(void)
         NSArray *filtered = [urlTypes filteredArrayUsingPredicate:predicate];
         for (NSDictionary *dict in filtered) {
             NSArray *schemes = dict[@"CFBundleURLSchemes"];
-            if ([schemes isKindOfClass:NSArray.class]) {
+            if ([schemes isKindOfClass:[NSArray class]]) {
                 [result addObjectsFromArray:schemes];
             }
         }

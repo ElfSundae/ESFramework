@@ -50,11 +50,12 @@ static id __gNil = nil;
 
 #define CMPString(str, str1)    (0 == strcmp(str, str1))
 #define CMPType(type)           (CMPString(@encode(type), argType))
+
 #define SetArgumentWithValue(type) do { \
         type arg = va_arg(arguments, type); \
         [invocation setArgument:&arg atIndex:argIndex]; \
-} \
-    while (0)
+} while (0)
+
 #define SetArgumentWithPointer(type) do { \
         type arg = va_arg(arguments, type); \
         if (arg) [invocation setArgument:arg atIndex:argIndex]; \
@@ -134,6 +135,17 @@ static id __gNil = nil;
             }
         } /* for-loop */
     }
+
+#undef CMPString
+#undef CMPType
+#undef SetArgumentWithValue
+#undef SetArgumentWithPointer
+#undef IfTypeThenSetValueAs
+#undef IfTypeThenSetValue
+#undef IfTypeThenSetPointer
+#undef ElseIfTypeThenSetValueAs
+#undef ElseIfTypeThenSetValue
+#undef ElseIfTypeThenSetPointer
 
     if (invocation && retainArguments && !invocation.argumentsRetained) {
         [invocation retainArguments];
