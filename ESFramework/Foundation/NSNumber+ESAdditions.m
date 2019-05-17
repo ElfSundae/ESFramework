@@ -8,26 +8,25 @@
 
 #import "NSNumber+ESAdditions.h"
 #import "NSString+ESAdditions.h"
-#import "NSNumberFormatter+ESAdditions.h"
 
 @implementation NSNumber (ESAdditions)
 
 + (nullable NSNumber *)numberWithString:(NSString *)string
 {
-    string = string.trimmedString;
+    string = [string stringByDeletingCharactersInString:@", "].trimmedString;
     if (!string || !string.length) {
         return nil;
     }
 
-    static NSDictionary *table = nil;
+    static NSDictionary *_esNumberTable = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        table = @{@"true": @YES, @"t": @YES, @"yes": @YES, @"y": @YES,
-                  @"false": @NO, @"f": @NO, @"no": @NO, @"n": @NO,
-                  @"nil": NSNull.null, @"null": NSNull.null, @"<null>": NSNull.null};
+        _esNumberTable = @{@"true": @YES, @"t": @YES, @"yes": @YES, @"y": @YES,
+                           @"false": @NO, @"f": @NO, @"no": @NO, @"n": @NO,
+                           @"nil": NSNull.null, @"null": NSNull.null, @"<null>": NSNull.null};
     });
 
-    id found = table[string.lowercaseString];
+    id found = _esNumberTable[string.lowercaseString];
     if (found) {
         if (NSNull.null == found) {
             return nil;
@@ -35,7 +34,15 @@
         return found;
     }
 
-    return [NSNumberFormatter.defaultFormatter numberFromString:string];
+    static NSNumberFormatter *_esNumberFormatter = nil;
+    static dispatch_once_t onceToken1;
+    dispatch_once(&onceToken1, ^{
+        _esNumberFormatter = [[NSNumberFormatter alloc] init];
+        _esNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        _esNumberFormatter.usesGroupingSeparator = NO;
+    });
+
+    return [_esNumberFormatter numberFromString:string];
 }
 
 @end

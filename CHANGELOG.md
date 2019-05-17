@@ -15,7 +15,6 @@
     + `NSURL *ESDocumentDirectoryURL()`, `NSURL *ESDocumentURL(NSString *pathComponent)`, `ESLibraryDirectoryURL()`, `ESLibraryURL(NSString *)`, `ESCachesDirectoryURL()`, `ESCachesURL(NSString *)`, `ESTemporaryDirectoryURL()`, `ESTemporaryURL(NSString *)`
     + `ESWeakProxy` class
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
-    + `+[NSNumberFormatter defaultFormatter]`
     + `+[NSNumber numberWithString:]`
     + NSString methods: `-numberValue`
     + `NSURLComponents (ESAdditions)` category
@@ -44,7 +43,6 @@
     + `ESPathForDocuments` => `ESDocumentDirectory`, `ESPathForDocumentsResource` => `ESDocumentPath`, `ESPathForLibrary` => `ESLibraryDirectory`, `ESPathForLibraryResource` => `ESLibraryPath`, `ESPathForCaches` => `ESCachesDirectory`, `ESPathForCachesResource` => `ESCachesPath`, `ESPathForTemporary` => `ESTemporaryDirectory`, `ESPathForTemporaryResource` => `ESTemporaryPath`
     + `UIScreenIsRetina()` => `ESIsRetinaScreen()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
-    + `ESSharedNumberFormatter` => `+[NSNumberFormatter defaultFormatter]`
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
     + NSString methods: `-trim` => `trimmedString`, `-URLEncode` => `-URLEncodedString`, `-URLDecode` => `-URLDecodedString`
     + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
@@ -81,7 +79,7 @@
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `ESPathForBundleResource()`, `ESPathForMainBundleResource()`
     + `ESTouchDirectory()`, `ESTouchDirectoryAtFilePath`, `ESTouchDirectoryAtFileURL()`: use `-[NSFileManager createDirectoryAtPath:]` or `-[NSFileManager createDirectoryAtURL:]` instead before writing to the filesystem
-    + `NSNumberFromString(id)`, `ES...ValueWithDefault(id)`, `ES...Val(... *, id)`
+    + `ESSharedNumberFormatter`, `NSNumberFromString(id)`, `ES...ValueWithDefault(id)`, `ES...Val(... *, id)`
     + `-[NSObject es_description]`
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category

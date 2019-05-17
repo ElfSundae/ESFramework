@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumberFormatter+ESAdditions.h"; sourceTree = "<group>"; };
-		E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumberFormatter+ESAdditions.m"; sourceTree = "<group>"; };
 		E74E71072272FBD8008C7943 /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		E74E71082272FBD8008C7943 /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
 		E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+ESAdditions.h"; sourceTree = "<group>"; };
@@ -141,8 +139,6 @@
 				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
 				E7A6B5A3228EA48D001F0258 /* NSNumber+ESAdditions.h */,
 				E7A6B5A4228EA48D001F0258 /* NSNumber+ESAdditions.m */,
-				E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */,
-				E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */,
 				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,
 				E76CA28E1CA5171700EDBB8E /* NSObject+ESAutoCoding.m */,
 				E76CA2421CA50D1100EDBB8E /* NSOrderedSet+ESAdditions.h */,
