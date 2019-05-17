@@ -59,6 +59,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)reverseObjects;
 
+/**
+ * Shuffles objects in the array.
+ */
+- (void)shuffleObjects;
+
 @end
 
 NS_ASSUME_NONNULL_END
