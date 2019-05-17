@@ -199,21 +199,14 @@
 
 - (nullable UIViewController *)viewController
 {
-    UIViewController *controller = nil;
-    UIView *view = self;
-    UIResponder *nextResponder = nil;
-    do {
-        nextResponder = view.nextResponder;
-        if ([nextResponder isKindOfClass:[UIViewController class]]) {
-            controller = (UIViewController *)nextResponder;
-            break;
-        } else {
-            view = view.superview;
+    for (UIView *view = self; view; view = view.superview) {
+        UIResponder *nextResponder = view.nextResponder;
+        if ([nextResponder isKindOfClass:UIViewController.class]) {
+            return (UIViewController *)nextResponder;
         }
+    }
 
-    } while (view && controller == nil);
-
-    return controller;
+    return nil;
 }
 
 - (CAShapeLayer *)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii

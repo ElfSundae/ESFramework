@@ -70,13 +70,13 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  * The app name.
  * @discussion The default value is the executable in the main bundle.
  */
-@property (nonatomic, copy) NSString *appName;
+@property (null_resettable, nonatomic, copy) NSString *appName;
 
 /**
  * The channel that app submitted to.
  * @discussion The default value is "App Store".
  */
-@property (nullable, nonatomic, copy) NSString *appChannel;
+@property (null_resettable, nonatomic, copy) NSString *appChannel;
 
 /**
  * The app ID in the App Store, used to generate the app Download link and

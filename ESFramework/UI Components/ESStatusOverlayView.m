@@ -164,7 +164,9 @@ ESDefineAssociatedObjectKey(statusOverlayView)
 
 - (void)setStatusOverlayView:(ESStatusOverlayView *)view
 {
+    [self willChangeValueForKey:@"statusOverlayView"];
     objc_setAssociatedObject(self, statusOverlayViewKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self didChangeValueForKey:@"statusOverlayView"];
 }
 
 @end
