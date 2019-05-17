@@ -45,7 +45,7 @@
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
     + `ESSharedNumberFormatter` => `+[NSNumberFormatter defaultFormatter]`
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
-    + NSString methods: `-URLEncode` => `-URLEncoded`, `-URLDecode` => `-URLDecoded`
+    + NSString methods: `-trim` => `trimmedString`, `-URLEncode` => `-URLEncodedString`, `-URLDecode` => `-URLDecodedString`
     + NSString, NSData methods: `-base64Encoded` => `-base64EncodedData`
     + NSData methods: `-stringValue` => `-UTF8String`, `-hexStringValue` => `-lowercaseHexString`
     + `-[NSString stringByEncodingHTMLEntitiesUsingTable:]` => `-stringByEscapingHTMLUsingTable:`

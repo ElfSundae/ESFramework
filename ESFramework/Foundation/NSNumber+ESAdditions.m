@@ -14,7 +14,7 @@
 
 + (nullable NSNumber *)numberWithString:(NSString *)string
 {
-    string = string.trim.lowercaseString;
+    string = string.trimmedString.lowercaseString;
     if (!string || !string.length) {
         return nil;
     }

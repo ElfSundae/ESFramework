@@ -13,7 +13,7 @@
 
 @implementation NSString (ESAdditions)
 
-- (NSString *)trim
+- (NSString *)trimmedString
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
@@ -55,12 +55,12 @@
     return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
 }
 
-- (NSString *)URLEncoded
+- (NSString *)URLEncodedString
 {
     return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLEncodingAllowedCharacterSet]];
 }
 
-- (NSString *)URLDecoded
+- (NSString *)URLDecodedString
 {
     return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
 }

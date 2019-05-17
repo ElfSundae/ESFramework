@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (ESAdditions)
 
-- (NSString *)trim;
+- (NSString *)trimmedString;
 
 - (BOOL)contains:(NSString*)string;
 - (BOOL)containsCaseInsensitive:(NSString *)string;
@@ -25,16 +25,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
 /**
- * Returns a URL-encoded string in which all non-alphanumeric characters
- * except -_.~ have been replaced with a percent (%) sign followed by two hex digits,
- * it conforms to [RFC 3986](http://www.faqs.org/rfcs/rfc3986.html)
+ * Returns a percent escaped string following RFC 3986 for a query string key or value.
  */
-- (NSString *)URLEncoded;
+- (nullable NSString *)URLEncodedString;
 
 /**
- * Returns a URL-decoded string.
+ * Returns a new string made by replacing all percent encoded sequences with the matching UTF-8 characters.
  */
-- (NSString *)URLDecoded;
+- (nullable NSString *)URLDecodedString;
 
 /**
  * Returns the query components parsed as a dictionary for the URL string.
@@ -46,7 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns a newly created URL string added the given query dictionary.
  */
-- (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
+- (nullable NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
 
 @end
 
