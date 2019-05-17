@@ -83,6 +83,8 @@
 		E7A38CB01C4DFEE300972B01 /* ESRefreshControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControl.m; sourceTree = "<group>"; };
 		E7A38CBC1C4E035600972B01 /* ESRefreshControlDefaultContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControlDefaultContentView.h; sourceTree = "<group>"; };
 		E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
+		E7A6B5A3228EA48D001F0258 /* NSNumber+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+ESAdditions.h"; sourceTree = "<group>"; };
+		E7A6B5A4228EA48D001F0258 /* NSNumber+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A8D488227F0F0F0013A7E8 /* UIApplication+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIApplication+ESAdditions.h"; sourceTree = "<group>"; };
 		E7A8D489227F0F0F0013A7E8 /* UIApplication+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ESAdditions.m"; sourceTree = "<group>"; };
 		E7A8D490227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPCookieStorage+ESAdditions.h"; sourceTree = "<group>"; };
@@ -141,6 +143,8 @@
 				E7A8D491227F20030013A7E8 /* NSHTTPCookieStorage+ESAdditions.m */,
 				E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */,
 				E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */,
+				E7A6B5A3228EA48D001F0258 /* NSNumber+ESAdditions.h */,
+				E7A6B5A4228EA48D001F0258 /* NSNumber+ESAdditions.m */,
 				E72D68052270456A004AEC5A /* NSNumberFormatter+ESAdditions.h */,
 				E72D68062270456A004AEC5A /* NSNumberFormatter+ESAdditions.m */,
 				E76CA28D1CA5171700EDBB8E /* NSObject+ESAutoCoding.h */,

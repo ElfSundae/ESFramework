@@ -1,6 +1,6 @@
 PODS:
   - AFNetworking/Reachability (3.2.1)
-  - ESFramework (2.6.2):
+  - ESFramework (3.0.0):
     - AFNetworking/Reachability
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  ESFramework: 2c5751c7131b2c02b85ff3a5249ec7b5727be0a6
+  ESFramework: 2bac04d40229d07b854fd6e74703836fb8e3dcb2
 
 PODFILE CHECKSUM: 4a0a405e373db135639ede81077572714d3940f6
 

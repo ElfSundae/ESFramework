@@ -21,6 +21,7 @@
 #import "NSFileManager+ESAdditions.h"
 #import "NSHTTPCookieStorage+ESAdditions.h"
 #import "NSInvocation+ESHelper.h"
+#import "NSNumber+ESAdditions.h"
 #import "NSNumberFormatter+ESAdditions.h"
 #import "NSObject+ESAutoCoding.h"
 #import "NSOrderedSet+ESAdditions.h"

@@ -15,6 +15,8 @@
     + `NSURL *ESDocumentDirectoryURL()`, `NSURL *ESDocumentURL(NSString *pathComponent)`, `ESLibraryDirectoryURL()`, `ESLibraryURL(NSString *)`, `ESCachesDirectoryURL()`, `ESCachesURL(NSString *)`, `ESTemporaryDirectoryURL()`, `ESTemporaryURL(NSString *)`
     + `ESWeakProxy` class
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
+    + `+[NSNumberFormatter defaultFormatter]`
+    + `+[NSNumber numberWithString:]`
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`
     + NSData methods: `-uppercaseHexString`, `lowercaseHexString`
