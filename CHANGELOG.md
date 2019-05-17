@@ -17,6 +17,7 @@
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
     + `+[NSNumberFormatter defaultFormatter]`
     + `+[NSNumber numberWithString:]`
+    + NSString methods: `-numberValue`, `-charValue`, `-unsignedCharValue`, `-shortValue`, `-unsignedShortValue`, `-unsignedIntValue`, `-longValue`, `-unsignedLongValue`, `-unsignedLongLongValue`, `-unsignedIntegerValue`
     + `NSURLComponents (ESAdditions)` category
     + `-[NSURL URLByAddingQueryDictionary:]`
     + NSData methods: `-uppercaseHexString`, `lowercaseHexString`

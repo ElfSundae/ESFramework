@@ -7,11 +7,61 @@
 //
 
 #import "NSString+ESAdditions.h"
+#import "NSNumber+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
-#import "NSString+ESGTMHTML.h"
 
 @implementation NSString (ESAdditions)
+
+- (NSNumber *)numberValue
+{
+    return [NSNumber numberWithString:self];
+}
+
+- (char)charValue
+{
+    return self.numberValue.charValue;
+}
+
+- (unsigned char)unsignedCharValue
+{
+    return self.numberValue.unsignedCharValue;
+}
+
+- (short)shortValue
+{
+    return self.numberValue.shortValue;
+}
+
+- (unsigned short)unsignedShortValue
+{
+    return self.numberValue.unsignedShortValue;
+}
+
+- (unsigned int)unsignedIntValue
+{
+    return self.numberValue.unsignedIntValue;
+}
+
+- (long)longValue
+{
+    return self.numberValue.longValue;
+}
+
+- (unsigned long)unsignedLongValue
+{
+    return self.numberValue.unsignedLongValue;
+}
+
+- (unsigned long long)unsignedLongLongValue
+{
+    return self.numberValue.unsignedLongLongValue;
+}
+
+- (NSUInteger)unsignedIntegerValue
+{
+    return self.numberValue.unsignedIntegerValue;
+}
 
 - (NSString *)trimmedString
 {
