@@ -81,7 +81,7 @@
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `ESPathForBundleResource()`, `ESPathForMainBundleResource()`
     + `ESTouchDirectory()`, `ESTouchDirectoryAtFilePath`, `ESTouchDirectoryAtFileURL()`: use `-[NSFileManager createDirectoryAtPath:]` or `-[NSFileManager createDirectoryAtURL:]` instead before writing to the filesystem
-    + `NSNumberFromString()`
+    + `NSNumberFromString(id)`, `ES...ValueWithDefault(id)`, `ES...Val(... *, id)`
     + `-[NSObject es_description]`
     + `NSObject (ESAssociatedObjectHelper)` category
     + `NSRegularExpression (ESAdditions)` category

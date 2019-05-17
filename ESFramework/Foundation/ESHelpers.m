@@ -9,7 +9,19 @@
 #import "ESHelpers.h"
 #import <sys/time.h>
 #import <Security/SecRandom.h>
+#import "NSNumber+ESAdditions.h"
 #import "NSInvocation+ESHelper.h"
+
+static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
+{
+    if ([obj isKindOfClass:NSNumber.class]) {
+        return (NSNumber *)obj;
+    } else if ([obj isKindOfClass:NSString.class]) {
+        return [NSNumber numberWithString:(NSString *)obj];
+    } else {
+        return nil;
+    }
+}
 
 BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
 {
@@ -54,6 +66,83 @@ void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^completion)
     block();
     gettimeofday(&end, NULL);
     completion((double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000);
+}
+
+int ESIntValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) intValue];
+}
+
+unsigned int ESUIntValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) unsignedIntValue];
+}
+
+long ESLongValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) longValue];
+}
+
+unsigned long ESULongValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) unsignedLongValue];
+}
+
+long long ESLongLongValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) longLongValue];
+}
+
+unsigned long long ESULongLongValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) unsignedLongLongValue];
+}
+
+float ESFloatValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) floatValue];
+}
+
+double ESDoubleValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) doubleValue];
+}
+
+BOOL ESBoolValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) boolValue];
+}
+
+NSInteger ESIntegerValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) integerValue];
+}
+
+NSUInteger ESUIntegerValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) unsignedIntegerValue];
+}
+
+NSString * _Nullable ESStringValue(id _Nullable obj)
+{
+    if ([obj isKindOfClass:NSString.class]) {
+        return (NSString *)obj;
+    } else if ([obj isKindOfClass:NSNumber.class]) {
+        return [(NSNumber *)obj stringValue];
+    } else {
+        return nil;
+    }
+}
+
+NSURL * _Nullable ESURLValue(id _Nullable obj)
+{
+    if ([obj isKindOfClass:NSURL.class]) {
+        return (NSURL *)obj;
+    } else if (ESIsStringWithAnyText(obj)) {
+        return [NSURL URLWithString:(NSString *)obj];
+    } else {
+        return nil;
+    }
 }
 
 BOOL ESIsStringWithAnyText(id object)

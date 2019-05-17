@@ -9,7 +9,6 @@
 #import "ESMacros.h"
 
 #import "ESHelpers.h"
-#import "ESValue.h"
 #import "ESWeakProxy.h"
 #import "NSArray+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"

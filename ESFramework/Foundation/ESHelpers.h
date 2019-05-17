@@ -62,6 +62,24 @@ FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE 
 #pragma mark - Foundation
 
 /**
+ * Gets value from an NSNumber or NSString object safely.
+ */
+
+FOUNDATION_EXTERN int ESIntValue(id _Nullable obj);
+FOUNDATION_EXTERN unsigned int ESUIntValue(id _Nullable obj);
+FOUNDATION_EXTERN long ESLongValue(id _Nullable obj);
+FOUNDATION_EXTERN unsigned long ESULongValue(id _Nullable obj);
+FOUNDATION_EXTERN long long ESLongLongValue(id _Nullable obj);
+FOUNDATION_EXTERN unsigned long long ESULongLongValue(id _Nullable obj);
+FOUNDATION_EXTERN float ESFloatValue(id _Nullable obj);
+FOUNDATION_EXTERN double ESDoubleValue(id _Nullable obj);
+FOUNDATION_EXTERN BOOL ESBoolValue(id _Nullable obj);
+FOUNDATION_EXTERN NSInteger ESIntegerValue(id _Nullable obj);
+FOUNDATION_EXTERN NSUInteger ESUIntegerValue(id _Nullable obj);
+FOUNDATION_EXTERN NSString * _Nullable ESStringValue(id _Nullable obj);
+FOUNDATION_EXTERN NSURL * _Nullable ESURLValue(id _Nullable obj);
+
+/**
  * Checks whether the given object is a non-empty string.
  */
 FOUNDATION_EXTERN BOOL ESIsStringWithAnyText(id _Nullable object);

@@ -10,7 +10,6 @@
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "ESMacros.h"
 #import "ESHelpers.h"
-#import "ESValue.h"
 #import "UIDevice+ESAdditions.h"
 #import "ESNetworkHelper.h"
 #import "NSTimeZone+ESAdditions.h"
@@ -112,7 +111,8 @@ static void ESCheckAppFreshLaunch(void)
 
 - (BOOL)isUIViewControllerBasedStatusBarAppearance
 {
-    return ESBoolValueWithDefault([NSBundle.mainBundle objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"], YES);
+    NSNumber *value = [NSBundle.mainBundle objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
+    return value ? value.boolValue : YES;
 }
 
 - (NSDate *)appStartupDate
