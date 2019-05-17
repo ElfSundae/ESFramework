@@ -331,6 +331,7 @@ ESDefineAssociatedObjectKey(esRefreshControl)
     if (refreshControl) {
         [self addSubview:refreshControl];
     }
+
     [self willChangeValueForKey:@"es_refreshControl"];
     objc_setAssociatedObject(self, esRefreshControlKey, refreshControl, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self didChangeValueForKey:@"es_refreshControl"];
