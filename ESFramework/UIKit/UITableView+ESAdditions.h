@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (ESAdditions)
 
+/**
+ * Animates multiple insert, delete, reload, and move operations as a group.
+ */
+- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates;
+
 - (void)scrollToFirstResponderAnimated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
 
 - (void)touchRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated scrollPosition:(UITableViewScrollPosition)scrollPosition;

@@ -11,6 +11,19 @@
 
 @implementation UITableView (ESAdditions)
 
+- (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates
+{
+    if (@available(iOS 11.0, *)) {
+        [self performBatchUpdates:updates completion:nil];
+    } else {
+        [self beginUpdates];
+        if (updates) {
+            updates();
+        }
+        [self endUpdates];
+    }
+}
+
 - (void)scrollToFirstResponderAnimated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition
 {
     UIView *responder = [self.window findFirstResponder];
