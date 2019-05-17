@@ -17,10 +17,7 @@
 
 - (id)randomObject
 {
-    if (self.count) {
-        return self[arc4random_uniform((uint32_t)self.count)];
-    }
-    return nil;
+    return self.count ? self[arc4random_uniform((uint32_t)self.count)] : nil;
 }
 
 - (id)objectPassingTest:(BOOL (NS_NOESCAPE ^)(id, NSUInteger, BOOL *))predicate
