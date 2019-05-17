@@ -30,6 +30,7 @@
     + `-[UIDevice modelName]`
     + `ESNetworkHelper` class
     + `-[UIView snapshotViewAfterScreenUpdates:]`
+    + UIScrollView methods: `-scrollToTop`, `-scrollToBottom`, `-scrollToLeft`, `-scrollToRight`
     + `-[UITableView performBatchUpdates:]`
 - Renamed:
     + `ES_STOPWATCH_BEGIN` `ES_STOPWATCH_END` => `ESBenchmark()`
