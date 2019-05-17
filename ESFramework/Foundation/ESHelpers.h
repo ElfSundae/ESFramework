@@ -120,6 +120,11 @@ FOUNDATION_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
 FOUNDATION_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
 
 /**
+ * Generates an UUID string, e.g. "E621E1F8-C36C-495A-93FC-0C247A3E6E5F".
+ */
+FOUNDATION_EXTERN NSString *ESUUIDString(void);
+
+/**
  * Generates a random number between min and max.
  */
 FOUNDATION_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);

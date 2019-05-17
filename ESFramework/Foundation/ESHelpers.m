@@ -185,6 +185,11 @@ NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
     return CFBridgingRelease(CFDictionaryCreateMutable(NULL, 0, NULL, NULL));
 }
 
+NSString *ESUUIDString(void)
+{
+    return NSUUID.UUID.UUIDString;
+}
+
 uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 {
     if (min > max) {

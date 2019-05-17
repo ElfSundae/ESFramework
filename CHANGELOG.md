@@ -42,6 +42,7 @@
     + `ESDispatchAfter` => `es_dispatch_after`
     + `ESPathForDocuments` => `ESDocumentDirectory`, `ESPathForDocumentsResource` => `ESDocumentPath`, `ESPathForLibrary` => `ESLibraryDirectory`, `ESPathForLibraryResource` => `ESLibraryPath`, `ESPathForCaches` => `ESCachesDirectory`, `ESPathForCachesResource` => `ESCachesPath`, `ESPathForTemporary` => `ESTemporaryDirectory`, `ESPathForTemporaryResource` => `ESTemporaryPath`
     + `UIScreenIsRetina()` => `ESIsRetinaScreen()`
+    + `ESUUID()` => `ESUUIDString()`
     + NSObject methods: `+es_codableProperties` => `+codableProperties`, `-es_codableProperties` => `-codableProperties`, `-es_dictionaryRepresentation` => `-dictionaryRepresentation`
     + `-[NSString stringByAppendingQueryDictionary:]` => `-stringByAddingQueryDictionary:`
     + NSString methods: `-trim` => `trimmedString`, `-URLEncode` => `-URLEncodedString`, `-URLDecode` => `-URLDecodedString`
@@ -74,7 +75,6 @@
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`
     + `ES_SINGLETON_DEC`, `ES_SINGLETON_IMP_AS`, `ES_SINGLETON_IMP`, `CFReleaseSafely`
     + `ESOSVersion`, `ESBundleWithName()`
-    + `ESUUID()`: use `NSUUID.UUID.UUIDString` instead
     + `ESGetAssociatedObject()`, `ESSetAssociatedObject()`, `OBJC_ASSOCIATION_WEAK`, use `objc_getAssociatedObject`, `objc_setAssociatedObject` directly
     + `ESOSVersionIsAbove*()`, `ESStringFromSize()`, `NSStringWith()`, `UIImageFromCache()`, `UIImageFrom()`
     + `ESPathForBundleResource()`, `ESPathForMainBundleResource()`
