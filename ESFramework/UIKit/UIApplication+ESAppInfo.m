@@ -146,7 +146,7 @@ static void ESCheckAppFreshLaunch(void)
         }
     }
 
-    return result.copy;
+    return [result copy];
 }
 
 - (NSSet *)URLSchemesForIdentifier:(NSString *)identifier

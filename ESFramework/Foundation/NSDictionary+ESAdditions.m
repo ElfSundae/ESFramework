@@ -20,7 +20,7 @@
             entries[key] = value;
         }
     }
-    return entries.copy;
+    return [entries copy];
 }
 
 - (NSString *)URLQueryString
@@ -58,7 +58,7 @@
 
         if ([current isKindOfClass:[NSDictionary class]] &&
             ![current isKindOfClass:[NSMutableDictionary class]]) {
-            current = current.mutableCopy;
+            current = [current mutableCopy];
         }
 
         if (!current || ![current isKindOfClass:[NSMutableDictionary class]]) {

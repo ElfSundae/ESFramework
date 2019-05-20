@@ -50,7 +50,7 @@
 
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options
 {
-    NSMutableString *result = self.mutableCopy;
+    NSMutableString *result = [self mutableCopy];
     [result replaceWithDictionary:dictionary options:options];
     return [result copy];
 }

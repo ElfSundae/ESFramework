@@ -221,12 +221,12 @@ NSString *ESRandomStringOfLength(NSUInteger length)
     NSData *data = ESRandomDataOfLength(length);
     NSString *string = [data base64EncodedStringWithOptions:0];
     string = [string stringByDeletingCharactersInString:@"+/="];
-    NSUInteger stringLength = string.length;
-    if (stringLength >= length) {
+    if (string.length >= length) {
         return [string substringToIndex:length];
     }
 
-    NSMutableString *result = string.mutableCopy;
+    NSMutableString *result = [string mutableCopy];
+    NSUInteger stringLength = string.length;
     for (NSUInteger i = stringLength; i < length; i++) {
         [result appendFormat:@"%c", [string characterAtIndex:arc4random_uniform((uint32_t)stringLength)]];
     }

@@ -96,7 +96,7 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
 
     freeifaddrs(ifaddr);
 
-    return addresses.copy;
+    return [addresses copy];
 }
 
 + (NSString *)getIPAddressForWiFi:(NSString **)IPv6Address

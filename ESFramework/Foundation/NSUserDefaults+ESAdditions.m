@@ -17,7 +17,7 @@
 
 - (void)setRegistrationDictionary:(NSDictionary<NSString *, id> *)registration
 {
-    [self setVolatileDomain:registration.copy forName:NSRegistrationDomain];
+    [self setVolatileDomain:[registration copy] forName:NSRegistrationDomain];
 }
 
 - (void)setRegistrationObject:(nullable id)value forKey:(NSString *)defaultName

@@ -12,20 +12,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSData (ESAdditions)
 
-#pragma mark - String Value
 
 /**
- * Converts data to an UTF-8 encoded string.
+ * Converts the data to a UTF-8 encoded string.
  */
 - (NSString *)UTF8String;
 
 /**
- * Converts data to a lowercase hexadecimal string.
+ * Converts the data to a lowercase hexadecimal string.
  */
 - (NSString *)lowercaseHexString;
 
 /**
- * Converts data to an uppercase hexadecimal string.
+ * Converts the data to an uppercase hexadecimal string.
  */
 - (NSString *)uppercaseHexString;
 
