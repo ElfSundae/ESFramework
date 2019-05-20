@@ -377,26 +377,26 @@ NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory)
 
 #pragma mark - ObjC Runtime
 
-void ESSwizzleInstanceMethod(Class c, SEL orig, SEL new)
+void ESSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSelector)
 {
-    Method origMethod = class_getInstanceMethod(c, orig);
-    Method newMethod = class_getInstanceMethod(c, new);
-    if (class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
-        class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    Method originalMethod = class_getInstanceMethod(class, originalSelector);
+    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+    if (class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) {
+        class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
     } else {
-        method_exchangeImplementations(origMethod, newMethod);
+        method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
 
-void ESSwizzleClassMethod(Class c, SEL orig, SEL new)
+void ESSwizzleClassMethod(Class class, SEL originalSelector, SEL swizzledSelector)
 {
-    c = object_getClass((id)c);
-    Method origMethod = class_getClassMethod(c, orig);
-    Method newMethod = class_getClassMethod(c, new);
-    if (class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
-        class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    class = object_getClass((id)class);
+    Method originalMethod = class_getClassMethod(class, originalSelector);
+    Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+    if (class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) {
+        class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
     } else {
-        method_exchangeImplementations(origMethod, newMethod);
+        method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
 
