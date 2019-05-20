@@ -12,6 +12,41 @@
 
 @implementation NSData (ESAdditions)
 
+// https://opensource.apple.com/source/Security/Security-55471/libsecurity_transform/NSData+HexString.m
+// https://stackoverflow.com/q/2338975/521946
++ (nullable NSData *)dataWithHexString:(NSString *)hexString
+{
+    hexString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSUInteger hexStringLength = hexString.length;
+    if (0 == hexStringLength) {
+        return nil;
+    }
+    if (0 != hexStringLength % 2) {
+        // hexString should have an even number of digits
+        return nil;
+    }
+
+    NSUInteger bytesLength = hexStringLength / 2;
+    unsigned char *bytes = (unsigned char *)malloc(bytesLength);
+    unsigned char *pBytes = bytes;
+    const char *scanner = hexString.UTF8String;
+    char str[3] = {'\0', '\0', '\0'};
+
+    for (NSUInteger i = 0; i < bytesLength; i++) {
+        str[0] = *scanner++;
+        str[1] = *scanner++;
+        char *end = NULL;
+        *pBytes++ = strtol(str, &end, 16);
+        if (end != str + 2) {
+            // hexString should be all hex digits
+            free(bytes);
+            return nil;
+        }
+    }
+
+    return [NSData dataWithBytesNoCopy:bytes length:bytesLength freeWhenDone:YES];
+}
+
 - (NSString *)UTF8String
 {
     return [[NSString alloc] initWithData:self encoding:NSUTF8StringEncoding];

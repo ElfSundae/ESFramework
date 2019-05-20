@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSData (ESAdditions)
 
+/**
+ * Creates and returns an new NSData object converted from the hexadecimal string.
+ */
++ (nullable NSData *)dataWithHexString:(NSString *)hexString;
 
 /**
  * Converts the data to a UTF-8 encoded string.
