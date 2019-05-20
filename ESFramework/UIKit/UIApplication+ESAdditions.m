@@ -7,8 +7,65 @@
 //
 
 #import "UIApplication+ESAdditions.h"
+#import "ESMacros.h"
+#import "ESHelpers.h"
+#import "UIDevice+ESAdditions.h"
+
+ESDefineAssociatedObjectKey(registerRemoteNotificationsCompletion);
+
+typedef void (*_ESFunctionWithTwoObjectArgs)(id, SEL, id, id);
+
+static IMP es_original_application_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
+static IMP es_original_application_didFailToRegisterForRemoteNotificationsWithError = NULL;
+
+static void es_application_didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication *application, NSData *deviceToken)
+{
+    UIDevice.currentDevice.deviceToken = deviceToken;
+
+    if (es_original_application_didRegisterForRemoteNotificationsWithDeviceToken) {
+        ((_ESFunctionWithTwoObjectArgs)es_original_application_didRegisterForRemoteNotificationsWithDeviceToken)(self, _cmd, application, deviceToken);
+    }
+
+    if (application.registerRemoteNotificationsCompletion) {
+        application.registerRemoteNotificationsCompletion(deviceToken, nil);
+        application.registerRemoteNotificationsCompletion = nil;
+    }
+}
+
+static void es_application_didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication *application, NSError *error)
+{
+    if (es_original_application_didFailToRegisterForRemoteNotificationsWithError) {
+        ((_ESFunctionWithTwoObjectArgs)es_original_application_didFailToRegisterForRemoteNotificationsWithError)(self, _cmd, application, error);
+    }
+
+    if (application.registerRemoteNotificationsCompletion) {
+        application.registerRemoteNotificationsCompletion(nil, error);
+        application.registerRemoteNotificationsCompletion = nil;
+    }
+}
 
 @implementation UIApplication (ESAdditions)
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        ESSwizzleInstanceMethod(self, @selector(setDelegate:), @selector(es_setDelegate:));
+    });
+}
+
+- (void)es_setDelegate:(id<UIApplicationDelegate>)delegate
+{
+    [self es_setDelegate:delegate];
+
+    if (delegate) {
+        es_original_application_didRegisterForRemoteNotificationsWithDeviceToken =
+            class_replaceMethod([delegate class], @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), (IMP)es_application_didRegisterForRemoteNotificationsWithDeviceToken, "v@:@@");
+
+        es_original_application_didFailToRegisterForRemoteNotificationsWithError =
+            class_replaceMethod([delegate class], @selector(application:didFailToRegisterForRemoteNotificationsWithError:), (IMP)es_application_didFailToRegisterForRemoteNotificationsWithError, "v@:@@");
+    }
+}
 
 - (UIWindow *)appWindow
 {
@@ -54,6 +111,23 @@
 - (void)dismissKeyboard
 {
     [self sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
+}
+
+- (void (^)(NSData * _Nullable, NSError * _Nullable))registerRemoteNotificationsCompletion
+{
+    return objc_getAssociatedObject(self, registerRemoteNotificationsCompletionKey);
+}
+
+- (void)setRegisterRemoteNotificationsCompletion:(void (^)(NSData * _Nullable, NSError * _Nullable))completion
+{
+    objc_setAssociatedObject(self, registerRemoteNotificationsCompletionKey, completion, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (void)registerForRemoteNotificationsWithCompletion:(void (^ _Nullable)(NSData * _Nullable deviceToken, NSError * _Nullable error))completion
+{
+    self.registerRemoteNotificationsCompletion = completion;
+
+    [self registerForRemoteNotifications];
 }
 
 - (void)simulateMemoryWarning

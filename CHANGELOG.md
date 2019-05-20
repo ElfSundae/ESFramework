@@ -27,6 +27,7 @@
     + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`, `-reverseObjects`, `-shuffleObjects`
     + NSOrderedSet methods: `objectOrNilAtIndex:`
     + `-[NSTimeZone hoursFromGMT]`
+    + UIApplication methods: `-registerForRemoteNotificationsWithCompletion:`
     + UIDevice methods: `-modelName`, `-deviceToken`, `-deviceTokenString`
     + `ESNetworkHelper` class
     + `-[UIView snapshotViewAfterScreenUpdates:]`

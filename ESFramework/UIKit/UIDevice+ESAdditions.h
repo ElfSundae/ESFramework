@@ -14,15 +14,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The device token for the Apple Push Notification service (APNs).
- * It is KVO-compliant.
+ * @discussion The value of device token will be automatically set after calling
+ * -[UIApplication registerForRemoteNotifications].
+ * This property is KVO-compliant.
  */
 @property (nullable, nonatomic, copy) NSData *deviceToken;
 
 /**
  * The device token string for the Apple Push Notification service (APNs).
- * It is KVO-compliant.
+ * @discussion This property is KVO-compliant.
  */
-@property (nullable, nonatomic, readonly) NSString *deviceTokenString;
+@property (nullable, nonatomic, copy, readonly) NSString *deviceTokenString;
 
 /**
  * Returns the model identifier of the device.

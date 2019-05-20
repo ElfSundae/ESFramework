@@ -45,6 +45,16 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 - (void)dismissKeyboard;
 
 /**
+ * The completion block that will be invoked after -registerRemoteNotifications.
+ */
+@property (nullable, nonatomic, copy) void (^registerRemoteNotificationsCompletion)(NSData * _Nullable deviceToken, NSError * _Nullable error);
+
+/**
+ * Register to receive remote notifications via Apple Push Notification service.
+ */
+- (void)registerForRemoteNotificationsWithCompletion:(void (^ _Nullable)(NSData * _Nullable deviceToken, NSError * _Nullable error))completion;
+
+/**
  * Simulate low memory warning, just for testing.
  *
  * @warning Don't use this method in production because it uses private API.
