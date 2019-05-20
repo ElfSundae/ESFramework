@@ -16,7 +16,6 @@
 // https://stackoverflow.com/q/2338975/521946
 + (nullable NSData *)dataWithHexString:(NSString *)hexString
 {
-    hexString = [hexString stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSUInteger hexStringLength = hexString.length;
     if (0 == hexStringLength) {
         return nil;

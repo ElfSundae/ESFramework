@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Creates and returns an new NSData object converted from the hexadecimal string.
+ * @note Only hex digits supported in hex string.
  */
 + (nullable NSData *)dataWithHexString:(NSString *)hexString;
 
