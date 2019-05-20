@@ -79,8 +79,7 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @property (null_resettable, nonatomic, copy) NSString *appChannel;
 
 /**
- * The app ID in the App Store, used to generate the app Download link and
- * the app review link.
+ * The app ID in the App Store.
  */
 @property (nullable, nonatomic, copy) NSString *appStoreID;
 

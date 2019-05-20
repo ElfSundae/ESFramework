@@ -22,13 +22,16 @@ ESDefineAssociatedObjectKey(appStoreID)
 
 static NSDate *_gAppStartupDate = nil;
 static NSString *_gAppPreviousVersion = nil;
+static BOOL _gIsFreshLaunch = NO;
 
 static void ESCheckAppFreshLaunch(void)
 {
     _gAppPreviousVersion = [NSUserDefaults.standardUserDefaults stringForKey:ESAppPreviousVersionUserDefaultsKey];
     NSString *currentVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 
-    if (!_gAppPreviousVersion || ![_gAppPreviousVersion isEqualToString:currentVersion]) {
+    _gIsFreshLaunch = !_gAppPreviousVersion || ![_gAppPreviousVersion isEqualToString:currentVersion];
+
+    if (_gIsFreshLaunch) {
         [NSUserDefaults.standardUserDefaults setObject:currentVersion forKey:ESAppPreviousVersionUserDefaultsKey];
     }
 }
@@ -127,7 +130,7 @@ static void ESCheckAppFreshLaunch(void)
 
 - (BOOL)isFreshLaunch
 {
-    return !self.appPreviousVersion || ![self.appPreviousVersion isEqualToString:self.appVersion];
+    return _gIsFreshLaunch;
 }
 
 - (NSString *)appPreviousVersion
