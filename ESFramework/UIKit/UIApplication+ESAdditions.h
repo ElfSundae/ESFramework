@@ -15,12 +15,14 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @interface UIApplication (ESAdditions)
 
 /**
- * Shortcut for the `delegate.window`.
+ * The window used to present the app’s visual content on the device’s main screen.
+ * @discusion Shortcut for the `delegate.window`.
  */
 @property (nullable, nonatomic, strong) UIWindow *appWindow;
 
 /**
- * Shortcut for the `delegate.window.rootViewController`.
+ * The root view controller provides the content view of the appWindow.
+ * @discusion Shortcut for the `delegate.window.rootViewController`.
  */
 @property (nullable, nonatomic, strong) UIViewController *rootViewController;
 
