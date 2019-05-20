@@ -22,10 +22,23 @@
     application.appChannel = @"dev";
     application.appStoreID = @"12345678";
 
+    [application registerForRemoteNotifications];
+
     NSLog(@"%@", application.analyticsInfo);
 
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    UIDevice.currentDevice.deviceToken = deviceToken;
+    NSLog(@"device token: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
 }
 
 @end
