@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "ESRefreshControl.h"
-#import "ESActivityLabel.h"
-
-@class ESRefreshControlDefaultContentView;
 
 @interface ESRefreshControlDefaultContentView : UIView <ESRefreshControlContentViewDelegate>
 

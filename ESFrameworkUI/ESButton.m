@@ -7,8 +7,7 @@
 //
 
 #import "ESButton.h"
-#import "ESHelpers.h"
-#import "UIColor+ESAdditions.h"
+#import <ESFramework/ESFramework.h>
 
 #define kDefaultButtonRoundedCornerRadius               @(6.)
 #define kDefaultButtonRoundedCornerRadiusForFlatStyled  @(4.)

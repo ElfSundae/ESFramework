@@ -7,7 +7,7 @@
 //
 
 #import "ESBadgeView.h"
-#import "ESHelpers.h"
+#import <ESFramework/ESFramework.h>
 
 @implementation ESBadgeView
 

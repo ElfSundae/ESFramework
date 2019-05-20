@@ -7,7 +7,7 @@
 //
 
 #import "ESRefreshControlDefaultContentView.h"
-#import "ESHelpers.h"
+#import <ESFramework/ESFramework.h>
 
 @interface ESRefreshControlDefaultContentView ()
 @property (nonatomic, readwrite) CGFloat progress;

@@ -7,6 +7,7 @@
 //
 
 #import <ESFramework/ESFramework.h>
+#import <ESFrameworkUI/ESFrameworkUI.h>
 
 @interface RootViewController : ESTableViewController
 
