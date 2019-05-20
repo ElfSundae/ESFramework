@@ -15,6 +15,11 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @interface UIApplication (ESAdditions)
 
 /**
+ * Shortcut for the `delegate.window`.
+ */
+@property (nullable, nonatomic, strong) UIWindow *appWindow;
+
+/**
  * Shortcut for the `delegate.window.rootViewController`.
  */
 @property (nullable, nonatomic, strong) UIViewController *rootViewController;

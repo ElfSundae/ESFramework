@@ -67,6 +67,16 @@ static void es_application_didFailToRegisterForRemoteNotificationsWithError(id s
     }
 }
 
+- (UIWindow *)appWindow
+{
+    return self.delegate.window;
+}
+
+- (void)setAppWindow:(UIWindow *)appWindow
+{
+    self.delegate.window = appWindow;
+}
+
 - (UIViewController *)rootViewController
 {
     return self.delegate.window.rootViewController;
