@@ -13,6 +13,18 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIDevice (ESAdditions)
 
 /**
+ * The device token for the Apple Push Notification service (APNs).
+ * It is KVO-compliant.
+ */
+@property (nullable, nonatomic, copy) NSData *deviceToken;
+
+/**
+ * The device token string for the Apple Push Notification service (APNs).
+ * It is KVO-compliant.
+ */
+@property (nullable, nonatomic, readonly) NSString *deviceTokenString;
+
+/**
  * Returns the model identifier of the device.
  * e.g. "iPhone3,1", "iPhone11,2".
  * https://www.theiphonewiki.com/wiki/Models

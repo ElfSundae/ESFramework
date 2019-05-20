@@ -8,7 +8,12 @@
 
 #import "UIDevice+ESAdditions.h"
 #import <sys/sysctl.h>
+#import "ESMacros.h"
 #import "ESHelpers.h"
+#import "NSData+ESAdditions.h"
+
+ESDefineAssociatedObjectKey(deviceToken);
+ESDefineAssociatedObjectKey(deviceTokenString);
 
 @implementation UIDevice (ESAdditions)
 
@@ -24,6 +29,34 @@
         name = @"iOS";
     }
     return name;
+}
+
+- (NSData *)deviceToken
+{
+    return objc_getAssociatedObject(self, deviceTokenKey);
+}
+
+- (NSString *)deviceTokenString
+{
+    return objc_getAssociatedObject(self, deviceTokenStringKey);
+}
+
+- (void)setDeviceToken:(NSData *)deviceToken
+{
+    NSData *_token = [self deviceToken];
+    if ((!_token && !deviceToken) ||
+        (_token && deviceToken && [_token isEqualToData:deviceToken])) {
+        return;
+    }
+
+    [self willChangeValueForKey:@"deviceToken"];
+    [self willChangeValueForKey:@"deviceTokenString"];
+
+    objc_setAssociatedObject(self, deviceTokenKey, deviceToken, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, deviceTokenStringKey, [deviceToken lowercaseHexString], OBJC_ASSOCIATION_COPY_NONATOMIC);
+
+    [self didChangeValueForKey:@"deviceToken"];
+    [self didChangeValueForKey:@"deviceTokenString"];
 }
 
 - (NSString *)modelIdentifier

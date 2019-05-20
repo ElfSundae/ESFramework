@@ -27,7 +27,7 @@
     + NSMutableArray methods: `-removeFirstObject`, `-shiftFirstObject`, `-popLastObject`, `-reverseObjects`, `-shuffleObjects`
     + NSOrderedSet methods: `objectOrNilAtIndex:`
     + `-[NSTimeZone hoursFromGMT]`
-    + `-[UIDevice modelName]`
+    + UIDevice methods: `-modelName`, `-deviceToken`, `-deviceTokenString`
     + `ESNetworkHelper` class
     + `-[UIView snapshotViewAfterScreenUpdates:]`
     + UIScrollView methods: `-scrollToTop`, `-scrollToBottom`, `-scrollToLeft`, `-scrollToRight`
