@@ -324,8 +324,12 @@ NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t
 /**
  * Swizzle instance methods.
  * @code
- * + (void)load {
- *      ESSwizzleInstanceMethod(self, @selector(method:), @selector(newMethod:));
+ * + (void)load
+ * {
+ *     static dispatch_once_t onceToken;
+ *     dispatch_once(&onceToken, ^{
+ *         ESSwizzleInstanceMethod(self, @selector(method:), @selector(newMethod:));
+ *     });
  * }
  * @endcode
  */
@@ -334,8 +338,12 @@ FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class class, SEL originalSelector
 /**
  * Swizzle class methods.
  * @code
- * + (void)load {
- *      ESSwizzleInstanceMethod(self, @selector(method:), @selector(newMethod:));
+ * + (void)load
+ * {
+ *     static dispatch_once_t onceToken;
+ *     dispatch_once(&onceToken, ^{
+ *         ESSwizzleInstanceMethod(self, @selector(method:), @selector(newMethod:));
+ *     });
  * }
  * @endcode
  */

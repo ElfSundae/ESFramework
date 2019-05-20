@@ -40,11 +40,14 @@ static void ESCheckAppFreshLaunch(void)
 
 + (void)load
 {
-    _gAppStartupDate = [NSDate date];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _gAppStartupDate = [NSDate date];
 
-    [AFNetworkReachabilityManager.sharedManager startMonitoring];
+        [AFNetworkReachabilityManager.sharedManager startMonitoring];
 
-    ESCheckAppFreshLaunch();
+        ESCheckAppFreshLaunch();
+    });
 }
 
 - (NSString *)appName

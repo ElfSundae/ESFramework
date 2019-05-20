@@ -19,7 +19,10 @@ ESDefineAssociatedObjectKey(deviceTokenString);
 
 + (void)load
 {
-    ESSwizzleInstanceMethod(self, @selector(systemName), @selector(es_systemName));
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        ESSwizzleInstanceMethod(self, @selector(systemName), @selector(es_systemName));
+    });
 }
 
 - (NSString *)es_systemName
