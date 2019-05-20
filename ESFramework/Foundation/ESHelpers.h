@@ -77,7 +77,6 @@ FOUNDATION_EXTERN BOOL ESBoolValue(id _Nullable obj);
 FOUNDATION_EXTERN NSInteger ESIntegerValue(id _Nullable obj);
 FOUNDATION_EXTERN NSUInteger ESUIntegerValue(id _Nullable obj);
 FOUNDATION_EXTERN NSString * _Nullable ESStringValue(id _Nullable obj);
-FOUNDATION_EXTERN NSURL * _Nullable ESURLValue(id _Nullable obj);
 
 /**
  * Checks whether the given object is a non-empty string.

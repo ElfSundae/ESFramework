@@ -135,17 +135,6 @@ NSString * _Nullable ESStringValue(id _Nullable obj)
     }
 }
 
-NSURL * _Nullable ESURLValue(id _Nullable obj)
-{
-    if ([obj isKindOfClass:[NSURL class]]) {
-        return (NSURL *)obj;
-    } else if (ESIsStringWithAnyText(obj)) {
-        return [NSURL URLWithString:(NSString *)obj];
-    } else {
-        return nil;
-    }
-}
-
 BOOL ESIsStringWithAnyText(id object)
 {
     return [object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0;
