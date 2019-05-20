@@ -189,6 +189,9 @@ static void ESCheckAppFreshLaunch(void)
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
     info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.hoursFromGMT);
     info[@"locale"] = NSLocale.currentLocale.localeIdentifier;
+    if (device.deviceTokenString) {
+        info[@"device_token"] = device.deviceTokenString;
+    }
 
     info[@"app_name"] = self.appName;
     info[@"app_identifier"] = self.appBundleIdentifier;
