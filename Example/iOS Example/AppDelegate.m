@@ -24,7 +24,7 @@
 
     [application registerForRemoteNotificationsWithCompletion:^(NSData * _Nullable deviceToken, NSError * _Nullable error) {
         if (deviceToken) {
-            NSLog(@"%@", UIDevice.currentDevice.deviceTokenString);
+            NSLog(@"device token: %@", UIDevice.currentDevice.deviceTokenString);
         }
     }];
 
