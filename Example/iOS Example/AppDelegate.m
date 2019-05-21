@@ -17,7 +17,6 @@
     application.appStoreID = @"12345678";
 
     NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:28800];
-    NSCalendar.currentCalendar.firstWeekday = 2;
 
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = UIColor.whiteColor;
