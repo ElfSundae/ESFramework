@@ -88,8 +88,6 @@
 		E7C5ACC122841AB200005804 /* NSFileManager+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ESAdditions.h"; sourceTree = "<group>"; };
 		E7C5ACC222841AB200005804 /* NSFileManager+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ESAdditions.m"; sourceTree = "<group>"; };
 		E7C5ACC6228977AD00005804 /* UIApplication+ESAppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ESAppInfo.m"; sourceTree = "<group>"; };
-		E7C5ACCB228AA3AB00005804 /* NSTimeZone+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimeZone+ESAdditions.h"; sourceTree = "<group>"; };
-		E7C5ACCC228AA3AB00005804 /* NSTimeZone+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimeZone+ESAdditions.m"; sourceTree = "<group>"; };
 		E7C5ACEA228D8EEB00005804 /* UIScrollView+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ESAdditions.h"; sourceTree = "<group>"; };
 		E7C5ACEB228D8EEB00005804 /* UIScrollView+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
@@ -151,8 +149,6 @@
 				E76CA24D1CA50D1100EDBB8E /* NSString+ESHash.m */,
 				E76CA24E1CA50D1100EDBB8E /* NSTimer+ESAdditions.h */,
 				E76CA24F1CA50D1100EDBB8E /* NSTimer+ESAdditions.m */,
-				E7C5ACCB228AA3AB00005804 /* NSTimeZone+ESAdditions.h */,
-				E7C5ACCC228AA3AB00005804 /* NSTimeZone+ESAdditions.m */,
 				E76CA2501CA50D1100EDBB8E /* NSURL+ESAdditions.h */,
 				E76CA2511CA50D1100EDBB8E /* NSURL+ESAdditions.m */,
 				E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */,
