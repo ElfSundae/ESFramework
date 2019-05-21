@@ -38,7 +38,7 @@
 
 - (BOOL)isInWorkday
 {
-    return !self.isWeekend;
+    return !self.isInWeekend;
 }
 
 - (BOOL)isToday
