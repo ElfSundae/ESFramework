@@ -16,7 +16,7 @@
     application.appChannel = @"dev";
     application.appStoreID = @"12345678";
 
-    NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneForSecondsFromGMT:28800];
+    NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
 
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     self.window.backgroundColor = UIColor.whiteColor;
