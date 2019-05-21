@@ -51,19 +51,9 @@
     return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekday];
 }
 
-- (NSString *)RFC1123String
-{
-    return [[NSDateFormatter RFC1123DateFormatter] stringFromDate:self];
-}
-
-+ (NSDate *)dateFromRFC1123String:(NSString *)string
-{
-    return [[NSDateFormatter RFC1123DateFormatter] dateFromString:string];
-}
-
 - (NSString *)HTTPDateString
 {
-    return [self RFC1123String];
+    return [[NSDateFormatter RFC1123DateFormatter] stringFromDate:self];
 }
 
 + (NSDate *)dateFromHTTPDateString:(NSString *)string
@@ -71,7 +61,7 @@
     NSUInteger commaPosition = [string rangeOfString:@","].location;
 
     if (commaPosition == 3) {
-        return [self dateFromRFC1123String:string];
+        return [[NSDateFormatter RFC1123DateFormatter] dateFromString:string];
     } else if (commaPosition != NSNotFound && commaPosition > 3) {
         return [[NSDateFormatter RFC1036DateFormatter] dateFromString:string];
     } else if (commaPosition == NSNotFound) {
