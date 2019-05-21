@@ -121,6 +121,23 @@ static void ESCheckAppFreshLaunch(void)
     return value ? value.boolValue : YES;
 }
 
+- (nullable NSString *)appIconFile
+{
+    NSArray *iconFiles = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
+    return iconFiles.firstObject;
+}
+
+- (nullable UIImage *)appIconImage
+{
+    NSString *iconFile = [self appIconFile];
+    if (!iconFile) {
+        return nil;
+    }
+    
+    iconFile = [NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:iconFile];
+    return [UIImage imageWithContentsOfFile:iconFile];
+}
+
 - (NSDate *)appStartupDate
 {
     return _gAppStartupDate;

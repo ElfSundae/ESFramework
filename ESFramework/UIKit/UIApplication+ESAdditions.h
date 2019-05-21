@@ -100,9 +100,13 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @property (nonatomic, readonly) NSString *appBundleIdentifier;
 @property (nonatomic, readonly) NSString *appVersion;
 @property (nonatomic, readonly) NSString *appBuildVersion;
-/// e.g. "1.2.4 (210)"
-@property (nonatomic, readonly) NSString *appFullVersion;
+@property (nonatomic, readonly) NSString *appFullVersion; // "1.2.4 (210)"
 @property (nonatomic, readonly) BOOL isUIViewControllerBasedStatusBarAppearance;
+
+/// The first filename in the CFBundleIconFiles
+@property (nullable, nonatomic, readonly) NSString *appIconFile;
+
+- (nullable UIImage *)appIconImage;
 
 /**
  * Returns the date when the app was launched.
