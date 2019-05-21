@@ -22,11 +22,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isInFuture;
 - (BOOL)isInPast;
 
+- (BOOL)isWeekend;
+- (BOOL)isWorkday;
+
 - (BOOL)isToday;
 - (BOOL)isYesterday;
 - (BOOL)isTomorrow;
-- (BOOL)isWeekend;
-- (BOOL)isWorkday;
 - (BOOL)isThisWeek;
 - (BOOL)isThisMonth;
 - (BOOL)isThisYear;

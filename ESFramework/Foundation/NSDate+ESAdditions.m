@@ -31,6 +31,16 @@
     return [self isBefore:[NSDate date]];
 }
 
+- (BOOL)isWeekend
+{
+    return [NSCalendar.currentCalendar isDateInWeekend:self];
+}
+
+- (BOOL)isWorkday
+{
+    return !self.isWeekend;
+}
+
 - (BOOL)isToday
 {
     return [NSCalendar.currentCalendar isDateInToday:self];
@@ -44,16 +54,6 @@
 - (BOOL)isTomorrow
 {
     return [NSCalendar.currentCalendar isDateInTomorrow:self];
-}
-
-- (BOOL)isWeekend
-{
-    return [NSCalendar.currentCalendar isDateInWeekend:self];
-}
-
-- (BOOL)isWorkday
-{
-    return !self.isWeekend;
 }
 
 - (BOOL)isThisWeek
