@@ -51,11 +51,6 @@
     return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekday];
 }
 
-- (NSString *)HTTPDateString
-{
-    return [[NSDateFormatter RFC1123DateFormatter] stringFromDate:self];
-}
-
 + (NSDate *)dateFromHTTPDateString:(NSString *)string
 {
     NSUInteger commaPosition = [string rangeOfString:@","].location;
@@ -69,6 +64,11 @@
     }
 
     return nil;
+}
+
+- (NSString *)HTTPDateString
+{
+    return [[NSDateFormatter RFC1123DateFormatter] stringFromDate:self];
 }
 
 @end

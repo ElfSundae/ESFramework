@@ -27,11 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isInThisWeek;
 
 /**
- * Converts date to HTTP-date string, this method is an alias to -RFC1123String .
- */
-- (NSString *)HTTPDateString;
-
-/**
  * Converts HTTP-date string to NSDate.
  * http://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1
  *
@@ -41,6 +36,11 @@ NS_ASSUME_NONNULL_BEGIN
  *      Sun Nov  6 08:49:37 1994       ; ANSI C's asctime() format
  */
 + (nullable NSDate *)dateFromHTTPDateString:(NSString *)string;
+
+/**
+ * Converts date to HTTP-date string, this method is an alias to -RFC1123String .
+ */
+- (NSString *)HTTPDateString;
 
 @end
 
