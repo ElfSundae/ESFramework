@@ -75,6 +75,7 @@
     + :warning: `ESApp` class, use `UIApplication+ESAdditions` and the original `AppDelegate` directly
     + :warning: `ESStoreProductViewControllerManager` class, use `StoreProductViewController` directly
     + :warning: `ESMoviePlayerViewController` class, use `AVPlayerViewController` instead
+    + Seconds constants: ES_MINUTE, ES_HOUR, ES_DAY, ES_5_DAYS, ES_WEEK, ES_MONTH, ES_YEAR
     + `ESStoreHelper` class
     + `UIProgressView+ESStyle` category
     + `ESLocalizedString()`, `_e()`, `ESLocalizedStringWithFormat()`

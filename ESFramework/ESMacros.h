@@ -50,14 +50,4 @@
  */
 #define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
 
-#pragma mark - Constants
-
-#define ES_MINUTE   (60)
-#define ES_HOUR     (3600)
-#define ES_DAY      (86400)
-#define ES_5_DAYS   (432000)
-#define ES_WEEK     (604800)
-#define ES_MONTH    (2635200)  /* 30.5 days */
-#define ES_YEAR     (31536000) /* 365 days */
-
 #endif /* ESFramework_ESMacros_h */
