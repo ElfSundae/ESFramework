@@ -16,8 +16,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _gRFC1123DateFormatter = [[NSDateFormatter alloc] init];
-        _gRFC1123DateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-        _gRFC1123DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+        _gRFC1123DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+        _gRFC1123DateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
         _gRFC1123DateFormatter.dateFormat = @"EEE',' dd MMM yyyy HH':'mm':'ss z";
     });
     return _gRFC1123DateFormatter;
@@ -29,8 +29,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _gRFC1036DateFormatter = [[NSDateFormatter alloc] init];
-        _gRFC1036DateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-        _gRFC1036DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+        _gRFC1036DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+        _gRFC1036DateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
         _gRFC1036DateFormatter.dateFormat = @"EEEE',' dd'-'MMM'-'yy HH':'mm':'ss z";
     });
     return _gRFC1036DateFormatter;
@@ -42,8 +42,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _gANSIDateFormatter = [[NSDateFormatter alloc] init];
-        _gANSIDateFormatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"];
-        _gANSIDateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
+        _gANSIDateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+        _gANSIDateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
         _gANSIDateFormatter.dateFormat = @"EEE MMM d HH':'mm':'ss yyyy";
     });
     return _gANSIDateFormatter;
