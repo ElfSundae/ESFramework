@@ -133,7 +133,7 @@ static void ESCheckAppFreshLaunch(void)
     if (!iconFile) {
         return nil;
     }
-    
+
     iconFile = [NSBundle.mainBundle.bundlePath stringByAppendingPathComponent:iconFile];
     return [UIImage imageWithContentsOfFile:iconFile];
 }

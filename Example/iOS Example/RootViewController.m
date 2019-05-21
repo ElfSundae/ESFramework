@@ -19,7 +19,7 @@
     self.title = @"ESFramework";
 
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    [infoButton addTarget:self action:@selector(infoButtonHandler:) forControlEvents:UIControlEventTouchUpInside];    
+    [infoButton addTarget:self action:@selector(infoButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 
     self.tableView.rowHeight = 60;
@@ -27,10 +27,10 @@
     ESWeakSelf;
     self.tableView.es_refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
         es_dispatch_after(1, ^{
-            ESStrongSelf;
-            [_self.tableView reloadData];
-            [refreshControl endRefreshing];
-        });
+                              ESStrongSelf;
+                              [_self.tableView reloadData];
+                              [refreshControl endRefreshing];
+                          });
     }];
 
     // [self testAutoCoding];
