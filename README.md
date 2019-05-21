@@ -33,6 +33,7 @@ pod 'ESFrameworkUI'
 - [Realm](https://github.com/realm/realm-cocoa) Realm is a mobile database: a replacement for Core Data & SQLite
 - [protobuf](https://developers.google.com/protocol-buffers/) Protocol Buffers - Google's data interchange format.
 - [MJExtension](https://github.com/CoderMJLee/MJExtension) A fast, convenient and nonintrusive conversion framework between JSON and model.
+- [GZIP](https://github.com/nicklockwood/GZIP)
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) A delightful networking framework.
 - [SDWebImage](https://github.com/SDWebImage/SDWebImage) Asynchronous image downloader with cache support as a UIImageView category.
 - [MBProgressHUD](https://github.com/jdg/MBProgressHUD) Displays HUD
