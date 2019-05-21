@@ -19,12 +19,17 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isBefore:(NSDate *)aDate;
 - (BOOL)isAfter:(NSDate *)aDate;
 
+- (BOOL)isInFuture;
+- (BOOL)isInPast;
+
 - (BOOL)isToday;
 - (BOOL)isYesterday;
 - (BOOL)isTomorrow;
 - (BOOL)isWeekend;
 - (BOOL)isWorkday;
 - (BOOL)isThisWeek;
+- (BOOL)isThisMonth;
+- (BOOL)isThisYear;
 
 /**
  * Converts HTTP-date string to NSDate.

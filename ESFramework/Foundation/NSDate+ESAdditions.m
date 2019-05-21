@@ -21,6 +21,16 @@
     return [self compare:aDate] == NSOrderedDescending;
 }
 
+- (BOOL)isInFuture
+{
+    return [self isAfter:[NSDate date]];
+}
+
+- (BOOL)isInPast
+{
+    return [self isBefore:[NSDate date]];
+}
+
 - (BOOL)isToday
 {
     return [NSCalendar.currentCalendar isDateInToday:self];
@@ -49,6 +59,16 @@
 - (BOOL)isThisWeek
 {
     return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekday];
+}
+
+- (BOOL)isThisMonth
+{
+    return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitMonth];
+}
+
+- (BOOL)isThisYear
+{
+    return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitYear];
 }
 
 + (NSDate *)dateFromHTTPDateString:(NSString *)string
