@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isTomorrow;
 - (BOOL)isWeekend;
 - (BOOL)isWorkday;
-- (BOOL)isInThisWeek;
+- (BOOL)isThisWeek;
 
 /**
  * Converts HTTP-date string to NSDate.

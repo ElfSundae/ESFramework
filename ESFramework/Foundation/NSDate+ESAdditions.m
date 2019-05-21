@@ -46,7 +46,7 @@
     return !self.isWeekend;
 }
 
-- (BOOL)isInThisWeek
+- (BOOL)isThisWeek
 {
     return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekday];
 }
