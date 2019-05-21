@@ -58,7 +58,7 @@
 
 - (BOOL)isThisWeek
 {
-    return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekday];
+    return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitWeekOfYear];
 }
 
 - (BOOL)isThisMonth
