@@ -38,7 +38,7 @@
 - (NSDictionary *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id, id, BOOL *))predicate
 {
     NSArray *keys = [self keysOfEntriesWithOptions:opts passingTest:predicate].allObjects;
-    NSArray *objects = [self objectsForKeys:keys notFoundMarker:NSNull.null];
+    NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 
