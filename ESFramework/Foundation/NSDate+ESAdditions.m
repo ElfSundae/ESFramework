@@ -31,12 +31,12 @@
     return [self isBefore:[NSDate date]];
 }
 
-- (BOOL)isWeekend
+- (BOOL)isInWeekend
 {
     return [NSCalendar.currentCalendar isDateInWeekend:self];
 }
 
-- (BOOL)isWorkday
+- (BOOL)isInWorkday
 {
     return !self.isWeekend;
 }
