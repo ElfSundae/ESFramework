@@ -91,11 +91,6 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  */
 @property (null_resettable, nonatomic, copy) NSString *appChannel;
 
-/**
- * The app ID in the App Store.
- */
-@property (nullable, nonatomic, copy) NSString *appStoreID;
-
 @property (nonatomic, readonly) NSString *appBundleName;
 @property (nonatomic, readonly) NSString *appDisplayName;
 @property (nonatomic, readonly) NSString *appBundleIdentifier;

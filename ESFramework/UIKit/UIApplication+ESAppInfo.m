@@ -17,7 +17,6 @@ NSString *const ESAppPreviousVersionUserDefaultsKey = @"ESAppCheckFreshLaunch";
 
 ESDefineAssociatedObjectKey(appName)
 ESDefineAssociatedObjectKey(appChannel)
-ESDefineAssociatedObjectKey(appStoreID)
 
 static NSDate *_gAppStartupDate = nil;
 static NSString *_gAppPreviousVersion = nil;
@@ -68,16 +67,6 @@ static void ESCheckAppFreshLaunch(void)
 - (void)setAppChannel:(NSString *)appChannel
 {
     objc_setAssociatedObject(self, appChannelKey, appChannel, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-- (NSString *)appStoreID
-{
-    return objc_getAssociatedObject(self, appStoreIDKey);
-}
-
-- (void)setAppStoreID:(NSString *)appStoreID
-{
-    objc_setAssociatedObject(self, appStoreIDKey, appStoreID, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 - (NSString *)appBundleName
