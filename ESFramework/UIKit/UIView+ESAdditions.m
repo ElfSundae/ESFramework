@@ -130,7 +130,7 @@
 - (nullable UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates
 {
     UIImage *image = nil;
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0);
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, UIScreen.mainScreen.scale);
     if ([self drawViewHierarchyInRect:self.bounds afterScreenUpdates:afterUpdates]) {
         image = UIGraphicsGetImageFromCurrentImageContext();
     }
