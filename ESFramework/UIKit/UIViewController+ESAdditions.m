@@ -23,7 +23,7 @@
 
 - (BOOL)isViewVisible
 {
-    return self.isViewLoaded && self.view.window != nil;
+    return self.isViewLoaded && self.view.window;
 }
 
 @end
