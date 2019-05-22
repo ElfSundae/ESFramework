@@ -7,7 +7,7 @@
 - Made the main queue dispatching functions safer.
 - :warning: Moved ESApp+AppInfo methods to UIApplication category: `-appName`, `-appVersion`, `-appChannel`, `-isFreshLaunch`, `-appPreviousVersion`, `-analyticsInfo`, `-userAgentForHTTPRequest`, `-allURLSchemes`, `-URLSchemesForIdentifier:` etc.
 - :warning: Removed automatically multitasking background task and related methods such as `-enableMultitasking`. If you want to do some background tasks, call `-beginBackgroundTask...` in `-applicationDidEnterBackground:`, or use the `NSURLSession` background networking transfer, see https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/BackgroundExecution/BackgroundExecution.html
-- :warning: Moved ESApp+Helper methods to UIApplication category: `-appWindow`, `-rootViewController`, `-rootViewControllerForPresenting` => `-topMostViewController`, `-presentViewController:`, `-dismissViewControllersAnimated:`, `-dismissKeyboard`, `-simulateMemoryWarning`, `-canMakePhoneCalls`, `-makePhoneCall:` etc.
+- :warning: Moved ESApp+Helper methods to UIApplication category: `-appWindow`, `-rootViewController`, `-rootViewControllerForPresenting` => `-topmostViewController`, `-presentViewController:`, `-dismissViewControllersAnimated:`, `-dismissKeyboard`, `-simulateMemoryWarning`, `-canMakePhoneCalls`, `-makePhoneCall:` etc.
 - `-[UIApplication analyticsInfo]` changes:
     + Added: `model_name`, `device_token`, `wwan`, `bssid`, `wwan_ip`, `wwan_ipv6`
     + Renamed keys: `platform` => `model_identifier`, `name` => `device_name`, `app_launch` => `app_uptime`

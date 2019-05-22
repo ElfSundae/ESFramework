@@ -10,7 +10,7 @@
 
 @implementation UIWindow (ESAdditions)
 
-- (nullable UIViewController *)topMostViewController
+- (nullable UIViewController *)topmostViewController
 {
     UIViewController *viewController = self.rootViewController;
 

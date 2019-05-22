@@ -27,9 +27,10 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @property (nullable, nonatomic, strong) UIViewController *rootViewController;
 
 /**
- * Returns the root view controller for presenting modal view controller.
+ * Returns the topmost view controller in the appWindow's hierarchy.
+ * @discusion You may use this view controller to present modal view controllers.
  */
-- (nullable UIViewController *)topMostViewController;
+- (nullable UIViewController *)topmostViewController;
 
 /**
  * Presents a view controller modally from the rootViewControllerForPresenting.

@@ -88,14 +88,14 @@ static void es_application_didFailToRegisterForRemoteNotificationsWithError(id s
     self.delegate.window.rootViewController = rootViewController;
 }
 
-- (UIViewController *)topMostViewController
+- (UIViewController *)topmostViewController
 {
-    return self.delegate.window.topMostViewController;
+    return self.delegate.window.topmostViewController;
 }
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
 {
-    [self.topMostViewController presentViewController:viewControllerToPresent animated:animated completion:completion];
+    [self.topmostViewController presentViewController:viewControllerToPresent animated:animated completion:completion];
 }
 
 - (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
