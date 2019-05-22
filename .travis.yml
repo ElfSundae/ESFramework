@@ -4,6 +4,7 @@ xcode_workspace: ESFramework.xcworkspace
 xcode_scheme: Example
 before_install:
     - gem install cocoapods
+    - pod repo update
     - pod install --project-directory=Example
 script:
     - pod lib lint
