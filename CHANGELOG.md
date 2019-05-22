@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 3.0.0 (2019-05-22)
 
 - :warning: Updated iOS deployment target to 9.0.
+- Split UI components to separate pod `ESFrameworkUI`.
 - Replaced `ESFramework/Reachability` with `AFNetworking/Reachability`.
 - Made the main queue dispatching functions safer.
 - :warning: Moved ESApp+AppInfo methods to UIApplication category: `-appName`, `-appVersion`, `-appChannel`, `-isFreshLaunch`, `-appPreviousVersion`, `-analyticsInfo`, `-userAgentForHTTPRequest`, `-allURLSchemes`, `-URLSchemesForIdentifier:` etc.
