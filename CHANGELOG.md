@@ -16,12 +16,13 @@
     + `BOOL es_dispatch_is_main_queue(void)`
     + `BOOL ESIsOrderedSetWithItems(id)`
     + `NSURL *ESDocumentDirectoryURL()`, `NSURL *ESDocumentURL(NSString *pathComponent)`, `ESLibraryDirectoryURL()`, `ESLibraryURL(NSString *)`, `ESCachesDirectoryURL()`, `ESCachesURL(NSString *)`, `ESTemporaryDirectoryURL()`, `ESTemporaryURL(NSString *)`
+    + `ESAppLink(NSInteger appIdentifier)`, `ESAppStoreLink(NSInteger appIdentifier)`, `ESAppStoreReviewLink(NSInteger appIdentifier)`
     + `ESWeakProxy` class
     + `+[NSCharacterSet URLEncodingAllowedCharacterSet]`
     + `+[NSNumber numberWithString:]`
     + NSString methods: `-numberValue`, `-dataValue`
     + `NSURLComponents (ESAdditions)` category
-    + NSURL methods: `-URLByAddingQueryDictionary:`, `+appLinkWithIdentifier:`, `+appStoreLinkWithIdentifier:`, `+appStoreReviewLinkWithIdentifier:`
+    + NSURL methods: `-URLByAddingQueryDictionary:`
     + NSData methods: `+dataWithHexString:`, `-uppercaseHexString`, `-lowercaseHexString`
     + NSDate methods: `+dateFromHTTPDateString:`, `-isInWeekend`, `-isInWorkday`, `-isToday`, `-isYesterday`, `-isTomorrow`, `-isThisWeek`, `-isThisMonth`, `-isThisYear`, `-isInPast`, `-isInFuture`
     + NSDateFormatter additions: `+RFC1123DateFormatter`, `+RFC1036DateFormatter`, `+ANSIDateFormatter`

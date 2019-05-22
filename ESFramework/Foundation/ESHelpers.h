@@ -289,6 +289,23 @@ FOUNDATION_EXTERN NSURL *ESTemporaryDirectoryURL(void);
  */
 FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory);
 
+#pragma mark - App Link
+
+/**
+ * e.g. "https://itunes.apple.com/app/id12345678?mt=8"
+ */
+FOUNDATION_EXTERN NSURL *ESAppLink(NSInteger appIdentifier);
+
+/**
+ * e.g. "itms-apps://itunes.apple.com/app/id12345678"
+ */
+FOUNDATION_EXTERN NSURL *ESAppStoreLink(NSInteger appIdentifier);
+
+/**
+ * e.g. "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
+ */
+FOUNDATION_EXTERN NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
+
 #pragma mark - GCD
 
 NS_INLINE BOOL es_dispatch_is_main_queue(void) {

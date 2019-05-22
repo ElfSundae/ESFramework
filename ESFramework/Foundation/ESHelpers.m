@@ -380,6 +380,21 @@ NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory)
     return [ESTemporaryDirectoryURL() URLByAppendingPathComponent:pathComponent isDirectory:isDirectory];
 }
 
+NSURL *ESAppLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld?mt=8", (long)appIdentifier]];
+}
+
+NSURL *ESAppStoreLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%ld", (long)appIdentifier]];
+}
+
+NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
+}
+
 #pragma mark - ObjC Runtime
 
 void ESSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSelector)
