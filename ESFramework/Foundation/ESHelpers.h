@@ -57,7 +57,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
 /**
  * Profiles the execution time.
  */
-FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^completion)(double elapsedMillisecond));
+FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond));
 
 #pragma mark - Foundation
 

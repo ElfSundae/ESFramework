@@ -60,13 +60,18 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
     return UIColorWithRGBHex(hex, alpha);
 }
 
-void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^completion)(double elapsedMillisecond))
+void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond))
 {
     struct timeval begin, end;
     gettimeofday(&begin, NULL);
     block();
     gettimeofday(&end, NULL);
-    completion((double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000);
+    double ms = (double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000;
+    if (completion) {
+        completion(ms);
+    } else {
+        NSLog(@"‼️ Elapsed Time: %f ms", ms);
+    }
 }
 
 int ESIntValue(id _Nullable obj)
