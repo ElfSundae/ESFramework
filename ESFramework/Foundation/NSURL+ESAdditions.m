@@ -23,4 +23,19 @@
     return urlComponents.URL;
 }
 
++ (NSURL *)appLinkWithIdentifier:(NSInteger)appIdentifier
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld?mt=8", (long)appIdentifier]];
+}
+
++ (NSURL *)appStoreLinkWithIdentifier:(NSInteger)appIdentifier
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%ld", (long)appIdentifier]];
+}
+
++ (NSURL *)appStoreReviewLinkWithIdentifier:(NSInteger)appIdentifier
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
+}
+
 @end

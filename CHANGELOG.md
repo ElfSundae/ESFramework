@@ -21,7 +21,7 @@
     + `+[NSNumber numberWithString:]`
     + NSString methods: `-numberValue`, `-dataValue`
     + `NSURLComponents (ESAdditions)` category
-    + `-[NSURL URLByAddingQueryDictionary:]`
+    + NSURL methods: `-URLByAddingQueryDictionary:`, `+appLinkWithIdentifier:`, `+appStoreLinkWithIdentifier:`, `+appStoreReviewLinkWithIdentifier:`
     + NSData methods: `+dataWithHexString:`, `-uppercaseHexString`, `-lowercaseHexString`
     + NSDate methods: `+dateFromHTTPDateString:`, `-isInWeekend`, `-isInWorkday`, `-isToday`, `-isYesterday`, `-isTomorrow`, `-isThisWeek`, `-isThisMonth`, `-isThisYear`, `-isInPast`, `-isInFuture`
     + NSDateFormatter additions: `+RFC1123DateFormatter`, `+RFC1036DateFormatter`, `+ANSIDateFormatter`
