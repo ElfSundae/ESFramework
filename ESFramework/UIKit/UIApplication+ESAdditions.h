@@ -29,7 +29,7 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 /**
  * Returns the root view controller for presenting modal view controller.
  */
-- (nullable UIViewController *)rootViewControllerForPresenting;
+- (nullable UIViewController *)topMostViewController;
 
 /**
  * Presents a view controller modally from the rootViewControllerForPresenting.
