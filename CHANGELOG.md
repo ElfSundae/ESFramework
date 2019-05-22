@@ -35,6 +35,7 @@
     + `-[UIView snapshotViewAfterScreenUpdates:]`
     + UIScrollView methods: `-scrollToTop`, `-scrollToBottom`, `-scrollToLeft`, `-scrollToRight`
     + `-[UITableView performBatchUpdates:]`
+    + UIWindow methods: `-topMostViewController`
 - Renamed:
     + `ES_STOPWATCH_BEGIN` `ES_STOPWATCH_END` => `ESBenchmark()`
     + `ESDispatchOnMainThreadAsynchrony` => `es_dispatch_async_main`

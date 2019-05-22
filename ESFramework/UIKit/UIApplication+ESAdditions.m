@@ -10,6 +10,7 @@
 #import "ESMacros.h"
 #import "ESHelpers.h"
 #import "UIDevice+ESAdditions.h"
+#import "UIWindow+ESAdditions.h"
 
 ESDefineAssociatedObjectKey(registerRemoteNotificationsCompletion);
 
@@ -89,13 +90,7 @@ static void es_application_didFailToRegisterForRemoteNotificationsWithError(id s
 
 - (UIViewController *)rootViewControllerForPresenting
 {
-    UIViewController *viewController = self.rootViewController;
-
-    while (viewController.presentedViewController) {
-        viewController = viewController.presentedViewController;
-    }
-
-    return viewController;
+    return self.appWindow.topMostViewController;
 }
 
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
