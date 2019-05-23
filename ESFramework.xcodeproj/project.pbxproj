@@ -94,6 +94,8 @@
 		E7F7D96F22952B3800D7C8AA /* UIWindow+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ESAdditions.m"; sourceTree = "<group>"; };
 		E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESActionBlockContainer.h; sourceTree = "<group>"; };
 		E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESActionBlockContainer.m; sourceTree = "<group>"; };
+		E7F7D97F2296857500D7C8AA /* UIBarButtonItem+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ESAdditions.h"; sourceTree = "<group>"; };
+		E7F7D9802296857500D7C8AA /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESAdditions.h"; sourceTree = "<group>"; };
@@ -116,6 +118,8 @@
 		E76CA27E1CA50D1100EDBB8E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */,
+				E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */,
 				E7791299226F032D006EF94D /* ESHelpers.h */,
 				E779129A226F032D006EF94D /* ESHelpers.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
@@ -189,13 +193,13 @@
 		E779129C226F3DCB006EF94D /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */,
-				E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */,
 				E779129D226F3DCB006EF94D /* UIAlertController+ESAdditions.h */,
 				E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */,
 				E7A8D488227F0F0F0013A7E8 /* UIApplication+ESAdditions.h */,
 				E7A8D489227F0F0F0013A7E8 /* UIApplication+ESAdditions.m */,
 				E7C5ACC6228977AD00005804 /* UIApplication+ESAppInfo.m */,
+				E7F7D97F2296857500D7C8AA /* UIBarButtonItem+ESAdditions.h */,
+				E7F7D9802296857500D7C8AA /* UIBarButtonItem+ESAdditions.m */,
 				E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */,
 				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
 				E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */,
