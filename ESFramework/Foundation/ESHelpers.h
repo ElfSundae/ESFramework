@@ -350,7 +350,7 @@ NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t
  * }
  * @endcode
  */
-FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSelector);
+FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class cls, SEL originalSelector, SEL swizzledSelector);
 
 /**
  * Swizzle class methods.
@@ -364,7 +364,7 @@ FOUNDATION_EXTERN void ESSwizzleInstanceMethod(Class class, SEL originalSelector
  * }
  * @endcode
  */
-FOUNDATION_EXTERN void ESSwizzleClassMethod(Class class, SEL originalSelector, SEL swizzledSelector);
+FOUNDATION_EXTERN void ESSwizzleClassMethod(Class cls, SEL originalSelector, SEL swizzledSelector);
 
 /**
  * Invokes the given selector on the given target.
