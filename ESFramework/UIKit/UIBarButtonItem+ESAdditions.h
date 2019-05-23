@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The action block that will be invoked when the user taps this bar button item.
  * @warning The `actionBlock` is conflict with `target` and `action` properties.
  */
-@property (nullable, nonatomic, copy) void (^actionBlock)(UIBarButtonItem *buttonItem);
+@property (nullable, nonatomic, copy) void (^actionBlock)(__kindof UIBarButtonItem *buttonItem);
 
 @end
 

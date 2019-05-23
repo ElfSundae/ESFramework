@@ -15,13 +15,13 @@ ESDefineAssociatedObjectKey(actionBlockContainer);
 
 @implementation UIBarButtonItem (ESAdditions)
 
-- (void (^)(UIBarButtonItem *))actionBlock
+- (void (^)(__kindof UIBarButtonItem *))actionBlock
 {
     ESActionBlockContainer *container = objc_getAssociatedObject(self, actionBlockContainerKey);
     return container.block;
 }
 
-- (void)setActionBlock:(void (^)(UIBarButtonItem *))actionBlock
+- (void)setActionBlock:(void (^)(__kindof UIBarButtonItem *))actionBlock
 {
     if (actionBlock) {
         ESActionBlockContainer *container = [[ESActionBlockContainer alloc] initWithBlock:actionBlock];
