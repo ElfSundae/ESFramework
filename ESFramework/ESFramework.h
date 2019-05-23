@@ -39,6 +39,7 @@
 #import "UIBarButtonItem+ESAdditions.h"
 #import "UIColor+ESAdditions.h"
 #import "UIDevice+ESAdditions.h"
+#import "UIGestureRecognizer+ESAdditions.h"
 #import "UIImage+ESAdditions.h"
 #import "UIImageView+ESAdditions.h"
 #import "UIScrollView+ESAdditions.h"

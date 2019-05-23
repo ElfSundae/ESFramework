@@ -4,6 +4,7 @@
 
 - Added `ESActionBlockContainer` class.
 - Added UIBarButtonItem `actionBlock` property.
+- Added UIGestureRecognizer action block methods: `-initWithActionBlock:`, `-addActionBlock:`, `removeAllActionBlocks`.
 
 ## 3.1.0 (2019-05-23)
 
