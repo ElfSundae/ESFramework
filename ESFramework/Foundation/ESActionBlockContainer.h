@@ -10,6 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ * An container object holds a action block.
+ * @discussion See `UIBarButtonItem+ESAdditions` `UIGestureRecognizer+ESAdditions`
+ * for usage.
+ */
 @interface ESActionBlockContainer : NSObject
 
 @property (nullable, nonatomic, copy) void (^block)(id sender);
