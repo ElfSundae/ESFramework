@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- Added `ESActionBlockContainer` class.
 - Added UIBarButtonItem `actionBlock` property.
 
 ## 3.1.0 (2019-05-23)

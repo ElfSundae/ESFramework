@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithBlock:(void (^ _Nullable)(id sender))block;
 - (void)invoke:(id)sender;
 
+@property (nonatomic, readonly) SEL action;
+@property (class, nonatomic, readonly) SEL action;
+
 @end
 
 NS_ASSUME_NONNULL_END
