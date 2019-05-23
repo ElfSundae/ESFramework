@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.0 (2019-05-23)
+
+- Fixed C++ compiler error
+
 ## 3.0.0 (2019-05-22)
 
 - :warning: Updated iOS deployment target to 9.0.
