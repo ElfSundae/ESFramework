@@ -71,11 +71,10 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
 
     NSMutableArray<ESUIControlActionBlockContainer *> *containers = [self allActionBlockContainers];
     [containers removeObjectsAtIndexes:
-     [containers indexesOfObjectsPassingTest:^BOOL(ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+     [containers indexesOfObjectsPassingTest:^BOOL (ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIControlEvents removalEvents = obj.events & controlEvents;
         if (removalEvents) {
             [self removeTarget:obj action:obj.action forControlEvents:removalEvents];
-
             obj.events &= ~removalEvents;
             if (!obj.events) {
                 return YES;
