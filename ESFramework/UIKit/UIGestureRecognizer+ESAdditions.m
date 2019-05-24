@@ -46,7 +46,7 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
     return containers;
 }
 
-- (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gr))actionBlock
+- (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock
 {
     self = [self initWithTarget:nil action:nil];
     if (actionBlock) {
@@ -55,7 +55,7 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
     return self;
 }
 
-- (void)addActionBlock:(void (^)(__kindof UIGestureRecognizer *gr))actionBlock
+- (void)addActionBlock:(void (^)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock
 {
     ESActionBlockContainer *container = [[ESActionBlockContainer alloc] initWithBlock:actionBlock];
     [self addTarget:container action:container.action];
