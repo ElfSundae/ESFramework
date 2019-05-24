@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## 3.2.0 (2019-05-25)
 
 - Added `ESActionBlockContainer` class.
 - Added action block methods for `UIBarButtonItem`, `UIGestureRecognizer`, `UIControl`.
@@ -10,8 +10,9 @@
     #define ESMaskSet(value, flag)      ((value) |= (flag));
     #define ESMaskUnset(value, flag)    ((value) &= ~(flag));
     ```
-- Cache value for `-appBundleIdentifier`, `-appVersion`, `-appBuildVersion`.
 - Removed `-[UIApplication isUIViewControllerBasedStatusBarAppearance]`.
+- Renamed UIApplication `-appIconFile` to `-appIconFilename`.
+- Cache value for `-appBundleIdentifier`, `-appVersion`, `-appBuildVersion`.
 
 ## 3.1.0 (2019-05-23)
 
