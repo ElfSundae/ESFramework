@@ -28,42 +28,10 @@
 #import "UIControl+ESAdditions.h"
 #import <objc/runtime.h>
 #import "ESMacros.h"
-#import "ESHelpers.h"
 
 ESDefineAssociatedObjectKey(allActionBlockContainers);
 
 @implementation UIControl (ESAdditions)
-
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        ESSwizzleInstanceMethod(self, @selector(removeTarget:action:forControlEvents:), @selector(_es_removeTarget:action:forControlEvents:));
-    });
-}
-
-- (void)_es_removeTarget:(nullable id)target action:(nullable SEL)action forControlEvents:(UIControlEvents)controlEvents
-{
-    [self _es_removeTarget:target action:action forControlEvents:controlEvents];
-
-    NSMutableArray<ESUIControlActionBlockContainer *> *containers = [self allActionBlockContainers];
-    if (!target) {
-        [containers removeObjectsAtIndexes:
-         [containers indexesOfObjectsPassingTest:^BOOL (ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            obj.events &= ~controlEvents;
-            return !obj.events;
-        }]];
-    } else if ([target isKindOfClass:[ESUIControlActionBlockContainer class]]) {
-        NSUInteger index = [containers indexOfObjectIdenticalTo:target];
-        if (index != NSNotFound) {
-            ESUIControlActionBlockContainer *container = (ESUIControlActionBlockContainer *)target;
-            container.events &= ~controlEvents;
-            if (!container.events) {
-                [containers removeObjectAtIndex:index];
-            }
-        }
-    }
-}
 
 - (NSMutableArray<ESUIControlActionBlockContainer *> *)allActionBlockContainers
 {
@@ -101,12 +69,20 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
         return;
     }
 
-    for (ESUIControlActionBlockContainer *container in [self allActionBlockContainers]) {
-        UIControlEvents removalEvents = container.events & controlEvents;
+    NSMutableArray<ESUIControlActionBlockContainer *> *containers = [self allActionBlockContainers];
+    [containers removeObjectsAtIndexes:
+     [containers indexesOfObjectsPassingTest:^BOOL(ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIControlEvents removalEvents = obj.events & controlEvents;
         if (removalEvents) {
-            [self removeTarget:container action:container.action forControlEvents:removalEvents];
+            [self removeTarget:obj action:obj.action forControlEvents:removalEvents];
+
+            obj.events &= ~removalEvents;
+            if (!obj.events) {
+                return YES;
+            }
         }
-    }
+        return NO;
+    }]];
 }
 
 @end
