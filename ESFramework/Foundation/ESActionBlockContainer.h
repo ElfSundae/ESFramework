@@ -17,10 +17,24 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ESActionBlockContainer : NSObject
 
+/**
+ * The block which will be invoked as action handler.
+ */
 @property (nullable, nonatomic, copy) void (^block)(id sender);
+
+/**
+ * The selector of the -invoke method.
+ */
 @property (nonatomic, readonly) SEL action;
 
+/**
+ * Creates a new action-block container object.
+ */
 - (instancetype)initWithBlock:(void (^ _Nullable)(id sender))block;
+
+/**
+ * Invokes the action block.
+ */
 - (void)invoke:(id)sender;
 
 @end

@@ -12,9 +12,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIGestureRecognizer (ESAdditions)
 
+/**
+ * Creates a new gesture-recognizer object with an optional action block.
+ */
 - (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock;
 
+/**
+ * Adds an action block to the gesture-recognizer object.
+ */
 - (void)addActionBlock:(void (^)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock;
+
+/**
+ * Removes all action blocks for the gesture-recognizer object.
+ */
 - (void)removeAllActionBlocks;
 
 @end
