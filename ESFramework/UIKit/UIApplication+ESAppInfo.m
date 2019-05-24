@@ -114,7 +114,7 @@ static void ESCheckAppFreshLaunch(void)
     return [NSString stringWithFormat:@"%@ (%@)", self.appVersion, self.appBuildVersion];
 }
 
-- (nullable NSString *)appIconFile
+- (nullable NSString *)appIconFilename
 {
     NSArray *iconFiles = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];
     return iconFiles.firstObject;
@@ -122,7 +122,7 @@ static void ESCheckAppFreshLaunch(void)
 
 - (nullable UIImage *)appIconImage
 {
-    NSString *iconFile = [self appIconFile];
+    NSString *iconFile = [self appIconFilename];
     if (!iconFile) {
         return nil;
     }

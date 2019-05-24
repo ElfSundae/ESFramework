@@ -100,9 +100,13 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 
 /**
  * The first filename within the CFBundleIconFiles in the Info.plist file.
+ * e.g. "AppIcon60x60".
  */
-@property (nullable, nonatomic, readonly) NSString *appIconFile;
+@property (nullable, nonatomic, readonly) NSString *appIconFilename;
 
+/**
+ * Returns an UIImage object for the application icon file.
+ */
 - (nullable UIImage *)appIconImage;
 
 /**
