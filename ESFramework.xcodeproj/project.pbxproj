@@ -98,6 +98,8 @@
 		E7F7D9802296857500D7C8AA /* UIBarButtonItem+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESAdditions.m"; sourceTree = "<group>"; };
 		E7F7D98122968D4400D7C8AA /* UIGestureRecognizer+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+ESAdditions.h"; sourceTree = "<group>"; };
 		E7F7D98222968D4400D7C8AA /* UIGestureRecognizer+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+ESAdditions.m"; sourceTree = "<group>"; };
+		E7F7D98322970EF700D7C8AA /* UIControl+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESAdditions.h"; sourceTree = "<group>"; };
+		E7F7D98422970EF700D7C8AA /* UIControl+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESAdditions.h"; sourceTree = "<group>"; };
 		E7FDC9702264A45000D8CC25 /* NSCharacterSet+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSCharacterSet+ESAdditions.m"; sourceTree = "<group>"; };
 		E7FDC9712265B1F000D8CC25 /* NSURLComponents+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESAdditions.h"; sourceTree = "<group>"; };
@@ -204,6 +206,8 @@
 				E7F7D9802296857500D7C8AA /* UIBarButtonItem+ESAdditions.m */,
 				E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */,
 				E77912A2226F3DCB006EF94D /* UIColor+ESAdditions.m */,
+				E7F7D98322970EF700D7C8AA /* UIControl+ESAdditions.h */,
+				E7F7D98422970EF700D7C8AA /* UIControl+ESAdditions.m */,
 				E77912A5226F3DCB006EF94D /* UIDevice+ESAdditions.h */,
 				E77912A6226F3DCB006EF94D /* UIDevice+ESAdditions.m */,
 				E7F7D98122968D4400D7C8AA /* UIGestureRecognizer+ESAdditions.h */,

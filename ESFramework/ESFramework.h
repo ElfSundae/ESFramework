@@ -38,6 +38,7 @@
 #import "UIApplication+ESAdditions.h"
 #import "UIBarButtonItem+ESAdditions.h"
 #import "UIColor+ESAdditions.h"
+#import "UIControl+ESAdditions.h"
 #import "UIDevice+ESAdditions.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 #import "UIImage+ESAdditions.h"
