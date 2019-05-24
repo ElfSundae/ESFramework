@@ -23,16 +23,10 @@ ESDefineAssociatedObjectKey(actionBlockContainer);
 
 - (void)setActionBlock:(void (^)(__kindof UIBarButtonItem *))actionBlock
 {
-    if (actionBlock) {
-        ESActionBlockContainer *container = [[ESActionBlockContainer alloc] initWithBlock:actionBlock];
-        objc_setAssociatedObject(self, actionBlockContainerKey, container, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        self.target = container;
-        self.action = container.action;
-    } else {
-        objc_setAssociatedObject(self, actionBlockContainerKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        self.target = nil;
-        self.action = nil;
-    }
+    ESActionBlockContainer *container = actionBlock ? [[ESActionBlockContainer alloc] initWithBlock:actionBlock] : nil;
+    objc_setAssociatedObject(self, actionBlockContainerKey, container, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    self.target = container;
+    self.action = container.action;
 }
 
 @end
