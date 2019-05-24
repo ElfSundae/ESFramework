@@ -263,7 +263,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = www.0x123.com;
+				ORGANIZATIONNAME = "https://0x123.com";
 			};
 			buildConfigurationList = E7143A601BA5B3560001BE70 /* Build configuration list for PBXProject "ESFramework" */;
 			compatibilityVersion = "Xcode 3.2";
