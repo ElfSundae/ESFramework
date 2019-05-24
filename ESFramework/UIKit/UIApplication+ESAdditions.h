@@ -33,7 +33,7 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 - (nullable UIViewController *)topmostViewController;
 
 /**
- * Presents a view controller modally from the rootViewControllerForPresenting.
+ * Presents a view controller modally from the -topmostViewController.
  */
 - (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
@@ -54,6 +54,10 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 
 /**
  * Register to receive remote notifications via Apple Push Notification service.
+ * @discussion After registering, the completion block will be invoked.
+ * If succeeded, the `deviceToken` param stores the device token data, you may use
+ * `UIDevice.currentDevice.deviceTokenString` to get the string representation
+ * of the device token. If failed, the `error` param stores occurred error.
  */
 - (void)registerForRemoteNotificationsWithCompletion:(void (^ _Nullable)(NSData * _Nullable deviceToken, NSError * _Nullable error))completion;
 
@@ -99,8 +103,9 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @property (nonatomic, readonly) NSString *appFullVersion; // "1.2.4 (210)"
 
 /**
- * The first filename within the CFBundleIconFiles in the Info.plist file.
- * e.g. "AppIcon60x60".
+ * Returns the application icon filename. e.g. "AppIcon60x60".
+ * @dicussion The first filename within the CFBundleIconFiles in the
+ * Info.plist file.
  */
 @property (nullable, nonatomic, readonly) NSString *appIconFilename;
 
