@@ -76,31 +76,42 @@ static void ESCheckAppFreshLaunch(void)
 
 - (NSString *)appDisplayName
 {
-    return ([NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"]
-            ?: self.appBundleName);
+    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"] ?: self.appBundleName;
 }
 
 - (NSString *)appBundleIdentifier
 {
-    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+    static NSString *_appBundleIdentifier = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _appBundleIdentifier = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+    });
+    return _appBundleIdentifier;
 }
 
 - (NSString *)appVersion
 {
-    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    static NSString *_appVersion = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _appVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    });
+    return _appVersion;
 }
 
 - (NSString *)appBuildVersion
 {
-    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+    static NSString *_appBuildVersion = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _appBuildVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"] ?: @"1";
+    });
+    return _appBuildVersion;
 }
 
 - (NSString *)appFullVersion
 {
-    if (ESIsStringWithAnyText(self.appBuildVersion)) {
-        return [NSString stringWithFormat:@"%@ (%@)", self.appVersion, self.appBuildVersion];
-    }
-    return self.appVersion;
+    return [NSString stringWithFormat:@"%@ (%@)", self.appVersion, self.appBuildVersion];
 }
 
 - (BOOL)isUIViewControllerBasedStatusBarAppearance

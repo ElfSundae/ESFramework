@@ -4,7 +4,7 @@
 
 - Added `ESActionBlockContainer` class.
 - Added action block methods for `UIBarButtonItem`, `UIGestureRecognizer`, `UIControl`.
-- Removed bitmask helpers:
+- Removed bitmask helper macros:
     ```objc
     #define ESMaskIsSet(value, flag)    (((value) & (flag)) == (flag))
     #define ESMaskSet(value, flag)      ((value) |= (flag));

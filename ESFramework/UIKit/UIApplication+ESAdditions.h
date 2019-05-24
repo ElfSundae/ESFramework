@@ -99,7 +99,9 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 @property (nonatomic, readonly) NSString *appFullVersion; // "1.2.4 (210)"
 @property (nonatomic, readonly) BOOL isUIViewControllerBasedStatusBarAppearance;
 
-/// The first filename in the CFBundleIconFiles
+/**
+ * The first filename within the CFBundleIconFiles in the Info.plist file.
+ */
 @property (nullable, nonatomic, readonly) NSString *appIconFile;
 
 - (nullable UIImage *)appIconImage;
