@@ -24,7 +24,7 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
     return self;
 }
 
-- (NSMutableArray<ESActionBlockContainer *> *)_es_allActionBlockContainers
+- (NSMutableArray<ESActionBlockContainer *> *)allActionBlockContainers
 {
     NSMutableArray *containers = objc_getAssociatedObject(self, allActionBlockContainersKey);
     if (!containers) {
@@ -38,16 +38,15 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
 {
     ESActionBlockContainer *container = [[ESActionBlockContainer alloc] initWithBlock:actionBlock];
     [self addTarget:container action:container.action];
-    [[self _es_allActionBlockContainers] addObject:container];
+    [[self allActionBlockContainers] addObject:container];
 }
 
 - (void)removeAllActionBlocks
 {
-    NSMutableArray *containers = [self _es_allActionBlockContainers];
-    for (ESActionBlockContainer *container in containers) {
+    for (ESActionBlockContainer *container in [self allActionBlockContainers]) {
         [self removeTarget:container action:container.action];
     }
-    [containers removeAllObjects];
+    [[self allActionBlockContainers] removeAllObjects];
 }
 
 @end
