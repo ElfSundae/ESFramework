@@ -18,12 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ESActionBlockContainer : NSObject
 
 @property (nullable, nonatomic, copy) void (^block)(id sender);
+@property (nonatomic, readonly) SEL action;
 
 - (instancetype)initWithBlock:(void (^ _Nullable)(id sender))block;
 - (void)invoke:(id)sender;
-
-@property (nonatomic, readonly) SEL action;
-@property (class, nonatomic, readonly) SEL action;
 
 @end
 

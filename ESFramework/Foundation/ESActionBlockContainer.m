@@ -31,9 +31,4 @@
     return @selector(invoke:);
 }
 
-+ (SEL)action
-{
-    return @selector(invoke:);
-}
-
 @end
