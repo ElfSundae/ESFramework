@@ -30,7 +30,7 @@
 #endif
 
 /**
- * Make weak references to break "retain cycles".
+ * Make weak references to objects to break "retain cycles".
  */
 #define ESWeak(var)     __weak __typeof(&*var) weak_##var = var;
 #define ESWeakSelf      ESWeak(self);
@@ -39,7 +39,7 @@
 #define ESStrongSelf    ESStrong(self); if (!_self) return;
 
 /**
- * Defines a key for the associcated object.
+ * Define a key for the associcated object.
  */
 #define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
 
