@@ -15,15 +15,6 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
 
 @implementation UIGestureRecognizer (ESAdditions)
 
-- (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gr))actionBlock
-{
-    self = [self initWithTarget:nil action:nil];
-    if (actionBlock) {
-        [self addActionBlock:actionBlock];
-    }
-    return self;
-}
-
 - (NSMutableArray<ESActionBlockContainer *> *)allActionBlockContainers
 {
     NSMutableArray *containers = objc_getAssociatedObject(self, allActionBlockContainersKey);
@@ -32,6 +23,15 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
         objc_setAssociatedObject(self, allActionBlockContainersKey, containers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     return containers;
+}
+
+- (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gr))actionBlock
+{
+    self = [self initWithTarget:nil action:nil];
+    if (actionBlock) {
+        [self addActionBlock:actionBlock];
+    }
+    return self;
 }
 
 - (void)addActionBlock:(void (^)(__kindof UIGestureRecognizer *gr))actionBlock
