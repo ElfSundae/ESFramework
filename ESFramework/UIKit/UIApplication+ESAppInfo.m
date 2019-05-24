@@ -114,12 +114,6 @@ static void ESCheckAppFreshLaunch(void)
     return [NSString stringWithFormat:@"%@ (%@)", self.appVersion, self.appBuildVersion];
 }
 
-- (BOOL)isUIViewControllerBasedStatusBarAppearance
-{
-    NSNumber *value = [NSBundle.mainBundle objectForInfoDictionaryKey:@"UIViewControllerBasedStatusBarAppearance"];
-    return value ? value.boolValue : YES;
-}
-
 - (nullable NSString *)appIconFile
 {
     NSArray *iconFiles = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleIcons"][@"CFBundlePrimaryIcon"][@"CFBundleIconFiles"];

@@ -10,6 +10,8 @@
     #define ESMaskSet(value, flag)      ((value) |= (flag));
     #define ESMaskUnset(value, flag)    ((value) &= ~(flag));
     ```
+- Cache value for `-appBundleIdentifier`, `-appVersion`, `-appBuildVersion`.
+- Removed `-[UIApplication isUIViewControllerBasedStatusBarAppearance]`.
 
 ## 3.1.0 (2019-05-23)
 
