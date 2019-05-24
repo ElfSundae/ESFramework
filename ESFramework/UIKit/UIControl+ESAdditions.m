@@ -47,18 +47,21 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
     [self _es_removeTarget:target action:action forControlEvents:controlEvents];
 
     NSMutableArray<ESUIControlActionBlockContainer *> *containers = [self allActionBlockContainers];
-    if (target && [containers containsObject:target]) {
-        ESUIControlActionBlockContainer *container = (ESUIControlActionBlockContainer *)target;
-        container.events &= ~controlEvents;
-        if (!container.events) {
-            [containers removeObject:container];
-        }
-    } else if (!target) {
+    if (!target) {
         [containers removeObjectsAtIndexes:
          [containers indexesOfObjectsPassingTest:^BOOL (ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             obj.events &= ~controlEvents;
             return !obj.events;
         }]];
+    } else if ([target isKindOfClass:[ESUIControlActionBlockContainer class]]) {
+        NSUInteger index = [containers indexOfObjectIdenticalTo:target];
+        if (index != NSNotFound) {
+            ESUIControlActionBlockContainer *container = (ESUIControlActionBlockContainer *)target;
+            container.events &= ~controlEvents;
+            if (!container.events) {
+                [containers removeObjectAtIndex:index];
+            }
+        }
     }
 }
 

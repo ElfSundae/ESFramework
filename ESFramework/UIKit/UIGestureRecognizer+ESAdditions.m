@@ -9,11 +9,32 @@
 #import "UIGestureRecognizer+ESAdditions.h"
 #import <objc/runtime.h>
 #import "ESMacros.h"
+#import "ESHelpers.h"
 #import "ESActionBlockContainer.h"
 
 ESDefineAssociatedObjectKey(allActionBlockContainers);
 
 @implementation UIGestureRecognizer (ESAdditions)
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        ESSwizzleInstanceMethod(self, @selector(removeTarget:action:), @selector(_es_removeTarget:action:));
+    });
+}
+
+- (void)_es_removeTarget:(nullable id)target action:(nullable SEL)action
+{
+    [self _es_removeTarget:target action:action];
+
+    NSMutableArray *containers = [self allActionBlockContainers];
+    if (!target) {
+        [containers removeAllObjects];
+    } else if ([target isKindOfClass:[ESActionBlockContainer class]]) {
+        [containers removeObjectIdenticalTo:target];
+    }
+}
 
 - (NSMutableArray<ESActionBlockContainer *> *)allActionBlockContainers
 {
@@ -46,7 +67,6 @@ ESDefineAssociatedObjectKey(allActionBlockContainers);
     for (ESActionBlockContainer *container in [self allActionBlockContainers]) {
         [self removeTarget:container action:container.action];
     }
-    [[self allActionBlockContainers] removeAllObjects];
 }
 
 @end
