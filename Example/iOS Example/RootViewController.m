@@ -19,7 +19,11 @@
     self.title = @"ESFramework";
 
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
-    [infoButton addTarget:self action:@selector(infoButtonHandler:) forControlEvents:UIControlEventTouchUpInside];
+    [infoButton addActionBlock:^(__kindof UIControl * _Nonnull control) {
+        [UIAlertController showAlertWithTitle:@"About"
+                                      message:@"ESFramework\n\nhttps://0x123.com"
+                            cancelActionTitle:@"OK"];
+    } forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 
     self.tableView.rowHeight = 60;
@@ -65,13 +69,6 @@
 
     User *user2 = [user copy];
     NSLog(@"%@", user2.dictionaryRepresentation);
-}
-
-- (void)infoButtonHandler:(UIButton *)button
-{
-    [UIAlertController showAlertWithTitle:@"About"
-                                  message:@"ESFramework\n\nhttps://0x123.com"
-                        cancelActionTitle:@"OK"];
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
