@@ -1,5 +1,10 @@
 # Changelog
 
+##
+
+- Added UIView `-moveSubviewToCenter:`.
+- Renamed UIView `-moveToCenterOfSuperview` to `-moveToCenter`.
+
 ## 3.2.0 (2019-05-25)
 
 - Added `ESActionBlockContainer` class.

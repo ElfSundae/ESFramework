@@ -280,11 +280,14 @@
     [self.superview sendSubviewToBack:self];
 }
 
-- (void)moveToCenterOfSuperview
+- (void)moveSubviewToCenter:(UIView *)view
 {
-    if (self.superview) {
-        self.center = CGPointMake(CGRectGetMidX(self.superview.bounds), CGRectGetMidY(self.superview.bounds));
-    }
+    view.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+}
+
+- (void)moveToCenter
+{
+    [self.superview moveSubviewToCenter:self];
 }
 
 - (NSUInteger)indexOnSuperview

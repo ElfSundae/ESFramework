@@ -37,7 +37,7 @@
     self.imageView = [[UIImageView alloc] initWithImage:image1];
     self.imageView.size = CGSizeMake(300, 300);
     [self.view addSubview:self.imageView];
-    [self.imageView moveToCenterOfSuperview];
+    [self.imageView moveToCenter];
     [self.imageView setMaskLayerWithCornerRadius:self.imageView.height / 2];
 
     ESWeakSelf;

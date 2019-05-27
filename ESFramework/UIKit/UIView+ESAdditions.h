@@ -98,7 +98,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)bringToFront;
 - (void)sendToBack;
-- (void)moveToCenterOfSuperview;
+- (void)moveSubviewToCenter:(UIView *)view;
+- (void)moveToCenter;
 
 - (NSUInteger)indexOnSuperview;
 - (BOOL)isInFrontOfSuperview;
