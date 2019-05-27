@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.3.0 (2019-05-27)
 
 - Added UIView `-moveSubviewToCenter:`.
 - Renamed UIView `-moveToCenterOfSuperview` to `-moveToCenter`.
