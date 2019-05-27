@@ -1,9 +1,10 @@
 # Changelog
 
-##
+## Unreleased
 
 - Added UIView `-moveSubviewToCenter:`.
 - Renamed UIView `-moveToCenterOfSuperview` to `-moveToCenter`.
+- Renamed UIView `-setLayerShadowWithColor:offset:radius:` to `-setLayerShadowWithColor:offset:radius:opacity:` (add `opacity` param).
 
 ## 3.2.0 (2019-05-25)
 

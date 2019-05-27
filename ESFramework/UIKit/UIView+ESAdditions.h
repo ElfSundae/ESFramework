@@ -85,7 +85,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Rounded corner + shadow: https://fluffy.es/rounded-corner-shadow/
  * Rounded corner + shadow: https://github.com/douglas-queiroz/UIViewWithRoundedCornersAndShadow/blob/master/UIViewWithRoundedCornersAndShadow/UIView+RoundedCorner+Shadow.m
  */
-- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius;
+- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
 
 /// insert `CAGradientLayer` at index 0.
 - (CAGradientLayer *)setGradientBackgroundColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION;
