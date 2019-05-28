@@ -1,17 +1,13 @@
 PODS:
   - AFNetworking/Reachability (3.2.1)
-  - ESFramework (3.3.0):
+  - ESFramework (3.4.1):
     - AFNetworking/Reachability
-  - ESFrameworkUI (3.3.0):
+  - ESFrameworkUI (3.4.1):
     - ESFramework (>= 3.0)
 
 DEPENDENCIES:
   - ESFramework (from `../`)
   - ESFrameworkUI (from `../`)
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - AFNetworking
 
 EXTERNAL SOURCES:
   ESFramework:
@@ -19,11 +15,17 @@ EXTERNAL SOURCES:
   ESFrameworkUI:
     :path: "../"
 
+CHECKOUT OPTIONS: 
+
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  ESFramework: c3cd8a5159a2bf085f244d00a26425ea3f465cbf
-  ESFrameworkUI: ee06bb3abf108e4d0ab47ac25921e656107b4a24
+  ESFramework: e59f8d9d5a947a2373d1af2d4500fbeb426e40e5
+  ESFrameworkUI: abfa1a606e2500709714d13dd7d06cdce40201d1
+
+COCOAPODS: 1.7.0
 
 PODFILE CHECKSUM: c9ceec9938a150f843f4d42745707cb71c43302b
 
-COCOAPODS: 1.7.0
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
