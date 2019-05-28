@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.4.0 (2019-05-28)
 
 - Renamed UIView `-snapshotViewAfterScreenUpdates` to `-snapshotImageAfterScreenUpdates`.
 - Added UIView `-addTapGestureRecognizerWithBlock:`.
