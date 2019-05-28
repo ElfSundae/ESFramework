@@ -27,7 +27,7 @@
 - (void)scrollToFirstResponderAnimated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition
 {
     UIView *responder = [self.window findFirstResponder];
-    UITableViewCell *cell = (UITableViewCell *)[responder findSuperviewOf:[UITableViewCell class]];
+    UITableViewCell *cell = (UITableViewCell *)[responder findSuperviewOfClass:[UITableViewCell class]];
     if (cell) {
         NSIndexPath *indexPath = [self indexPathForCell:cell];
         if (indexPath) {

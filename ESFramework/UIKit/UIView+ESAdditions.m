@@ -169,18 +169,18 @@
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
-- (nullable UIView *)findSuperviewOf:(Class)viewClass
+- (nullable UIView *)findSuperviewOfClass:(Class)viewClass
 {
     if ([self.superview isKindOfClass:viewClass]) {
         return self.superview;
     } else if (self.superview) {
-        return [self.superview findSuperviewOf:viewClass];
+        return [self.superview findSuperviewOfClass:viewClass];
     } else {
         return nil;
     }
 }
 
-- (nullable UIView *)findSubviewOf:(Class)viewClass
+- (nullable UIView *)findSubviewOfClass:(Class)viewClass
 {
     UIView *foundView = nil;
     for (UIView *view in self.subviews) {
@@ -188,7 +188,7 @@
             foundView = view;
             break;
         } else {
-            UIView *subview = [view findSubviewOf:viewClass];
+            UIView *subview = [view findSubviewOfClass:viewClass];
             if (subview) {
                 foundView = subview;
                 break;

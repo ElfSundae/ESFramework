@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Rename UIView `-findSuperviewOf:` => `-findSuperviewOfClass:`, `-findSubviewOf:` => `-findSubviewOfClass:`.
+
 ## 3.4.1 (2019-05-28)
 
 - Removed `es_dispatch_is_main_queue()`.
