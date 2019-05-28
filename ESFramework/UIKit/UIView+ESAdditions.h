@@ -69,6 +69,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable UIViewController *)viewController;
 
 /**
+ * Adds and returns a tap gesture recognizer.
+ */
+- (__kindof UITapGestureRecognizer *)addTapGestureRecognizerWithBlock:(void (^)(__kindof UITapGestureRecognizer *tap))block;
+
+/**
  * Set layer.mask
  * http://stackoverflow.com/a/5826745
  */

@@ -8,6 +8,7 @@
 
 #import "UIView+ESAdditions.h"
 #import "ESHelpers.h"
+#import "UIGestureRecognizer+ESAdditions.h"
 
 @implementation UIView (ESAdditions)
 
@@ -207,6 +208,18 @@
     }
 
     return nil;
+}
+
+- (__kindof UITapGestureRecognizer *)addTapGestureRecognizerWithBlock:(void (^)(__kindof UITapGestureRecognizer *tap))block
+{
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(UITapGestureRecognizer *gestureRecognizer) {
+        if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+            block(gestureRecognizer);
+        }
+    }];
+    self.userInteractionEnabled = YES;
+    [self addGestureRecognizer:tap];
+    return tap;
 }
 
 - (CAShapeLayer *)setMaskLayerByRoundingCorners:(UIRectCorner)corners cornerRadii:(CGSize)cornerRadii
