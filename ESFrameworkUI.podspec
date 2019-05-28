@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = 'ESFrameworkUI'
-  s.version     = '3.4.0'
+  s.version     = '3.4.1'
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
   s.summary     = 'ESFramework UI Components.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'

@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.1 (2019-05-28)
+
+- Removed `es_dispatch_is_main_queue()`.
+
 ## 3.4.0 (2019-05-28)
 
 - Renamed UIView `-snapshotViewAfterScreenUpdates` to `-snapshotImageAfterScreenUpdates`.
