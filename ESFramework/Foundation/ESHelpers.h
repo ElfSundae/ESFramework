@@ -320,7 +320,7 @@ NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
     }
 }
 
-NS_INLINE void es_dispatch_sync_main(NS_NOESCAPE dispatch_block_t block) {
+NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block) {
     if (es_dispatch_is_main_queue()) {
         block();
     } else {
