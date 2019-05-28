@@ -308,7 +308,8 @@ FOUNDATION_EXTERN NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
 
 #pragma mark - GCD
 
-NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
+NS_INLINE void es_dispatch_async_main(dispatch_block_t block)
+{
     if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
         block();
     } else {
@@ -316,7 +317,8 @@ NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
     }
 }
 
-NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block) {
+NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block)
+{
     if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
         block();
     } else {
@@ -324,11 +326,13 @@ NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block) {
     }
 }
 
-NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block) {
+NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block)
+{
     dispatch_async(dispatch_get_global_queue(priority, 0), block);
 }
 
-NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block) {
+NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block)
+{
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), block);
 }
 
