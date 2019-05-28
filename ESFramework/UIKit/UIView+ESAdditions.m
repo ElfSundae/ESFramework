@@ -127,7 +127,7 @@
     self.center = CGPointMake(self.center.x, centerY);
 }
 
-- (nullable UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates
+- (nullable UIImage *)snapshotImageAfterScreenUpdates:(BOOL)afterUpdates
 {
     UIImage *image = nil;
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, UIScreen.mainScreen.scale);

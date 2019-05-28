@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns a snapshot image of the view hierarchy.
  */
-- (nullable UIImage *)snapshotViewAfterScreenUpdates:(BOOL)afterUpdates;
+- (nullable UIImage *)snapshotImageAfterScreenUpdates:(BOOL)afterUpdates;
 
 /**
  * Returns the first responder of this view.

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Renamed UIView `-snapshotViewAfterScreenUpdates` to `-snapshotImageAfterScreenUpdates`.
+
 ## 3.3.0 (2019-05-27)
 
 - Added UIView `-moveSubviewToCenter:`.
