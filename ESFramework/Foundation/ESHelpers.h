@@ -308,12 +308,8 @@ FOUNDATION_EXTERN NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
 
 #pragma mark - GCD
 
-NS_INLINE BOOL es_dispatch_is_main_queue(void) {
-    return 0 == strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queue_get_label(dispatch_get_main_queue()));
-}
-
 NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
-    if (es_dispatch_is_main_queue()) {
+    if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
         block();
     } else {
         dispatch_async(dispatch_get_main_queue(), block);
@@ -321,7 +317,7 @@ NS_INLINE void es_dispatch_async_main(dispatch_block_t block) {
 }
 
 NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block) {
-    if (es_dispatch_is_main_queue()) {
+    if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
         block();
     } else {
         dispatch_sync(dispatch_get_main_queue(), block);
