@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Added `__kindof`
+
 ## 3.5.0 (2019-05-29)
 
 - Renamed UIView `-findSuperviewOf:` => `-findSuperviewOfClass:`, `-findSubviewOf:` => `-findSubviewOfClass:`.
