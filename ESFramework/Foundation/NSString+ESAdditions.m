@@ -18,6 +18,51 @@
     return [NSNumber numberWithString:self];
 }
 
+- (char)charValue
+{
+    return self.numberValue.charValue;
+}
+
+- (unsigned char)unsignedCharValue
+{
+    return self.numberValue.unsignedCharValue;
+}
+
+- (short)shortValue
+{
+    return self.numberValue.shortValue;
+}
+
+- (unsigned short)unsignedShortValue
+{
+    return self.numberValue.unsignedShortValue;
+}
+
+- (unsigned int)unsignedIntValue
+{
+    return self.numberValue.unsignedIntValue;
+}
+
+- (long)longValue
+{
+    return self.numberValue.longValue;
+}
+
+- (unsigned long)unsignedLongValue
+{
+    return self.numberValue.unsignedLongValue;
+}
+
+- (unsigned long long)unsignedLongLongValue
+{
+    return self.numberValue.unsignedLongLongValue;
+}
+
+- (NSUInteger)unsignedIntegerValue
+{
+    return self.numberValue.unsignedIntegerValue;
+}
+
 - (nullable NSData *)dataValue
 {
     return [self dataUsingEncoding:NSUTF8StringEncoding];

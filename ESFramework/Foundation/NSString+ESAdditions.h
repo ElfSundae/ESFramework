@@ -17,6 +17,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSNumber *)numberValue;
 
+@property (readonly) char charValue;
+@property (readonly) unsigned char unsignedCharValue;
+@property (readonly) short shortValue;
+@property (readonly) unsigned short unsignedShortValue;
+@property (readonly) unsigned int unsignedIntValue;
+@property (readonly) long longValue;
+@property (readonly) unsigned long unsignedLongValue;
+@property (readonly) unsigned long long unsignedLongLongValue;
+@property (readonly) NSUInteger unsignedIntegerValue;
+
 /**
  * Returns a NSData object containing a representation of the string encoded using UTF-8 encoding.
  */

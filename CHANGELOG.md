@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Rename UIView `-findSuperviewOf:` => `-findSuperviewOfClass:`, `-findSubviewOf:` => `-findSubviewOfClass:`.
+- Added missing numeric methods for NSString: `-charValue`, `-longValue`, etc.
 
 ## 3.4.1 (2019-05-28)
 
