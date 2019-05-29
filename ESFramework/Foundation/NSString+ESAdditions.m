@@ -7,11 +7,55 @@
 //
 
 #import "NSString+ESAdditions.h"
+#import "ESHelpers.h"
 #import "NSNumber+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"
 
 @implementation NSString (ESAdditions)
+
++ (void)load
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        ESSwizzleInstanceMethod(self, @selector(doubleValue), @selector(es_doubleValue));
+        ESSwizzleInstanceMethod(self, @selector(floatValue), @selector(es_floatValue));
+        ESSwizzleInstanceMethod(self, @selector(intValue), @selector(es_intValue));
+        ESSwizzleInstanceMethod(self, @selector(integerValue), @selector(es_integerValue));
+        ESSwizzleInstanceMethod(self, @selector(longLongValue), @selector(es_longLongValue));
+        ESSwizzleInstanceMethod(self, @selector(boolValue), @selector(es_boolValue));
+    });
+}
+
+- (double)es_doubleValue
+{
+    return self.numberValue.doubleValue;
+}
+
+- (float)es_floatValue
+{
+    return self.numberValue.floatValue;
+}
+
+- (int)es_intValue
+{
+    return self.numberValue.intValue;
+}
+
+- (NSInteger)es_integerValue
+{
+    return self.numberValue.integerValue;
+}
+
+- (long long)es_longLongValue
+{
+    return self.numberValue.longLongValue;
+}
+
+- (BOOL)es_boolValue
+{
+    return self.numberValue.boolValue;
+}
 
 - (NSNumber *)numberValue
 {
