@@ -74,6 +74,26 @@ void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable 
     }
 }
 
+char ESCharValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) charValue];
+}
+
+unsigned char ESUCharValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) unsignedCharValue];
+}
+
+short ESShortValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) shortValue];
+}
+
+unsigned short ESUShortValue(id _Nullable obj)
+{
+    return [_ESNumberFromObject(obj) unsignedShortValue];
+}
+
 int ESIntValue(id _Nullable obj)
 {
     return [_ESNumberFromObject(obj) intValue];

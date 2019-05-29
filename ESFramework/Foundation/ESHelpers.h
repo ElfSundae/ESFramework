@@ -65,6 +65,10 @@ FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE 
  * Gets value from an NSNumber or NSString object safely.
  */
 
+FOUNDATION_EXTERN char ESCharValue(id _Nullable obj);
+FOUNDATION_EXTERN unsigned char ESUCharValue(id _Nullable obj);
+FOUNDATION_EXTERN short ESShortValue(id _Nullable obj);
+FOUNDATION_EXTERN unsigned short ESUShortValue(id _Nullable obj);
 FOUNDATION_EXTERN int ESIntValue(id _Nullable obj);
 FOUNDATION_EXTERN unsigned int ESUIntValue(id _Nullable obj);
 FOUNDATION_EXTERN long ESLongValue(id _Nullable obj);
@@ -76,6 +80,7 @@ FOUNDATION_EXTERN double ESDoubleValue(id _Nullable obj);
 FOUNDATION_EXTERN BOOL ESBoolValue(id _Nullable obj);
 FOUNDATION_EXTERN NSInteger ESIntegerValue(id _Nullable obj);
 FOUNDATION_EXTERN NSUInteger ESUIntegerValue(id _Nullable obj);
+/// Attempts convert a NSString/NSNumber object to a NSString object.
 FOUNDATION_EXTERN NSString * _Nullable ESStringValue(id _Nullable obj);
 
 /**
