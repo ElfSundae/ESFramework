@@ -169,7 +169,7 @@
     [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
-- (nullable UIView *)findSuperviewOfClass:(Class)viewClass
+- (nullable __kindof UIView *)findSuperviewOfClass:(Class)viewClass
 {
     if ([self.superview isKindOfClass:viewClass]) {
         return self.superview;
@@ -180,7 +180,7 @@
     }
 }
 
-- (nullable UIView *)findSubviewOfClass:(Class)viewClass
+- (nullable __kindof UIView *)findSubviewOfClass:(Class)viewClass
 {
     UIView *foundView = nil;
     for (UIView *view in self.subviews) {
@@ -198,7 +198,7 @@
     return foundView;
 }
 
-- (nullable UIViewController *)viewController
+- (nullable __kindof UIViewController *)viewController
 {
     for (UIView *view = self; view; view = view.superview) {
         UIResponder *nextResponder = view.nextResponder;

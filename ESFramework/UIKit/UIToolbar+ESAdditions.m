@@ -11,7 +11,7 @@
 
 @implementation UIToolbar (ESAdditions)
 
-- (nullable UIBarButtonItem *)itemWithTag:(NSInteger)tag
+- (nullable __kindof UIBarButtonItem *)itemWithTag:(NSInteger)tag
 {
     for (UIBarButtonItem *item in self.items) {
         if (tag == item.tag) {

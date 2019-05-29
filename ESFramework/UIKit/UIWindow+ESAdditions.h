@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns the topmost view controller in window's hierarchy.
  */
-- (nullable UIViewController *)topmostViewController;
+- (nullable __kindof UIViewController *)topmostViewController;
 
 @end
 

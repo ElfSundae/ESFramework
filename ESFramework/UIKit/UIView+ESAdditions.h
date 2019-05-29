@@ -56,17 +56,17 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Searches in superviews recursively to find the view which its class is the given viewClass.
  */
-- (nullable UIView *)findSuperviewOfClass:(Class)viewClass;
+- (nullable __kindof UIView *)findSuperviewOfClass:(Class)viewClass;
 
 /**
  * Searches in subviews recursively to find the view which its class is the given viewClass.
  */
-- (nullable UIView *)findSubviewOfClass:(Class)viewClass;
+- (nullable __kindof UIView *)findSubviewOfClass:(Class)viewClass;
 
 /**
  * Returns the UIViewController instance which manages this view.
  */
-- (nullable UIViewController *)viewController;
+- (nullable __kindof UIViewController *)viewController;
 
 /**
  * Adds and returns a tap gesture recognizer.

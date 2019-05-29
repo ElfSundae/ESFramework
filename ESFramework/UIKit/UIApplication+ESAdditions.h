@@ -18,19 +18,19 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  * The window used to present the app’s visual content on the device’s main screen.
  * @discusion Shortcut for the `delegate.window`.
  */
-@property (nullable, nonatomic, strong) UIWindow *appWindow;
+@property (nullable, nonatomic, strong) __kindof UIWindow *appWindow;
 
 /**
  * The root view controller provides the content view of the appWindow.
  * @discusion Shortcut for the `delegate.window.rootViewController`.
  */
-@property (nullable, nonatomic, strong) UIViewController *rootViewController;
+@property (nullable, nonatomic, strong) __kindof UIViewController *rootViewController;
 
 /**
  * Returns the topmost view controller in the appWindow's hierarchy.
  * @discusion You may use this view controller to present modal view controllers.
  */
-- (nullable UIViewController *)topmostViewController;
+- (nullable __kindof UIViewController *)topmostViewController;
 
 /**
  * Presents a view controller modally from the -topmostViewController.
