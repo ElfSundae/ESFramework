@@ -117,7 +117,7 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
     return addresses[ESNetworkAddressFamilyIPv4];
 }
 
-+ (nullable NSDictionary *)getWiFiNetworkInfo
++ (nullable NSDictionary<NSString *, id> *)getWiFiNetworkInfo
 {
     CFArrayRef interfaces = CNCopySupportedInterfaces();
     if (!interfaces) {

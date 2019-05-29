@@ -128,7 +128,7 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
  * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
  * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
  */
-+ (nullable NSDictionary *)getWiFiNetworkInfo;
++ (nullable NSDictionary<NSString *, id> *)getWiFiNetworkInfo;
 
 /**
  * Returns the current WiFi SSID.
