@@ -28,6 +28,16 @@
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
+- (NSString *)URLEncodedString
+{
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLEncodingAllowedCharacterSet]];
+}
+
+- (NSString *)URLDecodedString
+{
+    return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
+}
+
 - (BOOL)contains:(NSString *)string
 {
     return [self contains:string options:0];
@@ -63,16 +73,6 @@
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string
 {
     return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
-}
-
-- (NSString *)URLEncodedString
-{
-    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLEncodingAllowedCharacterSet]];
-}
-
-- (NSString *)URLDecodedString
-{
-    return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
 }
 
 - (NSDictionary<NSString *, id> *)queryDictionary

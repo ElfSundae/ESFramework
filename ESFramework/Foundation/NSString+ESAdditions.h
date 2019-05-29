@@ -13,12 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (ESAdditions)
 
 /**
- * Returns an NSNumber object created by parsing the string.
+ * Returns a NSNumber object created by parsing the string.
  */
 - (nullable NSNumber *)numberValue;
 
 /**
- * Returns an NSData object containing a representation of the string encoded using UTF-8 encoding.
+ * Returns a NSData object containing a representation of the string encoded using UTF-8 encoding.
  */
 - (nullable NSData *)dataValue;
 
@@ -26,16 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns a new string made by trimming whitespace and newline characters.
  */
 - (NSString *)trimmedString;
-
-- (BOOL)contains:(NSString*)string;
-- (BOOL)containsCaseInsensitive:(NSString *)string;
-- (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
-
-- (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options;
-- (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
-
-- (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters;
-- (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
 /**
  * Returns a percent escaped string following RFC 3986 for a query string key or value.
@@ -46,6 +36,16 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns a new string made by replacing all percent encoded sequences with the matching UTF-8 characters.
  */
 - (nullable NSString *)URLDecodedString;
+
+- (BOOL)contains:(NSString*)string;
+- (BOOL)containsCaseInsensitive:(NSString *)string;
+- (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
+
+- (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options;
+- (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
+
+- (NSString *)stringByDeletingCharactersInSet:(NSCharacterSet *)characters;
+- (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
 /**
  * Returns the query components parsed as a dictionary for the URL string.
