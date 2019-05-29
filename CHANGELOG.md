@@ -1,10 +1,10 @@
 # Changelog
 
-## Unreleased
+## 3.5.0 (2019-05-29)
 
-- Rename UIView `-findSuperviewOf:` => `-findSuperviewOfClass:`, `-findSubviewOf:` => `-findSubviewOfClass:`.
-- Added missing numeric methods for NSString: `-charValue`, `-longValue`, etc.
+- Renamed UIView `-findSuperviewOf:` => `-findSuperviewOfClass:`, `-findSubviewOf:` => `-findSubviewOfClass:`.
 - Swizzled NSString numeric methods like `-doubleValue`, `-boolValue`.
+- Added missing numeric methods for NSString: `-charValue`, `-longValue`, etc.
 - Added `ESCharValue(id)`, `ESUCharValue(id)`, `ESShortValue(id)`, `ESUShortValue(id)`.
 
 ## 3.4.1 (2019-05-28)
