@@ -151,7 +151,7 @@ static void ESCheckAppFreshLaunch(void)
     return _gAppPreviousVersion;
 }
 
-- (NSSet *)allURLSchemes
+- (NSSet<NSString *> *)allURLSchemes
 {
     NSMutableSet *result = [NSMutableSet set];
 
@@ -165,7 +165,7 @@ static void ESCheckAppFreshLaunch(void)
     return [result copy];
 }
 
-- (NSSet *)URLSchemesForIdentifier:(NSString *)identifier
+- (NSSet<NSString *> *)URLSchemesForIdentifier:(nullable NSString *)identifier
 {
     NSMutableSet *result = [NSMutableSet set];
 

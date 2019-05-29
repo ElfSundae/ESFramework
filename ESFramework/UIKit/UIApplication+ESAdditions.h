@@ -139,12 +139,12 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  * Returns all URL schemes (http, ftp, and so on) supported by the app.
  * @discussion All URL Types specified in the Info.plist file.
  */
-- (NSSet *)allURLSchemes;
+- (NSSet<NSString *> *)allURLSchemes;
 
 /**
  * Returns all URL schemes that identified by the given identifier.
  */
-- (NSSet *)URLSchemesForIdentifier:(nullable NSString *)identifier;
+- (NSSet<NSString *> *)URLSchemesForIdentifier:(nullable NSString *)identifier;
 
 /**
  * Returns the app analytics information.

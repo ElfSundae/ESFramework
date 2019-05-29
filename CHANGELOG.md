@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Added `__kindof`
+- Improved generic support.
 
 ## 3.5.0 (2019-05-29)
 
