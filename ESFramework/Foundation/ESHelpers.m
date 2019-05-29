@@ -430,7 +430,7 @@ void ESSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSele
 
 void ESSwizzleClassMethod(Class class, SEL originalSelector, SEL swizzledSelector)
 {
-    class = object_getClass((id)class);
+    class = object_getClass(class);
     Method originalMethod = class_getClassMethod(class, originalSelector);
     Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
     if (class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) {
