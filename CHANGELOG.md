@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Improved generic support.
+- Renamed NSArray `-reversedArray` to `-arrayByReversingObjects`.
 
 ## 3.5.0 (2019-05-29)
 

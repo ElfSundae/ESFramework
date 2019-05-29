@@ -20,7 +20,7 @@
     return self.count ? self[arc4random_uniform((uint32_t)self.count)] : nil;
 }
 
-- (NSArray *)reversedArray
+- (NSArray *)arrayByReversingObjects
 {
     return self.reverseObjectEnumerator.allObjects;
 }
