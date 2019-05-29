@@ -9,25 +9,53 @@
 #import "NSNumber+ESAdditions.h"
 #import "NSString+ESAdditions.h"
 
+/**
+ * The character set should be removed before converting a string to a number.
+ */
+static NSCharacterSet *_ESRemovalCharacterSet(void)
+{
+    static NSCharacterSet *_removalCharacterSet = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSMutableCharacterSet *charset = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
+        [charset addCharactersInString:@","]; // grouping separator "10,000"
+        _removalCharacterSet = [charset copy];
+    });
+    return _removalCharacterSet;
+}
+
+static NSNumberFormatter *_ESDefaultNumberFormatter(void)
+{
+    static NSNumberFormatter *_defaultNumberFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _defaultNumberFormatter = [[NSNumberFormatter alloc] init];
+        _defaultNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        _defaultNumberFormatter.usesGroupingSeparator = NO;
+    });
+    return _defaultNumberFormatter;
+}
+
 @implementation NSNumber (ESAdditions)
 
 + (nullable NSNumber *)numberWithString:(NSString *)string
 {
-    string = [string stringByDeletingCharactersInString:@", "].trimmedString;
+    string = [string stringByDeletingCharactersInSet:_ESRemovalCharacterSet()];
+
     if (!string || !string.length) {
         return nil;
     }
 
-    static NSDictionary *_esNumberTable = nil;
+    static NSDictionary *_stringToNumberTable = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _esNumberTable = @{@"true": @YES, @"t": @YES, @"yes": @YES, @"y": @YES,
-                           @"false": @NO, @"f": @NO, @"no": @NO, @"n": @NO,
-                           @"nil": [NSNull null], @"null": [NSNull null],
-                           @"<null>": [NSNull null]};
+        _stringToNumberTable = @{@"true": @YES, @"t": @YES, @"yes": @YES, @"y": @YES,
+                                 @"false": @NO, @"f": @NO, @"no": @NO, @"n": @NO,
+                                 @"nil": [NSNull null], @"null": [NSNull null],
+                                 @"<null>": [NSNull null]};
     });
 
-    id found = _esNumberTable[string.lowercaseString];
+    id found = _stringToNumberTable[string.lowercaseString];
     if (found) {
         if ([NSNull null] == found) {
             return nil;
@@ -35,15 +63,7 @@
         return found;
     }
 
-    static NSNumberFormatter *_esNumberFormatter = nil;
-    static dispatch_once_t onceToken1;
-    dispatch_once(&onceToken1, ^{
-        _esNumberFormatter = [[NSNumberFormatter alloc] init];
-        _esNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        _esNumberFormatter.usesGroupingSeparator = NO;
-    });
-
-    return [_esNumberFormatter numberFromString:string];
+    return [_ESDefaultNumberFormatter() numberFromString:string];
 }
 
 @end
