@@ -12,15 +12,15 @@
 
 + (NSCharacterSet *)URLEncodingAllowedCharacterSet
 {
-    static NSCharacterSet *__URLEncodingAllowedCharacterSet = nil;
+    static NSCharacterSet *_URLEncodingAllowedCharacterSet = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSMutableCharacterSet *charset = [NSMutableCharacterSet alphanumericCharacterSet];
         [charset addCharactersInString:@"-_.~"];
-        __URLEncodingAllowedCharacterSet = [charset copy];
+        _URLEncodingAllowedCharacterSet = [charset copy];
     });
 
-    return __URLEncodingAllowedCharacterSet;
+    return _URLEncodingAllowedCharacterSet;
 }
 
 @end
