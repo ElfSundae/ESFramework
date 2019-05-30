@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.6.0 (2019-05-30)
 
 - Added UIAlertController methods: `-actionSheetWithTitle:cancelActionTitle:`, `-alertWithTitle:cancelActionTitle:`, `+showAlertWithTitle:cancelActionTitle:`.
 - Added param `minorVersion` to `ESOSVersionIsAtLeast()`: `BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)`.
