@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Added param `minorVersion` to `ESOSVersionIsAtLeast()`: `BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)`.
+- Renamed `ESBenchmark()` to `ESMeasureExecution()`.
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 

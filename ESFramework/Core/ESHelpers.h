@@ -83,9 +83,9 @@ FOUNDATION_EXTERN NSString * _Nullable ESStringValue(id _Nullable obj);
 FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion);
 
 /**
- * Profiles the execution time.
+ * Measures the execution time.
  */
-FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond));
+FOUNDATION_EXTERN void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(NSTimeInterval elapsedMillisecond));
 
 /**
  * Checks whether the given object is a non-empty string.
