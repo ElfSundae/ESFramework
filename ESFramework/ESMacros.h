@@ -1,5 +1,5 @@
 //
-//  ESDefines.h
+//  ESMacros.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 14-4-2.
