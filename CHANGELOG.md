@@ -11,7 +11,7 @@
 - Renamed `ESUUIDString()` to `+[NSString UUIDString]`.
 - Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`, `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
 - Removed named color methods: `+es_redNavigationBarColor`, `+es_primaryButtonColor`, `+es_twitterColor` etc. [094cc70](https://github.com/ElfSundae/ESFramework/commit/094cc70ab39b9b272d333287a2ef72eecb08952a)
-- Removed utilities methods from [BButton](https://github.com/jessesquires/BButton)
+- Removed utilities methods from [BButton](https://github.com/jessesquires/BButton). [6dbb2db](https://github.com/ElfSundae/ESFramework/commit/6dbb2dbf4e10d5fcfda67b1e85c5ca95a6106f58)
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 
