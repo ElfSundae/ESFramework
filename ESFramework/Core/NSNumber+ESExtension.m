@@ -7,7 +7,6 @@
 //
 
 #import "NSNumber+ESExtension.h"
-#import "NSString+ESExtension.h"
 
 /**
  * The character set should be removed before converting a string to a number.
@@ -40,7 +39,8 @@ static NSNumberFormatter *_ESDefaultNumberFormatter(void)
 
 + (nullable NSNumber *)numberWithString:(NSString *)string
 {
-    string = [string stringByDeletingCharactersInSet:_ESRemovalCharacterSet()];
+    string = [[string componentsSeparatedByCharactersInSet:_ESRemovalCharacterSet()]
+              componentsJoinedByString:@""];
 
     if (!string || !string.length) {
         return nil;
