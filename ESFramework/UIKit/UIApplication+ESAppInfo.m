@@ -171,9 +171,9 @@ static void ESCheckAppFreshLaunch(void)
     NSMutableSet *result = [NSMutableSet set];
 
     NSArray *urlTypes = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleURLTypes"];
-    if (ESIsArrayWithItems(urlTypes)) {
+    if ([urlTypes isKindOfClass:[NSArray class]] && urlTypes.count) {
         NSPredicate *predicate = nil;
-        if (ESIsStringWithAnyText(identifier)) {
+        if (identifier.length) {
             predicate = [NSPredicate predicateWithFormat:@"CFBundleURLName == %@", identifier];
         } else {
             predicate = [NSPredicate predicateWithFormat:@"CFBundleURLName == NULL OR CFBundleURLName == ''"];
