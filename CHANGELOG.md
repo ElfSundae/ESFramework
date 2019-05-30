@@ -6,6 +6,7 @@
 - Renamed `ESBenchmark()` to `ESMeasureExecution()`.
 - `ESRandomColor()` => `+[UIColor randomColor]`
 - `ESRandomDataOfLength()` => `+[NSData randomDataWithLength:]`
+- `ESRandomStringOfLength()` => `+[NSString randomStringWithLength:]`
 - `ESUUIDString()` => `+[NSString UUIDString]`
 - Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`.
 - Removed `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.

@@ -175,23 +175,6 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180 / M_PI);
 }
 
-NSString * _Nullable ESRandomStringOfLength(NSUInteger length)
-{
-    static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    static uint32_t charsetLen = (uint32_t)(sizeof(charset) - 1);
-
-    char *str = malloc(length + 1);
-    if (!str) {
-        return nil;
-    }
-
-    for (NSUInteger i = 0; i < length; i++) {
-        str[i] = charset[arc4random_uniform(charsetLen)];
-    }
-    str[length] = '\0';
-    return [NSString stringWithUTF8String:str];
-}
-
 CGFloat ESStatusBarHeight(void)
 {
     CGRect frame = UIApplication.sharedApplication.statusBarFrame;
