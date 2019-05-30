@@ -235,7 +235,7 @@ FOUNDATION_EXTERN NSURL *ESTemporaryDirectoryURL(void);
  */
 FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory);
 
-#pragma mark - App Link
+#pragma mark - App Links
 
 /**
  * e.g. "https://itunes.apple.com/app/id12345678?mt=8"
@@ -252,8 +252,12 @@ FOUNDATION_EXTERN NSURL *ESAppStoreLink(NSInteger appIdentifier);
  */
 FOUNDATION_EXTERN NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
 
-#pragma mark - GCD
+#pragma mark - GCD Helpers
 
+/**
+ * Safely submits a block to the main dispatch queue for asynchronous execution
+ * and returns immediately.
+ */
 NS_INLINE void es_dispatch_async_main(dispatch_block_t block)
 {
     if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
@@ -263,6 +267,10 @@ NS_INLINE void es_dispatch_async_main(dispatch_block_t block)
     }
 }
 
+/**
+ * Safely submits a block to the main dispatch queue for synchronous execution
+ * and waits until that block completes.
+ */
 NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block)
 {
     if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
@@ -272,11 +280,18 @@ NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block)
     }
 }
 
+/**
+ * Submits a block for asynchronous execution on a system-defined global
+ * concurrent queue with the specified quality of service.
+ */
 NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block)
 {
     dispatch_async(dispatch_get_global_queue(priority, 0), block);
 }
 
+/**
+ * Enqueue a block for execution on the main dispatch queue after the specified seconds.
+ */
 NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block)
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), block);
