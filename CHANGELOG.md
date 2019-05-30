@@ -14,6 +14,7 @@
 - Removed utilities methods from [BButton](https://github.com/jessesquires/BButton). [6dbb2db](https://github.com/ElfSundae/ESFramework/commit/6dbb2dbf4e10d5fcfda67b1e85c5ca95a6106f58)
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
+- Add `module_name` for podspec files.
 
 ## 3.5.1 (2019-05-29)
 
