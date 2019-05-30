@@ -87,21 +87,6 @@ FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger mi
 FOUNDATION_EXTERN void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(NSTimeInterval elapsedMillisecond));
 
 /**
- * Creates a mutable set which does not retain references to the objects it contains.
- */
-FOUNDATION_EXTERN NSMutableSet *ESCreateNonretainedMutableSet(void);
-
-/**
- * Creates a mutable array which does not retain references to the objects it contains.
- */
-FOUNDATION_EXTERN NSMutableArray *ESCreateNonretainedMutableArray(void);
-
-/**
- * Creates a mutable dictionary which does not retain references to the objects it contains.
- */
-FOUNDATION_EXTERN NSMutableDictionary *ESCreateNonretainedMutableDictionary(void);
-
-/**
  * Generates an UUID string, e.g. "E621E1F8-C36C-495A-93FC-0C247A3E6E5F".
  */
 FOUNDATION_EXTERN NSString *ESUUIDString(void);

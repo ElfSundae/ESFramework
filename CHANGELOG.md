@@ -6,6 +6,7 @@
 - Renamed `ESBenchmark()` to `ESMeasureExecution()`.
 - `ESRandomColor()` => `+[UIColor randomColor]`
 - Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`.
+- Removed `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 

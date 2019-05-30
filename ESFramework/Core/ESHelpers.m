@@ -161,21 +161,6 @@ void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nu
     }
 }
 
-NSMutableSet *ESCreateNonretainedMutableSet(void)
-{
-    return CFBridgingRelease(CFSetCreateMutable(NULL, 0, NULL));
-}
-
-NSMutableArray *ESCreateNonretainedMutableArray(void)
-{
-    return CFBridgingRelease(CFArrayCreateMutable(NULL, 0, NULL));
-}
-
-NSMutableDictionary *ESCreateNonretainedMutableDictionary(void)
-{
-    return CFBridgingRelease(CFDictionaryCreateMutable(NULL, 0, NULL, NULL));
-}
-
 NSString *ESUUIDString(void)
 {
     return NSUUID.UUID.UUIDString;
