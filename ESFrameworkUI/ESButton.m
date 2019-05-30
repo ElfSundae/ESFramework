@@ -143,7 +143,7 @@ buttonFlatStyled = _buttonFlatStyled;
     if (nil != _buttonFlatStyled) {
         return _buttonFlatStyled;
     }
-    if (ESOSVersionIsAtLeast(7)) {
+    if (ESOSVersionIsAtLeast(7, 0)) {
         return @(YES);
     } else {
         return @(NO);

@@ -140,9 +140,10 @@ NSString * _Nullable ESStringValue(id _Nullable obj)
     }
 }
 
-BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
+BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)
 {
-    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion}];
+    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:
+            (NSOperatingSystemVersion) { majorVersion, minorVersion }];
 }
 
 void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond))

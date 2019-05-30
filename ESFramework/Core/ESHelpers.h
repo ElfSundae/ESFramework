@@ -80,7 +80,7 @@ FOUNDATION_EXTERN NSString * _Nullable ESStringValue(id _Nullable obj);
  * Returns a boolean value indicating whether the version of the operating system
  * on which the process is executing is the same or later than the given version.
  */
-FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
+FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion);
 
 /**
  * Profiles the execution time.
