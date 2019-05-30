@@ -57,6 +57,11 @@
     return self.numberValue.boolValue;
 }
 
++ (NSString *)UUIDString
+{
+    return [NSUUID UUID].UUIDString;
+}
+
 - (NSNumber *)numberValue
 {
     return [NSNumber numberWithString:self];

@@ -161,11 +161,6 @@ void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nu
     }
 }
 
-NSString *ESUUIDString(void)
-{
-    return NSUUID.UUID.UUIDString;
-}
-
 uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 {
     if (min > max) {
