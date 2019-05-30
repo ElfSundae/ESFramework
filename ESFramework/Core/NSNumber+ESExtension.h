@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSNumber (ESExtension)
 
 /**
- * Returns a NSNumber object created by parsing a given string.
+ * Returns a NSNumber object extracted from the given string.
  */
 + (nullable NSNumber *)numberWithString:(NSString *)string;
 
