@@ -10,6 +10,14 @@
 
 @implementation UIColor (ESExtension)
 
++ (UIColor *)randomColor
+{
+    return [UIColor colorWithRed:(CGFloat)arc4random() / UINT_MAX
+                           green:(CGFloat)arc4random() / UINT_MAX
+                            blue:(CGFloat)arc4random() / UINT_MAX
+                           alpha:1.0];
+}
+
 - (nullable NSString *)RGBAString
 {
     CGFloat r, g, b, a;

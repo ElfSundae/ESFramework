@@ -7,7 +7,7 @@
 //
 
 #import "UIView+ESExtension.h"
-#import "ESHelpers.h"
+#import "UIColor+ESExtension.h"
 #import "UIGestureRecognizer+ESExtension.h"
 
 @implementation UIView (ESExtension)
@@ -274,7 +274,7 @@
 
 - (void)enableDebugBorder
 {
-    [self enableDebugBorderWithColor:ESRandomColor()];
+    [self enableDebugBorderWithColor:[UIColor randomColor]];
 }
 
 - (void)enableDebugBorderWithColor:(UIColor *)color

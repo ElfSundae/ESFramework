@@ -147,11 +147,6 @@ FOUNDATION_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
 FOUNDATION_EXTERN NSString * _Nullable ESRandomStringOfLength(NSUInteger length);
 
 /**
- * Generates a random color.
- */
-FOUNDATION_EXTERN UIColor *ESRandomColor(void);
-
-/**
  * Converts degrees to radians.
  */
 FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);

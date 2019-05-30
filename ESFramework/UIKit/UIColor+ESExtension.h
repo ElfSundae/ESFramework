@@ -19,6 +19,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (ESExtension)
 
+/**
+ * Creates a random color.
+ */
++ (UIColor *)randomColor;
+
 /// e.g. "rgba(239,156,255,0.5)"
 - (nullable NSString *)RGBAString;
 
