@@ -119,7 +119,7 @@
 			sourceTree = "<group>";
 			tabWidth = 4;
 		};
-		E76CA27E1CA50D1100EDBB8E /* Foundation */ = {
+		E75A74C0229F78BD000F29F1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
 				E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */,
@@ -128,6 +128,13 @@
 				E779129A226F032D006EF94D /* ESHelper.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
 				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E76CA27E1CA50D1100EDBB8E /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
 				E76CA2321CA50D1100EDBB8E /* NSArray+ESAdditions.h */,
 				E76CA2331CA50D1100EDBB8E /* NSArray+ESAdditions.m */,
 				E7FDC96F2264A45000D8CC25 /* NSCharacterSet+ESAdditions.h */,
@@ -176,6 +183,7 @@
 			children = (
 				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
 				E76CA27F1CA50D1100EDBB8E /* ESMacros.h */,
+				E75A74C0229F78BD000F29F1 /* Core */,
 				E76CA27E1CA50D1100EDBB8E /* Foundation */,
 				E779129B226F3C65006EF94D /* Network */,
 				E779129C226F3DCB006EF94D /* UIKit */,

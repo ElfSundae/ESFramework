@@ -10,7 +10,6 @@
 #import <sys/time.h>
 #import <Security/SecRandom.h>
 #import "NSNumber+ESAdditions.h"
-#import "NSString+ESAdditions.h"
 #import "NSInvocation+ESHelper.h"
 
 static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
@@ -245,7 +244,10 @@ NSString *ESRandomStringOfLength(NSUInteger length)
 {
     NSData *data = ESRandomDataOfLength(length);
     NSString *string = [data base64EncodedStringWithOptions:0];
-    string = [string stringByDeletingCharactersInString:@"+/="];
+    string = [[string componentsSeparatedByCharactersInSet:
+               [NSCharacterSet characterSetWithCharactersInString:@"+/="]
+              ] componentsJoinedByString:@""];
+
     if (string.length >= length) {
         return [string substringToIndex:length];
     }
