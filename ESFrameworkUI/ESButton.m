@@ -108,7 +108,7 @@ buttonFlatStyled = _buttonFlatStyled;
         return _buttonColor;
     }
 
-    return [UIColor es_defaultButtonColor];
+    return [UIColor colorWithHue:0.0 saturation:0.0 brightness:1.0 alpha:1.0];
 }
 
 - (void)setButtonColor:(UIColor *)value
