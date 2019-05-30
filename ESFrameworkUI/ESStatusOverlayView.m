@@ -7,6 +7,7 @@
 //
 
 #import "ESStatusOverlayView.h"
+#import <objc/runtime.h>
 #import <ESFramework/ESFramework.h>
 
 @interface ESStatusOverlayView ()

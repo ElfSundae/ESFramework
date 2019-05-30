@@ -9,6 +9,7 @@
 #import "ESHelpers.h"
 #import <sys/time.h>
 #import <Security/SecRandom.h>
+#import <objc/runtime.h>
 #import "NSNumber+ESExtension.h"
 #import "NSInvocation+ESExtension.h"
 
