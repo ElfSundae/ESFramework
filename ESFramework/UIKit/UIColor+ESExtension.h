@@ -27,30 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSString *)RGBHexString;
 
-+ (UIColor *)es_redNavigationBarColor;
-+ (UIColor *)es_blueNavigationBarColor;
-+ (UIColor *)es_blackNavigationBarColor;
-
-+ (UIColor *)es_lightBorderColor;
-
-// Twitter Bootstrap Buttons Color
-
-+ (UIColor *)es_defaultButtonColor;
-+ (UIColor *)es_primaryButtonColor;
-+ (UIColor *)es_infoButtonColor;
-+ (UIColor *)es_successButtonColor;
-+ (UIColor *)es_warningButtonColor;
-+ (UIColor *)es_dangerButtonColor;
-+ (UIColor *)es_inverseButtonColor;
-
-+ (UIColor *)es_twitterColor;
-+ (UIColor *)es_facebookColor;
-+ (UIColor *)es_purpleColor;
-+ (UIColor *)es_redColor;
-+ (UIColor *)es_orangeColor;
-+ (UIColor *)es_yellowColor;
-+ (UIColor *)es_oceanDarkColor;
-
 /// Utilities from [BButton](https://github.com/jessesquires/BButton)
 - (nullable UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent;
 - (UIColor *)es_lightenColorWithValue:(CGFloat)value;

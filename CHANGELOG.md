@@ -10,6 +10,7 @@
 - Renamed `ESRandomStringOfLength()` to `+[NSString randomStringWithLength:]`.
 - Renamed `ESUUIDString()` to `+[NSString UUIDString]`.
 - Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`, `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
+- Removed named color methods: `+es_redNavigationBarColor`, `+es_primaryButtonColor`, `+es_twitterColor` etc.
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 
