@@ -95,8 +95,6 @@
 		E7A38C991C4DFA1A00972B01 /* ESActivityLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESActivityLabel.m; sourceTree = "<group>"; };
 		E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESBadgeView.h; sourceTree = "<group>"; };
 		E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESBadgeView.m; sourceTree = "<group>"; };
-		E7A38C9C1C4DFA1A00972B01 /* ESButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ESButton.h; sourceTree = "<group>"; };
-		E7A38C9D1C4DFA1A00972B01 /* ESButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESButton.m; sourceTree = "<group>"; };
 		E7A38C9E1C4DFA1A00972B01 /* ESErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESErrorView.h; sourceTree = "<group>"; };
 		E7A38C9F1C4DFA1A00972B01 /* ESErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ESErrorView.m; sourceTree = "<group>"; };
 		E7A38CAF1C4DFEE300972B01 /* ESRefreshControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControl.h; sourceTree = "<group>"; };
@@ -247,8 +245,6 @@
 				E7A38C991C4DFA1A00972B01 /* ESActivityLabel.m */,
 				E7A38C9A1C4DFA1A00972B01 /* ESBadgeView.h */,
 				E7A38C9B1C4DFA1A00972B01 /* ESBadgeView.m */,
-				E7A38C9C1C4DFA1A00972B01 /* ESButton.h */,
-				E7A38C9D1C4DFA1A00972B01 /* ESButton.m */,
 				E7A38C9E1C4DFA1A00972B01 /* ESErrorView.h */,
 				E7A38C9F1C4DFA1A00972B01 /* ESErrorView.m */,
 				E7A8414D2292EA5B00509A8E /* ESFrameworkUI.h */,

@@ -8,7 +8,6 @@
 
 #import "ESActivityLabel.h"
 #import "ESBadgeView.h"
-#import "ESButton.h"
 #import "ESErrorView.h"
 #import "ESRefreshControl.h"
 #import "ESRefreshControlDefaultContentView.h"
