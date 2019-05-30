@@ -102,18 +102,18 @@ FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
 FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
 
 /**
- * Returns the current statusBar's height, in any orientation.
+ * Returns the height of the status bar, in any orientation.
  */
 FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
 
 /**
- * Returns the current orientation of your application’s user interface.
+ * Returns the current interface orientation of the application.
  */
 FOUNDATION_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
 
 /**
  * Returns the physical orientation of the device.
- * This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
+ * @discussion This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
  */
 FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
 

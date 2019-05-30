@@ -4,12 +4,11 @@
 
 - Added param `minorVersion` to `ESOSVersionIsAtLeast()`: `BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)`.
 - Renamed `ESBenchmark()` to `ESMeasureExecution()`.
-- `ESRandomColor()` => `+[UIColor randomColor]`
-- `ESRandomDataOfLength()` => `+[NSData randomDataWithLength:]`
-- `ESRandomStringOfLength()` => `+[NSString randomStringWithLength:]`
-- `ESUUIDString()` => `+[NSString UUIDString]`
-- Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`.
-- Removed `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
+- Renamed `ESRandomColor()` to `+[UIColor randomColor]`.
+- Renamed `ESRandomDataOfLength()` to `+[NSData randomDataWithLength:]`.
+- Renamed `ESRandomStringOfLength()` to `+[NSString randomStringWithLength:]`.
+- Renamed `ESUUIDString()` to `+[NSString UUIDString]`.
+- Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`, `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 
