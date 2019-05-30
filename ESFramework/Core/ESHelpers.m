@@ -163,9 +163,6 @@ void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nu
 
 uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 {
-    if (min > max) {
-        uint32_t t = min; min = max; max = t;
-    }
     return arc4random_uniform(max - min + 1) + min;
 }
 
