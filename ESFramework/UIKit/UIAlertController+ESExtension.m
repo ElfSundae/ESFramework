@@ -94,4 +94,9 @@
     return alert;
 }
 
++ (instancetype)showAlertWithTitle:(nullable NSString *)title cancelActionTitle:(NSString *)cancelActionTitle
+{
+    return [self showAlertWithTitle:title message:nil cancelActionTitle:cancelActionTitle];
+}
+
 @end

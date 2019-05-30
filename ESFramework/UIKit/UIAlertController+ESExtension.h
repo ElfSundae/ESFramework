@@ -36,9 +36,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)dismissAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /**
- * Creates and presents an alert controller.
+ * Creates and presents an alert controller with UIAlertControllerStyleAlert style.
  */
 + (instancetype)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelActionTitle:(NSString *)cancelActionTitle;
+
+/**
+ * Creates and presents an alert controller with UIAlertControllerStyleAlert style.
+ */
++ (instancetype)showAlertWithTitle:(nullable NSString *)title cancelActionTitle:(NSString *)cancelActionTitle;
 
 @end
 

@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- Added UIAlertController methods: `-actionSheetWithTitle:cancelActionTitle:`, `-alertWithTitle:cancelActionTitle:`.
+- Added UIAlertController methods: `-actionSheetWithTitle:cancelActionTitle:`, `-alertWithTitle:cancelActionTitle:`, `+showAlertWithTitle:cancelActionTitle:`.
 - Added param `minorVersion` to `ESOSVersionIsAtLeast()`: `BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)`.
 - Renamed `ESBenchmark()` to `ESMeasureExecution()`.
 - Renamed `ESRandomColor()` to `+[UIColor randomColor]`.
