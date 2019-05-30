@@ -11,14 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- * Returns a boolean value indicating whether the version of the operating system
- * on which the process is executing is the same or later than the given version.
- */
-FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
+#pragma mark - UIColor Helpers
 
 /**
- * Creates an UIColor instance from RGB values.
+ * Creates an UIColor object from RGB values.
  * RGB numbers are between 0 - 255.
  * @code
  * UIColorWithRGBA(123, 255, 200, 0.8);
@@ -27,7 +23,7 @@ FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
 FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
 
 /**
- * Creates an UIColor instance from RGB values.
+ * Creates an UIColor object from RGB values.
  * RGB numbers are between 0 - 255.
  * @code
  * UIColorWithRGB(123, 255, 200);
@@ -36,7 +32,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat b
 FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
 
 /**
- * Creates an UIColor instance from a hexadecimal RGB number.
+ * Creates an UIColor object from a hexadecimal RGB number.
  * @code
  * UIColorWithHexRGB(0x7bffc8, 0.8);
  * @endcode
@@ -44,7 +40,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat bl
 FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
 
 /**
- * Creates an UIColor instance from a hexadecimal RGB string.
+ * Creates an UIColor object from a hexadecimal RGB string.
  *
  * @code
  * UIColorWithHexRGBString(@"#33AF00", 1);
@@ -54,12 +50,7 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
-/**
- * Profiles the execution time.
- */
-FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond));
-
-#pragma mark - Foundation
+#pragma mark - Extract Numeric Values
 
 /**
  * Gets value from an NSNumber or NSString object safely.
@@ -82,6 +73,19 @@ FOUNDATION_EXTERN NSInteger ESIntegerValue(id _Nullable obj);
 FOUNDATION_EXTERN NSUInteger ESUIntegerValue(id _Nullable obj);
 /// Attempts convert a NSString/NSNumber object to a NSString object.
 FOUNDATION_EXTERN NSString * _Nullable ESStringValue(id _Nullable obj);
+
+#pragma mark - Utilities
+
+/**
+ * Returns a boolean value indicating whether the version of the operating system
+ * on which the process is executing is the same or later than the given version.
+ */
+FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion);
+
+/**
+ * Profiles the execution time.
+ */
+FOUNDATION_EXTERN void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond));
 
 /**
  * Checks whether the given object is a non-empty string.
@@ -158,8 +162,6 @@ FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
  */
 FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
 
-#pragma mark - User Interface
-
 /**
  * Returns the current statusBar's height, in any orientation.
  */
@@ -212,7 +214,7 @@ FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
  */
 FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 
-#pragma mark - File System
+#pragma mark - File Paths
 
 /**
  * Returns the path of the Documents directory.

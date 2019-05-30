@@ -23,11 +23,6 @@ static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
     }
 }
 
-BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
-{
-    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion}];
-}
-
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {
     return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
@@ -57,20 +52,6 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
         return [UIColor clearColor];
     }
     return UIColorWithRGBHex(hex, alpha);
-}
-
-void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond))
-{
-    struct timeval begin, end;
-    gettimeofday(&begin, NULL);
-    block();
-    gettimeofday(&end, NULL);
-    double ms = (double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000;
-    if (completion) {
-        completion(ms);
-    } else {
-        NSLog(@"‼️ Elapsed Time: %f ms", ms);
-    }
 }
 
 char ESCharValue(id _Nullable obj)
@@ -156,6 +137,25 @@ NSString * _Nullable ESStringValue(id _Nullable obj)
         return [(NSNumber *)obj stringValue];
     } else {
         return nil;
+    }
+}
+
+BOOL ESOSVersionIsAtLeast(NSInteger majorVersion)
+{
+    return [NSProcessInfo.processInfo isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion) {majorVersion}];
+}
+
+void ESBenchmark(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(double elapsedMillisecond))
+{
+    struct timeval begin, end;
+    gettimeofday(&begin, NULL);
+    block();
+    gettimeofday(&end, NULL);
+    double ms = (double)(end.tv_sec - begin.tv_sec) * 1000 + (double)(end.tv_usec - begin.tv_usec) / 1000;
+    if (completion) {
+        completion(ms);
+    } else {
+        NSLog(@"‼️ Elapsed Time: %f ms", ms);
     }
 }
 
@@ -413,8 +413,6 @@ NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
 {
     return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
 }
-
-#pragma mark - ObjC Runtime
 
 void ESSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSelector)
 {
