@@ -7,7 +7,7 @@
 //
 
 #import "NSString+ESAdditions.h"
-#import "ESHelper.h"
+#import "ESHelpers.h"
 #import "NSNumber+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"
 #import "NSURLComponents+ESAdditions.h"

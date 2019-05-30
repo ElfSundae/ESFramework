@@ -2,7 +2,6 @@
 
 ## Unreleased
 
-- Renamed files: `ESHelpers` => `ESHelper`.
 - Improved `ESRandomStringOfLength()`.
 
 ## 3.5.1 (2019-05-29)

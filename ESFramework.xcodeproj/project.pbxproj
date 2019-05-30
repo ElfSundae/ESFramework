@@ -43,8 +43,8 @@
 		E7791294226DFB8A006EF94D /* ESWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESWeakProxy.m; sourceTree = "<group>"; };
 		E7791295226EFF93006EF94D /* NSInvocation+ESHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+ESHelper.h"; sourceTree = "<group>"; };
 		E7791296226EFF93006EF94D /* NSInvocation+ESHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+ESHelper.m"; sourceTree = "<group>"; };
-		E7791299226F032D006EF94D /* ESHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHelper.h; sourceTree = "<group>"; };
-		E779129A226F032D006EF94D /* ESHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHelper.m; sourceTree = "<group>"; };
+		E7791299226F032D006EF94D /* ESHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHelpers.h; sourceTree = "<group>"; };
+		E779129A226F032D006EF94D /* ESHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHelpers.m; sourceTree = "<group>"; };
 		E779129D226F3DCB006EF94D /* UIAlertController+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESAdditions.h"; sourceTree = "<group>"; };
 		E779129E226F3DCB006EF94D /* UIAlertController+ESAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ESAdditions.m"; sourceTree = "<group>"; };
 		E77912A1226F3DCB006EF94D /* UIColor+ESAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESAdditions.h"; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 			children = (
 				E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */,
 				E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */,
-				E7791299226F032D006EF94D /* ESHelper.h */,
-				E779129A226F032D006EF94D /* ESHelper.m */,
+				E7791299226F032D006EF94D /* ESHelpers.h */,
+				E779129A226F032D006EF94D /* ESHelpers.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
 				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
 			);

@@ -9,7 +9,7 @@
 #import "UIDevice+ESAdditions.h"
 #import <sys/sysctl.h>
 #import "ESMacros.h"
-#import "ESHelper.h"
+#import "ESHelpers.h"
 #import "NSData+ESAdditions.h"
 
 ESDefineAssociatedObjectKey(deviceToken);

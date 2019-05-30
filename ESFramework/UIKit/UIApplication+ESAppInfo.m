@@ -9,7 +9,7 @@
 #import "UIApplication+ESAdditions.h"
 #import "AFNetworkReachabilityManager+ESAdditions.h"
 #import "ESMacros.h"
-#import "ESHelper.h"
+#import "ESHelpers.h"
 #import "UIDevice+ESAdditions.h"
 #import "ESNetworkHelper.h"
 
