@@ -27,12 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSString *)RGBHexString;
 
-/// Utilities from [BButton](https://github.com/jessesquires/BButton)
-- (nullable UIColor *)es_desaturatedColorToPercentSaturation:(CGFloat)percent;
-- (UIColor *)es_lightenColorWithValue:(CGFloat)value;
-- (UIColor *)es_darkenColorWithValue:(CGFloat)value;
-- (BOOL)es_isLightColor;
-
 @end
 
 NS_ASSUME_NONNULL_END
