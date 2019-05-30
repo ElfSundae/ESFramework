@@ -9,7 +9,7 @@
 #import "ESMacros.h"
 
 #import "ESActionBlockContainer.h"
-#import "ESHelpers.h"
+#import "ESHelper.h"
 #import "ESWeakProxy.h"
 #import "NSArray+ESAdditions.h"
 #import "NSCharacterSet+ESAdditions.h"

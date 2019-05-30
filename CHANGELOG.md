@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Rename files: `ESHelpers` => `ESHelper`
+
 ## 3.5.1 (2019-05-29)
 
 - Improved generic support.

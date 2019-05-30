@@ -7,7 +7,7 @@
 //
 
 #import "UIView+ESAdditions.h"
-#import "ESHelpers.h"
+#import "ESHelper.h"
 #import "UIGestureRecognizer+ESAdditions.h"
 
 @implementation UIView (ESAdditions)

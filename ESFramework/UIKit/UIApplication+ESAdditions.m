@@ -8,7 +8,7 @@
 
 #import "UIApplication+ESAdditions.h"
 #import "ESMacros.h"
-#import "ESHelpers.h"
+#import "ESHelper.h"
 #import "UIDevice+ESAdditions.h"
 #import "UIWindow+ESAdditions.h"
 

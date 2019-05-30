@@ -7,7 +7,7 @@
 //
 
 #import "NSURLComponents+ESAdditions.h"
-#import "ESHelpers.h"
+#import "ESHelper.h"
 
 @implementation NSURLComponents (ESAdditions)
 

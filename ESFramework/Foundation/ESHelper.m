@@ -1,12 +1,12 @@
 //
-//  ESHelpers.m
+//  ESHelper.m
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/23.
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
-#import "ESHelpers.h"
+#import "ESHelper.h"
 #import <sys/time.h>
 #import <Security/SecRandom.h>
 #import "NSNumber+ESAdditions.h"
