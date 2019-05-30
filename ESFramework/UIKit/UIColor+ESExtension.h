@@ -10,13 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// Color pickers:
-// https://briangrinstead.com/blog/ios-uicolor-picker
-// http://tintui.com
-// https://flatuicolors.com
-// http://www.flatuicolorpicker.com
-// http://bootflat.github.io/color-picker.html
-
 @interface UIColor (ESExtension)
 
 /**
@@ -24,10 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (UIColor *)randomColor;
 
-/// e.g. "rgba(239,156,255,0.5)"
+/**
+ * e.g. "rgba(239,156,255,0.5)"
+ */
 - (nullable NSString *)RGBAString;
 
-/// e.g. "#EF9CFF"
+/**
+ * e.g. "#EF9CFF"
+ */
 - (nullable NSString *)RGBHexString;
 
 + (UIColor *)es_redNavigationBarColor;
