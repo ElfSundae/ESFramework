@@ -9,8 +9,8 @@
 #import "ESHelpers.h"
 #import <sys/time.h>
 #import <Security/SecRandom.h>
-#import "NSNumber+ESAdditions.h"
-#import "NSInvocation+ESHelper.h"
+#import "NSNumber+ESExtension.h"
+#import "NSInvocation+ESExtension.h"
 
 static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
 {

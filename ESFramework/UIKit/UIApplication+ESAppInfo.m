@@ -6,11 +6,11 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
-#import "UIApplication+ESAdditions.h"
-#import "AFNetworkReachabilityManager+ESAdditions.h"
+#import "UIApplication+ESExtension.h"
+#import "AFNetworkReachabilityManager+ESExtension.h"
 #import "ESMacros.h"
 #import "ESHelpers.h"
-#import "UIDevice+ESAdditions.h"
+#import "UIDevice+ESExtension.h"
 #import "ESNetworkHelper.h"
 
 NSString *const ESAppPreviousVersionUserDefaultsKey = @"ESAppCheckFreshLaunch";

@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Improved `ESRandomStringOfLength()`.
+- Renamed files from "ESAdditions" to "ESExtension".
 
 ## 3.5.1 (2019-05-29)
 
