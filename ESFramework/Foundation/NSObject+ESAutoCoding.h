@@ -11,14 +11,14 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /* Implementation for -[NSCopying copyWithZone:] */
-#define ES_IMPLEMENTATION_NSCopying_copyWithZone                \
-    - (id)copyWithZone:(NSZone *)zone {                         \
-        id copy = [[[self class] alloc] init];                  \
-        for (NSString *key in self.codableProperties) {         \
-            [copy setValue:[self valueForKey:key] forKey:key];  \
-        }                                                       \
-        return copy;                                            \
-    }
+#define ES_IMPLEMENTATION_NSCopying_copyWithZone            \
+- (id)copyWithZone:(NSZone *)zone {                         \
+    id copy = [[[self class] alloc] init];                  \
+    for (NSString *key in self.codableProperties) {         \
+        [copy setValue:[self valueForKey:key] forKey:key];  \
+    }                                                       \
+    return copy;                                            \
+}
 
 /*!
  * The ESAutoCoding category on NSObject provides automatic support for
