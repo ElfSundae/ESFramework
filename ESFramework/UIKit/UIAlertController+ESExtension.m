@@ -23,6 +23,11 @@
     return alert;
 }
 
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title cancelActionTitle:(nullable NSString *)cancelActionTitle
+{
+    return [self actionSheetWithTitle:title message:nil cancelActionTitle:cancelActionTitle];
+}
+
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message
 {
     return [self alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
@@ -33,6 +38,11 @@
     UIAlertController *alert = [self alertWithTitle:title message:message];
     [alert addCancelActionWithTitle:cancelActionTitle handler:nil];
     return alert;
+}
+
++ (instancetype)alertWithTitle:(nullable NSString *)title cancelActionTitle:(nullable NSString *)cancelActionTitle
+{
+    return [self alertWithTitle:title message:nil cancelActionTitle:cancelActionTitle];
 }
 
 - (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ _Nullable)(UIAlertAction *action))handler

@@ -18,9 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelActionTitle:(nullable NSString *)cancelActionTitle;
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title cancelActionTitle:(nullable NSString *)cancelActionTitle;
 
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message;
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelActionTitle:(nullable NSString *)cancelActionTitle;
++ (instancetype)alertWithTitle:(nullable NSString *)title cancelActionTitle:(nullable NSString *)cancelActionTitle;
 
 - (UIAlertAction *)addActionWithTitle:(nullable NSString *)title style:(UIAlertActionStyle)style handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 - (UIAlertAction *)addDefaultActionWithTitle:(NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
