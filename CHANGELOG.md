@@ -10,7 +10,7 @@
 - Renamed `ESRandomStringOfLength()` to `+[NSString randomStringWithLength:]`.
 - Renamed `ESUUIDString()` to `+[NSString UUIDString]`.
 - Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`, `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
-- Removed named color methods: `+es_redNavigationBarColor`, `+es_primaryButtonColor`, `+es_twitterColor` etc.
+- Removed named color methods: `+es_redNavigationBarColor`, `+es_primaryButtonColor`, `+es_twitterColor` etc. [094cc70](https://github.com/ElfSundae/ESFramework/commit/094cc70ab39b9b272d333287a2ef72eecb08952a)
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 
