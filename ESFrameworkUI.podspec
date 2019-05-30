@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.source      = { :git => 'https://github.com/ElfSundae/ESFramework.git', :tag => s.version.to_s, :submodules => true }
 
   s.ios.deployment_target = '9.0'
+  s.module_name = 'ESFrameworkUI'
   s.source_files = 'ESFrameworkUI/**/*.{h,m}'
   s.dependency 'ESFramework', '>= 3.0'
 end
