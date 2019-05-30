@@ -7,6 +7,7 @@
 //
 
 #import "NSData+ESExtension.h"
+#import <Security/SecRandom.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 
@@ -44,6 +45,16 @@
     }
 
     return [NSData dataWithBytesNoCopy:bytes length:bytesLength freeWhenDone:YES];
+}
+
++ (nullable NSData *)randomDataWithLength:(NSUInteger)length
+{
+    NSMutableData *data = [NSMutableData dataWithLength:length];
+    int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, data.mutableBytes);
+    if (0 != result) {
+        return nil;
+    }
+    return [data copy];
 }
 
 - (NSString *)UTF8String

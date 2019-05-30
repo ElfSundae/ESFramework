@@ -8,7 +8,6 @@
 
 #import "ESHelpers.h"
 #import <sys/time.h>
-#import <Security/SecRandom.h>
 #import <objc/runtime.h>
 #import "NSNumber+ESExtension.h"
 #import "NSInvocation+ESExtension.h"
@@ -164,16 +163,6 @@ void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nu
 uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 {
     return arc4random_uniform(max - min + 1) + min;
-}
-
-NSData *ESRandomDataOfLength(NSUInteger length)
-{
-    NSMutableData *data = [NSMutableData dataWithLength:length];
-    int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, data.mutableBytes);
-    if (0 != result) {
-        printf("%s: Unable to generate random data.\n", __PRETTY_FUNCTION__);
-    }
-    return [data copy];
 }
 
 CGFloat ESDegreesToRadians(CGFloat degrees)

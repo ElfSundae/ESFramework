@@ -92,11 +92,6 @@ FOUNDATION_EXTERN void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NO
 FOUNDATION_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);
 
 /**
- * Generates a random data using `SecRandomCopyBytes`.
- */
-FOUNDATION_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
-
-/**
  * Generates a random string that contains 0-9a-zA-Z.
  */
 FOUNDATION_EXTERN NSString * _Nullable ESRandomStringOfLength(NSUInteger length);

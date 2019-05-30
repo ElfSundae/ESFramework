@@ -5,6 +5,7 @@
 - Added param `minorVersion` to `ESOSVersionIsAtLeast()`: `BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)`.
 - Renamed `ESBenchmark()` to `ESMeasureExecution()`.
 - `ESRandomColor()` => `+[UIColor randomColor]`
+- `ESRandomDataOfLength()` => `+[NSData randomDataWithLength:]`
 - `ESUUIDString()` => `+[NSString UUIDString]`
 - Removed `ESIsStringWithAnyText()`, `ESIsArrayWithItems()`, `ESIsDictionaryWithItems()`, `ESIsSetWithItems()`, `ESIsOrderedSetWithItems()`.
 - Removed `ESCreateNonretainedMutableSet()`, `ESCreateNonretainedMutableArray()`, `ESCreateNonretainedMutableDictionary()`.
