@@ -7,9 +7,9 @@
 //
 
 #import "ESNetworkHelper.h"
-#include <ifaddrs.h>
-#include <net/if.h>
-#include <arpa/inet.h>
+#import <ifaddrs.h>
+#import <net/if.h>
+#import <arpa/inet.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>

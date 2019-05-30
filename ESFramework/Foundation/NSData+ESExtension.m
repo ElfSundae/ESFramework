@@ -7,7 +7,7 @@
 //
 
 #import "NSData+ESExtension.h"
-#include <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
 
 @implementation NSData (ESExtension)
