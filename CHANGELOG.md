@@ -4,7 +4,6 @@
 
 - Added param `minorVersion` to `ESOSVersionIsAtLeast()`: `BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)`.
 - Renamed `ESBenchmark()` to `ESMeasureExecution()`.
-- Renamed NString methods: `-trimmedString` => `stringByTrimming`
 - Improved `ESRandomStringOfLength()`.
 - Renamed files from "ESAdditions" to "ESExtension".
 

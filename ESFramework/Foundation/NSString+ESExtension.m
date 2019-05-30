@@ -112,7 +112,7 @@
     return [self dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (NSString *)stringByTrimming
+- (NSString *)trimmedString
 {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }

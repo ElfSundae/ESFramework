@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns a new string made by trimming whitespace and newline characters.
  */
-- (NSString *)stringByTrimming;
+- (NSString *)trimmedString;
 
 /**
  * Returns a percent escaped string following RFC 3986 for a query string key or value.
