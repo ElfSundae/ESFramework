@@ -141,7 +141,7 @@ FOUNDATION_EXTERN NSData *ESRandomDataOfLength(NSUInteger length);
 /**
  * Generates a random string that contains 0-9a-zA-Z.
  */
-FOUNDATION_EXTERN NSString *ESRandomStringOfLength(NSUInteger length);
+FOUNDATION_EXTERN NSString * _Nullable ESRandomStringOfLength(NSUInteger length);
 
 /**
  * Generates a random color.

@@ -240,24 +240,21 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180 / M_PI);
 }
 
-NSString *ESRandomStringOfLength(NSUInteger length)
+NSString * _Nullable ESRandomStringOfLength(NSUInteger length)
 {
-    NSData *data = ESRandomDataOfLength(length);
-    NSString *string = [data base64EncodedStringWithOptions:0];
-    string = [[string componentsSeparatedByCharactersInSet:
-               [NSCharacterSet characterSetWithCharactersInString:@"+/="]
-              ] componentsJoinedByString:@""];
+    static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    static uint32_t charsetLen = (uint32_t)(sizeof(charset) - 1);
 
-    if (string.length >= length) {
-        return [string substringToIndex:length];
+    char *str = malloc(length + 1);
+    if (!str) {
+        return nil;
     }
 
-    NSMutableString *result = [string mutableCopy];
-    NSUInteger stringLength = string.length;
-    for (NSUInteger i = stringLength; i < length; i++) {
-        [result appendFormat:@"%c", [string characterAtIndex:arc4random_uniform((uint32_t)stringLength)]];
+    for (NSUInteger i = 0; i < length; i++) {
+        str[i] = charset[arc4random_uniform(charsetLen)];
     }
-    return [result copy];
+    str[length] = '\0';
+    return [NSString stringWithUTF8String:str];
 }
 
 CGFloat ESStatusBarHeight(void)
