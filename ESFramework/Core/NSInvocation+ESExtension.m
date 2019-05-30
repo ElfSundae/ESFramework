@@ -1,5 +1,5 @@
 //
-//  NSInvocation+ESHelper.m
+//  NSInvocation+ESExtension.m
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/23.
@@ -10,7 +10,7 @@
 
 static id __gNil = nil;
 
-@implementation NSInvocation (ESHelper)
+@implementation NSInvocation (ESExtension)
 
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector
 {

@@ -1,5 +1,5 @@
 //
-//  NSInvocation+ESHelper.h
+//  NSInvocation+ESExtension.h
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/23.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSInvocation (ESHelper)
+@interface NSInvocation (ESExtension)
 
 + (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
 + (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;

@@ -128,6 +128,10 @@
 				E779129A226F032D006EF94D /* ESHelpers.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
 				E7791294226DFB8A006EF94D /* ESWeakProxy.m */,
+				E75A74D4229FB302000F29F1 /* NSInvocation+ESExtension.h */,
+				E75A74D5229FB302000F29F1 /* NSInvocation+ESExtension.m */,
+				E75A74D6229FB302000F29F1 /* NSNumber+ESExtension.h */,
+				E75A74D7229FB302000F29F1 /* NSNumber+ESExtension.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -153,10 +157,6 @@
 				E75A74D1229FB302000F29F1 /* NSFileManager+ESExtension.m */,
 				E75A74D2229FB302000F29F1 /* NSHTTPCookieStorage+ESExtension.h */,
 				E75A74D3229FB302000F29F1 /* NSHTTPCookieStorage+ESExtension.m */,
-				E75A74D4229FB302000F29F1 /* NSInvocation+ESExtension.h */,
-				E75A74D5229FB302000F29F1 /* NSInvocation+ESExtension.m */,
-				E75A74D6229FB302000F29F1 /* NSNumber+ESExtension.h */,
-				E75A74D7229FB302000F29F1 /* NSNumber+ESExtension.m */,
 				E75A74D8229FB302000F29F1 /* NSObject+ESAutoCoding.h */,
 				E75A74D9229FB302000F29F1 /* NSObject+ESAutoCoding.m */,
 				E75A74DA229FB302000F29F1 /* NSOrderedSet+ESExtension.h */,
