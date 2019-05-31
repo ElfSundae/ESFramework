@@ -87,31 +87,6 @@ FOUNDATION_EXTERN BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger mi
 FOUNDATION_EXTERN void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(NSTimeInterval elapsedMillisecond));
 
 /**
- * Checks whether the given object is a non-empty string.
- */
-FOUNDATION_EXTERN BOOL ESIsStringWithAnyText(id _Nullable object);
-
-/**
- * Checks whether the given object is a non-empty array.
- */
-FOUNDATION_EXTERN BOOL ESIsArrayWithItems(id _Nullable object);
-
-/**
- * Checks whether the given object is a non-empty dictionary.
- */
-FOUNDATION_EXTERN BOOL ESIsDictionaryWithItems(id _Nullable object);
-
-/**
- * Checks whether the given object is a non-empty set.
- */
-FOUNDATION_EXTERN BOOL ESIsSetWithItems(id _Nullable object);
-
-/**
- * Checks whether the given object is a non-empty ordered set.
- */
-FOUNDATION_EXTERN BOOL ESIsOrderedSetWithItems(id _Nullable object);
-
-/**
  * Generates a random number between min and max.
  */
 FOUNDATION_EXTERN uint32_t ESRandomNumber(uint32_t min, uint32_t max);

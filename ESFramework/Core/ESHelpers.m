@@ -160,31 +160,6 @@ void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nu
     }
 }
 
-BOOL ESIsStringWithAnyText(id object)
-{
-    return [object isKindOfClass:[NSString class]] && [(NSString *)object length] > 0;
-}
-
-BOOL ESIsArrayWithItems(id object)
-{
-    return [object isKindOfClass:[NSArray class]] && [(NSArray *)object count] > 0;
-}
-
-BOOL ESIsDictionaryWithItems(id object)
-{
-    return [object isKindOfClass:[NSDictionary class]] && [(NSDictionary *)object count] > 0;
-}
-
-BOOL ESIsSetWithItems(id object)
-{
-    return [object isKindOfClass:[NSSet class]] && [(NSSet *)object count] > 0;
-}
-
-BOOL ESIsOrderedSetWithItems(id object)
-{
-    return [object isKindOfClass:[NSOrderedSet class]] && [(NSOrderedSet *)object count] > 0;
-}
-
 uint32_t ESRandomNumber(uint32_t min, uint32_t max)
 {
     return arc4random_uniform(max - min + 1) + min;
