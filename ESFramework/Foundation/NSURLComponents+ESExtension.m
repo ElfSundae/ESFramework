@@ -109,7 +109,7 @@
     NSMutableArray *queryItems = [NSMutableArray array];
     for (NSString *_name in dictionary) {
         NSString *name = ESStringValue(_name);
-        if (!name || !name.length) {
+        if (!ESIsStringWithAnyText(name)) {
             continue;
         }
 
