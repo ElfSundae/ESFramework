@@ -13,18 +13,20 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSFileManager (ESExtension)
 
 /**
- * Creates a directory with default file attributes at the specified path,
- * any non-existent parent directories will be created as well.
+ * Creates a directory with default file attributes at the specified path, any
+ * non-existent parent directories will be created as well.
  *
- * @return YES if the directory was created, YES if the directory already exists, or NO if an error occurred.
+ * @return YES if the directory was created, YES if the directory already exists,
+ * or NO if an error occurred.
  */
 - (BOOL)createDirectoryAtPath:(NSString *)path;
 
 /**
- * Creates a directory with default file attributes at the specified URL,
- * any non-existent parent directories will be created as well.
+ * Creates a directory with default file attributes at the specified URL, any
+ * non-existent parent directories will be created as well.
  *
- * @return YES if the directory was created, YES if the directory already exists, or NO if an error occurred.
+ * @return YES if the directory was created, YES if the directory already exists,
+ * or NO if an error occurred.
  */
 - (BOOL)createDirectoryAtURL:(NSURL *)url;
 

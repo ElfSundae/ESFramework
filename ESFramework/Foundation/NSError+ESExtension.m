@@ -10,12 +10,17 @@
 
 @implementation NSError (ESExtension)
 
-+ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(NSString *)description
++ (instancetype)errorWithDomain:(NSErrorDomain)domain
+                           code:(NSInteger)code
+                    description:(NSString *)description
 {
     return [self errorWithDomain:domain code:code description:description failureReason:nil];
 }
 
-+ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(NSString *)description failureReason:(NSString *)failureReason
++ (instancetype)errorWithDomain:(NSErrorDomain)domain
+                           code:(NSInteger)code
+                    description:(NSString *)description
+                  failureReason:(NSString *)failureReason
 {
     NSMutableDictionary *userInfo = nil;
     if (description || failureReason) {

@@ -12,8 +12,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSError (ESExtension)
 
-+ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(nullable NSString *)description;
-+ (instancetype)errorWithDomain:(NSErrorDomain)domain code:(NSInteger)code description:(nullable NSString *)description failureReason:(nullable NSString *)failureReason;
+/**
+ * Creates and initializes an NSError object for a given domain and code with a
+ * given localized description.
+ */
++ (instancetype)errorWithDomain:(NSErrorDomain)domain
+                           code:(NSInteger)code
+                    description:(nullable NSString *)description;
+
+/**
+ * Creates and initializes an NSError object for a given domain and code with a
+ * given localized description and a given localized failure reason.
+ */
++ (instancetype)errorWithDomain:(NSErrorDomain)domain
+                           code:(NSInteger)code
+                    description:(nullable NSString *)description
+                  failureReason:(nullable NSString *)failureReason;
 
 @end
 
