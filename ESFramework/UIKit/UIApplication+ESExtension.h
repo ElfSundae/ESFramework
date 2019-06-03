@@ -43,7 +43,7 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 - (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /**
- * Dismiss the keyboard.
+ * Dismiss the keyboard from the screen.
  */
 - (void)dismissKeyboard;
 
