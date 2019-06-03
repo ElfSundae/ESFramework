@@ -76,7 +76,7 @@
         str[i] = charset[arc4random_uniform(charsetLen)];
     }
     str[length] = '\0';
-    
+
     NSString *string = [NSString stringWithUTF8String:str];
     free(str);
 

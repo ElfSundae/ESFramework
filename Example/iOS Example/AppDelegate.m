@@ -23,7 +23,7 @@
     application.appChannel = @"dev";
 
     NSLog(@"%@", application.analyticsInfo);
-    
+
     [application registerForRemoteNotificationsWithCompletion:^(NSData * _Nullable deviceToken, NSError * _Nullable error) {
         if (deviceToken) {
             NSLog(@"device token: %@", UIDevice.currentDevice.deviceTokenString);
