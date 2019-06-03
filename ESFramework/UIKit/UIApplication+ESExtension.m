@@ -16,26 +16,26 @@
 ESDefineAssociatedObjectKey(registerForRemoteNotificationsSucceeded)
 ESDefineAssociatedObjectKey(registerForRemoteNotificationsFailed)
 
-static IMP es_original_application_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
-static IMP es_original_application_didFailToRegisterForRemoteNotificationsWithError = NULL;
+static IMP es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
+static IMP es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError = NULL;
 
 static void es_application_registerForRemoteNotifications_callback(id self, SEL _cmd, UIApplication *application, id object)
 {
-    IMP originalImpl = NULL;
+    IMP originalIMP = NULL;
     void (^block)(id) = nil;
 
     if ([object isKindOfClass:[NSData class]]) {
         UIDevice.currentDevice.deviceToken = (NSData *)object;
 
-        originalImpl = es_original_application_didRegisterForRemoteNotificationsWithDeviceToken;
+        originalIMP = es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken;
         block = objc_getAssociatedObject(application, registerForRemoteNotificationsSucceededKey);
     } else if ([object isKindOfClass:[NSError class]]) {
-        originalImpl = es_original_application_didFailToRegisterForRemoteNotificationsWithError;
+        originalIMP = es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError;
         block = objc_getAssociatedObject(application, registerForRemoteNotificationsFailedKey);
     }
 
-    if (originalImpl) {
-        ((void (*)(id, SEL, id, id))originalImpl)(self, _cmd, application, object);
+    if (originalIMP) {
+        ((void (*)(id, SEL, id, id))originalIMP)(self, _cmd, application, object);
     }
 
     if (block) {
@@ -61,10 +61,10 @@ static void es_application_registerForRemoteNotifications_callback(id self, SEL 
     [self es_setDelegate:delegate];
 
     if (delegate) {
-        es_original_application_didRegisterForRemoteNotificationsWithDeviceToken =
+        es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken =
             class_replaceMethod([delegate class], @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), (IMP)es_application_registerForRemoteNotifications_callback, "v@:@@");
 
-        es_original_application_didFailToRegisterForRemoteNotificationsWithError =
+        es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError =
             class_replaceMethod([delegate class], @selector(application:didFailToRegisterForRemoteNotificationsWithError:), (IMP)es_application_registerForRemoteNotifications_callback, "v@:@@");
     }
 }
