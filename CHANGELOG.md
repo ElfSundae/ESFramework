@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Renamed `-[UIApplication registerForRemoteNotificationsWithCompletion:]` to `-registerForRemoteNotificationsWithSuccess:failure:`.
+
 ## 3.6.0 (2019-05-30)
 
 - Added UIAlertController methods: `-actionSheetWithTitle:cancelActionTitle:`, `-alertWithTitle:cancelActionTitle:`, `+showAlertWithTitle:cancelActionTitle:`.

@@ -13,37 +13,37 @@
 #import "UIDevice+ESExtension.h"
 #import "UIWindow+ESExtension.h"
 
-ESDefineAssociatedObjectKey(registerRemoteNotificationsCompletion);
-
-typedef void (*_ESFunctionWithTwoObjectArgs)(id, SEL, id, id);
+ESDefineAssociatedObjectKey(registerForRemoteNotificationsSucceeded)
+ESDefineAssociatedObjectKey(registerForRemoteNotificationsFailed)
 
 static IMP es_original_application_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
 static IMP es_original_application_didFailToRegisterForRemoteNotificationsWithError = NULL;
 
-static void es_application_didRegisterForRemoteNotificationsWithDeviceToken(id self, SEL _cmd, UIApplication *application, NSData *deviceToken)
+static void es_application_registerForRemoteNotifications_callback(id self, SEL _cmd, UIApplication *application, id object)
 {
-    UIDevice.currentDevice.deviceToken = deviceToken;
+    IMP originalImpl = NULL;
+    void (^block)(id) = nil;
 
-    if (es_original_application_didRegisterForRemoteNotificationsWithDeviceToken) {
-        ((_ESFunctionWithTwoObjectArgs)es_original_application_didRegisterForRemoteNotificationsWithDeviceToken)(self, _cmd, application, deviceToken);
+    if ([object isKindOfClass:[NSData class]]) {
+        UIDevice.currentDevice.deviceToken = (NSData *)object;
+
+        originalImpl = es_original_application_didRegisterForRemoteNotificationsWithDeviceToken;
+        block = objc_getAssociatedObject(application, registerForRemoteNotificationsSucceededKey);
+    } else if ([object isKindOfClass:[NSError class]]) {
+        originalImpl = es_original_application_didFailToRegisterForRemoteNotificationsWithError;
+        block = objc_getAssociatedObject(application, registerForRemoteNotificationsFailedKey);
     }
 
-    if (application.registerRemoteNotificationsCompletion) {
-        application.registerRemoteNotificationsCompletion(deviceToken, nil);
-        application.registerRemoteNotificationsCompletion = nil;
-    }
-}
-
-static void es_application_didFailToRegisterForRemoteNotificationsWithError(id self, SEL _cmd, UIApplication *application, NSError *error)
-{
-    if (es_original_application_didFailToRegisterForRemoteNotificationsWithError) {
-        ((_ESFunctionWithTwoObjectArgs)es_original_application_didFailToRegisterForRemoteNotificationsWithError)(self, _cmd, application, error);
+    if (originalImpl) {
+        ((void (*)(id, SEL, id, id))originalImpl)(self, _cmd, application, object);
     }
 
-    if (application.registerRemoteNotificationsCompletion) {
-        application.registerRemoteNotificationsCompletion(nil, error);
-        application.registerRemoteNotificationsCompletion = nil;
+    if (block) {
+        block(object);
     }
+
+    objc_setAssociatedObject(application, registerForRemoteNotificationsSucceededKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(application, registerForRemoteNotificationsFailedKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @implementation UIApplication (ESExtension)
@@ -62,10 +62,10 @@ static void es_application_didFailToRegisterForRemoteNotificationsWithError(id s
 
     if (delegate) {
         es_original_application_didRegisterForRemoteNotificationsWithDeviceToken =
-            class_replaceMethod([delegate class], @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), (IMP)es_application_didRegisterForRemoteNotificationsWithDeviceToken, "v@:@@");
+            class_replaceMethod([delegate class], @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), (IMP)es_application_registerForRemoteNotifications_callback, "v@:@@");
 
         es_original_application_didFailToRegisterForRemoteNotificationsWithError =
-            class_replaceMethod([delegate class], @selector(application:didFailToRegisterForRemoteNotificationsWithError:), (IMP)es_application_didFailToRegisterForRemoteNotificationsWithError, "v@:@@");
+            class_replaceMethod([delegate class], @selector(application:didFailToRegisterForRemoteNotificationsWithError:), (IMP)es_application_registerForRemoteNotifications_callback, "v@:@@");
     }
 }
 
@@ -109,19 +109,11 @@ static void es_application_didFailToRegisterForRemoteNotificationsWithError(id s
     [self sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
 }
 
-- (void (^)(NSData * _Nullable, NSError * _Nullable))registerRemoteNotificationsCompletion
+- (void)registerForRemoteNotificationsWithSuccess:(nullable void (^)(NSData *deviceToken))success
+                                          failure:(nullable void (^)(NSError *error))failure
 {
-    return objc_getAssociatedObject(self, registerRemoteNotificationsCompletionKey);
-}
-
-- (void)setRegisterRemoteNotificationsCompletion:(void (^)(NSData * _Nullable, NSError * _Nullable))completion
-{
-    objc_setAssociatedObject(self, registerRemoteNotificationsCompletionKey, completion, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-- (void)registerForRemoteNotificationsWithCompletion:(void (^ _Nullable)(NSData * _Nullable deviceToken, NSError * _Nullable error))completion
-{
-    self.registerRemoteNotificationsCompletion = completion;
+    objc_setAssociatedObject(self, registerForRemoteNotificationsSucceededKey, success, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, registerForRemoteNotificationsFailedKey, failure, OBJC_ASSOCIATION_COPY_NONATOMIC);
 
     [self registerForRemoteNotifications];
 }

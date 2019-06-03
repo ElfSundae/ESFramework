@@ -24,10 +24,10 @@
 
     NSLog(@"%@", application.analyticsInfo);
 
-    [application registerForRemoteNotificationsWithCompletion:^(NSData * _Nullable deviceToken, NSError * _Nullable error) {
-        if (deviceToken) {
-            NSLog(@"device token: %@", UIDevice.currentDevice.deviceTokenString);
-        }
+    [application registerForRemoteNotificationsWithSuccess:^(NSData * _Nonnull deviceToken) {
+        NSLog(@"device token: %@", UIDevice.currentDevice.deviceTokenString);
+    } failure:^(NSError * _Nonnull error) {
+        NSLog(@"%@", error);
     }];
 
     [self.window makeKeyAndVisible];

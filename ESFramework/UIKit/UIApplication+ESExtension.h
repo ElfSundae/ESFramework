@@ -48,18 +48,12 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 - (void)dismissKeyboard;
 
 /**
- * The completion block that will be invoked after -registerRemoteNotifications.
- */
-@property (nullable, nonatomic, copy) void (^registerRemoteNotificationsCompletion)(NSData * _Nullable deviceToken, NSError * _Nullable error);
-
-/**
  * Register to receive remote notifications via Apple Push Notification service.
- * @discussion After registering, the completion block will be invoked.
- * If succeeded, the `deviceToken` param stores the device token data, you may use
- * `UIDevice.currentDevice.deviceTokenString` to get the string representation
- * of the device token. If failed, the `error` param stores occurred error.
+ * @dicussion You may use `UIDevice.currentDevice.deviceTokenString` to get the
+ * string representation of the device token.
  */
-- (void)registerForRemoteNotificationsWithCompletion:(void (^ _Nullable)(NSData * _Nullable deviceToken, NSError * _Nullable error))completion;
+- (void)registerForRemoteNotificationsWithSuccess:(nullable void (^)(NSData *deviceToken))success
+                                          failure:(nullable void (^)(NSError *error))failure;
 
 /**
  * Simulate low memory warning, just for testing.
