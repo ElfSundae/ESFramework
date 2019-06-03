@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.7.0 (2019-06-04)
 
 - Renamed `-[UIApplication registerForRemoteNotificationsWithCompletion:]` to `-registerForRemoteNotificationsWithSuccess:failure:`.
 
