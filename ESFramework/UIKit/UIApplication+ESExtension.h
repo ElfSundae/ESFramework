@@ -35,12 +35,15 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 /**
  * Presents a view controller modally from the -topmostViewController.
  */
-- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+- (void)presentViewController:(UIViewController *)viewControllerToPresent
+                     animated:(BOOL)animated
+                   completion:(void (^ _Nullable)(void))completion;
 
 /**
  * Dismisses all modal view controllers.
  */
-- (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+- (void)dismissViewControllersAnimated:(BOOL)animated
+                            completion:(void (^ _Nullable)(void))completion;
 
 /**
  * Dismiss the keyboard from the screen.
