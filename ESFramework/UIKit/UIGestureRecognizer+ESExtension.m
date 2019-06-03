@@ -11,7 +11,7 @@
 #import "ESMacros.h"
 #import "ESActionBlockContainer.h"
 
-ESDefineAssociatedObjectKey(allActionBlockContainers);
+ESDefineAssociatedObjectKey(allActionBlockContainers)
 
 @implementation UIGestureRecognizer (ESExtension)
 

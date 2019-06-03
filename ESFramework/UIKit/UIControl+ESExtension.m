@@ -29,7 +29,7 @@
 #import <objc/runtime.h>
 #import "ESMacros.h"
 
-ESDefineAssociatedObjectKey(allActionBlockContainers);
+ESDefineAssociatedObjectKey(allActionBlockContainers)
 
 @implementation UIControl (ESExtension)
 

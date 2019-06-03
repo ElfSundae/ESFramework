@@ -11,7 +11,7 @@
 #import "ESMacros.h"
 #import "ESActionBlockContainer.h"
 
-ESDefineAssociatedObjectKey(actionBlockContainer);
+ESDefineAssociatedObjectKey(actionBlockContainer)
 
 @implementation UIBarButtonItem (ESExtension)
 

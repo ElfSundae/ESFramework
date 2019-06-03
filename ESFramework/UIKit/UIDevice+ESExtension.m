@@ -13,8 +13,8 @@
 #import "ESHelpers.h"
 #import "NSData+ESExtension.h"
 
-ESDefineAssociatedObjectKey(deviceToken);
-ESDefineAssociatedObjectKey(deviceTokenString);
+ESDefineAssociatedObjectKey(deviceToken)
+ESDefineAssociatedObjectKey(deviceTokenString)
 
 @implementation UIDevice (ESExtension)
 
