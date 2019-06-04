@@ -23,6 +23,7 @@
 #import "NSError+ESExtension.h"
 #import "NSFileManager+ESExtension.h"
 #import "NSHTTPCookieStorage+ESExtension.h"
+#import "NSMapTable+ESExtension.h"
 #import "NSObject+ESAutoCoding.h"
 #import "NSOrderedSet+ESExtension.h"
 #import "NSString+ESExtension.h"

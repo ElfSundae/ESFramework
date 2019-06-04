@@ -102,6 +102,8 @@
 		E7A38CBC1C4E035600972B01 /* ESRefreshControlDefaultContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESRefreshControlDefaultContentView.h; sourceTree = "<group>"; };
 		E7A38CBD1C4E035600972B01 /* ESRefreshControlDefaultContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESRefreshControlDefaultContentView.m; sourceTree = "<group>"; };
 		E7A8414D2292EA5B00509A8E /* ESFrameworkUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFrameworkUI.h; sourceTree = "<group>"; };
+		E7C5D41822A6D38E00A08895 /* NSMapTable+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMapTable+ESExtension.h"; sourceTree = "<group>"; };
+		E7C5D41922A6D38E00A08895 /* NSMapTable+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMapTable+ESExtension.m"; sourceTree = "<group>"; };
 		E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESActionBlockContainer.h; sourceTree = "<group>"; };
 		E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESActionBlockContainer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,8 @@
 				E75A74D1229FB302000F29F1 /* NSFileManager+ESExtension.m */,
 				E75A74D2229FB302000F29F1 /* NSHTTPCookieStorage+ESExtension.h */,
 				E75A74D3229FB302000F29F1 /* NSHTTPCookieStorage+ESExtension.m */,
+				E7C5D41822A6D38E00A08895 /* NSMapTable+ESExtension.h */,
+				E7C5D41922A6D38E00A08895 /* NSMapTable+ESExtension.m */,
 				E75A74D8229FB302000F29F1 /* NSObject+ESAutoCoding.h */,
 				E75A74D9229FB302000F29F1 /* NSObject+ESAutoCoding.m */,
 				E75A74DA229FB302000F29F1 /* NSOrderedSet+ESExtension.h */,
