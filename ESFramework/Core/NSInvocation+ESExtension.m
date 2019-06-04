@@ -14,7 +14,7 @@ static id __gNil = nil;
 
 + (instancetype)invocationWithTarget:(id)target selector:(SEL)selector
 {
-    NSMethodSignature *signature = [target methodSignatureForSelector:selector];
+    NSMethodSignature *signature = [[target class] instanceMethodSignatureForSelector:selector];
     if (!signature) {
         return nil;
     }
