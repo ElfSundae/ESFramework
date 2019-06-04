@@ -34,6 +34,7 @@ static id __gNil = nil;
 #pragma clang diagnostic pop
     NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:retainArguments arguments:arguments];
     va_end(arguments);
+    
     return invocation;
 }
 
