@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 3.8.0 (2019-06-05)
 
 - Added `NSMapTable (ESExtension)` category.
 
