@@ -30,4 +30,16 @@
     return self.objectEnumerator.allObjects ?: @[];
 }
 
+- (void)enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block
+{
+    BOOL stop = NO;
+    for (id key in self) {
+        block(key, [self objectForKey:key], &stop);
+
+        if (stop) {
+            return;
+        }
+    }
+}
+
 @end

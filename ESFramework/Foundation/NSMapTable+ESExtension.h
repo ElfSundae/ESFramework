@@ -32,6 +32,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (readonly, copy) NSArray<ObjectType> *allValues;
 
+/**
+ * Applies a given block object to the entries of the map table.
+ */
+- (void)enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(KeyType key, ObjectType obj, BOOL *stop))block;
+
 @end
 
 NS_ASSUME_NONNULL_END
