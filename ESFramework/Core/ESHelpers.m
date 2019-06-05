@@ -359,14 +359,19 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 {
     va_list arguments;
     va_start(arguments, result);
-    NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector retainArguments:NO arguments:arguments];
+    NSInvocation *invocation = [NSInvocation invocationWithTarget:target selector:selector arguments:arguments];
     va_end(arguments);
-    if (invocation) {
-        [invocation invoke];
-        if (result && 0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
-            [invocation getReturnValue:result];
-        }
-        return YES;
+
+    if (!invocation) {
+        return NO;
     }
-    return NO;
+
+    [invocation retainArguments];
+    [invocation invoke];
+
+    if (result && 0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
+        [invocation getReturnValue:result];
+    }
+    
+    return YES;
 }

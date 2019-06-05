@@ -12,9 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSInvocation (ESExtension)
 
-+ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector;
-+ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments, ...;
-+ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector retainArguments:(BOOL)retainArguments arguments:(va_list)arguments;
++ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector, ...;
++ (nullable instancetype)invocationWithTarget:(id)target selector:(SEL)selector arguments:(va_list)arguments;
 
 @end
 
