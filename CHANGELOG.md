@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.9.0 (2019-06-05)
+
+- Removed param `retainArguments:(BOOL)` for `+[NSInvocation invocationWithTarget:selector: ,...]`.
+- Changed: `ESInvokeSelector()` now retains arguments for NSInvocation object.
+
 ## 3.8.0 (2019-06-05)
 
 - Added `NSMapTable (ESExtension)` category.
