@@ -330,9 +330,9 @@ FOUNDATION_EXTERN void ESSwizzleClassMethod(Class cls, SEL originalSelector, SEL
 /**
  * Invokes the given selector on the given target.
  * @code
- * NSString *result = nil;
+ * void *result = NULL;
  * if (ESInvokeSelector(self, @selector(foo:), &result, arg1, arg2)) {
- *     NSLog(@"%@", result);
+ *     NSLog(@"%@", (__bridge NSString *)result);
  * }
  * @endcode
  * @return YES if invoked successfully, otherwise NO.
