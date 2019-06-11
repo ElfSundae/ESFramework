@@ -138,12 +138,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSDictionary<NSString *, Class> *)codableProperties;
 
-/**
- * The NSSecureCoding protocol method, returns YES.
- * @discussion Making this method public to avoid build warning.
- */
-+ (BOOL)supportsSecureCoding;
-
 @end
 
 NS_ASSUME_NONNULL_END
