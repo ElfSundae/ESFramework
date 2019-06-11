@@ -14,31 +14,6 @@ ESDefineAssociatedObjectKey(codableProperties)
 
 @implementation NSObject (ESAutoCoding)
 
-+ (BOOL)supportsSecureCoding
-{
-    return YES;
-}
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    // No -init should be called, see https://github.com/nicklockwood/AutoCoding/pull/32
-    [self setWithCoder:aDecoder];
-    return self;
-}
-#pragma clang diagnostic pop
-
-- (void)encodeWithCoder:(NSCoder *)aCoder
-{
-    for (NSString *key in self.codableProperties) {
-        id object = [self valueForKey:key];
-        if (object) {
-            [aCoder encodeObject:object forKey:key];
-        }
-    }
-}
-
 - (void)setWithCoder:(NSCoder *)aDecoder
 {
     NSDictionary *properties = self.codableProperties;
@@ -207,6 +182,33 @@ ESDefineAssociatedObjectKey(codableProperties)
     free(properties);
 
     return [codableProperties copy];
+}
+
+#pragma mark - NSSecureCoding
+
++ (BOOL)supportsSecureCoding
+{
+    return YES;
+}
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    // No -init should be called, see https://github.com/nicklockwood/AutoCoding/pull/32
+    [self setWithCoder:aDecoder];
+    return self;
+}
+#pragma clang diagnostic pop
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    for (NSString *key in self.codableProperties) {
+        id object = [self valueForKey:key];
+        if (object) {
+            [aCoder encodeObject:object forKey:key];
+        }
+    }
 }
 
 @end
