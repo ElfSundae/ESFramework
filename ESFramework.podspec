@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.source      = { :git => 'https://github.com/ElfSundae/ESFramework.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'
-  s.module_name = 'ESFramework'
   s.source_files = 'ESFramework/**/*.{h,m}'
   s.frameworks = 'UIKit', 'Security', 'SystemConfiguration', 'CoreTelephony'
   s.dependency 'AFNetworking/Reachability'
