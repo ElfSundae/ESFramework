@@ -1,6 +1,6 @@
 PODS:
   - AFNetworking/Reachability (3.2.1)
-  - ESFramework (3.9.1):
+  - ESFramework (3.9.2):
     - AFNetworking/Reachability (~> 3.0)
   - ESFrameworkUI (3.9.1):
     - ESFramework (~> 3.0)
@@ -19,7 +19,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  ESFramework: 4bec4d4704029c6a4a0787bc66b0c2f738cee977
+  ESFramework: 1a96772e591e2b0fe9731273dbb0078a3f3130da
   ESFrameworkUI: a9fb18c47588f36ece2f6654457cb8be785f1dde
 
 COCOAPODS: 1.7.1
