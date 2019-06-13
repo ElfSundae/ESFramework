@@ -16,6 +16,10 @@ pod 'ESFramework'
 pod 'ESFrameworkUI'
 ```
 
+## Recommended Tools
+
+- [Chisel](https://github.com/facebook/chisel) Chisel is a collection of LLDB commands to assist debugging iOS apps.
+
 ## Recommended Libraries
 
 - [FLEX (Flipboard Explorer)](https://github.com/Flipboard/FLEX) A set of in-app debugging and exploration tools for iOS development.
