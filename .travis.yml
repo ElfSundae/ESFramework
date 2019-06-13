@@ -5,7 +5,7 @@ xcode_scheme: Example
 before_install:
     - gem install cocoapods
     - pod repo update
-    - pod install --project-directory=Example
+    - pod install
 script:
     - pod lib lint
 
