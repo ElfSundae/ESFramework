@@ -6,14 +6,14 @@ PODS:
     - ESFramework (~> 3.0)
 
 DEPENDENCIES:
-  - ESFramework (from `../`)
-  - ESFrameworkUI (from `../`)
+  - ESFramework (from `.`)
+  - ESFrameworkUI (from `.`)
 
 EXTERNAL SOURCES:
   ESFramework:
-    :path: "../"
+    :path: "."
   ESFrameworkUI:
-    :path: "../"
+    :path: "."
 
 CHECKOUT OPTIONS: 
 
@@ -24,7 +24,7 @@ SPEC CHECKSUMS:
 
 COCOAPODS: 1.7.1
 
-PODFILE CHECKSUM: c9ceec9938a150f843f4d42745707cb71c43302b
+PODFILE CHECKSUM: f51c4223a982d0890caa913bcb143cf5661e7b7f
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
