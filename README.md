@@ -20,7 +20,7 @@ pod 'ESFrameworkUI'
 
 - [FLEX (Flipboard Explorer)](https://github.com/Flipboard/FLEX) A set of in-app debugging and exploration tools for iOS development.
 - [MLeaksFinder](https://github.com/Tencent/MLeaksFinder) Find memory leaks in your iOS app at develop time.
-- [FBRetainCycleDetector](https://github.com/facebook/FBRetainCycleDetector)
+- [FBRetainCycleDetector](https://github.com/facebook/FBRetainCycleDetector) An iOS library that finds retain cycles using runtime analysis.
 - [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) A fast & simple, yet powerful & flexible logging framework.
 - [Masonry](https://github.com/SnapKit/Masonry) Harness the power of AutoLayout NSLayoutConstraints with a simplified, chainable and expressive syntax.
 - [KVOController](https://github.com/facebook/KVOController) Simple, modern, thread-safe key-value observing.
