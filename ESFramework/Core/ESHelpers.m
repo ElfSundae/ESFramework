@@ -372,6 +372,6 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
     if (result && 0 != strcmp(invocation.methodSignature.methodReturnType, @encode(void))) {
         [invocation getReturnValue:result];
     }
-    
+
     return YES;
 }
