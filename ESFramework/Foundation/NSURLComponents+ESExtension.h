@@ -13,17 +13,17 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSURLComponents (ESExtension)
 
 /**
- * Add query items to the current URL components.
+ * Add query items to the URL components.
  */
 - (void)addQueryItems:(NSArray<NSURLQueryItem *> *)queryItems;
 
 /**
- * Add a query item to the current URL components.
+ * Add a query item to the URL components.
  */
 - (void)addQueryItem:(NSURLQueryItem *)item;
 
 /**
- * Add a query item with the given name-value pair.
+ * Add a query item with the given name-value pair to the URL components.
  */
 - (void)addQueryItemWithName:(NSString *)name value:(nullable NSString *)value;
 
