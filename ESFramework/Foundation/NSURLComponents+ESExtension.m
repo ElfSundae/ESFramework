@@ -70,7 +70,7 @@
             name = [name substringToIndex:name.length - 2];
         }
 
-        if (name.length == 0) {
+        if (!name.length) {
             continue;
         }
 
@@ -85,6 +85,7 @@
             parameters[name] = item.value;
         }
     }
+    
     return [parameters copy];
 }
 
