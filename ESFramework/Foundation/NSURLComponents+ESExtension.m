@@ -61,18 +61,15 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
     for (NSURLQueryItem *item in queryItems) {
-        if (!item.value) {
-            continue;
-        }
-
         NSString *name = item.name;
         if ([name hasSuffix:@"[]"]) {
             name = [name substringToIndex:name.length - 2];
         }
-
         if (!name.length) {
             continue;
         }
+
+        id value = item.value ?: [NSNull null];
 
         if (parameters[name]) {
             NSMutableArray *arr = parameters[name];
@@ -80,12 +77,12 @@
                 arr = [NSMutableArray arrayWithObject:arr];
                 parameters[name] = arr;
             }
-            [arr addObject:item.value];
+            [arr addObject:value];
         } else {
-            parameters[name] = item.value;
+            parameters[name] = value;
         }
     }
-    
+
     return [parameters copy];
 }
 

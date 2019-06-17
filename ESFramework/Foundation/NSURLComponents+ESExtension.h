@@ -39,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The query URL component as an dictionary.
- * @discussion The value of a query parameter support NSString, NSNumber, NSArray.
+ * @discussion The value of a query parameter could be NSString, NSNumber, NSNull, NSArray.
  */
 @property (nullable, copy) NSDictionary<NSString *, id> *queryParameters;
 
