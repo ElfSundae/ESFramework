@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeQueryItemsWithName:(NSString *)name;
 
 /**
- * The query URL component as an dictionary.
+ * The query URL component as a dictionary.
  * @discussion The value of a query parameter could be NSString, NSNumber, NSNull, NSArray.
  */
 @property (nullable, copy) NSDictionary<NSString *, id> *queryParameters;

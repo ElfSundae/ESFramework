@@ -86,7 +86,7 @@
     return [parameters copy];
 }
 
-- (void)setQueryParameters:(NSDictionary<NSString *,id> *)parameters
+- (void)setQueryParameters:(NSDictionary<NSString *, id> *)parameters
 {
     if (!parameters) {
         self.queryItems = nil;
@@ -121,7 +121,7 @@
     if (!parameters.count) {
         return;
     }
-    
+
     NSMutableDictionary *dict = (self.queryParameters ?: @{}).mutableCopy;
     [dict addEntriesFromDictionary:parameters];
     self.queryParameters = dict;
