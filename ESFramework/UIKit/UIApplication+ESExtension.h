@@ -10,8 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
-
 @interface UIApplication (ESExtension)
 
 /**

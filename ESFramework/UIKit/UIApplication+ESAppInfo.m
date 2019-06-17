@@ -14,8 +14,6 @@
 #import "UIDevice+ESExtension.h"
 #import "ESNetworkHelper.h"
 
-NSString *const ESAppPreviousVersionUserDefaultsKey = @"ESAppCheckFreshLaunch";
-
 ESDefineAssociatedObjectKey(appName)
 ESDefineAssociatedObjectKey(appChannel)
 
@@ -25,14 +23,16 @@ static BOOL _gIsFreshLaunch = NO;
 
 static void ESCheckAppFreshLaunch(void)
 {
-    _gAppPreviousVersion = [NSUserDefaults.standardUserDefaults stringForKey:ESAppPreviousVersionUserDefaultsKey];
+#define ESESCheckAppFreshLaunchKey @"ESAppCheckFreshLaunch"
+    _gAppPreviousVersion = [NSUserDefaults.standardUserDefaults stringForKey:ESESCheckAppFreshLaunchKey];
     NSString *currentVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 
-    _gIsFreshLaunch = !_gAppPreviousVersion || ![_gAppPreviousVersion isEqualToString:currentVersion];
+    _gIsFreshLaunch = !(_gAppPreviousVersion && [_gAppPreviousVersion isEqualToString:currentVersion]);
 
     if (_gIsFreshLaunch) {
-        [NSUserDefaults.standardUserDefaults setObject:currentVersion forKey:ESAppPreviousVersionUserDefaultsKey];
+        [NSUserDefaults.standardUserDefaults setObject:currentVersion forKey:ESESCheckAppFreshLaunchKey];
     }
+#undef ESESCheckAppFreshLaunchKey
 }
 
 @implementation UIApplication (ESAppInfo)

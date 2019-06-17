@@ -196,9 +196,9 @@
 			children = (
 				E75A74EF229FB303000F29F1 /* UIAlertController+ESExtension.h */,
 				E75A74F0229FB303000F29F1 /* UIAlertController+ESExtension.m */,
-				E75A74F1229FB303000F29F1 /* UIApplication+ESAppInfo.m */,
 				E75A74F2229FB303000F29F1 /* UIApplication+ESExtension.h */,
 				E75A74F3229FB303000F29F1 /* UIApplication+ESExtension.m */,
+				E75A74F1229FB303000F29F1 /* UIApplication+ESAppInfo.m */,
 				E75A74F4229FB303000F29F1 /* UIBarButtonItem+ESExtension.h */,
 				E75A74F5229FB303000F29F1 /* UIBarButtonItem+ESExtension.m */,
 				E75A74F6229FB303000F29F1 /* UIColor+ESExtension.h */,
