@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.10.0 (2019-06-17)
 
 - Changed the default value of `-[UIApplication appChannel]` to `"AppStore"`, before is `"App Store"`.
 - Replace whitespace to `"-"` for the default value of `-[UIApplication appName]`.
