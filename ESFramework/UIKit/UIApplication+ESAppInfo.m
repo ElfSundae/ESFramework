@@ -216,7 +216,7 @@ static void ESCheckAppFreshLaunch(void)
 
     info[@"app_name"] = self.appName;
     info[@"app_identifier"] = self.appBundleIdentifier;
-    info[@"app_channel"] = self.appChannel ?: @"";
+    info[@"app_channel"] = self.appChannel;
     info[@"app_version"] = self.appVersion;
     info[@"app_build_version"] = self.appBuildVersion;
     info[@"app_uptime"] = [NSString stringWithFormat:@"%.2f", self.appUptime];
@@ -251,7 +251,7 @@ static void ESCheckAppFreshLaunch(void)
 {
     UIDevice *device = UIDevice.currentDevice;
     return [NSString stringWithFormat:
-            @"%@/%@ (%@; %@ %@; Channel/%@; Screen/%@; Scale/%0.2f; Locale/%@)",
+            @"%@/%@ (%@; %@ %@; Channel/%@; Screen/%@; Scale/%.2f; Locale/%@)",
             self.appName, self.appVersion,
             device.model, device.systemName, device.systemVersion,
             self.appChannel,
