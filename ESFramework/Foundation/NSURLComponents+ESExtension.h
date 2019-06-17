@@ -38,15 +38,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)removeQueryItemsWithName:(NSString *)name;
 
 /**
- * Gets and sets query items via a dictionary, it supports array in the query parameter like
- * ?foo=bar&foo=bar1&foo[]=bar2
+ * The query URL component as an dictionary.
+ * @discussion The value of a query parameter support NSString, NSNumber, NSArray.
  */
-@property (nullable, nonatomic, copy) NSDictionary<NSString *, id> *queryItemsDictionary;
+@property (nullable, nonatomic, copy) NSDictionary<NSString *, id> *queryParameters;
 
 /**
- * Add query items from the given dictionary.
+ * Add query parameters.
  */
-- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary;
+- (void)addQueryParameters:(NSDictionary<NSString *, id> *)parameters;
 
 @end
 

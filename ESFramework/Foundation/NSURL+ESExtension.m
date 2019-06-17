@@ -11,16 +11,16 @@
 
 @implementation NSURL (ESExtension)
 
-- (NSDictionary<NSString *, id> *)queryDictionary
+- (NSDictionary<NSString *, id> *)queryParameters
 {
-    return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES].queryItemsDictionary;
+    return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES].queryParameters;
 }
 
-- (NSURL *)URLByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary
+- (NSURL *)URLByAddingQueryParameters:(NSDictionary<NSString *, id> *)parameters
 {
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES];
-    [urlComponents addQueryItemsDictionary:queryDictionary];
-    return urlComponents.URL;
+    NSURLComponents *components = [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES];
+    [components addQueryParameters:parameters];
+    return components.URL;
 }
 
 @end

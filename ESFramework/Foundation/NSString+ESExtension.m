@@ -190,16 +190,16 @@
     return [self stringByDeletingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:string]];
 }
 
-- (NSDictionary<NSString *, id> *)queryDictionary
+- (NSDictionary<NSString *, id> *)URLQueryParameters
 {
-    return [NSURLComponents componentsWithString:self].queryItemsDictionary;
+    return [NSURLComponents componentsWithString:self].queryParameters;
 }
 
-- (NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary
+- (NSString *)stringByAddingURLQueryParameters:(NSDictionary<NSString *, id> *)parameters
 {
-    NSURLComponents *urlComponents = [NSURLComponents componentsWithString:self];
-    [urlComponents addQueryItemsDictionary:queryDictionary];
-    return urlComponents.string;
+    NSURLComponents *components = [NSURLComponents componentsWithString:self];
+    [components addQueryParameters:parameters];
+    return components.string;
 }
 
 @end

@@ -13,17 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSURL (ESExtension)
 
 /**
- * Returns the query components parsed to a dictionary for this URL.
- *
- * @discussion For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query component will be:
- * { key:value, arr:[value, value1] }.
+ * Returns the URL query parameters.
  */
-- (nullable NSDictionary<NSString *, id> *)queryDictionary;
+- (nullable NSDictionary<NSString *, id> *)queryParameters;
 
 /**
- * Returns a newly created URL added the given query dictionary.
+ * Returns a newly created URL added the given query parameters.
  */
-- (NSURL *)URLByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
+- (NSURL *)URLByAddingQueryParameters:(NSDictionary<NSString *, id> *)parameters;
 
 @end
 

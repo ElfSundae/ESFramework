@@ -50,30 +50,16 @@
     [self removeQueryItemsWithNames:@[ name ]];
 }
 
-- (NSDictionary<NSString *, id> *)queryItemsDictionary
+- (NSDictionary<NSString *, id> *)queryParameters
 {
-    return [self _dictionaryFromQueryItems:self.queryItems];
-}
+    NSArray<NSURLQueryItem *> *queryItems = self.queryItems;
 
-- (void)setQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary
-{
-    self.queryItems = [self _queryItemsFromDictionary:dictionary];
-}
-
-- (void)addQueryItemsDictionary:(NSDictionary<NSString *, id> *)dictionary
-{
-    NSMutableDictionary *dict = (self.queryItemsDictionary ?: @{}).mutableCopy;
-    [dict addEntriesFromDictionary:dictionary];
-    self.queryItemsDictionary = dict;
-}
-
-- (NSDictionary<NSString *, id> *)_dictionaryFromQueryItems:(NSArray<NSURLQueryItem *> *)queryItems
-{
     if (!queryItems) {
         return nil;
     }
 
-    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+
     for (NSURLQueryItem *item in queryItems) {
         if (!item.value) {
             continue;
@@ -88,32 +74,36 @@
             continue;
         }
 
-        if (result[name]) {
-            if (![result[name] isKindOfClass:[NSMutableArray class]]) {
-                result[name] = @[ result[name] ].mutableCopy;
+        if (parameters[name]) {
+            NSMutableArray *arr = parameters[name];
+            if (![arr isKindOfClass:[NSMutableArray class]]) {
+                arr = [NSMutableArray arrayWithObject:arr];
+                parameters[name] = arr;
             }
-            [(NSMutableArray *)result[name] addObject:item.value];
+            [arr addObject:item.value];
         } else {
-            result[name] = item.value;
+            parameters[name] = item.value;
         }
     }
-    return [result copy];
+    return [parameters copy];
 }
 
-- (NSArray<NSURLQueryItem *> *)_queryItemsFromDictionary:(NSDictionary<NSString *, id> *)dictionary
+- (void)setQueryParameters:(NSDictionary<NSString *,id> *)parameters
 {
-    if (!dictionary) {
-        return nil;
+    if (!parameters) {
+        self.queryItems = nil;
+        return;
     }
 
     NSMutableArray *queryItems = [NSMutableArray array];
-    for (NSString *_name in dictionary) {
-        NSString *name = ESStringValue(_name);
+
+    for (NSString *key in parameters) {
+        NSString *name = ESStringValue(key);
         if (!name || !name.length) {
             continue;
         }
 
-        id value = dictionary[_name];
+        id value = parameters[key];
 
         if ([value isKindOfClass:[NSArray class]]) {
             NSString *itemName = [name stringByAppendingString:@"[]"];
@@ -124,7 +114,19 @@
             [queryItems addObject:[NSURLQueryItem queryItemWithName:name value:ESStringValue(value)]];
         }
     }
-    return [queryItems copy];
+
+    self.queryItems = queryItems;
+}
+
+- (void)addQueryParameters:(NSDictionary<NSString *, id> *)parameters
+{
+    if (!parameters.count) {
+        return;
+    }
+    
+    NSMutableDictionary *dict = (self.queryParameters ?: @{}).mutableCopy;
+    [dict addEntriesFromDictionary:parameters];
+    self.queryParameters = dict;
 }
 
 @end

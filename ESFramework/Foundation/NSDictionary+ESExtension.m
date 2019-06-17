@@ -26,7 +26,7 @@
 - (NSString *)URLQueryString
 {
     NSURLComponents *urlComponents = [NSURLComponents componentsWithString:@"http://foo.bar"];
-    urlComponents.queryItemsDictionary = self;
+    urlComponents.queryParameters = self;
     return urlComponents.percentEncodedQuery;
 }
 

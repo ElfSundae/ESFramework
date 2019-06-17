@@ -68,16 +68,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)stringByDeletingCharactersInString:(NSString *)string;
 
 /**
- * Returns the query components parsed as a dictionary for the URL string.
- * For URL http://foo.bar?key=value&arr[]=value&arr[]=value1 , the query dictionary will be:
- * { key:value, arr:[value, value1] }.
+ * Returns the URL query parameters.
  */
-- (nullable NSDictionary<NSString *, id> *)queryDictionary;
+- (nullable NSDictionary<NSString *, id> *)URLQueryParameters;
 
 /**
- * Returns a newly created URL string added the given query dictionary.
+ * Returns a newly created URL string added the given query parameters.
  */
-- (nullable NSString *)stringByAddingQueryDictionary:(NSDictionary<NSString *, id> *)queryDictionary;
+- (NSString *)stringByAddingURLQueryParameters:(NSDictionary<NSString *, id> *)parameters;
 
 @end
 
