@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
  * the NSRegistrationDomain, including the values which system generated,
  * such as "AppleLanguages", "NSLanguages", etc. So use it carefully.
  */
-@property (nonatomic, copy) NSDictionary<NSString *, id> *registrationDictionary;
+@property (copy) NSDictionary<NSString *, id> *registrationDictionary;
 
 /**
  * Sets the associated value of the given defaultName from the registration dictionary.

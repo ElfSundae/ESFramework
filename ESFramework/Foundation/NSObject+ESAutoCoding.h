@@ -70,17 +70,17 @@ NS_ASSUME_NONNULL_BEGIN
  * @warning You should not override this method - if you want to add additional
  * properties, override the `+codableProperties` class method instead.
  */
-@property (nonatomic, readonly) NSDictionary<NSString *, Class> *codableProperties;
+@property (readonly) NSDictionary<NSString *, Class> *codableProperties;
 
 /**
  * Returns a dictionary of the values of all the codable properties.
  */
-@property (nonatomic, readonly) NSDictionary<NSString *, id> *dictionaryRepresentation;
+@property (readonly) NSDictionary<NSString *, id> *dictionaryRepresentation;
 
 /**
  * Returns an NSData object containing the encoded form of the object.
  */
-@property (nonatomic, readonly) NSData *archivedData;
+@property (readonly) NSData *archivedData;
 
 /**
  * Writes the archived data to the file specified by a given path.

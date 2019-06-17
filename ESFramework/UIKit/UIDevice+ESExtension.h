@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  * The device token string for the Apple Push Notification service (APNs).
  * @discussion This property is KVO-compliant.
  */
-@property (nullable, nonatomic, copy, readonly) NSString *deviceTokenString;
+@property (nullable, nonatomic, readonly) NSString *deviceTokenString;
 
 /**
  * Returns the model identifier of the device.
