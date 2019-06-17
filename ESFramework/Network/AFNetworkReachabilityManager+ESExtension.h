@@ -6,6 +6,7 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
+#if !TARGET_OS_WATCH
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,3 +23,4 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 NS_ASSUME_NONNULL_END
+#endif
