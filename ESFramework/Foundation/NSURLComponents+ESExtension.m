@@ -95,7 +95,10 @@
 
     NSMutableArray *queryItems = [NSMutableArray array];
 
-    for (NSString *key in parameters) {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES];
+    NSArray *sortedKeys = [parameters.allKeys sortedArrayUsingDescriptors:@[ sortDescriptor ]];
+
+    for (NSString *key in sortedKeys) {
         NSString *name = ESStringValue(key);
         if (!name || !name.length) {
             continue;

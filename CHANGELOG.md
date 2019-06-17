@@ -8,6 +8,7 @@
 - Renamed NSURLComponents `-queryItemsDictionary` to `-queryParameters`, `-addQueryItemsDictionary:` to `-addQueryParameters:`.
 - Renamed NSURL `-queryDictionary` to `-queryParameters`, `-URLByAddingQueryDictionary:` to `-URLByAddingQueryParameters:`.
 - Renamed NSString `-queryDictionary` to `-URLQueryParameters`, `-stringByAddingQueryDictionary:` to `-stringByAddingURLQueryParameters:`
+- Sort URL query keys alphabetically.
 - Added `ESStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status)` function.
 
 ## 3.9.0 (2019-06-05)
