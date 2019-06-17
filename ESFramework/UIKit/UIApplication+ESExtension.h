@@ -88,7 +88,7 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
 
 /**
  * The channel that app submitted to.
- * @discussion The default value is "App Store".
+ * @discussion The default value is "AppStore".
  */
 @property (null_resettable, nonatomic, copy) NSString *appChannel;
 

@@ -2,6 +2,7 @@
 
 ## Master
 
+- Changed the default value of `-[UIApplication appChannel]` to `"AppStore"`, before is `"App Store"`.
 - Renamed NSURLComponents `-queryItemsDictionary` to `-queryParameters`, `-addQueryItemsDictionary:` to `-addQueryParameters:`.
 - Renamed NSURL `-queryDictionary` to `-queryParameters`, `-URLByAddingQueryDictionary:` to `-URLByAddingQueryParameters:`.
 - Renamed NSString `-queryDictionary` to `-URLQueryParameters`, `-stringByAddingQueryDictionary:` to `-stringByAddingURLQueryParameters:`

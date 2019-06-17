@@ -62,7 +62,7 @@ static void ESCheckAppFreshLaunch(void)
 
 - (NSString *)appChannel
 {
-    return objc_getAssociatedObject(self, appChannelKey) ?: @"App Store";
+    return objc_getAssociatedObject(self, appChannelKey) ?: @"AppStore";
 }
 
 - (void)setAppChannel:(NSString *)appChannel
