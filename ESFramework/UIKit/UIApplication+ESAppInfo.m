@@ -51,8 +51,12 @@ static void ESCheckAppFreshLaunch(void)
 
 - (NSString *)appName
 {
-    return (objc_getAssociatedObject(self, appNameKey)
-            ?: [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleExecutable"]);
+    NSString *appName = objc_getAssociatedObject(self, appNameKey);
+    if (!appName) {
+        appName = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleExecutable"];
+        appName = [appName stringByReplacingOccurrencesOfString:@"\\s+" withString:@"-" options:NSRegularExpressionSearch range:NSMakeRange(0, appName.length)];
+    }
+    return appName;
 }
 
 - (void)setAppName:(NSString *)appName
