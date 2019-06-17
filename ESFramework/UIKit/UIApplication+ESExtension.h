@@ -184,7 +184,7 @@ FOUNDATION_EXTERN NSString *const ESAppPreviousVersionUserDefaultsKey;
  * Returns the user agent for HTTP requests.
  * @code
  * // Example:
- * "ExampleApp/1.3 (iPhone; iOS 12.2; Channel/dev; Scale/3.00; Screen/414x736; Locale/zh_CN; Network/WiFi)"
+ * "iOS-Example/1.3 (iPhone; iOS 12.3.1; Channel/AppStore; Screen/414x736; Scale/3.00; Locale/zh_CN)"
  *
  * // Set user agent for HTTP request:
  * [request setValue:UIApplication.sharedApplication.userAgentForHTTPRequest forHTTPHeaderField:@"User-Agent"];

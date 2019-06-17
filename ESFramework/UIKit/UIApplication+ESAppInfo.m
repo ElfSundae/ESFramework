@@ -251,14 +251,13 @@ static void ESCheckAppFreshLaunch(void)
 {
     UIDevice *device = UIDevice.currentDevice;
     return [NSString stringWithFormat:
-            @"%@/%@ (%@; %@ %@; Channel/%@; Scale/%0.2f; Screen/%@; Locale/%@; Network/%@)",
+            @"%@/%@ (%@; %@ %@; Channel/%@; Screen/%@; Scale/%0.2f; Locale/%@)",
             self.appName, self.appVersion,
             device.model, device.systemName, device.systemVersion,
             self.appChannel,
-            UIScreen.mainScreen.scale,
             ESScreenSizeString(device.screenSizeInPoints),
-            NSLocale.currentLocale.localeIdentifier,
-            AFNetworkReachabilityManager.sharedManager.networkReachabilityStatusString];
+            UIScreen.mainScreen.scale,
+            NSLocale.currentLocale.localeIdentifier];
 }
 
 @end

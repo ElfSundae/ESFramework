@@ -20,9 +20,9 @@
         [[UINavigationController alloc] initWithRootViewController:[[RootViewController alloc] init]];
 
     NSTimeZone.defaultTimeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-    application.appChannel = @"dev";
 
     NSLog(@"%@", application.analyticsInfo);
+    NSLog(@"%@", application.userAgentForHTTPRequest);
 
     [application registerForRemoteNotificationsWithSuccess:^(NSData * _Nonnull deviceToken) {
         NSLog(@"device token: %@", UIDevice.currentDevice.deviceTokenString);

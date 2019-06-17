@@ -4,6 +4,7 @@
 
 - Changed the default value of `-[UIApplication appChannel]` to `"AppStore"`, before is `"App Store"`.
 - Replace whitespace to `"-"` for the default value of `-[UIApplication appName]`.
+- Removed `"Network"` from `-[UIApplication userAgentForHTTPRequest]`.
 - Renamed NSURLComponents `-queryItemsDictionary` to `-queryParameters`, `-addQueryItemsDictionary:` to `-addQueryParameters:`.
 - Renamed NSURL `-queryDictionary` to `-queryParameters`, `-URLByAddingQueryDictionary:` to `-URLByAddingQueryParameters:`.
 - Renamed NSString `-queryDictionary` to `-URLQueryParameters`, `-stringByAddingQueryDictionary:` to `-stringByAddingURLQueryParameters:`
