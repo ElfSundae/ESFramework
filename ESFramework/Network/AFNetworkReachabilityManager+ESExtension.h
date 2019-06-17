@@ -11,12 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ * Returns a string representation of an `AFNetworkReachabilityStatus` value.
+ * @discussion Possible values: "None", "WWAN", "WiFi", "Unknown".
+ */
+FOUNDATION_EXTERN NSString *ESStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status);
+
 @interface AFNetworkReachabilityManager (ESExtension)
 
 /**
  * Returns a string representation of the current network reachability status.
- *
- * Possible values: "None", "WWAN", "WiFi", "Unknown".
+ * @discussion Possible values: "None", "WWAN", "WiFi", "Unknown".
  */
 - (NSString *)networkReachabilityStatusString;
 

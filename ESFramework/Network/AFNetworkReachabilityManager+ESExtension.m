@@ -8,11 +8,9 @@
 
 #import "AFNetworkReachabilityManager+ESExtension.h"
 
-@implementation AFNetworkReachabilityManager (ESExtension)
-
-- (NSString *)networkReachabilityStatusString
+NSString *ESStringFromNetworkReachabilityStatus(AFNetworkReachabilityStatus status)
 {
-    switch (self.networkReachabilityStatus) {
+    switch (status) {
         case AFNetworkReachabilityStatusNotReachable:
             return @"None";
         case AFNetworkReachabilityStatusReachableViaWWAN:
@@ -23,6 +21,13 @@
         default:
             return @"Unknown";
     }
+}
+
+@implementation AFNetworkReachabilityManager (ESExtension)
+
+- (NSString *)networkReachabilityStatusString
+{
+    return ESStringFromNetworkReachabilityStatus(self.networkReachabilityStatus);
 }
 
 @end
