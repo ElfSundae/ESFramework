@@ -7,9 +7,7 @@
 //
 
 #import "UIApplication+ESExtension.h"
-#import <objc/runtime.h>
 #import <AFNetworkingExtension/AFNetworkReachabilityManager+ESExtension.h>
-#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 #import "ESNetworkHelper.h"
