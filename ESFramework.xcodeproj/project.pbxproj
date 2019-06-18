@@ -46,8 +46,6 @@
 		E75A74E6229FB302000F29F1 /* NSURLComponents+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURLComponents+ESExtension.m"; sourceTree = "<group>"; };
 		E75A74E7229FB302000F29F1 /* NSUserDefaults+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+ESExtension.h"; sourceTree = "<group>"; };
 		E75A74E8229FB302000F29F1 /* NSUserDefaults+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+ESExtension.m"; sourceTree = "<group>"; };
-		E75A74EA229FB303000F29F1 /* AFNetworkReachabilityManager+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AFNetworkReachabilityManager+ESExtension.h"; sourceTree = "<group>"; };
-		E75A74EB229FB303000F29F1 /* AFNetworkReachabilityManager+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AFNetworkReachabilityManager+ESExtension.m"; sourceTree = "<group>"; };
 		E75A74EC229FB303000F29F1 /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		E75A74ED229FB303000F29F1 /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
 		E75A74EF229FB303000F29F1 /* UIAlertController+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ESExtension.h"; sourceTree = "<group>"; };
@@ -182,8 +180,6 @@
 		E75A74E9229FB303000F29F1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				E75A74EA229FB303000F29F1 /* AFNetworkReachabilityManager+ESExtension.h */,
-				E75A74EB229FB303000F29F1 /* AFNetworkReachabilityManager+ESExtension.m */,
 				E75A74EC229FB303000F29F1 /* ESNetworkHelper.h */,
 				E75A74ED229FB303000F29F1 /* ESNetworkHelper.m */,
 			);
