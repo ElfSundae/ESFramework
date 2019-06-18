@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = 'ESFramework'
-  s.version     = '3.12.0'
+  s.version     = '3.13.0'
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
   s.summary     = 'ESFramework is an efficient, small framework for iOS.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'
@@ -29,6 +29,6 @@ Pod::Spec.new do |s|
     ss.source_files = 'ESFramework/UIKit/**/*.{h,m}'
     ss.dependency 'ESFramework/Foundation'
     ss.dependency 'ESFramework/Network'
-    ss.dependency 'AFNetworkingExtension/Reachability'
+    ss.dependency 'AFNetworking/Reachability', '>= 2.0'
   end
 end

@@ -1,7 +1,5 @@
 PODS:
   - AFNetworking/Reachability (3.2.1)
-  - AFNetworkingExtension/Reachability (0.0.1):
-    - AFNetworking/Reachability (>= 2.0)
   - ESFramework (3.12.0):
     - ESFramework/Core (= 3.12.0)
     - ESFramework/Foundation (= 3.12.0)
@@ -12,7 +10,7 @@ PODS:
     - ESFramework/Core
   - ESFramework/Network (3.12.0)
   - ESFramework/UIKit (3.12.0):
-    - AFNetworkingExtension/Reachability
+    - AFNetworking/Reachability (>= 2.0)
     - ESFramework/Foundation
     - ESFramework/Network
   - ESFrameworkUI (3.9.1):
@@ -32,8 +30,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  AFNetworkingExtension: 30eec2e7b2faf626de2a791636f6be9f5fa831e2
-  ESFramework: 4321c05c3e8580fb458a4dab495a560901d418f0
+  ESFramework: 54e7a1f9a9b9a0da1a29cda1cdf7ce584637f603
   ESFrameworkUI: a9fb18c47588f36ece2f6654457cb8be785f1dde
 
 COCOAPODS: 1.7.2
@@ -43,4 +40,3 @@ PODFILE CHECKSUM: f51c4223a982d0890caa913bcb143cf5661e7b7f
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - AFNetworkingExtension

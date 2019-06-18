@@ -7,7 +7,7 @@
 //
 
 #import "UIApplication+ESExtension.h"
-#import <AFNetworkingExtension/AFNetworkReachabilityManager+ESExtension.h>
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 #import "ESNetworkHelper.h"
@@ -223,7 +223,23 @@ static void ESCheckAppFreshLaunch(void)
         info[@"app_previous_version"] = self.appPreviousVersion;
     }
 
-    info[@"network"] = AFNetworkReachabilityManager.sharedManager.networkReachabilityStatusString;
+    NSString *networkStatus = nil;
+    switch (AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus) {
+        case AFNetworkReachabilityStatusNotReachable:
+            networkStatus = @"None";
+            break;
+        case AFNetworkReachabilityStatusReachableViaWWAN:
+            networkStatus = @"WWAN";
+            break;
+        case AFNetworkReachabilityStatusReachableViaWiFi:
+            networkStatus = @"WiFi";
+            break;
+        case AFNetworkReachabilityStatusUnknown:
+        default:
+            networkStatus = @"Unknown";
+    }
+
+    info[@"network"] = networkStatus;
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *carrier = [ESNetworkHelper getCarrierName];

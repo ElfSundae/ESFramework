@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.13.0 (2019-06-18)
+
+- Remove `AFNetworkingExtension` dependency to fix "Cycle in dependencies" issue on the new Xcode build system.
+
 ## 3.12.0 (2019-06-18)
 
 - Create pod subspecs: `Core`, `Foundation`, `Network`, `UIKit`.
