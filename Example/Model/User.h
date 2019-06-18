@@ -6,7 +6,7 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/NSObject+ESAutoCoding.h>
+#import <ESFramework/ESFramework.h>
 
 @interface User : NSObject <NSCopying>
 

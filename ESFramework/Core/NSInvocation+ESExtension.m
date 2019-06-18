@@ -7,6 +7,8 @@
 //
 
 #import "NSInvocation+ESExtension.h"
+#import <CoreGraphics/CoreGraphics.h>
+#import <QuartzCore/QuartzCore.h>
 
 static id __gNil = nil;
 
