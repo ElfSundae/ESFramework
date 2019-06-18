@@ -82,8 +82,10 @@ static id __gNil = nil;
         ElseIfTypeThenSetValue(CGVector)
         ElseIfTypeThenSetValue(CGRect)
         ElseIfTypeThenSetValue(CGAffineTransform)
+#if TARGET_OS_IOS || TARGET_OS_TV
         ElseIfTypeThenSetValue(UIEdgeInsets)
         ElseIfTypeThenSetValue(UIOffset)
+#endif
         ElseIfTypeThenSetValue(CATransform3D)
         ElseIfTypeThenSetValue(id)
         else if (CMPString(argType, "@?")) {
@@ -111,8 +113,10 @@ static id __gNil = nil;
             ElseIfTypeThenSetValue(CGVector *)
             ElseIfTypeThenSetValue(CGRect *)
             ElseIfTypeThenSetValue(CGAffineTransform *)
+#if TARGET_OS_IOS || TARGET_OS_TV
             ElseIfTypeThenSetValue(UIEdgeInsets *)
             ElseIfTypeThenSetValue(UIOffset *)
+#endif
             ElseIfTypeThenSetValue(CATransform3D *)
             else if (CMPString(argType, "^@")) {
                 SetArgumentWithValue(void *);

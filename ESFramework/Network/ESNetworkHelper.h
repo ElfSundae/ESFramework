@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import <TargetConditionals.h>
+#if TARGET_OS_IOS
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
@@ -165,3 +168,5 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

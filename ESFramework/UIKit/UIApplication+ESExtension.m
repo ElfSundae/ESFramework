@@ -7,6 +7,8 @@
 //
 
 #import "UIApplication+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 #import "UIWindow+ESExtension.h"
@@ -147,3 +149,5 @@ static void es_application_registerForRemoteNotifications_callback(id self, SEL 
 }
 
 @end
+
+#endif

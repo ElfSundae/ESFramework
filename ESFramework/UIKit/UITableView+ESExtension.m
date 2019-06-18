@@ -7,6 +7,8 @@
 //
 
 #import "UITableView+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "UIView+ESExtension.h"
 
 @implementation UITableView (ESExtension)
@@ -64,3 +66,5 @@
 }
 
 @end
+
+#endif

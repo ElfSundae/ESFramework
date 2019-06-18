@@ -7,6 +7,7 @@
 //
 
 #import "UIColor+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 @implementation UIColor (ESExtension)
 
@@ -35,3 +36,5 @@
 }
 
 @end
+
+#endif

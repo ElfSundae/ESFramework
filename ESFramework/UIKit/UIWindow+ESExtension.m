@@ -7,6 +7,7 @@
 //
 
 #import "UIWindow+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 @implementation UIWindow (ESExtension)
 
@@ -22,3 +23,5 @@
 }
 
 @end
+
+#endif

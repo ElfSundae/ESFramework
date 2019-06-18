@@ -7,6 +7,7 @@
 //
 
 #import "UIImageView+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 @implementation UIImageView (ESExtension)
 
@@ -28,3 +29,5 @@
 }
 
 @end
+
+#endif

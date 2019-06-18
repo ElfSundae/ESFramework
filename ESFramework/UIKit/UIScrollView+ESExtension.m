@@ -7,6 +7,7 @@
 //
 
 #import "UIScrollView+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 @implementation UIScrollView (ESExtension)
 
@@ -39,3 +40,5 @@
 }
 
 @end
+
+#endif

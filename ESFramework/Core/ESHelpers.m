@@ -22,37 +22,6 @@ static NSNumber * _Nullable _ESNumberFromObject(id _Nullable obj)
     }
 }
 
-UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
-{
-    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
-}
-
-UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
-{
-    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1.0];
-}
-
-UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha)
-{
-    return [UIColor colorWithRed:(CGFloat)((hex & 0xFF0000) >> 16) / 255.0
-                           green:(CGFloat)((hex & 0xFF00) >> 8) / 255.0
-                            blue:(CGFloat)(hex & 0xFF) / 255.0
-                           alpha:alpha];
-}
-
-UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
-{
-    NSScanner *scanner = [NSScanner scannerWithString:hexString];
-    if (7 == hexString.length) {
-        scanner.scanLocation = 1; // bypass '#' char
-    }
-    unsigned int hex = 0;
-    if (![scanner scanHexInt:&hex]) {
-        return [UIColor clearColor];
-    }
-    return UIColorWithRGBHex(hex, alpha);
-}
-
 char ESCharValue(id _Nullable obj)
 {
     return [_ESNumberFromObject(obj) charValue];
@@ -174,68 +143,6 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180 / M_PI);
 }
 
-CGFloat ESStatusBarHeight(void)
-{
-    CGRect frame = UIApplication.sharedApplication.statusBarFrame;
-    return fmin(CGRectGetWidth(frame), CGRectGetHeight(frame));
-};
-
-UIInterfaceOrientation ESInterfaceOrientation(void)
-{
-    return [UIApplication sharedApplication].statusBarOrientation;
-}
-
-UIDeviceOrientation ESDeviceOrientation(void)
-{
-    return UIDevice.currentDevice.orientation;
-}
-
-CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation)
-{
-    if (UIInterfaceOrientationLandscapeLeft == orientation) {
-        return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
-    } else if (UIInterfaceOrientationLandscapeRight == orientation) {
-        return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
-    } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
-        return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
-    } else {
-        return CGAffineTransformIdentity;
-    }
-}
-
-BOOL ESIsPadUI(void)
-{
-    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
-}
-
-BOOL ESIsPadDevice(void)
-{
-    return [UIDevice.currentDevice.model hasPrefix:@"iPad"];
-}
-
-BOOL ESIsPhoneUI(void)
-{
-    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone;
-}
-
-BOOL ESIsPhoneDevice(void)
-{
-    return ([UIDevice.currentDevice.model hasPrefix:@"iPhone"] ||
-            [UIDevice.currentDevice.model hasPrefix:@"iPod"]);
-}
-
-BOOL ESIsRetinaScreen(void)
-{
-    return [UIScreen mainScreen].scale >= 2.0;
-}
-
-NSString *ESScreenSizeString(CGSize size)
-{
-    return [NSString stringWithFormat:@"%dx%d",
-            (int)fmin(size.width, size.height),
-            (int)fmax(size.width, size.height)];
-}
-
 NSString *ESDocumentDirectory(void)
 {
     return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
@@ -316,21 +223,6 @@ NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory)
     return [ESTemporaryDirectoryURL() URLByAppendingPathComponent:pathComponent isDirectory:isDirectory];
 }
 
-NSURL *ESAppLink(NSInteger appIdentifier)
-{
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld?mt=8", (long)appIdentifier]];
-}
-
-NSURL *ESAppStoreLink(NSInteger appIdentifier)
-{
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%ld", (long)appIdentifier]];
-}
-
-NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
-{
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
-}
-
 void ESSwizzleInstanceMethod(Class class, SEL originalSelector, SEL swizzledSelector)
 {
     Method originalMethod = class_getInstanceMethod(class, originalSelector);
@@ -374,3 +266,119 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 
     return YES;
 }
+
+#if TARGET_OS_IOS || TARGET_OS_TV
+
+UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
+{
+    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:alpha];
+}
+
+UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue)
+{
+    return [UIColor colorWithRed:red / 255.0 green:green / 255.0 blue:blue / 255.0 alpha:1.0];
+}
+
+UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha)
+{
+    return [UIColor colorWithRed:(CGFloat)((hex & 0xFF0000) >> 16) / 255.0
+                           green:(CGFloat)((hex & 0xFF00) >> 8) / 255.0
+                            blue:(CGFloat)(hex & 0xFF) / 255.0
+                           alpha:alpha];
+}
+
+UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
+{
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    if (7 == hexString.length) {
+        scanner.scanLocation = 1; // bypass '#' char
+    }
+    unsigned int hex = 0;
+    if (![scanner scanHexInt:&hex]) {
+        return [UIColor clearColor];
+    }
+    return UIColorWithRGBHex(hex, alpha);
+}
+
+#endif
+
+#if TARGET_OS_IOS
+
+CGFloat ESStatusBarHeight(void)
+{
+    CGRect frame = UIApplication.sharedApplication.statusBarFrame;
+    return fmin(CGRectGetWidth(frame), CGRectGetHeight(frame));
+};
+
+UIInterfaceOrientation ESInterfaceOrientation(void)
+{
+    return [UIApplication sharedApplication].statusBarOrientation;
+}
+
+UIDeviceOrientation ESDeviceOrientation(void)
+{
+    return UIDevice.currentDevice.orientation;
+}
+
+CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation)
+{
+    if (UIInterfaceOrientationLandscapeLeft == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(M_PI * 1.5));
+    } else if (UIInterfaceOrientationLandscapeRight == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(M_PI / 2.0));
+    } else if (UIInterfaceOrientationPortraitUpsideDown == orientation) {
+        return CGAffineTransformMakeRotation((CGFloat)(-M_PI));
+    } else {
+        return CGAffineTransformIdentity;
+    }
+}
+
+BOOL ESIsPadUI(void)
+{
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
+}
+
+BOOL ESIsPadDevice(void)
+{
+    return [UIDevice.currentDevice.model hasPrefix:@"iPad"];
+}
+
+BOOL ESIsPhoneUI(void)
+{
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone;
+}
+
+BOOL ESIsPhoneDevice(void)
+{
+    return ([UIDevice.currentDevice.model hasPrefix:@"iPhone"] ||
+            [UIDevice.currentDevice.model hasPrefix:@"iPod"]);
+}
+
+BOOL ESIsRetinaScreen(void)
+{
+    return [UIScreen mainScreen].scale >= 2.0;
+}
+
+NSString *ESScreenSizeString(CGSize size)
+{
+    return [NSString stringWithFormat:@"%dx%d",
+            (int)fmin(size.width, size.height),
+            (int)fmax(size.width, size.height)];
+}
+
+NSURL *ESAppLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld?mt=8", (long)appIdentifier]];
+}
+
+NSURL *ESAppStoreLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%ld", (long)appIdentifier]];
+}
+
+NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
+}
+
+#endif

@@ -11,6 +11,6 @@ abstract_target 'Example' do
     end
 
     target 'macOS Example' do
-        platform :osx, '10.10'
+        platform :osx, '10.11'
     end
 end

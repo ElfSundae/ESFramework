@@ -7,6 +7,8 @@
 //
 
 #import "UIViewController+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "NSArray+ESExtension.h"
 
 @implementation UIViewController (ESExtension)
@@ -27,3 +29,5 @@
 }
 
 @end
+
+#endif

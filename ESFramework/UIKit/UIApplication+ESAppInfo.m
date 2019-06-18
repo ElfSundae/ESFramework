@@ -7,6 +7,8 @@
 //
 
 #import "UIApplication+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
@@ -275,3 +277,5 @@ static void ESCheckAppFreshLaunch(void)
 }
 
 @end
+
+#endif

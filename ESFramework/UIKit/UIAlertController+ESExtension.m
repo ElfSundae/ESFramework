@@ -7,6 +7,8 @@
 //
 
 #import "UIAlertController+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "UIApplication+ESExtension.h"
 
 @implementation UIAlertController (ESExtension)
@@ -100,3 +102,5 @@
 }
 
 @end
+
+#endif

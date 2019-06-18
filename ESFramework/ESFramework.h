@@ -6,12 +6,15 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
+#import <TargetConditionals.h>
+
 #import "ESMacros.h"
 #import "ESHelpers.h"
 #import "ESWeakProxy.h"
 #import "NSInvocation+ESExtension.h"
 #import "NSNumber+ESExtension.h"
 
+#import "ESActionBlockContainer.h"
 #import "NSArray+ESExtension.h"
 #import "NSCharacterSet+ESExtension.h"
 #import "NSData+ESExtension.h"
@@ -31,9 +34,11 @@
 #import "NSURLComponents+ESExtension.h"
 #import "NSUserDefaults+ESExtension.h"
 
+#if TARGET_OS_IOS
 #import "ESNetworkHelper.h"
+#endif
 
-#import "ESActionBlockContainer.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import "UIAlertController+ESExtension.h"
 #import "UIApplication+ESExtension.h"
 #import "UIBarButtonItem+ESExtension.h"
@@ -49,3 +54,4 @@
 #import "UIView+ESExtension.h"
 #import "UIViewController+ESExtension.h"
 #import "UIWindow+ESExtension.h"
+#endif

@@ -6,50 +6,14 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
+#import <TargetConditionals.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
+#endif
 #import <objc/runtime.h>
 #import "ESMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN
-
-#pragma mark - UIColor Helpers
-
-/**
- * Creates an UIColor object from RGB values.
- * RGB numbers are between 0 - 255.
- * @code
- * UIColorWithRGBA(123, 255, 200, 0.8);
- * @endcode
- */
-FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
-
-/**
- * Creates an UIColor object from RGB values.
- * RGB numbers are between 0 - 255.
- * @code
- * UIColorWithRGB(123, 255, 200);
- * @endcode
- */
-FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
-
-/**
- * Creates an UIColor object from a hexadecimal RGB number.
- * @code
- * UIColorWithHexRGB(0x7bffc8, 0.8);
- * @endcode
- */
-FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
-
-/**
- * Creates an UIColor object from a hexadecimal RGB string.
- *
- * @code
- * UIColorWithHexRGBString(@"#33AF00", 1);
- * UIColorWithHexRGBString(@"0x33AF00", 0.3);
- * UIColorWithHexRGBString(@"33AF00", 0.9);
- * @endcode
- */
-FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
 #pragma mark - Extract Numeric Values
 
@@ -102,58 +66,6 @@ FOUNDATION_EXTERN CGFloat ESDegreesToRadians(CGFloat degrees);
  * Converts radians to degrees.
  */
 FOUNDATION_EXTERN CGFloat ESRadiansToDegrees(CGFloat radians);
-
-/**
- * Returns the height of the status bar, in any orientation.
- */
-FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
-
-/**
- * Returns the current interface orientation of the application.
- */
-FOUNDATION_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
-
-/**
- * Returns the physical orientation of the device.
- * @discussion This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
- */
-FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
-
-/**
- * Returns a recommended rotating transform for the given interface orientation.
- */
-FOUNDATION_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
-
-/**
- * Checks whether the current user interface is iPad style.
- */
-FOUNDATION_EXTERN BOOL ESIsPadUI(void);
-
-/**
- * Checks whether the device is an iPad/iPad Mini/iPad Air.
- */
-FOUNDATION_EXTERN BOOL ESIsPadDevice(void);
-
-/**
- * Checks whether the current user interface is iPhone or iPod touch style.
- */
-FOUNDATION_EXTERN BOOL ESIsPhoneUI(void);
-
-/**
- * Checks whether the device is an iPhone or iPod touch.
- */
-FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
-
-/**
- * Checks whether the device has retina screen.
- */
-FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
-
-/**
- * Converts a screen size to a string.
- * e.g. "414x736", the width always be less than the height.
- */
-FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 
 #pragma mark - File Paths
 
@@ -236,23 +148,6 @@ FOUNDATION_EXTERN NSURL *ESTemporaryDirectoryURL(void);
  * Returns the URL made by appending the path component to the temporary directory.
  */
 FOUNDATION_EXTERN NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirectory);
-
-#pragma mark - App Links
-
-/**
- * e.g. "https://itunes.apple.com/app/id12345678?mt=8"
- */
-FOUNDATION_EXTERN NSURL *ESAppLink(NSInteger appIdentifier);
-
-/**
- * e.g. "itms-apps://itunes.apple.com/app/id12345678"
- */
-FOUNDATION_EXTERN NSURL *ESAppStoreLink(NSInteger appIdentifier);
-
-/**
- * e.g. "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
- */
-FOUNDATION_EXTERN NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
 
 #pragma mark - GCD Helpers
 
@@ -340,5 +235,123 @@ FOUNDATION_EXTERN void ESSwizzleClassMethod(Class cls, SEL originalSelector, SEL
  * @return YES if invoked successfully, otherwise NO.
  */
 FOUNDATION_EXTERN BOOL ESInvokeSelector(id target, SEL selector, void * _Nullable result, ...);
+
+#if TARGET_OS_IOS || TARGET_OS_TV
+
+#pragma mark - UIColor Helpers
+
+/**
+ * Creates an UIColor object from RGB values.
+ * RGB numbers are between 0 - 255.
+ * @code
+ * UIColorWithRGBA(123, 255, 200, 0.8);
+ * @endcode
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha);
+
+/**
+ * Creates an UIColor object from RGB values.
+ * RGB numbers are between 0 - 255.
+ * @code
+ * UIColorWithRGB(123, 255, 200);
+ * @endcode
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGB(CGFloat red, CGFloat green, CGFloat blue);
+
+/**
+ * Creates an UIColor object from a hexadecimal RGB number.
+ * @code
+ * UIColorWithHexRGB(0x7bffc8, 0.8);
+ * @endcode
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
+
+/**
+ * Creates an UIColor object from a hexadecimal RGB string.
+ *
+ * @code
+ * UIColorWithHexRGBString(@"#33AF00", 1);
+ * UIColorWithHexRGBString(@"0x33AF00", 0.3);
+ * UIColorWithHexRGBString(@"33AF00", 0.9);
+ * @endcode
+ */
+FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
+
+#endif
+
+#if TARGET_OS_IOS
+
+#pragma mark - iOS UI Helpers
+
+/**
+ * Returns the height of the status bar, in any orientation.
+ */
+FOUNDATION_EXTERN CGFloat ESStatusBarHeight(void);
+
+/**
+ * Returns the current interface orientation of the application.
+ */
+FOUNDATION_EXTERN UIInterfaceOrientation ESInterfaceOrientation(void);
+
+/**
+ * Returns the physical orientation of the device.
+ * @discussion This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
+ */
+FOUNDATION_EXTERN UIDeviceOrientation ESDeviceOrientation(void);
+
+/**
+ * Returns a recommended rotating transform for the given interface orientation.
+ */
+FOUNDATION_EXTERN CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
+
+/**
+ * Checks whether the current user interface is iPad style.
+ */
+FOUNDATION_EXTERN BOOL ESIsPadUI(void);
+
+/**
+ * Checks whether the device is an iPad/iPad Mini/iPad Air.
+ */
+FOUNDATION_EXTERN BOOL ESIsPadDevice(void);
+
+/**
+ * Checks whether the current user interface is iPhone or iPod touch style.
+ */
+FOUNDATION_EXTERN BOOL ESIsPhoneUI(void);
+
+/**
+ * Checks whether the device is an iPhone or iPod touch.
+ */
+FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
+
+/**
+ * Checks whether the device has retina screen.
+ */
+FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
+
+/**
+ * Converts a screen size to a string.
+ * e.g. "414x736", the width always be less than the height.
+ */
+FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
+
+#pragma mark - App Store Links
+
+/**
+ * e.g. "https://itunes.apple.com/app/id12345678?mt=8"
+ */
+FOUNDATION_EXTERN NSURL *ESAppLink(NSInteger appIdentifier);
+
+/**
+ * e.g. "itms-apps://itunes.apple.com/app/id12345678"
+ */
+FOUNDATION_EXTERN NSURL *ESAppStoreLink(NSInteger appIdentifier);
+
+/**
+ * e.g. "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
+ */
+FOUNDATION_EXTERN NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
+
+#endif
 
 NS_ASSUME_NONNULL_END

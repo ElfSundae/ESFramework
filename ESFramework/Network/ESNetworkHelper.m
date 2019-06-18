@@ -7,6 +7,8 @@
 //
 
 #import "ESNetworkHelper.h"
+#if TARGET_OS_IOS
+
 #import <ifaddrs.h>
 #import <net/if.h>
 #import <arpa/inet.h>
@@ -185,3 +187,5 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
 }
 
 @end
+
+#endif

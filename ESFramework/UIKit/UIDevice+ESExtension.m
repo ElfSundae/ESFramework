@@ -7,6 +7,8 @@
 //
 
 #import "UIDevice+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import <sys/sysctl.h>
 #import "ESHelpers.h"
 #import "NSData+ESExtension.h"
@@ -299,3 +301,5 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 }
 
 @end
+
+#endif
