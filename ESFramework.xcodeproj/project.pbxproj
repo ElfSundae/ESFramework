@@ -122,8 +122,7 @@
 		E75A74C0229F78BD000F29F1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */,
-				E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */,
+				E76CA27F1CA50D1100EDBB8E /* ESMacros.h */,
 				E7791299226F032D006EF94D /* ESHelpers.h */,
 				E779129A226F032D006EF94D /* ESHelpers.m */,
 				E7791293226DFB8A006EF94D /* ESWeakProxy.h */,
@@ -194,11 +193,13 @@
 		E75A74EE229FB303000F29F1 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E7F7D97D229683C800D7C8AA /* ESActionBlockContainer.h */,
+				E7F7D97E229683C800D7C8AA /* ESActionBlockContainer.m */,
 				E75A74EF229FB303000F29F1 /* UIAlertController+ESExtension.h */,
 				E75A74F0229FB303000F29F1 /* UIAlertController+ESExtension.m */,
+				E75A74F1229FB303000F29F1 /* UIApplication+ESAppInfo.m */,
 				E75A74F2229FB303000F29F1 /* UIApplication+ESExtension.h */,
 				E75A74F3229FB303000F29F1 /* UIApplication+ESExtension.m */,
-				E75A74F1229FB303000F29F1 /* UIApplication+ESAppInfo.m */,
 				E75A74F4229FB303000F29F1 /* UIBarButtonItem+ESExtension.h */,
 				E75A74F5229FB303000F29F1 /* UIBarButtonItem+ESExtension.m */,
 				E75A74F6229FB303000F29F1 /* UIColor+ESExtension.h */,
@@ -233,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				E7A38BC41C4DD82100972B01 /* ESFramework.h */,
-				E76CA27F1CA50D1100EDBB8E /* ESMacros.h */,
 				E75A74C0229F78BD000F29F1 /* Core */,
 				E75A74C1229FB302000F29F1 /* Foundation */,
 				E75A74E9229FB303000F29F1 /* Network */,
