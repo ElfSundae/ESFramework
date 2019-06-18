@@ -6,13 +6,12 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
-#import <ESFramework/ESFramework.h>
+#import <ESFramework/NSObject+ESAutoCoding.h>
 
 @interface User : NSObject <NSCopying>
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, assign) int age;
-@property (nonatomic, assign) CGRect frame;
 @property (nonatomic, strong) NSDictionary *dict;
 
 // @property (nonatomic, assign) double addedDouble;
