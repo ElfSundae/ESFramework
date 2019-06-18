@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.12.0 (2019-06-18)
+
+- Create pod subspecs: `Core`, `Foundation`, `Network`, `UIKit`.
+- Move `#import <objc/runtime.h>`, `#import "ESMacros.h"` to `ESHelpers.h` for convenience.
+
 ## 3.10.0 (2019-06-17)
 
 - Changed the default value of `-[UIApplication appChannel]` to `"AppStore"`, before is `"App Store"`.
