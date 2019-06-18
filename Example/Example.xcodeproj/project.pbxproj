@@ -96,7 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				E725579F22B95E1800ED7D7E /* Assets.xcassets */,
-				E72557A122B95F5B00ED7D7E /* Models */,
+				E72557A122B95F5B00ED7D7E /* Model */,
 				E725576122B9587600ED7D7E /* iOS Example */,
 				E725577B22B9589E00ED7D7E /* macOS Example */,
 				E725576022B9587600ED7D7E /* Products */,
@@ -144,13 +144,13 @@
 			path = "macOS Example";
 			sourceTree = "<group>";
 		};
-		E72557A122B95F5B00ED7D7E /* Models */ = {
+		E72557A122B95F5B00ED7D7E /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E725579022B959FB00ED7D7E /* User.h */,
 				E725579122B959FB00ED7D7E /* User.m */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
