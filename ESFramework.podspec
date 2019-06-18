@@ -11,4 +11,8 @@ Pod::Spec.new do |s|
   s.source_files = 'ESFramework/**/*.{h,m}'
   s.frameworks = 'Security', 'SystemConfiguration', 'CoreTelephony'
   s.dependency 'AFNetworking/Reachability', '>= 2.0'
+
+  s.subspec 'Core' do |ss|
+    ss.source_files = 'ESFramework/Core/**/*.{h,m}'
+  end
 end
