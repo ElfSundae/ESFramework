@@ -277,6 +277,12 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
  */
 FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
+/**
+ * Converts a screen size to a string.
+ * e.g. "414x736", the width always be less than the height.
+ */
+FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
+
 #endif
 
 #if TARGET_OS_IOS
@@ -328,12 +334,6 @@ FOUNDATION_EXTERN BOOL ESIsPhoneDevice(void);
  * Checks whether the device has retina screen.
  */
 FOUNDATION_EXTERN BOOL ESIsRetinaScreen(void);
-
-/**
- * Converts a screen size to a string.
- * e.g. "414x736", the width always be less than the height.
- */
-FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 
 #pragma mark - App Store Links
 

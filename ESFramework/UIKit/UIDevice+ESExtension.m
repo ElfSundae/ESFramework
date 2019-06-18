@@ -205,6 +205,18 @@ ESDefineAssociatedObjectKey(deviceTokenString)
     return _modelName;
 }
 
+- (CGSize)screenSizeInPoints
+{
+    return UIScreen.mainScreen.bounds.size;
+}
+
+- (CGSize)screenSizeInPixels
+{
+    return UIScreen.mainScreen.currentMode.size;
+}
+
+#if TARGET_OS_IOS
+
 - (long long)diskTotalSpace
 {
     return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
@@ -242,16 +254,6 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 - (NSString *)diskUsedSpaceString
 {
     return [NSByteCountFormatter stringFromByteCount:self.diskUsedSpace countStyle:NSByteCountFormatterCountStyleFile];
-}
-
-- (CGSize)screenSizeInPoints
-{
-    return UIScreen.mainScreen.bounds.size;
-}
-
-- (CGSize)screenSizeInPixels
-{
-    return UIScreen.mainScreen.currentMode.size;
 }
 
 - (BOOL)isJailbroken
@@ -299,6 +301,8 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 #endif
     return _isJailbroken;
 }
+
+#endif // TARGET_OS_IOS
 
 @end
 
