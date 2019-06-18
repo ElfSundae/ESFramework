@@ -88,7 +88,9 @@ static id __gNil = nil;
         ElseIfTypeThenSetValue(UIEdgeInsets)
         ElseIfTypeThenSetValue(UIOffset)
 #endif
+#if !TARGET_OS_WATCH
         ElseIfTypeThenSetValue(CATransform3D)
+#endif
         ElseIfTypeThenSetValue(id)
         else if (CMPString(argType, "@?")) {
             // block
@@ -119,7 +121,9 @@ static id __gNil = nil;
             ElseIfTypeThenSetValue(UIEdgeInsets *)
             ElseIfTypeThenSetValue(UIOffset *)
 #endif
+#if !TARGET_OS_WATCH
             ElseIfTypeThenSetValue(CATransform3D *)
+#endif
             else if (CMPString(argType, "^@")) {
                 SetArgumentWithValue(void *);
             } else {
