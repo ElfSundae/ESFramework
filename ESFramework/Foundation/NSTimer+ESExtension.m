@@ -29,7 +29,7 @@ ESDefineAssociatedObjectKey(esTaskBlock)
 
 + (NSTimer *)es_timerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats block:(void (^)(NSTimer *timer))block
 {
-    if (@available(iOS 10, macOS 10.12, tvOS 10, *)) {
+    if (@available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *)) {
         return [self timerWithTimeInterval:interval repeats:repeats block:block];
     } else {
         NSTimer *timer = [self timerWithTimeInterval:interval target:self selector:@selector(es_runTaskBlock:) userInfo:nil repeats:repeats];
@@ -40,7 +40,7 @@ ESDefineAssociatedObjectKey(esTaskBlock)
 
 + (NSTimer *)es_scheduledTimerWithTimeInterval:(NSTimeInterval)interval repeats:(BOOL)repeats block:(void (^)(NSTimer *timer))block
 {
-    if (@available(iOS 10, macOS 10.12, tvOS 10, *)) {
+    if (@available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *)) {
         return [self scheduledTimerWithTimeInterval:interval repeats:repeats block:block];
     } else {
         NSTimer *timer = [self scheduledTimerWithTimeInterval:interval target:self selector:@selector(es_runTaskBlock:) userInfo:nil repeats:repeats];
