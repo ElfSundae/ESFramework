@@ -15,7 +15,7 @@
 
 - (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates
 {
-    if (@available(iOS 11.0, *)) {
+    if (@available(iOS 11, tvOS 11, *)) {
         [self performBatchUpdates:updates completion:nil];
     } else {
         [self beginUpdates];
