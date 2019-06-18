@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
   s.source_files = 'ESFramework/**/*.{h,m}'
-  s.frameworks = 'UIKit', 'Security', 'SystemConfiguration', 'CoreTelephony'
+  s.frameworks = 'Security', 'SystemConfiguration', 'CoreTelephony'
   s.dependency 'AFNetworking/Reachability', '>= 2.0'
 end
