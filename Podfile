@@ -19,7 +19,7 @@ abstract_target 'Example' do
         platform :tvos, '9.0'
     end
 
-    target 'watchOS Example Extension' do
+    target 'watchOS Example' do
         platform :watchos, '2.0'
     end
 end
