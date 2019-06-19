@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import <TargetConditionals.h>
-#if TARGET_OS_IOS
+#if !TARGET_OS_WATCH
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
     ESCellularNetworkType4G       = 4,
 };
 
-typedef NSString * ESNetworkAddressFamily NS_EXTENSIBLE_STRING_ENUM;
+typedef NSString * ESNetworkAddressFamily NS_TYPED_EXTENSIBLE_ENUM;
 
 /// "IPv4"
 FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4;
@@ -110,6 +110,8 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
  */
 + (nullable NSString *)getIPAddressForWiFi:(NSString * _Nullable * _Nullable)IPv6Address;
 
+#if TARGET_OS_IOS
+
 /**
  * Returns the local IPv4 address of the "pdp_ip0" network interface.
  * You may optionally pass `IPv6Address` out param to get the IPv6 address.
@@ -164,6 +166,8 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
  * Returns the current cellular network type as string.
  */
 + (NSString *)getCellularNetworkTypeString;
+
+#endif
 
 @end
 

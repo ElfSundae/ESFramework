@@ -6,6 +6,7 @@
 //
 
 #import "AppDelegate.h"
+@import ESFramework;
 
 @interface AppDelegate ()
 
@@ -17,6 +18,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+
+    NSLog(@"%@", [ESNetworkHelper getIPAddresses]);
 }
 
 
@@ -24,6 +27,5 @@
 {
     // Insert code here to tear down your application
 }
-
 
 @end

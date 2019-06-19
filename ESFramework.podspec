@@ -27,6 +27,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'Network' do |ss|
     ss.ios.deployment_target = '9.0'
+    ss.osx.deployment_target = '10.11'
+    ss.tvos.deployment_target = '9.0'
 
     ss.source_files = 'ESFramework/Network/**/*.{h,m}'
     ss.frameworks = 'SystemConfiguration', 'CoreTelephony'

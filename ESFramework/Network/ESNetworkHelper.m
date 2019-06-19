@@ -7,14 +7,16 @@
 //
 
 #import "ESNetworkHelper.h"
-#if TARGET_OS_IOS
+#if !TARGET_OS_WATCH
 
 #import <ifaddrs.h>
 #import <net/if.h>
 #import <arpa/inet.h>
+#if TARGET_OS_IOS
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#endif
 
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4 = @"IPv4";
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6 = @"IPv6";
@@ -110,6 +112,8 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
     return addresses[ESNetworkAddressFamilyIPv4];
 }
 
+#if TARGET_OS_IOS
+
 + (NSString *)getIPAddressForCellular:(NSString **)IPv6Address
 {
     NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceCellular];
@@ -185,6 +189,8 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
             return @"Unknown";
     }
 }
+
+#endif
 
 @end
 
