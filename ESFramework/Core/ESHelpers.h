@@ -279,8 +279,8 @@ FOUNDATION_EXTERN UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
 FOUNDATION_EXTERN UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
 /**
- * Converts a screen size to a string.
- * e.g. "414x736", the width always be less than the height.
+ * Converts a screen size to a string, e.g. "414x736".
+ * On iOS the width always be less than the height.
  */
 FOUNDATION_EXTERN NSString *ESScreenSizeString(CGSize size);
 

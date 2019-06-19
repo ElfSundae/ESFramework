@@ -309,7 +309,7 @@ NSString *ESScreenSizeString(CGSize size)
 #else
             (int)size.width, (int)size.height
 #endif
-            ];
+    ];
 }
 
 #endif
