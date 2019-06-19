@@ -40,8 +40,7 @@ Pod::Spec.new do |s|
 
     ss.source_files = 'ESFramework/UIKit/**/*.{h,m}'
     ss.dependency 'ESFramework/Foundation'
-    ss.ios.dependency 'ESFramework/Network'
-    ss.ios.dependency 'AFNetworking/Reachability', '>= 2.0'
-    ss.tvos.dependency 'AFNetworking/Reachability', '>= 2.0'
+    ss.dependency 'ESFramework/Network'
+    ss.dependency 'AFNetworking/Reachability', '>= 2.0'
   end
 end
