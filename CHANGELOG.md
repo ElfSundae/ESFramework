@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.14.0 (2019-06-19)
 
 - Add support for multi platforms: macOS, tvOS, watchOS.
 
