@@ -215,8 +215,6 @@ ESDefineAssociatedObjectKey(deviceTokenString)
     return UIScreen.mainScreen.currentMode.size;
 }
 
-#if TARGET_OS_IOS
-
 - (long long)diskTotalSpace
 {
     return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
@@ -256,6 +254,7 @@ ESDefineAssociatedObjectKey(deviceTokenString)
     return [NSByteCountFormatter stringFromByteCount:self.diskUsedSpace countStyle:NSByteCountFormatterCountStyleFile];
 }
 
+#if TARGET_OS_IOS
 - (BOOL)isJailbroken
 {
     static BOOL _isJailbroken = NO;
@@ -301,8 +300,7 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 #endif
     return _isJailbroken;
 }
-
-#endif // TARGET_OS_IOS
+#endif
 
 @end
 

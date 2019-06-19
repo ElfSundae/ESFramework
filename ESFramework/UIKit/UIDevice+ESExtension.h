@@ -54,8 +54,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) CGSize screenSizeInPixels;
 
-#if TARGET_OS_IOS
-
 /**
  * Returns the total disk space in bytes.
  */
@@ -89,9 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Detects whether this device has been jailbroken.
  */
-@property (nonatomic, readonly) BOOL isJailbroken;
-
-#endif // TARGET_OS_IOS
+@property (nonatomic, readonly) BOOL isJailbroken API_UNAVAILABLE(tvos);
 
 @end
 
