@@ -1,9 +1,6 @@
 language: objective-c
 osx_image: xcode10.2
 
-notifications:
-  email: false
-
 cache: cocoapods
 
 podfile: Podfile
