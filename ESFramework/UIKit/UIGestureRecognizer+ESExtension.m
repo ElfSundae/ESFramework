@@ -7,6 +7,8 @@
 //
 
 #import "UIGestureRecognizer+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import <objc/runtime.h>
 #import "ESMacros.h"
 #import "ESActionBlockContainer.h"
@@ -51,3 +53,5 @@ ESDefineAssociatedObjectKey(allActionBlockContainers)
 }
 
 @end
+
+#endif

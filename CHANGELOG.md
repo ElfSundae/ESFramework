@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Add support for multi platforms: macOS, tvOS, watchOS.
+
 ## 3.13.0 (2019-06-18)
 
 - Remove `AFNetworkingExtension` dependency to fix "Cycle in dependencies" issue on the new Xcode build system.

@@ -7,6 +7,8 @@
 //
 
 #import "UIApplication+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 #import "UIWindow+ESExtension.h"
@@ -139,7 +141,7 @@ static void es_application_registerForRemoteNotifications_callback(id self, SEL 
 - (void)makePhoneCall:(NSString *)phoneNumber
 {
     NSURL *telURL = [NSURL URLWithString:[@"tel:" stringByAppendingString:phoneNumber]];
-    if (@available(iOS 10.0, *)) {
+    if (@available(iOS 10, tvOS 10, *)) {
         [self openURL:telURL options:@{} completionHandler:nil];
     } else {
         [self openURL:telURL];
@@ -147,3 +149,5 @@ static void es_application_registerForRemoteNotifications_callback(id self, SEL 
 }
 
 @end
+
+#endif

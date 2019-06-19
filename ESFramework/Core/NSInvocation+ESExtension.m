@@ -7,6 +7,7 @@
 //
 
 #import "NSInvocation+ESExtension.h"
+#import <CoreGraphics/CoreGraphics.h>
 
 static id __gNil = nil;
 
@@ -82,9 +83,13 @@ static id __gNil = nil;
         ElseIfTypeThenSetValue(CGVector)
         ElseIfTypeThenSetValue(CGRect)
         ElseIfTypeThenSetValue(CGAffineTransform)
+#if TARGET_OS_IOS || TARGET_OS_TV
         ElseIfTypeThenSetValue(UIEdgeInsets)
         ElseIfTypeThenSetValue(UIOffset)
+#endif
+#if !TARGET_OS_WATCH
         ElseIfTypeThenSetValue(CATransform3D)
+#endif
         ElseIfTypeThenSetValue(id)
         else if (CMPString(argType, "@?")) {
             // block
@@ -111,9 +116,13 @@ static id __gNil = nil;
             ElseIfTypeThenSetValue(CGVector *)
             ElseIfTypeThenSetValue(CGRect *)
             ElseIfTypeThenSetValue(CGAffineTransform *)
+#if TARGET_OS_IOS || TARGET_OS_TV
             ElseIfTypeThenSetValue(UIEdgeInsets *)
             ElseIfTypeThenSetValue(UIOffset *)
+#endif
+#if !TARGET_OS_WATCH
             ElseIfTypeThenSetValue(CATransform3D *)
+#endif
             else if (CMPString(argType, "^@")) {
                 SetArgumentWithValue(void *);
             } else {

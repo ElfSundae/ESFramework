@@ -1,11 +1,14 @@
 language: objective-c
 osx_image: xcode10.2
-xcode_workspace: ESFramework.xcworkspace
-xcode_scheme: Example
+
+cache: cocoapods
+
+podfile: Podfile
+
 before_install:
-    - gem install cocoapods
-    - pod repo update
-    - pod install
+    - gem install cocoapods --no-document --quiet
+    - pod --version
+    - pod repo update --silent
 script:
     - pod lib lint
-
+    - pod install

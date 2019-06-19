@@ -7,10 +7,15 @@
 //
 
 #import "UIApplication+ESExtension.h"
-#import <AFNetworking/AFNetworkReachabilityManager.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
+
+#if TARGET_OS_IOS
+#import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "ESNetworkHelper.h"
+#endif
 
 ESDefineAssociatedObjectKey(appName)
 ESDefineAssociatedObjectKey(appChannel)
@@ -41,7 +46,9 @@ static void ESCheckAppFreshLaunch(void)
     dispatch_once(&onceToken, ^{
         _gAppStartupDate = [NSDate date];
 
+#if TARGET_OS_IOS
         [AFNetworkReachabilityManager.sharedManager startMonitoring];
+#endif
 
         ESCheckAppFreshLaunch();
     });
@@ -203,7 +210,9 @@ static void ESCheckAppFreshLaunch(void)
     info[@"model_identifier"] = device.modelIdentifier;
     info[@"model_name"] = device.modelName;
     info[@"device_name"] = device.name;
+#if TARGET_OS_IOS
     info[@"jailbroken"] = @(device.isJailbroken);
+#endif
     info[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
     info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.secondsFromGMT);
@@ -223,6 +232,7 @@ static void ESCheckAppFreshLaunch(void)
         info[@"app_previous_version"] = self.appPreviousVersion;
     }
 
+#if TARGET_OS_IOS
     NSString *networkStatus = nil;
     switch (AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus) {
         case AFNetworkReachabilityStatusNotReachable:
@@ -257,6 +267,7 @@ static void ESCheckAppFreshLaunch(void)
     ip = [ESNetworkHelper getIPAddressForCellular:&ipv6];
     if (ip) info[@"wwan_ip"] = ip;
     if (ipv6) info[@"wwan_ipv6"] = ipv6;
+#endif
 
     return [info copy];
 }
@@ -275,3 +286,5 @@ static void ESCheckAppFreshLaunch(void)
 }
 
 @end
+
+#endif

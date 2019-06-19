@@ -9,6 +9,8 @@
 #ifndef ESFramework_ESMacros_h
 #define ESFramework_ESMacros_h
 
+#import <Foundation/Foundation.h>
+
 #if !defined(__FILENAME__)
 #define __FILENAME__ (strrchr("/" __FILE__, '/') + 1)
 #endif

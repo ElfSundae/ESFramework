@@ -7,6 +7,8 @@
 //
 
 #import "UIView+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "UIColor+ESExtension.h"
 #import "UIGestureRecognizer+ESExtension.h"
 
@@ -325,3 +327,5 @@
 }
 
 @end
+
+#endif

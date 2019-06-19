@@ -6,7 +6,12 @@
 //  Copyright © 2019 www.0x123.com. All rights reserved.
 //
 
+#import "UIControl+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "ESActionBlockContainer.h"
+#import <objc/runtime.h>
+#import "ESMacros.h"
 
 @interface ESUIControlActionBlockContainer : ESActionBlockContainer
 
@@ -24,10 +29,6 @@
 }
 
 @end
-
-#import "UIControl+ESExtension.h"
-#import <objc/runtime.h>
-#import "ESMacros.h"
 
 ESDefineAssociatedObjectKey(allActionBlockContainers)
 
@@ -85,3 +86,5 @@ ESDefineAssociatedObjectKey(allActionBlockContainers)
 }
 
 @end
+
+#endif

@@ -7,6 +7,8 @@
 //
 
 #import "UIDevice+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import <sys/sysctl.h>
 #import "ESHelpers.h"
 #import "NSData+ESExtension.h"
@@ -203,6 +205,16 @@ ESDefineAssociatedObjectKey(deviceTokenString)
     return _modelName;
 }
 
+- (CGSize)screenSizeInPoints
+{
+    return UIScreen.mainScreen.bounds.size;
+}
+
+- (CGSize)screenSizeInPixels
+{
+    return UIScreen.mainScreen.currentMode.size;
+}
+
 - (long long)diskTotalSpace
 {
     return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
@@ -218,13 +230,17 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 
 - (long long)diskFreeSpace
 {
-    if (@available(iOS 11.0, *)) {
+#if TARGET_OS_IOS
+    if (@available(iOS 11, *)) {
         return [[[[NSURL fileURLWithPath:NSHomeDirectory()] resourceValuesForKeys:@[ NSURLVolumeAvailableCapacityForImportantUsageKey ] error:NULL]
                  objectForKey:NSURLVolumeAvailableCapacityForImportantUsageKey] longLongValue];
     } else {
+#endif
         return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
                  objectForKey:NSFileSystemFreeSize] longLongValue];
+#if TARGET_OS_IOS
     }
+#endif
 }
 
 - (NSString *)diskFreeSpaceString
@@ -242,16 +258,7 @@ ESDefineAssociatedObjectKey(deviceTokenString)
     return [NSByteCountFormatter stringFromByteCount:self.diskUsedSpace countStyle:NSByteCountFormatterCountStyleFile];
 }
 
-- (CGSize)screenSizeInPoints
-{
-    return UIScreen.mainScreen.bounds.size;
-}
-
-- (CGSize)screenSizeInPixels
-{
-    return UIScreen.mainScreen.currentMode.size;
-}
-
+#if TARGET_OS_IOS
 - (BOOL)isJailbroken
 {
     static BOOL _isJailbroken = NO;
@@ -297,5 +304,8 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 #endif
     return _isJailbroken;
 }
+#endif
 
 @end
+
+#endif

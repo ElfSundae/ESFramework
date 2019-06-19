@@ -6,6 +6,9 @@
 //  Copyright (c) 2014 www.0x123.com. All rights reserved.
 //
 
+#import <TargetConditionals.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -28,16 +31,28 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Returns the model identifier of the device.
- * e.g. "iPhone3,1", "iPhone11,2".
- * https://www.theiphonewiki.com/wiki/Models
+ * @discussion e.g. "iPhone3,1", "AppleTV5,3", "Watch4,3".
+ * https://github.com/ElfSundae/iOS-Models-List
  */
 @property (nonatomic, readonly) NSString *modelIdentifier;
 
 /**
  * Returns the model name of the device.
- * e.g. "iPhone 6 Plus", "iPad Pro"
+ * @discussion e.g. "iPhone 6 Plus", "iPhone XS Max", "iPad Pro 3 (12.9-inch)",
+ * "Apple TV 4K", "Apple Watch Series 4 (44mm)", "Simulator x86", "Simulator x64".
+ * https://github.com/ElfSundae/iOS-Models-List
  */
 @property (nonatomic, readonly) NSString *modelName;
+
+/**
+ * the screen size in points.
+ */
+@property (nonatomic, readonly) CGSize screenSizeInPoints;
+
+/**
+ * The screen size in pixels.
+ */
+@property (nonatomic, readonly) CGSize screenSizeInPixels;
 
 /**
  * Returns the total disk space in bytes.
@@ -70,20 +85,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *diskUsedSpaceString;
 
 /**
- * the screen size in points.
- */
-@property (nonatomic, readonly) CGSize screenSizeInPoints;
-
-/**
- * The screen size in pixels.
- */
-@property (nonatomic, readonly) CGSize screenSizeInPixels;
-
-/**
  * Detects whether this device has been jailbroken.
  */
-@property (nonatomic, readonly) BOOL isJailbroken;
+@property (nonatomic, readonly) BOOL isJailbroken API_UNAVAILABLE(tvos);
 
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

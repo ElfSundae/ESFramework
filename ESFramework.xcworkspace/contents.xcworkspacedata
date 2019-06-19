@@ -5,7 +5,7 @@
       location = "group:ESFramework.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Example/iOS Example.xcodeproj">
+      location = "group:Example/Example.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

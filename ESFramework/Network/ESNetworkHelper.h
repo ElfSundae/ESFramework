@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import <TargetConditionals.h>
+#if !TARGET_OS_WATCH
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
@@ -16,25 +19,25 @@ typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
     ESCellularNetworkType2G       = 2,
     ESCellularNetworkType3G       = 3,
     ESCellularNetworkType4G       = 4,
-};
+} API_UNAVAILABLE(macos, tvos);
 
-typedef NSString * ESNetworkAddressFamily NS_EXTENSIBLE_STRING_ENUM;
+typedef NSString * ESNetworkAddressFamily NS_TYPED_EXTENSIBLE_ENUM;
 
 /// "IPv4"
-FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4;
+FOUNDATION_EXPORT ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4;
 /// "IPv6"
-FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6;
+FOUNDATION_EXPORT ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6;
 
 /// "lo0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceLoopback;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceLoopback;
+/// "en0" on iOS/tvOS, "en1" on macOS
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceWiFi;
 /// "awdl0" (Apple Wireless Direct Link)
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceAWDL;
-/// "en0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceWiFi;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceAWDL;
 /// "pdp_ip0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceCellular;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceCellular;
 /// "utun0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceVPN;
 
 @interface ESNetworkHelper : NSObject
 
@@ -107,6 +110,8 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
  */
 + (nullable NSString *)getIPAddressForWiFi:(NSString * _Nullable * _Nullable)IPv6Address;
 
+#if TARGET_OS_IOS
+
 /**
  * Returns the local IPv4 address of the "pdp_ip0" network interface.
  * You may optionally pass `IPv6Address` out param to get the IPv6 address.
@@ -162,6 +167,10 @@ FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
  */
 + (NSString *)getCellularNetworkTypeString;
 
+#endif
+
 @end
 
 NS_ASSUME_NONNULL_END
+
+#endif

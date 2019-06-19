@@ -7,13 +7,15 @@
 //
 
 #import "UITableView+ESExtension.h"
+#if TARGET_OS_IOS || TARGET_OS_TV
+
 #import "UIView+ESExtension.h"
 
 @implementation UITableView (ESExtension)
 
 - (void)performBatchUpdates:(void (NS_NOESCAPE ^ _Nullable)(void))updates
 {
-    if (@available(iOS 11.0, *)) {
+    if (@available(iOS 11, tvOS 11, *)) {
         [self performBatchUpdates:updates completion:nil];
     } else {
         [self beginUpdates];
@@ -64,3 +66,5 @@
 }
 
 @end
+
+#endif
