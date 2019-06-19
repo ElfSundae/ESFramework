@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
     ESCellularNetworkType2G       = 2,
     ESCellularNetworkType3G       = 3,
     ESCellularNetworkType4G       = 4,
-};
+} API_UNAVAILABLE(macos, tvos);
 
 typedef NSString * ESNetworkAddressFamily NS_TYPED_EXTENSIBLE_ENUM;
 
