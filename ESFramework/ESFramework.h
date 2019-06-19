@@ -34,7 +34,7 @@
 #import "NSURLComponents+ESExtension.h"
 #import "NSUserDefaults+ESExtension.h"
 
-#if TARGET_OS_IOS
+#if !TARGET_OS_WATCH
 #import "ESNetworkHelper.h"
 #endif
 
