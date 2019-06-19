@@ -20,6 +20,7 @@
     // Insert code here to initialize your application
 
     NSLog(@"%@", [ESNetworkHelper getIPAddresses]);
+    NSLog(@"WiFi IP: %@", [ESNetworkHelper getIPAddressForWiFi:nil]);
 }
 
 

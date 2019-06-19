@@ -30,10 +30,10 @@ FOUNDATION_EXPORT ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6;
 
 /// "lo0"
 FOUNDATION_EXPORT NSString *const ESNetworkInterfaceLoopback;
+/// "en0" on iOS/tvOS, "en1" on macOS
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceWiFi;
 /// "awdl0" (Apple Wireless Direct Link)
 FOUNDATION_EXPORT NSString *const ESNetworkInterfaceAWDL;
-/// "en0"
-FOUNDATION_EXPORT NSString *const ESNetworkInterfaceWiFi;
 /// "pdp_ip0"
 FOUNDATION_EXPORT NSString *const ESNetworkInterfaceCellular;
 /// "utun0"

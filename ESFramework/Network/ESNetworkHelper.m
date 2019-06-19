@@ -23,7 +23,11 @@ ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6 = @"IPv6";
 
 NSString *const ESNetworkInterfaceLoopback  = @"lo0";
 NSString *const ESNetworkInterfaceAWDL      = @"awdl0";
+#if TARGET_OS_IOS || TARGET_OS_TV
 NSString *const ESNetworkInterfaceWiFi      = @"en0";
+#else
+NSString *const ESNetworkInterfaceWiFi      = @"en1";
+#endif
 NSString *const ESNetworkInterfaceCellular  = @"pdp_ip0";
 NSString *const ESNetworkInterfaceVPN       = @"utun0";
 
