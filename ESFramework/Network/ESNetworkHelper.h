@@ -24,20 +24,20 @@ typedef NS_ENUM(NSInteger, ESCellularNetworkType) {
 typedef NSString * ESNetworkAddressFamily NS_TYPED_EXTENSIBLE_ENUM;
 
 /// "IPv4"
-FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4;
+FOUNDATION_EXPORT ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4;
 /// "IPv6"
-FOUNDATION_EXTERN ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6;
+FOUNDATION_EXPORT ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6;
 
 /// "lo0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceLoopback;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceLoopback;
 /// "awdl0" (Apple Wireless Direct Link)
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceAWDL;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceAWDL;
 /// "en0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceWiFi;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceWiFi;
 /// "pdp_ip0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceCellular;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceCellular;
 /// "utun0"
-FOUNDATION_EXTERN NSString *const ESNetworkInterfaceVPN;
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceVPN;
 
 @interface ESNetworkHelper : NSObject
 
