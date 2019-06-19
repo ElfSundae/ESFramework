@@ -284,8 +284,6 @@ FOUNDATION_EXPORT UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
  */
 FOUNDATION_EXPORT NSString *ESScreenSizeString(CGSize size);
 
-#endif
-
 #if TARGET_OS_IOS
 
 #pragma mark - iOS UI Helpers
@@ -353,6 +351,8 @@ FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
  */
 FOUNDATION_EXPORT NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
 
-#endif
+#endif // TARGET_OS_IOS
+
+#endif // TARGET_OS_IOS || TARGET_OS_TV
 
 NS_ASSUME_NONNULL_END
