@@ -26,15 +26,15 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Network' do |ss|
-    s.ios.deployment_target = '9.0'
+    ss.ios.deployment_target = '9.0'
 
     ss.source_files = 'ESFramework/Network/**/*.{h,m}'
     ss.frameworks = 'SystemConfiguration', 'CoreTelephony'
   end
 
   s.subspec 'UIKit' do |ss|
-    s.ios.deployment_target = '9.0'
-    s.tvos.deployment_target = '9.0'
+    ss.ios.deployment_target = '9.0'
+    ss.tvos.deployment_target = '9.0'
 
     ss.source_files = 'ESFramework/UIKit/**/*.{h,m}'
     ss.dependency 'ESFramework/Foundation'
