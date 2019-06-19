@@ -230,13 +230,17 @@ ESDefineAssociatedObjectKey(deviceTokenString)
 
 - (long long)diskFreeSpace
 {
+#if TARGET_OS_IOS
     if (@available(iOS 11, *)) {
         return [[[[NSURL fileURLWithPath:NSHomeDirectory()] resourceValuesForKeys:@[ NSURLVolumeAvailableCapacityForImportantUsageKey ] error:NULL]
                  objectForKey:NSURLVolumeAvailableCapacityForImportantUsageKey] longLongValue];
     } else {
+#endif
         return [[[NSFileManager.defaultManager attributesOfFileSystemForPath:NSHomeDirectory() error:NULL]
                  objectForKey:NSFileSystemFreeSize] longLongValue];
+#if TARGET_OS_IOS
     }
+#endif
 }
 
 - (NSString *)diskFreeSpaceString
