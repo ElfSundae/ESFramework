@@ -1,5 +1,6 @@
-workspace 'ESFramework.xcworkspace'
+use_frameworks!
 
+workspace 'ESFramework.xcworkspace'
 project 'Example/Example.xcodeproj'
 
 abstract_target 'Example' do
@@ -18,12 +19,7 @@ abstract_target 'Example' do
         platform :tvos, '9.0'
     end
 
-    target 'watchOS Example' do
+    target 'watchOS Example Extension' do
         platform :watchos, '2.0'
     end
 end
-
-# target 'watchOS Example' do
-#     platform :watchos, '2.0'
-#     pod 'ESFramework/UIKit', :path => '.'
-# end

@@ -9,8 +9,8 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
-  s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
+  s.watchos.deployment_target = '2.0'
 
   s.source_files = 'ESFramework/ESFramework.h'
 
@@ -38,7 +38,8 @@ Pod::Spec.new do |s|
 
     ss.source_files = 'ESFramework/UIKit/**/*.{h,m}'
     ss.dependency 'ESFramework/Foundation'
-    ss.dependency 'ESFramework/Network'
-    ss.dependency 'AFNetworking/Reachability', '>= 2.0'
+    ss.ios.dependency 'ESFramework/Network'
+    ss.ios.dependency 'AFNetworking/Reachability', '>= 2.0'
+    ss.tvos.dependency 'AFNetworking/Reachability', '>= 2.0'
   end
 end
