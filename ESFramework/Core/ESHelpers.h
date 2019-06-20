@@ -337,17 +337,17 @@ FOUNDATION_EXPORT BOOL ESIsRetinaScreen(void);
 #pragma mark - App Store Links
 
 /**
- * e.g. "https://itunes.apple.com/app/id12345678?mt=8"
+ * e.g. "https://apps.apple.com/app/id12345678"
  */
 FOUNDATION_EXPORT NSURL *ESAppLink(NSInteger appIdentifier);
 
 /**
- * e.g. "itms-apps://itunes.apple.com/app/id12345678"
+ * e.g. "itms-apps://apps.apple.com/app/id12345678"
  */
 FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
 
 /**
- * e.g. "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
+ * e.g. "itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
  */
 FOUNDATION_EXPORT NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
 

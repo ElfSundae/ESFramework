@@ -373,17 +373,17 @@ BOOL ESIsRetinaScreen(void)
 
 NSURL *ESAppLink(NSInteger appIdentifier)
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/app/id%ld?mt=8", (long)appIdentifier]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];
 }
 
 NSURL *ESAppStoreLink(NSInteger appIdentifier)
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/app/id%ld", (long)appIdentifier]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/app/id%ld", (long)appIdentifier]];
 }
 
 NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
 }
 
 #endif

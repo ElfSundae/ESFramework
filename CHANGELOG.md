@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Updated domain of [App Store Links](https://developer.apple.com/news/?id=06142019a) from `itunes.apple.com` to `apps.apple.com` for `ESAppLink()`, `ESAppStoreLink()`, `ESAppStoreReviewLink()`.
+
 ## 3.14.0 (2019-06-19)
 
 - Add support for multi platforms: macOS, tvOS, watchOS.
