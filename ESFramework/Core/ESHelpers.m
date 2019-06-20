@@ -143,6 +143,21 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180 / M_PI);
 }
 
+NSURL *ESAppLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];
+}
+
+NSURL *ESAppStoreLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/app/id%ld", (long)appIdentifier]];
+}
+
+NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
+{
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
+}
+
 NSString *ESDocumentDirectory(void)
 {
     return NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
@@ -312,7 +327,7 @@ NSString *ESScreenSizeString(CGSize size)
     ];
 }
 
-#endif
+#endif // TARGET_OS_IOS || TARGET_OS_TV
 
 #if TARGET_OS_IOS
 
@@ -371,19 +386,4 @@ BOOL ESIsRetinaScreen(void)
     return [UIScreen mainScreen].scale >= 2.0;
 }
 
-NSURL *ESAppLink(NSInteger appIdentifier)
-{
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];
-}
-
-NSURL *ESAppStoreLink(NSInteger appIdentifier)
-{
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/app/id%ld", (long)appIdentifier]];
-}
-
-NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
-{
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
-}
-
-#endif
+#endif // TARGET_OS_IOS

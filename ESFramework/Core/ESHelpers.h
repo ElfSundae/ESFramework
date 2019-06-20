@@ -68,6 +68,23 @@ FOUNDATION_EXPORT CGFloat ESDegreesToRadians(CGFloat degrees);
  */
 FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
 
+#pragma mark - App Store Links
+
+/**
+ * e.g. "https://apps.apple.com/app/id12345678"
+ */
+FOUNDATION_EXPORT NSURL *ESAppLink(NSInteger appIdentifier);
+
+/**
+ * e.g. "itms-apps://apps.apple.com/app/id12345678"
+ */
+FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
+
+/**
+ * e.g. "itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
+ */
+FOUNDATION_EXPORT NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
+
 #pragma mark - File Paths
 
 /**
@@ -284,6 +301,8 @@ FOUNDATION_EXPORT UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
  */
 FOUNDATION_EXPORT NSString *ESScreenSizeString(CGSize size);
 
+#endif // TARGET_OS_IOS || TARGET_OS_TV
+
 #if TARGET_OS_IOS
 
 #pragma mark - iOS UI Helpers
@@ -334,25 +353,6 @@ FOUNDATION_EXPORT BOOL ESIsPhoneDevice(void);
  */
 FOUNDATION_EXPORT BOOL ESIsRetinaScreen(void);
 
-#pragma mark - App Store Links
-
-/**
- * e.g. "https://apps.apple.com/app/id12345678"
- */
-FOUNDATION_EXPORT NSURL *ESAppLink(NSInteger appIdentifier);
-
-/**
- * e.g. "itms-apps://apps.apple.com/app/id12345678"
- */
-FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
-
-/**
- * e.g. "itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
- */
-FOUNDATION_EXPORT NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
-
 #endif // TARGET_OS_IOS
-
-#endif // TARGET_OS_IOS || TARGET_OS_TV
 
 NS_ASSUME_NONNULL_END
