@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/22.
-//  Copyright © 2019 https://0x123.com All rights reserved.
+//  Copyright © 2019 https://0x123.com. All rights reserved.
 //
 
 #import "ESWeakProxy.h"

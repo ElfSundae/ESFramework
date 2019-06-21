@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2014/04/15.
-//  Copyright (c) 2014 https://0x123.com All rights reserved.
+//  Copyright © 2014 https://0x123.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
