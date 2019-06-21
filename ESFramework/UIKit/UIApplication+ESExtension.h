@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Make a phone call to the phone number.
  * @node Call the `-canMakePhoneCalls` method before making phone calls.
  */
-- (void)makePhoneCall:(NSString *)phoneNumber;
+- (void)makePhoneCall:(NSString *)phoneNumber NS_EXTENSION_UNAVAILABLE_IOS("");
 
 @end
 
