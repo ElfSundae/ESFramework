@@ -2,8 +2,8 @@
 //  UIImage+ESExtension.h
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-8.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 2014/04/08.
+//  Copyright (c) 2014 https://0x123.com All rights reserved.
 //
 
 #import <TargetConditionals.h>

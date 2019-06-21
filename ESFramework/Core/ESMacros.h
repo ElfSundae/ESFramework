@@ -2,8 +2,8 @@
 //  ESMacros.h
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-2.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 2014/04/02.
+//  Copyright (c) 2014 https://0x123.com All rights reserved.
 //
 
 #ifndef ESFramework_ESMacros_h
