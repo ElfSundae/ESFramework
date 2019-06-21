@@ -11,6 +11,9 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
 #endif
+#if !TARGET_OS_WATCH
+#import <QuartzCore/QuartzCore.h>
+#endif
 
 static id __gNil = nil;
 
