@@ -239,7 +239,7 @@
     return [self setMaskLayerByRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
 }
 
-- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
+- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(float)opacity
 {
     self.layer.masksToBounds = NO;
     if (color) self.layer.shadowColor = color.CGColor;
