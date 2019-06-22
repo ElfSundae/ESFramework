@@ -8,9 +8,9 @@ Pod::Spec.new do |s|
   s.source      = { :git => 'https://github.com/ElfSundae/ESFramework.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'
-  s.watchos.deployment_target = '2.0'
-  s.tvos.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
+  s.tvos.deployment_target = '9.0'
+  s.watchos.deployment_target = '2.0'
 
   s.source_files = 'ESFramework/ESFramework.h'
 
@@ -27,8 +27,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'Network' do |ss|
     ss.ios.deployment_target = '9.0'
-    ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.11'
+    ss.tvos.deployment_target = '9.0'
 
     ss.source_files = 'ESFramework/Network/**/*.{h,m}'
     ss.frameworks = 'SystemConfiguration', 'CoreTelephony'
