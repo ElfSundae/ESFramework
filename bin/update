@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if ! [[ -x "$(command -v carthage)" ]]; then
+    echo "Error: Carthage is not installed."
+    echo "See https://github.com/Carthage/Carthage for installation."
+    exit 1
+fi
+
+carthage update --use-submodules --no-use-binaries

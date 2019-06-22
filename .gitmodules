@@ -1,3 +1,6 @@
 [submodule "Configurations"]
 	path = Configurations
 	url = https://github.com/ElfSundae/xcconfigs.git
+[submodule "Carthage/Checkouts/AFNetworking"]
+	path = Carthage/Checkouts/AFNetworking
+	url = https://github.com/AFNetworking/AFNetworking.git
