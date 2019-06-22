@@ -17,8 +17,8 @@ ESFramework is an efficient, small framework for iOS, macOS, watchOS, and tvOS.
 With [CocoaPods](https://cocoapods.org):
 
 ```ruby
-pod 'ESFramework'
-pod 'ESFrameworkUI'
+pod 'ESFramework', '~> 3.0'
+pod 'ESFrameworkUI', '~> 3.0'
 ```
 
 With [Carthage](https://github.com/Carthage/Carthage):
