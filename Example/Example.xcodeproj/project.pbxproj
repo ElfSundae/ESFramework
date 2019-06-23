@@ -33,12 +33,12 @@
 		E725580522B9CC3200ED7D7E /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E72557E922B9CC3000ED7D7E /* watchOS Example.app */; };
 		E7CB411022BF74140063BF5A /* ESFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB410F22BF74140063BF5A /* ESFramework.framework */; };
 		E7CB411122BF74140063BF5A /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB410F22BF74140063BF5A /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7CB411322BF74170063BF5A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB411222BF74170063BF5A /* AFNetworking.framework */; };
-		E7CB411422BF74170063BF5A /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB411222BF74170063BF5A /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7CB411522BF7AC90063BF5A /* ESFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB410F22BF74140063BF5A /* ESFramework.framework */; };
 		E7CB411622BF7AC90063BF5A /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB410F22BF74140063BF5A /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7CB411922BF7AD60063BF5A /* ESFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB411822BF7AD60063BF5A /* ESFramework.framework */; };
 		E7CB411A22BF7AD60063BF5A /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB411822BF7AD60063BF5A /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7CB413722BF7FEF0063BF5A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB413622BF7FEF0063BF5A /* AFNetworking.framework */; };
+		E7CB413822BF7FEF0063BF5A /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB413622BF7FEF0063BF5A /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,7 +88,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E7CB411122BF74140063BF5A /* ESFramework.framework in Embed Frameworks */,
-				E7CB411422BF74170063BF5A /* AFNetworking.framework in Embed Frameworks */,
+				E7CB413822BF7FEF0063BF5A /* AFNetworking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,8 +161,8 @@
 		E725580022B9CC3200ED7D7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E725580222B9CC3200ED7D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7CB410F22BF74140063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7CB411222BF74170063BF5A /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB411822BF7AD60063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7CB413622BF7FEF0063BF5A /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7CB411022BF74140063BF5A /* ESFramework.framework in Frameworks */,
-				E7CB411322BF74170063BF5A /* AFNetworking.framework in Frameworks */,
+				E7CB413722BF7FEF0063BF5A /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +219,8 @@
 				E72557F922B9CC3100ED7D7E /* watchOS Example Extension */,
 				E725576022B9587600ED7D7E /* Products */,
 				E7CB40BE22BD09B30063BF5A /* Frameworks */,
+				E7CB413622BF7FEF0063BF5A /* AFNetworking.framework */,
 				E7CB411822BF7AD60063BF5A /* ESFramework.framework */,
-				E7CB411222BF74170063BF5A /* AFNetworking.framework */,
 				E7CB410F22BF74140063BF5A /* ESFramework.framework */,
 			);
 			sourceTree = "<group>";
