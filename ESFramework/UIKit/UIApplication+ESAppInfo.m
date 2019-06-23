@@ -248,8 +248,8 @@ static void ESCheckAppFreshLaunch(void)
         default:
             networkStatus = @"Unknown";
     }
-
     info[@"network"] = networkStatus;
+    
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *carrier = [ESNetworkHelper getCarrierName];
