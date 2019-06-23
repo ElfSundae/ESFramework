@@ -13,7 +13,11 @@
 #import "UIDevice+ESExtension.h"
 
 #if TARGET_OS_IOS
+#if __has_include(<AFNetworking/AFNetworkReachabilityManager.h>)
 #import <AFNetworking/AFNetworkReachabilityManager.h>
+#else
+@import AFNetworking;
+#endif
 #import "ESNetworkHelper.h"
 #endif
 
