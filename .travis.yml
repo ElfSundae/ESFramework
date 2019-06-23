@@ -15,4 +15,4 @@ script:
     - pod lib lint
 
     - bin/update
-    - carthage build --no-skip-current
+    - bin/carthage-lint
