@@ -7,3 +7,5 @@ if ! [[ -x "$(command -v carthage)" ]]; then
 fi
 
 carthage update --use-submodules --no-use-binaries --new-resolver
+
+git submodule update --init
