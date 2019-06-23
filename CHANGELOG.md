@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Support Carthage
+
 ## 3.14.2 (2019-06-22)
 
 - Updated domain of [App Store Links](https://developer.apple.com/news/?id=06142019a) from `itunes.apple.com` to `apps.apple.com` for `ESAppLink()`, `ESAppStoreLink()`, `ESAppStoreReviewLink()`.
