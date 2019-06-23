@@ -38,7 +38,7 @@
     [self.imageView setMaskLayerWithCornerRadius:self.imageView.height / 2];
 
     self.images = [NSMutableArray array];
-    
+
     es_dispatch_async_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, ^{
         NSArray *urls = @[
             @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1556519087064&di=a1ac3f083b0d6fb9cd9d65f0c86d925c&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201706%2F22%2F20170622131955_h4eZS.thumb.700_0.jpeg",

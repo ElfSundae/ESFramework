@@ -49,10 +49,10 @@ static NSNumberFormatter *_ESDefaultNumberFormatter(void)
     static NSDictionary *_stringToNumberTable = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _stringToNumberTable = @{@"true": @YES, @"t": @YES, @"yes": @YES, @"y": @YES,
-                                 @"false": @NO, @"f": @NO, @"no": @NO, @"n": @NO,
-                                 @"nil": [NSNull null], @"null": [NSNull null],
-                                 @"<null>": [NSNull null]};
+        _stringToNumberTable = @{ @"true": @YES, @"t": @YES, @"yes": @YES, @"y": @YES,
+                                  @"false": @NO, @"f": @NO, @"no": @NO, @"n": @NO,
+                                  @"nil": [NSNull null], @"null": [NSNull null],
+                                  @"<null>": [NSNull null] };
     });
 
     id found = _stringToNumberTable[string.lowercaseString];

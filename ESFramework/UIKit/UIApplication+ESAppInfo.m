@@ -249,7 +249,7 @@ static void ESCheckAppFreshLaunch(void)
             networkStatus = @"Unknown";
     }
     info[@"network"] = networkStatus;
-    
+
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *carrier = [ESNetworkHelper getCarrierName];
