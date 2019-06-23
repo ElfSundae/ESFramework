@@ -1,9 +1,9 @@
 # Changelog
 
-## Master
+## 3.15.0 (2019-06-23)
 
 - Support Carthage.
-- Split ESFrameworkUI to a separate git repo.
+- Split `ESFrameworkUI` to [a separate git repo](https://github.com/ElfSundae/ESFrameworkUI).
 
 ## 3.14.2 (2019-06-22)
 
