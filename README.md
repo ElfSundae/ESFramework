@@ -18,14 +18,12 @@ With [CocoaPods](https://cocoapods.org):
 
 ```ruby
 pod 'ESFramework', '~> 3.0'
-pod 'ESFrameworkUI', '~> 3.0'
 ```
 
 With [Carthage](https://github.com/Carthage/Carthage):
 
 ```ogdl
 github "ElfSundae/ESFramework" ~> 3.15
-github "ElfSundae/ESFrameworkUI" ~> 3.10
 ```
 
 ## License

@@ -2,7 +2,8 @@
 
 ## Master
 
-- Support Carthage
+- Support Carthage.
+- Split ESFrameworkUI to a separate git repo.
 
 ## 3.14.2 (2019-06-22)
 
