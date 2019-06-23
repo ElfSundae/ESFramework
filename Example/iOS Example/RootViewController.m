@@ -19,6 +19,9 @@
 
     self.title = @"ESFramework";
 
+    self.tableView.rowHeight = 60;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
+
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     [infoButton addActionBlock:^(__kindof UIControl * _Nonnull control) {
         [UIAlertController showAlertWithTitle:@"About"
@@ -26,17 +29,6 @@
                             cancelActionTitle:@"OK"];
     } forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-
-    self.tableView.rowHeight = 60;
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];
-    ESWeakSelf;
-    self.tableView.es_refreshControl = [ESRefreshControl refreshControlWithDidStartRefreshingBlock:^(ESRefreshControl *refreshControl) {
-        es_dispatch_after(1, ^{
-                              ESStrongSelf;
-                              [_self.tableView reloadData];
-                              [refreshControl endRefreshing];
-                          });
-    }];
 
     // [self testAutoCoding];
 }
@@ -71,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return ESRandomNumber(15, 60);
+    return ESRandomNumber(20, 100);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,7 +71,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellID" forIndexPath:indexPath];
     cell.textLabel.attributedText =
         [[NSAttributedString alloc] initWithString:
-         [NSString stringWithFormat:@"section %@ row %@", @(indexPath.section), @(indexPath.row)]
+         [NSString stringWithFormat:@"Section %@ Row %@", @(indexPath.section), @(indexPath.row)]
                                         attributes:@{ NSForegroundColorAttributeName: [UIColor randomColor],
                                                       NSFontAttributeName: [UIFont boldSystemFontOfSize:20] }];
     return cell;

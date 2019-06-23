@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/26.
-//  Copyright © 2019 www.0x123.com. All rights reserved.
+//  Copyright © 2019 https://0x123.com. All rights reserved.
 //
 
 #import "ESNetworkHelper.h"

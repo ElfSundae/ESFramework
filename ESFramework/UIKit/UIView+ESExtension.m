@@ -2,8 +2,8 @@
 //  UIView+ESExtension.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-6.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 2014/04/06.
+//  Copyright © 2014 https://0x123.com. All rights reserved.
 //
 
 #import "UIView+ESExtension.h"
@@ -239,7 +239,7 @@
     return [self setMaskLayerByRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(cornerRadius, cornerRadius)];
 }
 
-- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity
+- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(float)opacity
 {
     self.layer.masksToBounds = NO;
     if (color) self.layer.shadowColor = color.CGColor;

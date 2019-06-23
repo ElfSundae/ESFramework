@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2016/12/29.
-//  Copyright © 2016年 www.0x123.com. All rights reserved.
+//  Copyright © 2016 https://0x123.com. All rights reserved.
 //
 
 #import <TargetConditionals.h>
@@ -32,21 +32,21 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIAlertAction *)addCancelActionWithTitle:(nullable NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 - (UIAlertAction *)addDestructiveActionWithTitle:(NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 
-- (void)show;
-- (void)showAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+- (void)show NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+- (void)showAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
-- (void)dismiss;
-- (void)dismissAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
-
-/**
- * Creates and presents an alert controller with UIAlertControllerStyleAlert style.
- */
-+ (instancetype)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelActionTitle:(NSString *)cancelActionTitle;
+- (void)dismiss NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+- (void)dismissAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
 /**
  * Creates and presents an alert controller with UIAlertControllerStyleAlert style.
  */
-+ (instancetype)showAlertWithTitle:(nullable NSString *)title cancelActionTitle:(NSString *)cancelActionTitle;
++ (instancetype)showAlertWithTitle:(nullable NSString *)title message:(nullable NSString *)message cancelActionTitle:(NSString *)cancelActionTitle NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+
+/**
+ * Creates and presents an alert controller with UIAlertControllerStyleAlert style.
+ */
++ (instancetype)showAlertWithTitle:(nullable NSString *)title cancelActionTitle:(NSString *)cancelActionTitle NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
 @end
 

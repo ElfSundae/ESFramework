@@ -3,12 +3,15 @@ osx_image: xcode10.2
 
 cache: cocoapods
 
-podfile: Podfile
-
 before_install:
     - gem install cocoapods --no-document --quiet
     - pod --version
     - pod repo update --silent
+
+    - brew update
+    - brew install carthage
+    - carthage version
 script:
     - pod lib lint
-    - pod install
+
+    - carthage build --no-skip-current

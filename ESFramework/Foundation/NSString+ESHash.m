@@ -2,8 +2,8 @@
 //  NSString+ESHash.m
 //  ESFramework
 //
-//  Created by Elf Sundae on 16/1/23.
-//  Copyright © 2016年 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 2016/01/23.
+//  Copyright © 2016 https://0x123.com. All rights reserved.
 //
 
 #import "NSString+ESExtension.h"

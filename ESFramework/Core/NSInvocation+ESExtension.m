@@ -3,11 +3,17 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/23.
-//  Copyright © 2019 www.0x123.com. All rights reserved.
+//  Copyright © 2019 https://0x123.com. All rights reserved.
 //
 
 #import "NSInvocation+ESExtension.h"
 #import <CoreGraphics/CoreGraphics.h>
+#if TARGET_OS_IOS || TARGET_OS_TV
+#import <UIKit/UIKit.h>
+#endif
+#if !TARGET_OS_WATCH
+#import <QuartzCore/QuartzCore.h>
+#endif
 
 static id __gNil = nil;
 

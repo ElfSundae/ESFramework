@@ -1,0 +1,3 @@
+#!/bin/sh
+
+carthage build --no-skip-current

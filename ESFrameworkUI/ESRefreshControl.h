@@ -2,8 +2,8 @@
 //  ESRefreshControl.h
 //  ESFramework
 //
-//  Created by Elf Sundae on 5/21/14.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 2014/05/21.
+//  Copyright © 2014 https://0x123.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

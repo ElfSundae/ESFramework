@@ -2,8 +2,8 @@
 //  UIView+ESExtension.h
 //  ESFramework
 //
-//  Created by Elf Sundae on 14-4-6.
-//  Copyright (c) 2014 www.0x123.com. All rights reserved.
+//  Created by Elf Sundae on 2014/04/06.
+//  Copyright © 2014 https://0x123.com. All rights reserved.
 //
 
 #import <TargetConditionals.h>
@@ -93,7 +93,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Rounded corner + shadow: https://fluffy.es/rounded-corner-shadow/
  * Rounded corner + shadow: https://github.com/douglas-queiroz/UIViewWithRoundedCornersAndShadow/blob/master/UIViewWithRoundedCornersAndShadow/UIView+RoundedCorner+Shadow.m
  */
-- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(CGFloat)opacity;
+- (void)setLayerShadowWithColor:(nullable UIColor *)color offset:(CGSize)offset radius:(CGFloat)radius opacity:(float)opacity;
 
 /// insert `CAGradientLayer` at index 0.
 - (CAGradientLayer *)setGradientBackgroundColor:(UIColor *)startColor, ... NS_REQUIRES_NIL_TERMINATION;

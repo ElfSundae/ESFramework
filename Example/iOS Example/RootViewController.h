@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 www.0x123.com. All rights reserved.
 //
 
-#import <ESFrameworkUI/ESFrameworkUI.h>
+#import <UIKit/UIKit.h>
 
-@interface RootViewController : ESTableViewController
+@interface RootViewController : UITableViewController
 
 @end

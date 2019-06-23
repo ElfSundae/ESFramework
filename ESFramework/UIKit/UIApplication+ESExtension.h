@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/05/05.
-//  Copyright © 2019 www.0x123.com. All rights reserved.
+//  Copyright © 2019 https://0x123.com. All rights reserved.
 //
 
 #import <TargetConditionals.h>
@@ -75,7 +75,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Make a phone call to the phone number.
  * @node Call the `-canMakePhoneCalls` method before making phone calls.
  */
-- (void)makePhoneCall:(NSString *)phoneNumber;
+- (void)makePhoneCall:(NSString *)phoneNumber NS_EXTENSION_UNAVAILABLE_IOS("");
 
 @end
 

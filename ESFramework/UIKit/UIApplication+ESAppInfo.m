@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/05/13.
-//  Copyright © 2019 www.0x123.com. All rights reserved.
+//  Copyright © 2019 https://0x123.com. All rights reserved.
 //
 
 #import "UIApplication+ESExtension.h"
@@ -248,8 +248,8 @@ static void ESCheckAppFreshLaunch(void)
         default:
             networkStatus = @"Unknown";
     }
-
     info[@"network"] = networkStatus;
+
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *carrier = [ESNetworkHelper getCarrierName];

@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/23.
-//  Copyright © 2019 www.0x123.com. All rights reserved.
+//  Copyright © 2019 https://0x123.com. All rights reserved.
 //
 
 #import <TargetConditionals.h>
@@ -310,12 +310,12 @@ FOUNDATION_EXPORT NSString *ESScreenSizeString(CGSize size);
 /**
  * Returns the height of the status bar, in any orientation.
  */
-FOUNDATION_EXPORT CGFloat ESStatusBarHeight(void);
+FOUNDATION_EXPORT CGFloat ESStatusBarHeight(void) NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
 /**
  * Returns the current interface orientation of the application.
  */
-FOUNDATION_EXPORT UIInterfaceOrientation ESInterfaceOrientation(void);
+FOUNDATION_EXPORT UIInterfaceOrientation ESInterfaceOrientation(void) NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
 /**
  * Returns the physical orientation of the device.
