@@ -6,6 +6,4 @@ if ! [[ -x "$(command -v carthage)" ]]; then
     exit 1
 fi
 
-carthage update --use-submodules --no-use-binaries --new-resolver
-
-git submodule update --init
+carthage bootstrap --use-submodules --no-use-binaries --new-resolver

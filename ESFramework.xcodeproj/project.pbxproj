@@ -274,12 +274,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E7CB3E8422BCBA6E0063BF5A /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS-Framework.xcconfig"; path = "Configurations/iOS/iOS-Framework.xcconfig"; sourceTree = "<group>"; };
-		E7CB3E8522BCBA6E0063BF5A /* watchOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "watchOS-Framework.xcconfig"; path = "Configurations/watchOS/watchOS-Framework.xcconfig"; sourceTree = "<group>"; };
-		E7CB3E8622BCBA6E0063BF5A /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Configurations/Base/Configurations/Debug.xcconfig; sourceTree = "<group>"; };
-		E7CB3E8722BCBA6E0063BF5A /* macOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "macOS-Framework.xcconfig"; path = "Configurations/macOS/macOS-Framework.xcconfig"; sourceTree = "<group>"; };
-		E7CB3E8822BCBA6E0063BF5A /* tvOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "tvOS-Framework.xcconfig"; path = "Configurations/tvOS/tvOS-Framework.xcconfig"; sourceTree = "<group>"; };
-		E7CB3E8922BCBA6E0063BF5A /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Configurations/Base/Configurations/Release.xcconfig; sourceTree = "<group>"; };
 		E7CB3E9522BCBBB40063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB3EA222BCBBC00063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB3EAF22BCBBCD0063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -401,12 +395,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E735DC5E22BF931C00C48A00 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Configurations;
+			sourceTree = "<group>";
+		};
 		E7CB3E6C22BCB98B0063BF5A = {
 			isa = PBXGroup;
 			children = (
 				E7CB3EDB22BCC8BD0063BF5A /* ESFramework */,
 				E7CB3ED322BCC8100063BF5A /* Supporting Files */,
-				E7CB3E8322BCBA3C0063BF5A /* Configurations */,
+				E735DC5E22BF931C00C48A00 /* Configurations */,
 				E7CB3E7722BCB98B0063BF5A /* Products */,
 				E7CB407A22BCDDF90063BF5A /* Frameworks */,
 			);
@@ -421,19 +422,6 @@
 				E7CB3EBC22BCBBEC0063BF5A /* ESFramework.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E7CB3E8322BCBA3C0063BF5A /* Configurations */ = {
-			isa = PBXGroup;
-			children = (
-				E7CB3E8622BCBA6E0063BF5A /* Debug.xcconfig */,
-				E7CB3E8422BCBA6E0063BF5A /* iOS-Framework.xcconfig */,
-				E7CB3E8722BCBA6E0063BF5A /* macOS-Framework.xcconfig */,
-				E7CB3E8922BCBA6E0063BF5A /* Release.xcconfig */,
-				E7CB3E8822BCBA6E0063BF5A /* tvOS-Framework.xcconfig */,
-				E7CB3E8522BCBA6E0063BF5A /* watchOS-Framework.xcconfig */,
-			);
-			name = Configurations;
 			sourceTree = "<group>";
 		};
 		E7CB3ED322BCC8100063BF5A /* Supporting Files */ = {
@@ -1050,7 +1038,6 @@
 /* Begin XCBuildConfiguration section */
 		E7CB3E7C22BCB98B0063BF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8622BCBA6E0063BF5A /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1113,7 +1100,6 @@
 		};
 		E7CB3E7D22BCB98B0063BF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8922BCBA6E0063BF5A /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1170,7 +1156,6 @@
 		};
 		E7CB3E9B22BCBBB40063BF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8522BCBA6E0063BF5A /* watchOS-Framework.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1189,7 +1174,6 @@
 		};
 		E7CB3E9C22BCBBB40063BF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8522BCBA6E0063BF5A /* watchOS-Framework.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -1208,7 +1192,6 @@
 		};
 		E7CB3EA822BCBBC00063BF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8822BCBA6E0063BF5A /* tvOS-Framework.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1227,7 +1210,6 @@
 		};
 		E7CB3EA922BCBBC00063BF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8822BCBA6E0063BF5A /* tvOS-Framework.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1246,7 +1228,6 @@
 		};
 		E7CB3EB522BCBBCD0063BF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8722BCBA6E0063BF5A /* macOS-Framework.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1266,7 +1247,6 @@
 		};
 		E7CB3EB622BCBBCD0063BF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8722BCBA6E0063BF5A /* macOS-Framework.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1286,7 +1266,6 @@
 		};
 		E7CB3EC222BCBBEC0063BF5A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8422BCBA6E0063BF5A /* iOS-Framework.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -1307,7 +1286,6 @@
 		};
 		E7CB3EC322BCBBEC0063BF5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7CB3E8422BCBA6E0063BF5A /* iOS-Framework.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
