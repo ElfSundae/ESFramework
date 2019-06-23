@@ -271,60 +271,7 @@
 		E7CB407E22BCFBD80063BF5A /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3EE622BCC8BD0063BF5A /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CB407F22BCFBD80063BF5A /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3EE622BCC8BD0063BF5A /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CB408022BCFBD80063BF5A /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3EE622BCC8BD0063BF5A /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E7CB413422BF7F3D0063BF5A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CB412722BF7F2B0063BF5A /* AFNetworking.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E7CB412622BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 299522391BBF104D00859F49;
-			remoteInfo = "AFNetworking iOS";
-		};
-		E7CB412822BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 299522651BBF129200859F49;
-			remoteInfo = "AFNetworking watchOS";
-		};
-		E7CB412A22BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 299522771BBF136400859F49;
-			remoteInfo = "AFNetworking macOS";
-		};
-		E7CB412C22BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2987B0A51BC408A200179A4C;
-			remoteInfo = "AFNetworking tvOS";
-		};
-		E7CB412E22BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 298D7C3B1BC2C79500FD3B3E;
-			remoteInfo = "AFNetworking iOS Tests";
-		};
-		E7CB413022BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 298D7C4A1BC2C7B200FD3B3E;
-			remoteInfo = "AFNetworking macOS Tests";
-		};
-		E7CB413222BF7F2B0063BF5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
-			remoteInfo = "AFNetworking tvOS Tests";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E7CB3E8422BCBA6E0063BF5A /* iOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS-Framework.xcconfig"; path = "Configurations/iOS/iOS-Framework.xcconfig"; sourceTree = "<group>"; };
@@ -420,7 +367,6 @@
 		E7CB3F3022BCC8BD0063BF5A /* UIWindow+ESExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ESExtension.h"; sourceTree = "<group>"; };
 		E7CB3F3122BCC8BD0063BF5A /* UIWindow+ESExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ESExtension.m"; sourceTree = "<group>"; };
 		E7CB40BB22BD048C0063BF5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = Carthage/Checkouts/AFNetworking/AFNetworking.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -449,7 +395,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7CB413422BF7F3D0063BF5A /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,23 +568,8 @@
 		E7CB407A22BCDDF90063BF5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E7CB411D22BF7F2B0063BF5A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E7CB412722BF7F2B0063BF5A /* AFNetworking.framework */,
-				E7CB412922BF7F2B0063BF5A /* AFNetworking.framework */,
-				E7CB412B22BF7F2B0063BF5A /* AFNetworking.framework */,
-				E7CB412D22BF7F2B0063BF5A /* AFNetworking.framework */,
-				E7CB412F22BF7F2B0063BF5A /* AFNetworking iOS Tests.xctest */,
-				E7CB413122BF7F2B0063BF5A /* AFNetworking macOS Tests.xctest */,
-				E7CB413322BF7F2B0063BF5A /* AFNetworking tvOS Tests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -914,12 +844,6 @@
 			mainGroup = E7CB3E6C22BCB98B0063BF5A;
 			productRefGroup = E7CB3E7722BCB98B0063BF5A /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = E7CB411D22BF7F2B0063BF5A /* Products */;
-					ProjectRef = E7CB411C22BF7F2B0063BF5A /* AFNetworking.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				E7CB3EBB22BCBBEC0063BF5A /* ESFramework iOS */,
@@ -929,58 +853,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		E7CB412722BF7F2B0063BF5A /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = E7CB412622BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7CB412922BF7F2B0063BF5A /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = E7CB412822BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7CB412B22BF7F2B0063BF5A /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = E7CB412A22BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7CB412D22BF7F2B0063BF5A /* AFNetworking.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = AFNetworking.framework;
-			remoteRef = E7CB412C22BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7CB412F22BF7F2B0063BF5A /* AFNetworking iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AFNetworking iOS Tests.xctest";
-			remoteRef = E7CB412E22BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7CB413122BF7F2B0063BF5A /* AFNetworking macOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AFNetworking macOS Tests.xctest";
-			remoteRef = E7CB413022BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E7CB413322BF7F2B0063BF5A /* AFNetworking tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "AFNetworking tvOS Tests.xctest";
-			remoteRef = E7CB413222BF7F2B0063BF5A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E7CB3E9322BCBBB40063BF5A /* Resources */ = {
@@ -1423,6 +1295,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1440,6 +1316,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
