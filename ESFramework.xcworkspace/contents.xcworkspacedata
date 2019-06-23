@@ -4,4 +4,10 @@
    <FileRef
       location = "container:ESFramework.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Example/Example.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Carthage/Checkouts/AFNetworking/AFNetworking.xcodeproj">
+   </FileRef>
 </Workspace>
