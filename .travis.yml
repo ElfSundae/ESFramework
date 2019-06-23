@@ -14,4 +14,5 @@ before_install:
 script:
     - pod lib lint
 
+    - bin/update
     - carthage build --no-skip-current
