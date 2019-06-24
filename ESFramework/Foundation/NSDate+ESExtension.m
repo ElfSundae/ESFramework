@@ -71,7 +71,7 @@
     return [NSCalendar.currentCalendar isDate:self equalToDate:[NSDate date] toUnitGranularity:NSCalendarUnitYear];
 }
 
-+ (NSDate *)dateFromHTTPDateString:(NSString *)string
++ (NSDate *)dateWithHTTPDateString:(NSString *)string
 {
     NSUInteger commaPosition = [string rangeOfString:@","].location;
 

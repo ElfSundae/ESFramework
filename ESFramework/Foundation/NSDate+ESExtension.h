@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
  *      Sunday, 06-Nov-94 08:49:37 GMT ; RFC 850, obsoleted by RFC 1036
  *      Sun Nov  6 08:49:37 1994       ; ANSI C's asctime() format
  */
-+ (nullable NSDate *)dateFromHTTPDateString:(NSString *)string;
++ (nullable NSDate *)dateWithHTTPDateString:(NSString *)string;
 
 /**
  * Converts date to HTTP-date string, this method is an alias to -RFC1123String .

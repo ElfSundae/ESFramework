@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Rename NSDate `-dateFromHTTPDateString:` to `-dateWithHTTPDateString:`.
+
 ## 3.15.0 (2019-06-23)
 
 - Support Carthage.
