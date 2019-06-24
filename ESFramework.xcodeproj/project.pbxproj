@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E79CCFA322C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E79CCFA122C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79CCFA422C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E79CCFA122C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79CCFA522C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E79CCFA122C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79CCFA622C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E79CCFA122C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E79CCFA722C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E79CCFA222C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m */; };
+		E79CCFA822C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E79CCFA222C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m */; };
+		E79CCFA922C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E79CCFA222C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m */; };
+		E79CCFAA22C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E79CCFA222C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m */; };
 		E7CB3F3222BCC8BD0063BF5A /* ESHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3EDD22BCC8BD0063BF5A /* ESHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CB3F3322BCC8BD0063BF5A /* ESHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3EDD22BCC8BD0063BF5A /* ESHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CB3F3422BCC8BD0063BF5A /* ESHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3EDD22BCC8BD0063BF5A /* ESHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -274,6 +282,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E79CCFA122C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+ESExtension.h"; sourceTree = "<group>"; };
+		E79CCFA222C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+ESExtension.m"; sourceTree = "<group>"; };
 		E7CB3E9522BCBBB40063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB3EA222BCBBC00063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7CB3EAF22BCBBCD0063BF5A /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -495,6 +505,8 @@
 				E7CB3EF922BCC8BD0063BF5A /* NSFileManager+ESExtension.m */,
 				E7CB3EFA22BCC8BD0063BF5A /* NSHTTPCookieStorage+ESExtension.h */,
 				E7CB3EFB22BCC8BD0063BF5A /* NSHTTPCookieStorage+ESExtension.m */,
+				E79CCFA122C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h */,
+				E79CCFA222C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m */,
 				E7CB3EFC22BCC8BD0063BF5A /* NSMapTable+ESExtension.h */,
 				E7CB3EFD22BCC8BD0063BF5A /* NSMapTable+ESExtension.m */,
 				E7CB3EFE22BCC8BD0063BF5A /* NSObject+ESAutoCoding.h */,
@@ -597,6 +609,7 @@
 				E7CB3F5B22BCC8BD0063BF5A /* ESActionBlockContainer.h in Headers */,
 				E7CB3FCB22BCC8BD0063BF5A /* NSString+ESGTMHTML.h in Headers */,
 				E7CB3F3F22BCC8BD0063BF5A /* ESWeakProxy.h in Headers */,
+				E79CCFA622C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */,
 				E7CB3FAB22BCC8BD0063BF5A /* NSMapTable+ESExtension.h in Headers */,
 				E7CB3F3B22BCC8BD0063BF5A /* ESMacros.h in Headers */,
 				E7CB3F4F22BCC8BD0063BF5A /* NSNumber+ESExtension.h in Headers */,
@@ -627,6 +640,7 @@
 				E7CB400C22BCC8BD0063BF5A /* UIApplication+ESExtension.h in Headers */,
 				E7CB3F9422BCC8BD0063BF5A /* NSError+ESExtension.h in Headers */,
 				E7CB400022BCC8BD0063BF5A /* UIAlertController+ESExtension.h in Headers */,
+				E79CCFA522C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */,
 				E7CB3F4822BCC8BD0063BF5A /* NSInvocation+ESExtension.h in Headers */,
 				E7CB404C22BCC8BD0063BF5A /* UIScrollView+ESExtension.h in Headers */,
 				E7CB3F3422BCC8BD0063BF5A /* ESHelpers.h in Headers */,
@@ -678,6 +692,7 @@
 				E7CB3FCD22BCC8BD0063BF5A /* NSString+ESGTMHTML.h in Headers */,
 				E7CB3F4122BCC8BD0063BF5A /* ESWeakProxy.h in Headers */,
 				E7CB3FAD22BCC8BD0063BF5A /* NSMapTable+ESExtension.h in Headers */,
+				E79CCFA422C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */,
 				E7CB3F3D22BCC8BD0063BF5A /* ESMacros.h in Headers */,
 				E7CB3F5122BCC8BD0063BF5A /* NSNumber+ESExtension.h in Headers */,
 				E7CB3F8D22BCC8BD0063BF5A /* NSDictionary+ESExtension.h in Headers */,
@@ -708,6 +723,7 @@
 				E7CB400A22BCC8BD0063BF5A /* UIApplication+ESExtension.h in Headers */,
 				E7CB3F9222BCC8BD0063BF5A /* NSError+ESExtension.h in Headers */,
 				E7CB3FFE22BCC8BD0063BF5A /* UIAlertController+ESExtension.h in Headers */,
+				E79CCFA322C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.h in Headers */,
 				E7CB3F4622BCC8BD0063BF5A /* NSInvocation+ESExtension.h in Headers */,
 				E7CB404A22BCC8BD0063BF5A /* UIScrollView+ESExtension.h in Headers */,
 				E7CB3F3222BCC8BD0063BF5A /* ESHelpers.h in Headers */,
@@ -893,6 +909,7 @@
 				E7CB3FA722BCC8BD0063BF5A /* NSHTTPCookieStorage+ESExtension.m in Sources */,
 				E7CB3F9F22BCC8BD0063BF5A /* NSFileManager+ESExtension.m in Sources */,
 				E7CB3F6722BCC8BD0063BF5A /* NSArray+ESExtension.m in Sources */,
+				E79CCFAA22C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */,
 				E7CB3F6F22BCC8BD0063BF5A /* NSCharacterSet+ESExtension.m in Sources */,
 				E7CB3F7722BCC8BD0063BF5A /* NSData+ESExtension.m in Sources */,
 				E7CB3F5F22BCC8BD0063BF5A /* ESActionBlockContainer.m in Sources */,
@@ -952,6 +969,7 @@
 				E7CB406022BCC8BD0063BF5A /* UIToolbar+ESExtension.m in Sources */,
 				E7CB3FFC22BCC8BD0063BF5A /* ESNetworkHelper.m in Sources */,
 				E7CB3F8022BCC8BD0063BF5A /* NSDate+ESExtension.m in Sources */,
+				E79CCFA922C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */,
 				E7CB3FC022BCC8BD0063BF5A /* NSOrderedSet+ESExtension.m in Sources */,
 				E7CB400822BCC8BD0063BF5A /* UIApplication+ESAppInfo.m in Sources */,
 				E7CB404022BCC8BD0063BF5A /* UIImage+ESExtension.m in Sources */,
@@ -982,6 +1000,7 @@
 				E7CB3FED22BCC8BD0063BF5A /* NSURLComponents+ESExtension.m in Sources */,
 				E7CB3FB122BCC8BD0063BF5A /* NSMapTable+ESExtension.m in Sources */,
 				E7CB3FD522BCC8BD0063BF5A /* NSString+ESHash.m in Sources */,
+				E79CCFA822C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */,
 				E7CB3FB922BCC8BD0063BF5A /* NSObject+ESAutoCoding.m in Sources */,
 				E7CB3FDD22BCC8BD0063BF5A /* NSTimer+ESExtension.m in Sources */,
 				E7CB3F4D22BCC8BD0063BF5A /* NSInvocation+ESExtension.m in Sources */,
@@ -1032,6 +1051,7 @@
 				E7CB405E22BCC8BD0063BF5A /* UIToolbar+ESExtension.m in Sources */,
 				E7CB3FFA22BCC8BD0063BF5A /* ESNetworkHelper.m in Sources */,
 				E7CB3F7E22BCC8BD0063BF5A /* NSDate+ESExtension.m in Sources */,
+				E79CCFA722C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */,
 				E7CB3FBE22BCC8BD0063BF5A /* NSOrderedSet+ESExtension.m in Sources */,
 				E7CB400622BCC8BD0063BF5A /* UIApplication+ESAppInfo.m in Sources */,
 				E7CB403E22BCC8BD0063BF5A /* UIImage+ESExtension.m in Sources */,

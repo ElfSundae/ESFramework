@@ -86,6 +86,7 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import "NSError+ESExtension.h"
 #import "NSFileManager+ESExtension.h"
 #import "NSHTTPCookieStorage+ESExtension.h"
+#import "NSHTTPURLResponse+ESExtension.h"
 #import "NSMapTable+ESExtension.h"
 #import "NSObject+ESAutoCoding.h"
 #import "NSOrderedSet+ESExtension.h"

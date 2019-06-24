@@ -3,6 +3,7 @@
 ## Master
 
 - Rename NSDate `-dateFromHTTPDateString:` to `-dateWithHTTPDateString:`.
+- Added `-[NSHTTPURLResponse date]`.
 
 ## 3.15.0 (2019-06-23)
 
