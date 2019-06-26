@@ -26,7 +26,15 @@
 - [BButton](https://github.com/jessesquires/BButton) Twitter Bootstrap buttons for iOS.
 - [MJRefresh](https://github.com/CoderMJLee/MJRefresh) An easy way to use pull-to-refresh.
 - [IQKeyboardManager](https://github.com/hackiftekhar/IQKeyboardManager) Codeless drop-in universal library allows to prevent issues of keyboard sliding up and cover UITextField/UITextView.
+- [TPKeyboardAvoiding](https://github.com/michaeltyson/TPKeyboardAvoiding) A drop-in universal solution for moving text fields out of the way of the keyboard in iOS
 - [MDRadialProgress](https://github.com/mdinacci/MDRadialProgress) A custom UIView useful to represent progress in discrete steps.
 - [SDCycleScrollView](https://github.com/gsdios/SDCycleScrollView) Autoscroll Banner. 无限循环图片、文字轮播器。
 - [MarqueeLabel](https://github.com/cbpowell/MarqueeLabel) A drop-in replacement for UILabel, which automatically adds a scrolling marquee effect when the label's text does not fit inside the specified frame.
 - [SVGAPlayer](https://github.com/yyued/SVGAPlayer-iOS) Render After Effects / Animate CC (Flash) animations natively.
+- [JXCategoryView](https://github.com/pujiaxin33/JXCategoryView) A powerful and easy to use category view (SegmentedControl, PageControl) 分类切换滚动视图
+- [GKPageScrollView](https://github.com/QuintGao/GKPageScrollView) 类似微博、抖音、网易云等个人详情页滑动嵌套效果
+- [YBPopupMenu](https://github.com/lyb5834/YBPopupMenu) 快速集成 popupMenu
+- [CustomPopoverView](https://github.com/maltsugar/CustomPopoverView) Custom popover view
+- [LNPopupController](https://github.com/LeoNatan/LNPopupController) LNPopupController is a framework for presenting view controllers as popups of other view controllers, much like the Apple Music and Podcasts apps.
+- [STPopup](https://github.com/kevin0571/STPopup) STPopup provides STPopupController, which works just like UINavigationController in popup style, for both iPhone and iPad.
+- [XLForm](https://github.com/xmartlabs/XLForm) XLForm is the most flexible and powerful iOS library to create dynamic table-view forms.
