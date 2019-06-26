@@ -1,9 +1,10 @@
 # Awesome iOS
 
-A curated list of awesome iOS frameworks, libraries, tools, components and much more.
+A curated list of most common & awesome iOS frameworks, libraries, tools, components and much more.
 
 <!-- MarkdownTOC -->
 
+- [Websites](#websites)
 - [Tools](#tools)
 - [Logging](#logging)
 - [Foundation](#foundation)
@@ -12,6 +13,11 @@ A curated list of awesome iOS frameworks, libraries, tools, components and much 
 - [UI Components](#ui-components)
 
 <!-- /MarkdownTOC -->
+
+## Websites
+
+- [vsouza/awesome-ios](https://github.com/vsouza/awesome-ios)
+- [iOS LibHunt](https://ios.libhunt.com)
 
 ## Tools
 
@@ -29,6 +35,8 @@ A curated list of awesome iOS frameworks, libraries, tools, components and much 
 
 ## Foundation
 
+- [ESFramework](https://github.com/ElfSundae/ESFramework) ESFramework is an efficient, small framework for iOS, macOS, watchOS, and tvOS.
+- [Nimbus](https://github.com/jverkoey/nimbus) Nimbus is an iOS framework whose feature set grows only as fast as its documentation.
 - [Masonry](https://github.com/SnapKit/Masonry) Harness the power of AutoLayout NSLayoutConstraints with a simplified, chainable and expressive syntax.
 - [KVOController](https://github.com/facebook/KVOController) Simple, modern, thread-safe key-value observing.
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) A delightful networking framework.
