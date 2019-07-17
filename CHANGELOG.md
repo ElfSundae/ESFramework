@@ -1,8 +1,8 @@
 # Changelog
 
-## Master
+## 3.15.2 (2019-07-17)
 
-- Added UIAlertController methods: `+actionSheetWithTitle:`, `+alertWithTitle:`
+- Added UIAlertController methods: `+actionSheetWithTitle:`, `+alertWithTitle:`.
 
 ## 3.15.1 (2019-06-24)
 
