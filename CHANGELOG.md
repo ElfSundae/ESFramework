@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Added UIAlertController methods: `+actionSheetWithTitle:`, `+alertWithTitle:`
+
 ## 3.15.1 (2019-06-24)
 
 - Rename NSDate `-dateFromHTTPDateString:` to `-dateWithHTTPDateString:`.

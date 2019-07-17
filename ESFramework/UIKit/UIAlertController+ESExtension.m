@@ -13,6 +13,11 @@
 
 @implementation UIAlertController (ESExtension)
 
++ (instancetype)actionSheetWithTitle:(nullable NSString *)title
+{
+    return [self actionSheetWithTitle:title message:nil];
+}
+
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title message:(nullable NSString *)message
 {
     return [self alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleActionSheet];
@@ -28,6 +33,11 @@
 + (instancetype)actionSheetWithTitle:(nullable NSString *)title cancelActionTitle:(nullable NSString *)cancelActionTitle
 {
     return [self actionSheetWithTitle:title message:nil cancelActionTitle:cancelActionTitle];
+}
+
++ (instancetype)alertWithTitle:(nullable NSString *)title
+{
+    return [self alertWithTitle:title message:nil];
 }
 
 + (instancetype)alertWithTitle:(nullable NSString *)title message:(nullable NSString *)message
