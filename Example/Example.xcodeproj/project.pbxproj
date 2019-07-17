@@ -221,7 +221,6 @@
 		E725575422B9583D00ED7D7E = {
 			isa = PBXGroup;
 			children = (
-				E79DBE2622DED20C006D6263 /* Embedded */,
 				E72557A122B95F5B00ED7D7E /* Model */,
 				E725576122B9587600ED7D7E /* iOS Example */,
 				E725577B22B9589E00ED7D7E /* macOS Example */,
@@ -229,6 +228,7 @@
 				E72557EA22B9CC3000ED7D7E /* watchOS Example */,
 				E72557F922B9CC3100ED7D7E /* watchOS Example Extension */,
 				E725576022B9587600ED7D7E /* Products */,
+				E79DBE2622DED20C006D6263 /* Embedded */,
 				E7CB40BE22BD09B30063BF5A /* Frameworks */,
 			);
 			sourceTree = "<group>";
