@@ -4,6 +4,7 @@ Pod::Spec.new do |s|
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
   s.summary     = 'An efficient, small framework for iOS, macOS, watchOS, and tvOS.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'
+  s.social_media_url = 'https://twitter.com/ElfSundae'
   s.authors     = { 'Elf Sundae' => 'https://0x123.com' }
   s.source      = { :git => 'https://github.com/ElfSundae/ESFramework.git', :tag => s.version }
 
