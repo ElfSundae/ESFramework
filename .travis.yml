@@ -11,7 +11,7 @@ before_install:
     - brew update
     - brew install carthage
     - carthage version
-    - bin/setup
+    - bin/build
 script:
     - pod lib lint
 
