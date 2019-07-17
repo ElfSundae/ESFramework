@@ -17,13 +17,13 @@ ESFramework is an efficient, small framework for iOS, macOS, watchOS, and tvOS.
 With [CocoaPods](https://cocoapods.org):
 
 ```ruby
-pod 'ESFramework', '~> 3.0'
+pod 'ESFramework'
 ```
 
 With [Carthage](https://github.com/Carthage/Carthage):
 
 ```ogdl
-github "ElfSundae/ESFramework" ~> 3.15
+github "ElfSundae/ESFramework"
 ```
 
 ## License
