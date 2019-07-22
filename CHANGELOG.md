@@ -2,6 +2,10 @@
 
 ## Master
 
+- Check if it is a valid JSON object in `-JSONString`.
+
+## 3.15.3 (2019-07-22)
+
 - Added `-JSONString`, `-JSONStringWithOptions:` to `NSArray`, `NSDictionary` category.
 
 ## 3.15.2 (2019-07-17)

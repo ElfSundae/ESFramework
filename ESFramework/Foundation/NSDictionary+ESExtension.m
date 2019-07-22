@@ -50,7 +50,9 @@
 
 - (NSString *)JSONStringWithOptions:(NSJSONWritingOptions)opts
 {
-    return [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL].UTF8String;
+    return [NSJSONSerialization isValidJSONObject:self]
+           ? [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL].UTF8String
+           : nil;
 }
 
 @end
