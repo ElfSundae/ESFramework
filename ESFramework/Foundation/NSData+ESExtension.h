@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Converts the data to a UTF-8 encoded string.
  */
-- (NSString *)UTF8String;
+- (nullable NSString *)UTF8String;
 
 /**
  * Converts the data to a lowercase hexadecimal string.
