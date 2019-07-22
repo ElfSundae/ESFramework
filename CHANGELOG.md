@@ -4,6 +4,7 @@
 
 - Check if it is a valid JSON object in `-JSONString`.
 - Added `-JSONData`, `-JSONDataWithOptions:` to `NSArray`, `NSDictionary`.
+- Added `-JSONObject`, `-JSONObjectWithOptions:` to `NSData`.
 
 ## 3.15.3 (2019-07-22)
 

@@ -38,6 +38,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)uppercaseHexString;
 
+/**
+ * Converts the data as JSON to an Foundation object.
+ */
+- (nullable id)JSONObject;
+
+/**
+ * Converts the data as JSON to an Foundation object.
+ */
+- (nullable id)JSONObjectWithOptions:(NSJSONReadingOptions)options;
+
 #pragma mark - MD5 Digest
 
 - (NSData *)md5HashData;

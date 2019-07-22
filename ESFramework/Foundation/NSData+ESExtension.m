@@ -78,6 +78,16 @@
     return [[self lowercaseHexString] uppercaseString];
 }
 
+- (id)JSONObject
+{
+    return [self JSONObjectWithOptions:0];
+}
+
+- (id)JSONObjectWithOptions:(NSJSONReadingOptions)options
+{
+    return [NSJSONSerialization JSONObjectWithData:self options:options error:NULL];
+}
+
 - (NSData *)md5HashData
 {
     unsigned char buffer[CC_MD5_DIGEST_LENGTH];
