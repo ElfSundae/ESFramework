@@ -51,8 +51,8 @@
 - (NSData *)JSONDataWithOptions:(NSJSONWritingOptions)opts
 {
     return [NSJSONSerialization isValidJSONObject:self]
-    ? [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL]
-    : nil;
+           ? [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL]
+           : nil;
 }
 
 - (NSString *)JSONString
