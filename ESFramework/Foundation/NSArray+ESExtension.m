@@ -66,6 +66,18 @@
     return [self nextObjectToIndex:[self indexOfObject:object]];
 }
 
+- (NSData *)JSONData
+{
+    return [self JSONDataWithOptions:0];
+}
+
+- (NSData *)JSONDataWithOptions:(NSJSONWritingOptions)opts
+{
+    return [NSJSONSerialization isValidJSONObject:self]
+    ? [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL]
+    : nil;
+}
+
 - (NSString *)JSONString
 {
     return [self JSONStringWithOptions:0];
@@ -73,9 +85,7 @@
 
 - (NSString *)JSONStringWithOptions:(NSJSONWritingOptions)opts
 {
-    return [NSJSONSerialization isValidJSONObject:self]
-           ? [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL].UTF8String
-           : nil;
+    return [self JSONDataWithOptions:opts].UTF8String;
 }
 
 @end

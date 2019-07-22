@@ -3,6 +3,7 @@
 ## Master
 
 - Check if it is a valid JSON object in `-JSONString`.
+- Added `-JSONData`, `-JSONDataWithOptions:` to `NSArray`, `NSDictionary`.
 
 ## 3.15.3 (2019-07-22)
 
