@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSDictionary<KeyType, ObjectType> *)entriesPassingTest:(BOOL (NS_NOESCAPE ^)(KeyType key, ObjectType obj, BOOL *stop))predicate;
 - (NSDictionary<KeyType, ObjectType> *)entriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(KeyType key, ObjectType obj, BOOL *stop))predicate;
 
+- (nullable NSString *)JSONString;
+- (nullable NSString *)JSONStringWithOptions:(NSJSONWritingOptions)opts;
+
 @end
 
 #pragma mark - NSMutableDictionary (ESExtension)

@@ -8,6 +8,7 @@
 
 #import "NSDictionary+ESExtension.h"
 #import "NSURLComponents+ESExtension.h"
+#import "NSData+ESExtension.h"
 
 @implementation NSDictionary (ESExtension)
 
@@ -40,6 +41,16 @@
     NSArray *keys = [self keysOfEntriesWithOptions:opts passingTest:predicate].allObjects;
     NSArray *objects = [self objectsForKeys:keys notFoundMarker:[NSNull null]];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+}
+
+- (NSString *)JSONString
+{
+    return [self JSONStringWithOptions:0];
+}
+
+- (NSString *)JSONStringWithOptions:(NSJSONWritingOptions)opts
+{
+    return [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL].UTF8String;
 }
 
 @end

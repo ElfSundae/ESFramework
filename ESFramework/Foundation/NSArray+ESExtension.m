@@ -7,6 +7,7 @@
 //
 
 #import "NSArray+ESExtension.h"
+#import "NSData+ESExtension.h"
 
 @implementation NSArray (ESExtension)
 
@@ -63,6 +64,16 @@
 - (id)nextObjectToObject:(id)object
 {
     return [self nextObjectToIndex:[self indexOfObject:object]];
+}
+
+- (NSString *)JSONString
+{
+    return [self JSONStringWithOptions:0];
+}
+
+- (NSString *)JSONStringWithOptions:(NSJSONWritingOptions)opts
+{
+    return [NSJSONSerialization dataWithJSONObject:self options:opts error:NULL].UTF8String;
 }
 
 @end

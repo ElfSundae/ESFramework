@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Added `-JSONString`, `-JSONStringWithOptions:` to `NSArray`, `NSDictionary` category.
+
 ## 3.15.2 (2019-07-17)
 
 - Added UIAlertController methods: `+actionSheetWithTitle:`, `+alertWithTitle:`.

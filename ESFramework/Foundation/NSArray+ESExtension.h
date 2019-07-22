@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable ObjectType)nextObjectToIndex:(NSUInteger)index;
 - (nullable ObjectType)nextObjectToObject:(ObjectType)object;
 
+- (nullable NSString *)JSONString;
+- (nullable NSString *)JSONStringWithOptions:(NSJSONWritingOptions)opts;
+
 @end
 
 #pragma mark - NSMutableArray (ESExtension)
