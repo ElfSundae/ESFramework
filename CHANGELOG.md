@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 3.16.0 (2019-07-23)
 
 - Added `-JSONObject`, `-JSONObjectWithOptions:` to `NSString`.
 
