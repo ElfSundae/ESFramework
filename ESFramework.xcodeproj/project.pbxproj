@@ -835,7 +835,7 @@
 		E7CB3E6D22BCB98B0063BF5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "https://0x123.com";
 				TargetAttributes = {
 					E7CB3E9422BCBBB40063BF5A = {
@@ -1274,7 +1274,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7FECCB022BF9CD400FCEFB8 /* macOS-Framework.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1294,7 +1294,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E7FECCB022BF9CD400FCEFB8 /* macOS-Framework.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
