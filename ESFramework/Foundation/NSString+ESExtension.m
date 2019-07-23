@@ -11,6 +11,7 @@
 #import "NSNumber+ESExtension.h"
 #import "NSCharacterSet+ESExtension.h"
 #import "NSURLComponents+ESExtension.h"
+#import "NSData+ESExtension.h"
 
 @implementation NSString (ESExtension)
 
@@ -200,6 +201,16 @@
     NSURLComponents *components = [NSURLComponents componentsWithString:self];
     [components addQueryParameters:parameters];
     return components.string;
+}
+
+- (id)JSONObject
+{
+    return [self JSONObjectWithOptions:0];
+}
+
+- (id)JSONObjectWithOptions:(NSJSONReadingOptions)options
+{
+    return [self.dataValue JSONObjectWithOptions:options];
 }
 
 @end

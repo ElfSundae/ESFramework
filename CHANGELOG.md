@@ -1,5 +1,9 @@
 # Changelog
 
+## master
+
+- Added `-JSONObject`, `-JSONObjectWithOptions:` to `NSString`.
+
 ## 3.15.4 (2019-07-23)
 
 - Check if it is a valid JSON object in `-JSONString`.

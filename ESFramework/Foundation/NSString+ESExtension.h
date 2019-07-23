@@ -77,6 +77,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)stringByAddingURLQueryParameters:(NSDictionary<NSString *, id> *)parameters;
 
+/**
+ * Converts the JSON string to an Foundation object.
+ */
+- (nullable id)JSONObject;
+
+/**
+ * Converts the JSON string to an Foundation object.
+ */
+- (nullable id)JSONObjectWithOptions:(NSJSONReadingOptions)options;
+
 @end
 
 @interface NSString (ESHash)
