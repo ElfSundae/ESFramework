@@ -173,10 +173,6 @@
 		E7CB3FCF22BCC8BD0063BF5A /* NSString+ESGTMHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0522BCC8BD0063BF5A /* NSString+ESGTMHTML.m */; };
 		E7CB3FD022BCC8BD0063BF5A /* NSString+ESGTMHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0522BCC8BD0063BF5A /* NSString+ESGTMHTML.m */; };
 		E7CB3FD122BCC8BD0063BF5A /* NSString+ESGTMHTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0522BCC8BD0063BF5A /* NSString+ESGTMHTML.m */; };
-		E7CB3FD222BCC8BD0063BF5A /* NSString+ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0622BCC8BD0063BF5A /* NSString+ESHash.m */; };
-		E7CB3FD322BCC8BD0063BF5A /* NSString+ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0622BCC8BD0063BF5A /* NSString+ESHash.m */; };
-		E7CB3FD422BCC8BD0063BF5A /* NSString+ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0622BCC8BD0063BF5A /* NSString+ESHash.m */; };
-		E7CB3FD522BCC8BD0063BF5A /* NSString+ESHash.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CB3F0622BCC8BD0063BF5A /* NSString+ESHash.m */; };
 		E7CB3FD622BCC8BD0063BF5A /* NSTimer+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3F0722BCC8BD0063BF5A /* NSTimer+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CB3FD722BCC8BD0063BF5A /* NSTimer+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3F0722BCC8BD0063BF5A /* NSTimer+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CB3FD822BCC8BD0063BF5A /* NSTimer+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CB3F0722BCC8BD0063BF5A /* NSTimer+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -332,7 +328,6 @@
 		E7CB3F0322BCC8BD0063BF5A /* NSString+ESExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESExtension.m"; sourceTree = "<group>"; };
 		E7CB3F0422BCC8BD0063BF5A /* NSString+ESGTMHTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ESGTMHTML.h"; sourceTree = "<group>"; };
 		E7CB3F0522BCC8BD0063BF5A /* NSString+ESGTMHTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESGTMHTML.m"; sourceTree = "<group>"; };
-		E7CB3F0622BCC8BD0063BF5A /* NSString+ESHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESHash.m"; sourceTree = "<group>"; };
 		E7CB3F0722BCC8BD0063BF5A /* NSTimer+ESExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+ESExtension.h"; sourceTree = "<group>"; };
 		E7CB3F0822BCC8BD0063BF5A /* NSTimer+ESExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+ESExtension.m"; sourceTree = "<group>"; };
 		E7CB3F0922BCC8BD0063BF5A /* NSURL+ESExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+ESExtension.h"; sourceTree = "<group>"; };
@@ -523,7 +518,6 @@
 				E7CB3F0322BCC8BD0063BF5A /* NSString+ESExtension.m */,
 				E7CB3F0422BCC8BD0063BF5A /* NSString+ESGTMHTML.h */,
 				E7CB3F0522BCC8BD0063BF5A /* NSString+ESGTMHTML.m */,
-				E7CB3F0622BCC8BD0063BF5A /* NSString+ESHash.m */,
 				E7CB3F0722BCC8BD0063BF5A /* NSTimer+ESExtension.h */,
 				E7CB3F0822BCC8BD0063BF5A /* NSTimer+ESExtension.m */,
 				E7CB3F0922BCC8BD0063BF5A /* NSURL+ESExtension.h */,
@@ -927,7 +921,6 @@
 				E7CB3FCF22BCC8BD0063BF5A /* NSString+ESGTMHTML.m in Sources */,
 				E7CB3FEB22BCC8BD0063BF5A /* NSURLComponents+ESExtension.m in Sources */,
 				E7CB3FAF22BCC8BD0063BF5A /* NSMapTable+ESExtension.m in Sources */,
-				E7CB3FD322BCC8BD0063BF5A /* NSString+ESHash.m in Sources */,
 				E7CB3FB722BCC8BD0063BF5A /* NSObject+ESAutoCoding.m in Sources */,
 				E7CB3FDB22BCC8BD0063BF5A /* NSTimer+ESExtension.m in Sources */,
 				E7CB3F4B22BCC8BD0063BF5A /* NSInvocation+ESExtension.m in Sources */,
@@ -966,7 +959,6 @@
 				E7CB3FEC22BCC8BD0063BF5A /* NSURLComponents+ESExtension.m in Sources */,
 				E7CB406822BCC8BD0063BF5A /* UIView+ESExtension.m in Sources */,
 				E7CB3FB022BCC8BD0063BF5A /* NSMapTable+ESExtension.m in Sources */,
-				E7CB3FD422BCC8BD0063BF5A /* NSString+ESHash.m in Sources */,
 				E7CB404822BCC8BD0063BF5A /* UIImageView+ESExtension.m in Sources */,
 				E7CB3FB822BCC8BD0063BF5A /* NSObject+ESAutoCoding.m in Sources */,
 				E7CB402022BCC8BD0063BF5A /* UIColor+ESExtension.m in Sources */,
@@ -1007,7 +999,6 @@
 				E7CB3FD122BCC8BD0063BF5A /* NSString+ESGTMHTML.m in Sources */,
 				E7CB3FED22BCC8BD0063BF5A /* NSURLComponents+ESExtension.m in Sources */,
 				E7CB3FB122BCC8BD0063BF5A /* NSMapTable+ESExtension.m in Sources */,
-				E7CB3FD522BCC8BD0063BF5A /* NSString+ESHash.m in Sources */,
 				E79CCFA822C0D7C900121C15 /* NSHTTPURLResponse+ESExtension.m in Sources */,
 				E7CB3FB922BCC8BD0063BF5A /* NSObject+ESAutoCoding.m in Sources */,
 				E7CB3FDD22BCC8BD0063BF5A /* NSTimer+ESExtension.m in Sources */,
@@ -1048,7 +1039,6 @@
 				E7CB3FEA22BCC8BD0063BF5A /* NSURLComponents+ESExtension.m in Sources */,
 				E7CB406622BCC8BD0063BF5A /* UIView+ESExtension.m in Sources */,
 				E7CB3FAE22BCC8BD0063BF5A /* NSMapTable+ESExtension.m in Sources */,
-				E7CB3FD222BCC8BD0063BF5A /* NSString+ESHash.m in Sources */,
 				E7CB404622BCC8BD0063BF5A /* UIImageView+ESExtension.m in Sources */,
 				E7CB3FB622BCC8BD0063BF5A /* NSObject+ESAutoCoding.m in Sources */,
 				E7CB401E22BCC8BD0063BF5A /* UIColor+ESExtension.m in Sources */,

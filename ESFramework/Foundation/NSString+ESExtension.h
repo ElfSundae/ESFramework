@@ -87,10 +87,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable id)JSONObjectWithOptions:(NSJSONReadingOptions)options;
 
-@end
-
-@interface NSString (ESHash)
-
 - (NSData *)md5HashData;
 - (NSString *)md5HashString;
 
