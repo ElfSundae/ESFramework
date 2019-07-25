@@ -34,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIAlertAction *)addCancelActionWithTitle:(nullable NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 - (UIAlertAction *)addDestructiveActionWithTitle:(NSString *)title handler:(void (^ _Nullable)(UIAlertAction *action))handler;
 
+// *INDENT-OFF*
 - (void)show NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 - (void)showAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
 
@@ -49,6 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Creates and presents an alert controller with UIAlertControllerStyleAlert style.
  */
 + (instancetype)showAlertWithTitle:(nullable NSString *)title cancelActionTitle:(NSString *)cancelActionTitle NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+// *INDENT-ON*
 
 @end
 
