@@ -57,12 +57,16 @@
 
 - (void)setVisibleCellsNeedDisplay
 {
-    [self.visibleCells makeObjectsPerformSelector:@selector(setNeedsDisplay)];
+    for (UITableViewCell *cell in self.visibleCells) {
+        [cell setNeedsDisplay];
+    }
 }
 
 - (void)setVisibleCellsNeedLayout
 {
-    [self.visibleCells makeObjectsPerformSelector:@selector(setNeedsLayout)];
+    for (UITableViewCell *cell in self.visibleCells) {
+        [cell setNeedsLayout];
+    }
 }
 
 @end

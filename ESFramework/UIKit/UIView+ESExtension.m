@@ -168,7 +168,9 @@
 
 - (void)removeAllSubviews
 {
-    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    for (UIView *view in self.subviews.reverseObjectEnumerator) {
+        [view removeFromSuperview];
+    }
 }
 
 - (nullable __kindof UIView *)findSuperviewOfClass:(Class)viewClass
