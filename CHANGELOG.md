@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.16.1 (2019-07-25)
+
+- Replaced `makeObjectsPerformSelector:` with for-in fast loop
+
 ## 3.16.0 (2019-07-23)
 
 - Added `-JSONObject`, `-JSONObjectWithOptions:` to `NSString`.
