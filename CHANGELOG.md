@@ -1,5 +1,9 @@
 # Changelog
 
+## master
+
+- Moved `-[NSString UUIDString]` to `ESUUIDString()` helper
+
 ## 3.16.1 (2019-07-25)
 
 - Replaced `makeObjectsPerformSelector:` with for-in fast loop

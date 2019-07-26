@@ -143,6 +143,11 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180 / M_PI);
 }
 
+NSString *ESUUIDString(void)
+{
+    return [NSUUID UUID].UUIDString;
+}
+
 NSURL *ESAppLink(NSInteger appIdentifier)
 {
     return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];

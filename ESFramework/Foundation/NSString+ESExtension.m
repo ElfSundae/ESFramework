@@ -58,11 +58,6 @@
     return self.numberValue.boolValue;
 }
 
-+ (NSString *)UUIDString
-{
-    return [NSUUID UUID].UUIDString;
-}
-
 + (nullable NSString *)randomStringWithLength:(NSUInteger)length
 {
     static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

@@ -13,11 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (ESExtension)
 
 /**
- * Generates an UUID string, e.g. "E621E1F8-C36C-495A-93FC-0C247A3E6E5F".
- */
-+ (NSString *)UUIDString;
-
-/**
  * Generates a random string that contains a-zA-Z0-9.
  */
 + (nullable NSString *)randomStringWithLength:(NSUInteger)length;

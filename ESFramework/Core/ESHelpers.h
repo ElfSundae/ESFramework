@@ -68,6 +68,12 @@ FOUNDATION_EXPORT CGFloat ESDegreesToRadians(CGFloat degrees);
  */
 FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
 
+/**
+ * Generates a new UUID string conforms to RFC 4122 version 4,
+ * e.g. "E621E1F8-C36C-495A-93FC-0C247A3E6E5F".
+ */
+FOUNDATION_EXPORT NSString *ESUUIDString(void);
+
 #pragma mark - App Store Links
 
 /**
