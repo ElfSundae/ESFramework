@@ -148,6 +148,27 @@ NSString *ESUUIDString(void)
     return [NSUUID UUID].UUIDString;
 }
 
+NSString * _Nullable ESRandomString(NSUInteger length)
+{
+    static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    static uint32_t charsetLen = (uint32_t)(sizeof(charset) - 1);
+
+    char *str = malloc(length + 1);
+    if (!str) {
+        return nil;
+    }
+
+    for (NSUInteger i = 0; i < length; i++) {
+        str[i] = charset[arc4random_uniform(charsetLen)];
+    }
+    str[length] = '\0';
+
+    NSString *string = [NSString stringWithUTF8String:str];
+    free(str);
+
+    return string;
+}
+
 NSURL *ESAppLink(NSInteger appIdentifier)
 {
     return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];

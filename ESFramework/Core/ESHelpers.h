@@ -74,6 +74,11 @@ FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
  */
 FOUNDATION_EXPORT NSString *ESUUIDString(void);
 
+/**
+ * Generates a random alphanumeric string that contains a-zA-Z0-9.
+ */
+FOUNDATION_EXPORT NSString * _Nullable ESRandomString(NSUInteger length);
+
 #pragma mark - App Store Links
 
 /**

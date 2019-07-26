@@ -13,11 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSString (ESExtension)
 
 /**
- * Generates a random string that contains a-zA-Z0-9.
- */
-+ (nullable NSString *)randomStringWithLength:(NSUInteger)length;
-
-/**
  * Returns a NSNumber object created by parsing the string.
  */
 - (nullable NSNumber *)numberValue;
