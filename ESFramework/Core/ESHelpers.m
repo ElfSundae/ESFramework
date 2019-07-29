@@ -8,6 +8,7 @@
 
 #import "ESHelpers.h"
 #import <sys/time.h>
+#import <Security/SecRandom.h>
 #import "NSNumber+ESExtension.h"
 #import "NSInvocation+ESExtension.h"
 
@@ -167,6 +168,16 @@ NSString * _Nullable ESRandomString(NSUInteger length)
     free(str);
 
     return string;
+}
+
+NSData * _Nullable ESRandomData(NSUInteger length)
+{
+    NSMutableData *data = [NSMutableData dataWithLength:length];
+    int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, data.mutableBytes);
+    if (0 != result) {
+        return nil;
+    }
+    return [data copy];
 }
 
 NSURL *ESAppLink(NSInteger appIdentifier)

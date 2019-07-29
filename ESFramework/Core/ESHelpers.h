@@ -79,6 +79,11 @@ FOUNDATION_EXPORT NSString *ESUUIDString(void);
  */
 FOUNDATION_EXPORT NSString * _Nullable ESRandomString(NSUInteger length);
 
+/**
+ * Generates a random data using `SecRandomCopyBytes`.
+ */
+FOUNDATION_EXPORT NSData * _Nullable ESRandomData(NSUInteger length);
+
 #pragma mark - App Store Links
 
 /**

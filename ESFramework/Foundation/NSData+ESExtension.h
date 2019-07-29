@@ -19,11 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (nullable NSData *)dataWithHexString:(NSString *)hexString;
 
 /**
- * Generates a random data using `SecRandomCopyBytes`.
- */
-+ (nullable NSData *)randomDataWithLength:(NSUInteger)length;
-
-/**
  * Converts the data to a UTF-8 encoded string.
  */
 - (nullable NSString *)UTF8String;
