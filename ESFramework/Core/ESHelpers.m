@@ -134,16 +134,6 @@ uint32_t ESRandomNumber(uint32_t min, uint32_t max)
     return arc4random_uniform(max - min + 1) + min;
 }
 
-CGFloat ESDegreesToRadians(CGFloat degrees)
-{
-    return (degrees * M_PI / 180);
-}
-
-CGFloat ESRadiansToDegrees(CGFloat radians)
-{
-    return (radians * 180 / M_PI);
-}
-
 NSString *ESUUIDString(void)
 {
     return [NSUUID UUID].UUIDString;
@@ -178,6 +168,16 @@ NSData * _Nullable ESRandomData(NSUInteger length)
         return nil;
     }
     return [data copy];
+}
+
+CGFloat ESDegreesToRadians(CGFloat degrees)
+{
+    return (degrees * M_PI / 180);
+}
+
+CGFloat ESRadiansToDegrees(CGFloat radians)
+{
+    return (radians * 180 / M_PI);
 }
 
 NSURL *ESAppLink(NSInteger appIdentifier)
@@ -320,6 +320,14 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
 }
 
 #if TARGET_OS_IOS || TARGET_OS_TV
+
+UIColor *ESRandomColor(void)
+{
+    return [UIColor colorWithRed:(CGFloat)arc4random() / UINT_MAX
+                           green:(CGFloat)arc4random() / UINT_MAX
+                            blue:(CGFloat)arc4random() / UINT_MAX
+                           alpha:1.0];
+}
 
 UIColor *UIColorWithRGBA(CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
 {

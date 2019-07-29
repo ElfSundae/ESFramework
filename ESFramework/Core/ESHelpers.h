@@ -59,16 +59,6 @@ FOUNDATION_EXPORT void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NO
 FOUNDATION_EXPORT uint32_t ESRandomNumber(uint32_t min, uint32_t max);
 
 /**
- * Converts degrees to radians.
- */
-FOUNDATION_EXPORT CGFloat ESDegreesToRadians(CGFloat degrees);
-
-/**
- * Converts radians to degrees.
- */
-FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
-
-/**
  * Generates a new UUID string conforms to RFC 4122 version 4,
  * e.g. "E621E1F8-C36C-495A-93FC-0C247A3E6E5F".
  */
@@ -83,6 +73,16 @@ FOUNDATION_EXPORT NSString * _Nullable ESRandomString(NSUInteger length);
  * Generates a random data using `SecRandomCopyBytes`.
  */
 FOUNDATION_EXPORT NSData * _Nullable ESRandomData(NSUInteger length);
+
+/**
+ * Converts degrees to radians.
+ */
+FOUNDATION_EXPORT CGFloat ESDegreesToRadians(CGFloat degrees);
+
+/**
+ * Converts radians to degrees.
+ */
+FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
 
 #pragma mark - App Store Links
 
@@ -273,6 +273,11 @@ FOUNDATION_EXPORT BOOL ESInvokeSelector(id target, SEL selector, void * _Nullabl
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #pragma mark - UIColor Helpers
+
+/**
+ * Generates a random color.
+ */
+FOUNDATION_EXPORT UIColor *ESRandomColor(void);
 
 /**
  * Creates an UIColor object from RGB values.
