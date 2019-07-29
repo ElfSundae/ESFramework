@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 3.17.0 (2019-07-29)
 
 - Moved `-[NSString UUIDString]` to `ESUUIDString()` helper
 - Moved `-[NSString randomStringWithLength:]` to `ESRandomString()` helper
