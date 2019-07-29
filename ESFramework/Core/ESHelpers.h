@@ -270,9 +270,9 @@ FOUNDATION_EXPORT void ESSwizzleClassMethod(Class cls, SEL originalSelector, SEL
  */
 FOUNDATION_EXPORT BOOL ESInvokeSelector(id target, SEL selector, void * _Nullable result, ...);
 
-#if TARGET_OS_IOS || TARGET_OS_TV
+#pragma mark - UI Helpers
 
-#pragma mark - UIColor Helpers
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 /**
  * Generates a random color.
@@ -322,33 +322,6 @@ FOUNDATION_EXPORT UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat 
  */
 FOUNDATION_EXPORT NSString *ESScreenSizeString(CGSize size);
 
-#endif // TARGET_OS_IOS || TARGET_OS_TV
-
-#if TARGET_OS_IOS
-
-#pragma mark - iOS UI Helpers
-
-/**
- * Returns the height of the status bar, in any orientation.
- */
-FOUNDATION_EXPORT CGFloat ESStatusBarHeight(void) NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
-
-/**
- * Returns the current interface orientation of the application.
- */
-FOUNDATION_EXPORT UIInterfaceOrientation ESInterfaceOrientation(void) NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
-
-/**
- * Returns the physical orientation of the device.
- * @discussion This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
- */
-FOUNDATION_EXPORT UIDeviceOrientation ESDeviceOrientation(void);
-
-/**
- * Returns a recommended rotating transform for the given interface orientation.
- */
-FOUNDATION_EXPORT CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
-
 /**
  * Checks whether the current user interface is iPad style.
  */
@@ -373,6 +346,31 @@ FOUNDATION_EXPORT BOOL ESIsPhoneDevice(void);
  * Checks whether the device has retina screen.
  */
 FOUNDATION_EXPORT BOOL ESIsRetinaScreen(void);
+
+#endif // TARGET_OS_IOS || TARGET_OS_TV
+
+#if TARGET_OS_IOS
+
+/**
+ * Returns the height of the status bar, in any orientation.
+ */
+FOUNDATION_EXPORT CGFloat ESStatusBarHeight(void) NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+
+/**
+ * Returns the current interface orientation of the application.
+ */
+FOUNDATION_EXPORT UIInterfaceOrientation ESInterfaceOrientation(void) NS_EXTENSION_UNAVAILABLE_IOS("Use view controller based solutions where appropriate instead.");
+
+/**
+ * Returns the physical orientation of the device.
+ * @discussion This will return UIDeviceOrientationUnknown unless device orientation notifications are being generated.
+ */
+FOUNDATION_EXPORT UIDeviceOrientation ESDeviceOrientation(void);
+
+/**
+ * Returns a recommended rotating transform for the given interface orientation.
+ */
+FOUNDATION_EXPORT CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orientation);
 
 #endif // TARGET_OS_IOS
 

@@ -372,6 +372,32 @@ NSString *ESScreenSizeString(CGSize size)
     ];
 }
 
+BOOL ESIsPadUI(void)
+{
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
+}
+
+BOOL ESIsPadDevice(void)
+{
+    return [UIDevice.currentDevice.model hasPrefix:@"iPad"];
+}
+
+BOOL ESIsPhoneUI(void)
+{
+    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone;
+}
+
+BOOL ESIsPhoneDevice(void)
+{
+    return ([UIDevice.currentDevice.model hasPrefix:@"iPhone"] ||
+            [UIDevice.currentDevice.model hasPrefix:@"iPod"]);
+}
+
+BOOL ESIsRetinaScreen(void)
+{
+    return [UIScreen mainScreen].scale >= 2.0;
+}
+
 #endif // TARGET_OS_IOS || TARGET_OS_TV
 
 #if TARGET_OS_IOS
@@ -403,32 +429,6 @@ CGAffineTransform ESRotateTransformForOrientation(UIInterfaceOrientation orienta
     } else {
         return CGAffineTransformIdentity;
     }
-}
-
-BOOL ESIsPadUI(void)
-{
-    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;
-}
-
-BOOL ESIsPadDevice(void)
-{
-    return [UIDevice.currentDevice.model hasPrefix:@"iPad"];
-}
-
-BOOL ESIsPhoneUI(void)
-{
-    return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPhone;
-}
-
-BOOL ESIsPhoneDevice(void)
-{
-    return ([UIDevice.currentDevice.model hasPrefix:@"iPhone"] ||
-            [UIDevice.currentDevice.model hasPrefix:@"iPod"]);
-}
-
-BOOL ESIsRetinaScreen(void)
-{
-    return [UIScreen mainScreen].scale >= 2.0;
 }
 
 #endif // TARGET_OS_IOS
