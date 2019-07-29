@@ -139,6 +139,14 @@ NSString *ESUUIDString(void)
     return [NSUUID UUID].UUIDString;
 }
 
+NSString *ESUniqueNumericIdentifier(void)
+{
+    NSTimeInterval time = NSDate.date.timeIntervalSinceReferenceDate;
+    NSUInteger seconds = (NSUInteger)time;
+    NSUInteger random = (NSUInteger)((time - seconds) * 1000000.0 + arc4random() % 100000);
+    return [NSString stringWithFormat:@"%lu%lu", (unsigned long)seconds, (unsigned long)random];
+}
+
 NSString * _Nullable ESRandomString(NSUInteger length)
 {
     static char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

@@ -65,6 +65,12 @@ FOUNDATION_EXPORT uint32_t ESRandomNumber(uint32_t min, uint32_t max);
 FOUNDATION_EXPORT NSString *ESUUIDString(void);
 
 /**
+ * Generates a time based unique numeric identifier.
+ * e.g. "586063599884852".
+ */
+FOUNDATION_EXPORT NSString *ESUniqueNumericIdentifier(void);
+
+/**
  * Generates a random alphanumeric string that contains a-zA-Z0-9.
  */
 FOUNDATION_EXPORT NSString * _Nullable ESRandomString(NSUInteger length);

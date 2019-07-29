@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.17.1 (2019-07-29)
+
+- Added `ESUniqueNumericIdentifier()` helper
+
 ## 3.17.0 (2019-07-29)
 
 - Moved `-[NSString UUIDString]` to `ESUUIDString()` helper
