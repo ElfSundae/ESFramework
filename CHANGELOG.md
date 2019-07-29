@@ -5,6 +5,7 @@
 - Moved `-[NSString UUIDString]` to `ESUUIDString()` helper
 - Moved `-[NSString randomStringWithLength:]` to `ESRandomString()` helper
 - Moved `-[NSData randomDataWithLength:]` to `ESRandomData()` helper
+- Moved `-[UIColor randomColor]` to `ESRandomColor()` helper
 
 ## 3.16.1 (2019-07-25)
 

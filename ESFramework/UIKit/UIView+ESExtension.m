@@ -9,7 +9,7 @@
 #import "UIView+ESExtension.h"
 #if TARGET_OS_IOS || TARGET_OS_TV
 
-#import "UIColor+ESExtension.h"
+#import "ESHelpers.h"
 #import "UIGestureRecognizer+ESExtension.h"
 
 @implementation UIView (ESExtension)
@@ -278,7 +278,7 @@
 
 - (void)enableDebugBorder
 {
-    [self enableDebugBorderWithColor:[UIColor randomColor]];
+    [self enableDebugBorderWithColor:ESRandomColor()];
 }
 
 - (void)enableDebugBorderWithColor:(UIColor *)color

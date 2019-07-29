@@ -72,7 +72,7 @@
     cell.textLabel.attributedText =
         [[NSAttributedString alloc] initWithString:
          [NSString stringWithFormat:@"Section %@ Row %@", @(indexPath.section), @(indexPath.row)]
-                                        attributes:@{ NSForegroundColorAttributeName: [UIColor randomColor],
+                                        attributes:@{ NSForegroundColorAttributeName: ESRandomColor(),
                                                       NSFontAttributeName: [UIFont boldSystemFontOfSize:20] }];
     return cell;
 }
