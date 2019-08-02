@@ -44,8 +44,8 @@
  * Bits-mask helpers.
  */
 #define ESMaskIsSet(value, flag)    (((value) & (flag)) == (flag))
-#define ESMaskSet(value, flag)      ((value) |= (flag));
-#define ESMaskUnset(value, flag)    ((value) &= ~(flag));
+#define ESMaskSet(value, flag)      ((value) |= (flag))
+#define ESMaskUnset(value, flag)    ((value) &= ~(flag))
 
 /**
  * Define a key for the associcated object.

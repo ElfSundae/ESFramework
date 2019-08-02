@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.17.3 (2019-08-02)
+
+- Remove comma for ESMaskSet, ESMaskUnset
+
 ## 3.17.2 (2019-08-02)
 
 - Restore bits-mask helpers macros: `ESMaskIsSet`, `ESMaskSet`, `ESMaskUnset`
