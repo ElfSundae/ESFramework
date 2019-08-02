@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.17.2 (2019-08-02)
+
+- Restore bits-mask helpers macros: `ESMaskIsSet`, `ESMaskSet`, `ESMaskUnset`
+
 ## 3.17.1 (2019-07-29)
 
 - Added `ESUniqueNumericIdentifier()` helper
