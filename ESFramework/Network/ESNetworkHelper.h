@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import <TargetConditionals.h>
 #if !TARGET_OS_WATCH
 
 NS_ASSUME_NONNULL_BEGIN
