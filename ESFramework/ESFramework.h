@@ -16,8 +16,6 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ESFramework/PublicHeader.h>
 
-#import <TargetConditionals.h>
-
 #import <ESFramework/ESMacros.h>
 #import <ESFramework/ESHelpers.h>
 #import <ESFramework/ESWeakProxy.h>
