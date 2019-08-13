@@ -180,12 +180,12 @@ NSData * _Nullable ESRandomData(NSUInteger length)
 
 CGFloat ESDegreesToRadians(CGFloat degrees)
 {
-    return (degrees * M_PI / 180);
+    return (degrees * M_PI / 180.0);
 }
 
 CGFloat ESRadiansToDegrees(CGFloat radians)
 {
-    return (radians * 180 / M_PI);
+    return (radians * 180.0 / M_PI);
 }
 
 NSURL *ESAppLink(NSInteger appIdentifier)
