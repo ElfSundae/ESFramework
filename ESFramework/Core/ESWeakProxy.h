@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Access an associated object with "zeroing weak reference".
  * @code
  * // a weak property in the category
- * @property (nonatomic, weak) __weak id<SomeProtocol> delegate;
+ * @property (nonatomic, weak) id<SomeProtocol> delegate;
  *
  * // setter
  * objc_setAssociatedObject(
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ESWeakProxy : NSProxy
 
-@property (nonatomic, weak, readonly) __weak id target;
+@property (nonatomic, weak, readonly) id target;
 
 - (instancetype)initWithTarget:(id)target;
 + (instancetype)proxyWithTarget:(id)target;
