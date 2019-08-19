@@ -7,11 +7,10 @@
 //
 
 #import <TargetConditionals.h>
+#import <CoreGraphics/CoreGraphics.h>
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
 #endif
-#import <CoreGraphics/CoreGraphics.h>
-#import <objc/runtime.h>
 #import "ESMacros.h"
 
 NS_ASSUME_NONNULL_BEGIN

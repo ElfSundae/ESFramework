@@ -9,6 +9,7 @@
 #import "UIApplication+ESExtension.h"
 #if TARGET_OS_IOS || TARGET_OS_TV
 
+#import <objc/runtime.h>
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 #import "UIWindow+ESExtension.h"

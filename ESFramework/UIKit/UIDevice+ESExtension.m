@@ -10,6 +10,7 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #import <sys/sysctl.h>
+#import <objc/runtime.h>
 #import "ESHelpers.h"
 #import "NSData+ESExtension.h"
 

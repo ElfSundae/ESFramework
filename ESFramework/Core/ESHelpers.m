@@ -7,6 +7,7 @@
 //
 
 #import "ESHelpers.h"
+#import <objc/runtime.h>
 #import <sys/time.h>
 #import <Security/SecRandom.h>
 #import "NSNumber+ESExtension.h"
