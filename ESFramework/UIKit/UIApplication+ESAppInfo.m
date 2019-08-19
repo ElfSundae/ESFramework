@@ -10,6 +10,7 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #import <objc/runtime.h>
+#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 
