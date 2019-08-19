@@ -190,16 +190,43 @@ FOUNDATION_EXPORT NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirector
 #pragma mark - GCD Helpers
 
 /**
+ * Determines whether the current running dispatch queue is the given queue by
+ * comparing the queue labels.
+ *
+ * @note To make this method work, you should set the queue label when creating
+ * your custom queue.
+ */
+NS_INLINE BOOL es_dispatch_is_queue(dispatch_queue_t queue)
+{
+    return 0 == strcmp(dispatch_queue_get_label(queue),
+                       dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL));
+}
+
+/**
+ * Safely submits a block to the dispatch queue for asynchronous execution and
+ * returns immediately.
+ */
+NS_INLINE void es_dispatch_async(dispatch_queue_t queue, dispatch_block_t block)
+{
+    es_dispatch_is_queue(queue) ? block() : dispatch_async(queue, block);
+}
+
+/**
+ * Safely submits a block to the dispatch queue for synchronous execution and
+ * waits until that block completes.
+ */
+NS_INLINE void es_dispatch_sync(dispatch_queue_t queue, dispatch_block_t block)
+{
+    es_dispatch_is_queue(queue) ? block() : dispatch_sync(queue, block);
+}
+
+/**
  * Safely submits a block to the main dispatch queue for asynchronous execution
  * and returns immediately.
  */
 NS_INLINE void es_dispatch_async_main(dispatch_block_t block)
 {
-    if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
-        block();
-    } else {
-        dispatch_async(dispatch_get_main_queue(), block);
-    }
+    es_dispatch_async(dispatch_get_main_queue(), block);
 }
 
 /**
@@ -208,11 +235,7 @@ NS_INLINE void es_dispatch_async_main(dispatch_block_t block)
  */
 NS_INLINE void es_dispatch_sync_main(DISPATCH_NOESCAPE dispatch_block_t block)
 {
-    if (0 == strcmp(dispatch_queue_get_label(dispatch_get_main_queue()), dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL))) {
-        block();
-    } else {
-        dispatch_sync(dispatch_get_main_queue(), block);
-    }
+    es_dispatch_sync(dispatch_get_main_queue(), block);
 }
 
 /**

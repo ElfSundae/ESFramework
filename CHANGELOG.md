@@ -1,5 +1,9 @@
 # Changelog
 
+## master
+
+- Added helpers: `es_dispatch_is_queue()`, `es_dispatch_async()`, `es_dispatch_sync()`
+
 ## 3.17.3 (2019-08-02)
 
 - Remove comma for ESMaskSet, ESMaskUnset
