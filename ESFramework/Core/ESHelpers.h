@@ -193,7 +193,7 @@ FOUNDATION_EXPORT NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirector
  * Determines whether the current running dispatch queue is the given queue by
  * comparing the queue labels.
  *
- * @note To make this method work, you should set the queue label when creating
+ * @waring To make this method work, you should set a unique queue label for
  * your custom queue.
  */
 NS_INLINE BOOL es_dispatch_is_queue(dispatch_queue_t queue)
