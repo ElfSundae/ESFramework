@@ -16,12 +16,14 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ESFramework/PublicHeader.h>
 
-#import <ESFramework/ESMacros.h>
+// Core
 #import <ESFramework/ESHelpers.h>
+#import <ESFramework/ESMacros.h>
 #import <ESFramework/ESWeakProxy.h>
 #import <ESFramework/NSInvocation+ESExtension.h>
 #import <ESFramework/NSNumber+ESExtension.h>
 
+// Foundation
 #import <ESFramework/ESActionBlockContainer.h>
 #import <ESFramework/NSArray+ESExtension.h>
 #import <ESFramework/NSCharacterSet+ESExtension.h>
@@ -43,10 +45,12 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSURLComponents+ESExtension.h>
 #import <ESFramework/NSUserDefaults+ESExtension.h>
 
+// Network
 #if !TARGET_OS_WATCH
 #import <ESFramework/ESNetworkHelper.h>
 #endif
 
+// UIKit
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>
