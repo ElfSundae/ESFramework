@@ -224,17 +224,24 @@ NS_INLINE void es_dispatch_sync(dispatch_queue_t queue, dispatch_block_t block)
  * Submits a block for asynchronous execution on a system-defined global
  * concurrent queue with the specified quality of service.
  */
-NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority, dispatch_block_t block)
+NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority,
+                                              dispatch_block_t block)
 {
     dispatch_async(dispatch_get_global_queue(priority, 0), block);
 }
 
 /**
- * Enqueue a block for execution on the main dispatch queue after the specified seconds.
+ * Enqueue a block for execution on the main dispatch queue after the specified
+ * seconds.
  */
-NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds, dispatch_block_t block)
+NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds,
+                                 dispatch_block_t block)
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)), dispatch_get_main_queue(), block);
+    dispatch_after(
+        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)),
+        dispatch_get_main_queue(),
+        block
+        );
 }
 
 #pragma mark - ObjC Runtime
