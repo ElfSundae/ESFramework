@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 3.18.0 (2019-08-20)
 
 - Added helpers: `es_dispatch_is_queue()`, `es_dispatch_async()`, `es_dispatch_sync()`
 - Removed `es_dispatch_async_main()`, use `es_dispatch_async(dispatch_get_main_queue(), block)` instead
