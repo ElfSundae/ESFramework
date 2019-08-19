@@ -5,6 +5,7 @@
 - Added helpers: `es_dispatch_is_queue()`, `es_dispatch_async()`, `es_dispatch_sync()`
 - Removed `es_dispatch_async_main()`, use `es_dispatch_async(dispatch_get_main_queue(), block)` instead
 - Removed `es_dispatch_sync_main()`, use `es_dispatch_sync(dispatch_get_main_queue(), block)` instead
+- Removed unnecessary imports `<objc/runtime.h>`, `"ESMacros.h"` from ESHelpers.h
 
 ## 3.17.3 (2019-08-02)
 
