@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.18.1 (2019-08-20)
 
 - Added semaphore lock macros `ESNewLock()`, `ESLock(lock)`, `ESUnlock(lock)`
 - Added macro `ESAssertOnMainThread()`
