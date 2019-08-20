@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Added semaphore lock macros `ESNewLock()`, `ESLock(lock)`, `ESUnlock(lock)`
+
 ## 3.18.0 (2019-08-20)
 
 - Added helpers: `es_dispatch_is_queue()`, `es_dispatch_async()`, `es_dispatch_sync()`
