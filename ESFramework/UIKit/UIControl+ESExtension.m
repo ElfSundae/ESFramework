@@ -11,7 +11,6 @@
 
 #import "ESActionBlockContainer.h"
 #import <objc/runtime.h>
-#import "ESMacros.h"
 
 @interface ESUIControlActionBlockContainer : ESActionBlockContainer
 
@@ -30,7 +29,7 @@
 
 @end
 
-ESDefineAssociatedObjectKey(allActionBlockContainers)
+static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
 
 @implementation UIControl (ESExtension)
 

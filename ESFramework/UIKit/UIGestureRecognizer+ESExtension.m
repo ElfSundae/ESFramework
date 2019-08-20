@@ -10,10 +10,9 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #import <objc/runtime.h>
-#import "ESMacros.h"
 #import "ESActionBlockContainer.h"
 
-ESDefineAssociatedObjectKey(allActionBlockContainers)
+static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
 
 @implementation UIGestureRecognizer (ESExtension)
 

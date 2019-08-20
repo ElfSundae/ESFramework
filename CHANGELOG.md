@@ -2,6 +2,7 @@
 
 ## Master
 
+- Removed `ESDefineAssociatedObjectKey()`
 - Removed semaphore lock macros `ESNewLock()`, `ESLock(lock)`, `ESUnlock(lock)`
 
 ## 3.18.1 (2019-08-20)

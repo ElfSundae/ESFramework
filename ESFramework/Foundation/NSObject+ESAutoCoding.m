@@ -8,9 +8,8 @@
 
 #import "NSObject+ESAutoCoding.h"
 #import <objc/runtime.h>
-#import "ESMacros.h"
 
-ESDefineAssociatedObjectKey(codableProperties)
+static const void *codablePropertiesKey = &codablePropertiesKey;
 
 @implementation NSObject (ESAutoCoding)
 

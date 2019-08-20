@@ -10,13 +10,12 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #import <objc/runtime.h>
-#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 #import "UIWindow+ESExtension.h"
 
-ESDefineAssociatedObjectKey(registerForRemoteNotificationsSucceeded)
-ESDefineAssociatedObjectKey(registerForRemoteNotificationsFailed)
+static const void *registerForRemoteNotificationsSucceededKey = &registerForRemoteNotificationsSucceededKey;
+static const void *registerForRemoteNotificationsFailedKey = &registerForRemoteNotificationsFailedKey;
 
 static IMP es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
 static IMP es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError = NULL;

@@ -48,11 +48,6 @@
 #define ESMaskUnset(value, flag)    ((value) &= ~(flag))
 
 /**
- * Define a key for the associcated object.
- */
-#define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
-
-/**
  * Assert that the current code is running on the main thread.
  */
 #define ESAssertOnMainThread() NSAssert( \

@@ -10,7 +10,6 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #import <objc/runtime.h>
-#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 
@@ -19,8 +18,8 @@
 #import "ESNetworkHelper.h"
 #endif
 
-ESDefineAssociatedObjectKey(appName)
-ESDefineAssociatedObjectKey(appChannel)
+static const void *appNameKey = &appNameKey;
+static const void *appChannelKey = &appChannelKey;
 
 static NSDate *_gAppStartupDate = nil;
 static NSString *_gAppPreviousVersion = nil;

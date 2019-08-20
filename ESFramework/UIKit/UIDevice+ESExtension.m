@@ -11,12 +11,11 @@
 
 #import <sys/sysctl.h>
 #import <objc/runtime.h>
-#import "ESMacros.h"
 #import "ESHelpers.h"
 #import "NSData+ESExtension.h"
 
-ESDefineAssociatedObjectKey(deviceToken)
-ESDefineAssociatedObjectKey(deviceTokenString)
+static const void *deviceTokenKey = &deviceTokenKey;
+static const void *deviceTokenStringKey = &deviceTokenStringKey;
 
 @implementation UIDevice (ESExtension)
 

@@ -8,20 +8,19 @@
 
 #import "NSTimer+ESExtension.h"
 #import <objc/runtime.h>
-#import "ESMacros.h"
 
-ESDefineAssociatedObjectKey(esTaskBlock)
+static const void *taskBlockKey = &taskBlockKey;
 
 @implementation NSTimer (ESExtension)
 
 - (void)es_setTaskBlock:(void (^)(NSTimer *))block
 {
-    objc_setAssociatedObject(self, esTaskBlockKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
+    objc_setAssociatedObject(self, taskBlockKey, block, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 + (void)es_runTaskBlock:(NSTimer *)timer
 {
-    void (^block)(NSTimer *) = objc_getAssociatedObject(timer, esTaskBlockKey);
+    void (^block)(NSTimer *) = objc_getAssociatedObject(timer, taskBlockKey);
     if (block) {
         block(timer);
     }
