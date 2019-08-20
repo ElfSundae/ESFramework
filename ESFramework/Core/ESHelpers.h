@@ -203,6 +203,14 @@ NS_INLINE BOOL es_dispatch_is_queue(dispatch_queue_t queue)
 }
 
 /**
+ * Asserts that the current code is running on the main thread.
+ */
+#define ESAssertOnMainThread() NSAssert( \
+    es_dispatch_is_queue(dispatch_get_main_queue()), \
+    @"%s should be called on the main thread.", __PRETTY_FUNCTION__ \
+)
+
+/**
  * Safely submits a block to the dispatch queue for asynchronous execution and
  * returns immediately.
  */

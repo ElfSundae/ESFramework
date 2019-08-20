@@ -47,12 +47,4 @@
 #define ESMaskSet(value, flag)      ((value) |= (flag))
 #define ESMaskUnset(value, flag)    ((value) &= ~(flag))
 
-/**
- * Assert that the current code is running on the main thread.
- */
-#define ESAssertOnMainThread() NSAssert( \
-    es_dispatch_is_queue(dispatch_get_main_queue()), \
-    @"%s should be called on the main thread.", __PRETTY_FUNCTION__ \
-)
-
 #endif /* ESFramework_ESMacros_h */
