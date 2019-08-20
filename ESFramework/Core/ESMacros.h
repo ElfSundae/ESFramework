@@ -53,13 +53,6 @@
 #define ESDefineAssociatedObjectKey(name) static const void * name##Key = &name##Key;
 
 /**
- * Use dispatch semaphore as lock.
- */
-#define ESNewLock()     dispatch_semaphore_create(1)
-#define ESLock(lock)    dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER)
-#define ESUnlock(lock)  dispatch_semaphore_signal(lock)
-
-/**
  * Assert that the current code is running on the main thread.
  */
 #define ESAssertOnMainThread() NSAssert( \
