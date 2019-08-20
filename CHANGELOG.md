@@ -3,6 +3,7 @@
 ## Master
 
 - Added semaphore lock macros `ESNewLock()`, `ESLock(lock)`, `ESUnlock(lock)`
+- Added macro `ESAssertOnMainThread()`
 
 ## 3.18.0 (2019-08-20)
 
