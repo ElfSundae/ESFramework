@@ -16,7 +16,7 @@
 #endif
 
 #if !defined(NSLog)
-#if DEBUG
+#if defined(DEBUG) && DEBUG
 #define NSLog(format, ...) NSLog((@"%s:%d %s " format), __FILENAME__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #else
 #define NSLog(format, ...)
@@ -24,7 +24,7 @@
 #endif
 
 #if !defined(NSLogIf)
-#if DEBUG
+#if defined(DEBUG) && DEBUG
 #define NSLogIf(condition, format, ...) if ((condition)) { NSLog(format, ##__VA_ARGS__); }
 #else
 #define NSLogIf(condition, format, ...)
