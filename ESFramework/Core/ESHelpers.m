@@ -142,7 +142,7 @@ NSString *ESUUIDString(void)
 
 NSString *ESUniqueNumericIdentifier(void)
 {
-    NSTimeInterval time = NSDate.date.timeIntervalSinceReferenceDate;
+    CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
     uint32_t random1 = arc4random() % 100;
     uint32_t random2 = arc4random() % 1000;
     return [NSString stringWithFormat:@"%lu%02u%03u",
