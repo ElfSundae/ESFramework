@@ -143,9 +143,10 @@ NSString *ESUUIDString(void)
 NSString *ESUniqueNumericIdentifier(void)
 {
     NSTimeInterval time = NSDate.date.timeIntervalSinceReferenceDate;
-    NSUInteger seconds = (NSUInteger)time;
-    NSUInteger random = (NSUInteger)((time - seconds) * 1000000.0 + arc4random() % 100000);
-    return [NSString stringWithFormat:@"%lu%lu", (unsigned long)seconds, (unsigned long)random];
+    uint32_t random1 = arc4random() % 100;
+    uint32_t random2 = arc4random() % 1000;
+    return [NSString stringWithFormat:@"%lu%02u%03u",
+            (unsigned long)time, random1, random2];
 }
 
 NSString * _Nullable ESRandomString(NSUInteger length)

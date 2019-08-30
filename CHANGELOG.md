@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.18.3 (2019-08-30)
+
+- Improved `ESUniqueNumericIdentifier()` function.
+
 ## 3.18.2 (2019-08-21)
 
 - Removed `ESDefineAssociatedObjectKey()`
