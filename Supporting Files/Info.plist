@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.18.3</string>
+	<string>3.18.4</string>
 	<key>CFBundleVersion</key>
-	<string>3.18.3</string>
+	<string>3.18.4</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2014-2019 Elf Sundae https://0x123.com All rights reserved.</string>
 </dict>
