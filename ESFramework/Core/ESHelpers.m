@@ -142,11 +142,15 @@ NSString *ESUUIDString(void)
 
 NSString *ESUniqueNumericIdentifier(void)
 {
-    CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
-    uint32_t random1 = arc4random_uniform(100);
-    uint32_t random2 = arc4random_uniform(1000);
-    return [NSString stringWithFormat:@"%lu%02u%03u",
-            (unsigned long)time, random1, random2];
+    static size_t len = (size_t)(sizeof(ULONG_MAX) * CHAR_BIT * 0.302) + 3;
+
+    char str[len];
+    sprintf(str, "%lu%02u%03u",
+            (unsigned long)CFAbsoluteTimeGetCurrent(),
+            arc4random_uniform(100),
+            arc4random_uniform(1000));
+
+    return [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
 }
 
 NSString * _Nullable ESRandomString(NSUInteger length)
