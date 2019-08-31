@@ -143,8 +143,8 @@ NSString *ESUUIDString(void)
 NSString *ESUniqueNumericIdentifier(void)
 {
     CFAbsoluteTime time = CFAbsoluteTimeGetCurrent();
-    uint32_t random1 = arc4random() % 100;
-    uint32_t random2 = arc4random() % 1000;
+    uint32_t random1 = arc4random_uniform(100);
+    uint32_t random2 = arc4random_uniform(1000);
     return [NSString stringWithFormat:@"%lu%02u%03u",
             (unsigned long)time, random1, random2];
 }
