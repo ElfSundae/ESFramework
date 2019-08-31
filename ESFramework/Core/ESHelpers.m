@@ -168,7 +168,7 @@ NSString * _Nullable ESRandomString(NSUInteger length)
     }
     str[length] = '\0';
 
-    NSString *string = [NSString stringWithUTF8String:str];
+    NSString *string = [NSString stringWithCString:str encoding:NSUTF8StringEncoding];
     free(str);
 
     return string;
