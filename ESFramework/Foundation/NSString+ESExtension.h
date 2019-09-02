@@ -110,6 +110,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSData *)base64DecodedData;
 - (nullable NSString *)base64DecodedString;
 
+// AES encryption, see NSData(ESExtension) for more methods.
+
+- (nullable NSData *)aesEncryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error;
+- (nullable NSData *)aesEncryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error;
+- (nullable NSData *)aesEncryptedDataWithHexKey:(NSString *)key hexIV:(NSString *)IV error:(NSError **)error;
+
 @end
 
 @interface NSMutableString (ESExtension)

@@ -340,6 +340,21 @@
     return self.base64DecodedData.UTF8String;
 }
 
+- (nullable NSData *)aesEncryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error
+{
+    return [self.dataValue aesEncryptedDataWithKey:key IV:IV error:error];
+}
+
+- (nullable NSData *)aesEncryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error
+{
+    return [self.dataValue aesEncryptedDataWithKeyString:key IVString:IV error:error];
+}
+
+- (nullable NSData *)aesEncryptedDataWithHexKey:(NSString *)key hexIV:(NSString *)IV error:(NSError **)error
+{
+    return [self.dataValue aesEncryptedDataWithHexKey:key hexIV:IV error:error];
+}
+
 @end
 
 @implementation NSMutableString (ESExtension)
