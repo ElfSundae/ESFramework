@@ -84,6 +84,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSData *)base64DecodedData;
 - (nullable NSString *)base64DecodedString;
 
+#pragma mark - AES Encryption
+
+// AES block size: 128-bit
+// Mode: CBC
+// Padding: PKCS7
+// Key length: 16 (128-bit), 24 (192-bit), or 32 (256-bit)
+// IV length: 16 (128-bit)
+
+- (nullable NSData *)aesEncryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error;
+- (nullable NSData *)aesEncryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error;
+- (nullable NSData *)aesEncryptedDataWithHexKey:(NSString *)key hexIV:(NSString *)IV error:(NSError **)error;
+
+- (nullable NSData *)aesDecryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error;
+- (nullable NSData *)aesDecryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error;
+- (nullable NSData *)aesDecryptedDataWithHexKey:(NSString *)key hexIV:(NSString *)IV error:(NSError **)error;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -2,6 +2,7 @@
 
 ## Master
 
+- Added AES Encryption methods for NSData
 - Improved `ESUniqueNumericIdentifier()` function.
 
 ## 3.18.4 (2019-08-30)

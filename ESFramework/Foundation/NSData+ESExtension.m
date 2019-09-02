@@ -9,6 +9,7 @@
 #import "NSData+ESExtension.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import <CommonCrypto/CommonCryptor.h>
 
 @implementation NSData (ESExtension)
 
@@ -274,6 +275,113 @@
 - (NSString *)base64DecodedString
 {
     return self.base64DecodedData.UTF8String;
+}
+
+- (nullable NSData *)aesEncryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error
+{
+    return [self _aesCryptedDataWithOperation:kCCEncrypt key:key IV:IV error:error];
+}
+
+- (nullable NSData *)aesEncryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error
+{
+    return [self aesEncryptedDataWithKey:[key dataUsingEncoding:NSUTF8StringEncoding]
+                                      IV:[IV dataUsingEncoding:NSUTF8StringEncoding]
+                                   error:error];
+}
+
+- (nullable NSData *)aesEncryptedDataWithHexKey:(NSString *)key hexIV:(NSString *)IV error:(NSError **)error
+{
+    return [self aesEncryptedDataWithKey:[NSData dataWithHexString:key]
+                                      IV:[NSData dataWithHexString:IV]
+                                   error:error];
+}
+
+- (nullable NSData *)aesDecryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error
+{
+    return [self _aesCryptedDataWithOperation:kCCDecrypt key:key IV:IV error:error];
+}
+
+- (nullable NSData *)aesDecryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error
+{
+    return [self aesDecryptedDataWithKey:[key dataUsingEncoding:NSUTF8StringEncoding]
+                                      IV:[IV dataUsingEncoding:NSUTF8StringEncoding]
+                                   error:error];
+}
+
+- (nullable NSData *)aesDecryptedDataWithHexKey:(NSString *)key hexIV:(NSString *)IV error:(NSError **)error
+{
+    return [self aesDecryptedDataWithKey:[NSData dataWithHexString:key]
+                                      IV:[NSData dataWithHexString:IV]
+                                   error:error];
+}
+
+- (nullable NSData *)_aesCryptedDataWithOperation:(CCOperation)operation
+                                              key:(NSData *)key
+                                               IV:(NSData *)iv
+                                            error:(NSError **)error
+{
+    if (!(key.length == 16 || key.length == 24 || key.length == 32)) {
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:-1
+                                     userInfo:@{ NSLocalizedDescriptionKey: @"Length of key should be 16 (128-bit), 24 (192-bit), or 32 (256-bit)" }];
+        }
+
+        return nil;
+    }
+
+    if (iv.length != 16) {
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:-1
+                                     userInfo:@{ NSLocalizedDescriptionKey: @"Length of iv should be 16 (128-bit)" }];
+        }
+
+        return nil;
+    }
+
+    size_t bufferSize = [self length] + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+
+    if (!buffer) {
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:-2
+                                     userInfo:@{ NSLocalizedDescriptionKey: @"Can not allocate buffer" }];
+        }
+
+        return nil;
+    }
+
+    size_t outSize = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(operation,
+                                          kCCAlgorithmAES,
+                                          kCCOptionPKCS7Padding,
+                                          [key bytes],
+                                          [key length],
+                                          [iv bytes],
+                                          [self bytes],
+                                          [self length],
+                                          buffer,
+                                          bufferSize,
+                                          &outSize);
+    if (kCCSuccess != cryptStatus) {
+        free(buffer);
+
+        if (error) {
+            *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                         code:(NSInteger)cryptStatus
+                                     userInfo:@{ NSLocalizedDescriptionKey: @"AES encryption failed" }];
+        }
+
+        return nil;
+    }
+
+    if (error) {
+        *error = nil;
+    }
+
+    return [NSData dataWithBytesNoCopy:buffer length:outSize freeWhenDone:YES];
 }
 
 @end
