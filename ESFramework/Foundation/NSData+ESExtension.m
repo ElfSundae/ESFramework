@@ -320,7 +320,9 @@
                                                IV:(NSData *)iv
                                             error:(NSError **)error
 {
-    if (!(key.length == 16 || key.length == 24 || key.length == 32)) {
+    if (key.length != kCCKeySizeAES128 &&
+        key.length != kCCKeySizeAES192 &&
+        key.length != kCCKeySizeAES256) {
         if (error) {
             *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                          code:-1
@@ -330,7 +332,7 @@
         return nil;
     }
 
-    if (iv.length != 16) {
+    if (iv.length != kCCBlockSizeAES128) {
         if (error) {
             *error = [NSError errorWithDomain:NSCocoaErrorDomain
                                          code:-1
