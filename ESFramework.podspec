@@ -17,12 +17,11 @@ Pod::Spec.new do |s|
 
   s.subspec 'Core' do |ss|
     ss.source_files = 'ESFramework/Core/**/*.{h,m}'
-    ss.frameworks = 'CoreGraphics'
+    ss.frameworks = 'CoreGraphics', 'Security'
   end
 
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'ESFramework/Foundation/**/*.{h,m}'
-    ss.frameworks = 'Security'
     ss.dependency 'ESFramework/Core'
   end
 
