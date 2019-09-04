@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.18.6 (2019-09-04)
+
+- Fixed podspec: 'Security' framework should be linked in the Core subspec
+
 ## 3.18.5 (2019-09-02)
 
 - Added AES Encryption methods to NSData and NSString extensions
