@@ -116,18 +116,11 @@ BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)
             (NSOperatingSystemVersion) { majorVersion, minorVersion }];
 }
 
-void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(NSTimeInterval elapsedMillisecond))
+extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
+
+uint64_t ESBenchmark(size_t count, void (^block)(void))
 {
-    struct timeval begin, end;
-    gettimeofday(&begin, NULL);
-    block();
-    gettimeofday(&end, NULL);
-    NSTimeInterval ms = (NSTimeInterval)(end.tv_sec - begin.tv_sec) * 1000 + (NSTimeInterval)(end.tv_usec - begin.tv_usec) / 1000;
-    if (completion) {
-        completion(ms);
-    } else {
-        NSLog(@"‼️ Measure Execution Time: %f ms", ms);
-    }
+    return dispatch_benchmark(count, block);
 }
 
 uint32_t ESRandomNumber(uint32_t min, uint32_t max)

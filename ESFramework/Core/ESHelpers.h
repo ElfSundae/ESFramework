@@ -47,9 +47,13 @@ FOUNDATION_EXPORT NSString * _Nullable ESStringValue(id _Nullable obj);
 FOUNDATION_EXPORT BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion);
 
 /**
- * Measures the execution time.
+ * Executes the given block multiple times according to the count parameter and
+ * then returns the average number of nanoseconds per execution.
+ * @discussion This function is for debugging and performance analysis work.
+ * For the best results, pass a high count.
+ * @see dispatch_benchmark() https://nshipster.com/benchmarking/
  */
-FOUNDATION_EXPORT void ESMeasureExecution(NS_NOESCAPE void (^block)(void), NS_NOESCAPE void (^ _Nullable completion)(NSTimeInterval elapsedMillisecond));
+FOUNDATION_EXPORT uint64_t ESBenchmark(size_t count, void (^block)(void));
 
 /**
  * Generates a random number between min and max.

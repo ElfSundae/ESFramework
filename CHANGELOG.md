@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.18.7 (2019-09-13)
+
+- Refactor `ESMeasureExecution()` to `ESBenchmark()`
+
 ## 3.18.6 (2019-09-04)
 
 - Fixed podspec: 'Security' framework should be linked in the Core subspec
