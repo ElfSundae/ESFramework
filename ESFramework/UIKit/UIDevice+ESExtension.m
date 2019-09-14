@@ -233,7 +233,7 @@ static const void *deviceTokenStringKey = &deviceTokenStringKey;
 {
 #if TARGET_OS_IOS
     if (@available(iOS 11, *)) {
-        return [[[[NSURL fileURLWithPath:NSHomeDirectory()] resourceValuesForKeys:@[ NSURLVolumeAvailableCapacityForImportantUsageKey ] error:NULL]
+        return [[[[NSURL fileURLWithPath:NSHomeDirectory() isDirectory:YES] resourceValuesForKeys:@[ NSURLVolumeAvailableCapacityForImportantUsageKey ] error:NULL]
                  objectForKey:NSURLVolumeAvailableCapacityForImportantUsageKey] longLongValue];
     }
 #endif
