@@ -32,7 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns the model identifier of the device.
  * @discussion e.g. "iPhone3,1", "AppleTV5,3", "Watch4,3".
- * https://github.com/ElfSundae/iOS-Models-List
+ * https://github.com/ElfSundae/iOS-Model-List
  */
 @property (nonatomic, readonly) NSString *modelIdentifier;
 
@@ -40,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Returns the model name of the device.
  * @discussion e.g. "iPhone 6 Plus", "iPhone XS Max", "iPad Pro 3 (12.9-inch)",
  * "Apple TV 4K", "Apple Watch Series 4 (44mm)", "Simulator x86", "Simulator x64".
- * https://github.com/ElfSundae/iOS-Models-List
+ * https://github.com/ElfSundae/iOS-Model-List
  */
 @property (nonatomic, readonly) NSString *modelName;
 
