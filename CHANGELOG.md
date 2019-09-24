@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Improved `ESRandomData()`
+
 ## 3.18.9 (2019-09-24)
 
 - Added Apple Watch Series 5 for `-[UIDevice modelName]`

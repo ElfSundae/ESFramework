@@ -169,12 +169,12 @@ NSString * _Nullable ESRandomString(NSUInteger length)
 
 NSData * _Nullable ESRandomData(NSUInteger length)
 {
-    NSMutableData *data = [NSMutableData dataWithLength:length];
-    int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, data.mutableBytes);
+    unsigned char buffer[length];    
+    int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, buffer);
     if (0 != result) {
         return nil;
     }
-    return [data copy];
+    return [NSData dataWithBytes:buffer length:length];
 }
 
 CGFloat ESDegreesToRadians(CGFloat degrees)
