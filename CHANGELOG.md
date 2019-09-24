@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.18.9 (2019-09-24)
+
+- Added Apple Watch Series 5 for `-[UIDevice modelName]`
+
 ## 3.18.8 (2019-09-20)
 
 - Update `-[UIDevice modelName]` for iPhone 11, iPod touch 7. Unify `i386` and `x86_64` model name to "Simulator".
