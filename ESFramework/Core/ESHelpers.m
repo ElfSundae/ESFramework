@@ -169,7 +169,7 @@ NSString * _Nullable ESRandomString(NSUInteger length)
 
 NSData * _Nullable ESRandomData(NSUInteger length)
 {
-    unsigned char buffer[length];    
+    unsigned char buffer[length];
     int result = SecRandomCopyBytes(kSecRandomDefault, (size_t)length, buffer);
     if (0 != result) {
         return nil;
