@@ -2,6 +2,7 @@
 
 ## Master
 
+- Added iPad 7 for `-[UIDevice modelName]`
 - Improved `ESRandomData()`
 
 ## 3.18.9 (2019-09-24)
