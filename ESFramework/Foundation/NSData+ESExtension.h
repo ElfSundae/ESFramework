@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface NSData (ESExtension)
 
 /**
- * Creates and returns an new NSData object converted from the hexadecimal string.
- * @note Only hex digits supported in hex string.
+ * Creates and returns a new data object converted from the hexadecimal string.
+ * @note Only hex digits supported in the hex string.
  */
-+ (nullable NSData *)dataWithHexString:(NSString *)hexString;
++ (nullable instancetype)dataWithHexString:(NSString *)hexString;
 
 /**
  * Converts the data to a UTF-8 encoded string.

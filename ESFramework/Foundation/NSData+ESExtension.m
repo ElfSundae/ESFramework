@@ -15,7 +15,7 @@
 
 // https://opensource.apple.com/source/Security/Security-55471/libsecurity_transform/NSData+HexString.m
 // https://stackoverflow.com/q/2338975/521946
-+ (nullable NSData *)dataWithHexString:(NSString *)hexString
++ (nullable instancetype)dataWithHexString:(NSString *)hexString
 {
     NSUInteger hexStringLength = hexString.length;
     if (0 == hexStringLength) {
