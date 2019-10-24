@@ -90,8 +90,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (null_resettable, nonatomic, copy) NSString *appName;
 
 /**
- * The channel that app submitted to.
- * @discussion The default value is "AppStore".
+ * The channel of submitting app to.
+ * @discussion The default value is "App Store".
  */
 @property (null_resettable, nonatomic, copy) NSString *appChannel;
 
