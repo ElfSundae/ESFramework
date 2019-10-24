@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface ESWeakProxy : NSProxy
 
-@property (nonatomic, weak, readonly) id target;
+@property (nullable, nonatomic, weak, readonly) id target;
 
 - (instancetype)initWithTarget:(id)target;
 + (instancetype)proxyWithTarget:(id)target;
