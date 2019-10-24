@@ -105,7 +105,7 @@ static void ESCheckAppFreshLaunch(void)
     static NSString *_appVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _appVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        _appVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ?: @"1.0";
     });
     return _appVersion;
 }
