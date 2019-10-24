@@ -112,12 +112,7 @@ static void ESCheckAppFreshLaunch(void)
 
 - (NSString *)appBuildVersion
 {
-    static NSString *_appBuildVersion = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _appBuildVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey] ?: @"1";
-    });
-    return _appBuildVersion;
+    return [NSBundle.mainBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey] ?: @"1";
 }
 
 - (NSString *)appFullVersion
@@ -157,7 +152,7 @@ static void ESCheckAppFreshLaunch(void)
     return _gIsFreshLaunch;
 }
 
-- (NSString *)appPreviousVersion
+- (nullable NSString *)appPreviousVersion
 {
     return _gAppPreviousVersion;
 }
