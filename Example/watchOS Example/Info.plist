@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.0x123.ESFramework.iOS-Example1</string>
+	<string>com.0x123.ESFramework.iOS-Example4</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
