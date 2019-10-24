@@ -59,7 +59,7 @@ static void ESCheckAppFreshLaunch(void)
 {
     NSString *appName = objc_getAssociatedObject(self, appNameKey);
     if (!appName) {
-        appName = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleExecutable"];
+        appName = [NSBundle.mainBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleExecutableKey];
         appName = [appName stringByReplacingOccurrencesOfString:@"\\s+" withString:@"-" options:NSRegularExpressionSearch range:NSMakeRange(0, appName.length)];
     }
     return appName;
@@ -82,7 +82,7 @@ static void ESCheckAppFreshLaunch(void)
 
 - (NSString *)appBundleName
 {
-    return [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleName"];
+    return [NSBundle.mainBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey];
 }
 
 - (NSString *)appDisplayName
@@ -115,7 +115,7 @@ static void ESCheckAppFreshLaunch(void)
     static NSString *_appBuildVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _appBuildVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"] ?: @"1";
+        _appBuildVersion = [NSBundle.mainBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey] ?: @"1";
     });
     return _appBuildVersion;
 }
