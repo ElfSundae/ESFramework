@@ -761,7 +761,7 @@
 				CODE_SIGN_ENTITLEMENTS = "iOS Example/iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -770,7 +770,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -785,7 +785,7 @@
 				CODE_SIGN_ENTITLEMENTS = "iOS Example/iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../Carthage/Build/iOS";
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -794,7 +794,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -856,7 +856,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/tvOS";
 				INFOPLIST_FILE = "tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -879,7 +879,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../Carthage/Build/tvOS";
 				INFOPLIST_FILE = "tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -899,7 +899,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "watchOS Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -908,7 +908,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example1.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example4.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -919,7 +919,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "watchOS Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -928,7 +928,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example1.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example4.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -943,7 +943,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				IBSC_MODULE = watchOS_Example_Extension;
 				INFOPLIST_FILE = "watchOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -952,7 +952,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example4.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -967,7 +967,7 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QM3QJNCA64;
+				DEVELOPMENT_TEAM = B86YZY7YJX;
 				IBSC_MODULE = watchOS_Example_Extension;
 				INFOPLIST_FILE = "watchOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -976,7 +976,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework.iOS-Example4.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				TARGETED_DEVICE_FAMILY = 4;
