@@ -95,7 +95,7 @@ static void ESCheckAppFreshLaunch(void)
     static NSString *_appBundleIdentifier = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _appBundleIdentifier = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+        _appBundleIdentifier = NSBundle.mainBundle.bundleIdentifier;
     });
     return _appBundleIdentifier;
 }
