@@ -37,6 +37,7 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSHTTPURLResponse+ESExtension.h>
 #import <ESFramework/NSMapTable+ESExtension.h>
 #import <ESFramework/NSObject+ESAutoCoding.h>
+#import <ESFramework/NSObject+ESExtension.h>
 #import <ESFramework/NSOrderedSet+ESExtension.h>
 #import <ESFramework/NSString+ESExtension.h>
 #import <ESFramework/NSString+ESGTMHTML.h>

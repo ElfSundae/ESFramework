@@ -277,6 +277,14 @@
 		E7CFA4FE230B053200278C28 /* UIWindow+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CFA3B3230B053100278C28 /* UIWindow+ESExtension.m */; };
 		E7CFA504230B075000278C28 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CFA503230B075000278C28 /* AFNetworking.framework */; };
 		E7CFA506230B075F00278C28 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CFA505230B075F00278C28 /* AFNetworking.framework */; };
+		E7D861DF2375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7D861E02375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7D861E12375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7D861E22375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7D861E92375D7AB00882738 /* NSObject+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */; };
+		E7D861EA2375D7AB00882738 /* NSObject+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */; };
+		E7D861EB2375D7AB00882738 /* NSObject+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */; };
+		E7D861EC2375D7AB00882738 /* NSObject+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -370,6 +378,8 @@
 		E7CFA501230B065300278C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7CFA503230B075000278C28 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		E7CFA505230B075F00278C28 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/tvOS/AFNetworking.framework; sourceTree = "<group>"; };
+		E7D861DE2375D79200882738 /* NSObject+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESExtension.h"; sourceTree = "<group>"; };
+		E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +494,8 @@
 				E7CFA380230B053100278C28 /* NSMapTable+ESExtension.m */,
 				E7CFA381230B053100278C28 /* NSObject+ESAutoCoding.h */,
 				E7CFA382230B053100278C28 /* NSObject+ESAutoCoding.m */,
+				E7D861DE2375D79200882738 /* NSObject+ESExtension.h */,
+				E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */,
 				E7CFA383230B053100278C28 /* NSOrderedSet+ESExtension.h */,
 				E7CFA384230B053100278C28 /* NSOrderedSet+ESExtension.m */,
 				E7CFA385230B053100278C28 /* NSString+ESExtension.h */,
@@ -602,6 +614,7 @@
 				E7CFA444230B053100278C28 /* NSOrderedSet+ESExtension.h in Headers */,
 				E7CFA3F4230B053100278C28 /* NSData+ESExtension.h in Headers */,
 				E7CFA4E8230B053200278C28 /* UIView+ESExtension.h in Headers */,
+				E7D861DF2375D79200882738 /* NSObject+ESExtension.h in Headers */,
 				E7CFA454230B053100278C28 /* NSString+ESGTMHTML.h in Headers */,
 				E7CFA3D8230B053100278C28 /* ESFramework.h in Headers */,
 				E7CFA434230B053100278C28 /* NSMapTable+ESExtension.h in Headers */,
@@ -626,6 +639,7 @@
 				E7CFA3BD230B053100278C28 /* ESMacros.h in Headers */,
 				E7CFA405230B053100278C28 /* NSDateFormatter+ESExtension.h in Headers */,
 				E7CFA3ED230B053100278C28 /* NSCharacterSet+ESExtension.h in Headers */,
+				E7D861E02375D79200882738 /* NSObject+ESExtension.h in Headers */,
 				E7CFA3FD230B053100278C28 /* NSDate+ESExtension.h in Headers */,
 				E7CFA425230B053100278C28 /* NSHTTPCookieStorage+ESExtension.h in Headers */,
 				E7CFA3D1230B053100278C28 /* NSNumber+ESExtension.h in Headers */,
@@ -685,6 +699,7 @@
 				E7CFA446230B053100278C28 /* NSOrderedSet+ESExtension.h in Headers */,
 				E7CFA3F6230B053100278C28 /* NSData+ESExtension.h in Headers */,
 				E7CFA4EA230B053200278C28 /* UIView+ESExtension.h in Headers */,
+				E7D861E12375D79200882738 /* NSObject+ESExtension.h in Headers */,
 				E7CFA456230B053100278C28 /* NSString+ESGTMHTML.h in Headers */,
 				E7CFA3DA230B053100278C28 /* ESFramework.h in Headers */,
 				E7CFA436230B053100278C28 /* NSMapTable+ESExtension.h in Headers */,
@@ -731,6 +746,7 @@
 				E7CFA467230B053100278C28 /* NSURL+ESExtension.h in Headers */,
 				E7CFA44F230B053100278C28 /* NSString+ESExtension.h in Headers */,
 				E7CFA3CB230B053100278C28 /* NSInvocation+ESExtension.h in Headers */,
+				E7D861E22375D79200882738 /* NSObject+ESExtension.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +927,7 @@
 				E7CFA3C4230B053100278C28 /* ESWeakProxy.m in Sources */,
 				E7CFA408230B053100278C28 /* NSDateFormatter+ESExtension.m in Sources */,
 				E7CFA4CC230B053200278C28 /* UIImageView+ESExtension.m in Sources */,
+				E7D861E92375D7AB00882738 /* NSObject+ESExtension.m in Sources */,
 				E7CFA3CC230B053100278C28 /* NSInvocation+ESExtension.m in Sources */,
 				E7CFA4A4230B053100278C28 /* UIColor+ESExtension.m in Sources */,
 				E7CFA460230B053100278C28 /* NSTimer+ESExtension.m in Sources */,
@@ -937,6 +954,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7D861EA2375D7AB00882738 /* NSObject+ESExtension.m in Sources */,
 				E7CFA429230B053100278C28 /* NSHTTPCookieStorage+ESExtension.m in Sources */,
 				E7CFA421230B053100278C28 /* NSFileManager+ESExtension.m in Sources */,
 				E7CFA441230B053100278C28 /* NSObject+ESAutoCoding.m in Sources */,
@@ -991,6 +1009,7 @@
 				E7CFA3C6230B053100278C28 /* ESWeakProxy.m in Sources */,
 				E7CFA40A230B053100278C28 /* NSDateFormatter+ESExtension.m in Sources */,
 				E7CFA4CE230B053200278C28 /* UIImageView+ESExtension.m in Sources */,
+				E7D861EB2375D7AB00882738 /* NSObject+ESExtension.m in Sources */,
 				E7CFA3CE230B053100278C28 /* NSInvocation+ESExtension.m in Sources */,
 				E7CFA4A6230B053100278C28 /* UIColor+ESExtension.m in Sources */,
 				E7CFA462230B053100278C28 /* NSTimer+ESExtension.m in Sources */,
@@ -1027,6 +1046,7 @@
 				E7CFA3E3230B053100278C28 /* ESActionBlockContainer.m in Sources */,
 				E7CFA44B230B053100278C28 /* NSOrderedSet+ESExtension.m in Sources */,
 				E7CFA413230B053100278C28 /* NSDictionary+ESExtension.m in Sources */,
+				E7D861EC2375D7AB00882738 /* NSObject+ESExtension.m in Sources */,
 				E7CFA473230B053100278C28 /* NSURLComponents+ESExtension.m in Sources */,
 				E7CFA3C7230B053100278C28 /* ESWeakProxy.m in Sources */,
 				E7CFA40B230B053100278C28 /* NSDateFormatter+ESExtension.m in Sources */,
