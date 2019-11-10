@@ -43,4 +43,12 @@ Pod::Spec.new do |s|
     ss.ios.dependency 'ESFramework/Network'
     ss.ios.dependency 'AFNetworking/Reachability', '>= 2.0'
   end
+
+  s.pod_target_xcconfig = {
+    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
+  }
+
+  s.info_plist = {
+    'NSHumanReadableCopyright' => 'Copyright © 2014-2019 Elf Sundae https://0x123.com All rights reserved.'
+  }
 end
