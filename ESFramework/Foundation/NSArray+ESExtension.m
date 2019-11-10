@@ -66,6 +66,30 @@
     return [self nextObjectToIndex:[self indexOfObject:object]];
 }
 
+- (NSDictionary<id, NSArray *> *)groupedDictionaryUsingBlock:(id<NSCopying> (NS_NOESCAPE ^)(id obj))block
+{
+    NSMutableDictionary *grouped = [NSMutableDictionary dictionary];
+
+    for (id object in self) {
+        id<NSCopying> key = block(object);
+
+        if (grouped[key]) {
+            [grouped[key] addObject:object];
+        } else {
+            grouped[key] = [NSMutableArray arrayWithObject:object];
+        }
+    }
+
+    return [grouped copy];
+}
+
+- (NSDictionary<id, NSArray *> *)groupedDictionaryByKeyPath:(NSString *)keyPath
+{
+    return [self groupedDictionaryUsingBlock:^id<NSCopying> (id obj) {
+        return [obj valueForKeyPath:keyPath];
+    }];
+}
+
 - (NSData *)JSONData
 {
     return [self JSONDataWithOptions:0];

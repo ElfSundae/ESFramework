@@ -3,6 +3,7 @@
 ## Master
 
 - Added `-[NSObject observeNotification:selector:]`
+- Added `-[NSArray groupedDictionaryUsingBlock:]`, `-[NSArray groupedDictionaryByKeyPath:]`
 
 ## 3.18.10 (2019-09-25)
 

@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable ObjectType)nextObjectToIndex:(NSUInteger)index;
 - (nullable ObjectType)nextObjectToObject:(ObjectType)object;
 
+- (NSDictionary<id, NSArray<ObjectType> *> *)groupedDictionaryUsingBlock:(id<NSCopying> (NS_NOESCAPE ^)(ObjectType obj))block;
+- (NSDictionary<id, NSArray<ObjectType> *> *)groupedDictionaryByKeyPath:(NSString *)keyPath;
+
 - (nullable NSData *)JSONData;
 - (nullable NSData *)JSONDataWithOptions:(NSJSONWritingOptions)opts;
 - (nullable NSString *)JSONString;
