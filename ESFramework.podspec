@@ -2,16 +2,20 @@ Pod::Spec.new do |s|
   s.name        = 'ESFramework'
   s.version     = '3.18.12'
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
-  s.summary     = 'An efficient, lightweight foundational framework for iOS, macOS, watchOS, and tvOS.'
+  s.summary     = 'An efficient, lightweight foundational framework for iOS, macOS, tvOS and watchOS.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'
   s.social_media_url = 'https://twitter.com/ElfSundae'
   s.authors     = { 'Elf Sundae' => 'https://0x123.com' }
   s.source      = { :git => 'https://github.com/ElfSundae/ESFramework.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'
-  s.osx.deployment_target = '10.11'
   s.tvos.deployment_target = '9.0'
+  s.osx.deployment_target = '10.11'
   s.watchos.deployment_target = '2.0'
+
+  s.pod_target_xcconfig = {
+    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
+  }
 
   s.source_files = 'ESFramework/ESFramework.h'
 
@@ -27,8 +31,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'Network' do |ss|
     ss.ios.deployment_target = '9.0'
-    ss.osx.deployment_target = '10.11'
     ss.tvos.deployment_target = '9.0'
+    ss.osx.deployment_target = '10.11'
 
     ss.source_files = 'ESFramework/Network/**/*.{h,m}'
     ss.frameworks = 'SystemConfiguration', 'CoreTelephony'
@@ -43,12 +47,4 @@ Pod::Spec.new do |s|
     ss.ios.dependency 'ESFramework/Network'
     ss.ios.dependency 'AFNetworking/Reachability', '>= 2.0'
   end
-
-  s.pod_target_xcconfig = {
-    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
-  }
-
-  s.info_plist = {
-    'NSHumanReadableCopyright' => 'Copyright © 2014-2019 Elf Sundae https://0x123.com All rights reserved.'
-  }
 end

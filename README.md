@@ -5,7 +5,7 @@
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Platforms](https://img.shields.io/cocoapods/p/ESFramework.svg)
 
-ESFramework is an efficient, lightweight foundational framework for iOS, macOS, watchOS, and tvOS.
+ESFramework is an efficient, lightweight foundational framework for iOS, macOS, tvOS and watchOS.
 
 ## Requirements
 
