@@ -487,7 +487,6 @@ static int ESEscapeMapCompare(const void *ucharVoid, const void *mapVoid) {
                         NSString *charString = [NSString stringWithCharacters:&uchar length:1];
                         [finalString replaceCharactersInRange:escapeRange withString:charString];
                     }
-
                 } else {
                     // Decimal Sequences &#123;
                     NSString *numberSequence = [escapeString substringWithRange:NSMakeRange(2, length - 3)];
