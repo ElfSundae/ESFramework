@@ -424,7 +424,10 @@
 				E7CFA502230B075000278C28 /* Frameworks */,
 				E7CFA311230B020500278C28 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		E7CFA311230B020500278C28 /* Products */ = {
 			isa = PBXGroup;
@@ -831,8 +834,9 @@
 		E7CFA307230B020500278C28 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = ES;
 				LastUpgradeCheck = 1030;
-				ORGANIZATIONNAME = "https://0x123.com";
+				ORGANIZATIONNAME = "https://0x123.com ";
 				TargetAttributes = {
 					E7CFA32C230B02E900278C28 = {
 						CreatedOnToolsVersion = 10.3;
@@ -1202,6 +1206,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -1226,6 +1231,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

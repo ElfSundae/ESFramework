@@ -232,7 +232,10 @@
 				E79DBE2622DED20C006D6263 /* Embedded */,
 				E7CB40BE22BD09B30063BF5A /* Frameworks */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		E725576022B9587600ED7D7E /* Products */ = {
 			isa = PBXGroup;
@@ -445,7 +448,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = "https://0x123.com";
+				ORGANIZATIONNAME = "https://0x123.com ";
 				TargetAttributes = {
 					E725575E22B9587600ED7D7E = {
 						CreatedOnToolsVersion = 10.2.1;
