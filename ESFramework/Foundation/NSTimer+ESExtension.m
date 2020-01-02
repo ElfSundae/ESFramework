@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2014/04/18.
-//  Copyright © 2014 https://0x123.com. All rights reserved.
+//  Copyright © 2014-2020 https://0x123.com All rights reserved.
 //
 
 #import "NSTimer+ESExtension.h"

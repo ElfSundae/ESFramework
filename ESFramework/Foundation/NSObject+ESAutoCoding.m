@@ -3,7 +3,7 @@
 //  ESFramework
 //
 //  Created by Elf Sundae on 2015/08/22.
-//  Copyright © 2015 https://0x123.com. All rights reserved.
+//  Copyright © 2014-2020 https://0x123.com All rights reserved.
 //
 
 #import "NSObject+ESAutoCoding.h"
