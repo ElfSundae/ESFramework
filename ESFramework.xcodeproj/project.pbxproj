@@ -374,8 +374,6 @@
 		E7CFA3B2230B053100278C28 /* UIWindow+ESExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+ESExtension.h"; sourceTree = "<group>"; };
 		E7CFA3B3230B053100278C28 /* UIWindow+ESExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+ESExtension.m"; sourceTree = "<group>"; };
 		E7CFA501230B065300278C28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E7CFA503230B075000278C28 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
-		E7CFA505230B075F00278C28 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/tvOS/AFNetworking.framework; sourceTree = "<group>"; };
 		E7D861DE2375D79200882738 /* NSObject+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESExtension.h"; sourceTree = "<group>"; };
 		E7D861E42375D7AB00882738 /* NSObject+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -571,8 +569,6 @@
 		E7CFA502230B075000278C28 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E7CFA505230B075F00278C28 /* AFNetworking.framework */,
-				E7CFA503230B075000278C28 /* AFNetworking.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

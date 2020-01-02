@@ -156,8 +156,6 @@
 		E725580222B9CC3200ED7D7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7966435230C4FC0003D0AFD /* ESFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E796643B230C4FDC003D0AFD /* ESFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E79DBE2722DED27A006D6263 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = ../Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
-		E79DBE2922DED2A6006D6263 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = ../Carthage/Build/tvOS/AFNetworking.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,8 +313,6 @@
 			children = (
 				E7966435230C4FC0003D0AFD /* ESFramework.framework */,
 				E796643B230C4FDC003D0AFD /* ESFramework.framework */,
-				E79DBE2922DED2A6006D6263 /* AFNetworking.framework */,
-				E79DBE2722DED27A006D6263 /* AFNetworking.framework */,
 			);
 			name = Embedded;
 			sourceTree = "<group>";
