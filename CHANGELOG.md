@@ -1,5 +1,10 @@
 # Changelog
 
+## Master
+
+- Removed AFNetworking dependency
+- Removed `network` key from `-[UIApplication analyticsInfo]`
+
 ## 3.18.12 (2019-11-10)
 
 - Added `-[NSObject observeNotification:selector:]`

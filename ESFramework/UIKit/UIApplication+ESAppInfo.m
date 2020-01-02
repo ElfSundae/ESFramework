@@ -14,7 +14,6 @@
 #import "UIDevice+ESExtension.h"
 
 #if TARGET_OS_IOS
-#import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "ESNetworkHelper.h"
 #endif
 
@@ -46,10 +45,6 @@ static void ESCheckAppFreshLaunch(void)
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _gAppStartupDate = [NSDate date];
-
-#if TARGET_OS_IOS
-        [AFNetworkReachabilityManager.sharedManager startMonitoring];
-#endif
 
         ESCheckAppFreshLaunch();
     });
@@ -229,23 +224,6 @@ static void ESCheckAppFreshLaunch(void)
     }
 
 #if TARGET_OS_IOS
-    NSString *networkStatus = nil;
-    switch (AFNetworkReachabilityManager.sharedManager.networkReachabilityStatus) {
-        case AFNetworkReachabilityStatusNotReachable:
-            networkStatus = @"None";
-            break;
-        case AFNetworkReachabilityStatusReachableViaWWAN:
-            networkStatus = @"WWAN";
-            break;
-        case AFNetworkReachabilityStatusReachableViaWiFi:
-            networkStatus = @"WiFi";
-            break;
-        case AFNetworkReachabilityStatusUnknown:
-        default:
-            networkStatus = @"Unknown";
-    }
-    info[@"network"] = networkStatus;
-
     info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *carrier = [ESNetworkHelper getCarrierName];

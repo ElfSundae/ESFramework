@@ -1,19 +1,10 @@
 language: objective-c
 osx_image: xcode11
 
-# cache: cocoapods
-# podfile: Podfile
-
 before_install:
-    - gem install cocoapods --no-document --quiet
-    - pod --version
-    - pod repo update --silent
-
-    - brew update
     - brew upgrade carthage
     - carthage version
-    - bin/build
+
 script:
     - pod lib lint
-
-    - carthage build --no-skip-current --cache-builds
+    - carthage build --no-skip-current

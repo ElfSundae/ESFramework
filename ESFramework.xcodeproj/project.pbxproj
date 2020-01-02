@@ -275,8 +275,6 @@
 		E7CFA4FA230B053200278C28 /* UIWindow+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CFA3B2230B053100278C28 /* UIWindow+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7CFA4FC230B053200278C28 /* UIWindow+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CFA3B3230B053100278C28 /* UIWindow+ESExtension.m */; };
 		E7CFA4FE230B053200278C28 /* UIWindow+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CFA3B3230B053100278C28 /* UIWindow+ESExtension.m */; };
-		E7CFA504230B075000278C28 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CFA503230B075000278C28 /* AFNetworking.framework */; };
-		E7CFA506230B075F00278C28 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7CFA505230B075F00278C28 /* AFNetworking.framework */; };
 		E7D861DF2375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7D861E02375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7D861E12375D79200882738 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7D861DE2375D79200882738 /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -387,7 +385,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7CFA504230B075000278C28 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +399,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7CFA506230B075F00278C28 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1211,10 +1207,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1236,10 +1228,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1304,10 +1292,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1329,10 +1313,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
