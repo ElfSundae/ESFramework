@@ -2,9 +2,9 @@ language: objective-c
 osx_image: xcode11
 
 before_install:
-    - brew upgrade carthage
-    - carthage version
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
 
 script:
-    - pod lib lint
-    - carthage build --no-skip-current
+  - pod lib lint
+  - carthage build --no-skip-current
