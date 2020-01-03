@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.authors     = { 'Elf Sundae' => 'https://0x123.com' }
   s.source      = { :git => 'https://github.com/ElfSundae/ESFramework.git', :tag => s.version }
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
   s.watchos.deployment_target = '2.0'
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Network' do |ss|
-    ss.ios.deployment_target = '9.0'
+    ss.ios.deployment_target = '8.0'
     ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.11'
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UIKit' do |ss|
-    ss.ios.deployment_target = '9.0'
+    ss.ios.deployment_target = '8.0'
     ss.tvos.deployment_target = '9.0'
 
     ss.source_files = 'ESFramework/UIKit/**/*.{h,m}'

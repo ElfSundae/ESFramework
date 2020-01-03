@@ -9,7 +9,7 @@ ESFramework is an efficient, lightweight foundational framework for iOS, macOS, 
 
 ## Requirements
 
-- Minimum deployment target: iOS 9.0, macOS 10.11, tvOS 9.0, watchOS 2.0
+- Minimum deployment target: iOS 8.0, macOS 10.11, tvOS 9.0, watchOS 2.0
 - Xcode 10 or later
 
 ## Installation

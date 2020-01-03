@@ -2,6 +2,7 @@
 
 ## Master
 
+- Updated iOS minimum deployment target to 8.0
 - Removed AFNetworking dependency
 - Removed `network` key from `-[UIApplication analyticsInfo]`
 - Removed NSString methods `-contains:`, `-containsCaseInsensitive:`, `-contains:options:`
