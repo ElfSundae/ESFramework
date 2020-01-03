@@ -24,8 +24,9 @@ targetTemplates:
     type: application
     sources: ["${target_name}"]
     settings:
-      DEVELOPMENT_TEAM: B86YZY7YJX
       PRODUCT_NAME: ESFramework
+      CODE_SIGN_STYLE: Automatic
+      DEVELOPMENT_TEAM: B86YZY7YJX
 
 targets:
   iOS Example:
@@ -44,7 +45,6 @@ targets:
     platform: macOS
     settings:
       CODE_SIGN_ENTITLEMENTS: ${target_name}/${target_name}.entitlements
-      CODE_SIGN_IDENTITY: '-'
     dependencies:
       - framework: ESFramework.framework
         implicit: true
