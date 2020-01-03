@@ -17,13 +17,16 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 // In this header, you should import all the public headers of your framework using statements like #import <ESFramework/PublicHeader.h>
 
 // Core
+#if __has_include(<ESFramework/ESHelpers.h>)
 #import <ESFramework/ESHelpers.h>
 #import <ESFramework/ESMacros.h>
 #import <ESFramework/ESWeakProxy.h>
 #import <ESFramework/NSInvocation+ESExtension.h>
 #import <ESFramework/NSNumber+ESExtension.h>
+#endif
 
 // Foundation
+#if __has_include(<ESFramework/ESActionBlockContainer.h>)
 #import <ESFramework/ESActionBlockContainer.h>
 #import <ESFramework/NSArray+ESExtension.h>
 #import <ESFramework/NSCharacterSet+ESExtension.h>
@@ -45,11 +48,15 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSURL+ESExtension.h>
 #import <ESFramework/NSURLComponents+ESExtension.h>
 #import <ESFramework/NSUserDefaults+ESExtension.h>
+#endif
 
 // Network
+#if __has_include(<ESFramework/ESNetworkHelper.h>)
 #import <ESFramework/ESNetworkHelper.h>
+#endif
 
 // UIKit
+#if __has_include(<ESFramework/UIAlertController+ESExtension.h>)
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>
 #import <ESFramework/UIBarButtonItem+ESExtension.h>
@@ -65,3 +72,4 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/UIView+ESExtension.h>
 #import <ESFramework/UIViewController+ESExtension.h>
 #import <ESFramework/UIWindow+ESExtension.h>
+#endif
