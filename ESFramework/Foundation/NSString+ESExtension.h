@@ -47,10 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (nullable NSString *)URLDecodedString;
 
-- (BOOL)contains:(NSString*)string;
-- (BOOL)containsCaseInsensitive:(NSString *)string;
-- (BOOL)contains:(NSString*)string options:(NSStringCompareOptions)options;
-
 - (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options;
 - (NSString *)stringByReplacingWithDictionary:(NSDictionary *)dictionary options:(NSStringCompareOptions)options;
 

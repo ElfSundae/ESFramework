@@ -128,21 +128,6 @@
     return [[self stringByReplacingOccurrencesOfString:@"+" withString:@" "] stringByRemovingPercentEncoding];
 }
 
-- (BOOL)contains:(NSString *)string
-{
-    return [self contains:string options:0];
-}
-
-- (BOOL)containsCaseInsensitive:(NSString *)string
-{
-    return [self contains:string options:NSCaseInsensitiveSearch];
-}
-
-- (BOOL)contains:(NSString *)string options:(NSStringCompareOptions)options
-{
-    return (NSNotFound != [self rangeOfString:string options:options].location);
-}
-
 - (NSString *)stringByReplacingOccurrencesOfString:(NSString *)target withString:(NSString *)replacement options:(NSStringCompareOptions)options
 {
     return [self stringByReplacingOccurrencesOfString:target withString:replacement options:options range:NSMakeRange(0, self.length)];

@@ -4,6 +4,7 @@
 
 - Removed AFNetworking dependency
 - Removed `network` key from `-[UIApplication analyticsInfo]`
+- Removed NSString methods `-contains:`, `-containsCaseInsensitive:`, `-contains:options:`
 - Generate Xcode projects through XcodeGen
 
 ## 3.18.12 (2019-11-10)
