@@ -20,6 +20,6 @@ targets:
   ESFramework:
     type: framework
     platform: [iOS, tvOS, macOS, watchOS]
-    sources: [ESFramework, Supporting Files/Info.plist]
-    dependencies:
-      - carthage: AFNetworking
+    sources:
+      - ESFramework
+      - Supporting Files/Info.plist

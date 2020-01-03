@@ -24,11 +24,13 @@
     NSLog(@"%@", application.analyticsInfo);
     NSLog(@"%@", application.userAgentForHTTPRequest);
 
+#if !TARGET_IPHONE_SIMULATOR
     [application registerForRemoteNotificationsWithSuccess:^(NSData * _Nonnull deviceToken) {
         NSLog(@"device token: %@", UIDevice.currentDevice.deviceTokenString);
     } failure:^(NSError * _Nonnull error) {
         NSLog(@"%@", error);
     }];
+#endif
 
     [self.window makeKeyAndVisible];
     return YES;

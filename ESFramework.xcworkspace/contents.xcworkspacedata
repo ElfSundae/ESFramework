@@ -5,6 +5,6 @@
       location = "container:ESFramework.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Examples/Example.xcodeproj">
+      location = "group:Example/Example.xcodeproj">
    </FileRef>
 </Workspace>

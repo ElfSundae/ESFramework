@@ -47,12 +47,9 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSUserDefaults+ESExtension.h>
 
 // Network
-#if !TARGET_OS_WATCH
 #import <ESFramework/ESNetworkHelper.h>
-#endif
 
 // UIKit
-#if TARGET_OS_IOS || TARGET_OS_TV
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>
 #import <ESFramework/UIBarButtonItem+ESExtension.h>
@@ -68,4 +65,3 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/UIView+ESExtension.h>
 #import <ESFramework/UIViewController+ESExtension.h>
 #import <ESFramework/UIWindow+ESExtension.h>
-#endif
