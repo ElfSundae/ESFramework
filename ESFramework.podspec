@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.11'
   s.watchos.deployment_target = '2.0'
 
-  s.pod_target_xcconfig = {
-    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
+  s.info_plist = {
+    'CFBundleIdentifier' => 'com.0x123.ESFramework'
   }
 
   s.subspec 'Core' do |ss|
