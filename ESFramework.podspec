@@ -17,10 +17,8 @@ Pod::Spec.new do |s|
     'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
   }
 
-  s.source_files = 'ESFramework/ESFramework.h'
-
   s.subspec 'Core' do |ss|
-    ss.source_files = 'ESFramework/Core/**/*.{h,m}'
+    ss.source_files = 'ESFramework/Core/**/*.{h,m}', 'ESFramework/ESFramework.h'
     ss.frameworks = 'CoreGraphics', 'Security'
   end
 
@@ -34,7 +32,7 @@ Pod::Spec.new do |s|
     ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.11'
 
-    ss.source_files = 'ESFramework/Network/**/*.{h,m}'
+    ss.source_files = 'ESFramework/Network/**/*.{h,m}', 'ESFramework/ESFramework.h'
     ss.frameworks = 'SystemConfiguration', 'CoreTelephony'
   end
 
