@@ -45,6 +45,7 @@ targets:
     platform: macOS
     settings:
       CODE_SIGN_ENTITLEMENTS: ${target_name}/${target_name}.entitlements
+      CODE_SIGN_IDENTITY: '-'
     dependencies:
       - framework: ESFramework.framework
         implicit: true
