@@ -16,18 +16,12 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ESFramework/PublicHeader.h>
 
-// Core
-#if __has_include(<ESFramework/ESHelpers.h>)
-#import <ESFramework/ESHelpers.h>
-#import <ESFramework/ESMacros.h>
-#import <ESFramework/ESWeakProxy.h>
-#import <ESFramework/NSInvocation+ESExtension.h>
-#import <ESFramework/NSNumber+ESExtension.h>
-#endif
-
 // Foundation
 #if __has_include(<ESFramework/ESActionBlockContainer.h>)
 #import <ESFramework/ESActionBlockContainer.h>
+#import <ESFramework/ESHelpers.h>
+#import <ESFramework/ESMacros.h>
+#import <ESFramework/ESWeakProxy.h>
 #import <ESFramework/NSArray+ESExtension.h>
 #import <ESFramework/NSCharacterSet+ESExtension.h>
 #import <ESFramework/NSData+ESExtension.h>
@@ -38,7 +32,9 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSFileManager+ESExtension.h>
 #import <ESFramework/NSHTTPCookieStorage+ESExtension.h>
 #import <ESFramework/NSHTTPURLResponse+ESExtension.h>
+#import <ESFramework/NSInvocation+ESExtension.h>
 #import <ESFramework/NSMapTable+ESExtension.h>
+#import <ESFramework/NSNumber+ESExtension.h>
 #import <ESFramework/NSObject+ESAutoCoding.h>
 #import <ESFramework/NSObject+ESExtension.h>
 #import <ESFramework/NSOrderedSet+ESExtension.h>

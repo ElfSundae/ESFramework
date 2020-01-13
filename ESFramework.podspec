@@ -17,14 +17,9 @@ Pod::Spec.new do |s|
     'CFBundleIdentifier' => 'com.0x123.ESFramework'
   }
 
-  s.subspec 'Core' do |ss|
-    ss.source_files = 'ESFramework/Core/**/*.{h,m}', 'ESFramework/ESFramework.h'
-    ss.frameworks = 'CoreGraphics', 'Security'
-  end
-
   s.subspec 'Foundation' do |ss|
-    ss.source_files = 'ESFramework/Foundation/**/*.{h,m}'
-    ss.dependency 'ESFramework/Core'
+    ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Foundation/*.{h,m}'
+    ss.frameworks = 'CoreGraphics', 'Security'
   end
 
   s.subspec 'Network' do |ss|
@@ -32,7 +27,7 @@ Pod::Spec.new do |s|
     ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.11'
 
-    ss.source_files = 'ESFramework/Network/**/*.{h,m}', 'ESFramework/ESFramework.h'
+    ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Network/*.{h,m}'
     ss.frameworks = 'SystemConfiguration', 'CoreTelephony'
   end
 
@@ -40,8 +35,8 @@ Pod::Spec.new do |s|
     ss.ios.deployment_target = '8.0'
     ss.tvos.deployment_target = '9.0'
 
-    ss.source_files = 'ESFramework/UIKit/**/*.{h,m}'
+    ss.source_files = 'ESFramework/UIKit/*.{h,m}'
     ss.dependency 'ESFramework/Foundation'
-    ss.ios.dependency 'ESFramework/Network'
+    ss.dependency 'ESFramework/Network'
   end
 end
