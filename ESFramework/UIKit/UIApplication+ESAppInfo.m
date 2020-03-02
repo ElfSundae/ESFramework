@@ -204,8 +204,8 @@ static void ESCheckAppFreshLaunch(void)
 #if TARGET_OS_IOS
     info[@"jailbroken"] = @(device.isJailbroken);
 #endif
-    info[@"screen_width"] = @((int)device.screenSizeInPoints.width);
-    info[@"screen_height"] = @((int)device.screenSizeInPoints.height);
+    info[@"screen_width"] = @((NSInteger)device.screenSizeInPoints.width);
+    info[@"screen_height"] = @((NSInteger)device.screenSizeInPoints.height);
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
     info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.secondsFromGMT);
     info[@"locale"] = NSLocale.currentLocale.localeIdentifier;
