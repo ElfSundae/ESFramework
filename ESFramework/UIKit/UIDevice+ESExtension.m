@@ -48,19 +48,18 @@ static const void *deviceTokenStringKey = &deviceTokenStringKey;
 
 - (void)setDeviceToken:(NSData *)deviceToken
 {
-    NSData *_token = [self deviceToken];
-    if ((!_token && !deviceToken) ||
-        (_token && deviceToken && [_token isEqualToData:deviceToken])) {
+    NSData *token = [self deviceToken];
+
+    if (token == deviceToken || [token isEqual:deviceToken]) {
         return;
     }
 
     [self willChangeValueForKey:@"deviceToken"];
-    [self willChangeValueForKey:@"deviceTokenString"];
-
     objc_setAssociatedObject(self, deviceTokenKey, deviceToken, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    objc_setAssociatedObject(self, deviceTokenStringKey, [deviceToken lowercaseHexString], OBJC_ASSOCIATION_COPY_NONATOMIC);
-
     [self didChangeValueForKey:@"deviceToken"];
+
+    [self willChangeValueForKey:@"deviceTokenString"];
+    objc_setAssociatedObject(self, deviceTokenStringKey, [deviceToken lowercaseHexString], OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self didChangeValueForKey:@"deviceTokenString"];
 }
 
