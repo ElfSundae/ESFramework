@@ -12,6 +12,9 @@
 - Removed AFNetworking dependency
 - Removed `network` key from `-[UIApplication analyticsInfo]`
 - Removed NSString methods `-contains:`, `-containsCaseInsensitive:`, `-contains:options:`
+- Removed `ESScreenSizeString(CGSize size)` function
+- Removed `screen_size` from `-[UIApplication analyticsInfo]`, added `screen_width` and `screen_height`
+- Removed `Screen` from `-[UIApplication userAgentForHTTPRequest]`
 - Generate Xcode projects through XcodeGen
 
 ## 3.18.12 (2019-11-10)

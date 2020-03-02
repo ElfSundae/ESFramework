@@ -269,18 +269,6 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
     return UIColorWithRGBHex(hex, alpha);
 }
 
-NSString *ESScreenSizeString(CGSize size)
-{
-    return [NSString stringWithFormat:@"%dx%d",
-#if TARGET_OS_IOS
-            (int)fmin(size.width, size.height),
-            (int)fmax(size.width, size.height)
-#else
-            (int)size.width, (int)size.height
-#endif
-    ];
-}
-
 BOOL ESIsPadUI(void)
 {
     return UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad;

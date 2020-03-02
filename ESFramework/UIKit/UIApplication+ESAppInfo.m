@@ -204,7 +204,8 @@ static void ESCheckAppFreshLaunch(void)
 #if TARGET_OS_IOS
     info[@"jailbroken"] = @(device.isJailbroken);
 #endif
-    info[@"screen_size"] = ESScreenSizeString(device.screenSizeInPoints);
+    info[@"screen_width"] = @((int)device.screenSizeInPoints.width);
+    info[@"screen_height"] = @((int)device.screenSizeInPoints.height);
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
     info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.secondsFromGMT);
     info[@"locale"] = NSLocale.currentLocale.localeIdentifier;
@@ -224,10 +225,10 @@ static void ESCheckAppFreshLaunch(void)
     }
 
 #if TARGET_OS_IOS
-    info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
-
     NSString *carrier = [ESNetworkHelper getCarrierName];
     if (carrier) info[@"carrier"] = carrier;
+
+    info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 
     NSString *SSID = [ESNetworkHelper getWiFiSSID];
     if (SSID) info[@"ssid"] = SSID;
@@ -250,11 +251,10 @@ static void ESCheckAppFreshLaunch(void)
 {
     UIDevice *device = UIDevice.currentDevice;
     return [NSString stringWithFormat:
-            @"%@/%@ (%@; %@ %@; Channel/%@; Screen/%@; Scale/%.2f; Locale/%@)",
+            @"%@/%@ (%@; %@ %@; Channel/%@; Scale/%.2f; Locale/%@)",
             self.appName, self.appVersion,
             device.model, device.systemName, device.systemVersion,
             self.appChannel,
-            ESScreenSizeString(device.screenSizeInPoints),
             UIScreen.mainScreen.scale,
             NSLocale.currentLocale.localeIdentifier];
 }

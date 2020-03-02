@@ -321,12 +321,6 @@ FOUNDATION_EXPORT UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
 FOUNDATION_EXPORT UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
 
 /**
- * Converts a screen size to a string, e.g. "414x736".
- * On iOS the width always be less than the height.
- */
-FOUNDATION_EXPORT NSString *ESScreenSizeString(CGSize size);
-
-/**
  * Checks whether the current user interface is iPad style.
  */
 FOUNDATION_EXPORT BOOL ESIsPadUI(void);
