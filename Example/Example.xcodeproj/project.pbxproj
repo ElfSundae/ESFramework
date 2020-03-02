@@ -604,14 +604,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = macosx;
@@ -624,14 +624,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = appletvos;
@@ -701,14 +701,14 @@
 				CODE_SIGN_ENTITLEMENTS = "iOS Example/iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = iphoneos;
@@ -720,10 +720,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "watchOS Example/Info.plist";
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
@@ -737,7 +737,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "watchOS Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -745,7 +745,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
@@ -758,10 +758,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "watchOS Example/Info.plist";
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
@@ -776,14 +776,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = appletvos;
@@ -796,7 +796,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "watchOS Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -804,7 +804,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
@@ -821,14 +821,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = macosx;
@@ -905,14 +905,14 @@
 				CODE_SIGN_ENTITLEMENTS = "iOS Example/iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.18;
+				MARKETING_VERSION = 3.19;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = iphoneos;

@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.19.0 (2020-03-03)
 
 - Updated iOS minimum deployment target to 8.0
 - Moved `Core` pod subspec to `Foundation`
