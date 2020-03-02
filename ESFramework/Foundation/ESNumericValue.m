@@ -197,6 +197,11 @@ static NSNumberFormatter *ESDecimalNumberFormatter(void)
     });
 }
 
+- (NSNumber *)numberValue
+{
+    return [NSNumber numberWithString:self];
+}
+
 - (double)es_doubleValue
 {
     return self.numberValue.doubleValue;
@@ -225,11 +230,6 @@ static NSNumberFormatter *ESDecimalNumberFormatter(void)
 - (BOOL)es_boolValue
 {
     return self.numberValue.boolValue;
-}
-
-- (NSNumber *)numberValue
-{
-    return [NSNumber numberWithString:self];
 }
 
 - (char)charValue
