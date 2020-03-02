@@ -30,11 +30,6 @@ uint32_t ESRandomNumber(uint32_t min, uint32_t max)
     return arc4random_uniform(max - min + 1) + min;
 }
 
-NSString *ESUUIDString(void)
-{
-    return [NSUUID UUID].UUIDString;
-}
-
 NSString *ESUniqueNumericIdentifier(void)
 {
     static size_t len = (size_t)(sizeof(ULONG_MAX) * CHAR_BIT * 0.302) + 3;

@@ -37,12 +37,6 @@ FOUNDATION_EXPORT uint64_t ESBenchmark(size_t count, void (^block)(void));
 FOUNDATION_EXPORT uint32_t ESRandomNumber(uint32_t min, uint32_t max);
 
 /**
- * Generates a new UUID string conforms to RFC 4122 version 4,
- * e.g. "E621E1F8-C36C-495A-93FC-0C247A3E6E5F".
- */
-FOUNDATION_EXPORT NSString *ESUUIDString(void);
-
-/**
  * Generates a time based unique numeric identifier.
  * e.g. "586063599884852".
  */
