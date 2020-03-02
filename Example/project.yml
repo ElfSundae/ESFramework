@@ -25,6 +25,8 @@ targetTemplates:
     sources: ["${target_name}"]
     settings:
       PRODUCT_NAME: ESFramework
+      MARKETING_VERSION: 3.18
+      CURRENT_PROJECT_VERSION: 10
       CODE_SIGN_STYLE: Automatic
       DEVELOPMENT_TEAM: B86YZY7YJX
 
