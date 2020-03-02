@@ -14,30 +14,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark - Extract Numeric Values
-
-/**
- * Gets value from an NSNumber or NSString object safely.
- */
-
-FOUNDATION_EXPORT char ESCharValue(id _Nullable obj);
-FOUNDATION_EXPORT unsigned char ESUCharValue(id _Nullable obj);
-FOUNDATION_EXPORT short ESShortValue(id _Nullable obj);
-FOUNDATION_EXPORT unsigned short ESUShortValue(id _Nullable obj);
-FOUNDATION_EXPORT int ESIntValue(id _Nullable obj);
-FOUNDATION_EXPORT unsigned int ESUIntValue(id _Nullable obj);
-FOUNDATION_EXPORT long ESLongValue(id _Nullable obj);
-FOUNDATION_EXPORT unsigned long ESULongValue(id _Nullable obj);
-FOUNDATION_EXPORT long long ESLongLongValue(id _Nullable obj);
-FOUNDATION_EXPORT unsigned long long ESULongLongValue(id _Nullable obj);
-FOUNDATION_EXPORT float ESFloatValue(id _Nullable obj);
-FOUNDATION_EXPORT double ESDoubleValue(id _Nullable obj);
-FOUNDATION_EXPORT BOOL ESBoolValue(id _Nullable obj);
-FOUNDATION_EXPORT NSInteger ESIntegerValue(id _Nullable obj);
-FOUNDATION_EXPORT NSUInteger ESUIntegerValue(id _Nullable obj);
-/// Attempts convert a NSString/NSNumber object to a NSString object.
-FOUNDATION_EXPORT NSString * _Nullable ESStringValue(id _Nullable obj);
-
 #pragma mark - Utilities
 
 /**

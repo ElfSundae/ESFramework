@@ -4,6 +4,11 @@
 
 - Updated iOS minimum deployment target to 8.0
 - Moved `Core` pod subspec to `Foundation`
+- Moved numeric value related APIs to new file `ESNumericValue.h`, including:
+    + ESHelpers.h: `ES***Value()` functions
+    + NSNumber+ESExtension.h: `+[NSNumber numberWithString:]`
+    + NSString+ESExtension.h: `-[NSString numberValue]`, `-[NSString charValue]` etc
+- Renamed methods of getting unsigned value from `ESU***Value` to `ESUnsigned***Value`, e.g. `ESUCharValue` to `ESUnsignedCharValue()`
 - Removed AFNetworking dependency
 - Removed `network` key from `-[UIApplication analyticsInfo]`
 - Removed NSString methods `-contains:`, `-containsCaseInsensitive:`, `-contains:options:`

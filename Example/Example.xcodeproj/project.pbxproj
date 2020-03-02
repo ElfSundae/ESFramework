@@ -605,10 +605,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\".\"",
-				);
 				INFOPLIST_FILE = "macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -627,10 +623,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\".\"",
-				);
 				INFOPLIST_FILE = "tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -706,10 +698,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\".\"",
-				);
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -777,10 +765,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\".\"",
-				);
 				INFOPLIST_FILE = "tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -822,10 +806,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\".\"",
-				);
 				INFOPLIST_FILE = "macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -908,10 +888,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\".\"",
-				);
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -934,7 +910,7 @@
 				1D8AF6574AE49C08AC7A8F00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		36FC72E69D906F48675C62BF /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
@@ -952,7 +928,7 @@
 				526D563C514706B3800A771D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		A95002D04C8E5E53F9A9FF6D /* Build configuration list for PBXNativeTarget "tvOS Example" */ = {
 			isa = XCConfigurationList;
@@ -961,7 +937,7 @@
 				72E0A95F8D852720A2F0CDCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		CA2F7038E19471C5EFEC2A82 /* Build configuration list for PBXNativeTarget "iOS Example" */ = {
 			isa = XCConfigurationList;
@@ -970,7 +946,7 @@
 				FF34801D915F3CF80BEA274B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 		F4AFE00854DEB6B2B91C8CAA /* Build configuration list for PBXNativeTarget "watchOS Example Extension" */ = {
 			isa = XCConfigurationList;
@@ -979,7 +955,7 @@
 				547B3772BF48C734484A3AB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = "";
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

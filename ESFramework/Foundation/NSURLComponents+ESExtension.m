@@ -7,7 +7,7 @@
 //
 
 #import "NSURLComponents+ESExtension.h"
-#import "ESHelpers.h"
+#import "ESNumericValue.h"
 
 @implementation NSURLComponents (ESExtension)
 
