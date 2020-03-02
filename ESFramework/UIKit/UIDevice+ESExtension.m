@@ -258,7 +258,8 @@ static const void *deviceTokenStringKey = &deviceTokenStringKey;
 
 - (NSString *)diskFreeSpaceString
 {
-    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSpace countStyle:NSByteCountFormatterCountStyleFile];
+    return [NSByteCountFormatter stringFromByteCount:self.diskFreeSpace
+                                          countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 - (long long)diskUsedSpace
@@ -268,7 +269,8 @@ static const void *deviceTokenStringKey = &deviceTokenStringKey;
 
 - (NSString *)diskUsedSpaceString
 {
-    return [NSByteCountFormatter stringFromByteCount:self.diskUsedSpace countStyle:NSByteCountFormatterCountStyleFile];
+    return [NSByteCountFormatter stringFromByteCount:self.diskUsedSpace
+                                          countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 #if TARGET_OS_IOS
