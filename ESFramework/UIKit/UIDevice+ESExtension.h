@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) NSData *deviceToken;
 
 /**
- * The device token string for the Apple Push Notification service (APNs).
+ * Returns the device token string for the Apple Push Notification service (APNs).
  * @discussion This property is KVO-compliant.
  */
 @property (nullable, nonatomic, readonly) NSString *deviceTokenString;
@@ -45,12 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readonly) NSString *modelName;
 
 /**
- * the screen size in points.
+ * Returns the screen size in points.
  */
 @property (nonatomic, readonly) CGSize screenSizeInPoints;
 
 /**
- * The screen size in pixels.
+ * Returns the screen size in pixels.
  */
 @property (nonatomic, readonly) CGSize screenSizeInPixels;
 
