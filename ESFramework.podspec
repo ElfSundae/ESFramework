@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = 'ESFramework'
-  s.version     = '3.20.1'
+  s.version     = '3.20.0'
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
   s.summary     = 'An efficient, lightweight foundational framework for iOS, macOS, tvOS and watchOS.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'
@@ -16,8 +16,6 @@ Pod::Spec.new do |s|
   s.info_plist = {
     'CFBundleIdentifier' => 'com.0x123.ESFramework'
   }
-
-  s.source_files = 'ESFramework/ESFramework.h'
 
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Foundation/*.{h,m}'
