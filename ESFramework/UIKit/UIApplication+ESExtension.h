@@ -55,6 +55,9 @@ NS_ASSUME_NONNULL_BEGIN
  * Register to receive remote notifications via Apple Push Notification service.
  * @discussion You may use `UIDevice.currentDevice.deviceTokenString` to get the
  * string representation of the device token.
+ * @note Before calling this method, you need to request authorization using
+ * -[UIApplication registerUserNotificationSettings:] and
+ * -[UNUserNotificationCenter requestAuthorizationWithOptions:completionHandler:]
  */
 - (void)registerForRemoteNotificationsWithSuccess:(nullable void (^)(NSData *deviceToken))success
                                           failure:(nullable void (^)(NSError *error))failure;
