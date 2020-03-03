@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.20.0 (2020-03-03)
 
 - Removed `[UIApplication registerForRemoteNotificationsWithSuccess:failure:]`
 - Removed UIDevice methods: `-deviceToken`, `-deviceTokenString`
