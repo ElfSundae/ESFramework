@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = 'ESFramework'
-  s.version     = '3.20.0'
+  s.version     = '3.20.2'
   s.license     = { :type => 'MIT', :file => 'LICENSE' }
   s.summary     = 'An efficient, lightweight foundational framework for iOS, macOS, tvOS and watchOS.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'
@@ -13,8 +13,8 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.11'
   s.watchos.deployment_target = '2.0'
 
-  s.info_plist = {
-    'CFBundleIdentifier' => 'com.0x123.ESFramework'
+  s.pod_target_xcconfig = {
+    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
   }
 
   s.subspec 'Foundation' do |ss|
