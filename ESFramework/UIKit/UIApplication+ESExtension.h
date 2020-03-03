@@ -17,19 +17,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The window used to present the app’s visual content on the device’s main screen.
- * @discusion Shortcut for the `delegate.window`.
+ * @discussion Shortcut for the `delegate.window`.
  */
 @property (nullable, nonatomic, strong) __kindof UIWindow *appWindow;
 
 /**
  * The root view controller provides the content view of the appWindow.
- * @discusion Shortcut for the `delegate.window.rootViewController`.
+ * @discussion Shortcut for the `delegate.window.rootViewController`.
  */
 @property (nullable, nonatomic, strong) __kindof UIViewController *rootViewController;
 
 /**
  * Returns the topmost view controller in the appWindow's hierarchy.
- * @discusion You may use this view controller to present modal view controllers.
+ * @discussion You may use this view controller to present modal view controllers.
  */
 - (nullable __kindof UIViewController *)topmostViewController;
 
@@ -53,7 +53,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Register to receive remote notifications via Apple Push Notification service.
- * @dicussion You may use `UIDevice.currentDevice.deviceTokenString` to get the
+ * @discussion You may use `UIDevice.currentDevice.deviceTokenString` to get the
  * string representation of the device token.
  */
 - (void)registerForRemoteNotificationsWithSuccess:(nullable void (^)(NSData *deviceToken))success
@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 // *INDENT-OFF*
 /**
  * Make a phone call to the phone number.
- * @node Call the `-canMakePhoneCalls` method before making phone calls.
+ * @note Call the `-canMakePhoneCalls` method before making phone calls.
  */
 - (void)makePhoneCall:(NSString *)phoneNumber NS_EXTENSION_UNAVAILABLE_IOS("");
 // *INDENT-ON*
@@ -104,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Returns the application icon filename. e.g. "AppIcon60x60".
- * @dicussion The first filename within the CFBundleIconFiles in the
+ * @discussion The first filename within the CFBundleIconFiles in the
  * Info.plist file.
  */
 @property (nullable, nonatomic, readonly) NSString *appIconFilename;
