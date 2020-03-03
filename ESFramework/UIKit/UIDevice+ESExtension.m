@@ -12,10 +12,6 @@
 #import <sys/sysctl.h>
 #import <objc/runtime.h>
 #import "ESHelpers.h"
-#import "NSData+ESExtension.h"
-
-static const void *deviceTokenKey = &deviceTokenKey;
-static const void *deviceTokenStringKey = &deviceTokenStringKey;
 
 @implementation UIDevice (ESExtension)
 
@@ -34,33 +30,6 @@ static const void *deviceTokenStringKey = &deviceTokenStringKey;
         name = @"iOS";
     }
     return name;
-}
-
-- (NSData *)deviceToken
-{
-    return objc_getAssociatedObject(self, deviceTokenKey);
-}
-
-- (NSString *)deviceTokenString
-{
-    return objc_getAssociatedObject(self, deviceTokenStringKey);
-}
-
-- (void)setDeviceToken:(NSData *)deviceToken
-{
-    NSData *token = [self deviceToken];
-
-    if (token == deviceToken || [token isEqual:deviceToken]) {
-        return;
-    }
-
-    [self willChangeValueForKey:@"deviceToken"];
-    objc_setAssociatedObject(self, deviceTokenKey, deviceToken, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [self didChangeValueForKey:@"deviceToken"];
-
-    [self willChangeValueForKey:@"deviceTokenString"];
-    objc_setAssociatedObject(self, deviceTokenStringKey, [deviceToken lowercaseHexString], OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [self didChangeValueForKey:@"deviceTokenString"];
 }
 
 - (NSString *)modelIdentifier

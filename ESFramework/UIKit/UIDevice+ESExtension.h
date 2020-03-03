@@ -16,20 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIDevice (ESExtension)
 
 /**
- * The device token for the Apple Push Notification service (APNs).
- * @discussion The value of device token will be automatically set after calling
- * -[UIApplication registerForRemoteNotifications].
- * This property is KVO-compliant.
- */
-@property (nullable, nonatomic, copy) NSData *deviceToken;
-
-/**
- * Returns the device token string for the Apple Push Notification service (APNs).
- * @discussion This property is KVO-compliant.
- */
-@property (nullable, nonatomic, readonly) NSString *deviceTokenString;
-
-/**
  * Returns the model identifier of the device.
  * @discussion e.g. "iPhone3,1", "AppleTV5,3", "Watch4,3".
  * https://github.com/ElfSundae/iOS-Model-List

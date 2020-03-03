@@ -1,5 +1,11 @@
 # Changelog
 
+## Master
+
+- Removed `[UIApplication registerForRemoteNotificationsWithSuccess:failure:]`
+- Removed UIDevice methods: `-deviceToken`, `-deviceTokenString`
+- Removed `device_token` from `-[UIApplication analyticsInfo]`
+
 ## 3.19.0 (2020-03-03)
 
 - Updated iOS minimum deployment target to 8.0

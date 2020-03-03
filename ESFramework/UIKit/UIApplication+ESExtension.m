@@ -9,66 +9,9 @@
 #import "UIApplication+ESExtension.h"
 #if TARGET_OS_IOS || TARGET_OS_TV
 
-#import <objc/runtime.h>
-#import "ESHelpers.h"
-#import "UIDevice+ESExtension.h"
 #import "UIWindow+ESExtension.h"
 
-static const void *registerForRemoteNotificationsSucceededKey = &registerForRemoteNotificationsSucceededKey;
-static const void *registerForRemoteNotificationsFailedKey = &registerForRemoteNotificationsFailedKey;
-
-static IMP es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken = NULL;
-static IMP es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError = NULL;
-
-static void es_application_registerForRemoteNotifications_callback(id self, SEL _cmd, UIApplication *application, id object)
-{
-    IMP originalIMP = NULL;
-    void (^block)(id) = nil;
-
-    if ([object isKindOfClass:[NSData class]]) {
-        UIDevice.currentDevice.deviceToken = (NSData *)object;
-
-        originalIMP = es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken;
-        block = objc_getAssociatedObject(application, registerForRemoteNotificationsSucceededKey);
-    } else if ([object isKindOfClass:[NSError class]]) {
-        originalIMP = es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError;
-        block = objc_getAssociatedObject(application, registerForRemoteNotificationsFailedKey);
-    }
-
-    if (originalIMP) {
-        ((void (*)(id, SEL, id, id))originalIMP)(self, _cmd, application, object);
-    }
-
-    if (block) {
-        block(object);
-    }
-
-    objc_setAssociatedObject(application, registerForRemoteNotificationsSucceededKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    objc_setAssociatedObject(application, registerForRemoteNotificationsFailedKey, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
 @implementation UIApplication (ESExtension)
-
-+ (void)load
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        ESSwizzleInstanceMethod(self, @selector(setDelegate:), @selector(es_setDelegate:));
-    });
-}
-
-- (void)es_setDelegate:(id<UIApplicationDelegate>)delegate
-{
-    [self es_setDelegate:delegate];
-
-    if (delegate) {
-        es_originalIMP_application_didRegisterForRemoteNotificationsWithDeviceToken =
-            class_replaceMethod([delegate class], @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), (IMP)es_application_registerForRemoteNotifications_callback, "v@:@@");
-
-        es_originalIMP_application_didFailToRegisterForRemoteNotificationsWithError =
-            class_replaceMethod([delegate class], @selector(application:didFailToRegisterForRemoteNotificationsWithError:), (IMP)es_application_registerForRemoteNotifications_callback, "v@:@@");
-    }
-}
 
 - (UIWindow *)appWindow
 {
@@ -108,15 +51,6 @@ static void es_application_registerForRemoteNotifications_callback(id self, SEL 
 - (void)dismissKeyboard
 {
     [self sendAction:@selector(resignFirstResponder) to:nil from:nil forEvent:nil];
-}
-
-- (void)registerForRemoteNotificationsWithSuccess:(nullable void (^)(NSData *deviceToken))success
-                                          failure:(nullable void (^)(NSError *error))failure
-{
-    objc_setAssociatedObject(self, registerForRemoteNotificationsSucceededKey, success, OBJC_ASSOCIATION_COPY_NONATOMIC);
-    objc_setAssociatedObject(self, registerForRemoteNotificationsFailedKey, failure, OBJC_ASSOCIATION_COPY_NONATOMIC);
-
-    [self registerForRemoteNotifications];
 }
 
 - (void)simulateMemoryWarning

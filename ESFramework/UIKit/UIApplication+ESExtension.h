@@ -52,17 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)dismissKeyboard;
 
 /**
- * Register to receive remote notifications via Apple Push Notification service.
- * @discussion You may use `UIDevice.currentDevice.deviceTokenString` to get the
- * string representation of the device token.
- * @note Before calling this method, you need to request authorization using
- * -[UIApplication registerUserNotificationSettings:] and
- * -[UNUserNotificationCenter requestAuthorizationWithOptions:completionHandler:]
- */
-- (void)registerForRemoteNotificationsWithSuccess:(nullable void (^)(NSData *deviceToken))success
-                                          failure:(nullable void (^)(NSError *error))failure;
-
-/**
  * Simulate low memory warning, just for testing.
  *
  * @warning Don't use this method in production because it uses private API.
@@ -165,7 +154,6 @@ NS_ASSUME_NONNULL_BEGIN
  *     "screen_scale" : "3.00",
  *     "timezone_gmt" : 28800,
  *     "locale" : "zh_CN",
- *     "device_token" : "02d2vf6fc1dfde97283bf75cc993eb6d...",
  *     "app_name" : "ESFramework",
  *     "app_identifier" : "com.0x123.ESFramework.iOSExample",
  *     "app_channel" : "App Store",

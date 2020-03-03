@@ -10,7 +10,6 @@
 #if TARGET_OS_IOS || TARGET_OS_TV
 
 #import <objc/runtime.h>
-#import "ESHelpers.h"
 #import "UIDevice+ESExtension.h"
 
 #if TARGET_OS_IOS
@@ -209,9 +208,6 @@ static void ESCheckAppFreshLaunch(void)
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
     info[@"timezone_gmt"] = @(NSTimeZone.localTimeZone.secondsFromGMT);
     info[@"locale"] = NSLocale.currentLocale.localeIdentifier;
-    if (device.deviceTokenString) {
-        info[@"device_token"] = device.deviceTokenString;
-    }
 
     info[@"app_name"] = self.appName;
     info[@"app_identifier"] = self.appBundleIdentifier;
