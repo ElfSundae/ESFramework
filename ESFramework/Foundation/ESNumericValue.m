@@ -108,28 +108,18 @@ NSString * _Nullable ESStringValue(id _Nullable obj)
 
 #pragma mark - NSNumber (ESNumericValue)
 
-/**
- * A character set of separators to be removed before extracting numeric value
- * from a string, it contains whitespace, new line, and grouping separators
- * "\U00a0", "'", ",", "\U2019", "\U202f", "\U066c", "\U12c8", ".".
- */
-static NSCharacterSet *ESNumericRemovingCharacterSet(void)
+static NSString * _Nullable ESRemoveGroupingSeparators(NSString * _Nullable string)
 {
-    static NSCharacterSet *_numericRemovingSeparators = nil;
+    static NSCharacterSet *groupingSeparators = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSMutableSet *groupingSeparators = [NSMutableSet set];
-        for (NSString *localeIdentifier in [NSLocale availableLocaleIdentifiers]) {
-            NSLocale *locale = [NSLocale localeWithLocaleIdentifier:localeIdentifier];
-            [groupingSeparators addObject:[locale objectForKey:NSLocaleGroupingSeparator]];
-        }
-
-        NSMutableCharacterSet *charset = [NSMutableCharacterSet whitespaceAndNewlineCharacterSet];
-        [charset addCharactersInString:
-         [groupingSeparators.allObjects componentsJoinedByString:@""]];
-        _numericRemovingSeparators = [charset copy];
+        // https://en.wikipedia.org/wiki/Decimal_separator
+        // We treat dot "." as decimal points, not separator.
+        groupingSeparators = [NSCharacterSet
+                              characterSetWithCharactersInString:@" ',"];
     });
-    return _numericRemovingSeparators;
+    return [[string componentsSeparatedByCharactersInSet:groupingSeparators]
+            componentsJoinedByString:@""];
 }
 
 static NSNumberFormatter *ESDecimalNumberFormatter(void)
@@ -146,10 +136,9 @@ static NSNumberFormatter *ESDecimalNumberFormatter(void)
 
 @implementation NSNumber (ESNumericValue)
 
-+ (nullable NSNumber *)numberWithString:(NSString *)string
++ (nullable NSNumber *)numberWithString:(nullable NSString *)string
 {
-    string = [[string componentsSeparatedByCharactersInSet:ESNumericRemovingCharacterSet()]
-              componentsJoinedByString:@""];
+    string = ESRemoveGroupingSeparators(string);
 
     if (!string.length) {
         return nil;

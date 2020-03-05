@@ -38,7 +38,7 @@ FOUNDATION_EXPORT NSString * _Nullable ESStringValue(id _Nullable obj);
 /**
  * Returns an NSNumber object extracted from the given string.
  */
-+ (nullable NSNumber *)numberWithString:(NSString *)string;
++ (nullable NSNumber *)numberWithString:(nullable NSString *)string;
 
 @end
 

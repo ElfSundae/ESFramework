@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.21.0 (2020-03-06)
+
+- Fixed `+[NSNumber numberWithString:]`: treat dot "." as decimal points, not separator
+
 ## 3.20.0 (2020-03-03)
 
 - Removed `[UIApplication registerForRemoteNotificationsWithSuccess:failure:]`
