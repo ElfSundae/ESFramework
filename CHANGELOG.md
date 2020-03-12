@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Added `__()` function for retrieving localized string.
+
 ## 3.21.0 (2020-03-06)
 
 - Fixed `+[NSNumber numberWithString:]`: treat dot "." as decimal points, not separator

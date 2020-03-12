@@ -38,6 +38,13 @@
 #endif
 
 /**
+ * Retrieve the localized string by the specified key.
+ */
+#if !defined(__)
+    #define __(key) NSLocalizedString((key), nil)
+#endif
+
+/**
  * Make weak references to objects to break "retain cycles".
  */
 #define ESWeak(var)     __weak __typeof(&*var) weak_##var = var;
