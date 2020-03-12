@@ -15,26 +15,26 @@
  * Verbose \c NSLog() in the debug mode.
  */
 #if !defined(__FILENAME__)
-#define __FILENAME__ (strrchr("/" __FILE__, '/') + 1)
+    #define __FILENAME__ (strrchr("/" __FILE__, '/') + 1)
 #endif
 
 #if !defined(NSLog)
-#if defined(DEBUG) && DEBUG
-#define NSLog(format, ...) NSLog((@"%s:%d %s " format), __FILENAME__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
-#else
-#define NSLog(format, ...)
-#endif
+    #if defined(DEBUG) && DEBUG
+        #define NSLog(format, ...) NSLog((@"%s:%d %s " format), __FILENAME__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+    #else
+        #define NSLog(format, ...)
+    #endif
 #endif
 
 /**
  * Conditional \c NSLogIf() in the debug mode.
  */
 #if !defined(NSLogIf)
-#if defined(DEBUG) && DEBUG
-#define NSLogIf(condition, format, ...) if ((condition)) { NSLog(format, ##__VA_ARGS__); }
-#else
-#define NSLogIf(condition, format, ...)
-#endif
+    #if defined(DEBUG) && DEBUG
+        #define NSLogIf(condition, format, ...) if ((condition)) { NSLog(format, ##__VA_ARGS__); }
+    #else
+        #define NSLogIf(condition, format, ...)
+    #endif
 #endif
 
 /**
