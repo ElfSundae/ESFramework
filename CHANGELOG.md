@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.21.1 (2020-03-13)
 
 - Added `__()` function for retrieving localized string.
 
