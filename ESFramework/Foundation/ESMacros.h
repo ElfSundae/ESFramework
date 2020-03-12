@@ -11,6 +11,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Verbose \c NSLog() in the debug mode.
+ */
 #if !defined(__FILENAME__)
 #define __FILENAME__ (strrchr("/" __FILE__, '/') + 1)
 #endif
@@ -23,6 +26,9 @@
 #endif
 #endif
 
+/**
+ * Conditional \c NSLogIf() in the debug mode.
+ */
 #if !defined(NSLogIf)
 #if defined(DEBUG) && DEBUG
 #define NSLogIf(condition, format, ...) if ((condition)) { NSLog(format, ##__VA_ARGS__); }
