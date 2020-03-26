@@ -1,7 +1,7 @@
 name: ESFramework
 
 options:
-  bundleIdPrefix: com.0x123
+  bundleIdPrefix: com.0x123.ESFramework
   createIntermediateGroups: true
   usesTabs: false
   indentWidth: 4
@@ -14,7 +14,20 @@ options:
 
 attributes:
   CLASSPREFIX: ES
-  ORGANIZATIONNAME: 'https://0x123.com '
+  ORGANIZATIONNAME: 'https://0x123.com'
+
+settings:
+  # Fix warning for Xcode 11.3: Enable "Missing Localizability"
+  CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+
+targetTemplates:
+  Example:
+    type: application
+    sources: ["Examples/${target_name}"]
+    settings:
+      MARKETING_VERSION: 3.21.1
+      CURRENT_PROJECT_VERSION: 3
+      DEVELOPMENT_TEAM: B86YZY7YJX
 
 targets:
   ESFramework:
@@ -24,3 +37,45 @@ targets:
     sources:
       - ESFramework
       - Supporting Files/Info.plist
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework
+
+  iOS Example:
+    templates: [Example]
+    platform: iOS
+    settings:
+      CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
+    dependencies:
+      - target: ESFramework_iOS
+      - target: watchOS Example
+
+  macOS Example:
+    templates: [Example]
+    platform: macOS
+    settings:
+      CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
+      CODE_SIGN_IDENTITY: '-'
+    dependencies:
+      - target: ESFramework_macOS
+
+  tvOS Example:
+    templates: [Example]
+    platform: tvOS
+    dependencies:
+      - target: ESFramework_tvOS
+
+  watchOS Example:
+    templates: [Example]
+    type: application.watchapp2
+    platform: watchOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework.iOSExample.watchkitapp
+    dependencies:
+      - target: watchOS Example Extension
+
+  watchOS Example Extension:
+    templates: [Example]
+    type: watchkit2-extension
+    platform: watchOS
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension

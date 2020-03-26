@@ -6,7 +6,7 @@
 //  Copyright © 2014-2020 https://0x123.com All rights reserved.
 //
 
-#import <ESFramework/ESFramework.h>
+#import <Foundation/Foundation.h>
 
 @interface User : NSObject <NSCopying>
 

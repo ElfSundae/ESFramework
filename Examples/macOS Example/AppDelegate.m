@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-@import ESFramework;
+#import <ESFramework/ESFramework.h>
 
 @interface AppDelegate ()
 

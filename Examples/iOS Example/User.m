@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import <ESFramework/ESFramework.h>
 
 @implementation User
 
