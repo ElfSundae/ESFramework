@@ -1,0 +1,6 @@
+framework module ESFramework {
+  umbrella header "ESFramework.h"
+
+  export *
+  module * { export * }
+}

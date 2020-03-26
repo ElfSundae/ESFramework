@@ -14,9 +14,6 @@ FOUNDATION_EXPORT double ESFrameworkVersionNumber;
 //! Project version string for ESFramework.
 FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <ESFramework/PublicHeader.h>
-
-// Foundation
 #if __has_include(<ESFramework/ESActionBlockContainer.h>)
 #import <ESFramework/ESActionBlockContainer.h>
 #import <ESFramework/ESHelpers.h>
@@ -46,12 +43,10 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSUserDefaults+ESExtension.h>
 #endif
 
-// Network
 #if __has_include(<ESFramework/ESNetworkHelper.h>)
 #import <ESFramework/ESNetworkHelper.h>
 #endif
 
-// UIKit
 #if __has_include(<ESFramework/UIAlertController+ESExtension.h>)
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>

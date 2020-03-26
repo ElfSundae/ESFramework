@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = {
     'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
   }
+  s.module_map = 'Supporting Files/module.modulemap'
 
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Foundation/*.{h,m}'
