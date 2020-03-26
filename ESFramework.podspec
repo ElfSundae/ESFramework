@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     ss.osx.deployment_target = '10.11'
 
     ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Network/*.{h,m}'
-    ss.frameworks = 'SystemConfiguration', 'CoreTelephony'
+    ss.ios.frameworks = 'SystemConfiguration', 'CoreTelephony'
   end
 
   s.subspec 'UIKit' do |ss|
