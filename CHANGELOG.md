@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.21.2 (2020-03-27)
+
+- Fixed `frameworks` configuration for pod subspec `Network`.
+- Generate single Xcode project `ESFramework.xcodeproj` includes framework targets and examples targets.
+
 ## 3.21.1 (2020-03-13)
 
 - Added `__()` function for retrieving localized string.

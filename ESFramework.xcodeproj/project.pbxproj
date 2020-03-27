@@ -1680,7 +1680,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1718,7 +1718,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1739,7 +1739,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1850,7 +1850,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1869,7 +1869,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1961,7 +1961,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2046,7 +2046,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				SDKROOT = macosx;
 			};
@@ -2088,7 +2088,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2109,7 +2109,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2130,7 +2130,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.1;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				SDKROOT = macosx;
 			};

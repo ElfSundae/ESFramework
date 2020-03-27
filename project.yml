@@ -25,7 +25,7 @@ targetTemplates:
     type: application
     sources: ["Examples/${target_name}"]
     settings:
-      MARKETING_VERSION: 3.21.1
+      MARKETING_VERSION: 3.21.2
       CURRENT_PROJECT_VERSION: 3
       DEVELOPMENT_TEAM: B86YZY7YJX
 
