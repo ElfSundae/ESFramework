@@ -1,19 +1,11 @@
-name: Lint
+name: Lint Library
 
 on: [push, pull_request]
 
 jobs:
-  checkout:
+  lint:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-
-  lint-pod:
-    needs: checkout
-    steps:
       - run: pod lib lint
-
-  build-with-carthage:
-    needs: checkout
-    steps:
       - run: carthage build --no-skip-current
