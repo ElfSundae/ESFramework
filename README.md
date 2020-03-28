@@ -1,6 +1,6 @@
 # ESFramework
 
-[![Build Status](https://travis-ci.org/ElfSundae/ESFramework.svg)](https://travis-ci.org/ElfSundae/ESFramework)
+[![Build Status](https://github.com/ElfSundae/ESFramework/workflows/Build/badge.svg)](https://github.com/ElfSundae/ESFramework/actions)
 ![Cocoapods](https://img.shields.io/cocoapods/v/ESFramework)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Cocoapods Platforms](https://img.shields.io/cocoapods/p/ESFramework)
