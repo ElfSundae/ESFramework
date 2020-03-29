@@ -7,5 +7,5 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - run: pod lib lint
+      - run: pod lib lint1
       - run: carthage build --no-skip-current
