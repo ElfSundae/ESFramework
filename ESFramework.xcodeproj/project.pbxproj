@@ -103,7 +103,6 @@
 		3D45D425CCF75191A3B0B5B5 /* NSFileManager+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 89CCCDB95A818C29537921CF /* NSFileManager+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3ECF7E7D89D19FEA4D6BF5F1 /* ESNumericValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FBAA052DEA10755AC714A2 /* ESNumericValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EEC6AAEE1B93CB1E451D47E /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F6F4F983B3FC1789B6A65B6 /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB77A0400EBC50227D67134 /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FB3E6FE749C1DCE51FFD30C /* NSMapTable+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FBB5F4D0BFA1EAF2D9291F /* NSMapTable+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41813DF86B0CF53BB292A6F0 /* UIImageView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 257E531624BF0365B60EF1A1 /* UIImageView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		420C6C641335AD4752873953 /* UIApplication+ESAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CC6F7A12A7DF15029A2997 /* UIApplication+ESAppInfo.m */; };
@@ -123,7 +122,6 @@
 		4963C1EEB1E148FDD3B07101 /* UIApplication+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC716DB261D87C41B7941147 /* UIApplication+ESExtension.m */; };
 		4A4F94817249917017CDF06E /* NSOrderedSet+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 36923230F5E7DAE5FCA7D121 /* NSOrderedSet+ESExtension.m */; };
 		4B0707454229A20DD51CD6A2 /* NSDateFormatter+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 307451240FCAA0EDD71E418B /* NSDateFormatter+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4B757E86B11B70747F0C8531 /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19E2A5196FE201C3ADAFAC6B /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C93B0D61949F1202905EBCD /* NSArray+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B766CD27781F8E057FA49CDC /* NSArray+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D79A12F5390DD2B165F4173 /* UIControl+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF932181E09B9EA984D3867C /* UIControl+ESExtension.m */; };
 		505A3F7FED86F7D019901C1B /* UITableView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A30C08819D5DC4219492C6DC /* UITableView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -322,7 +320,6 @@
 		D8F1ABE209896B4D4E8B1ABC /* NSMapTable+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9924B5171CE7C1877B4F183 /* NSMapTable+ESExtension.m */; };
 		D96C43D32D313BEFC10179BC /* NSMapTable+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9924B5171CE7C1877B4F183 /* NSMapTable+ESExtension.m */; };
 		DA22FD6C0AF65587DDD39DCC /* UITableView+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B71AC6CC7F9583C8D12D66B0 /* UITableView+ESExtension.m */; };
-		DC09A3EEBA38C042B58AB344 /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A84607298E3FF0B19C3DC0A /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD9649F4D5DEEC5D33EEA8CF /* NSObject+ESAutoCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 051A80664F36D2ABF7FD2E65 /* NSObject+ESAutoCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE19FEBEC53957A89965B5E5 /* UIView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DF8334359EDBF0B58ADB21E /* UIView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE9120FAD3B918A6B799233 /* NSUserDefaults+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F242B47412B9D973DE1FB992 /* NSUserDefaults+ESExtension.m */; };
@@ -417,39 +414,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		0FDFCB8B7483A25090C7D22F /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				4B757E86B11B70747F0C8531 /* ESFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		36F3975ECAA0EF8A43AE556E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				DC09A3EEBA38C042B58AB344 /* ESFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68533FA6025DC6422B85D1A5 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3F6F4F983B3FC1789B6A65B6 /* ESFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		765F722CC6DB629B5978EE2A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -494,7 +458,7 @@
 		17AC731BDB9349A7F9593C02 /* NSString+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESExtension.m"; sourceTree = "<group>"; };
 		17D25C37FB6B1E3854494CAE /* NSObject+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESExtension.h"; sourceTree = "<group>"; };
 		1910F835E3F79CD849FD4507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		19E2A5196FE201C3ADAFAC6B /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		19E2A5196FE201C3ADAFAC6B /* ESFramework.framework */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6E3F651AAE2B93A0F0BAF8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1EEB2459CE111F23A8F8DD9E /* ESMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMacros.h; sourceTree = "<group>"; };
 		22A734E46B3C3EFDCD0D1938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -532,7 +496,7 @@
 		514734201BDBD2093C02A1F2 /* UIColor+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ESExtension.m"; sourceTree = "<group>"; };
 		59FAB7E3C67FB556196D7F2D /* NSString+ESGTMHTML.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESGTMHTML.m"; sourceTree = "<group>"; };
 		5A1403DF0C82DF0A16969A23 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5DB77A0400EBC50227D67134 /* ESFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DB77A0400EBC50227D67134 /* ESFramework.framework */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.framework; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C75F5F76FC2C5F376313DE /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		688856C174E235F2D8796A01 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		6BB3B267F28BBC25C8A4CE84 /* NSObject+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESExtension.m"; sourceTree = "<group>"; };
@@ -1095,7 +1059,7 @@
 			name = ESFramework_macOS;
 			productName = ESFramework_macOS;
 			productReference = 4A84607298E3FF0B19C3DC0A /* ESFramework.framework */;
-			productType = "com.apple.product-type.framework";
+			productType = "com.apple.product-type.framework.static";
 		};
 		1897B45673710FD9ED699BFD /* iOS Example */ = {
 			isa = PBXNativeTarget;
@@ -1104,7 +1068,6 @@
 				D58F6AA41C69F02D252CE199 /* Sources */,
 				7C191F20FF942800B581C368 /* Resources */,
 				4AAFB04BACA177A74902D661 /* Frameworks */,
-				0FDFCB8B7483A25090C7D22F /* Embed Frameworks */,
 				9AE59EE4A3F0F82DF64A0C30 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -1132,7 +1095,7 @@
 			name = ESFramework_iOS;
 			productName = ESFramework_iOS;
 			productReference = 19E2A5196FE201C3ADAFAC6B /* ESFramework.framework */;
-			productType = "com.apple.product-type.framework";
+			productType = "com.apple.product-type.framework.static";
 		};
 		58C30C3131C37266514C0826 /* watchOS Example Extension */ = {
 			isa = PBXNativeTarget;
@@ -1157,7 +1120,6 @@
 				F67020D50EF4ABA6946E6F37 /* Sources */,
 				83A0610BC207959A2E7E7981 /* Resources */,
 				37B0771224E2B933A694ECDC /* Frameworks */,
-				36F3975ECAA0EF8A43AE556E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1183,7 +1145,7 @@
 			name = ESFramework_tvOS;
 			productName = ESFramework_tvOS;
 			productReference = 5DB77A0400EBC50227D67134 /* ESFramework.framework */;
-			productType = "com.apple.product-type.framework";
+			productType = "com.apple.product-type.framework.static";
 		};
 		94E563A2FD80462D82C4E977 /* watchOS Example */ = {
 			isa = PBXNativeTarget;
@@ -1210,7 +1172,6 @@
 				8E3FBEFF63A274CB52D07CFC /* Sources */,
 				ADF72224C634FD029133D102 /* Resources */,
 				C3E79C2D7B0FA171C9E49AFB /* Frameworks */,
-				68533FA6025DC6422B85D1A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1236,7 +1197,7 @@
 			name = ESFramework_watchOS;
 			productName = ESFramework_watchOS;
 			productReference = B67CF616FE03165F8B082145 /* ESFramework.framework */;
-			productType = "com.apple.product-type.framework";
+			productType = "com.apple.product-type.framework.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -1651,20 +1612,12 @@
 		0690FCE6BDE14981ECA02BF9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1672,7 +1625,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1680,7 +1632,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1691,14 +1643,7 @@
 		17C0A3877717CAE3D8630AAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1706,19 +1651,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		2326A3056BF0197A139425DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1732,14 +1674,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Examples/iOS Example/iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1749,14 +1690,7 @@
 		28BC368C604423BEB1B5DEE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1764,23 +1698,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		2F46D3BFDBDABBF54EF17945 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1788,43 +1713,26 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		4B68964040344E3DEA2BAC93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
 		6C90A55F2CEDA6FB7D444BC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1832,9 +1740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1843,14 +1749,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1862,14 +1767,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/tvOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1879,15 +1783,8 @@
 		83B91B233278BF3C3C265B30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1895,8 +1792,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1933,6 +1828,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1946,6 +1842,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 3.21.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
@@ -1958,10 +1855,9 @@
 		9CCA98BD9145273483F888F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2002,6 +1898,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2021,6 +1918,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 3.21.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2039,14 +1937,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Examples/macOS Example/macOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				SDKROOT = macosx;
 			};
@@ -2055,15 +1952,8 @@
 		D433D2A244690B5C0D39D877 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2071,8 +1961,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework;
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -2080,7 +1968,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2088,7 +1975,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2102,14 +1989,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Examples/iOS Example/iOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/iOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2123,14 +2009,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Examples/macOS Example/macOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 3.21.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				SDKROOT = macosx;
 			};

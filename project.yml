@@ -17,6 +17,8 @@ attributes:
   ORGANIZATIONNAME: 'https://0x123.com'
 
 settings:
+  MARKETING_VERSION: 3.21.2
+  CURRENT_PROJECT_VERSION: 3
   # Fix warning for Xcode 11.3: Enable "Missing Localizability"
   CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
 
@@ -25,13 +27,12 @@ targetTemplates:
     type: application
     sources: ["Examples/${target_name}"]
     settings:
-      MARKETING_VERSION: 3.21.2
-      CURRENT_PROJECT_VERSION: 3
       DEVELOPMENT_TEAM: B86YZY7YJX
+      OTHER_LDFLAGS: -ObjC # requiresObjCLinking not working?
 
 targets:
   ESFramework:
-    type: framework
+    type: framework.static
     platform: [iOS, tvOS, macOS, watchOS]
     scheme: {} # https://github.com/yonaskolb/XcodeGen/issues/215
     sources:
@@ -47,6 +48,7 @@ targets:
       CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
     dependencies:
       - target: ESFramework_iOS
+        embed: false # For framework.static dependencies, default value of "embed" is true?
       - target: watchOS Example
 
   macOS Example:
@@ -57,12 +59,14 @@ targets:
       CODE_SIGN_IDENTITY: '-'
     dependencies:
       - target: ESFramework_macOS
+        embed: false
 
   tvOS Example:
     templates: [Example]
     platform: tvOS
     dependencies:
       - target: ESFramework_tvOS
+        embed: false
 
   watchOS Example:
     templates: [Example]
