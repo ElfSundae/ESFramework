@@ -32,7 +32,7 @@ targetTemplates:
 
 targets:
   ESFramework:
-    type: framework.static
+    type: framework
     platform: [iOS, tvOS, macOS, watchOS]
     scheme: {} # https://github.com/yonaskolb/XcodeGen/issues/215
     sources:
