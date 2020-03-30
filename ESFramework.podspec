@@ -18,8 +18,13 @@ Pod::Spec.new do |s|
   }
   s.module_map = 'Supporting Files/module.modulemap'
 
+  s.subspec 'UmbrellaHeader' do |ss|
+    ss.source_files = 'ESFramework/ESFramework.h'
+  end
+
   s.subspec 'Foundation' do |ss|
-    ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Foundation/*.{h,m}'
+    ss.source_files = 'ESFramework/Foundation/*.{h,m}'
+    ss.dependency 'ESFramework/UmbrellaHeader'
     ss.frameworks = 'CoreGraphics', 'Security'
   end
 
@@ -28,7 +33,8 @@ Pod::Spec.new do |s|
     ss.tvos.deployment_target = '9.0'
     ss.osx.deployment_target = '10.11'
 
-    ss.source_files = 'ESFramework/ESFramework.h', 'ESFramework/Network/*.{h,m}'
+    ss.source_files = 'ESFramework/Network/*.{h,m}'
+    ss.dependency 'ESFramework/UmbrellaHeader'
     ss.ios.frameworks = 'SystemConfiguration', 'CoreTelephony'
   end
 
