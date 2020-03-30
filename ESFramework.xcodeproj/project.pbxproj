@@ -103,6 +103,7 @@
 		3D45D425CCF75191A3B0B5B5 /* NSFileManager+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 89CCCDB95A818C29537921CF /* NSFileManager+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3ECF7E7D89D19FEA4D6BF5F1 /* ESNumericValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FBAA052DEA10755AC714A2 /* ESNumericValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3EEC6AAEE1B93CB1E451D47E /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F6F4F983B3FC1789B6A65B6 /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5DB77A0400EBC50227D67134 /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3FB3E6FE749C1DCE51FFD30C /* NSMapTable+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FBB5F4D0BFA1EAF2D9291F /* NSMapTable+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		41813DF86B0CF53BB292A6F0 /* UIImageView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 257E531624BF0365B60EF1A1 /* UIImageView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		420C6C641335AD4752873953 /* UIApplication+ESAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CC6F7A12A7DF15029A2997 /* UIApplication+ESAppInfo.m */; };
@@ -122,6 +123,7 @@
 		4963C1EEB1E148FDD3B07101 /* UIApplication+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC716DB261D87C41B7941147 /* UIApplication+ESExtension.m */; };
 		4A4F94817249917017CDF06E /* NSOrderedSet+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 36923230F5E7DAE5FCA7D121 /* NSOrderedSet+ESExtension.m */; };
 		4B0707454229A20DD51CD6A2 /* NSDateFormatter+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 307451240FCAA0EDD71E418B /* NSDateFormatter+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B757E86B11B70747F0C8531 /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 19E2A5196FE201C3ADAFAC6B /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C93B0D61949F1202905EBCD /* NSArray+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B766CD27781F8E057FA49CDC /* NSArray+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4D79A12F5390DD2B165F4173 /* UIControl+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF932181E09B9EA984D3867C /* UIControl+ESExtension.m */; };
 		505A3F7FED86F7D019901C1B /* UITableView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = A30C08819D5DC4219492C6DC /* UITableView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -320,6 +322,7 @@
 		D8F1ABE209896B4D4E8B1ABC /* NSMapTable+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9924B5171CE7C1877B4F183 /* NSMapTable+ESExtension.m */; };
 		D96C43D32D313BEFC10179BC /* NSMapTable+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9924B5171CE7C1877B4F183 /* NSMapTable+ESExtension.m */; };
 		DA22FD6C0AF65587DDD39DCC /* UITableView+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B71AC6CC7F9583C8D12D66B0 /* UITableView+ESExtension.m */; };
+		DC09A3EEBA38C042B58AB344 /* ESFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4A84607298E3FF0B19C3DC0A /* ESFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DD9649F4D5DEEC5D33EEA8CF /* NSObject+ESAutoCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 051A80664F36D2ABF7FD2E65 /* NSObject+ESAutoCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE19FEBEC53957A89965B5E5 /* UIView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DF8334359EDBF0B58ADB21E /* UIView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DFE9120FAD3B918A6B799233 /* NSUserDefaults+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F242B47412B9D973DE1FB992 /* NSUserDefaults+ESExtension.m */; };
@@ -414,6 +417,39 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0FDFCB8B7483A25090C7D22F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4B757E86B11B70747F0C8531 /* ESFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36F3975ECAA0EF8A43AE556E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DC09A3EEBA38C042B58AB344 /* ESFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68533FA6025DC6422B85D1A5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3F6F4F983B3FC1789B6A65B6 /* ESFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		765F722CC6DB629B5978EE2A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1068,6 +1104,7 @@
 				D58F6AA41C69F02D252CE199 /* Sources */,
 				7C191F20FF942800B581C368 /* Resources */,
 				4AAFB04BACA177A74902D661 /* Frameworks */,
+				0FDFCB8B7483A25090C7D22F /* Embed Frameworks */,
 				9AE59EE4A3F0F82DF64A0C30 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -1120,6 +1157,7 @@
 				F67020D50EF4ABA6946E6F37 /* Sources */,
 				83A0610BC207959A2E7E7981 /* Resources */,
 				37B0771224E2B933A694ECDC /* Frameworks */,
+				36F3975ECAA0EF8A43AE556E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1172,6 +1210,7 @@
 				8E3FBEFF63A274CB52D07CFC /* Sources */,
 				ADF72224C634FD029133D102 /* Resources */,
 				C3E79C2D7B0FA171C9E49AFB /* Frameworks */,
+				68533FA6025DC6422B85D1A5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1640,7 +1679,6 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1677,7 +1715,6 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1697,7 +1734,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1807,7 +1843,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1825,7 +1860,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1918,7 +1952,6 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2004,7 +2037,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				SDKROOT = macosx;
 			};
@@ -2045,7 +2077,6 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2065,7 +2096,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2085,7 +2115,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.macOSExample;
 				SDKROOT = macosx;
 			};
