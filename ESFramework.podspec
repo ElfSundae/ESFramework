@@ -25,7 +25,6 @@ Pod::Spec.new do |s|
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'ESFramework/Foundation/*.{h,m}'
     ss.dependency 'ESFramework/UmbrellaHeader'
-    ss.frameworks = 'CoreGraphics', 'Security'
   end
 
   s.subspec 'Network' do |ss|
@@ -35,7 +34,6 @@ Pod::Spec.new do |s|
 
     ss.source_files = 'ESFramework/Network/*.{h,m}'
     ss.dependency 'ESFramework/UmbrellaHeader'
-    ss.ios.frameworks = 'SystemConfiguration', 'CoreTelephony'
   end
 
   s.subspec 'UIKit' do |ss|
