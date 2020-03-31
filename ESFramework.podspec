@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'ESFramework/Foundation/*.{h,m}'
+
     ss.dependency 'ESFramework/UmbrellaHeader'
   end
 
@@ -35,6 +36,7 @@ Pod::Spec.new do |s|
     ss.osx.deployment_target = '10.10'
 
     ss.source_files = 'ESFramework/Network/*.{h,m}'
+
     ss.dependency 'ESFramework/UmbrellaHeader'
   end
 
@@ -43,6 +45,7 @@ Pod::Spec.new do |s|
     ss.tvos.deployment_target = '9.0'
 
     ss.source_files = 'ESFramework/UIKit/*.{h,m}'
+
     ss.dependency 'ESFramework/Foundation'
     ss.dependency 'ESFramework/Network'
   end
