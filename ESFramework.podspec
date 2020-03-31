@@ -18,16 +18,10 @@ Pod::Spec.new do |s|
   s.osx.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework' }
   s.watchos.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework-watchOS' }
 
-  s.module_map = 'Supporting Files/module.modulemap'
-
-  s.subspec 'UmbrellaHeader' do |ss|
-    ss.source_files = 'ESFramework/ESFramework.h'
-  end
+  s.source_files = 'ESFramework/ESFramework.h'
 
   s.subspec 'Foundation' do |ss|
     ss.source_files = 'ESFramework/Foundation/*.{h,m}'
-
-    ss.dependency 'ESFramework/UmbrellaHeader'
   end
 
   s.subspec 'Network' do |ss|
@@ -36,8 +30,6 @@ Pod::Spec.new do |s|
     ss.osx.deployment_target = '10.10'
 
     ss.source_files = 'ESFramework/Network/*.{h,m}'
-
-    ss.dependency 'ESFramework/UmbrellaHeader'
   end
 
   s.subspec 'UIKit' do |ss|
