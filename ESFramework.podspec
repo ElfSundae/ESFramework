@@ -13,9 +13,11 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
   s.watchos.deployment_target = '2.0'
 
-  s.pod_target_xcconfig = {
-    'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework'
-  }
+  s.ios.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework' }
+  s.tvos.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework' }
+  s.osx.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework' }
+  s.watchos.pod_target_xcconfig = { 'PRODUCT_BUNDLE_IDENTIFIER' => 'com.0x123.ESFramework-watchOS' }
+
   s.module_map = 'Supporting Files/module.modulemap'
 
   s.subspec 'UmbrellaHeader' do |ss|
