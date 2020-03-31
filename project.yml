@@ -18,10 +18,23 @@ attributes:
 
 settings:
   MARKETING_VERSION: 3.21.2
+  CURRENT_PROJECT_VERSION: 3
   # Fix warning for Xcode 11.3: Enable "Missing Localizability"
   CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
 
 targetTemplates:
+  Framework:
+    type: framework
+    scheme: {} # To generate default shared schemes: https://github.com/yonaskolb/XcodeGen/issues/215
+    sources:
+      - ESFramework/ESFramework.h
+      - ESFramework/Foundation
+      - Supporting Files/Info.plist
+    settings:
+      PRODUCT_NAME: ESFramework
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework
+      APPLICATION_EXTENSION_API_ONLY: YES
+      LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/Frameworks @loader_path/Frameworks
   Example:
     type: application
     sources: ["Examples/${target_name}"]
@@ -29,52 +42,65 @@ targetTemplates:
       DEVELOPMENT_TEAM: B86YZY7YJX
 
 targets:
-  ESFramework:
-    type: framework
-    platform: [iOS, tvOS, macOS, watchOS]
-    scheme: {} # https://github.com/yonaskolb/XcodeGen/issues/215
-    sources:
-      - ESFramework
-      - Supporting Files/Info.plist
+  ESFramework-iOS:
+    platform: iOS
+    templates: [Framework]
+    sources: [ESFramework]
+
+  ESFramework-tvOS:
+    platform: tvOS
+    templates: [Framework]
+    sources: [ESFramework]
+
+  ESFramework-macOS:
+    platform: macOS
+    templates: [Framework]
+    sources: [ESFramework/Network]
+
+  ESFramework-watchOS:
+    platform: watchOS
+    templates: [Framework]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework-watchOS
 
   iOS Example:
-    templates: [Example]
     platform: iOS
+    templates: [Example]
     settings:
       CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
     dependencies:
-      - target: ESFramework_iOS
+      - target: ESFramework-iOS
       - target: watchOS Example
 
-  macOS Example:
+  tvOS Example:
+    platform: tvOS
     templates: [Example]
+    dependencies:
+      - target: ESFramework-tvOS
+
+  macOS Example:
     platform: macOS
+    templates: [Example]
     settings:
       CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
       CODE_SIGN_IDENTITY: '-'
     dependencies:
-      - target: ESFramework_macOS
-
-  tvOS Example:
-    templates: [Example]
-    platform: tvOS
-    dependencies:
-      - target: ESFramework_tvOS
+      - target: ESFramework-macOS
 
   watchOS Example:
-    templates: [Example]
-    type: application.watchapp2
     platform: watchOS
+    type: application.watchapp2
+    templates: [Example]
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework.iOSExample.watchkitapp
     dependencies:
       - target: watchOS Example Extension
 
   watchOS Example Extension:
-    templates: [Example]
-    type: watchkit2-extension
     platform: watchOS
+    type: watchkit2-extension
+    templates: [Example]
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension
+    dependencies:
+      - target: ESFramework-watchOS

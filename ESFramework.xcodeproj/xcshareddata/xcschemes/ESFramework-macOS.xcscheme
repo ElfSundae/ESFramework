@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3AFDB3A1C74CC6749636ECB4"
+               BlueprintIdentifier = "F4956F04C0A486CDEBE7A2BC"
                BuildableName = "ESFramework.framework"
-               BlueprintName = "ESFramework_iOS"
+               BlueprintName = "ESFramework-macOS"
                ReferencedContainer = "container:ESFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,25 +26,18 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      onlyGenerateCoverageForSpecifiedTargets = "NO"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AFDB3A1C74CC6749636ECB4"
+            BlueprintIdentifier = "F4956F04C0A486CDEBE7A2BC"
             BuildableName = "ESFramework.framework"
-            BlueprintName = "ESFramework_iOS"
+            BlueprintName = "ESFramework-macOS"
             ReferencedContainer = "container:ESFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <CommandLineArguments>
-      </CommandLineArguments>
-      <AdditionalOptions>
-      </AdditionalOptions>
-      <CodeCoverageTargets>
-      </CodeCoverageTargets>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -59,16 +52,12 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AFDB3A1C74CC6749636ECB4"
+            BlueprintIdentifier = "F4956F04C0A486CDEBE7A2BC"
             BuildableName = "ESFramework.framework"
-            BlueprintName = "ESFramework_iOS"
+            BlueprintName = "ESFramework-macOS"
             ReferencedContainer = "container:ESFramework.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <CommandLineArguments>
-      </CommandLineArguments>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -80,14 +69,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3AFDB3A1C74CC6749636ECB4"
+            BlueprintIdentifier = "F4956F04C0A486CDEBE7A2BC"
             BuildableName = "ESFramework.framework"
-            BlueprintName = "ESFramework_iOS"
+            BlueprintName = "ESFramework-macOS"
             ReferencedContainer = "container:ESFramework.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
