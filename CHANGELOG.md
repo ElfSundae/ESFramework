@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.22.0 (2020-04-01)
+
+- Fixed Carthage installation: changed framework type from static to dynamic since Carthage does not currently support static library schemes.
+- Configured separate bundle identifier for watchOS framework. ITMS-90806: CFBundleIdentifier collision https://github.com/Alamofire/Alamofire/issues/2925 https://github.com/AFNetworking/AFNetworking/pull/4533
+- Decreased macOS deployment target to 10.10
+- Migrated CI to GitHub Actions
+
 ## 3.21.2 (2020-03-27)
 
 - Fixed `frameworks` configuration for pod subspec `Network`.
