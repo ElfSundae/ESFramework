@@ -14,7 +14,6 @@ FOUNDATION_EXPORT double ESFrameworkVersionNumber;
 //! Project version string for ESFramework.
 FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 
-#if __has_include(<ESFramework/ESActionBlockContainer.h>)
 #import <ESFramework/ESActionBlockContainer.h>
 #import <ESFramework/ESHelpers.h>
 #import <ESFramework/ESMacros.h>
@@ -41,16 +40,12 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSURL+ESExtension.h>
 #import <ESFramework/NSURLComponents+ESExtension.h>
 #import <ESFramework/NSUserDefaults+ESExtension.h>
-#endif
 
 #if !TARGET_OS_WATCH
-#if __has_include(<ESFramework/ESNetworkHelper.h>)
 #import <ESFramework/ESNetworkHelper.h>
-#endif
 #endif
 
 #if TARGET_OS_IOS || TARGET_OS_TV
-#if __has_include(<ESFramework/UIAlertController+ESExtension.h>)
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>
 #import <ESFramework/UIBarButtonItem+ESExtension.h>
@@ -66,5 +61,4 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/UIView+ESExtension.h>
 #import <ESFramework/UIViewController+ESExtension.h>
 #import <ESFramework/UIWindow+ESExtension.h>
-#endif
 #endif
