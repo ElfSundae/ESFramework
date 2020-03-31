@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name        = 'ESFramework'
   s.version     = '3.21.2'
-  s.license     = { :type => 'MIT', :file => 'LICENSE' }
+  s.license     = 'MIT'
   s.summary     = 'An efficient, lightweight foundational framework for iOS, macOS, tvOS and watchOS.'
   s.homepage    = 'https://github.com/ElfSundae/ESFramework'
   s.social_media_url = 'https://twitter.com/ElfSundae'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '9.0'
-  s.osx.deployment_target = '10.11'
+  s.osx.deployment_target = '10.10'
   s.watchos.deployment_target = '2.0'
 
   s.pod_target_xcconfig = {
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.subspec 'Network' do |ss|
     ss.ios.deployment_target = '8.0'
     ss.tvos.deployment_target = '9.0'
-    ss.osx.deployment_target = '10.11'
+    ss.osx.deployment_target = '10.10'
 
     ss.source_files = 'ESFramework/Network/*.{h,m}'
     ss.dependency 'ESFramework/UmbrellaHeader'
