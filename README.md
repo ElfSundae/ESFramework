@@ -1,8 +1,8 @@
 # ESFramework
 
 [![Build status](https://github.com/ElfSundae/ESFramework/workflows/Build/badge.svg)](https://github.com/ElfSundae/ESFramework/actions?query=workflow%3ABuild)
-![Cocoapods](https://img.shields.io/cocoapods/v/ESFramework)
-![Cocoapods platforms](https://img.shields.io/cocoapods/p/ESFramework)
+![CocoaPods](https://img.shields.io/cocoapods/v/ESFramework)
+![CocoaPods platforms](https://img.shields.io/cocoapods/p/ESFramework)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 ESFramework is an efficient, lightweight foundational framework for iOS, macOS, tvOS and watchOS.
