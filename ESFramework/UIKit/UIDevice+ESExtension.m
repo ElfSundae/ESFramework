@@ -155,6 +155,7 @@
                 @"iPhone12,1": @"iPhone 11",
                 @"iPhone12,3": @"iPhone 11 Pro",
                 @"iPhone12,5": @"iPhone 11 Pro Max",
+                @"iPhone12,8": @"iPhone12,8",
                 @"iPod1,1": @"iPod touch",
                 @"iPod2,1": @"iPod touch 2",
                 @"iPod3,1": @"iPod touch 3",
