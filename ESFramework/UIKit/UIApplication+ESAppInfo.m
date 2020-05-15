@@ -246,13 +246,22 @@ static void ESCheckAppFreshLaunch(void)
 - (NSString *)userAgentForHTTPRequest
 {
     UIDevice *device = UIDevice.currentDevice;
-    return [NSString stringWithFormat:
-            @"%@/%@ (%@; %@ %@; Channel/%@; Scale/%.2f; Locale/%@)",
-            self.appName, self.appVersion,
-            device.model, device.systemName, device.systemVersion,
-            self.appChannel,
-            UIScreen.mainScreen.scale,
-            NSLocale.currentLocale.localeIdentifier];
+    NSString *userAgent = [NSString stringWithFormat:
+                           @"%@/%@ (%@; %@ %@; Channel/%@; Scale/%.2f; Locale/%@)",
+                           self.appName, self.appVersion,
+                           device.model, device.systemName, device.systemVersion,
+                           self.appChannel,
+                           UIScreen.mainScreen.scale,
+                           NSLocale.currentLocale.localeIdentifier];
+
+    if (![userAgent canBeConvertedToEncoding:NSASCIIStringEncoding]) {
+        NSMutableString *mutableUserAgent = [userAgent mutableCopy];
+        if (CFStringTransform((__bridge CFMutableStringRef)mutableUserAgent, NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false)) {
+            userAgent = mutableUserAgent;
+        }
+    }
+
+    return userAgent;
 }
 
 @end
