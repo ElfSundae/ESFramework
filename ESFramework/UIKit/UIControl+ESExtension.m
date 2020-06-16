@@ -70,8 +70,7 @@ static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
     }
 
     NSMutableArray<ESUIControlActionBlockContainer *> *containers = [self allActionBlockContainers];
-    [containers removeObjectsAtIndexes:
-     [containers indexesOfObjectsPassingTest:^BOOL (ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [containers removeObjectsAtIndexes:[containers indexesOfObjectsPassingTest:^BOOL (ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIControlEvents removalEvents = obj.events & controlEvents;
         if (removalEvents) {
             [self removeTarget:obj action:obj.action forControlEvents:removalEvents];
