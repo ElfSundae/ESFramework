@@ -43,7 +43,7 @@
     [self.topmostViewController presentViewController:viewController animated:animated completion:completion];
 }
 
-- (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
+- (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
 {
     [self.rootViewController dismissViewControllerAnimated:animated completion:completion];
 }
@@ -55,7 +55,7 @@
 
 - (void)simulateMemoryWarning
 {
-    SEL memoryWarningSel =  NSSelectorFromString(@"_performMemoryWarning");
+    SEL memoryWarningSel = NSSelectorFromString(@"_performMemoryWarning");
     if ([self respondsToSelector:memoryWarningSel]) {
         printf("=== Simulate Memory Warning! ===\n");
 #pragma clang diagnostic push

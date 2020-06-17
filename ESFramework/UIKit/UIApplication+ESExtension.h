@@ -17,13 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * The window used to present the app’s visual content on the device’s main screen.
- * @discussion Shortcut for the `delegate.window`.
+ * @discussion Shortcut for the \c delegate.window .
  */
 @property (nullable, nonatomic, strong) __kindof UIWindow *appWindow;
 
 /**
  * The root view controller provides the content view of the app window.
- * @discussion Shortcut for the `delegate.window.rootViewController`.
+ * @discussion Shortcut for the \c delegate.window.rootViewController .
  */
 @property (nullable, nonatomic, strong) __kindof UIViewController *rootViewController;
 
@@ -39,9 +39,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /**
- * Dismisses all modal view controllers.
+ * Dismisses all view controllers that were presented modally by the root view controller.
  */
-- (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+- (void)dismissAllViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /**
  * Dismiss the keyboard from the screen.

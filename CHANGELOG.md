@@ -2,6 +2,7 @@
 
 ## Master
 
+- Rename `-[UIApplication dismissViewControllersAnimated:completion:]` to `-dismissAllViewControllersAnimated:completion:`
 - Expose `ESControlActionBlockContainer`
 
 ## 3.22.0 (2020-04-01)
