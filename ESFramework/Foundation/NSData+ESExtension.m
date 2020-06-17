@@ -279,7 +279,7 @@
 
 - (nullable NSData *)aesEncryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error
 {
-    return [self _aesCryptedDataWithOperation:kCCEncrypt key:key IV:IV error:error];
+    return [self es_aesCryptedDataWithOperation:kCCEncrypt key:key IV:IV error:error];
 }
 
 - (nullable NSData *)aesEncryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error
@@ -298,7 +298,7 @@
 
 - (nullable NSData *)aesDecryptedDataWithKey:(NSData *)key IV:(NSData *)IV error:(NSError **)error
 {
-    return [self _aesCryptedDataWithOperation:kCCDecrypt key:key IV:IV error:error];
+    return [self es_aesCryptedDataWithOperation:kCCDecrypt key:key IV:IV error:error];
 }
 
 - (nullable NSData *)aesDecryptedDataWithKeyString:(NSString *)key IVString:(NSString *)IV error:(NSError **)error
@@ -315,10 +315,10 @@
                                    error:error];
 }
 
-- (nullable NSData *)_aesCryptedDataWithOperation:(CCOperation)operation
-                                              key:(NSData *)key
-                                               IV:(NSData *)iv
-                                            error:(NSError **)error
+- (nullable NSData *)es_aesCryptedDataWithOperation:(CCOperation)operation
+                                                key:(NSData *)key
+                                                 IV:(NSData *)iv
+                                              error:(NSError **)error
 {
     if (key.length != kCCKeySizeAES128 &&
         key.length != kCCKeySizeAES192 &&

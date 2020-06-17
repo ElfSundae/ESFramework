@@ -219,11 +219,9 @@ NS_INLINE void es_dispatch_async_global_queue(dispatch_queue_priority_t priority
 NS_INLINE void es_dispatch_after(NSTimeInterval delayInSeconds,
                                  dispatch_block_t block)
 {
-    dispatch_after(
-        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)),
-        dispatch_get_main_queue(),
-        block
-        );
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC)),
+                   dispatch_get_main_queue(),
+                   block);
 }
 
 #pragma mark - ObjC Runtime
