@@ -76,13 +76,13 @@ NS_ASSUME_NONNULL_BEGIN
  * The app name.
  * @discussion The default value is the executable in the main bundle.
  */
-@property (null_resettable, nonatomic, copy) NSString *appName;
+@property (nonatomic, copy) NSString *appName;
 
 /**
  * The channel of submitting app to.
  * @discussion The default value is "App Store".
  */
-@property (null_resettable, nonatomic, copy) NSString *appChannel;
+@property (nonatomic, copy) NSString *appChannel;
 
 @property (nonatomic, readonly) NSString *appBundleName;
 @property (nonatomic, readonly) NSString *appDisplayName;

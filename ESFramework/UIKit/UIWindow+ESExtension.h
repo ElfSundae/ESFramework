@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIWindow (ESExtension)
 
 /**
- * Returns the topmost view controller in window's hierarchy.
+ * Returns the top-most view controller in window's hierarchy.
  */
 - (nullable __kindof UIViewController *)topmostViewController;
 
