@@ -22,29 +22,26 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, strong) __kindof UIWindow *appWindow;
 
 /**
- * The root view controller provides the content view of the appWindow.
+ * The root view controller provides the content view of the app window.
  * @discussion Shortcut for the `delegate.window.rootViewController`.
  */
 @property (nullable, nonatomic, strong) __kindof UIViewController *rootViewController;
 
 /**
- * Returns the topmost view controller in the appWindow's hierarchy.
+ * Returns the top-most view controller in the app window's hierarchy.
  * @discussion You may use this view controller to present modal view controllers.
  */
 - (nullable __kindof UIViewController *)topmostViewController;
 
 /**
- * Presents a view controller modally from the -topmostViewController.
+ * Presents a view controller modally from the \c -topmostViewController .
  */
-- (void)presentViewController:(UIViewController *)viewControllerToPresent
-                     animated:(BOOL)animated
-                   completion:(void (^ _Nullable)(void))completion;
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /**
  * Dismisses all modal view controllers.
  */
-- (void)dismissViewControllersAnimated:(BOOL)animated
-                            completion:(void (^ _Nullable)(void))completion;
+- (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 /**
  * Dismiss the keyboard from the screen.

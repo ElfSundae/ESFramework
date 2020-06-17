@@ -38,9 +38,9 @@
     return self.delegate.window.topmostViewController;
 }
 
-- (void)presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
 {
-    [self.topmostViewController presentViewController:viewControllerToPresent animated:animated completion:completion];
+    [self.topmostViewController presentViewController:viewController animated:animated completion:completion];
 }
 
 - (void)dismissViewControllersAnimated:(BOOL)animated completion:(void (^ _Nullable)(void))completion
