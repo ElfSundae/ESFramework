@@ -52,7 +52,14 @@ static const void *codablePropertiesKey = &codablePropertiesKey;
 
 - (NSDictionary<NSString *, id> *)dictionaryRepresentation
 {
-    return [self dictionaryWithValuesForKeys:self.codableProperties.allKeys];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    for (NSString *key in self.codableProperties) {
+        id value = [self valueForKey:key];
+        if (value) {
+            dict[key] = value;
+        }
+    }
+    return [dict copy];
 }
 
 - (NSData *)archivedData

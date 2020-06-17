@@ -2,6 +2,7 @@
 
 ## Master
 
+- Fixed `-[NSObject dictionaryRepresentation]` to remove `nil` values
 - Rename `-[UIApplication dismissViewControllersAnimated:completion:]` to `-dismissAllViewControllersAnimated:completion:`
 - Rename `ESAppLink()` to `ESAppStoreLink()`
 - Rename `ESAppStoreLink()` to `ESAppStoreDirectLink()`
