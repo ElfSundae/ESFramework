@@ -3,6 +3,8 @@
 ## Master
 
 - Rename `-[UIApplication dismissViewControllersAnimated:completion:]` to `-dismissAllViewControllersAnimated:completion:`
+- Rename `ESAppLink()` to `ESAppStoreLink()`
+- Rename `ESAppStoreLink()` to `ESAppStoreDirectLink()`
 - Expose `ESControlActionBlockContainer`
 
 ## 3.22.0 (2020-04-01)

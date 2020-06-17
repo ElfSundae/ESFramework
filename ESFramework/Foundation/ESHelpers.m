@@ -84,12 +84,12 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180.0 / M_PI);
 }
 
-NSURL *ESAppLink(NSInteger appIdentifier)
+NSURL *ESAppStoreLink(NSInteger appIdentifier)
 {
     return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];
 }
 
-NSURL *ESAppStoreLink(NSInteger appIdentifier)
+NSURL *ESAppStoreDirectLink(NSInteger appIdentifier)
 {
     return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/app/id%ld", (long)appIdentifier]];
 }

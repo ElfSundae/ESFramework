@@ -67,12 +67,12 @@ FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
 /**
  * e.g. "https://apps.apple.com/app/id12345678"
  */
-FOUNDATION_EXPORT NSURL *ESAppLink(NSInteger appIdentifier);
+FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
 
 /**
  * e.g. "itms-apps://apps.apple.com/app/id12345678"
  */
-FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
+FOUNDATION_EXPORT NSURL *ESAppStoreDirectLink(NSInteger appIdentifier);
 
 /**
  * e.g. "itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
@@ -167,7 +167,7 @@ FOUNDATION_EXPORT NSURL *ESTemporaryURL(NSString *pathComponent, BOOL isDirector
  * Determines whether the current running dispatch queue is the given queue by
  * comparing the queue labels.
  *
- * @waring To make this method work, you should set a unique queue label for
+ * @warning To get this method work, you should set a unique queue label for
  * your custom queue.
  */
 NS_INLINE BOOL es_dispatch_is_queue(dispatch_queue_t queue)
