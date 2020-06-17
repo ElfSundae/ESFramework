@@ -34,6 +34,7 @@
 		1C155CE021169168763A9DD7 /* UIControl+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF932181E09B9EA984D3867C /* UIControl+ESExtension.m */; };
 		1C24828EB546B32E29FB9926 /* ESWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E996B3269D15B587A2AD60F /* ESWeakProxy.m */; };
 		1C79B6588DB0DB3A014E955F /* NSHTTPURLResponse+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC68E08285CDBB3E4C670DA /* NSHTTPURLResponse+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1F591338165EDC1F8A59C43F /* ESControlActionBlockContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C0226AD55614BB9CC58A8D3E /* ESControlActionBlockContainer.m */; };
 		20504D393AE7CED81F042ECD /* NSURL+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 874FB6A7572778ED23BAC6D2 /* NSURL+ESExtension.m */; };
 		20607212229C783617A8169D /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20FB275DCE69063A163D18A5 /* UIApplication+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 029D03AC5BFCEA0A4920088A /* UIApplication+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -152,6 +153,7 @@
 		7E35D0D4D68A93A2F1160513 /* NSCharacterSet+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6350D0F5F9C9A3B300BFE4 /* NSCharacterSet+ESExtension.m */; };
 		7EE0AEE78C784662EFA13DD5 /* NSMapTable+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FBB5F4D0BFA1EAF2D9291F /* NSMapTable+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7F32D8055C4CE16C2E0058B4 /* ESNumericValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FBAA052DEA10755AC714A2 /* ESNumericValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F4B930CD4663C443C85324F /* ESControlActionBlockContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AD193652A2907153A49DC50 /* ESControlActionBlockContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7FA05FC7D3668B01EF453E6A /* UIWindow+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE8C43C1263ECDC7270ADB5 /* UIWindow+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		808BEC761C6279CFF62B38D2 /* NSDateFormatter+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6CB31210C4E2DA6E56F2C /* NSDateFormatter+ESExtension.m */; };
 		80A38A7AC75A481087F21622 /* NSURL+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 27A3EB815541499DE9B36745 /* NSURL+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -187,6 +189,7 @@
 		97162A80401EE7F70F5AD459 /* NSString+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AC731BDB9349A7F9593C02 /* NSString+ESExtension.m */; };
 		97843337CF8099198DB00399 /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C2FD2DEAAAA3454E627CB425 /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9833B5F88DB5F578DED8B91B /* NSUserDefaults+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F242B47412B9D973DE1FB992 /* NSUserDefaults+ESExtension.m */; };
+		98A4752DDEC1AC350D406031 /* ESControlActionBlockContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C0226AD55614BB9CC58A8D3E /* ESControlActionBlockContainer.m */; };
 		9DB1B0FB8B193C06424AA6BD /* NSFileManager+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */; };
 		9E01B0BCCCB3384626FEDEAF /* NSDictionary+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E1D1FCD1AFCEC24F5FDA9 /* NSDictionary+ESExtension.m */; };
 		A06B098F962C95BF691FD820 /* NSOrderedSet+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 152784CBC64AD3FF32216723 /* NSOrderedSet+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -197,6 +200,7 @@
 		A37CC5E1723E1145ED8BB7AD /* NSArray+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B766CD27781F8E057FA49CDC /* NSArray+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3823EF1F19BACBD1FCAB281 /* UIImageView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 257E531624BF0365B60EF1A1 /* UIImageView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3C14B103A135C355D31BB1D /* NSHTTPCookieStorage+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 15784A749E6EE1976D7C57DA /* NSHTTPCookieStorage+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A45D46C871BCCC6463D76331 /* ESControlActionBlockContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6AD193652A2907153A49DC50 /* ESControlActionBlockContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A6B4ECD9CF55B69876A6C59A /* ESWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E996B3269D15B587A2AD60F /* ESWeakProxy.m */; };
 		A781E076969C0A55B3705A62 /* NSUserDefaults+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F242B47412B9D973DE1FB992 /* NSUserDefaults+ESExtension.m */; };
 		A87F5E27BBFC1ED0222CD367 /* NSFileManager+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */; };
@@ -479,6 +483,7 @@
 		5A1403DF0C82DF0A16969A23 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		61C75F5F76FC2C5F376313DE /* ESNetworkHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESNetworkHelper.h; sourceTree = "<group>"; };
 		688856C174E235F2D8796A01 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		6AD193652A2907153A49DC50 /* ESControlActionBlockContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESControlActionBlockContainer.h; sourceTree = "<group>"; };
 		6BB3B267F28BBC25C8A4CE84 /* NSObject+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ESExtension.m"; sourceTree = "<group>"; };
 		6E29CB4705BDF25385300673 /* NSDictionary+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+ESExtension.h"; sourceTree = "<group>"; };
 		6E996B3269D15B587A2AD60F /* ESWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESWeakProxy.m; sourceTree = "<group>"; };
@@ -521,6 +526,7 @@
 		B9B0AEB881DC5B716B3B6654 /* UIImage+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ESExtension.m"; sourceTree = "<group>"; };
 		BE40900DA4994488BB50505F /* NSDate+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+ESExtension.h"; sourceTree = "<group>"; };
 		BFB67B90A27D7EA837B3EE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C0226AD55614BB9CC58A8D3E /* ESControlActionBlockContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESControlActionBlockContainer.m; sourceTree = "<group>"; };
 		C1CC6F7A12A7DF15029A2997 /* UIApplication+ESAppInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+ESAppInfo.m"; sourceTree = "<group>"; };
 		C2AA0A4DF118662D915936B6 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
 		C2FD2DEAAAA3454E627CB425 /* ESFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESFramework.h; sourceTree = "<group>"; };
@@ -593,6 +599,8 @@
 		026329F468D65CE86A951F5B /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				6AD193652A2907153A49DC50 /* ESControlActionBlockContainer.h */,
+				C0226AD55614BB9CC58A8D3E /* ESControlActionBlockContainer.m */,
 				83F045A5C321870AD8E1190D /* UIAlertController+ESExtension.h */,
 				2765D8836906234514E01383 /* UIAlertController+ESExtension.m */,
 				C1CC6F7A12A7DF15029A2997 /* UIApplication+ESAppInfo.m */,
@@ -835,6 +843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				001DB8666F10F25E62F71377 /* ESActionBlockContainer.h in Headers */,
+				7F4B930CD4663C443C85324F /* ESControlActionBlockContainer.h in Headers */,
 				531151856E6DD09220E9B2B3 /* ESFramework.h in Headers */,
 				8261F287E59196AA381701B1 /* ESHelpers.h in Headers */,
 				93BDC69E01E71C00500C9473 /* ESMacros.h in Headers */,
@@ -919,6 +928,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2AF180C175BCE9996E7E211 /* ESActionBlockContainer.h in Headers */,
+				A45D46C871BCCC6463D76331 /* ESControlActionBlockContainer.h in Headers */,
 				97843337CF8099198DB00399 /* ESFramework.h in Headers */,
 				3395230DF7A3F8D2432B3136 /* ESHelpers.h in Headers */,
 				95575707BA50A0BE59CDECB2 /* ESMacros.h in Headers */,
@@ -1299,6 +1309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F68312F23E8613C08553EE8 /* ESActionBlockContainer.m in Sources */,
+				98A4752DDEC1AC350D406031 /* ESControlActionBlockContainer.m in Sources */,
 				7440959130DA7A386E51167B /* ESHelpers.m in Sources */,
 				2A33C5E22A6827D807FC0B95 /* ESNetworkHelper.m in Sources */,
 				C4FFDEEE25D93DBC69BC69B9 /* ESNumericValue.m in Sources */,
@@ -1399,6 +1410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				016732D22952B183611878BE /* ESActionBlockContainer.m in Sources */,
+				1F591338165EDC1F8A59C43F /* ESControlActionBlockContainer.m in Sources */,
 				D274525D2990C0610B7A43C5 /* ESHelpers.m in Sources */,
 				07D64DC48C2DC20C4A6A37B9 /* ESNetworkHelper.m in Sources */,
 				6A40C4580299C10A19D42BBE /* ESNumericValue.m in Sources */,

@@ -46,6 +46,7 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #endif
 
 #if TARGET_OS_IOS || TARGET_OS_TV
+#import <ESFramework/ESControlActionBlockContainer.h>
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>
 #import <ESFramework/UIBarButtonItem+ESExtension.h>

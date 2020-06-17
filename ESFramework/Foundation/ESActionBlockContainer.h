@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, copy) void (^block)(id sender);
 
 /**
- * The selector of the -invoke method.
+ * The selector of the \c -invoke: method.
  */
 @property (nonatomic, readonly) SEL action;
 

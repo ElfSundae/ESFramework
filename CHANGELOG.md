@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Expose `ESControlActionBlockContainer`
+
 ## 3.22.0 (2020-04-01)
 
 - Fixed Carthage installation: changed framework type from static to dynamic since Carthage does not currently support static library schemes.

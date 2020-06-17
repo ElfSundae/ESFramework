@@ -9,31 +9,14 @@
 #import "UIControl+ESExtension.h"
 #if TARGET_OS_IOS || TARGET_OS_TV
 
-#import "ESActionBlockContainer.h"
+#import "ESControlActionBlockContainer.h"
 #import <objc/runtime.h>
-
-@interface ESUIControlActionBlockContainer : ESActionBlockContainer
-
-@property (nonatomic) UIControlEvents events;
-
-@end
-
-@implementation ESUIControlActionBlockContainer
-
-- (instancetype)initWithBlock:(void (^)(id sender))block events:(UIControlEvents)events
-{
-    self = [self initWithBlock:block];
-    self.events = events;
-    return self;
-}
-
-@end
 
 static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
 
 @implementation UIControl (ESExtension)
 
-- (NSMutableArray<ESUIControlActionBlockContainer *> *)allActionBlockContainers
+- (NSMutableArray<ESControlActionBlockContainer *> *)allActionBlockContainers
 {
     NSMutableArray *containers = objc_getAssociatedObject(self, allActionBlockContainersKey);
     if (!containers) {
@@ -49,7 +32,7 @@ static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
         return;
     }
 
-    ESUIControlActionBlockContainer *container = [[ESUIControlActionBlockContainer alloc] initWithBlock:actionBlock events:controlEvents];
+    ESControlActionBlockContainer *container = [[ESControlActionBlockContainer alloc] initWithBlock:actionBlock controlEvents:controlEvents];
     [self addTarget:container action:container.action forControlEvents:controlEvents];
     [[self allActionBlockContainers] addObject:container];
 }
@@ -69,13 +52,13 @@ static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
         return;
     }
 
-    NSMutableArray<ESUIControlActionBlockContainer *> *containers = [self allActionBlockContainers];
-    [containers removeObjectsAtIndexes:[containers indexesOfObjectsPassingTest:^BOOL (ESUIControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIControlEvents removalEvents = obj.events & controlEvents;
+    NSMutableArray<ESControlActionBlockContainer *> *containers = [self allActionBlockContainers];
+    [containers removeObjectsAtIndexes:[containers indexesOfObjectsPassingTest:^BOOL (ESControlActionBlockContainer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIControlEvents removalEvents = obj.controlEvents & controlEvents;
         if (removalEvents) {
             [self removeTarget:obj action:obj.action forControlEvents:removalEvents];
-            obj.events &= ~removalEvents;
-            if (!obj.events) {
+            obj.controlEvents &= ~removalEvents;
+            if (!obj.controlEvents) {
                 return YES;
             }
         }

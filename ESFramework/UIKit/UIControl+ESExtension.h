@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)addActionBlock:(void (^)(__kindof UIControl *control))actionBlock forControlEvents:(UIControlEvents)controlEvents;
 
 /**
- * Replaces the action block of the control events to a new block or nil which
- * will remove the exist block of the events.
+ * Replaces the action block of the control events to a new block or \c nil which
+ * will remove the existing block of the events.
  */
 - (void)setActionBlock:(void (^ _Nullable)(__kindof UIControl *control))actionBlock forControlEvents:(UIControlEvents)controlEvents;
 
