@@ -17,7 +17,7 @@
 {
     [super viewDidLoad];
 
-    self.title = @"ESFramework";
+    self.title = __(@"ESFramework");
 
     self.tableView.rowHeight = 60;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellID"];

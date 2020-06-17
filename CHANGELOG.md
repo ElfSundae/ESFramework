@@ -3,10 +3,11 @@
 ## Master
 
 - Fixed `-[NSObject dictionaryRepresentation]` to remove `nil` values
-- Rename `-[UIApplication dismissViewControllersAnimated:completion:]` to `-dismissAllViewControllersAnimated:completion:`
-- Rename `ESAppLink()` to `ESAppStoreLink()`
-- Rename `ESAppStoreLink()` to `ESAppStoreDirectLink()`
-- Expose `ESControlActionBlockContainer`
+- Renamed `-[UIApplication dismissViewControllersAnimated:completion:]` to `-dismissAllViewControllersAnimated:completion:`
+- Renamed `ESAppLink()` to `ESAppStoreLink()`
+- Renamed `ESAppStoreLink()` to `ESAppStoreDirectLink()`
+- Added `-[NSObject observeNotification:object:selector:]`
+- Exposed `ESControlActionBlockContainer`
 
 ## 3.22.0 (2020-04-01)
 
