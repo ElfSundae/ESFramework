@@ -12,12 +12,15 @@
 #import <Foundation/Foundation.h>
 
 /**
- * Verbose \c NSLog() in the debug mode.
+ * Extracts the filename at compile time.
  */
 #if !defined(__FILENAME__)
     #define __FILENAME__ (strrchr("/" __FILE__, '/') + 1)
 #endif
 
+/**
+ * Verbose \c NSLog() in the debug mode.
+ */
 #if !defined(NSLog)
     #if defined(DEBUG) && DEBUG
         #define NSLog(format, ...) NSLog((@"%s:%d %s " format), __FILENAME__, __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
