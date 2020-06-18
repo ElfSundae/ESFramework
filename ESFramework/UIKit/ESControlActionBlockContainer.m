@@ -11,7 +11,8 @@
 
 @implementation ESControlActionBlockContainer
 
-- (instancetype)initWithBlock:(void (^ _Nullable)(id sender))block controlEvents:(UIControlEvents)controlEvents
+- (instancetype)initWithBlock:(void (^ _Nullable)(__kindof UIControl *control))block
+                controlEvents:(UIControlEvents)controlEvents
 {
     self = [self initWithBlock:block];
     if (self) {

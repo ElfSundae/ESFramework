@@ -27,7 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Creates a new action-block container object.
  */
-- (instancetype)initWithBlock:(void (^ _Nullable)(id sender))block controlEvents:(UIControlEvents)controlEvents;
+- (instancetype)initWithBlock:(void (^ _Nullable)(__kindof UIControl *control))block
+                controlEvents:(UIControlEvents)controlEvents;
 
 @end
 
