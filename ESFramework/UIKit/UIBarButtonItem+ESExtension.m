@@ -30,6 +30,42 @@ static const void *actionBlockContainerKey = &actionBlockContainerKey;
     self.action = container.action;
 }
 
+- (instancetype)initWithImage:(nullable UIImage *)image style:(UIBarButtonItemStyle)style actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock
+{
+    self = [self initWithImage:image style:style target:nil action:nil];
+    if (self) {
+        self.actionBlock = actionBlock;
+    }
+    return self;
+}
+
+- (instancetype)initWithImage:(nullable UIImage *)image landscapeImagePhone:(nullable UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock
+{
+    self = [self initWithImage:image landscapeImagePhone:landscapeImagePhone style:style target:nil action:nil];
+    if (self) {
+        self.actionBlock = actionBlock;
+    }
+    return self;
+}
+
+- (instancetype)initWithTitle:(nullable NSString *)title style:(UIBarButtonItemStyle)style actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock
+{
+    self = [self initWithTitle:title style:style target:nil action:nil];
+    if (self) {
+        self.actionBlock = actionBlock;
+    }
+    return self;
+}
+
+- (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock
+{
+    self = [self initWithBarButtonSystemItem:systemItem target:nil action:nil];
+    if (self) {
+        self.actionBlock = actionBlock;
+    }
+    return self;
+}
+
 @end
 
 #endif

@@ -21,6 +21,26 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nullable, nonatomic, copy) void (^actionBlock)(__kindof UIBarButtonItem *buttonItem);
 
+/**
+ * Initializes a new item using the specified image and the action block.
+ */
+- (instancetype)initWithImage:(nullable UIImage *)image style:(UIBarButtonItemStyle)style actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock;
+
+/**
+ * Initializes a new item using the specified image and the action block.
+ */
+- (instancetype)initWithImage:(nullable UIImage *)image landscapeImagePhone:(nullable UIImage *)landscapeImagePhone style:(UIBarButtonItemStyle)style actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock;
+
+/**
+ * Initializes a new item using the specified title and the action block.
+ */
+- (instancetype)initWithTitle:(nullable NSString *)title style:(UIBarButtonItemStyle)style actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock;
+
+/**
+ * Initializes a new item containing the specified system item.
+ */
+- (instancetype)initWithBarButtonSystemItem:(UIBarButtonSystemItem)systemItem actionBlock:(void (^)(__kindof UIBarButtonItem *buttonItem))actionBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END
