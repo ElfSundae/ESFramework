@@ -29,7 +29,7 @@ static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
 - (instancetype)initWithActionBlock:(void (^)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock
 {
     NSParameterAssert(actionBlock);
-    
+
     self = [self initWithTarget:nil action:nil];
     if (self) {
         [self addActionBlock:actionBlock];

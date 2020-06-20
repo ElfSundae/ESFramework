@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.23.0 (2020-06-21)
 
 - Fixed `-[NSObject dictionaryRepresentation]` to remove `nil` values
 - Renamed `-[UIApplication dismissViewControllersAnimated:completion:]` to `-dismissAllViewControllersAnimated:completion:`
