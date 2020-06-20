@@ -74,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Adds and returns a tap gesture recognizer.
  */
-- (__kindof UITapGestureRecognizer *)addTapGestureRecognizerWithBlock:(void (^)(__kindof UITapGestureRecognizer *tap))block;
+- (__kindof UITapGestureRecognizer *)addTapGestureRecognizerWithBlock:(void (^)(__kindof UITapGestureRecognizer *tapRecognizer))block;
 
 /**
  * Set layer.mask

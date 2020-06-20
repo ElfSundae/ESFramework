@@ -214,7 +214,7 @@
     return nil;
 }
 
-- (__kindof UITapGestureRecognizer *)addTapGestureRecognizerWithBlock:(void (^)(__kindof UITapGestureRecognizer *tap))block
+- (__kindof UITapGestureRecognizer *)addTapGestureRecognizerWithBlock:(void (^)(__kindof UITapGestureRecognizer *tapRecognizer))block
 {
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithActionBlock:^(UITapGestureRecognizer *gestureRecognizer) {
         if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
