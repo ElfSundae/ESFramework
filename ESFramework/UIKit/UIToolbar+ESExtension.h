@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIToolbar (ESExtension)
 
 - (nullable __kindof UIBarButtonItem *)itemWithTag:(NSInteger)tag;
-- (void)replaceItemWithTag:(NSInteger)tag toItem:(UIBarButtonItem *)newItem animated:(BOOL)animated;
+- (BOOL)replaceItemWithTag:(NSInteger)tag toItem:(UIBarButtonItem *)newItem animated:(BOOL)animated;
 
 @end
 

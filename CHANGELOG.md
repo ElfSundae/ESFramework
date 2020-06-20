@@ -7,6 +7,7 @@
 - Renamed `ESAppLink()` to `ESAppStoreLink()`
 - Renamed `ESAppStoreLink()` to `ESAppStoreDirectLink()`
 - Added `-[NSObject observeNotification:object:selector:]`
+- Changed return type of `-[UIToolbar replaceItemWithTag:toItem:animated:]` to `BOOL`
 - Exposed `ESControlActionBlockContainer`
 
 ## 3.22.0 (2020-04-01)
