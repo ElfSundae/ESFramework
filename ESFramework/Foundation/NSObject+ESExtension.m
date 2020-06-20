@@ -12,7 +12,7 @@
 
 - (void)observeNotification:(NSNotificationName)name selector:(SEL)selector
 {
-    [self observeNotification:name object:nil selector:selector];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:selector name:name object:nil];
 }
 
 - (void)observeNotification:(nullable NSNotificationName)name object:(nullable id)object selector:(SEL)selector
