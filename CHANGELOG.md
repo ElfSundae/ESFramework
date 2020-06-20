@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.24.0 (2020-06-21)
 
 - Renamed `ESAppStoreLink()` -> `ESAppStoreURL()`, `ESAppStoreDirectLink()` -> `ESAppStoreDirectURL()`, `ESAppStoreReviewLink()` -> `ESAppStoreReviewURL()`
 
