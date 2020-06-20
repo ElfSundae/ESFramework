@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Creates a new gesture-recognizer object with an optional action block.
  */
-- (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock;
+- (instancetype)initWithActionBlock:(void (^)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock;
 
 /**
  * Adds an action block to the gesture-recognizer object.

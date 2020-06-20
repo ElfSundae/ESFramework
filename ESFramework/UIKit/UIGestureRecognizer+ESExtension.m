@@ -26,10 +26,12 @@ static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
     return containers;
 }
 
-- (instancetype)initWithActionBlock:(void (^ _Nullable)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock
+- (instancetype)initWithActionBlock:(void (^)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock
 {
+    NSParameterAssert(actionBlock);
+    
     self = [self initWithTarget:nil action:nil];
-    if (actionBlock) {
+    if (self) {
         [self addActionBlock:actionBlock];
     }
     return self;
@@ -37,6 +39,8 @@ static const void *allActionBlockContainersKey = &allActionBlockContainersKey;
 
 - (void)addActionBlock:(void (^)(__kindof UIGestureRecognizer *gestureRecognizer))actionBlock
 {
+    NSParameterAssert(actionBlock);
+
     ESActionBlockContainer *container = [[ESActionBlockContainer alloc] initWithBlock:actionBlock];
     [self addTarget:container action:container.action];
     [[self allActionBlockContainers] addObject:container];
