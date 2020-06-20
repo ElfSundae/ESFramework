@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import <sys/time.h>
 #import <Security/SecRandom.h>
+#import "ESNumericValue.h"
 #import "NSInvocation+ESExtension.h"
 
 BOOL ESOSVersionIsAtLeast(NSInteger majorVersion, NSInteger minorVersion)
@@ -84,19 +85,19 @@ CGFloat ESRadiansToDegrees(CGFloat radians)
     return (radians * 180.0 / M_PI);
 }
 
-NSURL *ESAppStoreLink(NSInteger appIdentifier)
+NSURL *ESAppStoreURL(id appIdentifier)
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%ld", (long)appIdentifier]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"https://apps.apple.com/app/id%@", ESStringValue(appIdentifier)]];
 }
 
-NSURL *ESAppStoreDirectLink(NSInteger appIdentifier)
+NSURL *ESAppStoreDirectURL(id appIdentifier)
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/app/id%ld", (long)appIdentifier]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/app/id%@", ESStringValue(appIdentifier)]];
 }
 
-NSURL *ESAppStoreReviewLink(NSInteger appIdentifier)
+NSURL *ESAppStoreReviewURL(id appIdentifier)
 {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%ld", (long)appIdentifier]];
+    return [NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@", ESStringValue(appIdentifier)]];
 }
 
 NSString *ESDocumentDirectory(void)

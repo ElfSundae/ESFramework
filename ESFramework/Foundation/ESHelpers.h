@@ -62,22 +62,25 @@ FOUNDATION_EXPORT CGFloat ESDegreesToRadians(CGFloat degrees);
  */
 FOUNDATION_EXPORT CGFloat ESRadiansToDegrees(CGFloat radians);
 
-#pragma mark - App Store Links
+#pragma mark - App Store URLs
 
 /**
  * e.g. "https://apps.apple.com/app/id12345678"
+ * @param appIdentifier NSString or NSNumber
  */
-FOUNDATION_EXPORT NSURL *ESAppStoreLink(NSInteger appIdentifier);
+FOUNDATION_EXPORT NSURL *ESAppStoreURL(id appIdentifier);
 
 /**
  * e.g. "itms-apps://apps.apple.com/app/id12345678"
+ * @param appIdentifier NSString or NSNumber
  */
-FOUNDATION_EXPORT NSURL *ESAppStoreDirectLink(NSInteger appIdentifier);
+FOUNDATION_EXPORT NSURL *ESAppStoreDirectURL(id appIdentifier);
 
 /**
  * e.g. "itms-apps://apps.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=12345678"
+ * @param appIdentifier NSString or NSNumber
  */
-FOUNDATION_EXPORT NSURL *ESAppStoreReviewLink(NSInteger appIdentifier);
+FOUNDATION_EXPORT NSURL *ESAppStoreReviewURL(id appIdentifier);
 
 #pragma mark - File Paths
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Renamed `ESAppStoreLink()` -> `ESAppStoreURL()`, `ESAppStoreDirectLink()` -> `ESAppStoreDirectURL()`, `ESAppStoreReviewLink()` -> `ESAppStoreReviewURL()`
+
 ## 3.23.0 (2020-06-21)
 
 - Fixed `-[NSObject dictionaryRepresentation]` to remove `nil` values
