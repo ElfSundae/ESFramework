@@ -64,7 +64,15 @@ static const void *codablePropertiesKey = &codablePropertiesKey;
 
 - (NSData *)archivedData
 {
-    return [NSKeyedArchiver archivedDataWithRootObject:self];
+#if TARGET_OS_MACCATALYST
+    return [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
+#else
+    if (@available(iOS 11, macOS 10.13, tvOS 11, watchOS 4, *)) {
+        return [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
+    } else {
+        return [NSKeyedArchiver archivedDataWithRootObject:self];
+    }
+#endif
 }
 
 - (BOOL)writeToFile:(NSString *)path atomically:(BOOL)atomically
@@ -84,10 +92,32 @@ static const void *codablePropertiesKey = &codablePropertiesKey;
     }
 
     id object = nil;
-    @try {
-        // -unarchiveObjectWithData: raises an NSInvalidArgumentException if data is not a valid archive.
-        object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    } @catch (NSException *exception) {}
+
+#if TARGET_OS_MACCATALYST
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:NULL];
+    if (unarchiver) {
+        unarchiver.requiresSecureCoding = NO;
+        object = [unarchiver decodeObjectForKey:NSKeyedArchiveRootObjectKey];
+        [unarchiver finishDecoding];
+    }
+#else
+    if (@available(iOS 11, macOS 10.13, tvOS 11, watchOS 4, *)) {
+        // This initializer enables requiresSecureCoding by default, and sets
+        // the decodingFailurePolicy to NSDecodingFailurePolicySetErrorAndReturn.
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:NULL];
+        if (unarchiver) {
+            unarchiver.requiresSecureCoding = NO;
+            object = [unarchiver decodeObjectForKey:NSKeyedArchiveRootObjectKey];
+            [unarchiver finishDecoding];
+        }
+    } else {
+        @try {
+            // -unarchiveObjectWithData: raises an NSInvalidArgumentException
+            // if data is not a valid archive.
+            object = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        } @catch (NSException *exception) {}
+    }
+#endif
 
     return [object isKindOfClass:self] ? object : nil;
 }
