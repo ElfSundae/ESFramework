@@ -81,7 +81,10 @@
 - (NSData *)md5HashData
 {
     unsigned char buffer[CC_MD5_DIGEST_LENGTH];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     CC_MD5(self.bytes, (CC_LONG)self.length, buffer);
+#pragma clang diagnostic pop
     return [NSData dataWithBytes:buffer length:CC_MD5_DIGEST_LENGTH];
 }
 
