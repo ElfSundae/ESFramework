@@ -21,6 +21,8 @@ settings:
   CURRENT_PROJECT_VERSION: 3
   # Fix warning for Xcode 11.3: Enable "Missing Localizability"
   CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+  # Xcode 12 default setting
+  CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER: YES
 
 targetTemplates:
   Framework:
