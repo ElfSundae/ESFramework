@@ -1,5 +1,11 @@
 # Changelog
 
+## Master
+
+- Fix compatibility for Mac Catalyst
+- Add `CTTelephonyNetworkInfo` category methods: `-dataServiceSubscriberCellularProvider`, `-dataServiceCurrentRadioAccessTechnology`
+- Turn on `CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER`, angle-bracketed include headers in framework headers
+
 ## 3.24.0 (2020-06-21)
 
 - Renamed `ESAppStoreLink()` -> `ESAppStoreURL()`, `ESAppStoreDirectLink()` -> `ESAppStoreDirectURL()`, `ESAppStoreReviewLink()` -> `ESAppStoreReviewURL()`
