@@ -99,7 +99,8 @@ FOUNDATION_EXPORT NSString *const ESNetworkInterfaceVPN;
  * Returns the IP addresses for the network interfaces.
  * { interface: { family: address, ... } }
  *
- * @param interfacesPredicate Optional NSSet filter of network interface names. If this param is nil or an empty set, all interfaces and associated IP addresses will be returned.
+ * @param interfacesPredicate Optional NSSet filter of network interface names.
+ *      If this param is nil, all interfaces and associated IP addresses will be returned.
  */
 + (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForInterfaces:(nullable NSSet<NSString *> *)interfacesPredicate;
 
