@@ -12,10 +12,12 @@
 #import <ifaddrs.h>
 #import <net/if.h>
 #import <arpa/inet.h>
-#if TARGET_OS_IOS
+
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+#import "CTTelephonyNetworkInfo+ESExtension.h"
 #endif
 
 ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4 = @"IPv4";
@@ -150,12 +152,12 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
 
 + (nullable NSString *)getCarrierName
 {
-    return CTTelephonyNetworkInfo.new.subscriberCellularProvider.carrierName;
+    return CTTelephonyNetworkInfo.new.dataServiceSubscriberCellularProvider.carrierName;
 }
 
 + (ESCellularNetworkType)getCellularNetworkType
 {
-    NSString *name = CTTelephonyNetworkInfo.new.currentRadioAccessTechnology;
+    NSString *name = CTTelephonyNetworkInfo.new.dataServiceCurrentRadioAccessTechnology;
     if (!name) {
         return ESCellularNetworkTypeNone;
     } else if ([name isEqualToString:CTRadioAccessTechnologyGPRS] ||

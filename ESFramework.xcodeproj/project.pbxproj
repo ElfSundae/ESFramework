@@ -64,6 +64,7 @@
 		2E0FE8BE0D5D2D060EE8D8D1 /* NSCharacterSet+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6350D0F5F9C9A3B300BFE4 /* NSCharacterSet+ESExtension.m */; };
 		2F6D0084651F5FD1CD526B37 /* NSObject+ESAutoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D76B0D0DF848D72ED3F9DA /* NSObject+ESAutoCoding.m */; };
 		2FD7EE07FC42DF003320636E /* NSData+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BD1CDFF147DED32A293C6 /* NSData+ESExtension.m */; };
+		303BD35CCB62337B37724D83 /* CTTelephonyNetworkInfo+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 879F390542C75D9AFC49D470 /* CTTelephonyNetworkInfo+ESExtension.m */; };
 		31251648547A9E2CC951A6F2 /* NSURL+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 874FB6A7572778ED23BAC6D2 /* NSURL+ESExtension.m */; };
 		317A074A0C053D14CEE6C13A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C17D2E0C9A96EDB858D100E /* MainMenu.xib */; };
 		3382FED04FF7B7B9C352E24C /* UIImageView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 257E531624BF0365B60EF1A1 /* UIImageView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +75,7 @@
 		37178FDB98381737A70E451A /* NSDate+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = BE40900DA4994488BB50505F /* NSDate+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37278251DBAE63E79DEF85F1 /* ESFramework-iOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1D41F0C33FC5334965C3FF90 /* ESFramework-iOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3884084C2C85AD5F04BCAF65 /* NSDictionary+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E1D1FCD1AFCEC24F5FDA9 /* NSDictionary+ESExtension.m */; };
+		39948914B8D5DA6F39DF2AD8 /* CTTelephonyNetworkInfo+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 879F390542C75D9AFC49D470 /* CTTelephonyNetworkInfo+ESExtension.m */; };
 		3A14F12106ABB3AA9CED7C0C /* ESFramework-macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E8E35F96DAFCBB635B007E40 /* ESFramework-macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3B6C4FB804DD2A085AF79A05 /* UIDevice+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F36CFC669C235065E988F03 /* UIDevice+ESExtension.m */; };
 		3BB51C2EF462F0BEBAAAFB80 /* ESHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EDB3B2033295226F71E670 /* ESHelpers.m */; };
@@ -120,6 +122,7 @@
 		60623E54668A7070DB75CAFE /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		627833ED55C8561B02BC184F /* UIGestureRecognizer+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACEE9BBBB19D43318429EF5 /* UIGestureRecognizer+ESExtension.m */; };
 		62B0F8657F2383E1540A31CD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2840E4B263C9D08B57953461 /* User.m */; };
+		6332A0C96B3EDC6B39F57FFF /* CTTelephonyNetworkInfo+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63F4CF45ED142923AD9C165E /* UIImage+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B0AEB881DC5B716B3B6654 /* UIImage+ESExtension.m */; };
 		641E1B113474826083B6B626 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D60748E8AC8E4125EEEA8C1B /* main.m */; };
 		6617E2E4075053BFA04719A3 /* UIView+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 261307C195900DDB847D8172 /* UIView+ESExtension.m */; };
@@ -215,6 +218,7 @@
 		AD21E4B16A0EF07D5314B857 /* NSError+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A6BC1493780B39516E41E001 /* NSError+ESExtension.m */; };
 		AD67D83646D16AB9DC065EF3 /* NSURLComponents+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE80788806BD20AC718410A /* NSURLComponents+ESExtension.m */; };
 		AD8FBA8FA1D24BFAAF735BEB /* NSHTTPURLResponse+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB511C83E7BB76D0C6AE9AC /* NSHTTPURLResponse+ESExtension.m */; };
+		AD9EF3A1B805E98F96E9640A /* CTTelephonyNetworkInfo+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 879F390542C75D9AFC49D470 /* CTTelephonyNetworkInfo+ESExtension.m */; };
 		AE0D21CC38416B63F0CEDDC7 /* UIImage+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD97200EB471CA25C0A5824 /* UIImage+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEC9329CFD075C2A1159DBC8 /* NSUserDefaults+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 2EBB94363D386E5C677DA7C3 /* NSUserDefaults+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AEEED34F5C5372CC9BA85CFF /* NSInvocation+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 01001BDB7E92D55FE1A64E6E /* NSInvocation+ESExtension.m */; };
@@ -269,6 +273,7 @@
 		D2AF0F686DD7F7DB0C6E5A7E /* NSError+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 72AECC89B0F3034A7D58B946 /* NSError+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D2AF180C175BCE9996E7E211 /* ESActionBlockContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A75B56B6EA1051FA54EAF04 /* ESActionBlockContainer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D32AB848382E9D394AE1B767 /* UIDevice+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F36CFC669C235065E988F03 /* UIDevice+ESExtension.m */; };
+		D3E9618F4A0D2A366B7662EE /* CTTelephonyNetworkInfo+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D4791E9C1FB68FA89AE06543 /* NSHTTPURLResponse+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB511C83E7BB76D0C6AE9AC /* NSHTTPURLResponse+ESExtension.m */; };
 		D663E612ABE96BA37B217FE6 /* NSCharacterSet+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F1E2287CB9B98E211B8014 /* NSCharacterSet+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6E7FD785091AE113363332C /* ESNumericValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FBAA052DEA10755AC714A2 /* ESNumericValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -299,6 +304,7 @@
 		EB0F707DA87A0984CCD602BF /* ESWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E996B3269D15B587A2AD60F /* ESWeakProxy.m */; };
 		EC75FEAAA730F7F19DDBBE69 /* NSOrderedSet+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 36923230F5E7DAE5FCA7D121 /* NSOrderedSet+ESExtension.m */; };
 		EE722D3CE428C4231F24A46B /* UIBarButtonItem+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 29F06F6018621CB6951E2F61 /* UIBarButtonItem+ESExtension.m */; };
+		F0EB920B028FCF2216F11616 /* CTTelephonyNetworkInfo+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F21A241904F8DA6250DE154E /* UIColor+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 514734201BDBD2093C02A1F2 /* UIColor+ESExtension.m */; };
 		F38C03E6D9B4B1C716CA5E51 /* NSTimer+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D6E1437E0096B6E8621A88 /* NSTimer+ESExtension.m */; };
 		F4E18B6E81437533EAA7F588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2C3053C2DFA5E6246C115B /* Assets.xcassets */; };
@@ -500,6 +506,7 @@
 		845E1D1FCD1AFCEC24F5FDA9 /* NSDictionary+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+ESExtension.m"; sourceTree = "<group>"; };
 		87316E9F3F0E3AA423B99038 /* ESActionBlockContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESActionBlockContainer.m; sourceTree = "<group>"; };
 		874FB6A7572778ED23BAC6D2 /* NSURL+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+ESExtension.m"; sourceTree = "<group>"; };
+		879F390542C75D9AFC49D470 /* CTTelephonyNetworkInfo+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "CTTelephonyNetworkInfo+ESExtension.m"; sourceTree = "<group>"; };
 		89CCCDB95A818C29537921CF /* NSFileManager+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+ESExtension.h"; sourceTree = "<group>"; };
 		8A75B56B6EA1051FA54EAF04 /* ESActionBlockContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESActionBlockContainer.h; sourceTree = "<group>"; };
 		8C5CBBC9ECB3467E26A8160B /* ESNetworkHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESNetworkHelper.m; sourceTree = "<group>"; };
@@ -545,6 +552,7 @@
 		DE0F82490C0050FF60541529 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
 		E0E7C9914E4767AC8A77E032 /* UIControl+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ESExtension.h"; sourceTree = "<group>"; };
 		E466EE749AAE97E411722439 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTTelephonyNetworkInfo+ESExtension.h"; sourceTree = "<group>"; };
 		E7F1E2287CB9B98E211B8014 /* NSCharacterSet+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESExtension.h"; sourceTree = "<group>"; };
 		E8E35F96DAFCBB635B007E40 /* ESFramework-macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ESFramework-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -829,6 +837,8 @@
 		EB9755A6E00E250D24905E1E /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */,
+				879F390542C75D9AFC49D470 /* CTTelephonyNetworkInfo+ESExtension.m */,
 				61C75F5F76FC2C5F376313DE /* ESNetworkHelper.h */,
 				8C5CBBC9ECB3467E26A8160B /* ESNetworkHelper.m */,
 			);
@@ -842,6 +852,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EB920B028FCF2216F11616 /* CTTelephonyNetworkInfo+ESExtension.h in Headers */,
 				001DB8666F10F25E62F71377 /* ESActionBlockContainer.h in Headers */,
 				7F4B930CD4663C443C85324F /* ESControlActionBlockContainer.h in Headers */,
 				531151856E6DD09220E9B2B3 /* ESFramework.h in Headers */,
@@ -927,6 +938,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6332A0C96B3EDC6B39F57FFF /* CTTelephonyNetworkInfo+ESExtension.h in Headers */,
 				D2AF180C175BCE9996E7E211 /* ESActionBlockContainer.h in Headers */,
 				A45D46C871BCCC6463D76331 /* ESControlActionBlockContainer.h in Headers */,
 				97843337CF8099198DB00399 /* ESFramework.h in Headers */,
@@ -978,6 +990,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3E9618F4A0D2A366B7662EE /* CTTelephonyNetworkInfo+ESExtension.h in Headers */,
 				FA5B00E3C7B28BA979EDD856 /* ESActionBlockContainer.h in Headers */,
 				8B25A3A04B5C277DFB657CBC /* ESFramework.h in Headers */,
 				DD8FEEF04CAF256B11170F9B /* ESHelpers.h in Headers */,
@@ -1275,6 +1288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9EF3A1B805E98F96E9640A /* CTTelephonyNetworkInfo+ESExtension.m in Sources */,
 				81BC310593A5350EBC240D57 /* ESActionBlockContainer.m in Sources */,
 				3BB51C2EF462F0BEBAAAFB80 /* ESHelpers.m in Sources */,
 				B0B81283155A56C551D70131 /* ESNetworkHelper.m in Sources */,
@@ -1308,6 +1322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39948914B8D5DA6F39DF2AD8 /* CTTelephonyNetworkInfo+ESExtension.m in Sources */,
 				6F68312F23E8613C08553EE8 /* ESActionBlockContainer.m in Sources */,
 				98A4752DDEC1AC350D406031 /* ESControlActionBlockContainer.m in Sources */,
 				7440959130DA7A386E51167B /* ESHelpers.m in Sources */,
@@ -1409,6 +1424,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				303BD35CCB62337B37724D83 /* CTTelephonyNetworkInfo+ESExtension.m in Sources */,
 				016732D22952B183611878BE /* ESActionBlockContainer.m in Sources */,
 				1F591338165EDC1F8A59C43F /* ESControlActionBlockContainer.m in Sources */,
 				D274525D2990C0610B7A43C5 /* ESHelpers.m in Sources */,
