@@ -37,7 +37,7 @@
     static NSString *_modelIdentifier = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_SIMULATOR
         _modelIdentifier = NSProcessInfo.processInfo.environment[@"SIMULATOR_MODEL_IDENTIFIER"];
 #else
         size_t size;
@@ -250,7 +250,7 @@
 - (BOOL)isJailbroken
 {
     static BOOL _isJailbroken = NO;
-#if !TARGET_IPHONE_SIMULATOR
+#if !TARGET_OS_SIMULATOR
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSArray *paths = @[
