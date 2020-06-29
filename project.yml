@@ -69,6 +69,7 @@ targets:
     templates: [Example]
     settings:
       CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
+      SUPPORTS_MACCATALYST: YES
     dependencies:
       - target: ESFramework-iOS
       - target: watchOS Example

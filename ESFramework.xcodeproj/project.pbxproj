@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -240,7 +240,7 @@
 		BBA7056433410565A5FB1E89 /* NSDate+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = BE40900DA4994488BB50505F /* NSDate+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BBC68244EE174371057795E0 /* NSMapTable+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FBB5F4D0BFA1EAF2D9291F /* NSMapTable+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDE19659A0A47BE38ADDCE55 /* ESFramework-iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D41F0C33FC5334965C3FF90 /* ESFramework-iOS.framework */; };
-		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF85E339E0671B46287B6E18 /* ESNumericValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FBAA052DEA10755AC714A2 /* ESNumericValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C072A3579954AB9BB218A4DA /* UIGestureRecognizer+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = D79BD37BDADBEF0B7C8E6644 /* UIGestureRecognizer+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C209A7D8DB2A8C36AD29E117 /* UIDevice+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = F565A907238CC7CC6CF855FC /* UIDevice+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -448,9 +448,9 @@
 		17AC731BDB9349A7F9593C02 /* NSString+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESExtension.m"; sourceTree = "<group>"; };
 		17D25C37FB6B1E3854494CAE /* NSObject+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESExtension.h"; sourceTree = "<group>"; };
 		1910F835E3F79CD849FD4507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1BCE38BC63966792EAEC348E /* ESFramework-tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ESFramework-tvOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BCE38BC63966792EAEC348E /* ESFramework-tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ESFramework-tvOS.framework"; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C6E3F651AAE2B93A0F0BAF8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1D41F0C33FC5334965C3FF90 /* ESFramework-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ESFramework-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D41F0C33FC5334965C3FF90 /* ESFramework-iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ESFramework-iOS.framework"; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EEB2459CE111F23A8F8DD9E /* ESMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESMacros.h; sourceTree = "<group>"; };
 		22A734E46B3C3EFDCD0D1938 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		23E414385A53EAA80B7CAB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -475,7 +475,7 @@
 		36923230F5E7DAE5FCA7D121 /* NSOrderedSet+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSOrderedSet+ESExtension.m"; sourceTree = "<group>"; };
 		38D4CFE97F8C84B95B72BE3B /* NSDate+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+ESExtension.m"; sourceTree = "<group>"; };
 		3BD97200EB471CA25C0A5824 /* UIImage+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ESExtension.h"; sourceTree = "<group>"; };
-		3DA116407131D9200C91773A /* ESFramework-watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ESFramework-watchOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DA116407131D9200C91773A /* ESFramework-watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ESFramework-watchOS.framework"; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		422068934ED006C41031D0A9 /* UIImageView+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ESExtension.m"; sourceTree = "<group>"; };
 		4257B31493BD34142990B9EA /* ESWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESWeakProxy.h; sourceTree = "<group>"; };
 		42FBB5F4D0BFA1EAF2D9291F /* NSMapTable+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMapTable+ESExtension.h"; sourceTree = "<group>"; };
@@ -554,7 +554,7 @@
 		E466EE749AAE97E411722439 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CTTelephonyNetworkInfo+ESExtension.h"; sourceTree = "<group>"; };
 		E7F1E2287CB9B98E211B8014 /* NSCharacterSet+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSCharacterSet+ESExtension.h"; sourceTree = "<group>"; };
-		E8E35F96DAFCBB635B007E40 /* ESFramework-macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ESFramework-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8E35F96DAFCBB635B007E40 /* ESFramework-macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "ESFramework-macOS.framework"; path = ESFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watchOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E995E3D50C3AF919BE818932 /* NSArray+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ESExtension.m"; sourceTree = "<group>"; };
 		EDC68E08285CDBB3E4C670DA /* NSHTTPURLResponse+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPURLResponse+ESExtension.h"; sourceTree = "<group>"; };
@@ -1216,6 +1216,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				Base,
 				"zh-Hans",
 			);
@@ -1509,6 +1510,7 @@
 		};
 		45B9DBB41F62A04002DAB9DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 94E563A2FD80462D82C4E977 /* watchOS Example */;
 			targetProxy = DAC46A191E3ACE32B698613E /* PBXContainerItemProxy */;
 		};
@@ -1615,6 +1617,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2031,6 +2034,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.ESFramework.iOSExample;
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
