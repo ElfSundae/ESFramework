@@ -11,10 +11,7 @@
 
 #import <objc/runtime.h>
 #import "UIDevice+ESExtension.h"
-
-#if TARGET_OS_IOS
 #import "ESNetworkHelper.h"
-#endif
 
 static const void *appNameKey = &appNameKey;
 static const void *appChannelKey = &appChannelKey;
