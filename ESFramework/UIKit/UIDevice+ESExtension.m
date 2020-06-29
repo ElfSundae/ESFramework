@@ -250,7 +250,7 @@
 - (BOOL)isJailbroken
 {
     static BOOL _isJailbroken = NO;
-#if !TARGET_OS_SIMULATOR
+#if !TARGET_OS_SIMULATOR && !TARGET_OS_MACCATALYST
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSArray *paths = @[
