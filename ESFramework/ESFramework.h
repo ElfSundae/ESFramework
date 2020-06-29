@@ -42,8 +42,9 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/NSUserDefaults+ESExtension.h>
 
 #if !TARGET_OS_WATCH
-#import <ESFramework/ESNetworkHelper.h>
 #import <ESFramework/CTTelephonyNetworkInfo+ESExtension.h>
+#import <ESFramework/ESNetworkHelper.h>
+#import <ESFramework/ESNetworkInterface.h>
 #endif
 
 #if TARGET_OS_IOS || TARGET_OS_TV
