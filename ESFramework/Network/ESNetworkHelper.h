@@ -109,7 +109,7 @@ FOUNDATION_EXPORT NSString *const ESNetworkInterfaceVPN;
  */
 + (nullable NSString *)getIPAddressForWiFi:(NSString * _Nullable * _Nullable)IPv6Address;
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
 
 /**
  * Returns the local IPv4 address of the "pdp_ip0" network interface.

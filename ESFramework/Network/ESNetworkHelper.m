@@ -116,7 +116,7 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
     return addresses[ESNetworkAddressFamilyIPv4];
 }
 
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
 
 + (NSString *)getIPAddressForCellular:(NSString **)IPv6Address
 {

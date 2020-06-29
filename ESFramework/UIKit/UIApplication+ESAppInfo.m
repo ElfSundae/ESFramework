@@ -220,24 +220,19 @@ static void ESCheckAppFreshLaunch(void)
         info[@"app_previous_version"] = self.appPreviousVersion;
     }
 
-#if TARGET_OS_IOS
-    NSString *carrier = [ESNetworkHelper getCarrierName];
-    if (carrier) info[@"carrier"] = carrier;
-
-    info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
-
-    NSString *SSID = [ESNetworkHelper getWiFiSSID];
-    if (SSID) info[@"ssid"] = SSID;
-    NSString *BSSID = [ESNetworkHelper getWiFiBSSID];
-    if (BSSID) info[@"bssid"] = BSSID;
-
     NSString *ipv6 = nil;
-    NSString *ip = [ESNetworkHelper getIPAddressForWiFi:&ipv6];
-    if (ip) info[@"local_ip"] = ip;
-    if (ipv6) info[@"local_ipv6"] = ipv6;
-    ip = [ESNetworkHelper getIPAddressForCellular:&ipv6];
-    if (ip) info[@"wwan_ip"] = ip;
-    if (ipv6) info[@"wwan_ipv6"] = ipv6;
+    info[@"local_ip"] = [ESNetworkHelper getIPAddressForWiFi:&ipv6];
+    info[@"local_ipv6"] = ipv6;
+
+#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
+    ipv6 = nil;
+    info[@"wwan_ip"] = [ESNetworkHelper getIPAddressForCellular:&ipv6];
+    info[@"wwan_ipv6"] = ipv6;
+
+    info[@"ssid"] = [ESNetworkHelper getWiFiSSID];
+    info[@"bssid"] = [ESNetworkHelper getWiFiBSSID];
+    info[@"carrier"] = [ESNetworkHelper getCarrierName];
+    info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
 #endif
 
     return [info copy];
