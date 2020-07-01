@@ -11,14 +11,14 @@
 @interface ESNetworkInterface ()
 
 @property (nonatomic, copy) NSString *name;
-@property (nullable, nonatomic, copy) NSString *IPv4Address;
-@property (nullable, nonatomic, copy) NSString *IPv6Address;
 
 @end
 
 @implementation ESNetworkInterface
 
-- (instancetype)initWithName:(NSString *)name IPv4Address:(NSString *)IPv4Address IPv6Address:(NSString *)IPv6Address
+- (instancetype)initWithName:(NSString *)name
+                 IPv4Address:(nullable NSString *)IPv4Address
+                 IPv6Address:(nullable NSString *)IPv6Address
 {
     self = [super init];
     if (self) {
@@ -29,9 +29,21 @@
     return self;
 }
 
+- (instancetype)initWithName:(NSString *)name
+{
+    return [self initWithName:name IPv4Address:nil IPv6Address:nil];
+}
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@: %@ %@", self.name, self.IPv4Address, self.IPv6Address];
+    NSMutableString *desc = [NSMutableString stringWithFormat:@"%@:", self.name];
+    if (self.IPv4Address) {
+        [desc appendFormat:@" %@", self.IPv4Address];
+    }
+    if (self.IPv6Address) {
+        [desc appendFormat:@" %@", self.IPv6Address];
+    }
+    return desc;
 }
 
 @end
