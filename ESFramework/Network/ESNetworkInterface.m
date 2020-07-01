@@ -29,4 +29,9 @@
     return self;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@: %@ %@", self.name, self.IPv4Address, self.IPv6Address];
+}
+
 @end
