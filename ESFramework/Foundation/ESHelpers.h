@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
 #import <UIKit/UIKit.h>
 #endif
 
@@ -271,7 +271,7 @@ FOUNDATION_EXPORT BOOL ESInvokeSelector(id target, SEL selector, void * _Nullabl
 
 #pragma mark - UI Helpers
 
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
 
 /**
  * Generates a random color.
@@ -314,6 +314,10 @@ FOUNDATION_EXPORT UIColor *UIColorWithRGBHex(NSUInteger hex, CGFloat alpha);
  * @endcode
  */
 FOUNDATION_EXPORT UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha);
+
+#endif // !TARGET_OS_OSX
+
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 /**
  * Checks whether the current user interface is iPad style.

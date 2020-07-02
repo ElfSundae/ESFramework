@@ -7,12 +7,18 @@
 //
 
 #import <TargetConditionals.h>
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
 
 #import <UIKit/UIKit.h>
-#import <CoreGraphics/CoreGraphics.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+typedef NS_ENUM(NSInteger, UIImageScalingMode) {
+    /// contents scaled to fill with fixed aspect. some portion of content may be clipped.
+    UIImageScalingModeAspectFill,
+    /// contents scaled to fit with fixed aspect. remainder is transparent.
+    UIImageScalingModeAspectFit,
+};
 
 /**
  * @see http://vocaro.com/trevor/blog/2009/10/12/resize-a-uiimage-the-right-way/
@@ -65,10 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Resizes the image according to the given content mode, taking into account the image's orientation.
- *
- * #contentMode supports UIViewContentModeScaleAspectFill, UIViewContentModeScaleAspectFit.
  */
-- (UIImage *)resizedImageWithContentMode:(UIViewContentMode)contentMode
+- (UIImage *)resizedImageWithScalingMode:(UIImageScalingMode)scalingMode
                                   bounds:(CGSize)bounds
                     interpolationQuality:(CGInterpolationQuality)quality;
 

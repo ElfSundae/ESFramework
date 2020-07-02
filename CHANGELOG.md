@@ -2,12 +2,13 @@
 
 ## Master
 
-- Fix compatibility for Mac Catalyst
+- Fix compatibility for watchOS and Mac Catalyst
 - Add `CTTelephonyNetworkInfo` category methods: `-dataServiceSubscriberCellularProvider`, `-dataServiceCurrentRadioAccessTechnology`
 - Rename `ESNetworkHelper` to `ESNetworkInfo`
-- Removed `ESNetworkHelper` methods: `+getIPAddresses`, `+getIPAddressesForInterface:`, `+getIPAddressesForInterfaces:`, `+getIPAddressForWiFi:`
-- Removed constant `ESNetworkInterfaceVPN`
-- Fixed `ESNetworkInterfaceWiFi` for Mac Catalyst
+- Rename UIImage `-resizedImageWithContentMode:` to `-resizedImageWithScalingMode:`
+- Remove `ESNetworkHelper` methods: `+getIPAddresses`, `+getIPAddressesForInterface:`, `+getIPAddressesForInterfaces:`, `+getIPAddressForWiFi:`
+- Remove constant `ESNetworkInterfaceVPN`
+- Fix `ESNetworkInterfaceWiFi` for Mac Catalyst
 - Include `Network` subspec for watchOS
 - Turn on `CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER`, angle-bracketed include headers in framework headers
 

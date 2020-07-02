@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+ESExtension.h"
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
 
 @implementation UIImage (ESExtension)
 
@@ -169,10 +169,8 @@
 
 /**
  * Resizes the image according to the given content mode, taking into account the image's orientation.
- *
- * #contentMode supports UIViewContentModeScaleAspectFill, UIViewContentModeScaleAspectFit.
  */
-- (UIImage *)resizedImageWithContentMode:(UIViewContentMode)contentMode
+- (UIImage *)resizedImageWithScalingMode:(UIImageScalingMode)scalingMode
                                   bounds:(CGSize)bounds
                     interpolationQuality:(CGInterpolationQuality)quality
 {
@@ -180,17 +178,17 @@
     CGFloat verticalRatio = bounds.height / self.size.height;
     CGFloat ratio;
 
-    switch (contentMode) {
-        case UIViewContentModeScaleAspectFill:
+    switch (scalingMode) {
+        case UIImageScalingModeAspectFill:
             ratio = MAX(horizontalRatio, verticalRatio);
             break;
 
-        case UIViewContentModeScaleAspectFit:
+        case UIImageScalingModeAspectFit:
             ratio = MIN(horizontalRatio, verticalRatio);
             break;
 
         default:
-            [NSException raise:NSInvalidArgumentException format:@"Unsupported content mode: %ld", (long)contentMode];
+            [NSException raise:NSInvalidArgumentException format:@"Unsupported scaling mode: %ld", (long)scalingMode];
     }
 
     CGSize newSize = CGSizeMake(self.size.width * ratio, self.size.height * ratio);
@@ -205,7 +203,7 @@
                cornerRadius:(NSUInteger)cornerRadius
        interpolationQuality:(CGInterpolationQuality)quality
 {
-    UIImage *resizedImage = [self resizedImageWithContentMode:UIViewContentModeScaleAspectFill
+    UIImage *resizedImage = [self resizedImageWithScalingMode:UIImageScalingModeAspectFill
                                                        bounds:CGSizeMake(thumbnailSize, thumbnailSize)
                                          interpolationQuality:quality];
 

@@ -224,7 +224,7 @@ BOOL ESInvokeSelector(id target, SEL selector, void *result, ...)
     return YES;
 }
 
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
 
 UIColor *ESRandomColor(void)
 {
@@ -264,6 +264,10 @@ UIColor *UIColorWithRGBHexString(NSString *hexString, CGFloat alpha)
     }
     return UIColorWithRGBHex(hex, alpha);
 }
+
+#endif // !TARGET_OS_OSX
+
+#if TARGET_OS_IOS || TARGET_OS_TV
 
 BOOL ESIsPadUI(void)
 {

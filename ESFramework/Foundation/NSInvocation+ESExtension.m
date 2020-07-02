@@ -8,11 +8,8 @@
 
 #import "NSInvocation+ESExtension.h"
 #import <CoreGraphics/CoreGraphics.h>
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
 #import <UIKit/UIKit.h>
-#endif
-#if !TARGET_OS_WATCH
-#import <QuartzCore/QuartzCore.h>
 #endif
 
 static id __gNil = nil;
@@ -89,7 +86,7 @@ static id __gNil = nil;
         ElseIfTypeThenSetValue(CGVector)
         ElseIfTypeThenSetValue(CGRect)
         ElseIfTypeThenSetValue(CGAffineTransform)
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
         ElseIfTypeThenSetValue(UIEdgeInsets)
         ElseIfTypeThenSetValue(UIOffset)
 #endif
@@ -122,7 +119,7 @@ static id __gNil = nil;
             ElseIfTypeThenSetValue(CGVector *)
             ElseIfTypeThenSetValue(CGRect *)
             ElseIfTypeThenSetValue(CGAffineTransform *)
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if !TARGET_OS_OSX
             ElseIfTypeThenSetValue(UIEdgeInsets *)
             ElseIfTypeThenSetValue(UIOffset *)
 #endif
