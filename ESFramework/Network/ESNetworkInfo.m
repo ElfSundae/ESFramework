@@ -1,17 +1,19 @@
 //
-//  ESNetworkHelper.m
+//  ESNetworkInfo.m
 //  ESFramework
 //
 //  Created by Elf Sundae on 2019/04/26.
 //  Copyright © 2014-2020 https://0x123.com All rights reserved.
 //
 
-#import "ESNetworkHelper.h"
-#if !TARGET_OS_WATCH
+#import "ESNetworkInfo.h"
+//#if !TARGET_OS_WATCH
 
 #import <ifaddrs.h>
 #import <net/if.h>
 #import <arpa/inet.h>
+#import "ESNetworkInterface.h"
+#import "NSArray+ESExtension.h"
 
 #if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
 #import <SystemConfiguration/CaptiveNetwork.h>
@@ -20,41 +22,18 @@
 #import "CTTelephonyNetworkInfo+ESExtension.h"
 #endif
 
-ESNetworkAddressFamily const ESNetworkAddressFamilyIPv4 = @"IPv4";
-ESNetworkAddressFamily const ESNetworkAddressFamilyIPv6 = @"IPv6";
-
-NSString *const ESNetworkInterfaceLoopback  = @"lo0";
-NSString *const ESNetworkInterfaceAWDL      = @"awdl0";
-#if TARGET_OS_IOS || TARGET_OS_TV
-NSString *const ESNetworkInterfaceWiFi      = @"en0";
-#else
-NSString *const ESNetworkInterfaceWiFi      = @"en1";
-#endif
-NSString *const ESNetworkInterfaceCellular  = @"pdp_ip0";
-NSString *const ESNetworkInterfaceVPN       = @"utun0";
-
-@implementation ESNetworkHelper
-
-+ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddresses
-{
-    return [self getIPAddressesForInterfaces:nil];
-}
-
-+ (nullable NSDictionary<ESNetworkAddressFamily, NSString *> *)getIPAddressesForInterface:(NSString *)interface
-{
-    return [[self getIPAddressesForInterfaces:[NSSet setWithObjects:interface, nil]] objectForKey:interface];
-}
+@implementation ESNetworkInfo
 
 // ref: http://man7.org/linux/man-pages/man3/getifaddrs.3.html
 // ref: https://stackoverflow.com/a/10803584/521946
-+ (nullable NSDictionary<NSString *, NSDictionary<ESNetworkAddressFamily, NSString *> *> *)getIPAddressesForInterfaces:(nullable NSSet<NSString *> *)interfacesPredicate
++ (NSArray<ESNetworkInterface *> *)networkInterfaces;
 {
     struct ifaddrs *ifaddr;
     if (0 != getifaddrs(&ifaddr)) {
-        return nil;
+        return @[];
     }
 
-    NSMutableDictionary *addresses = [NSMutableDictionary dictionary];
+    NSMutableDictionary<NSString *, ESNetworkInterface *> *networkInterfaces = [NSMutableDictionary dictionary];
 
     // Loop through linked list of interfaces
     struct ifaddrs *interface;
@@ -64,70 +43,48 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
         }
 
         NSString *name = @(interface->ifa_name);
+        ESNetworkInterface *networkInterface = networkInterfaces[name] ?: [[ESNetworkInterface alloc] initWithName:name];
 
-        if (interfacesPredicate && ![interfacesPredicate containsObject:name]) {
-            continue;
-        }
+        // NOTE: We only get the first IP address for the interface.
 
-        ESNetworkAddressFamily family = nil;
-        NSString *address = nil;
-
-        if (AF_INET == interface->ifa_addr->sa_family) {
+        if (AF_INET == interface->ifa_addr->sa_family && !networkInterface.IPv4Address) {
             const struct sockaddr_in *addr = (const struct sockaddr_in *)interface->ifa_addr;
             char addrBuf[INET_ADDRSTRLEN];
             if (inet_ntop(AF_INET, &addr->sin_addr, addrBuf, INET_ADDRSTRLEN)) {
-                family = ESNetworkAddressFamilyIPv4;
-                address = @(addrBuf);
+                networkInterface.IPv4Address = @(addrBuf);
             }
-        } else if (AF_INET6 == interface->ifa_addr->sa_family) {
+        } else if (AF_INET6 == interface->ifa_addr->sa_family && !networkInterface.IPv6Address) {
             const struct sockaddr_in6 *addr = (const struct sockaddr_in6 *)interface->ifa_addr;
             char addrBuf[INET6_ADDRSTRLEN];
             if (inet_ntop(AF_INET6, &addr->sin6_addr, addrBuf, INET6_ADDRSTRLEN)) {
-                family = ESNetworkAddressFamilyIPv6;
-                address = @(addrBuf);
+                networkInterface.IPv6Address = @(addrBuf);
             }
         }
 
-        if (!family || !address) {
-            continue;
+        if (networkInterface.IPv4Address || networkInterface.IPv6Address) {
+            networkInterfaces[name] = networkInterface;
         }
-
-        if (addresses[name][family]) {
-            // we only get the first IP address for the interface
-            continue;
-        }
-
-        if (!addresses[name]) {
-            addresses[name] = [NSMutableDictionary dictionary];
-        }
-
-        addresses[name][family] = address;
-    } /* for-loop */
+    }
 
     freeifaddrs(ifaddr);
 
-    return [addresses copy];
+    return networkInterfaces.allValues;
 }
 
-+ (NSString *)getIPAddressForWiFi:(NSString **)IPv6Address
++ (NSArray<NSString *> *)localIPAddresses:(NSArray<NSString *> * _Nullable * _Nullable)IPv6Addresses
 {
-    NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceWiFi];
-    if (IPv6Address) {
-        *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
+    NSArray<ESNetworkInterface *> *interfaces = [[self networkInterfaces] objectsPassingTest:^BOOL (ESNetworkInterface * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        return [obj.name isEqualToString:@"en0"] || [obj.name isEqualToString:@"en1"];
+    }];
+
+    if (IPv6Addresses) {
+        *IPv6Addresses = [interfaces valueForKeyPath:@"@unionOfObjects.IPv6Address"];
     }
-    return addresses[ESNetworkAddressFamilyIPv4];
+
+    return [interfaces valueForKeyPath:@"@unionOfObjects.IPv4Address"];
 }
 
 #if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
-
-+ (NSString *)getIPAddressForCellular:(NSString **)IPv6Address
-{
-    NSDictionary *addresses = [self getIPAddressesForInterface:ESNetworkInterfaceCellular];
-    if (IPv6Address) {
-        *IPv6Address = addresses[ESNetworkAddressFamilyIPv6];
-    }
-    return addresses[ESNetworkAddressFamilyIPv4];
-}
 
 + (nullable NSDictionary<NSString *, id> *)getWiFiNetworkInfo
 {
@@ -200,4 +157,4 @@ NSString *const ESNetworkInterfaceVPN       = @"utun0";
 
 @end
 
-#endif
+//#endif

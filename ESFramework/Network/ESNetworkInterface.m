@@ -8,6 +8,15 @@
 
 #import "ESNetworkInterface.h"
 
+NSString *const ESNetworkInterfaceLoopback  = @"lo0";
+#if TARGET_OS_OSX || TARGET_OS_MACCATALYST
+NSString *const ESNetworkInterfaceWiFi      = @"en1";
+#else
+NSString *const ESNetworkInterfaceWiFi      = @"en0";
+#endif
+NSString *const ESNetworkInterfaceAWDL      = @"awdl0";
+NSString *const ESNetworkInterfaceCellular  = @"pdp_ip0";
+
 @interface ESNetworkInterface ()
 
 @property (nonatomic, copy) NSString *name;

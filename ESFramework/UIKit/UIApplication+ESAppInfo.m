@@ -11,7 +11,7 @@
 
 #import <objc/runtime.h>
 #import "UIDevice+ESExtension.h"
-#import "ESNetworkHelper.h"
+#import "ESNetworkInfo.h"
 
 static const void *appNameKey = &appNameKey;
 static const void *appChannelKey = &appChannelKey;
@@ -217,19 +217,19 @@ static void ESCheckAppFreshLaunch(void)
         info[@"app_previous_version"] = self.appPreviousVersion;
     }
 
-    NSString *ipv6 = nil;
-    info[@"local_ip"] = [ESNetworkHelper getIPAddressForWiFi:&ipv6];
-    info[@"local_ipv6"] = ipv6;
+    NSArray *IPv6Addresses = nil;
+    info[@"local_ip"] = [ESNetworkInfo localIPAddresses:&IPv6Addresses].firstObject;
+    info[@"local_ipv6"] = IPv6Addresses.firstObject;
 
 #if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
-    ipv6 = nil;
-    info[@"wwan_ip"] = [ESNetworkHelper getIPAddressForCellular:&ipv6];
+    NSString *ipv6 = nil;
+//    info[@"wwan_ip"] = [ESNetworkInfo getIPAddressForCellular:&ipv6];
     info[@"wwan_ipv6"] = ipv6;
 
-    info[@"ssid"] = [ESNetworkHelper getWiFiSSID];
-    info[@"bssid"] = [ESNetworkHelper getWiFiBSSID];
-    info[@"carrier"] = [ESNetworkHelper getCarrierName];
-    info[@"wwan"] = [ESNetworkHelper getCellularNetworkTypeString];
+    info[@"ssid"] = [ESNetworkInfo getWiFiSSID];
+    info[@"bssid"] = [ESNetworkInfo getWiFiBSSID];
+    info[@"carrier"] = [ESNetworkInfo getCarrierName];
+    info[@"wwan"] = [ESNetworkInfo getCellularNetworkTypeString];
 #endif
 
     return [info copy];

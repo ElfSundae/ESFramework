@@ -1,7 +1,7 @@
 name: ESFramework
 
 options:
-  bundleIdPrefix: com.0x123.ESFramework
+  bundleIdPrefix: com.0x123
   createIntermediateGroups: true
   usesTabs: false
   indentWidth: 4
@@ -29,12 +29,10 @@ targetTemplates:
     type: framework
     scheme: {} # To generate default shared schemes: https://github.com/yonaskolb/XcodeGen/issues/215
     sources:
-      - ESFramework/ESFramework.h
-      - ESFramework/Foundation
+      - ESFramework
       - Supporting Files/Info.plist
     settings:
       PRODUCT_NAME: ESFramework
-      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework
       APPLICATION_EXTENSION_API_ONLY: YES
   Example:
     type: application
@@ -43,26 +41,9 @@ targetTemplates:
       DEVELOPMENT_TEAM: B86YZY7YJX
 
 targets:
-  ESFramework-iOS:
-    platform: iOS
+  ESFramework:
+    platform: [iOS, tvOS, macOS, watchOS]
     templates: [Framework]
-    sources: [ESFramework]
-
-  ESFramework-tvOS:
-    platform: tvOS
-    templates: [Framework]
-    sources: [ESFramework]
-
-  ESFramework-macOS:
-    platform: macOS
-    templates: [Framework]
-    sources: [ESFramework/Network]
-
-  ESFramework-watchOS:
-    platform: watchOS
-    templates: [Framework]
-    settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework-watchOS
 
   iOS Example:
     platform: iOS
@@ -71,14 +52,14 @@ targets:
       CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
       SUPPORTS_MACCATALYST: YES
     dependencies:
-      - target: ESFramework-iOS
-      # - target: watchOS Example # Need `platformFilter` https://github.com/yonaskolb/XcodeGen/issues/900
+      - target: ESFramework_iOS
+      - target: watchOS Example # TODO: Need `platformFilter` https://github.com/yonaskolb/XcodeGen/issues/900
 
   tvOS Example:
     platform: tvOS
     templates: [Example]
     dependencies:
-      - target: ESFramework-tvOS
+      - target: ESFramework_tvOS
 
   macOS Example:
     platform: macOS
@@ -87,14 +68,14 @@ targets:
       CODE_SIGN_ENTITLEMENTS: Examples/${target_name}/${target_name}.entitlements
       CODE_SIGN_IDENTITY: '-'
     dependencies:
-      - target: ESFramework-macOS
+      - target: ESFramework_macOS
 
   watchOS Example:
     platform: watchOS
     type: application.watchapp2
     templates: [Example]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework.iOSExample.watchkitapp
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.iOSExample.watchkitapp
     dependencies:
       - target: watchOS Example Extension
 
@@ -103,6 +84,6 @@ targets:
     type: watchkit2-extension
     templates: [Example]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.ESFramework.iOSExample.watchkitapp.watchkitextension
+      PRODUCT_BUNDLE_IDENTIFIER: com.0x123.iOSExample.watchkitapp.watchkitextension
     dependencies:
-      - target: ESFramework-watchOS
+      - target: ESFramework_watchOS

@@ -10,6 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// Some familiar interface names.
+
+/// "lo0"
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceLoopback;
+/// "en1" on macOS, "en0" on other platforms like iOS or tvOS,
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceWiFi;
+/// "awdl0" (Apple Wireless Direct Link)
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceAWDL;
+/// "pdp_ip0"
+FOUNDATION_EXPORT NSString *const ESNetworkInterfaceCellular;
+
 @interface ESNetworkInterface : NSObject
 
 @property (nonatomic, copy, readonly) NSString *name;

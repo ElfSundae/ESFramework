@@ -25,11 +25,9 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Network' do |ss|
-    ss.ios.deployment_target = '8.0'
-    ss.tvos.deployment_target = '9.0'
-    ss.osx.deployment_target = '10.10'
-
     ss.source_files = 'ESFramework/Network/*.{h,m}'
+
+    ss.dependency 'ESFramework/Foundation'
   end
 
   s.subspec 'UIKit' do |ss|
