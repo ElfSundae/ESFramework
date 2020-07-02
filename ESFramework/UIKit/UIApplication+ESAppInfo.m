@@ -221,15 +221,16 @@ static void ESCheckAppFreshLaunch(void)
     info[@"local_ip"] = [ESNetworkInfo localIPAddresses:&IPv6Addresses].firstObject;
     info[@"local_ipv6"] = IPv6Addresses.firstObject;
 
-#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
-    NSString *ipv6 = nil;
-//    info[@"wwan_ip"] = [ESNetworkInfo getIPAddressForCellular:&ipv6];
-    info[@"wwan_ipv6"] = ipv6;
+#if TARGET_OS_IOS
+    info[@"carrier"] = [ESNetworkInfo carrierName];
+    info[@"wwan"] = [ESNetworkInfo cellularNetworkTypeString];
+    NSString *wwanIPv6 = nil;
+    info[@"wwan_ip"] = [ESNetworkInfo cellularIPAddresses:&wwanIPv6];
+    info[@"wwan_ipv6"] = wwanIPv6;
 
-    info[@"ssid"] = [ESNetworkInfo getWiFiSSID];
-    info[@"bssid"] = [ESNetworkInfo getWiFiBSSID];
-    info[@"carrier"] = [ESNetworkInfo getCarrierName];
-    info[@"wwan"] = [ESNetworkInfo getCellularNetworkTypeString];
+    NSDictionary *wifiInfo = [ESNetworkInfo WiFiNetworkInfo];
+    info[@"ssid"] = wifiInfo[ESNetworkInfoKeySSID];
+    info[@"bssid"] = wifiInfo[ESNetworkInfoKeyBSSID];
 #endif
 
     return [info copy];

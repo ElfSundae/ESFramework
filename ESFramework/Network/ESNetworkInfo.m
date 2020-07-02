@@ -7,20 +7,11 @@
 //
 
 #import "ESNetworkInfo.h"
-//#if !TARGET_OS_WATCH
-
 #import <ifaddrs.h>
 #import <net/if.h>
 #import <arpa/inet.h>
 #import "ESNetworkInterface.h"
 #import "NSArray+ESExtension.h"
-
-#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
-#import <SystemConfiguration/CaptiveNetwork.h>
-#import <CoreTelephony/CTTelephonyNetworkInfo.h>
-#import <CoreTelephony/CTCarrier.h>
-#import "CTTelephonyNetworkInfo+ESExtension.h"
-#endif
 
 @implementation ESNetworkInfo
 
@@ -71,7 +62,7 @@
     return networkInterfaces.allValues;
 }
 
-+ (NSArray<NSString *> *)localIPAddresses:(NSArray<NSString *> * _Nullable * _Nullable)IPv6Addresses
++ (NSArray<NSString *> *)localIPAddresses:(NSArray<NSString *> * _Nonnull * _Nullable)IPv6Addresses
 {
     NSArray<ESNetworkInterface *> *interfaces = [[self networkInterfaces] objectsPassingTest:^BOOL (ESNetworkInterface * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         return [obj.name isEqualToString:@"en0"] || [obj.name isEqualToString:@"en1"];
@@ -84,77 +75,4 @@
     return [interfaces valueForKeyPath:@"@unionOfObjects.IPv4Address"];
 }
 
-#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
-
-+ (nullable NSDictionary<NSString *, id> *)getWiFiNetworkInfo
-{
-    CFArrayRef interfaces = CNCopySupportedInterfaces();
-    if (!interfaces) {
-        return nil;
-    }
-    CFDictionaryRef networkInfo = CNCopyCurrentNetworkInfo((CFStringRef)CFArrayGetValueAtIndex(interfaces, 0));
-    CFRelease(interfaces);
-    return CFBridgingRelease(networkInfo);
-}
-
-+ (nullable NSString *)getWiFiSSID
-{
-    return [self getWiFiNetworkInfo][(__bridge NSString *)kCNNetworkInfoKeySSID];
-}
-
-+ (nullable NSString *)getWiFiBSSID
-{
-    return [self getWiFiNetworkInfo][(__bridge NSString *)kCNNetworkInfoKeyBSSID];
-}
-
-+ (nullable NSString *)getCarrierName
-{
-    return CTTelephonyNetworkInfo.new.dataServiceSubscriberCellularProvider.carrierName;
-}
-
-+ (ESCellularNetworkType)getCellularNetworkType
-{
-    NSString *name = CTTelephonyNetworkInfo.new.dataServiceCurrentRadioAccessTechnology;
-    if (!name) {
-        return ESCellularNetworkTypeNone;
-    } else if ([name isEqualToString:CTRadioAccessTechnologyGPRS] ||
-               [name isEqualToString:CTRadioAccessTechnologyEdge]) {
-        return ESCellularNetworkType2G;
-    } else if ([name isEqualToString:CTRadioAccessTechnologyWCDMA] ||
-               [name isEqualToString:CTRadioAccessTechnologyHSDPA] ||
-               [name isEqualToString:CTRadioAccessTechnologyHSUPA] ||
-               [name isEqualToString:CTRadioAccessTechnologyCDMA1x] ||
-               [name isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0] ||
-               [name isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA] ||
-               [name isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB] ||
-               [name isEqualToString:CTRadioAccessTechnologyeHRPD]) {
-        return ESCellularNetworkType3G;
-    } else if ([name isEqualToString:CTRadioAccessTechnologyLTE]) {
-        return ESCellularNetworkType4G;
-    } else {
-        return ESCellularNetworkTypeUnknown;
-    }
-}
-
-+ (NSString *)getCellularNetworkTypeString
-{
-    switch ([self getCellularNetworkType]) {
-        case ESCellularNetworkTypeNone:
-            return @"None";
-        case ESCellularNetworkType2G:
-            return @"2G";
-        case ESCellularNetworkType3G:
-            return @"3G";
-        case ESCellularNetworkType4G:
-            return @"4G";
-        case ESCellularNetworkTypeUnknown:
-        default:
-            return @"Unknown";
-    }
-}
-
-#endif
-
 @end
-
-//#endif

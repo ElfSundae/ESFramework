@@ -7,26 +7,36 @@
 //
 
 #import "CTTelephonyNetworkInfo+ESExtension.h"
-#if TARGET_OS_IOS && !TARGET_OS_MACCATALYST
+#if TARGET_OS_IOS
+
+@import CoreTelephony; // To auto-link CoreTelephony framework, fix build error on Mac Catalyst
 
 @implementation CTTelephonyNetworkInfo (ESExtension)
 
 - (nullable CTCarrier *)dataServiceSubscriberCellularProvider
 {
+#if TARGET_OS_MACCATALYST
+    return self.serviceSubscriberCellularProviders[self.dataServiceIdentifier];
+#else
     if (@available(iOS 13, *)) {
         return self.serviceSubscriberCellularProviders[self.dataServiceIdentifier];
     } else {
         return self.subscriberCellularProvider;
     }
+#endif
 }
 
 - (nullable NSString *)dataServiceCurrentRadioAccessTechnology
 {
+#if TARGET_OS_MACCATALYST
+    return self.serviceCurrentRadioAccessTechnology[self.dataServiceIdentifier];
+#else
     if (@available(iOS 13, *)) {
         return self.serviceCurrentRadioAccessTechnology[self.dataServiceIdentifier];
     } else {
         return self.currentRadioAccessTechnology;
     }
+#endif
 }
 
 @end

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00605DA46635F4AD970C51F0 /* ESNetworkInfo+ESCellularExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 783455B254DB87B62E1D2A6C /* ESNetworkInfo+ESCellularExtension.m */; };
 		006EF3477293F875906D00A1 /* ESFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19E2A5196FE201C3ADAFAC6B /* ESFramework.framework */; };
 		01F5167BFFAC7D4934C41FB2 /* NSHTTPCookieStorage+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 15784A749E6EE1976D7C57DA /* NSHTTPCookieStorage+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		021EF3002B74E495FB9A6D78 /* NSArray+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E995E3D50C3AF919BE818932 /* NSArray+ESExtension.m */; };
@@ -44,6 +45,7 @@
 		15D6FC9942255BD9B21A8A3A /* NSError+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 72AECC89B0F3034A7D58B946 /* NSError+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1764D7BC23687FC73370F8A9 /* NSString+ESGTMHTML.h in Headers */ = {isa = PBXBuildFile; fileRef = 256B7A488F181F5F7CCB5CE5 /* NSString+ESGTMHTML.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17FB85CA6BB51E8891CCD2BB /* NSData+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = C98BD1CDFF147DED32A293C6 /* NSData+ESExtension.m */; };
+		180F641213E47AADFFFE177F /* ESNetworkInfo+ESCellularExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 783455B254DB87B62E1D2A6C /* ESNetworkInfo+ESCellularExtension.m */; };
 		18168A63C26116B52E9841B2 /* NSHTTPCookieStorage+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 15784A749E6EE1976D7C57DA /* NSHTTPCookieStorage+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		196A2EF397CC225634F99117 /* ESNumericValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FF258B1F4035603CD6FCEB /* ESNumericValue.m */; };
 		19E88596554702E0B057863D /* CTTelephonyNetworkInfo+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E6DE02732EB48EB409B5CF31 /* CTTelephonyNetworkInfo+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -75,6 +77,7 @@
 		295213CB8B7A8565D4432C7E /* UIToolbar+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = CD8FB86754BA9E1DF286F236 /* UIToolbar+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		29CE55B16BF23F301E8598C8 /* NSDateFormatter+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF6CB31210C4E2DA6E56F2C /* NSDateFormatter+ESExtension.m */; };
 		29D5DD9937347DD971DB81E0 /* NSHTTPCookieStorage+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD11A739B25C784776616848 /* NSHTTPCookieStorage+ESExtension.m */; };
+		2B9FA907F5B757825444FD1F /* ESNetworkInfo+ESWiFiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A34D72759A2CEE70453D3687 /* ESNetworkInfo+ESWiFiExtension.m */; };
 		2BB5BE82D736D6411062E3CB /* UIAlertController+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 83F045A5C321870AD8E1190D /* UIAlertController+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D54BB13BF23501002CF6589 /* NSTimer+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D6E1437E0096B6E8621A88 /* NSTimer+ESExtension.m */; };
 		2D5F8C545B15008F9C6D1D82 /* UIToolbar+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC28043942D536147F90A98 /* UIToolbar+ESExtension.m */; };
@@ -155,6 +158,7 @@
 		5AE59DE0B23974DA28E44C3D /* NSURL+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 874FB6A7572778ED23BAC6D2 /* NSURL+ESExtension.m */; };
 		5C5519B49739564340686C2B /* ESNetworkInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EC256685E1DB2E9B03D9E92 /* ESNetworkInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C611FB9D9FE52CC15F0D7B4 /* NSArray+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B766CD27781F8E057FA49CDC /* NSArray+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5DC4C9114E92D4ED81DCEFDC /* ESNetworkInfo+ESWiFiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A34D72759A2CEE70453D3687 /* ESNetworkInfo+ESWiFiExtension.m */; };
 		5E1599EB59C68217E61F6ACA /* ESMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EEB2459CE111F23A8F8DD9E /* ESMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E4551C9B91DCA54B679EEDA /* NSOrderedSet+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 152784CBC64AD3FF32216723 /* NSOrderedSet+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5F4A66EC5B4B93D4B59774CE /* UIImageView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 257E531624BF0365B60EF1A1 /* UIImageView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -212,6 +216,7 @@
 		7EC3B07E3A08FDFC0F47AEB5 /* NSDictionary+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E1D1FCD1AFCEC24F5FDA9 /* NSDictionary+ESExtension.m */; };
 		7ECBA7B9696AD39E7073932E /* NSTimer+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 90D6E1437E0096B6E8621A88 /* NSTimer+ESExtension.m */; };
 		7ED5155840CEF18C2B3C39EB /* UIApplication+ESAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C1CC6F7A12A7DF15029A2997 /* UIApplication+ESAppInfo.m */; };
+		7F4C1CD2A86FDEC0D632E7B8 /* ESNetworkInfo+ESWiFiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A34D72759A2CEE70453D3687 /* ESNetworkInfo+ESWiFiExtension.m */; };
 		7F914F133EF22802A564DA1B /* UIScrollView+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C73C998D49A5C5C80A0BDF /* UIScrollView+ESExtension.m */; };
 		80D2B860A862271A68F397DE /* UIImageView+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 257E531624BF0365B60EF1A1 /* UIImageView+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		816BC9D41DA7DF763EA9F08A /* NSObject+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB3B267F28BBC25C8A4CE84 /* NSObject+ESExtension.m */; };
@@ -264,6 +269,7 @@
 		9E633C48E92D15E0B477A95B /* NSCharacterSet+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F1E2287CB9B98E211B8014 /* NSCharacterSet+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F4C3B2D524C2FF2EDBE3DC0 /* UIAlertController+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 83F045A5C321870AD8E1190D /* UIAlertController+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9FCBAA5C0F02CD9F30B02E5F /* UIView+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 261307C195900DDB847D8172 /* UIView+ESExtension.m */; };
+		9FF7FCC3929A2A6DC63EA573 /* ESNetworkInfo+ESWiFiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = A34D72759A2CEE70453D3687 /* ESNetworkInfo+ESWiFiExtension.m */; };
 		A06313270F7E00787471E330 /* UIColor+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 514734201BDBD2093C02A1F2 /* UIColor+ESExtension.m */; };
 		A205D64359B786DB3E1C648B /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A31730D0DB81A9909AA6B4DE /* ESNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 205E51C05D36866412B503D0 /* ESNetworkInfo.m */; };
@@ -286,6 +292,7 @@
 		B091AC0F3BAD0CB9F75CB0E1 /* ESHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A0EDB3B2033295226F71E670 /* ESHelpers.m */; };
 		B15CB96A83AE9928BA1FF85F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E7E322F4ED5D0B23D43CFE5 /* Assets.xcassets */; };
 		B1E3036C14B93102D2F529C8 /* NSDictionary+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 845E1D1FCD1AFCEC24F5FDA9 /* NSDictionary+ESExtension.m */; };
+		B2D2958719FC64F47035B672 /* ESNetworkInfo+ESCellularExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 783455B254DB87B62E1D2A6C /* ESNetworkInfo+ESCellularExtension.m */; };
 		B388461CF0EEDCD1C3103B88 /* NSInvocation+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = DBCA36668D4F2A0C02DD8B96 /* NSInvocation+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3ACBCCF5828F1FC77825F9E /* ESFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C2FD2DEAAAA3454E627CB425 /* ESFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3E58460E0CE60F2C4B9D4EC /* UIWindow+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 70A02537D245166629D072C3 /* UIWindow+ESExtension.m */; };
@@ -309,7 +316,7 @@
 		BC0F25B18215995F3D4A71D9 /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD39FE3E705E8FB52BC738A8 /* ESNetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 2153479E04D0D8665C700E81 /* ESNetworkInterface.m */; };
 		BD457D276CF4CAF554F1DACC /* NSFileManager+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */; };
-		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF04711ACE136D7B4470E6BE /* NSString+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C43D6A704FC3C5823D1CC96 /* NSString+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C02B50693C354FBDCBFC698F /* NSDate+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D4CFE97F8C84B95B72BE3B /* NSDate+ESExtension.m */; };
 		C057CB3B109500DB1E05C15F /* UIViewController+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE89C9C255016D2B305BC11 /* UIViewController+ESExtension.m */; };
@@ -385,6 +392,7 @@
 		F4E18B6E81437533EAA7F588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B2C3053C2DFA5E6246C115B /* Assets.xcassets */; };
 		F5344E7A0AB5E41814744EF5 /* NSFileManager+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */; };
 		F5D0D2C12D2C5A3F0EA16CD8 /* UIColor+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 514734201BDBD2093C02A1F2 /* UIColor+ESExtension.m */; };
+		F80C35369CE23454E40DB84E /* ESNetworkInfo+ESCellularExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 783455B254DB87B62E1D2A6C /* ESNetworkInfo+ESCellularExtension.m */; };
 		F814D615652C3027406728A5 /* NSObject+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 17D25C37FB6B1E3854494CAE /* NSObject+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F95B9DBFDA2D7E38904FB06B /* NSURLComponents+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE80788806BD20AC718410A /* NSURLComponents+ESExtension.m */; };
 		FADBA7B96424BE580893064A /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14824E0D38FA45015482FE30 /* TestViewController.m */; };
@@ -579,6 +587,7 @@
 		72AECC89B0F3034A7D58B946 /* NSError+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+ESExtension.h"; sourceTree = "<group>"; };
 		7651F63C009E421079CF0CD4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURLComponents+ESExtension.h"; sourceTree = "<group>"; };
+		783455B254DB87B62E1D2A6C /* ESNetworkInfo+ESCellularExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESNetworkInfo+ESCellularExtension.m"; sourceTree = "<group>"; };
 		78C73C998D49A5C5C80A0BDF /* UIScrollView+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ESExtension.m"; sourceTree = "<group>"; };
 		7D14489DAA3D8A8DB21C1F2E /* ESHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESHelpers.h; sourceTree = "<group>"; };
 		7E7E322F4ED5D0B23D43CFE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -599,6 +608,7 @@
 		9FB511C83E7BB76D0C6AE9AC /* NSHTTPURLResponse+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSHTTPURLResponse+ESExtension.m"; sourceTree = "<group>"; };
 		A0EDB3B2033295226F71E670 /* ESHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESHelpers.m; sourceTree = "<group>"; };
 		A30C08819D5DC4219492C6DC /* UITableView+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+ESExtension.h"; sourceTree = "<group>"; };
+		A34D72759A2CEE70453D3687 /* ESNetworkInfo+ESWiFiExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ESNetworkInfo+ESWiFiExtension.m"; sourceTree = "<group>"; };
 		A6BC1493780B39516E41E001 /* NSError+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+ESExtension.m"; sourceTree = "<group>"; };
 		A6C7E346A993B2F0171C73EE /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		A860DBA37369772E44C8D1DE /* watchOS Example Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "watchOS Example Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -921,6 +931,8 @@
 				879F390542C75D9AFC49D470 /* CTTelephonyNetworkInfo+ESExtension.m */,
 				6EC256685E1DB2E9B03D9E92 /* ESNetworkInfo.h */,
 				205E51C05D36866412B503D0 /* ESNetworkInfo.m */,
+				783455B254DB87B62E1D2A6C /* ESNetworkInfo+ESCellularExtension.m */,
+				A34D72759A2CEE70453D3687 /* ESNetworkInfo+ESWiFiExtension.m */,
 				18845EB6EB7F43558F93A483 /* ESNetworkInterface.h */,
 				2153479E04D0D8665C700E81 /* ESNetworkInterface.m */,
 			);
@@ -1336,6 +1348,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				Base,
 				"zh-Hans",
 			);
@@ -1412,6 +1425,8 @@
 				FBC5BD9E17775433B38CE250 /* ESActionBlockContainer.m in Sources */,
 				C29DC3332851909E5E9387A8 /* ESControlActionBlockContainer.m in Sources */,
 				E0D7283EF10D9050CCE98DAB /* ESHelpers.m in Sources */,
+				B2D2958719FC64F47035B672 /* ESNetworkInfo+ESCellularExtension.m in Sources */,
+				2B9FA907F5B757825444FD1F /* ESNetworkInfo+ESWiFiExtension.m in Sources */,
 				A31730D0DB81A9909AA6B4DE /* ESNetworkInfo.m in Sources */,
 				BD39FE3E705E8FB52BC738A8 /* ESNetworkInterface.m in Sources */,
 				3C1F58572D9A6B77746F2EA4 /* ESNumericValue.m in Sources */,
@@ -1483,6 +1498,8 @@
 				20A888B0F2D19AC23CC2951E /* ESActionBlockContainer.m in Sources */,
 				44ED2151D2F78BD022A6166A /* ESControlActionBlockContainer.m in Sources */,
 				36DA548BAEB5FEB9AD36EB85 /* ESHelpers.m in Sources */,
+				00605DA46635F4AD970C51F0 /* ESNetworkInfo+ESCellularExtension.m in Sources */,
+				9FF7FCC3929A2A6DC63EA573 /* ESNetworkInfo+ESWiFiExtension.m in Sources */,
 				0FC84F3882C8851F38353F24 /* ESNetworkInfo.m in Sources */,
 				D551E260F6A0476081C09746 /* ESNetworkInterface.m in Sources */,
 				76375D0E58ACEE8B3CFAA841 /* ESNumericValue.m in Sources */,
@@ -1535,6 +1552,8 @@
 				6DD40D6C89B80B814246E9AF /* ESActionBlockContainer.m in Sources */,
 				6FDA13B6D07E385B29C8FCE8 /* ESControlActionBlockContainer.m in Sources */,
 				059FE07D380C956CA25F5EBD /* ESHelpers.m in Sources */,
+				F80C35369CE23454E40DB84E /* ESNetworkInfo+ESCellularExtension.m in Sources */,
+				5DC4C9114E92D4ED81DCEFDC /* ESNetworkInfo+ESWiFiExtension.m in Sources */,
 				0C3F23D93CC811A4C38DECB7 /* ESNetworkInfo.m in Sources */,
 				B9052CE60D657FAAF1F93A80 /* ESNetworkInterface.m in Sources */,
 				396570104DCD83B502F12795 /* ESNumericValue.m in Sources */,
@@ -1587,6 +1606,8 @@
 				336AB640C58941D51D345075 /* ESActionBlockContainer.m in Sources */,
 				79633D44ECF94DAA08A97B26 /* ESControlActionBlockContainer.m in Sources */,
 				B091AC0F3BAD0CB9F75CB0E1 /* ESHelpers.m in Sources */,
+				180F641213E47AADFFFE177F /* ESNetworkInfo+ESCellularExtension.m in Sources */,
+				7F4C1CD2A86FDEC0D632E7B8 /* ESNetworkInfo+ESWiFiExtension.m in Sources */,
 				8FF6F3522B2CC0E5DEAFBD67 /* ESNetworkInfo.m in Sources */,
 				70F97479AD77BA6AB4F4186D /* ESNetworkInterface.m in Sources */,
 				196A2EF397CC225634F99117 /* ESNumericValue.m in Sources */,
@@ -1674,6 +1695,7 @@
 		};
 		45B9DBB41F62A04002DAB9DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 94E563A2FD80462D82C4E977 /* watchOS Example */;
 			targetProxy = DAC46A191E3ACE32B698613E /* PBXContainerItemProxy */;
 		};
