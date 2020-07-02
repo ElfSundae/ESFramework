@@ -7,12 +7,14 @@
 //
 
 #import "ExtensionDelegate.h"
+#import <ESFramework/ESFramework.h>
 
 @implementation ExtensionDelegate
 
 - (void)applicationDidFinishLaunching
 {
     // Perform any final initialization of your application.
+    NSLog(@"%@", [ESNetworkInfo networkInterfaces]);
 }
 
 - (void)applicationDidBecomeActive
