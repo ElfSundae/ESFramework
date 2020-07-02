@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
   s.subspec 'UIKit' do |ss|
     ss.ios.deployment_target = '8.0'
     ss.tvos.deployment_target = '9.0'
+    ss.watchos.deployment_target = '2.0'
 
     ss.source_files = 'ESFramework/UIKit/*.{h,m}'
 
