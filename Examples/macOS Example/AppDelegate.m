@@ -19,8 +19,8 @@
 {
     // Insert code here to initialize your application
 
-    NSLog(@"%@", [ESNetworkHelper getIPAddresses]);
-    NSLog(@"WiFi IP: %@", [ESNetworkHelper getIPAddressForWiFi:nil]);
+    NSLog(@"Interfaces: %@", [ESNetworkInfo networkInterfaces]);
+    NSLog(@"Local IP: %@", [ESNetworkInfo localIPAddresses:NULL]);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
