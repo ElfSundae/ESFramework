@@ -45,7 +45,7 @@ FOUNDATION_EXPORT const unsigned char ESFrameworkVersionString[];
 #import <ESFramework/ESNetworkInfo.h>
 #import <ESFramework/ESNetworkInterface.h>
 
-#if !TARGET_OS_OSX || __has_include(<ESFramework/ESControlActionBlockContainer.h>)
+#if __has_include(<ESFramework/ESControlActionBlockContainer.h>)
 #import <ESFramework/ESControlActionBlockContainer.h>
 #import <ESFramework/UIAlertController+ESExtension.h>
 #import <ESFramework/UIApplication+ESExtension.h>
