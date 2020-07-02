@@ -1,16 +1,15 @@
 # Changelog
 
-## Master
+## 3.25.0 (2020-07-03)
 
-- Fix compatibility for watchOS and Mac Catalyst
 - Add `CTTelephonyNetworkInfo` category methods: `-dataServiceSubscriberCellularProvider`, `-dataServiceCurrentRadioAccessTechnology`
-- Rename `ESNetworkHelper` to `ESNetworkInfo`
+- Add `ESNetworkInfo` class, remove `ESNetworkHelper`
 - Rename UIImage `-resizedImageWithContentMode:` to `-resizedImageWithScalingMode:`
-- Remove `ESNetworkHelper` methods: `+getIPAddresses`, `+getIPAddressesForInterface:`, `+getIPAddressesForInterfaces:`, `+getIPAddressForWiFi:`
-- Remove constant `ESNetworkInterfaceVPN`
+- Remove `ESNetworkInterfaceVPN` constant
+- Fix compatibility for watchOS and Mac Catalyst
 - Fix `ESNetworkInterfaceWiFi` for Mac Catalyst
-- Include `Network` subspec for watchOS
-- Turn on `CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER`, angle-bracketed include headers in framework headers
+- Include `Network`, `UIKit` subspecs for watchOS
+- Turn on `CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER` build setting, angle-bracketed include headers in framework headers
 
 ## 3.24.0 (2020-06-21)
 
