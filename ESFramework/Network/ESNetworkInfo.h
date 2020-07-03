@@ -76,8 +76,8 @@ FOUNDATION_EXPORT NSString *const ESNetworkInfoKeySSIDData;
 /**
  * Returns the current WiFi network information.
  *
+ * @discussion Example result:
  * @code
- * // Example result:
  * {
  *     BSSID = "20:c9:d0:e1:78:c9";
  *     SSID = "Elf Sundae's MBP";
@@ -85,8 +85,8 @@ FOUNDATION_EXPORT NSString *const ESNetworkInfoKeySSIDData;
  * }
  * @endcode
  *
- * @warning To use this function in iOS 12 and later, enable the Access WiFi Information capability in Xcode.
- * For more information, see https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info
+ * @warning To use this method, your app must meet some requirements, see
+ *  \c CNCopyCurrentNetworkInfo https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurrentnetworkinfo
  */
 + (nullable NSDictionary<NSString *, id> *)WiFiNetworkInfo;
 
