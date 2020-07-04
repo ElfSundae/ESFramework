@@ -246,7 +246,6 @@
                                           countStyle:NSByteCountFormatterCountStyleFile];
 }
 
-#if TARGET_OS_IOS
 - (BOOL)isJailbroken
 {
     static BOOL _isJailbroken = NO;
@@ -292,7 +291,6 @@
 #endif
     return _isJailbroken;
 }
-#endif
 
 @end
 

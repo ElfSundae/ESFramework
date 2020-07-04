@@ -20,6 +20,7 @@
 {
     // Override point for customization after application launch.
     NSLog(@"%@", [ESNetworkInfo networkInterfaces]);
+    NSLog(@"%@", application.analyticsInfo);
 
     return YES;
 }

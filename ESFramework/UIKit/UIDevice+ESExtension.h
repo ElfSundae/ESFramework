@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Detects whether this device has been jailbroken.
  */
-@property (nonatomic, readonly) BOOL isJailbroken API_UNAVAILABLE(tvos);
+@property (nonatomic, readonly) BOOL isJailbroken;
 
 @end
 

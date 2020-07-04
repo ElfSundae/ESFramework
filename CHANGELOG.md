@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Make `-[UIDevice isJailbroken]` available for tvOS
+
 ## 3.25.0 (2020-07-03)
 
 - Add `CTTelephonyNetworkInfo` category methods: `-dataServiceSubscriberCellularProvider`, `-dataServiceCurrentRadioAccessTechnology`

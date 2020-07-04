@@ -197,9 +197,7 @@ static void ESCheckAppFreshLaunch(void)
     info[@"model_identifier"] = device.modelIdentifier;
     info[@"model_name"] = device.modelName;
     info[@"device_name"] = device.name;
-#if TARGET_OS_IOS
     info[@"jailbroken"] = @(device.isJailbroken);
-#endif
     info[@"screen_width"] = @((NSInteger)device.screenSizeInPoints.width);
     info[@"screen_height"] = @((NSInteger)device.screenSizeInPoints.height);
     info[@"screen_scale"] = [NSString stringWithFormat:@"%.2f", UIScreen.mainScreen.scale];
