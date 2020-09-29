@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -316,7 +316,7 @@
 		BC0F25B18215995F3D4A71D9 /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD39FE3E705E8FB52BC738A8 /* ESNetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 2153479E04D0D8665C700E81 /* ESNetworkInterface.m */; };
 		BD457D276CF4CAF554F1DACC /* NSFileManager+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */; };
-		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF04711ACE136D7B4470E6BE /* NSString+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C43D6A704FC3C5823D1CC96 /* NSString+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C02B50693C354FBDCBFC698F /* NSDate+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D4CFE97F8C84B95B72BE3B /* NSDate+ESExtension.m */; };
 		C057CB3B109500DB1E05C15F /* UIViewController+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE89C9C255016D2B305BC11 /* UIViewController+ESExtension.m */; };
@@ -1323,7 +1323,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ES;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "https://0x123.com";
 				TargetAttributes = {
 					1897B45673710FD9ED699BFD = {
@@ -1695,7 +1695,6 @@
 		};
 		45B9DBB41F62A04002DAB9DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = 94E563A2FD80462D82C4E977 /* watchOS Example */;
 			targetProxy = DAC46A191E3ACE32B698613E /* PBXContainerItemProxy */;
 		};
@@ -2049,7 +2048,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 3.25.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2125,7 +2124,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 3.25.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
