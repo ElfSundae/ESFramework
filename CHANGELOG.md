@@ -1,6 +1,10 @@
 # Changelog
 
-## Master
+## 3.26.0 (2020-09-29)
+
+- Update iOS deployment target to 9.0
+
+## 3.25.1 (2020-07-05)
 
 - Make `-[UIDevice isJailbroken]` available for tvOS
 
