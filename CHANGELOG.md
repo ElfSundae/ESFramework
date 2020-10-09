@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Add new device models: iPad 8, iPad Air 4
+
 ## 3.26.0 (2020-09-29)
 
 - Update iOS deployment target to 9.0
