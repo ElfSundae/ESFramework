@@ -1,8 +1,8 @@
 # Changelog
 
-## Master
+## 3.26.1 (2020-10-25)
 
-- Add new device models: iPad 8, iPad Air 4
+- Add new device models: iPad 8, iPad Air 4, iPhone 12
 
 ## 3.26.0 (2020-09-29)
 
