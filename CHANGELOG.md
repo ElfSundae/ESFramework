@@ -1,6 +1,6 @@
 # Changelog
 
-## Master
+## 3.26.2 (2020-12-08)
 
 - Add new device models: (M1, 2020) MacBook Air, MacBook Pro, Mac mini
 
