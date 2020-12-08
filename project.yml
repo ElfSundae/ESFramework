@@ -36,6 +36,7 @@ targetTemplates:
       APPLICATION_EXTENSION_API_ONLY: YES
   Example:
     type: application
+    scheme: {} # To generate default shared schemes: https://github.com/yonaskolb/XcodeGen/issues/215
     sources: ["Examples/${target_name}"]
     settings:
       DEVELOPMENT_TEAM: B86YZY7YJX
@@ -53,7 +54,7 @@ targets:
       SUPPORTS_MACCATALYST: YES
     dependencies:
       - target: ESFramework_iOS
-      - target: watchOS Example # TODO: Need `platformFilter` https://github.com/yonaskolb/XcodeGen/issues/900
+      # - target: watchOS Example # TODO: Need `platformFilter` https://github.com/yonaskolb/XcodeGen/issues/900
 
   tvOS Example:
     platform: tvOS

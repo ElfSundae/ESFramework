@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -316,7 +316,6 @@
 		BC0F25B18215995F3D4A71D9 /* NSURLComponents+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 778F6D78647AECFE8D3ABAE7 /* NSURLComponents+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD39FE3E705E8FB52BC738A8 /* ESNetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 2153479E04D0D8665C700E81 /* ESNetworkInterface.m */; };
 		BD457D276CF4CAF554F1DACC /* NSFileManager+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */; };
-		BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E98D1C3B97EC15C5228EFCD0 /* watchOS Example.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF04711ACE136D7B4470E6BE /* NSString+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C43D6A704FC3C5823D1CC96 /* NSString+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C02B50693C354FBDCBFC698F /* NSDate+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 38D4CFE97F8C84B95B72BE3B /* NSDate+ESExtension.m */; };
 		C057CB3B109500DB1E05C15F /* UIViewController+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE89C9C255016D2B305BC11 /* UIViewController+ESExtension.m */; };
@@ -447,13 +446,6 @@
 			remoteGlobalIDString = 58C30C3131C37266514C0826;
 			remoteInfo = "watchOS Example Extension";
 		};
-		DAC46A191E3ACE32B698613E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 27D060D7E9AEB888B25C8EC1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 94E563A2FD80462D82C4E977;
-			remoteInfo = "watchOS Example";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -499,17 +491,6 @@
 				12F2A5C801774A79FAEFD2CF /* watchOS Example Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9AE59EE4A3F0F82DF64A0C30 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1181,13 +1162,11 @@
 				7C191F20FF942800B581C368 /* Resources */,
 				4AAFB04BACA177A74902D661 /* Frameworks */,
 				0FDFCB8B7483A25090C7D22F /* Embed Frameworks */,
-				9AE59EE4A3F0F82DF64A0C30 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				6C16493A0131C5E164D3AC50 /* PBXTargetDependency */,
-				45B9DBB41F62A04002DAB9DB /* PBXTargetDependency */,
 			);
 			name = "iOS Example";
 			productName = "iOS Example";
@@ -1692,12 +1671,6 @@
 			isa = PBXTargetDependency;
 			target = C147ED47513F57A1DBE04299 /* ESFramework_watchOS */;
 			targetProxy = 77F25A27820F22722EB95F75 /* PBXContainerItemProxy */;
-		};
-		45B9DBB41F62A04002DAB9DB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			platformFilter = ios;
-			target = 94E563A2FD80462D82C4E977 /* watchOS Example */;
-			targetProxy = DAC46A191E3ACE32B698613E /* PBXContainerItemProxy */;
 		};
 		6C16493A0131C5E164D3AC50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
