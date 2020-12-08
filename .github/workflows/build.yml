@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Validate Pod
+      - name: Lint Pod
         run: pod lib lint
 
       - name: Carthage Build
@@ -17,7 +17,7 @@ jobs:
       - name: Build iOS Example - iOS Simulator
         run: |
           xcodebuild clean build -scheme "iOS Example" \
-            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" \
             -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
 
       - name: Build iOS Example - Mac Catalyst

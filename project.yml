@@ -54,7 +54,7 @@ targets:
       SUPPORTS_MACCATALYST: YES
     dependencies:
       - target: ESFramework_iOS
-      # - target: watchOS Example # TODO: Need `platformFilter` https://github.com/yonaskolb/XcodeGen/issues/900
+      - target: watchOS Example # TODO: Need `platformFilter` https://github.com/yonaskolb/XcodeGen/issues/900
 
   tvOS Example:
     platform: tvOS

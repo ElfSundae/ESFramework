@@ -20,6 +20,20 @@
                ReferencedContainer = "container:ESFramework.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1897B45673710FD9ED699BFD"
+               BuildableName = "iOS Example.app"
+               BlueprintName = "iOS Example"
+               ReferencedContainer = "container:ESFramework.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
