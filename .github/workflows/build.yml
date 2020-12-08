@@ -13,3 +13,15 @@ jobs:
 
       - name: Carthage Build
         run: ./carthage.sh build --no-skip-current
+
+      - name: Build iOS Example - iOS Simulator
+        run: |
+          xcodebuild clean build -scheme "iOS Example" \
+            -sdk iphonesimulator \
+            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
+
+      - name: Build iOS Example - Mac Catalyst
+        run: |
+          xcodebuild clean build -scheme "iOS Example" \
+            -destination "platform=macOS,arch=x86_64,variant=Mac Catalyst" \
+            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
