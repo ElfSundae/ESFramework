@@ -1,4 +1,4 @@
-# Changelog
+# Change Log
 
 ## 3.26.2 (2020-12-08)
 
