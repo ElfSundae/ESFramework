@@ -1,5 +1,9 @@
 # Changelog
 
+## Master
+
+- Add new device models: (M1, 2020) MacBook Air, MacBook Pro, Mac mini
+
 ## 3.26.1 (2020-10-25)
 
 - Add new device models: iPad 8, iPad Air 4, iPhone 12
