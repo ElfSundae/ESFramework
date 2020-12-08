@@ -7,5 +7,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - run: pod lib lint
-      - run: ./carthage.sh build --no-skip-current
+
+      - name: Validate Pod
+        run: pod lib lint
+
+      - name: Carthage Build
+        run: ./carthage.sh build --no-skip-current
