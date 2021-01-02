@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Lint Pod
-        run: pod lib lint
+        run: pod lib lint --allow-warnings
 
       - name: Carthage Build
         run: ./carthage.sh build --no-skip-current
