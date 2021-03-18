@@ -18,22 +18,22 @@ jobs:
         run: |
           xcodebuild clean build -scheme "iOS Example" \
             -destination "platform=iOS Simulator,OS=latest,name=iPhone 11" \
-            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
+            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty
 
       - name: Build iOS Example - Mac Catalyst
         run: |
           xcodebuild clean build -scheme "iOS Example" \
             -destination "platform=macOS,arch=x86_64,variant=Mac Catalyst" \
-            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
+            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty
 
       - name: Build tvOS Example
         run: |
           xcodebuild clean build -scheme "tvOS Example" \
             -sdk appletvsimulator \
-            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
+            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty
 
       - name: Build macOS Example
         run: |
           xcodebuild clean build -scheme "macOS Example" \
             -sdk macosx \
-            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty -c
+            -configuration Release CODE_SIGN_IDENTITY=- | xcpretty
