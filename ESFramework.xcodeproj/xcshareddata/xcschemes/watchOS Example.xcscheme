@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1220"
+   LastUpgradeVersion = "1240"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -63,8 +63,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/ESFramework">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94E563A2FD80462D82C4E977"
@@ -72,7 +74,7 @@
             BlueprintName = "watchOS Example"
             ReferencedContainer = "container:ESFramework.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -80,8 +82,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/ESFramework">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "94E563A2FD80462D82C4E977"
@@ -89,7 +93,16 @@
             BlueprintName = "watchOS Example"
             ReferencedContainer = "container:ESFramework.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "94E563A2FD80462D82C4E977"
+            BuildableName = "watchOS Example.app"
+            BlueprintName = "watchOS Example"
+            ReferencedContainer = "container:ESFramework.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
