@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.26.3 (2021-09-23)
+
+- Add new device models: iMac 2021, iPad 2021, iPhone 13 series
+
 ## 3.26.2 (2020-12-08)
 
 - Add new device models: (M1, 2020) MacBook Air, MacBook Pro, Mac mini
