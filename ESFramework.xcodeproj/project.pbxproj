@@ -1323,7 +1323,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = ES;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = "https://0x123.com";
 				TargetAttributes = {
 					1897B45673710FD9ED699BFD = {
