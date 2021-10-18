@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.27.0 (2021-10-18)
+
+- Change `-[NSURL queryParameters]` to `-[NSURL es_queryParameters]`
+
 ## 3.26.3 (2021-09-23)
 
 - Add new device models: iMac 2021, iPad 2021, iPhone 13 series

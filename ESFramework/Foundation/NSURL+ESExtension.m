@@ -11,7 +11,7 @@
 
 @implementation NSURL (ESExtension)
 
-- (NSDictionary<NSString *, id> *)queryParameters
+- (NSDictionary<NSString *, id> *)es_queryParameters
 {
     return [NSURLComponents componentsWithURL:self resolvingAgainstBaseURL:YES].queryParameters;
 }
