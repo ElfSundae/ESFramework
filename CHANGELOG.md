@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.27.1 (2021-11-07)
+
+- Add new device models: MacBook Pro (16-inch, 2021), MacBook Pro (14-inch, 2021)
+
 ## 3.27.0 (2021-10-18)
 
 - Change `-[NSURL queryParameters]` to `-[NSURL es_queryParameters]`
