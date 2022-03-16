@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Returns the URL query parameters.
  */
-- (nullable NSDictionary<NSString *, id> *)queryParameters;
+- (nullable NSDictionary<NSString *, id> *)es_queryParameters;
 
 /**
  * Returns a newly created URL added the given query parameters.
