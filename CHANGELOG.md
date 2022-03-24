@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.27.3 (2022-03-25)
+
+- Rename device models:
+    + `iPad Air (5th generation)` -> `iPad Air 5`
+    + `Mac13,1` -> `Mac Studio (M1 Max)`
+    + `Mac13,2` -> `Mac Studio (M1 Ultra)`
+
 ## 3.27.2 (2022-03-17)
 
 - Add new device models: iPad Air (5th generation), iPhone SE (3rd generation), Mac Studio

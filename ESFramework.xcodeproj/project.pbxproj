@@ -1267,7 +1267,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EC8A17333CEBAC04B44934A7 /* Build configuration list for PBXNativeTarget "watchOS Example" */;
 			buildPhases = (
-				C07492D667D5CF0D44164C0B /* Sources */,
 				606FC5D7F275BCC329CAA48B /* Resources */,
 				765F722CC6DB629B5978EE2A /* Embed App Extensions */,
 			);
@@ -1649,13 +1648,6 @@
 				938FC78790B7B36190E75D1B /* UIView+ESExtension.m in Sources */,
 				EC3159FED0F5729DD619C90A /* UIViewController+ESExtension.m in Sources */,
 				7D204EE0E100A6DA3849B82B /* UIWindow+ESExtension.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C07492D667D5CF0D44164C0B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2051,7 +2043,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 3.27.2;
+				MARKETING_VERSION = 3.27.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2130,7 +2122,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 3.27.2;
+				MARKETING_VERSION = 3.27.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
