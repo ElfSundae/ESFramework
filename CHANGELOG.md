@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.27.5 (2022-09-19)
+
+- Add new device models: iPhone 14 series
+
 ## 3.27.4 (2022-03-25)
 
 - Add new device models: Apple Virtual Machine, MacBook Air (M2, 2022), MacBook Pro (13-inch, M2, 2022)
