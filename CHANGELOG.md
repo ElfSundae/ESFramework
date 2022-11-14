@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.27.6 (2022-11-14)
+
+- Add new device models: iPad (10th generation), iPad Pro 11-inch (4th generation), iPad Pro 12.9-inch (6th generation)
+
 ## 3.27.5 (2022-09-19)
 
 - Add new device models: iPhone 14 series
