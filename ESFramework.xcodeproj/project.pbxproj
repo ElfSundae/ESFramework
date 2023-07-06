@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,7 +36,6 @@
 		122568CDAE8D4845AAE7DBCB /* NSHTTPURLResponse+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = EDC68E08285CDBB3E4C670DA /* NSHTTPURLResponse+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		122AA62AE84FF0016DEC1948 /* UIApplication+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AC716DB261D87C41B7941147 /* UIApplication+ESExtension.m */; };
 		126C73899F688DA2C928BFCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E981868D646EB3B23D2FA9A3 /* Main.storyboard */; };
-		12F2A5C801774A79FAEFD2CF /* watchOS Example Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A860DBA37369772E44C8D1DE /* watchOS Example Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		131A2ADCA3AA25BE041B852F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4EA8F67C3EC1FDE342C6D1 /* Interface.storyboard */; };
 		1438A70FE6A7B7EEA8A097BB /* UIWindow+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FE8C43C1263ECDC7270ADB5 /* UIWindow+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		149F29A302C229DE1A924BFC /* NSObject+ESAutoCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 051A80664F36D2ABF7FD2E65 /* NSObject+ESAutoCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -277,6 +276,7 @@
 		A3EFC8C431AB1D45DF84236D /* NSURLComponents+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE80788806BD20AC718410A /* NSURLComponents+ESExtension.m */; };
 		A4555ED674FBEE364A96D534 /* ESNumericValue.h in Headers */ = {isa = PBXBuildFile; fileRef = 02FBAA052DEA10755AC714A2 /* ESNumericValue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A460C0646E72B9F3A9D27E6F /* UIGestureRecognizer+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = D79BD37BDADBEF0B7C8E6644 /* UIGestureRecognizer+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4C11A5365D5A39C0F82D6B8 /* watchOS Example Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A860DBA37369772E44C8D1DE /* watchOS Example Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A5636AAC0A08B4E77850ADA5 /* NSFileManager+ESExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 89CCCDB95A818C29537921CF /* NSFileManager+ESExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A655BB1D26AE3286653474A6 /* ESMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EEB2459CE111F23A8F8DD9E /* ESMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7220CDAE82171A1389AE487 /* NSURL+ESExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 874FB6A7572778ED23BAC6D2 /* NSURL+ESExtension.m */; };
@@ -490,17 +490,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		765F722CC6DB629B5978EE2A /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				12F2A5C801774A79FAEFD2CF /* watchOS Example Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9AE59EE4A3F0F82DF64A0C30 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +499,17 @@
 				BEEE0ACF2DCEC19EA3DC10E6 /* watchOS Example.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6144EFACF42CD364EA9AB4B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A4C11A5365D5A39C0F82D6B8 /* watchOS Example Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -529,7 +529,7 @@
 		1522199936B5859D09CC0EAE /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		152784CBC64AD3FF32216723 /* NSOrderedSet+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSOrderedSet+ESExtension.h"; sourceTree = "<group>"; };
 		15784A749E6EE1976D7C57DA /* NSHTTPCookieStorage+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSHTTPCookieStorage+ESExtension.h"; sourceTree = "<group>"; };
-		15D3D83AC797937F51BE7C18 /* tvOS Example.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "tvOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		15D3D83AC797937F51BE7C18 /* tvOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tvOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		16844EF76114979636D4FE86 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		17AC731BDB9349A7F9593C02 /* NSString+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+ESExtension.m"; sourceTree = "<group>"; };
 		17D25C37FB6B1E3854494CAE /* NSObject+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+ESExtension.h"; sourceTree = "<group>"; };
@@ -551,7 +551,7 @@
 		295017BF7821370A9FCE8B3A /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
 		29F06F6018621CB6951E2F61 /* UIBarButtonItem+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ESExtension.m"; sourceTree = "<group>"; };
 		2B67A0883C291958BDDBDA09 /* UIColor+ESExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+ESExtension.h"; sourceTree = "<group>"; };
-		2CA772BFD486A36500457C8D /* iOS Example.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA772BFD486A36500457C8D /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D7078C31C0FE4FA42B7299E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2DBF3F9025E5D18547A592C8 /* NSFileManager+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+ESExtension.m"; sourceTree = "<group>"; };
 		2DE89C9C255016D2B305BC11 /* UIViewController+ESExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ESExtension.m"; sourceTree = "<group>"; };
@@ -1268,7 +1268,7 @@
 			buildConfigurationList = EC8A17333CEBAC04B44934A7 /* Build configuration list for PBXNativeTarget "watchOS Example" */;
 			buildPhases = (
 				606FC5D7F275BCC329CAA48B /* Resources */,
-				765F722CC6DB629B5978EE2A /* Embed App Extensions */,
+				D6144EFACF42CD364EA9AB4B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -1321,8 +1321,9 @@
 		27D060D7E9AEB888B25C8EC1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				CLASSPREFIX = ES;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "https://0x123.com";
 				TargetAttributes = {
 					1897B45673710FD9ED699BFD = {
@@ -1754,8 +1755,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-watchOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
@@ -1776,6 +1781,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1793,12 +1799,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-iOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = iphoneos;
@@ -1813,6 +1823,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1832,6 +1843,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.iOSExample;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
@@ -1849,12 +1861,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-tvOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = appletvos;
@@ -1874,12 +1890,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-tvOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = appletvos;
@@ -1899,8 +1919,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-watchOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = watchos;
@@ -1920,12 +1944,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-iOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = iphoneos;
@@ -1946,6 +1974,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1963,6 +1992,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.tvOSExample;
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1976,16 +2006,21 @@
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-macOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = macosx;
@@ -2030,6 +2065,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 3;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2043,7 +2079,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 3.27.6;
+				MARKETING_VERSION = 3.27.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2060,6 +2096,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/watchOS Example/Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.iOSExample.watchkitapp;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2103,6 +2140,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 3;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2122,7 +2160,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 3.27.6;
+				MARKETING_VERSION = 3.27.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2142,12 +2180,14 @@
 				CODE_SIGN_ENTITLEMENTS = "Examples/macOS Example/macOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.macOSExample;
 				SDKROOT = macosx;
 			};
@@ -2160,16 +2200,21 @@
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.0x123.ESFramework-macOS";
 				PRODUCT_NAME = ESFramework;
 				SDKROOT = macosx;
@@ -2189,6 +2234,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.iOSExample.watchkitapp.watchkitextension;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -2208,6 +2254,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.iOSExample;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
@@ -2222,12 +2269,14 @@
 				CODE_SIGN_ENTITLEMENTS = "Examples/macOS Example/macOS Example.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = B86YZY7YJX;
 				INFOPLIST_FILE = "Examples/macOS Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0x123.macOSExample;
 				SDKROOT = macosx;
 			};

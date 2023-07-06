@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.27.7 (2023-07-06)
+
+- Add new device models: 2023 Mac mini, MacBook Pro, Mac Studio, Mac Pro
+
 ## 3.27.6 (2022-11-14)
 
 - Add new device models: iPad (10th generation), iPad Pro 11-inch (4th generation), iPad Pro 12.9-inch (6th generation)
